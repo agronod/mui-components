@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "README.md"
 
 # What the action will do
 jobs:

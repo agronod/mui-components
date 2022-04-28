@@ -46,7 +46,7 @@ const Component = () => {
 };
 ```
 
-Please visit the [Storybook](https://master--618d15d9ff6ce2003a25d485.chromatic.com) for more in depth examples
+Please visit the [Storybook](https://main--626a5b4b1abebb004a4657a8.chromatic.com) for more in depth examples
 
 ## Props
 
