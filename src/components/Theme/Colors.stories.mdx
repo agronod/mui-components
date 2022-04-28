@@ -1,0 +1,148 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Box, Grid, Typography } from "@mui/material";
+import ThemeProvider from "./ThemeProvider";
+import { ScopedCssBaseline } from "@mui/material";
+
+<style>{`
+  .colorBox {
+    text-align: center;
+		line-height: 48px
+  }
+`}</style>
+
+export const Template = (args) => (
+  <Grid container spacing={1} sx={{ p: 1 }}>
+    <Grid item xs={2}>
+      <Typography>Primary</Typography>
+    </Grid>
+    <Grid color="secondary" item xs={2}>
+      <Typography>Secondary</Typography>
+    </Grid>
+    <Grid item xs={2}>
+      <Typography>Error</Typography>
+    </Grid>
+    <Grid item xs={2}>
+      <Typography>Info</Typography>
+    </Grid>
+    <Grid item xs={2}>
+      <Typography>Warning</Typography>
+    </Grid>
+    <Grid item xs={2}>
+      <Typography>Text</Typography>
+    </Grid>
+    <Grid item xs={2}>
+      <Box bgcolor="primary.main" className="colorBox">
+        main
+      </Box>
+      <Box
+        color="primary.contrastText"
+        bgcolor="primary.dark"
+        className="colorBox"
+      >
+        dark
+      </Box>
+      <Box bgcolor="primary.light" className="colorBox">
+        light
+      </Box>
+      <Box bgcolor="primary.contrastText" className="colorBox">
+        contrast text
+      </Box>
+    </Grid>
+    <Grid item xs={2}>
+      <Box bgcolor="secondary.main" className="colorBox">
+        main
+      </Box>
+      <Box
+        color="secondary.contrastText"
+        bgcolor="secondary.dark"
+        className="colorBox"
+      >
+        dark
+      </Box>
+      <Box bgcolor="secondary.light" className="colorBox">
+        light
+      </Box>
+      <Box bgcolor="secondary.contrastText" className="colorBox">
+        contrast text
+      </Box>
+    </Grid>
+    <Grid item xs={2}>
+      <Box bgcolor="error.main" className="colorBox">
+        main
+      </Box>
+      <Box color="error.contrastText" bgcolor="error.dark" className="colorBox">
+        dark
+      </Box>
+      <Box bgcolor="error.light" className="colorBox">
+        light
+      </Box>
+      <Box bgcolor="error.contrastText" className="colorBox">
+        contrast text
+      </Box>
+    </Grid>
+    <Grid item xs={2}>
+      <Box bgcolor="info.main" className="colorBox">
+        main
+      </Box>
+      <Box color="info.contrastText" bgcolor="info.dark" className="colorBox">
+        dark
+      </Box>
+      <Box bgcolor="info.light" className="colorBox">
+        light
+      </Box>
+      <Box bgcolor="info.contrastText" className="colorBox">
+        contrast text
+      </Box>
+    </Grid>
+    <Grid item xs={2}>
+      <Box bgcolor="warning.main" className="colorBox">
+        main
+      </Box>
+      <Box
+        color="warning.contrastText"
+        bgcolor="warning.dark"
+        className="colorBox"
+      >
+        dark
+      </Box>
+      <Box bgcolor="warning.light" className="colorBox">
+        light
+      </Box>
+      <Box bgcolor="warning.contrastText" className="colorBox">
+        contrast text
+      </Box>
+    </Grid>
+    <Grid item xs={2}>
+      <Box
+        bgcolor="text.primary"
+        color="primary.contrastText"
+        className="colorBox"
+      >
+        primary
+      </Box>
+      <Box bgcolor="text.secondary" className="colorBox">
+        secondary
+      </Box>
+      <Box bgcolor="text.disabled" className="colorBox">
+        disabled
+      </Box>
+    </Grid>
+  </Grid>
+);
+
+<Meta
+  title="Theme/Colors"
+  parameters={{
+    viewMode: "docs",
+  }}
+/>
+
+# Colors
+
+<Canvas>
+  <Story name="Colors" args={{}}>
+    <ScopedCssBaseline>
+      <Template />
+    </ScopedCssBaseline>
+  </Story>
+</Canvas>
