@@ -19,6 +19,11 @@ const globalTheme = createTheme({
 const baseThemeOptions: ThemeOptions = {
   palette: globalTheme.palette,
   components: {
+    MuiSvgIcon: {
+      styleOverrides: {
+        fontSizeLarge: "148px",
+      },
+    },
     MuiCssBaseline: {
       styleOverrides: `
           @font-face {
@@ -75,7 +80,7 @@ const baseThemeOptions: ThemeOptions = {
           borderRadius: 40,
           fontFamily: "inter",
           fontSize: "14px",
-          lineHeight: "14px",
+          lineHeight: "16px",
           paddingBottom: "12px",
           paddingTop: "12px",
           paddingLeft: "24px",
@@ -87,7 +92,7 @@ const baseThemeOptions: ThemeOptions = {
           borderRadius: 40,
           fontFamily: "inter",
           fontSize: "14px",
-          lineHeight: "14px",
+          lineHeight: "16px",
           paddingBottom: "12px",
           paddingTop: "12px",
           paddingLeft: "24px",
