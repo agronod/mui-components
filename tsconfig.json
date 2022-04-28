@@ -24,7 +24,7 @@
   },
   "include": [
     "src/components"
-  ],
+, "src/components/Theme/.tsx"  ],
   "exclude": [
     "node_modules",
     "**/__tests__/*"
