@@ -74,6 +74,20 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          height: "28px",
+        },
+        label: {
+          fontFamily: "inter",
+          fontSize: "12px",
+          lineHeight: "18px",
+          paddingLeft: "8px",
+          paddingRight: "8px",
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         contained: {
