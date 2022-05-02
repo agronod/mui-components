@@ -40,6 +40,31 @@ import { BrowserRouter } from "react-router-dom";
           <TextField id="standard-basic" label="Standard" variant="standard" />
         </Stack>
       </Box>
+      <Box>
+        <Stack spacing={2} direction="row">
+          <TextField
+            id="outlined-error"
+            label="Outlined"
+            variant="outlined"
+            error
+            helperText="Incorrect entry."
+          />
+          <TextField
+            id="filled-error"
+            label="Filled"
+            variant="filled"
+            error
+            helperText="Incorrect entry."
+          />
+          <TextField
+            id="standard-error"
+            label="Standard"
+            variant="standard"
+            error
+            helperText="Incorrect entry."
+          />
+        </Stack>
+      </Box>
       <Box
         sx={{
           typography: "body1",
