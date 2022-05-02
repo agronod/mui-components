@@ -12,15 +12,15 @@ const globalTheme = createTheme({
     },
     secondary: {
       main: "#756B59",
-      light: "#DAD0C7",
-      dark: "#36322A",
+      light: "#f8f6f3",
       medium: "#dad0c7",
+      dark: "#36322A",
     },
     primary: {
       main: "#2C7A4D",
       light: "#D6EFDF",
-      dark: "#123F25",
       medium: "#59b87f",
+      dark: "#123F25",
     },
     text: { primary: "#000000" },
   },
