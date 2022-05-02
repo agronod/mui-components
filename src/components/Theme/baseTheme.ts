@@ -10,8 +10,18 @@ const globalTheme = createTheme({
       default: "#F8F6F3",
       paper: "#fff",
     },
-    secondary: { main: "#756B59", light: "#DAD0C7", dark: "#36322A" },
-    primary: { main: "#2C7A4D", light: "#D6EFDF", dark: "#123F25" },
+    secondary: {
+      main: "#756B59",
+      light: "#DAD0C7",
+      dark: "#36322A",
+      medium: "#dad0c7",
+    },
+    primary: {
+      main: "#2C7A4D",
+      light: "#D6EFDF",
+      dark: "#123F25",
+      medium: "#59b87f",
+    },
     text: { primary: "#000000" },
   },
 });
