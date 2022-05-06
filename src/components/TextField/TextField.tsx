@@ -22,10 +22,12 @@ export default function TextField(props: TextFieldProps) {
     <StyledTextField
       {...props}
       InputProps={{
-        endAdornment: props.error && (
+        endAdornment: props.error ? (
           <InputAdornment position="end">
             <ErrorIcon />
           </InputAdornment>
+        ) : (
+          props.InputProps?.endAdornment
         ),
       }}
     ></StyledTextField>
