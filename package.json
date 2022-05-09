@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "0.3.17",
+  "version": "0.1.0",
   "main": "lib/index",
   "types": "lib/index.d.ts",
   "babel": {
