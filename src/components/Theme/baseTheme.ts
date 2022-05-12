@@ -29,6 +29,16 @@ const globalTheme = createTheme({
 const baseThemeOptions: ThemeOptions = {
   palette: globalTheme.palette,
   components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          fontFamily: "inter",
+          fontSize: "16px",
+          lineHeight: "24px",
+          fontWeight: 400,
+        },
+      },
+    },
     MuiSvgIcon: {
       styleOverrides: {
         fontSizeLarge: "148px",
