@@ -35,6 +35,19 @@ import { BrowserRouter } from "react-router-dom";
       </Box>
       <Box>
         <Stack spacing={2} direction="row">
+          <Button variant="text" disabled>
+            Text disabled
+          </Button>
+          <Button variant="contained" disabled>
+            Contained disabled
+          </Button>
+          <Button variant="outlined" disabled>
+            Outlined disabled
+          </Button>
+        </Stack>
+      </Box>
+      <Box>
+        <Stack spacing={2} direction="row">
           <TextField id="outlined-basic" label="Outlined" variant="outlined" />
           <TextField id="filled-basic" label="Filled" variant="filled" />
           <TextField id="standard-basic" label="Standard" variant="standard" />

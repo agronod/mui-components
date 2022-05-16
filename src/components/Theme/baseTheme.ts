@@ -108,8 +108,18 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiButtonBase: {
+      styleOverrides: {
+        disabled: {},
+      },
+    },
     MuiButton: {
       styleOverrides: {
+        root: {
+          ":disabled": {
+            color: globalTheme.palette.grey[500],
+          },
+        },
         contained: {
           borderRadius: 40,
           fontFamily: "inter",
@@ -121,6 +131,10 @@ const baseThemeOptions: ThemeOptions = {
           paddingRight: "24px",
           fontWeight: 500,
           textTransform: "none",
+          ":disabled": {
+            color: "white",
+            backgroundColor: globalTheme.palette.grey[500],
+          },
         },
         outlined: {
           borderRadius: 40,
@@ -133,6 +147,12 @@ const baseThemeOptions: ThemeOptions = {
           paddingRight: "24px",
           fontWeight: 500,
           textTransform: "none",
+          ":disabled": {
+            borderColor: globalTheme.palette.grey[500],
+          },
+        },
+        disabled: {
+          color: "red !important",
         },
       },
     },
