@@ -201,16 +201,16 @@ const baseThemeOptions: ThemeOptions = {
           fontWeight: 500,
         },
         subtitle1: {
-          fontFamily: "futura",
-          fontSize: "20px",
-          lineHeight: "24px",
-          fontWeight: 500,
-        },
-        subtitle2: {
-          fontFamily: "futura",
+          fontFamily: "inter",
           fontSize: "18px",
           lineHeight: "28px",
           fontWeight: 500,
+        },
+        subtitle2: {
+          fontFamily: "inter",
+          fontSize: "18px",
+          lineHeight: "28px",
+          fontWeight: 400,
         },
         body1: {
           fontFamily: "inter",
