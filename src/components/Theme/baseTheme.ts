@@ -138,6 +138,9 @@ const baseThemeOptions: ThemeOptions = {
             color: "white",
             backgroundColor: globalTheme.palette.grey[500],
           },
+          ":hover": {
+            backgroundColor: "#215537",
+          },
         },
         outlined: {
           borderRadius: 40,
