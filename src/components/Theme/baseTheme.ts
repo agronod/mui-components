@@ -167,19 +167,19 @@ const baseThemeOptions: ThemeOptions = {
         h1: {
           fontFamily: "futura",
           fontSize: "96px",
-          lineHeight: "112px",
+          lineHeight: "96px",
           fontWeight: 350,
         },
         h2: {
           fontFamily: "futura",
           fontSize: "60px",
-          lineHeight: "70px",
+          lineHeight: "72px",
           fontWeight: 350,
         },
         h3: {
           fontFamily: "futura",
           fontSize: "48px",
-          lineHeight: "56px",
+          lineHeight: "52px",
           fontWeight: 500,
         },
         h4: {
@@ -202,17 +202,15 @@ const baseThemeOptions: ThemeOptions = {
         },
         subtitle1: {
           fontFamily: "futura",
-          fontSize: "18px",
+          fontSize: "20px",
           lineHeight: "24px",
           fontWeight: 500,
-          color: "#756B59",
         },
         subtitle2: {
           fontFamily: "futura",
-          fontSize: "14px",
-          lineHeight: "24px",
+          fontSize: "18px",
+          lineHeight: "28px",
           fontWeight: 500,
-          color: "#756B59",
         },
         body1: {
           fontFamily: "inter",
@@ -236,14 +234,14 @@ const baseThemeOptions: ThemeOptions = {
         caption: {
           fontFamily: "inter",
           fontSize: "12px",
-          lineHeight: "16px",
+          lineHeight: "18px",
           fontWeight: 400,
         },
         overline: {
           fontFamily: "inter",
           fontSize: "10px",
           lineHeight: "16px",
-          fontWeight: 400,
+          fontWeight: 500,
         },
       },
     },
