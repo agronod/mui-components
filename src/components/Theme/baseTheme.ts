@@ -84,12 +84,15 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          color: globalTheme.palette.text.primary,
-          textDecorationColor: globalTheme.palette.text.primary,
+          color: globalTheme.palette.primary.dark,
+          textDecorationColor: globalTheme.palette.primary.dark,
           textUnderlineOffset: "2px",
           "&:hover": {
             color: globalTheme.palette.primary.main,
             textDecorationColor: globalTheme.palette.primary.main,
+          },
+          ":disabled": {
+            color: globalTheme.palette.grey[500],
           },
         },
       },
