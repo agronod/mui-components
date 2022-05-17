@@ -119,8 +119,8 @@ const baseThemeOptions: ThemeOptions = {
     MuiButton: {
       styleOverrides: {
         root: {
-          ":disabled": {
-            color: globalTheme.palette.grey[500],
+          "&.Mui-disabled": {
+            color: `${globalTheme.palette.grey[500]} !important`,
           },
         },
         contained: {
@@ -134,9 +134,9 @@ const baseThemeOptions: ThemeOptions = {
           paddingRight: "24px",
           fontWeight: 500,
           textTransform: "none",
-          ":disabled": {
+          "&.Mui-disabled": {
             color: "white",
-            backgroundColor: globalTheme.palette.grey[500],
+            backgroundColor: `${globalTheme.palette.grey[500]} !important`,
           },
           ":hover": {
             backgroundColor: "#215537",
@@ -153,12 +153,9 @@ const baseThemeOptions: ThemeOptions = {
           paddingRight: "24px",
           fontWeight: 500,
           textTransform: "none",
-          ":disabled": {
-            borderColor: globalTheme.palette.grey[500],
+          "&.Mui-disabled": {
+            borderColor: `${globalTheme.palette.grey[500]} !important`,
           },
-        },
-        disabled: {
-          color: "red !important",
         },
       },
     },
