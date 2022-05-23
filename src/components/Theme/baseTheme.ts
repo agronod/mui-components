@@ -73,6 +73,34 @@ const baseThemeOptions: ThemeOptions = {
           }   
       `,
     },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          fontFamily: "inter",
+          backgroundColor: globalTheme.palette.primary.light,
+          margin: "0px 10px 0px 0px",
+          padding: "0px 12px 0px 12px",
+          color: globalTheme.palette.primary.dark,
+          textTransform: "none",
+          borderRadius: "4px",
+          minHeight: "26px",
+          "&.Mui-selected": {
+            backgroundColor: globalTheme.palette.primary.main,
+            color: globalTheme.palette.common.white,
+          },
+          ":last-child": {
+            margin: "0px 0px 0px 0px",
+          },
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          display: "none",
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
