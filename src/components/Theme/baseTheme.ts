@@ -4,6 +4,10 @@ import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 
+function pxToRem(fontSize: number) {
+  return `${fontSize / 16}rem`;
+}
+
 const globalTheme = createTheme({
   palette: {
     background: {
@@ -33,8 +37,8 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          fontSize: "16px",
-          lineHeight: "24px",
+          fontSize: pxToRem(16),
+          lineHeight: 1.5,
           fontWeight: 400,
         },
       },
@@ -50,27 +54,27 @@ const baseThemeOptions: ThemeOptions = {
               font-family: 'futura';
               font-weight: 350;
               src: url(${FuturaBookOTF}) format('opentype');
-          }	
+          }
           @font-face {
               font-family: 'futura';
               font-weight: 500;
               src: url(${FuturaMediumOTF}) format('opentype');
-          }	
+          }
           @font-face {
               font-family: 'inter';
               font-weight: 400;
               src: url(${InterRegularTTF}) format('opentype');
-          }	 
+          }
           @font-face {
               font-family: 'inter';
               font-weight: 500;
               src: url(${InterMediumTTF}) format('opentype');
-          }	                        								
+          }
           @global: {
               html: {
                   WebkitFontSmoothing: "auto",
               }
-          }   
+          }
       `,
     },
     MuiTab: {
@@ -191,62 +195,64 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         h1: {
           fontFamily: "futura",
-          fontSize: "96px",
-          lineHeight: "96px",
+          fontSize: pxToRem(96),
+          lineHeight: 1.17,
           fontWeight: 350,
+          marginLeft: -6,
         },
         h2: {
           fontFamily: "futura",
-          fontSize: "60px",
-          lineHeight: "72px",
+          fontSize: pxToRem(60),
+          lineHeight: 1.2,
           fontWeight: 350,
+          marginLeft: -3,
         },
         h3: {
           fontFamily: "futura",
-          fontSize: "48px",
-          lineHeight: "52px",
+          fontSize: pxToRem(48),
+          lineHeight: 1.17,
           fontWeight: 500,
         },
         h4: {
           fontFamily: "futura",
-          fontSize: "34px",
-          lineHeight: "36px",
+          fontSize: pxToRem(34),
+          lineHeight: 1.06,
           fontWeight: 500,
         },
         h5: {
           fontFamily: "futura",
-          fontSize: "24px",
-          lineHeight: "24px",
+          fontSize: pxToRem(24),
+          lineHeight: 1,
           fontWeight: 500,
         },
         h6: {
           fontFamily: "futura",
-          fontSize: "20px",
-          lineHeight: "24px",
+          fontSize: pxToRem(20),
+          lineHeight: 1.2,
           fontWeight: 500,
         },
         subtitle1: {
           fontFamily: "inter",
-          fontSize: "18px",
-          lineHeight: "28px",
+          fontSize: pxToRem(18),
+          lineHeight: 1.33,
           fontWeight: 500,
         },
         subtitle2: {
           fontFamily: "inter",
-          fontSize: "18px",
-          lineHeight: "28px",
+          fontSize: pxToRem(18),
+          lineHeight: 1.71,
           fontWeight: 400,
         },
         body1: {
           fontFamily: "inter",
-          fontSize: "16px",
-          lineHeight: "24px",
+          fontSize: pxToRem(16),
+          lineHeight: 1.5,
           fontWeight: 400,
         },
         body2: {
           fontFamily: "inter",
-          fontSize: "14px",
-          lineHeight: "20px",
+          fontSize: pxToRem(14),
+          lineHeight: 1.43,
           fontWeight: 400,
         },
         // Seems as implemented the font is only downloaded if specified in the button component
@@ -258,14 +264,14 @@ const baseThemeOptions: ThemeOptions = {
         // },
         caption: {
           fontFamily: "inter",
-          fontSize: "12px",
-          lineHeight: "18px",
+          fontSize: pxToRem(12),
+          lineHeight: 1.33,
           fontWeight: 400,
         },
         overline: {
           fontFamily: "inter",
-          fontSize: "10px",
-          lineHeight: "16px",
+          fontSize: pxToRem(10),
+          lineHeight: 1.6,
           fontWeight: 500,
         },
       },
