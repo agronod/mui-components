@@ -212,6 +212,7 @@ const baseThemeOptions: ThemeOptions = {
           fontSize: pxToRem(48),
           lineHeight: 1.17,
           fontWeight: 500,
+          marginLeft: -2,
         },
         h4: {
           fontFamily: "futura",
