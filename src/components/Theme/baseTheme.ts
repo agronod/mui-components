@@ -282,4 +282,4 @@ const baseThemeOptions: ThemeOptions = {
 
 const baseTheme = createTheme(baseThemeOptions);
 
-export { baseTheme, baseThemeOptions };
+export { baseTheme, baseThemeOptions, pxToRem };
