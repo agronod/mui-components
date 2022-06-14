@@ -1,4 +1,5 @@
 import { createTheme, ThemeOptions } from "@mui/material/styles";
+import { grey } from "@mui/material/colors";
 import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
 import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
@@ -26,7 +27,7 @@ const globalTheme = createTheme({
       medium: "#59b87f",
       dark: "#123F25",
     },
-    text: { primary: "#000000" },
+    text: { primary: grey[900] },
   },
 });
 
