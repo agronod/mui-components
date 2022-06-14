@@ -52,7 +52,7 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: `
           @font-face {
               font-family: 'futura';
-              font-weight: 350;
+              font-weight: 400;
               src: url(${FuturaBookOTF}) format('opentype');
           }
           @font-face {
@@ -157,14 +157,15 @@ const baseThemeOptions: ThemeOptions = {
         },
         contained: {
           borderRadius: 40,
+          boxShadow: "none",
           fontFamily: "inter",
-          fontSize: "14px",
-          lineHeight: "16px",
+          fontSize: pxToRem(14),
+          fontWeight: 500,
+          lineHeight: pxToRem(16),
           paddingBottom: "12px",
-          paddingTop: "12px",
           paddingLeft: "24px",
           paddingRight: "24px",
-          fontWeight: 500,
+          paddingTop: "12px",
           textTransform: "none",
           "&.Mui-disabled": {
             color: "white",
@@ -172,19 +173,26 @@ const baseThemeOptions: ThemeOptions = {
           },
           ":hover": {
             backgroundColor: "#215537",
+            boxShadow: "none",
           },
         },
         outlined: {
           borderRadius: 40,
+          borderColor: `${globalTheme.palette.grey[400]}`,
           fontFamily: "inter",
-          fontSize: "14px",
-          lineHeight: "16px",
+          fontSize: pxToRem(14),
+          fontWeight: 500,
+          lineHeight: pxToRem(16),
           paddingBottom: "12px",
-          paddingTop: "12px",
           paddingLeft: "24px",
           paddingRight: "24px",
-          fontWeight: 500,
+          paddingTop: "12px",
           textTransform: "none",
+          ":hover": {
+            backgroundColor: "transparent",
+            borderColor: `${globalTheme.palette.primary.dark}`,
+            color: `${globalTheme.palette.primary.dark}`,
+          },
           "&.Mui-disabled": {
             borderColor: `${globalTheme.palette.grey[500]} !important`,
           },
@@ -197,14 +205,14 @@ const baseThemeOptions: ThemeOptions = {
           fontFamily: "futura",
           fontSize: pxToRem(96),
           lineHeight: 1.17,
-          fontWeight: 350,
+          fontWeight: 400,
           marginLeft: -6,
         },
         h2: {
           fontFamily: "futura",
           fontSize: pxToRem(60),
           lineHeight: 1.2,
-          fontWeight: 350,
+          fontWeight: 400,
           marginLeft: -3,
         },
         h3: {
