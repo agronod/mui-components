@@ -286,6 +286,21 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          "&.Mui-selected": {
+            backgroundColor: globalTheme.palette.primary.light,
+            ":hover": {
+              backgroundColor: globalTheme.palette.primary.light,
+            },
+          },
+          ":hover": {
+            backgroundColor: globalTheme.palette.primary.light,
+          },
+        },
+      },
+    },
   },
 };
 
