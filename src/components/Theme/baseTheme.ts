@@ -4,6 +4,7 @@ import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
 import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
+import { circularProgressClasses } from "@mui/material";
 
 function pxToRem(fontSize: number) {
   return `${fontSize / 16}rem`;
@@ -297,6 +298,15 @@ const baseThemeOptions: ThemeOptions = {
           },
           ":hover": {
             backgroundColor: globalTheme.palette.primary.light,
+          },
+        },
+      },
+    },
+    MuiCircularProgress: {
+      styleOverrides: {
+        root: {
+          [`& .${circularProgressClasses.circle}`]: {
+            strokeLinecap: "round",
           },
         },
       },
