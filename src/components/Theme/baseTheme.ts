@@ -245,7 +245,7 @@ const baseThemeOptions: ThemeOptions = {
         subtitle1: {
           fontFamily: "inter",
           fontSize: pxToRem(18),
-          lineHeight: 1.33,
+          lineHeight: 1.56,
           fontWeight: 500,
         },
         subtitle2: {
