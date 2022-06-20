@@ -28,7 +28,7 @@ const globalTheme = createTheme({
       medium: "#dad0c7",
       dark: "#36322A",
     },
-    text: { primary: grey[900] },
+    text: { primary: grey[900], secondary: "#616161" },
   },
 });
 
