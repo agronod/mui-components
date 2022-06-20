@@ -138,8 +138,8 @@ const baseThemeOptions: ThemeOptions = {
         },
         label: {
           fontFamily: "inter",
-          fontSize: "12px",
-          lineHeight: "18px",
+          fontSize: pxToRem(12),
+          lineHeight: 1.42,
           paddingLeft: "8px",
           paddingRight: "8px",
         },
