@@ -16,17 +16,17 @@ const globalTheme = createTheme({
       default: "#F8F6F3",
       paper: "#fff",
     },
-    secondary: {
-      main: "#756B59",
-      light: "#f8f6f3",
-      medium: "#dad0c7",
-      dark: "#36322A",
-    },
     primary: {
       main: "#2C7A4D",
       light: "#D6EFDF",
       medium: "#59b87f",
       dark: "#123F25",
+    },
+    secondary: {
+      main: "#756B59",
+      light: "#f8f6f3",
+      medium: "#dad0c7",
+      dark: "#36322A",
     },
     text: { primary: grey[900] },
   },
@@ -307,6 +307,23 @@ const baseThemeOptions: ThemeOptions = {
         root: {
           [`& .${circularProgressClasses.circle}`]: {
             strokeLinecap: "round",
+          },
+        },
+      },
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          "& .MuiSvgIcon-root:first-child": {
+            fontSize: 22,
+          },
+          "& .MuiSvgIcon-root:last-child": {
+            fontSize: 24,
+            marginLeft: -1,
+            marginTop: -1,
+            "& path": {
+              fill: globalTheme.palette.primary.medium,
+            },
           },
         },
       },
