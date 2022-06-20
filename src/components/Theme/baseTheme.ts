@@ -314,10 +314,10 @@ const baseThemeOptions: ThemeOptions = {
     MuiRadio: {
       styleOverrides: {
         root: {
-          "& .MuiSvgIcon-root:first-child": {
+          "& .MuiSvgIcon-root:first-of-type": {
             fontSize: 22,
           },
-          "& .MuiSvgIcon-root:last-child": {
+          "& .MuiSvgIcon-root:last-of-type": {
             fontSize: 24,
             marginLeft: -1,
             marginTop: -1,
