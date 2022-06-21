@@ -319,9 +319,7 @@ const baseThemeOptions: ThemeOptions = {
             fontSize: 22,
           },
           "& .MuiSvgIcon-root:last-of-type": {
-            fontSize: 24,
-            marginLeft: -1,
-            marginTop: -1,
+            fontSize: 22,
             "& path": {
               fill: globalTheme.palette.primary.medium,
             },
