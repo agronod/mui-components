@@ -1,5 +1,5 @@
 import { createTheme, ThemeOptions } from "@mui/material/styles";
-import { grey } from "@mui/material/colors";
+import { common, grey } from "@mui/material/colors";
 import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
 import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
@@ -14,7 +14,7 @@ const globalTheme = createTheme({
   palette: {
     background: {
       default: "#F8F6F3",
-      paper: "#fff",
+      paper: common.white,
     },
     primary: {
       main: "#2C7A4D",
@@ -31,7 +31,7 @@ const globalTheme = createTheme({
     error: {
       main: "#B00020",
     },
-    text: { primary: grey[900], secondary: "#616161" },
+    text: { primary: grey[900], secondary: grey[700] },
   },
 });
 
@@ -114,6 +114,8 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           backgroundColor: globalTheme.palette.common.white,
+          borderBottom: "1px solid #e5e5e5",
+          boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
         },
       },
     },
@@ -294,14 +296,21 @@ const baseThemeOptions: ThemeOptions = {
     MuiMenuItem: {
       styleOverrides: {
         root: {
+          color: globalTheme.palette.text.primary,
+          "*": {
+            color: "inherit",
+          },
+          ":hover": {
+            backgroundColor: globalTheme.palette.primary.light,
+            "*": {
+              color: "inherit",
+            },
+          },
           "&.Mui-selected": {
             backgroundColor: globalTheme.palette.primary.light,
             ":hover": {
               backgroundColor: globalTheme.palette.primary.light,
             },
-          },
-          ":hover": {
-            backgroundColor: globalTheme.palette.primary.light,
           },
         },
       },
