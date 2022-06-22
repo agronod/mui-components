@@ -28,6 +28,9 @@ const globalTheme = createTheme({
       medium: "#dad0c7",
       dark: "#36322A",
     },
+    error: {
+      main: "#B00020",
+    },
     text: { primary: grey[900], secondary: "#616161" },
   },
 });
