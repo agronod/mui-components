@@ -21,6 +21,7 @@ The latest version of our library can be found at [this link](https://master--61
 
 > npm install
 > npm run storybook
+> make sure you are using node 16 before running the project
 
 ## Integrating
 
@@ -47,7 +48,7 @@ const Component = () => {
 
   > Pass options or overrides to the base theme.
   > This is so that each project can configure the library to their own profile.
-  
+
 ## Updating package
 
 - You need a personal token with read and write access. The token can be created [here](https://github.com/settings/tokens)
