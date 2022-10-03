@@ -12,6 +12,7 @@ import { baseThemeOptions, baseTheme } from "./baseTheme";
 
 interface ThemeProviderProps {
   options?: ThemeOptions;
+  children: React.ReactNode;
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, options }) => {
