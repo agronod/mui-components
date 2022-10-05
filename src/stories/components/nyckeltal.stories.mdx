@@ -1,0 +1,33 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import { NyckeltalList } from "../../components";
+import { BrowserRouter } from "react-router-dom";
+
+<Meta
+  title="Components/Nyckeltal"
+  parameters={{
+    viewMode: "docs",
+  }}
+/>
+
+export const Nyckeltal = () => {
+  const data = [
+    { id: 1, nyckeltal: "Totala utsläpp", enhet: "Ton CO2e", varde: 200 },
+    { id: 2, nyckeltal: "Producerad solel", enhet: "Mwh", varde: 200 },
+    { id: 3, nyckeltal: "Producerad biogas", enhet: "Mwh el", varde: 200 },
+  ];
+  return <NyckeltalList data={data} />;
+};
+
+# Nyckeltal
+
+<Story name="Nyckeltal" args={{}}>
+  <BrowserRouter>
+    <NyckeltalList
+      data={[
+        { id: 1, nyckeltal: 100, enhet: "kg/co2", varde: 200 },
+        { id: 2, nyckeltal: 100, enhet: "kg/co2", varde: 200 },
+        { id: 3, nyckeltal: 100, enhet: "kg/co2", varde: 200 },
+      ]}
+    />
+  </BrowserRouter>
+</Story>

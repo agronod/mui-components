@@ -1,0 +1,39 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import { BarChart, LineChart, PieChart } from "../../components";
+import { BrowserRouter } from "react-router-dom";
+
+<Meta
+  title="Components/Charts"
+  parameters={{
+    viewMode: "docs",
+  }}
+/>
+
+# Charts
+
+<Story name="Charts">
+  <BrowserRouter>
+    <BarChart
+      data={[
+        {
+          name: "Page A",
+          uv: 4000,
+          pv: 2400,
+          value: 2400,
+        },
+        {
+          name: "Page B",
+          uv: 3000,
+          pv: 1398,
+          value: 2210,
+        },
+        {
+          name: "Page C",
+          uv: 2000,
+          pv: 9800,
+          value: 2290,
+        },
+      ]}
+    />
+  </BrowserRouter>
+</Story>
