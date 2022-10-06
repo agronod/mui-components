@@ -1,7 +1,10 @@
 import React from "react";
 import { createTheme } from "@mui/material/styles";
 import { deepmerge } from "@mui/utils";
-import { ThemeProvider as MUIThemeProvider } from "@mui/material/styles";
+import {
+  ThemeProvider as MUIThemeProvider,
+  useTheme as useMUITheme,
+} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import { ThemeOptions } from "@mui/material";
@@ -28,5 +31,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, options }) => {
     </MUIThemeProvider>
   );
 };
+
+type themeType = ReturnType<typeof createTheme>;
+export const useTheme = () => useMUITheme<themeType>();
 
 export default ThemeProvider;
