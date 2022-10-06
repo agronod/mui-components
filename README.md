@@ -10,6 +10,12 @@ This library is meant to provide two things:
 It is built on top of [Material UI](https://mui.com/getting-started/usage/).
 This way we can make use of an wide range of prebuilt components that we know follow [Material Designs](https://material.io/design) thuroughly tested and documented standards.
 
+## Component principles
+
+- Think LEGO blocks :)
+- If a component seems to get big, see if it should be broken up into several smaller reusable components
+- If a component seems to be very specific, see if it could take properties to make it resulable for more use cases
+
 ## Documentation
 
 For the documentation we use Storybook together with Chromatic.
