@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { BarChart } from "./";
+import { BrowserRouter } from "react-router-dom";
+import { Box } from "@mui/material";
+
+<Meta
+  title="Components/BarChart"
+  parameters={{
+    viewMode: "docs",
+  }}
+/>
+
+# BarChart
+
+<Canvas>
+  <Story name="BarChart">
+    <BrowserRouter>
+      <Box sx={{ height: "400px", width: "600px" }}>
+        <BarChart
+          data={[
+            {
+              name: "Page A",
+              uv: 4000,
+              pv: 2400,
+              value: 2400,
+            },
+            {
+              name: "Page B",
+              uv: 3000,
+              pv: 1398,
+              value: 2210,
+            },
+            {
+              name: "Page C",
+              uv: 2000,
+              pv: 9800,
+              value: 2290,
+            },
+          ]}
+        />
+      </Box>
+    </BrowserRouter>
+  </Story>
+</Canvas>

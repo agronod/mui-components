@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Nyckeltal, NyckeltalGrid } from "../";
+import { BrowserRouter } from "react-router-dom";
+import { Card, Typography } from "@mui/material";
+import { data } from "./utils";
+
+<Meta
+  title="Components/Nyckeltal"
+  parameters={{
+    viewMode: "docs",
+  }}
+/>
+
+# Nyckeltal
+
+This is a combination of several components including: Card, Typography, NyckeltalGrid & Nyckeltal.
+
+- Card & Typography are directly used from Material UI.
+- NyckeltalGrid & Nyckeltal are custom components that are used in agrosphere.
+
+<Canvas>
+  <Story name="Nyckeltal" args={{}}>
+    <BrowserRouter>
+      <Card
+        sx={{
+          m: 0,
+          borderRadius: 5,
+          boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
+          padding: 4,
+        }}
+      >
+        <Typography component="h2" variant="subtitle1">
+          Nyckeltal
+        </Typography>
+        <NyckeltalGrid>
+          {[
+            { nyckeltal: 100, enhet: "kg/co2", varde: 200 },
+            { nyckeltal: 100, enhet: "kg/co2", varde: 200 },
+            { nyckeltal: 100, enhet: "kg/co2", varde: 200 },
+            { nyckeltal: 100, enhet: "kg/co2", varde: 200 },
+          ].map((values, index) => (
+            <Nyckeltal item={values} key={index} />
+          ))}
+        </NyckeltalGrid>
+      </Card>
+    </BrowserRouter>
+  </Story>
+</Canvas>
