@@ -4,7 +4,7 @@ import { SquareChip } from "./Chip";
 import { TextField } from "./TextField";
 import { Header } from "./Header";
 import { BarChart } from "./BarChart";
-import { NyckeltalList } from "./Nyckeltal";
+import { Nyckeltal, NyckeltalGrid } from "./Nyckeltal";
 import { Spinner } from "./Spinner";
 
 export {
@@ -15,8 +15,9 @@ export {
   useTheme,
   Header,
   BarChart,
-  NyckeltalList,
   Spinner,
+  Nyckeltal,
+  NyckeltalGrid,
 };
 
 export default ThemeProvider;

@@ -1,3 +1,4 @@
-import NyckeltalList from "./NyckeltalList";
+import NyckeltalGrid from "./NyckeltalGrid";
+import Nyckeltal from "./Nyckeltal";
 
-export { NyckeltalList };
+export { NyckeltalGrid, Nyckeltal };

@@ -1,8 +1,12 @@
 import { Typography, useTheme } from "@mui/material";
 import { pxToRem } from "../Theme/baseTheme";
-import { getNyckeltalVarde } from "./utils";
+import { getNyckeltalVarde, NyckeltalProps } from "./utils";
 
-export default function NyckeltalListItem({ item }: { item: any }) {
+type Props = {
+  item: NyckeltalProps;
+};
+
+export default function Nyckeltal({ item }: Props) {
   const theme = useTheme();
   return (
     <li
