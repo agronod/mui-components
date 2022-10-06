@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import {
   Grid,
   Button,
@@ -23,41 +23,51 @@ import { BrowserRouter } from "react-router-dom";
 
 # Inputs
 
-<Story name="Inputs" args={{}}>
-  <BrowserRouter>
-    <Stack spacing={2} direction="column">
-      <Box>
-        <Stack spacing={2} direction="row">
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-          <TextField id="filled-basic" label="Filled" variant="filled" />
-          <TextField id="standard-basic" label="Standard" variant="standard" />
-        </Stack>
-      </Box>
-      <Box>
-        <Stack spacing={2} direction="row">
-          <TextField
-            id="outlined-error"
-            label="Outlined"
-            variant="outlined"
-            error
-            helperText="Incorrect entry."
-          />
-          <TextField
-            id="filled-error"
-            label="Filled"
-            variant="filled"
-            error
-            helperText="Incorrect entry."
-          />
-          <TextField
-            id="standard-error"
-            label="Standard"
-            variant="standard"
-            error
-            helperText="Incorrect entry."
-          />
-        </Stack>
-      </Box>
-    </Stack>
-  </BrowserRouter>
-</Story>
+<Canvas>
+  <Story name="Inputs" args={{}}>
+    <BrowserRouter>
+      <Stack spacing={2} direction="column">
+        <Box>
+          <Stack spacing={2} direction="row">
+            <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+            />
+            <TextField id="filled-basic" label="Filled" variant="filled" />
+            <TextField
+              id="standard-basic"
+              label="Standard"
+              variant="standard"
+            />
+          </Stack>
+        </Box>
+        <Box>
+          <Stack spacing={2} direction="row">
+            <TextField
+              id="outlined-error"
+              label="Outlined"
+              variant="outlined"
+              error
+              helperText="Incorrect entry."
+            />
+            <TextField
+              id="filled-error"
+              label="Filled"
+              variant="filled"
+              error
+              helperText="Incorrect entry."
+            />
+            <TextField
+              id="standard-error"
+              label="Standard"
+              variant="standard"
+              error
+              helperText="Incorrect entry."
+            />
+          </Stack>
+        </Box>
+      </Stack>
+    </BrowserRouter>
+  </Story>
+</Canvas>

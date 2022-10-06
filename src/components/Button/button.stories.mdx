@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import {
   Grid,
   Button,
@@ -22,29 +22,31 @@ import { BrowserRouter } from "react-router-dom";
 
 # Buttons
 
-<Story name="Buttons" args={{}}>
-  <BrowserRouter>
-    <Stack spacing={2} direction="column">
-      <Box>
-        <Stack spacing={2} direction="row">
-          <Button variant="text">Text</Button>
-          <Button variant="contained">Contained</Button>
-          <Button variant="outlined">Outlined</Button>
-        </Stack>
-      </Box>
-      <Box>
-        <Stack spacing={2} direction="row">
-          <Button variant="text" disabled>
-            Text disabled
-          </Button>
-          <Button variant="contained" disabled>
-            Contained disabled
-          </Button>
-          <Button variant="outlined" disabled>
-            Outlined disabled
-          </Button>
-        </Stack>
-      </Box>
-    </Stack>
-  </BrowserRouter>
-</Story>
+<Canvas>
+  <Story name="Buttons" args={{}}>
+    <BrowserRouter>
+      <Stack spacing={2} direction="column">
+        <Box>
+          <Stack spacing={2} direction="row">
+            <Button variant="text">Text</Button>
+            <Button variant="contained">Contained</Button>
+            <Button variant="outlined">Outlined</Button>
+          </Stack>
+        </Box>
+        <Box>
+          <Stack spacing={2} direction="row">
+            <Button variant="text" disabled>
+              Text disabled
+            </Button>
+            <Button variant="contained" disabled>
+              Contained disabled
+            </Button>
+            <Button variant="outlined" disabled>
+              Outlined disabled
+            </Button>
+          </Stack>
+        </Box>
+      </Stack>
+    </BrowserRouter>
+  </Story>
+</Canvas>

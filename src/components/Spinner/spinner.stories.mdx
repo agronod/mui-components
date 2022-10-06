@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Spinner } from "./";
 import { BrowserRouter } from "react-router-dom";
 
@@ -11,8 +11,10 @@ import { BrowserRouter } from "react-router-dom";
 
 # Loading spinner
 
-<Story name="Spinner" args={{}}>
-  <BrowserRouter>
-    <Spinner />
-  </BrowserRouter>
-</Story>
+<Canvas>
+  <Story name="Spinner" args={{}}>
+    <BrowserRouter>
+      <Spinner />
+    </BrowserRouter>
+  </Story>
+</Canvas>

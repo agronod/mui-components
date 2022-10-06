@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import {
   Grid,
   Button,
@@ -18,7 +18,7 @@ import { TextField } from ".";
 import { BrowserRouter } from "react-router-dom";
 
 <Meta
-  title="Theme/Components"
+  title="Theme/All components"
   parameters={{
     viewMode: "docs",
   }}
@@ -30,118 +30,136 @@ The components listed here are used from Material UI with our base theme.
 
 [Go to Material UI for more information](https://mui.com/material-ui/getting-started/support/)
 
-<Story name="Components" args={{}}>
-  <BrowserRouter>
-    <Stack spacing={2} direction="column">
-      <Box>
-        <Stack spacing={2} direction="row">
-          <Button variant="text">Text</Button>
-          <Button variant="contained">Contained</Button>
-          <Button variant="outlined">Outlined</Button>
-        </Stack>
-      </Box>
-      <Box>
-        <Stack spacing={2} direction="row">
-          <Button variant="text" disabled>
-            Text disabled
-          </Button>
-          <Button variant="contained" disabled>
-            Contained disabled
-          </Button>
-          <Button variant="outlined" disabled>
-            Outlined disabled
-          </Button>
-        </Stack>
-      </Box>
-      <Box>
-        <Stack spacing={2} direction="row">
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-          <TextField id="filled-basic" label="Filled" variant="filled" />
-          <TextField id="standard-basic" label="Standard" variant="standard" />
-        </Stack>
-      </Box>
-      <Box>
-        <Stack spacing={2} direction="row">
-          <TextField
-            id="outlined-error"
-            label="Outlined"
-            variant="outlined"
-            error
-            helperText="Incorrect entry."
-          />
-          <TextField
-            id="filled-error"
-            label="Filled"
-            variant="filled"
-            error
-            helperText="Incorrect entry."
-          />
-          <TextField
-            id="standard-error"
-            label="Standard"
-            variant="standard"
-            error
-            helperText="Incorrect entry."
-          />
-        </Stack>
-      </Box>
-      <Box
-        sx={{
-          typography: "body1",
-          "& > :not(style) + :not(style)": {
-            ml: 2,
-          },
-        }}
-      >
-        <Link href="#">Link</Link>
-        <Link href="#" color="inherit">
-          {'color="inherit"'}
-        </Link>
-        <Link href="#" variant="body2">
-          {'variant="body2"'}
-        </Link>
-        <Link href="#" variant="body2" disabled>
-          {'disabled variant="body2"'}
-        </Link>
-      </Box>
-      <Box>
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Label"
-          />
-          <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
-        </FormGroup>
-      </Box>
-      <Box>
-        <RadioGroup
-          row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="row-radio-buttons-group"
-        >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
-          <FormControlLabel value="other" control={<Radio />} label="Other" />
-          <FormControlLabel
-            value="disabled"
-            disabled
-            control={<Radio />}
-            label="other"
-          />
-        </RadioGroup>
-      </Box>
-      <Box>
-        <Card
+<Canvas withSource="closed" withToolbar>
+  <Story name="All components" args={{}}>
+    <BrowserRouter>
+      <Stack spacing={2} direction="column">
+        <Box>
+          <Stack spacing={2} direction="row">
+            <Button variant="text">Text</Button>
+            <Button variant="contained">Contained</Button>
+            <Button variant="outlined">Outlined</Button>
+          </Stack>
+        </Box>
+        <Box>
+          <Stack spacing={2} direction="row">
+            <Button variant="text" disabled>
+              Text disabled
+            </Button>
+            <Button variant="contained" disabled>
+              Contained disabled
+            </Button>
+            <Button variant="outlined" disabled>
+              Outlined disabled
+            </Button>
+          </Stack>
+        </Box>
+        <Box>
+          <Stack spacing={2} direction="row">
+            <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+            />
+            <TextField id="filled-basic" label="Filled" variant="filled" />
+            <TextField
+              id="standard-basic"
+              label="Standard"
+              variant="standard"
+            />
+          </Stack>
+        </Box>
+        <Box>
+          <Stack spacing={2} direction="row">
+            <TextField
+              id="outlined-error"
+              label="Outlined"
+              variant="outlined"
+              error
+              helperText="Incorrect entry."
+            />
+            <TextField
+              id="filled-error"
+              label="Filled"
+              variant="filled"
+              error
+              helperText="Incorrect entry."
+            />
+            <TextField
+              id="standard-error"
+              label="Standard"
+              variant="standard"
+              error
+              helperText="Incorrect entry."
+            />
+          </Stack>
+        </Box>
+        <Box
           sx={{
-            m: 0,
-            borderRadius: 5,
-            boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
-            padding: 4,
+            typography: "body1",
+            "& > :not(style) + :not(style)": {
+              ml: 2,
+            },
           }}
         >
-          Card
-        </Card>
-      </Box>
-    </Stack>
-  </BrowserRouter>
-</Story>
+          <Link href="#">Link</Link>
+          <Link href="#" color="inherit">
+            {'color="inherit"'}
+          </Link>
+          <Link href="#" variant="body2">
+            {'variant="body2"'}
+          </Link>
+          <Link href="#" variant="body2" disabled>
+            {'disabled variant="body2"'}
+          </Link>
+        </Box>
+        <Box>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox defaultChecked />}
+              label="Label"
+            />
+            <FormControlLabel
+              disabled
+              control={<Checkbox />}
+              label="Disabled"
+            />
+          </FormGroup>
+        </Box>
+        <Box>
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+          >
+            <FormControlLabel
+              value="female"
+              control={<Radio />}
+              label="Female"
+            />
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormControlLabel value="other" control={<Radio />} label="Other" />
+            <FormControlLabel
+              value="disabled"
+              disabled
+              control={<Radio />}
+              label="other"
+            />
+          </RadioGroup>
+        </Box>
+        <Box>
+          <Card
+            sx={{
+              m: 0,
+              borderRadius: 5,
+              boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
+              padding: 4,
+            }}
+          >
+            Card
+          </Card>
+        </Box>
+      </Stack>
+    </BrowserRouter>
+  </Story>
+</Canvas>
