@@ -18,7 +18,7 @@ export default function NyckeltalGrid({ children }: Props) {
         padding: 0,
       }}
     >
-      {children}
+      <>{children}</>
     </ul>
   );
 }

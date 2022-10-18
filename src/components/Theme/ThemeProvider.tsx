@@ -12,9 +12,10 @@ import { baseThemeOptions, baseTheme } from "./baseTheme";
 
 interface ThemeProviderProps {
   options?: ThemeOptions;
+  children: React.ReactNode;
 }
 
-const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, options }) => {
+const ThemeProvider = ({ children, options }: ThemeProviderProps) => {
   const theme = React.useMemo(() => {
     if (!options) {
       return baseTheme;
@@ -27,7 +28,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, options }) => {
   return (
     <MUIThemeProvider theme={theme}>
       <CssBaseline />
-      <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
+      <EmotionThemeProvider theme={theme}>
+        <>{children}</>
+      </EmotionThemeProvider>
     </MUIThemeProvider>
   );
 };

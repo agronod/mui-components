@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Stack, Toolbar, Typography, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
-import AgrosfarPilotLogo from "../../assets/AgrosfarPilotLogo";
+import { AgrosfarPilotLogo } from "../../assets";
 import { ReactChild } from "react";
 
 interface AppBarProps extends MuiAppBarProps {
@@ -56,15 +56,17 @@ export default function Header({ userDropdown, menuLinks }: IProps) {
             alignItems: "center",
           }}
         >
-          {menuLinks && menuLinks}
-          <MuiLink
-            href="https://www.agronod.com/sv/om-agrosfar"
-            target="_blank"
-            underline="none"
-          >
-            <Typography variant="body1">Om agrosfär</Typography>
-          </MuiLink>
-          {userDropdown && userDropdown}
+          <>
+            {menuLinks && menuLinks}
+            <MuiLink
+              href="https://www.agronod.com/sv/om-agrosfar"
+              target="_blank"
+              underline="none"
+            >
+              <Typography variant="body1">Om agrosfär</Typography>
+            </MuiLink>
+            {userDropdown && userDropdown}
+          </>
         </Stack>
       </Toolbar>
     </AppBar>
