@@ -86,16 +86,14 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          backgroundColor: globalTheme.palette.primary.light,
           margin: "0px 10px 0px 0px",
-          padding: "0px 12px 0px 12px",
-          color: globalTheme.palette.primary.dark,
+          padding: "12px 26px",
           textTransform: "none",
-          borderRadius: "4px",
+          borderRadius: "24px",
           minHeight: "26px",
           "&.Mui-selected": {
-            backgroundColor: globalTheme.palette.primary.main,
-            color: globalTheme.palette.common.white,
+            backgroundColor: globalTheme.palette.common.white,
+            color: globalTheme.palette.common.black,
           },
           ":last-child": {
             margin: "0px 0px 0px 0px",
@@ -158,6 +156,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiButton: {
       styleOverrides: {
         root: {
+          height: 48,
           "&.Mui-disabled": {
             color: `${globalTheme.palette.grey[500]} !important`,
           },
@@ -282,6 +281,7 @@ const baseThemeOptions: ThemeOptions = {
           fontFamily: "inter",
           fontSize: pxToRem(12),
           fontWeight: 400,
+          letterSpacing: 0.1,
           lineHeight: 1.42,
         },
         overline: {
