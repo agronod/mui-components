@@ -45,7 +45,7 @@ export const BarChart: React.FC<BarChartProps> = ({
       {data && (
         <ReBarChart
           data={data}
-          margin={{ top: 2, right: 16, left: 16, bottom: 32 }}
+          margin={{ top: 2, right: 0, left: 0, bottom: 32 }}
           barCategoryGap={10}
         >
           <CartesianGrid vertical={false} stroke="#e5e5e5" />
