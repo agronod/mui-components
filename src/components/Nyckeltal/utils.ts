@@ -14,7 +14,7 @@ function numberHasDecimal(number: number): boolean {
   return number % 1 !== 0;
 }
 
-export function getNyckeltalVarde(number: number): number {
+export function getNyckeltalVarde(number: number) {
   if (numberHasDecimal(number)) {
     if (number < 1) {
       return truncateNumberWithDecimal(number, 1);
