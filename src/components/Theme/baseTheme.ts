@@ -342,7 +342,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiContainer: {
       styleOverrides: {
         root: {
-          maxWidth: "1232px!important",
+          maxWidth: "1072px!important",
           padding: "32px 16px!important",
         },
       },
