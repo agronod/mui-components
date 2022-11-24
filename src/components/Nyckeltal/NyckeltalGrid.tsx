@@ -12,10 +12,10 @@ export default function NyckeltalGrid({ children }: Props) {
       style={{
         display: "grid",
         gap: theme.spacing(2),
-        gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fill, 160px)",
         listStyle: "none",
-        margin: `${theme.spacing(7)} 0 0`,
         padding: 0,
+        marginTop: 0,
       }}
     >
       <>{children}</>
