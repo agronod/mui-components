@@ -174,7 +174,7 @@ const baseThemeOptions: ThemeOptions = {
           paddingTop: "12px",
           textTransform: "none",
           "&.Mui-disabled": {
-            color: "white",
+            color: "white!important",
             backgroundColor: `${globalTheme.palette.grey[500]} !important`,
           },
           ":hover": {
@@ -226,14 +226,14 @@ const baseThemeOptions: ThemeOptions = {
         h3: {
           fontFamily: "futura",
           fontSize: pxToRem(48),
-          fontWeight: 500,
+          fontWeight: 450,
           lineHeight: 1.08,
           marginLeft: -2,
         },
         h4: {
           fontFamily: "futura",
           fontSize: pxToRem(34),
-          fontWeight: 500,
+          fontWeight: 450,
           lineHeight: 1.06,
         },
         h5: {
@@ -342,8 +342,10 @@ const baseThemeOptions: ThemeOptions = {
     MuiContainer: {
       styleOverrides: {
         root: {
-          maxWidth: "1072px!important",
-          padding: "32px 16px!important",
+          "&.MuiContainer-maxWidthLg": {
+            padding: "32px 16px",
+            width: 1072,
+          },
         },
       },
     },
