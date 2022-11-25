@@ -343,8 +343,8 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           "&.MuiContainer-maxWidthLg": {
-            padding: "32px 16px",
-            width: 1072,
+            padding: 0,
+            width: 1040,
           },
         },
       },
