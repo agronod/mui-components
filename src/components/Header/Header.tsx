@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Stack, Toolbar, Typography, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
-import { AgrosfarPilotLogo } from "../../assets";
+import { AgronodLogo, AgrosfarPilotLogo } from "../../assets";
 import { ReactChild } from "react";
 
 interface AppBarProps extends MuiAppBarProps {
@@ -26,9 +26,15 @@ interface IProps {
   userDropdown?: ReactChild | ReactChild[];
   /*  Child component with links for routing in the applications */
   menuLinks?: ReactChild | ReactChild[];
+  /* If true show agronod logo instead of agrosphere */
+  showAgronodLogo?: Boolean;
 }
 
-export default function Header({ userDropdown, menuLinks }: IProps) {
+export default function Header({
+  userDropdown,
+  menuLinks,
+  showAgronodLogo = false,
+}: IProps) {
   return (
     <AppBar position="fixed" visible={true} elevation={1}>
       <Toolbar
@@ -47,7 +53,7 @@ export default function Header({ userDropdown, menuLinks }: IProps) {
           maxHeight={30}
           maxWidth={166}
         >
-          <AgrosfarPilotLogo />
+          {showAgronodLogo ? <AgronodLogo /> : <AgrosfarPilotLogo />}
         </MuiLink>
         <Stack
           direction={"row"}
@@ -58,13 +64,15 @@ export default function Header({ userDropdown, menuLinks }: IProps) {
         >
           <>
             {menuLinks && menuLinks}
-            <MuiLink
-              href="https://www.agronod.com/sv/om-agrosfar"
-              target="_blank"
-              underline="none"
-            >
-              <Typography variant="body1">Om agrosfär</Typography>
-            </MuiLink>
+            {!showAgronodLogo && (
+              <MuiLink
+                href="https://www.agronod.com/sv/om-agrosfar"
+                target="_blank"
+                underline="none"
+              >
+                <Typography variant="body1">Om Agrosfär</Typography>
+              </MuiLink>
+            )}
             {userDropdown && userDropdown}
           </>
         </Stack>
