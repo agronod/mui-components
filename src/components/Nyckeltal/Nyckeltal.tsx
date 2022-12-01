@@ -17,7 +17,9 @@ export default function Nyckeltal({ item }: Props) {
         background: "#fff",
       }}
     >
-      <Typography variant="caption">{item.nyckeltal}</Typography>
+      <Typography variant="caption" component="p">
+        {item.nyckeltal}
+      </Typography>
       <Typography component="p" variant="caption" color="#616161">
         {item.enhet}
       </Typography>
