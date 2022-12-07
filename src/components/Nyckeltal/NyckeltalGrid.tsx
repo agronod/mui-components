@@ -1,4 +1,4 @@
-import { useTheme } from "@mui/material";
+import { List, useTheme } from "@mui/material";
 import React from "react";
 
 type Props = {
@@ -7,18 +7,23 @@ type Props = {
 
 export default function NyckeltalGrid({ children }: Props) {
   const theme = useTheme();
+
   return (
-    <ul
-      style={{
+    <List
+      sx={{
         display: "grid",
         gap: theme.spacing(2),
-        gridTemplateColumns: "repeat(auto-fill, 160px)",
+        gridTemplateColumns: "none",
+        [theme.breakpoints.up("lg")]: {
+          gridTemplateColumns: "repeat(auto-fill, 248px)",
+          width: "100%",
+        },
         listStyle: "none",
         padding: 0,
         marginTop: 0,
       }}
     >
       <>{children}</>
-    </ul>
+    </List>
   );
 }
