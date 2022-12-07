@@ -14,7 +14,7 @@ export default function NyckeltalGrid({ children }: Props) {
         display: "grid",
         gap: theme.spacing(2),
         gridTemplateColumns: "none",
-        [theme.breakpoints.up("lg")]: {
+        [theme.breakpoints.up("sm")]: {
           gridTemplateColumns: "repeat(auto-fill, 248px)",
           width: "100%",
         },
