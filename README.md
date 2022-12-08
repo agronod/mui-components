@@ -21,13 +21,14 @@ This way we can make use of an wide range of prebuilt components that we know fo
 For the documentation we use Storybook together with Chromatic.
 This is mainly to use battle tested standards that already have extensive support and documentation.
 
-The latest version of our library can be found at [this link](https://master--618d15d9ff6ce2003a25d485.chromatic.com)
-
 ## Running
 
 > npm install
+
+_make sure you are using node 16 before running the project_
+
 > npm run storybook
-> make sure you are using node 16 before running the project
+
 
 ## Integrating
 
