@@ -27,7 +27,7 @@ export function getNyckeltalVarde(number: number) {
 }
 
 export type NyckeltalProps = {
-  enhet?: string;
-  nyckeltal?: string;
+  enhet: string;
+  nyckeltal: string;
   varde: number;
 };
