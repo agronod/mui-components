@@ -14,7 +14,7 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import { TextField } from ".";
+import { TextField, ErrorMessage } from ".";
 import { BrowserRouter } from "react-router-dom";
 
 <Meta
@@ -158,6 +158,9 @@ The components listed here are used from Material UI with our base theme.
           >
             Card
           </Card>
+        </Box>
+        <Box>
+          <ErrorMessage message="This is an error message" />
         </Box>
       </Stack>
     </BrowserRouter>

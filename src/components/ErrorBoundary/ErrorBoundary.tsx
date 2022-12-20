@@ -3,15 +3,32 @@ import React from "react";
 
 const ErrorBoundaryContext = React.createContext({
   triggerError: ({ error, message }: any) => {},
-  state: { hasError: false, message: false },
+  state: { hasError: false, message: "" },
 });
 
 export const useErrorHandling = () => {
   return React.useContext(ErrorBoundaryContext);
 };
 
+export const ErrorMessage = ({
+  message,
+  onClose,
+}: {
+  message: string;
+  onClose?: () => void;
+}) => {
+  return (
+    <Alert severity="error" sx={{ alignSelf: "flex-end" }} onClose={onClose}>
+      {message}
+    </Alert>
+  );
+};
+
 export default class ErrorBoundary extends React.Component {
-  state = { hasError: false, message: false };
+  state = {
+    hasError: false,
+    message: "",
+  };
 
   static getDerivedStateFromError(error: any) {
     return { hasError: true };
@@ -42,13 +59,10 @@ export default class ErrorBoundary extends React.Component {
             sx={{ height: "auto !important" }}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           >
-            <Alert
-              severity="error"
-              sx={{ alignSelf: "flex-end" }}
+            <ErrorMessage
+              message={this.state.message}
               onClose={this.resetError}
-            >
-              {this.state.message}
-            </Alert>
+            />
           </Snackbar>
         }
         {this.props.children}

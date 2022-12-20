@@ -1,3 +1,3 @@
-import ErrorBoundary, { useErrorHandling } from "./ErrorBoundary";
+import ErrorBoundary, { useErrorHandling, ErrorMessage } from "./ErrorBoundary";
 
-export { ErrorBoundary, useErrorHandling };
+export { ErrorBoundary, useErrorHandling, ErrorMessage };
