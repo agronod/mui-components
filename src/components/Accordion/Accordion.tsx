@@ -11,6 +11,10 @@ const StyledAccordion = styled(MuiAccordion)(({ theme }) => ({
   border: "1px solid #BDBDBD",
   borderRadius: theme.spacing(2.5),
   marginBottom: theme.spacing(2),
+  "&.Mui-disabled": {
+    backgroundColor: theme.palette.background.default,
+    border: "1px solid #9E9E9E",
+  },
 }));
 
 export default function Accordion(props: AccordionProps) {
