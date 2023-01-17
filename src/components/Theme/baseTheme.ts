@@ -30,6 +30,7 @@ const globalTheme = createTheme({
     },
     error: {
       main: "#B00020",
+      light: "#EB8FA0",
     },
     text: { primary: grey[900], secondary: grey[700] },
   },
