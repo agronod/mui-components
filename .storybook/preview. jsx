@@ -12,9 +12,7 @@ export const parameters = {
 import ThemeProvider from "../src/components";
 
 const themeOptions = {
-  'Agronod': undefined,
-  // Selma: selmaThemeOptions,
-  // Hedda: heddaThemeOptions,
+  'Agronod': undefined
 }
 
 const getThemeOptions = (themeName) => {
