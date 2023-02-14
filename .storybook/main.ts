@@ -17,12 +17,11 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
-  // docs: {
-  //   autodocs: true,
-  // },
+  docs: {
+    autodocs: true,
+  },
   async viteFinal(config) {
     // Merge custom configuration into the default config
-    console.log(config);
     return mergeConfig(
       config,
       defineConfig({
