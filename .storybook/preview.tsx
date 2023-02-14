@@ -1,3 +1,6 @@
+import React from "react";
+import ThemeProvider from "../src/components";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
 
@@ -9,21 +12,19 @@ export const parameters = {
   },
 };
 
-import ThemeProvider from "../src/components";
-
 const themeOptions = {
-  'Agronod': undefined
-}
+  Agronod: undefined,
+};
 
 const getThemeOptions = (themeName) => {
-  return themeOptions[themeName]
-}
+  return themeOptions[themeName];
+};
 
 export const globalTypes = {
   theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    defaultValue: 'Agronod',
+    name: "Theme",
+    description: "Global theme for components",
+    defaultValue: "Agronod",
     // toolbar: {
     //   icon: 'eye',
     //   // Array of plain string values or MenuItem shape (see below)
@@ -37,6 +38,10 @@ export const globalTypes = {
 export const decorators = [
   (Story, context) => {
     const themeOptions = getThemeOptions(context.globals.theme);
-    return <ThemeProvider options={themeOptions}><Story  {...context} /></ThemeProvider>;
+    return (
+      <ThemeProvider options={themeOptions}>
+        <Story {...context} />
+      </ThemeProvider>
+    );
   },
 ];
