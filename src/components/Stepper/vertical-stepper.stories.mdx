@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { VerticalStepper } from "./";
+import { BrowserRouter } from "react-router-dom";
+
+<Meta
+  title="Components/Stepper"
+  parameters={{
+    viewMode: "docs",
+  }}
+/>
+
+# Vertical stepper
+
+<Canvas>
+  <Story name="Vertical stepper" args={{}}>
+    <BrowserRouter>
+      <VerticalStepper
+        activeStep={2}
+        steps={[
+          { label: "Step 1" },
+          { label: "Step 2" },
+          { label: "Step 3" },
+          { label: "Step 4" },
+          { label: "Step 5" },
+        ]}
+      />
+    </BrowserRouter>
+  </Story>
+</Canvas>

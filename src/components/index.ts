@@ -6,11 +6,14 @@ import { Header } from "./Header";
 import { BarChart } from "./BarChart";
 import { Nyckeltal, NyckeltalGrid } from "./Nyckeltal";
 import { Spinner } from "./Spinner";
-import { Accordion } from "./Accordion";
-import { AccordionSummary } from "./Accordion";
-import { AccordionDetails } from "./Accordion";
+import { Accordion, AccordionDetails, AccordionSummary } from "./Accordion";
+import { Alert, AlertTitle } from "./Alert";
+import { VerticalStepper } from "./Stepper";
 
 export {
+  Alert,
+  AlertTitle,
+  VerticalStepper,
   getColorScheme,
   ThemeProvider,
   SquareChip,

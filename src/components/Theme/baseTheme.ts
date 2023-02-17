@@ -5,6 +5,7 @@ import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
+import { spacing } from "@mui/system";
 
 function pxToRem(fontSize: number) {
   return `${fontSize / 16}rem`;
@@ -35,6 +36,93 @@ const globalTheme = createTheme({
     text: { primary: grey[900], secondary: grey[700] },
   },
 });
+
+const globalTypography = {
+  h1: {
+    fontFamily: "futura",
+    fontSize: pxToRem(96),
+    fontWeight: 400,
+    letterSpacing: -1.5,
+    lineHeight: 1,
+    marginLeft: -6,
+  },
+  h2: {
+    fontFamily: "futura",
+    fontSize: pxToRem(60),
+    fontWeight: 400,
+    letterSpacing: -0.5,
+    lineHeight: 1.2,
+    marginLeft: -3,
+  },
+  h3: {
+    fontFamily: "futura",
+    fontSize: pxToRem(48),
+    fontWeight: 450,
+    lineHeight: 1.08,
+    marginLeft: -2,
+  },
+  h4: {
+    fontFamily: "futura",
+    fontSize: pxToRem(34),
+    fontWeight: 450,
+    lineHeight: 1.06,
+  },
+  h5: {
+    fontFamily: "futura",
+    fontSize: pxToRem(24),
+    fontWeight: 500,
+    letterSpacing: 0.18,
+    lineHeight: 1.17,
+  },
+  h6: {
+    fontFamily: "futura",
+    fontSize: pxToRem(20),
+    fontWeight: 400,
+    letterSpacing: 0.15,
+    lineHeight: 1.2,
+  },
+  subtitle1: {
+    fontFamily: "inter",
+    fontSize: pxToRem(18),
+    fontWeight: 500,
+    letterSpacing: 0.1,
+    lineHeight: 1.56,
+  },
+  subtitle2: {
+    fontFamily: "inter",
+    fontSize: pxToRem(16),
+    fontWeight: 500,
+    letterSpacing: 0.1,
+    lineHeight: 1.5,
+  },
+  body1: {
+    fontFamily: "inter",
+    fontSize: pxToRem(16),
+    fontWeight: 400,
+    lineHeight: 1.5,
+  },
+  body2: {
+    fontFamily: "inter",
+    fontSize: pxToRem(14),
+    fontWeight: 400,
+    letterSpacing: 0.1,
+    lineHeight: 1.43,
+  },
+  caption: {
+    fontFamily: "inter",
+    fontSize: pxToRem(12),
+    fontWeight: 400,
+    letterSpacing: 0.1,
+    lineHeight: 1.42,
+  },
+  overline: {
+    fontFamily: "inter",
+    fontSize: pxToRem(10),
+    fontWeight: 500,
+    letterSpacing: 1,
+    lineHeight: 1.6,
+  },
+};
 
 const baseThemeOptions: ThemeOptions = {
   palette: globalTheme.palette,
@@ -208,90 +296,7 @@ const baseThemeOptions: ThemeOptions = {
     },
     MuiTypography: {
       styleOverrides: {
-        h1: {
-          fontFamily: "futura",
-          fontSize: pxToRem(96),
-          fontWeight: 400,
-          letterSpacing: -1.5,
-          lineHeight: 1,
-          marginLeft: -6,
-        },
-        h2: {
-          fontFamily: "futura",
-          fontSize: pxToRem(60),
-          fontWeight: 400,
-          letterSpacing: -0.5,
-          lineHeight: 1.2,
-          marginLeft: -3,
-        },
-        h3: {
-          fontFamily: "futura",
-          fontSize: pxToRem(48),
-          fontWeight: 450,
-          lineHeight: 1.08,
-          marginLeft: -2,
-        },
-        h4: {
-          fontFamily: "futura",
-          fontSize: pxToRem(34),
-          fontWeight: 450,
-          lineHeight: 1.06,
-        },
-        h5: {
-          fontFamily: "futura",
-          fontSize: pxToRem(24),
-          fontWeight: 500,
-          letterSpacing: 0.18,
-          lineHeight: 1.17,
-        },
-        h6: {
-          fontFamily: "futura",
-          fontSize: pxToRem(20),
-          fontWeight: 400,
-          letterSpacing: 0.15,
-          lineHeight: 1.2,
-        },
-        subtitle1: {
-          fontFamily: "inter",
-          fontSize: pxToRem(18),
-          fontWeight: 500,
-          letterSpacing: 0.1,
-          lineHeight: 1.56,
-        },
-        subtitle2: {
-          fontFamily: "inter",
-          fontSize: pxToRem(16),
-          fontWeight: 500,
-          letterSpacing: 0.1,
-          lineHeight: 1.5,
-        },
-        body1: {
-          fontFamily: "inter",
-          fontSize: pxToRem(16),
-          fontWeight: 400,
-          lineHeight: 1.5,
-        },
-        body2: {
-          fontFamily: "inter",
-          fontSize: pxToRem(14),
-          fontWeight: 400,
-          letterSpacing: 0.1,
-          lineHeight: 1.43,
-        },
-        caption: {
-          fontFamily: "inter",
-          fontSize: pxToRem(12),
-          fontWeight: 400,
-          letterSpacing: 0.1,
-          lineHeight: 1.42,
-        },
-        overline: {
-          fontFamily: "inter",
-          fontSize: pxToRem(10),
-          fontWeight: 500,
-          letterSpacing: 1,
-          lineHeight: 1.6,
-        },
+        ...globalTypography,
       },
     },
     MuiMenuItem: {
@@ -337,6 +342,31 @@ const baseThemeOptions: ThemeOptions = {
               fill: globalTheme.palette.primary.medium,
             },
           },
+        },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          borderRadius: "16px",
+          color: globalTheme.palette.text.primary,
+          ...globalTypography.body2,
+          alignItems: "center",
+          padding: globalTheme.spacing(3),
+        },
+        message: {
+          paddingLeft: globalTheme.spacing(0.5),
+        },
+        icon: {
+          fontSize: "20px",
+        },
+      },
+    },
+    MuiAlertTitle: {
+      styleOverrides: {
+        root: {
+          color: globalTheme.palette.text.primary,
+          ...globalTypography.caption,
         },
       },
     },
