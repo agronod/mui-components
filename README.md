@@ -23,12 +23,6 @@ This is mainly to use battle tested standards that already have extensive suppor
 
 ## Running
 
-Create .npmrc file
-
-> cat << EOF - > .npmrc
-legacy-peer-deps=true
-EOF
-
 > npm install
 
 _make sure you are using node 16 before running the project_

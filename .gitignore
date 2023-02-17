@@ -32,6 +32,3 @@ yarn-error.log*
 
 #storybook 
 build-storybook.log
-
-#npmrc
-.npmrc
