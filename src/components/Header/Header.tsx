@@ -3,7 +3,6 @@ import { Stack, Toolbar, Typography, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
 import { AgrosfarPilotLogo, AgronodLogo } from "../../assets";
-import { ReactChild } from "react";
 
 interface AppBarProps extends MuiAppBarProps {
   visible?: boolean;
@@ -23,9 +22,9 @@ const AppBar = styled(MuiAppBar, {
 
 interface IProps {
   /* Dropdown with links, used only in logged in state */
-  userDropdown?: ReactChild | ReactChild[];
+  userDropdown?: React.ReactNode | React.ReactNode[];
   /*  Child component with links for routing in the applications */
-  menuLinks?: ReactChild | ReactChild[];
+  menuLinks?: React.ReactNode | React.ReactNode[];
   /*  Boolean to show or hide the agronod logo */
   agronodLogo?: boolean;
 }
