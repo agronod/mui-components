@@ -15,13 +15,16 @@ import { BrowserRouter } from "react-router-dom";
   <Story name="Vertical stepper" args={{}}>
     <BrowserRouter>
       <VerticalStepper
+        onSelectStep={() => {}}
         activeStep={2}
         steps={[
+          { label: "Step 0" },
           { label: "Step 1" },
-          { label: "Step 2" },
-          { label: "Step 3" },
-          { label: "Step 4" },
-          { label: "Step 5" },
+          { label: "Step 2", completed: true },
+          { label: "Step 3", completed: true },
+          { label: "Step 4", completed: true, disabled: true },
+          { label: "Step 5", completed: true, disabled: true },
+          { label: "Step 6" },
         ]}
       />
     </BrowserRouter>

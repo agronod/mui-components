@@ -17,6 +17,7 @@ interface Props {
 interface Step {
   label: string;
   completed?: boolean;
+  disabled?: boolean;
 }
 
 const StyledStepConnector = styled(StepConnector)(({ theme }) => ({
@@ -29,6 +30,10 @@ const StyledStepConnector = styled(StepConnector)(({ theme }) => ({
     marginTop: -6,
     marginBottom: -6,
   },
+  [`&.${stepConnectorClasses.completed}>span, &.${stepConnectorClasses.active}>span`]:
+    {
+      borderColor: theme.palette.primary.main,
+    },
 }));
 
 const StyledStep = styled(MuiStep)(({ theme, completed }) => ({
@@ -60,9 +65,10 @@ const StyledStepLabel = styled(StepLabel, {
 const StyledStepIconRoot = styled("div")<{
   ownerState: { completed?: boolean; active?: boolean };
 }>(({ theme, ownerState }) => ({
-  backgroundColor: ownerState.completed
-    ? theme.palette.primary.main
-    : theme.palette.primary.light,
+  backgroundColor:
+    ownerState.completed || ownerState.active
+      ? theme.palette.primary.main
+      : theme.palette.primary.light,
   zIndex: 1,
   color: "#fff",
   width: ownerState.active ? 12 : 8,
@@ -108,18 +114,18 @@ export default function VerticalStepper({
           const active = index === activeStepIndex;
           const isPrevious = index < activeStepIndex;
           const isFuture = index > activeStepIndex;
+          const completed = step.completed || isPrevious;
+
           return (
-            <StyledStep
-              key={step.label}
-              completed={step.completed || isPrevious}
-              active={active}
-            >
+            <StyledStep key={step.label} completed={completed} active={active}>
               <StyledStepLabel StepIconComponent={StyledStepIcon}>
-                {onSelectStep && ((!active && step.completed) || isPrevious) ? (
+                {!step.disabled &&
+                onSelectStep &&
+                ((!active && completed) || isPrevious) ? (
                   <Link
                     component="button"
                     onClick={() => onSelectStep && onSelectStep(index)}
-                    disabled={!step.completed && isFuture}
+                    disabled={(!completed && isFuture) || step.disabled}
                     variant="body2"
                     sx={{
                       textDecoration: "none",
@@ -127,6 +133,7 @@ export default function VerticalStepper({
                       fontWeight: 400,
                       verticalAlign: "inherit",
                       marginLeft: 0.5,
+                      cursor: "pointer",
                     }}
                   >
                     {step.label}
@@ -137,7 +144,11 @@ export default function VerticalStepper({
                       variant="body2"
                       sx={{
                         fontWeight: active ? 700 : 400,
-                        marginLeft: "2px",
+                        marginLeft: active ? "2px" : "3px",
+                        color:
+                          step.disabled && completed
+                            ? "text.primary"
+                            : "inherit",
                       }}
                     >
                       {step.label}
