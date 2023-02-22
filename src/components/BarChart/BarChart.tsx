@@ -22,7 +22,7 @@ export type BarChartProps = {
   yAxisOptions?: Partial<YAxisProps>;
   barOptions?: Partial<BarProps>;
   barCellsOptions?: Partial<CellProps[]>;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export const BarChart: React.FC<BarChartProps> = ({
