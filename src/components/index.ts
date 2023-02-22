@@ -1,14 +1,18 @@
-import { getColorScheme } from "./Theme/utils";
-import ThemeProvider, { useTheme } from "./Theme/ThemeProvider";
 import { SquareChip } from "./Chip";
 import { TextField } from "./TextField";
 import { Header } from "./Header";
 import { BarChart } from "./BarChart";
-import { Nyckeltal, NyckeltalGrid } from "./Nyckeltal";
+import {
+  Nyckeltal,
+  NyckeltalGrid,
+  getNyckeltalVarde,
+  NyckeltalProps,
+} from "./Nyckeltal";
 import { Spinner } from "./Spinner";
 import { Accordion, AccordionDetails, AccordionSummary } from "./Accordion";
 import { Alert, AlertTitle } from "./Alert";
 import { VerticalStepper } from "./Stepper";
+import { getColorScheme, pxToRem, ThemeProvider, useTheme } from "./Theme";
 
 export {
   Alert,
@@ -24,9 +28,13 @@ export {
   Spinner,
   Nyckeltal,
   NyckeltalGrid,
+  getNyckeltalVarde,
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  pxToRem,
 };
+
+export type { NyckeltalProps };
 
 export default ThemeProvider;
