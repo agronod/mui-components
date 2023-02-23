@@ -10,14 +10,14 @@ import { ErrorIcon } from "../../assets";
 
 const StyledSelect = styled(MuiSelect)(({ theme, error, variant }) => ({}));
 
-export default function Select(props: SelectProps & { helperText?: string }) {
+export default function Select(props: SelectProps & { helpertext?: string }) {
   return (
     <StyledSelect
       {...props}
       startAdornment={
         props.error ? (
           <Tooltip
-            title={<Typography>{props.helperText}</Typography>}
+            title={<Typography>{props.helpertext}</Typography>}
             placement="top-start"
           >
             <InputAdornment
