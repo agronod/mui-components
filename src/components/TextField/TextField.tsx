@@ -3,6 +3,8 @@ import {
   styled,
   TextField as MuiTextField,
   TextFieldProps,
+  Tooltip,
+  Typography,
 } from "@mui/material";
 import { ErrorIcon } from "../../assets";
 
@@ -13,7 +15,7 @@ const StyledTextField = styled(MuiTextField)(({ theme, error, variant }) => ({
   },
   "& .MuiInputAdornment-root": {
     position: error && "absolute",
-    right: error && variant !== "standard" ? theme.spacing(1) : 0,
+    left: -43, // error && variant !== "standard" ? theme.spacing(1) : 0,
   },
 }));
 
@@ -22,13 +24,19 @@ export default function TextField(props: TextFieldProps) {
     <StyledTextField
       {...props}
       InputProps={{
-        endAdornment: props.error ? (
-          <InputAdornment position="end">
-            <ErrorIcon />
-          </InputAdornment>
+        startAdornment: props.error ? (
+          <Tooltip
+            title={<Typography>{props.helperText}</Typography>}
+            placement="top-start"
+          >
+            <InputAdornment position="start">
+              <ErrorIcon />
+            </InputAdornment>
+          </Tooltip>
         ) : (
-          props.InputProps?.endAdornment
+          <></>
         ),
+        endAdornment: props.error ? <></> : props.InputProps?.endAdornment,
       }}
     ></StyledTextField>
   );
