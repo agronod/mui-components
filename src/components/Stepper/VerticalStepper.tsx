@@ -65,10 +65,11 @@ const StyledStepLabel = styled(StepLabel, {
 const StyledStepIconRoot = styled("div")<{
   ownerState: { completed?: boolean; active?: boolean };
 }>(({ theme, ownerState }) => ({
-  backgroundColor:
-    ownerState.completed || ownerState.active
-      ? theme.palette.primary.main
-      : theme.palette.primary.light,
+  backgroundColor: ownerState.active
+    ? theme.palette.primary.medium
+    : ownerState.completed
+    ? theme.palette.primary.main
+    : theme.palette.primary.light,
   zIndex: 1,
   color: "#fff",
   width: ownerState.active ? 12 : 8,
