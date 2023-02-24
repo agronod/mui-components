@@ -9,6 +9,7 @@ import StepConnector, {
 } from "@mui/material/StepConnector";
 
 interface Props {
+  title?: string;
   activeStep?: number;
   onSelectStep?: (index: number) => void;
   steps: Step[];
@@ -100,9 +101,18 @@ export default function VerticalStepper({
   activeStep,
   steps,
   onSelectStep,
+  title,
 }: Props) {
   return (
     <Box sx={{ maxWidth: 400 }}>
+      {title && (
+        <Typography
+          variant="overline"
+          sx={{ mb: 2, ml: "-1px", display: "block" }}
+        >
+          {title}
+        </Typography>
+      )}
       <MuiStepper
         activeStep={activeStep}
         orientation="vertical"
