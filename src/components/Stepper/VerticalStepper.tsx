@@ -79,9 +79,7 @@ const StyledStepIconRoot = styled("div")<{
   borderRadius: "50%",
   justifyContent: "center",
   alignItems: "center",
-  border: ownerState.active
-    ? `2px solid ${theme.palette.background.default}`
-    : undefined,
+  border: ownerState.active ? `2px solid white` : undefined,
   outline: ownerState.active
     ? `1px solid ${theme.palette.primary.main}`
     : undefined,
