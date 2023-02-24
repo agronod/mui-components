@@ -6,7 +6,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { ErrorIcon } from "../../assets";
+import { ErrorIcon, WarningIcon } from "../../assets";
 
 const StyledTextField = styled(MuiTextField)(({ theme, error, variant }) => ({
   "& .MuiInputBase-input": {
@@ -19,24 +19,32 @@ const StyledTextField = styled(MuiTextField)(({ theme, error, variant }) => ({
   },
 }));
 
-export default function TextField(props: TextFieldProps) {
+export default function TextField(
+  props: TextFieldProps & { alertText?: string; alert?: boolean }
+) {
   return (
     <StyledTextField
       {...props}
       InputProps={{
-        startAdornment: props.error ? (
-          <Tooltip
-            title={<Typography>{props.helperText}</Typography>}
-            placement="top-start"
-          >
-            <InputAdornment position="start">
-              <ErrorIcon />
-            </InputAdornment>
-          </Tooltip>
-        ) : (
-          <></>
-        ),
-        endAdornment: props.error ? <></> : props.InputProps?.endAdornment,
+        startAdornment:
+          props.error || props.alert ? (
+            <Tooltip
+              title={
+                <Typography>
+                  {props.helperText ? props.helperText : props.alertText}
+                </Typography>
+              }
+              placement="top-start"
+            >
+              <InputAdornment position="start">
+                {props.error ? <ErrorIcon /> : <WarningIcon />}
+              </InputAdornment>
+            </Tooltip>
+          ) : (
+            <></>
+          ),
+        endAdornment:
+          props.error || props.alert ? <></> : props.InputProps?.endAdornment,
       }}
     ></StyledTextField>
   );
