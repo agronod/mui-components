@@ -8,7 +8,12 @@ import {
 } from "@mui/material";
 import { ErrorIcon } from "../../assets";
 
-const StyledSelect = styled(MuiSelect)(({ theme, error, variant }) => ({}));
+const StyledSelect = styled(MuiSelect)(({ theme, error, variant }) => ({
+  "& .MuiInputAdornment-root": {
+    position: error && "absolute",
+    left: error && variant !== "standard" ? -30 : 0,
+  },
+}));
 
 export default function Select(props: SelectProps & { helpertext?: string }) {
   return (
@@ -20,13 +25,7 @@ export default function Select(props: SelectProps & { helpertext?: string }) {
             title={<Typography>{props.helpertext}</Typography>}
             placement="top-start"
           >
-            <InputAdornment
-              position="start"
-              sx={{
-                position: props.error && "absolute",
-                left: -43, // error && variant !== "standard" ? theme.spacing(1) : 0,
-              }}
-            >
+            <InputAdornment position="start">
               <ErrorIcon />
             </InputAdornment>
           </Tooltip>

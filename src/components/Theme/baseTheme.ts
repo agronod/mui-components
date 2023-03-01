@@ -371,6 +371,16 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          height: 0,
+          lineHeight: 1.25,
+          marginLeft: 0,
+          fontFamily: "inter",
+        },
+      },
+    },
     MuiContainer: {
       styleOverrides: {
         root: {

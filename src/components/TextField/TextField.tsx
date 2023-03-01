@@ -15,7 +15,7 @@ const StyledTextField = styled(MuiTextField)(({ theme, error, variant }) => ({
   },
   "& .MuiInputAdornment-root": {
     position: error && "absolute",
-    left: -43, // error && variant !== "standard" ? theme.spacing(1) : 0,
+    left: error && variant !== "standard" ? -30 : 0,
   },
 }));
 
