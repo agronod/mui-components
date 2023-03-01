@@ -3,26 +3,39 @@ import { getNyckeltalVarde, NyckeltalProps } from "./utils";
 
 type Props = {
   item: NyckeltalProps;
+  boxShadow?: boolean;
 };
 
-export default function Nyckeltal({ item }: Props) {
+export default function Nyckeltal({ item, boxShadow = true }: Props) {
   return (
     <li
       style={{
         borderRadius: "20px",
-        boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
+        boxShadow: boxShadow ? "0px 2px 10px 0px rgb(0 0 0 / 10%)" : "none",
+        border: boxShadow ? "" : "1px solid rgba(0, 0, 0, 0.12)",
         width: "100%",
         height: "104px",
         padding: "16px",
         background: "#fff",
       }}
     >
-      <Typography variant="caption">{item.nyckeltal}</Typography>
-      <Typography component="p" variant="caption" color="#616161">
+      <Typography
+        sx={{ fontFamily: "inter, sans-serif!important" }}
+        variant="caption"
+      >
+        {item.nyckeltal}
+      </Typography>
+      <Typography
+        sx={{ fontFamily: "inter, sans-serif!important" }}
+        component="p"
+        variant="caption"
+        color="#616161"
+      >
         {item.enhet}
       </Typography>
 
       <Typography
+        sx={{ fontFamily: "inter, sans-serif!important" }}
         marginTop={0.5}
         fontWeight={600}
         variant="body2"

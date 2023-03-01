@@ -13,11 +13,8 @@ export default function NyckeltalGrid({ children }: Props) {
       sx={{
         display: "grid",
         gap: theme.spacing(2),
-        gridTemplateColumns: "none",
-        [theme.breakpoints.up("sm")]: {
-          gridTemplateColumns: "repeat(auto-fill, 248px)",
-          width: "100%",
-        },
+        gridTemplateColumns: "repeat(auto-fill, 248px)",
+        width: "100%",
         listStyle: "none",
         padding: 0,
         marginTop: 0,
