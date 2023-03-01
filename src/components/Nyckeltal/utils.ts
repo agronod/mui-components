@@ -30,4 +30,5 @@ export type NyckeltalProps = {
   enhet: string;
   nyckeltal: string;
   varde: number;
+  boxShadow?: boolean;
 };
