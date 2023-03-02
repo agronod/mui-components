@@ -3,10 +3,10 @@ import {
   styled,
   TextField as MuiTextField,
   TextFieldProps,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { ErrorIcon, WarningIcon } from "../../assets";
+import Tooltip from "../Tooltip/Tooltip";
 
 const StyledTextField = styled(MuiTextField)(({ theme, error, variant }) => ({
   "& .MuiInputBase-input": {

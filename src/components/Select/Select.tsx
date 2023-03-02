@@ -3,10 +3,10 @@ import {
   styled,
   Select as MuiSelect,
   SelectProps,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { ErrorIcon } from "../../assets";
+import Tooltip from "../Tooltip/Tooltip";
 
 const StyledSelect = styled(MuiSelect)(({ theme, error, variant }) => ({
   "& .MuiInputAdornment-root": {
