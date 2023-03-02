@@ -302,6 +302,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiMenuItem: {
       styleOverrides: {
         root: {
+          fontFamily: "inter",
           color: globalTheme.palette.text.primary,
           "*": {
             color: "inherit",
