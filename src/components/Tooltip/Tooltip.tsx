@@ -1,6 +1,16 @@
 import { Tooltip as MuiTooltip, Typography, TooltipProps } from "@mui/material";
 import { isValidElement } from "react";
 
+export const tooltipTypographyStyle = {
+  fontFamily: "Inter",
+  fontStyle: "normal",
+  fontWeight: "400",
+  fontSize: "14px",
+  lineHeight: "20px",
+  letterSpacing: "0.1px",
+  color: "#FFFFFF",
+} as const;
+
 export default function Tooltip(props: TooltipProps) {
   return (
     <MuiTooltip
@@ -20,17 +30,13 @@ export default function Tooltip(props: TooltipProps) {
           props.title
         ) : (
           <Typography
-            color="#FFFFFF"
-            sx={{
-              fontFamily: "Inter",
-              fontStyle: "normal",
-              fontWeight: "400",
-              fontSize: "14px",
-              lineHeight: "20px",
-              display: "flex",
-              alignItems: "center",
-              letterSpacing: "0.1px",
-            }}
+            sx={[
+              tooltipTypographyStyle,
+              {
+                display: "flex",
+                alignItems: "center",
+              },
+            ]}
           >
             {props.title}
           </Typography>
