@@ -8,19 +8,27 @@ import {
 import { ErrorIcon, WarningIcon } from "../../assets";
 import Tooltip from "../Tooltip/Tooltip";
 
-const StyledTextField = styled(MuiTextField)(({ theme, error, variant }) => ({
-  "& .MuiInputBase-input": {
-    width:
-      error && `calc(100% - ${theme.spacing(variant !== "standard" ? 4 : 3)});`,
-  },
-  "& .MuiInputAdornment-root": {
-    position: error && "absolute",
-    left: error && variant !== "standard" ? -30 : 0,
-  },
-}));
+type Props = TextFieldProps & {
+  alertText?: string;
+  alert?: boolean;
+};
+
+const StyledTextField = styled(MuiTextField)<Props>(
+  ({ theme, error, variant, alert }) => ({
+    "& .MuiInputBase-input": {
+      width:
+        (error || alert) &&
+        `calc(100% - ${theme.spacing(variant !== "standard" ? 4 : 3)});`,
+    },
+    "& .MuiInputAdornment-root": {
+      position: (error || alert) && "absolute",
+      left: (error || alert) && variant !== "standard" ? -30 : 0,
+    },
+  })
+);
 
 export default function TextField(
-  props: TextFieldProps & { alertText?: string; alert?: boolean }
+  props: Props
 ) {
   return (
     <StyledTextField
