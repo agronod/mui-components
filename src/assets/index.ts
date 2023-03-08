@@ -5,6 +5,7 @@ import { ReactComponent as ErrorIcon } from "./ErrorIcon.svg";
 import { ReactComponent as ErrorIconLarge } from "./ErrorIconLarge.svg";
 import { ReactComponent as AgrosfarPilotLogo } from "./AgrosfarPilotLogo.svg";
 import { ReactComponent as AgronodLogo } from "./agronod.svg";
+import { ReactComponent as WarningIcon } from "./WarningIcon.svg";
 
 export {
   agrosfar,
@@ -14,4 +15,5 @@ export {
   AgrosfarPilotLogo,
   AgronodLogo,
   ErrorIconLarge,
+  WarningIcon,
 };
