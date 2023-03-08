@@ -9,7 +9,7 @@ import { ErrorIcon, WarningIcon } from "../../assets";
 import Tooltip from "../Tooltip/Tooltip";
 
 type Props = TextFieldProps & {
-  alertText?: string;
+  alertText?: string | React.ReactNode;
   alert?: boolean;
 };
 
@@ -27,9 +27,7 @@ const StyledTextField = styled(MuiTextField)<Props>(
   })
 );
 
-export default function TextField(
-  props: Props
-) {
+export default function TextField(props: Props) {
   return (
     <StyledTextField
       {...props}
