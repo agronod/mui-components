@@ -38,7 +38,7 @@ export default function TextField(props: Props) {
             <Tooltip
               title={
                 <Typography>
-                  {props.helperText ? props.helperText : props.alerttext}
+                  {props.alerttext ? props.alerttext : "Obesvarad fråga"}
                 </Typography>
               }
               placement="top-start"

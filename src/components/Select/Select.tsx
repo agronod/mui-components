@@ -18,14 +18,16 @@ const StyledSelect = styled(MuiSelect)(({ theme, error, variant }) => ({
   },
 }));
 
-export default function Select(props: SelectProps & { helpertext?: string }) {
+export default function Select(props: SelectProps & { tooltiptext?: string }) {
   return (
     <StyledSelect
       {...props}
       startAdornment={
         props.error ? (
           <Tooltip
-            title={<Typography>{props.helpertext}</Typography>}
+            title={
+              <Typography>{props.tooltiptext ?? "Obesvarad fråga"}</Typography>
+            }
             placement="top-start"
           >
             <InputAdornment position="start">
