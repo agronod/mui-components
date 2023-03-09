@@ -31,7 +31,7 @@ const globalTheme = createTheme({
     },
     error: {
       main: "#B00020",
-      light: "#EB8FA0",
+      light: "#EB8FA0", // "#F7E5E9" Ska vi byta ut till denna? Den används nu i bakgrund för Alert.
     },
     text: { primary: grey[900], secondary: grey[700] },
   },
@@ -354,12 +354,22 @@ const baseThemeOptions: ThemeOptions = {
           ...globalTypography.body2,
           alignItems: "center",
           padding: globalTheme.spacing(3),
+          boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
         },
         message: {
           paddingLeft: globalTheme.spacing(0.5),
         },
         icon: {
           fontSize: "20px",
+        },
+        filledError: {
+          backgroundColor: "#F7E5E9",
+        },
+        outlinedError: {
+          backgroundColor: "#F7E5E9",
+        },
+        standardError: {
+          backgroundColor: "#F7E5E9",
         },
       },
     },
