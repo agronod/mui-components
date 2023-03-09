@@ -9,7 +9,7 @@ import { ErrorIcon, WarningIcon } from "../../assets";
 import Tooltip from "../Tooltip/Tooltip";
 
 type Props = TextFieldProps & {
-  alertText?: string | React.ReactNode;
+  alerttext?: string | React.ReactNode;
   alert?: boolean;
 };
 
@@ -38,7 +38,7 @@ export default function TextField(props: Props) {
             <Tooltip
               title={
                 <Typography>
-                  {props.helperText ? props.helperText : props.alertText}
+                  {props.helperText ? props.helperText : props.alerttext}
                 </Typography>
               }
               placement="top-start"
