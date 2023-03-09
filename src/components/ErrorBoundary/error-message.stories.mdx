@@ -1,0 +1,20 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { ErrorMessage } from "./";
+import { BrowserRouter } from "react-router-dom";
+
+<Meta
+  title="Components/Errors"
+  parameters={{
+    viewMode: "docs",
+  }}
+/>
+
+# Error message
+
+<Canvas>
+  <Story name="Errors" args={{}}>
+    <BrowserRouter>
+      <ErrorMessage message="This is an error" />
+    </BrowserRouter>
+  </Story>
+</Canvas>

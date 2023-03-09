@@ -13,6 +13,7 @@ import { Accordion, AccordionDetails, AccordionSummary } from "./Accordion";
 import { Alert, AlertTitle } from "./Alert";
 import { VerticalStepper } from "./Stepper";
 import { getColorScheme, pxToRem, ThemeProvider, useTheme } from "./Theme";
+import { ErrorBoundary, useErrorHandling, ErrorMessage } from "./ErrorBoundary";
 
 export {
   Alert,
@@ -33,6 +34,9 @@ export {
   AccordionSummary,
   AccordionDetails,
   pxToRem,
+  ErrorBoundary,
+  useErrorHandling,
+  ErrorMessage,
 };
 
 export type { NyckeltalProps };
