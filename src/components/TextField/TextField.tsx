@@ -9,27 +9,26 @@ import { ErrorIcon, WarningIcon } from "../../assets";
 import Tooltip from "../Tooltip/Tooltip";
 
 type Props = TextFieldProps & {
-  alertText?: string;
+  alerttext?: string | React.ReactNode;
   alert?: boolean;
 };
 
 const StyledTextField = styled(MuiTextField)<Props>(
   ({ theme, error, variant, alert }) => ({
     "& .MuiInputBase-input": {
-      width:
-        (error || alert) &&
-        `calc(100% - ${theme.spacing(variant !== "standard" ? 4 : 3)});`,
+      width: `calc(100% - ${theme.spacing(variant !== "standard" ? 4 : 3)});`,
     },
     "& .MuiInputAdornment-root": {
+      left: 0,
+    },
+    "& .MuiInputAdornment-positionStart": {
       position: (error || alert) && "absolute",
       left: (error || alert) && variant !== "standard" ? -30 : 0,
     },
   })
 );
 
-export default function TextField(
-  props: Props
-) {
+export default function TextField(props: Props) {
   return (
     <StyledTextField
       {...props}
@@ -39,7 +38,7 @@ export default function TextField(
             <Tooltip
               title={
                 <Typography>
-                  {props.helperText ? props.helperText : props.alertText}
+                  {props.alerttext ? props.alerttext : "Obesvarad fråga"}
                 </Typography>
               }
               placement="top-start"
@@ -51,8 +50,7 @@ export default function TextField(
           ) : (
             <></>
           ),
-        endAdornment:
-          props.error || props.alert ? <></> : props.InputProps?.endAdornment,
+        endAdornment: props.InputProps?.endAdornment,
       }}
     ></StyledTextField>
   );
