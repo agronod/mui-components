@@ -16,11 +16,12 @@ type Props = TextFieldProps & {
 const StyledTextField = styled(MuiTextField)<Props>(
   ({ theme, error, variant, alert }) => ({
     "& .MuiInputBase-input": {
-      width:
-        (error || alert) &&
-        `calc(100% - ${theme.spacing(variant !== "standard" ? 4 : 3)});`,
+      width: `calc(100% - ${theme.spacing(variant !== "standard" ? 4 : 3)});`,
     },
     "& .MuiInputAdornment-root": {
+      left: 0,
+    },
+    "& .MuiInputAdornment-positionStart": {
       position: (error || alert) && "absolute",
       left: (error || alert) && variant !== "standard" ? -30 : 0,
     },
@@ -49,8 +50,7 @@ export default function TextField(props: Props) {
           ) : (
             <></>
           ),
-        endAdornment:
-          props.error || props.alert ? <></> : props.InputProps?.endAdornment,
+        endAdornment: props.InputProps?.endAdornment,
       }}
     ></StyledTextField>
   );

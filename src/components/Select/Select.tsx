@@ -10,8 +10,11 @@ import Tooltip from "../Tooltip/Tooltip";
 
 const StyledSelect = styled(MuiSelect)(({ theme, error, variant }) => ({
   "& .MuiInputAdornment-root": {
-    position: error && "absolute",
-    left: error && variant !== "standard" ? -30 : 0,
+    left: 0,
+  },
+  "& .MuiInputAdornment-positionStart": {
+    position: (error || alert) && "absolute",
+    left: (error || alert) && variant !== "standard" ? -30 : 0,
   },
 }));
 
