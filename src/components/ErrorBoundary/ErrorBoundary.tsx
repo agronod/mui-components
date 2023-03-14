@@ -65,7 +65,7 @@ export default class ErrorBoundary extends React.Component {
             />
           </Snackbar>
         }
-        {this.props.children}
+        {(this.props as any).children}
       </ErrorBoundaryContext.Provider>
     );
   }
