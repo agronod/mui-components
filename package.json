@@ -1,8 +1,16 @@
 {
   "name": "@agronod/mui-components",
   "version": "1.1.4",
-  "main": "lib/index",
-  "types": "lib/index.d.ts",
+  "type": "module",
+  "main": "./dist/mui-components.umd.cjs",
+  "module": "./dist/mui-components.js",
+  "types": "./dist/components/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/mui-components.js",
+      "require": "./dist/mui-components.umd.cjs"
+    }
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -32,11 +40,12 @@
     "babel-preset-stage-2": "^6.24.1",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vite-plugin-dts": "^2.1.0",
     "vite-plugin-svgr": "^2.4.0",
     "vite-tsconfig-paths": "^4.0.5"
   },
   "scripts": {
-    "build:tsc": "tsc && mkdir -p ./lib/Theme/fonts && cp -r ./src/components/Theme/fonts ./lib/Theme",
+    "build": "tsc && vite build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic --project-token=ac1916a235d5"

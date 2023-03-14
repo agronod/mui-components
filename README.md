@@ -62,6 +62,6 @@ const Component = () => {
 - run **"npm login --scope=@agronod --registry=https://npm.pkg.github.com"** and follow instructions
 - make sure your project is clean, tested and updated with the intended functionality
 - Test that all updates are in place and functioning
-- run **npm run build:tsc**
+- run **npm run build**
 - run **npm version "preferred version"**
 - run **npm publish**
