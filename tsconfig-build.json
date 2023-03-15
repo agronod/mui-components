@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmitOnError": true,
+    "outDir": "dist",
+    "declaration": true
+  },
+  "files": [
+    "src/index.ts",
+    "src/components/types.d.ts",
+  ]
+}
