@@ -1,5 +1,5 @@
 import React from "react";
-import ThemeProvider from "../src/components";
+import { ThemeProvider } from "../src";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
