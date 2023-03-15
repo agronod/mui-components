@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from "@mui/material";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 const ErrorBoundaryContext = React.createContext({
   triggerError: ({ error, message }: any) => {},
@@ -24,7 +24,7 @@ export const ErrorMessage = ({
   );
 };
 
-export default class ErrorBoundary extends React.Component {
+export default class ErrorBoundary extends React.Component<PropsWithChildren> {
   state = {
     hasError: false,
     message: "",
@@ -65,7 +65,7 @@ export default class ErrorBoundary extends React.Component {
             />
           </Snackbar>
         }
-        {(this.props as any).children}
+        {this.props.children}
       </ErrorBoundaryContext.Provider>
     );
   }
