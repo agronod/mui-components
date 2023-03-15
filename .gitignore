@@ -33,3 +33,6 @@ yarn-error.log*
 
 #storybook 
 build-storybook.log
+
+#local files
+.local/
