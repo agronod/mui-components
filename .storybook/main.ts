@@ -1,5 +1,4 @@
 import { mergeConfig, defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 import svgrPlugin from "vite-plugin-svgr";
 
 module.exports = {
@@ -24,7 +23,7 @@ module.exports = {
     return mergeConfig(
       config,
       defineConfig({
-        plugins: [tsconfigPaths(), svgrPlugin()],
+        plugins: [svgrPlugin()],
         server: {
           port: 3000,
         },
