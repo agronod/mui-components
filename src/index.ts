@@ -21,6 +21,8 @@ import {
   pxToRem,
   ThemeProvider,
   useTheme,
+  baseTheme,
+  baseThemeOptions,
 } from "./components/Theme";
 import {
   ErrorBoundary,
@@ -44,6 +46,8 @@ export {
   VerticalStepper,
   getColorScheme,
   ThemeProvider,
+  baseTheme,
+  baseThemeOptions,
   SquareChip,
   TextField,
   useTheme,
