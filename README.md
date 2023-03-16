@@ -23,10 +23,9 @@ This is mainly to use battle tested standards that already have extensive suppor
 
 ## Running
 
+make sure you are using **node 16** before running the project
+
 > npm install
-
-_make sure you are using node 16 before running the project_
-
 > npm run storybook
 
 ## Integrating
