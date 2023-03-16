@@ -1,9 +1,18 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.1.4",
-  "main": "lib/index",
-  "types": "lib/index.d.ts",
-  "dependencies": {
+  "version": "1.2.0",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
@@ -11,11 +20,17 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6.3.0",
-    "recharts": "^2.4.1",
-    "storybook-addon-material-ui5": "^1.0.0"
+    "recharts": "^2.4.1"
   },
   "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "6.3.0",
+    "recharts": "^2.4.1",
     "@babel/core": "^7.20.12",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.8",
+    "@rollup/plugin-typescript": "^11.0.0",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
@@ -30,13 +45,14 @@
     "babel-loader": "^8.3.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "storybook-addon-material-ui5": "^1.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
-    "vite-plugin-svgr": "^2.4.0",
-    "vite-tsconfig-paths": "^4.0.5"
+    "vite-plugin-dts": "^2.1.0",
+    "vite-plugin-svgr": "^2.4.0"
   },
   "scripts": {
-    "build:tsc": "tsc && mkdir -p ./lib/Theme/fonts && cp -r ./src/components/Theme/fonts ./lib/Theme",
+    "build": "tsc && vite build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic --project-token=ac1916a235d5"

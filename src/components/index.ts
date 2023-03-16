@@ -12,7 +12,14 @@ import { Spinner } from "./Spinner";
 import { Accordion, AccordionDetails, AccordionSummary } from "./Accordion";
 import { Alert, AlertTitle } from "./Alert";
 import { VerticalStepper } from "./Stepper";
-import { getColorScheme, pxToRem, ThemeProvider, useTheme } from "./Theme";
+import {
+  getColorScheme,
+  pxToRem,
+  ThemeProvider,
+  useTheme,
+  baseTheme,
+  baseThemeOptions,
+} from "./Theme";
 import { ErrorBoundary, useErrorHandling, ErrorMessage } from "./ErrorBoundary";
 
 export {
@@ -21,6 +28,8 @@ export {
   VerticalStepper,
   getColorScheme,
   ThemeProvider,
+  baseTheme,
+  baseThemeOptions,
   SquareChip,
   TextField,
   useTheme,
@@ -40,5 +49,3 @@ export {
 };
 
 export type { NyckeltalProps };
-
-export default ThemeProvider;

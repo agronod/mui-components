@@ -33,6 +33,21 @@ _make sure you are using node 16 before running the project_
 
 > npm install --save @agronod/mui-components
 
+### Dependencies
+
+The following packages needs to be installed as dependencies in the consuming application:
+
+´´´json
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "6.3.0",
+    "recharts": "^2.4.1"
+´´´
+
 ## Usage
 
 ```javascript
@@ -62,6 +77,6 @@ const Component = () => {
 - run **"npm login --scope=@agronod --registry=https://npm.pkg.github.com"** and follow instructions
 - make sure your project is clean, tested and updated with the intended functionality
 - Test that all updates are in place and functioning
-- run **npm run build:tsc**
+- run **npm run build**
 - run **npm version "preferred version"**
 - run **npm publish**
