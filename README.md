@@ -5,6 +5,7 @@ Visit the [Storybook](https://main--626a5b4b1abebb004a4657a8.chromatic.com)
 This library is meant to provide two things:
 
 - Prestyled components that align with Agronods style profile
+
 - Documentation and visualization for the components
 
 It is built on top of [Material UI](https://mui.com/getting-started/usage/).
