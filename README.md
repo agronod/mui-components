@@ -5,7 +5,6 @@ Visit the [Storybook](https://main--626a5b4b1abebb004a4657a8.chromatic.com)
 This library is meant to provide two things:
 
 - Prestyled components that align with Agronods style profile
-
 - Documentation and visualization for the components
 
 It is built on top of [Material UI](https://mui.com/getting-started/usage/).
@@ -27,6 +26,7 @@ This is mainly to use battle tested standards that already have extensive suppor
 make sure you are using **node 16** before running the project
 
 > npm install
+
 > npm run storybook
 
 ## Integrating
