@@ -32,7 +32,8 @@ yarn-error.log*
 .history
 
 #storybook 
-build-storybook.log
+storybook-static
+.local/
 
 #local files
 .local/
