@@ -59,6 +59,16 @@ const Component = () => {
 };
 ```
 
+### useTheme
+
+**useTheme** is currently not available in a consuming application as it will use the default theme. A workaround for now is to use methods in *sx* props.
+
+```jsx
+<Button sx={{(theme)=>({ p: theme.spacing(1) })}} />
+#or
+<Button sx={{ p: (theme) => theme.spacing(1) }}} />
+```
+
 ## Props
 
 ### ThemeProvider
