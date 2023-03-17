@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from "@mui/material";
-import React, { PropsWithChildren } from "react";
+import React, { ErrorInfo, PropsWithChildren } from "react";
 
 const ErrorBoundaryContext = React.createContext({
   triggerError: ({ error, message }: any) => {},
@@ -24,7 +24,15 @@ export const ErrorMessage = ({
   );
 };
 
-export default class ErrorBoundary extends React.Component<PropsWithChildren> {
+interface State {
+  hasError: boolean;
+  message: string;
+}
+
+export default class ErrorBoundary extends React.Component<
+  PropsWithChildren,
+  State
+> {
   state = {
     hasError: false,
     message: "",
@@ -34,12 +42,12 @@ export default class ErrorBoundary extends React.Component<PropsWithChildren> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, message: any) {
-    // errorService.log({ error, errorInfo });
+  componentDidCatch(error: any, errorInfo: ErrorInfo) {
+    // console.error("Uncaught error:", error, errorInfo);
   }
 
   triggerError = ({ error, message }: any) => {
-    // errorService.log({ error, errorInfo });
+    // console.log("ErrorBoundary triggerError", error, message);
     this.setState({ hasError: true, message });
   };
 
@@ -59,10 +67,13 @@ export default class ErrorBoundary extends React.Component<PropsWithChildren> {
             sx={{ height: "auto !important" }}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           >
-            <ErrorMessage
-              message={this.state.message}
+            <Alert
+              severity="error"
+              sx={{ alignSelf: "flex-end" }}
               onClose={this.resetError}
-            />
+            >
+              {this.state.message}
+            </Alert>
           </Snackbar>
         }
         {this.props.children}
