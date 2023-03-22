@@ -35,7 +35,7 @@ This is mainly to use battle tested standards that already have extensive suppor
 
 The following packages needs to be installed as dependencies in the consuming application:
 
-´´´json
+```json
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
@@ -44,7 +44,7 @@ The following packages needs to be installed as dependencies in the consuming ap
     "react-dom": "^18.2.0",
     "react-router-dom": "6.3.0",
     "recharts": "^2.4.1"
-´´´
+```
 
 ## Usage
 
