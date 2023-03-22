@@ -54,6 +54,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
+    "storybook@legacy": "start-storybook -p 6006",
     "build-storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && build-storybook",
     "chromatic": "export SET NODE_OPTIONS=--openssl-legacy-provider && npx chromatic --project-token=ac1916a235d5"
   },

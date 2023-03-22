@@ -23,9 +23,15 @@ This is mainly to use battle tested standards that already have extensive suppor
 
 ## Running
 
-> npm install
+```bash
+npm install
 
-> npm run storybook
+# Node version > 16
+npm run storybook
+
+# OR node version < 17
+npm run storybook@legacy
+```
 
 ## Integrating
 
