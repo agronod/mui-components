@@ -12,22 +12,31 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      PRERELEASE_BRANCH: ${{ if github.ref == 'refs/heads/main' }}-${{ else }}${{ github.ref }}${{ endif }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Semantic Release
+        if: ${{github.ref == 'refs/heads/main'}}
         uses: cycjimmy/semantic-release-action@v3
         with:
           branches: |
             [
               {
                 name: 'main'
-              },              
+              }
+            ]
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+
+      - name: Semantic Release
+        if: ${{github.ref != 'refs/heads/main'}}
+        uses: cycjimmy/semantic-release-action@v3
+        with:
+          branches: |
+            [         
               {
-                name: '${{ env.PRERELEASE_BRANCH }}',
+                name: '${{ github.ref }}',
                 prerelease: true
               }
             ]
