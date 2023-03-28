@@ -18,7 +18,7 @@ jobs:
 
       - name: SET CURRENT_BRANCH
         run: |
-          $branchName = "${{github.ref}}".Split("/")["${{github.ref}}".Split("/").Length -1]
+          $branch_name=$(echo "${GITHUB_REF#refs/heads/}")
           echo "::set-env name=CURRENT_BRANCH::$(echo $branchName)"
 
       - name: Set conditional variable
