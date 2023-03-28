@@ -86,6 +86,10 @@ const Component = () => {
 
 ## Updating package
 
+While developing a feature branch we can publish -alpha.n versions (0.1.2-alpha.3) fore testing purposes. After the feature is merged into main we publish the resulting version 0.1.2.
+
+Versions should follow [semver](https://semver.org/)
+
 - You need a personal token with read and write access. The token can be created [here](https://github.com/settings/tokens)
 - Set a global variable called "REACT_APP_GITHUB_TOKEN" for your shell of choice.
 - run **"npm login --scope=@agronod --registry=https://npm.pkg.github.com"** and follow instructions
