@@ -6,11 +6,10 @@ on:
       - main
       - feat/*
       - fix/*
+    paths-ignore:
+      - ".github/**"
+      - "**/*.md"
   workflow_dispatch:
-
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
