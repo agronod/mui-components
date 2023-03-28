@@ -16,19 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: SET CURRENT_BRANCH
-        run: |
-          echo "${GITHUB_REF}"
-          branch_name=$(echo "${GITHUB_REF#refs/heads/}")
-          echo "${branch_name}"
-          echo "CURRENT_BRANCH=$branchName" >> $GITHUB_ENV
-
       - name: Set conditional variable
         run: |
+          CURRENT_BRANCH=$(echo "${GITHUB_REF#refs/heads/}")        
           if [ '${{ github.ref }}' == 'refs/heads/main' ]; then
             PRERELEASE_BRANCH="-"
           else
-            PRERELEASE_BRANCH="${{ env.CURRENT_BRANCH }}"
+            PRERELEASE_BRANCH="$CURRENT_BRANCH"
           fi
         env:
           PRERELEASE_BRANCH: ${{ env.PRERELEASE_BRANCH }}
