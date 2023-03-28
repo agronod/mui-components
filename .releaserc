@@ -1,6 +1,6 @@
 branches:
   - main
-  - name: ^(feat|fix).*
+  - name: '^(feat|fix).*'
     prerelease: true    
 debug: true
 ci: true
