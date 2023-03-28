@@ -1,3 +1,4 @@
+# Use YAML syntax version 2.1
 name: Release
 
 on:
@@ -11,30 +12,11 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-
+    env:
+      PRERELEASE_BRANCH: ${{ if github.ref == 'refs/heads/main' }}-${{ else }}${{ github.ref }}${{ endif }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: SET CURRENT_BRANCH
-        run: |
-          echo "${GITHUB_REF}"
-          branch_name=$(echo "${GITHUB_REF#refs/heads/}")
-          echo "${branch_name}"
-          echo "CURRENT_BRANCH=$branchName" >> $GITHUB_ENV
-
-      - name: Set conditional variable
-        run: |
-          CURRENT_BRANCH=$(echo "${GITHUB_REF#refs/heads/}")      
-          echo $CURRENT_BRANCH
-
-          if [ '${{ github.ref }}' == 'refs/heads/main' ]; then
-            echo PRERELEASE_BRANCH="-" >> $GITHUB_ENV
-          else
-            echo "PRERELEASE_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
-            echo $CURRENT_BRANCH
-            echo "${{ env.PRERELEASE_BRANCH }}"
-          fi
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v3
