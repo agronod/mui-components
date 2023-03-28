@@ -5,7 +5,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
+      - feat/*
+      - fix/*
 
 jobs:
   release:
@@ -14,6 +15,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set conditional variable
+        run: |
+          if [ '${{ github.ref }}' == 'refs/heads/main' ]; then
+            PRERELEASE_BRANCH="-"
+          else
+            PRERELEASE_BRANCH="${{ github.base_ref }}"
+          fi
+        env:
+          PRERELEASE_BRANCH: ${{ env.PRERELEASE_BRANCH }}
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v3
@@ -24,7 +35,7 @@ jobs:
                 name: 'main'
               },              
               {
-                name: '${{ github.event.pull_request.head.ref }}',
+                name: '${{ env.PRERELEASE_BRANCH }}',
                 prerelease: true
               }
             ]
