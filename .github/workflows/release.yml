@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine release type
+        id: determine_release_type
+        run: echo ::set-output name=release_type::${{ github.event.pull_request.merged_at && contains(github.event.pull_request.labels.*.name, 'release') && 'stable' || github.event.pull_request.state == 'open' && 'alpha' || 'false' }}
+
+      - name: Run semantic-release
+        uses: docker://semanticrelease/semantic-release:17.0.7
+        with:
+          args: |
+            --debug
+            --verify-conditions=@semantic-release/github,@semantic-release/npm
+            --verify-release=@semantic-release/changelog,@semantic-release/git
+            --generate-notes=@semantic-release/release-notes-generator
+            --prepare=@semantic-release/npm,@semantic-release/git
+            --publish=@semantic-release/github
+            --branches=main
+            --debug
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+            NPM_REGISTRY: https://npm.pkg.github.com
+            RELEASE_TYPE: ${{ steps.determine_release_type.outputs.release_type }}
