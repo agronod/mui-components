@@ -40,7 +40,7 @@ jobs:
             --publish=@semantic-release/github
             --branches=main
             --debug
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-            NPM_REGISTRY: https://npm.pkg.github.com
-            RELEASE_TYPE: ${{ steps.determine_release_type.outputs.release_type }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+          NPM_REGISTRY: https://npm.pkg.github.com
+          RELEASE_TYPE: ${{ steps.determine_release_type.outputs.release_type }}
