@@ -94,6 +94,3 @@ const Component = () => {
 - run **npm run build**
 - run **npm version "preferred version"**
 - run **npm publish**
-
-
-test
