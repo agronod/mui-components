@@ -20,7 +20,8 @@ jobs:
         run: |
           echo "${GITHUB_REF}"
           branch_name=$(echo "${GITHUB_REF#refs/heads/}")
-          echo "::set-env name=CURRENT_BRANCH::$(echo $branchName)"
+          echo "${branch_name}"
+          echo "CURRENT_BRANCH=$branchName" >> $GITHUB_ENV
 
       - name: Set conditional variable
         run: |
