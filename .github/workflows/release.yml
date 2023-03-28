@@ -56,8 +56,12 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm version ${{ needs.build.outputs.new_version }} --allow-same-version
-      - run: npm publish
+      - name: Publish to GitHub Packages
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          npm version ${{ needs.build.outputs.new_version }}
+          npm publish
 
       - name: Commit files
         run: |
