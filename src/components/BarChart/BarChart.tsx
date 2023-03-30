@@ -11,7 +11,7 @@ import {
   Cell,
   CellProps,
 } from "recharts";
-import { ResponsiveContainer } from ".";
+import ResponsiveContainer from "./ResponsiveContainer";
 
 export type BarChartProps = {
   data: any;
@@ -52,12 +52,6 @@ export const BarChart: React.FC<BarChartProps> = ({
           margin={{ top: 2, right: 0, left: 0, bottom: 32 }}
           barCategoryGap={10}
         >
-          {layout === "vertical" && (
-            <>
-              <XAxis type="number" />
-              <YAxis type="category" dataKey="name" />
-            </>
-          )}
           <CartesianGrid vertical={false} stroke="#e5e5e5" />
           <Bar
             dataKey={dataKey}
@@ -72,13 +66,34 @@ export const BarChart: React.FC<BarChartProps> = ({
                 )
               )}
           </Bar>
-          <YAxis axisLine={false} tickLine={false} {...yAxisOptions} />
-          <XAxis
-            dataKey="name"
-            axisLine={false}
-            tickLine={false}
-            {...xAxisOptions}
-          />
+
+          {layout === "vertical" ? (
+            <>
+              <XAxis
+                type="number"
+                axisLine={false}
+                tickLine={false}
+                {...xAxisOptions}
+              />
+              <YAxis
+                type="category"
+                dataKey="name"
+                axisLine={false}
+                tickLine={false}
+                {...yAxisOptions}
+              />
+            </>
+          ) : (
+            <>
+              <YAxis axisLine={false} tickLine={false} {...yAxisOptions} />
+              <XAxis
+                dataKey="name"
+                axisLine={false}
+                tickLine={false}
+                {...xAxisOptions}
+              />
+            </>
+          )}
           {children}
         </ReBarChart>
       )}
