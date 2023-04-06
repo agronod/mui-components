@@ -1,17 +1,50 @@
-import { createTheme, ThemeOptions } from "@mui/material/styles";
+import { createTheme, Theme, ThemeOptions } from "@mui/material/styles";
 import { common, grey } from "@mui/material/colors";
 import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
 import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
-import { spacing } from "@mui/system";
+import { deepmerge } from "@mui/utils";
 
-function pxToRem(fontSize: number) {
+type ProjectThemes = "AGRONOD" | "AGROSFAR";
+
+type SelectBaseThemeProps = (
+  projectTheme: ProjectThemes,
+  options?: ThemeOptions
+) => ThemeOptions;
+
+const pxToRem = (fontSize: number) => {
   return `${fontSize / 16}rem`;
-}
+};
 
-const globalTheme = createTheme({
+const agronodThemePallete = {
+  palette: {
+    background: {
+      default: "#FAFAFA",
+      paper: common.white,
+    },
+    primary: {
+      main: "#ECCC7A",
+      light: "#FBF2DD",
+      medium: "#F4E0AD",
+      dark: "#D7822F",
+    },
+    secondary: {
+      main: "#756B59",
+      light: "#f8f6f3",
+      medium: "#dad0c7",
+      dark: "#36322A",
+    },
+    error: {
+      main: "#B00020",
+      light: "#EB8FA0", // "#F7E5E9" Ska vi byta ut till denna? Den används nu i bakgrund för Alert.
+    },
+    text: { primary: grey[900], secondary: grey[700] },
+  },
+};
+
+const agrosfarThemePallete = {
   palette: {
     background: {
       default: "#F8F6F3",
@@ -35,7 +68,7 @@ const globalTheme = createTheme({
     },
     text: { primary: grey[900], secondary: grey[700] },
   },
-});
+};
 
 const globalTypography = {
   h1: {
@@ -124,26 +157,27 @@ const globalTypography = {
   },
 };
 
-const baseThemeOptions: ThemeOptions = {
-  palette: globalTheme.palette,
-  components: {
-    MuiInputBase: {
-      styleOverrides: {
-        root: {
-          fontFamily: "inter",
-          fontSize: pxToRem(16),
-          lineHeight: 1.5,
-          fontWeight: 400,
+const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
+  return {
+    palette: globalThemePallete.palette,
+    components: {
+      MuiInputBase: {
+        styleOverrides: {
+          root: {
+            fontFamily: "inter",
+            fontSize: pxToRem(16),
+            lineHeight: 1.5,
+            fontWeight: 400,
+          },
         },
       },
-    },
-    MuiSvgIcon: {
-      styleOverrides: {
-        fontSizeLarge: "148px",
+      MuiSvgIcon: {
+        styleOverrides: {
+          fontSizeLarge: "148px",
+        },
       },
-    },
-    MuiCssBaseline: {
-      styleOverrides: `
+      MuiCssBaseline: {
+        styleOverrides: `
           @font-face {
               font-family: 'futura';
               font-weight: 400;
@@ -170,243 +204,259 @@ const baseThemeOptions: ThemeOptions = {
               }
           }
       `,
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          fontFamily: "inter",
-          margin: "0px 10px 0px 0px",
-          padding: "12px 26px",
-          textTransform: "none",
-          borderRadius: "24px",
-          minHeight: "26px",
-          "&.Mui-selected": {
-            backgroundColor: globalTheme.palette.common.white,
-            color: globalTheme.palette.common.black,
-          },
-          ":last-child": {
-            margin: "0px 0px 0px 0px",
-          },
-        },
       },
-    },
-    MuiTabs: {
-      styleOverrides: {
-        indicator: {
-          display: "none",
-        },
-      },
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          backgroundColor: globalTheme.palette.common.white,
-          borderBottom: "1px solid #e5e5e5",
-          boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
-        },
-      },
-    },
-    MuiLink: {
-      styleOverrides: {
-        root: {
-          fontFamily: "inter",
-          color: globalTheme.palette.primary.dark,
-          textDecorationColor: globalTheme.palette.primary.dark,
-          textUnderlineOffset: "2px",
-          "&:hover": {
-            color: globalTheme.palette.primary.main,
-            textDecorationColor: globalTheme.palette.primary.main,
-          },
-          ":disabled": {
-            color: globalTheme.palette.grey[500],
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            fontFamily: "inter",
+            margin: "0px 10px 0px 0px",
+            padding: "12px 26px",
+            textTransform: "none",
+            borderRadius: "24px",
+            minHeight: "26px",
+            "&.Mui-selected": {
+              backgroundColor: globalThemePallete.palette.common.white,
+              color: globalThemePallete.palette.common.black,
+            },
+            ":last-child": {
+              margin: "0px 0px 0px 0px",
+            },
           },
         },
       },
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          height: "28px",
-        },
-        label: {
-          fontFamily: "inter",
-          fontSize: pxToRem(12),
-          lineHeight: 1.42,
-          paddingLeft: "8px",
-          paddingRight: "8px",
-        },
-      },
-    },
-    MuiButtonBase: {
-      styleOverrides: {
-        disabled: {},
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          height: 48,
-          "&.Mui-disabled": {
-            color: `${globalTheme.palette.grey[500]} !important`,
+      MuiTabs: {
+        styleOverrides: {
+          indicator: {
+            display: "none",
           },
         },
-        contained: {
-          borderRadius: "100vmax",
-          boxShadow: "none",
-          fontFamily: "inter",
-          fontSize: pxToRem(14),
-          fontWeight: 500,
-          lineHeight: 1.14,
-          paddingBottom: "12px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          paddingTop: "12px",
-          textTransform: "none",
-          "&.Mui-disabled": {
-            color: "white!important",
-            backgroundColor: `${globalTheme.palette.grey[500]} !important`,
+      },
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundColor: globalThemePallete.palette.common.white,
+            borderBottom: "1px solid #e5e5e5",
+            boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
           },
-          ":hover": {
-            backgroundColor: "#215537",
+        },
+      },
+      MuiLink: {
+        styleOverrides: {
+          root: {
+            fontFamily: "inter",
+            color: globalThemePallete.palette.primary.dark,
+            textDecorationColor: globalThemePallete.palette.primary.dark,
+            textUnderlineOffset: "2px",
+            "&:hover": {
+              color: globalThemePallete.palette.primary.main,
+              textDecorationColor: globalThemePallete.palette.primary.main,
+            },
+            ":disabled": {
+              color: globalThemePallete.palette.grey[500],
+            },
+          },
+        },
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            height: "28px",
+          },
+          label: {
+            fontFamily: "inter",
+            fontSize: pxToRem(12),
+            lineHeight: 1.42,
+            paddingLeft: "8px",
+            paddingRight: "8px",
+          },
+        },
+      },
+      MuiButtonBase: {
+        styleOverrides: {
+          disabled: {},
+        },
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            height: 48,
+            minWidth: 192,
+            "&.Mui-disabled": {
+              color: `${globalThemePallete.palette.grey[500]} !important`,
+            },
+          },
+          contained: {
+            borderRadius: "100vmax",
             boxShadow: "none",
+            fontFamily: "inter",
+            fontSize: pxToRem(14),
+            fontWeight: 500,
+            lineHeight: 1.14,
+            paddingBottom: "12px",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+            paddingTop: "12px",
+            textTransform: "none",
+            "&.Mui-disabled": {
+              color: "white!important",
+              backgroundColor: `${globalThemePallete.palette.grey[500]} !important`,
+            },
+            ":hover": {
+              backgroundColor: "#215537",
+              boxShadow: "none",
+            },
           },
-        },
-        outlined: {
-          borderRadius: "100vmax",
-          borderColor: globalTheme.palette.grey[400],
-          fontFamily: "inter",
-          fontSize: pxToRem(14),
-          fontWeight: 500,
-          lineHeight: pxToRem(16),
-          paddingBottom: "12px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          paddingTop: "12px",
-          textTransform: "none",
-          ":hover": {
-            backgroundColor: "transparent",
-            borderColor: globalTheme.palette.primary.dark,
-            color: globalTheme.palette.primary.dark,
-          },
-          "&.Mui-disabled": {
-            borderColor: `${globalTheme.palette.grey[500]} !important`,
+          outlined: {
+            borderRadius: "100vmax",
+            borderColor: globalThemePallete.palette.grey[400],
+            fontFamily: "inter",
+            fontSize: pxToRem(14),
+            fontWeight: 500,
+            lineHeight: pxToRem(16),
+            paddingBottom: "12px",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+            paddingTop: "12px",
+            textTransform: "none",
+            ":hover": {
+              backgroundColor: "transparent",
+              borderColor: globalThemePallete.palette.primary.dark,
+              color: globalThemePallete.palette.primary.dark,
+            },
+            "&.Mui-disabled": {
+              borderColor: `${globalThemePallete.palette.grey[500]} !important`,
+            },
           },
         },
       },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        ...globalTypography,
+      MuiTypography: {
+        styleOverrides: {
+          ...globalTypography,
+        },
       },
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          fontFamily: "inter",
-          color: globalTheme.palette.text.primary,
-          "*": {
-            color: "inherit",
-          },
-          ":hover": {
-            backgroundColor: globalTheme.palette.primary.light,
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            fontFamily: "inter",
+            color: globalThemePallete.palette.text.primary,
             "*": {
               color: "inherit",
             },
-          },
-          "&.Mui-selected": {
-            backgroundColor: globalTheme.palette.primary.light,
             ":hover": {
-              backgroundColor: globalTheme.palette.primary.light,
+              backgroundColor: globalThemePallete.palette.primary.light,
+              "*": {
+                color: "inherit",
+              },
+            },
+            "&.Mui-selected": {
+              backgroundColor: globalThemePallete.palette.primary.light,
+              ":hover": {
+                backgroundColor: globalThemePallete.palette.primary.light,
+              },
+            },
+          },
+        },
+      },
+      MuiCircularProgress: {
+        styleOverrides: {
+          root: {
+            [`& .${circularProgressClasses.circle}`]: {
+              strokeLinecap: "round",
+            },
+          },
+        },
+      },
+      MuiRadio: {
+        styleOverrides: {
+          root: {
+            "& .MuiSvgIcon-root:first-of-type": {
+              fontSize: 22,
+            },
+            "& .MuiSvgIcon-root:last-of-type": {
+              fontSize: 22,
+              "& path": {
+                fill: globalThemePallete.palette.primary.medium,
+              },
+            },
+          },
+        },
+      },
+      MuiAlert: {
+        styleOverrides: {
+          root: {
+            borderRadius: "16px",
+            color: globalThemePallete.palette.text.primary,
+            ...globalTypography.body2,
+            alignItems: "center",
+            padding: globalThemePallete.spacing(3),
+            boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
+          },
+          message: {
+            paddingLeft: globalThemePallete.spacing(0.5),
+          },
+          icon: {
+            fontSize: "20px",
+          },
+          filledError: {
+            backgroundColor: "#F7E5E9",
+          },
+          outlinedError: {
+            backgroundColor: "#F7E5E9",
+          },
+          standardError: {
+            backgroundColor: "#F7E5E9",
+          },
+        },
+      },
+      MuiAlertTitle: {
+        styleOverrides: {
+          root: {
+            color: globalThemePallete.palette.text.primary,
+            ...globalTypography.caption,
+          },
+        },
+      },
+      MuiFormHelperText: {
+        styleOverrides: {
+          root: {
+            height: 0,
+            lineHeight: 1.25,
+            marginLeft: 0,
+            fontFamily: "inter",
+          },
+        },
+      },
+      MuiContainer: {
+        styleOverrides: {
+          root: {
+            "&.MuiContainer-maxWidthLg": {
+              padding: "32px 16px",
+              maxWidth: 1040,
+              [globalThemePallete.breakpoints.up("lg")]: {
+                padding: "32px 0",
+              },
             },
           },
         },
       },
     },
-    MuiCircularProgress: {
-      styleOverrides: {
-        root: {
-          [`& .${circularProgressClasses.circle}`]: {
-            strokeLinecap: "round",
-          },
-        },
-      },
-    },
-    MuiRadio: {
-      styleOverrides: {
-        root: {
-          "& .MuiSvgIcon-root:first-of-type": {
-            fontSize: 22,
-          },
-          "& .MuiSvgIcon-root:last-of-type": {
-            fontSize: 22,
-            "& path": {
-              fill: globalTheme.palette.primary.medium,
-            },
-          },
-        },
-      },
-    },
-    MuiAlert: {
-      styleOverrides: {
-        root: {
-          borderRadius: "16px",
-          color: globalTheme.palette.text.primary,
-          ...globalTypography.body2,
-          alignItems: "center",
-          padding: globalTheme.spacing(3),
-          boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
-        },
-        message: {
-          paddingLeft: globalTheme.spacing(0.5),
-        },
-        icon: {
-          fontSize: "20px",
-        },
-        filledError: {
-          backgroundColor: "#F7E5E9",
-        },
-        outlinedError: {
-          backgroundColor: "#F7E5E9",
-        },
-        standardError: {
-          backgroundColor: "#F7E5E9",
-        },
-      },
-    },
-    MuiAlertTitle: {
-      styleOverrides: {
-        root: {
-          color: globalTheme.palette.text.primary,
-          ...globalTypography.caption,
-        },
-      },
-    },
-    MuiFormHelperText: {
-      styleOverrides: {
-        root: {
-          height: 0,
-          lineHeight: 1.25,
-          marginLeft: 0,
-          fontFamily: "inter",
-        },
-      },
-    },
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-          "&.MuiContainer-maxWidthLg": {
-            padding: "32px 16px",
-            maxWidth: 1040,
-            [globalTheme.breakpoints.up("lg")]: {
-              padding: "32px 0",
-            },
-          },
-        },
-      },
-    },
-  },
+  };
 };
 
-const baseTheme = createTheme(baseThemeOptions);
+const setBaseThemePallete = (ProjectTheme: ProjectThemes) =>
+  ProjectTheme === "AGRONOD" ? agronodThemePallete : agrosfarThemePallete;
 
-export { baseTheme, baseThemeOptions, pxToRem };
+const selectBaseTheme: SelectBaseThemeProps = (projectTheme, options) => {
+  const globalThemePallete = createTheme(setBaseThemePallete(projectTheme));
+  const baseThemeOptions = setBaseThemeOptions(globalThemePallete);
+  const baseTheme = createTheme(baseThemeOptions);
+  if (!options) {
+    return baseTheme;
+  }
+  const overriddenTheme = createTheme(deepmerge(baseThemeOptions, options));
+
+  return overriddenTheme;
+};
+
+export { selectBaseTheme };
+export type { ProjectThemes };

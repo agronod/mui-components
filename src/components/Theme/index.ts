@@ -1,12 +1,5 @@
 import { getColorScheme } from "./utils";
-import { pxToRem, baseTheme, baseThemeOptions } from "./baseTheme";
+import { selectBaseTheme } from "./baseTheme";
 import ThemeProvider, { useTheme } from "./ThemeProvider";
 
-export {
-  ThemeProvider,
-  useTheme,
-  pxToRem,
-  getColorScheme,
-  baseTheme,
-  baseThemeOptions,
-};
+export { ThemeProvider, useTheme, getColorScheme, selectBaseTheme };

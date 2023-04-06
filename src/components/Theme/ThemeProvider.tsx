@@ -1,6 +1,5 @@
 import React from "react";
 import { createTheme } from "@mui/material/styles";
-import { deepmerge } from "@mui/utils";
 import {
   ThemeProvider as MUIThemeProvider,
   useTheme as useMUITheme,
@@ -8,21 +7,22 @@ import {
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import { ThemeOptions } from "@mui/material";
-import { baseThemeOptions, baseTheme } from "./baseTheme";
+import { selectBaseTheme, ProjectThemes } from "../Theme/baseTheme";
 
 interface ThemeProviderProps {
   options?: ThemeOptions;
   children: React.ReactNode;
+  projectTheme: ProjectThemes;
 }
 
-const ThemeProvider = ({ children, options }: ThemeProviderProps) => {
+const ThemeProvider = ({
+  children,
+  options,
+  projectTheme,
+}: ThemeProviderProps) => {
   const theme = React.useMemo(() => {
-    if (!options) {
-      return baseTheme;
-    }
-    const overriddenTheme = createTheme(deepmerge(baseThemeOptions, options));
-
-    return overriddenTheme;
+    const selectedTheme = selectBaseTheme(projectTheme, options);
+    return selectedTheme;
   }, [options]);
 
   return (
