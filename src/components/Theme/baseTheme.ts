@@ -40,7 +40,10 @@ const agronodThemePallete = {
       main: "#B00020",
       light: "#EB8FA0", // "#F7E5E9" Ska vi byta ut till denna? Den används nu i bakgrund för Alert.
     },
-    text: { primary: grey[900], secondary: grey[700] },
+    text: {
+      primary: grey[900],
+      secondary: grey[700],
+    },
   },
 };
 
@@ -271,19 +274,11 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
           },
         },
       },
-      MuiButtonBase: {
-        styleOverrides: {
-          disabled: {},
-        },
-      },
       MuiButton: {
         styleOverrides: {
           root: {
             height: 48,
             minWidth: 192,
-            "&.Mui-disabled": {
-              color: `${globalThemePallete.palette.grey[500]} !important`,
-            },
           },
           contained: {
             borderRadius: "100vmax",
@@ -297,18 +292,15 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
             paddingRight: "24px",
             paddingTop: "12px",
             textTransform: "none",
-            "&.Mui-disabled": {
-              color: "white!important",
-              backgroundColor: `${globalThemePallete.palette.grey[500]} !important`,
-            },
             ":hover": {
-              backgroundColor: "#215537",
+              backgroundColor: globalThemePallete.palette.primary.dark,
               boxShadow: "none",
             },
           },
           outlined: {
             borderRadius: "100vmax",
-            borderColor: globalThemePallete.palette.grey[400],
+            borderColor: globalThemePallete.palette.primary.main,
+            color: globalThemePallete.palette.text.primary,
             fontFamily: "inter",
             fontSize: pxToRem(14),
             fontWeight: 500,
@@ -321,10 +313,21 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
             ":hover": {
               backgroundColor: "transparent",
               borderColor: globalThemePallete.palette.primary.dark,
-              color: globalThemePallete.palette.primary.dark,
             },
-            "&.Mui-disabled": {
-              borderColor: `${globalThemePallete.palette.grey[500]} !important`,
+          },
+          text: {
+            minWidth: "unset",
+            height: "unset",
+            color: globalThemePallete.palette.text.primary,
+            fontFamily: "inter",
+            fontSize: pxToRem(14),
+            fontWeight: 500,
+            lineHeight: pxToRem(16),
+            padding: "0",
+            textTransform: "none",
+            ":hover": {
+              backgroundColor: "transparent",
+              color: globalThemePallete.palette.text.secondary,
             },
           },
         },
@@ -363,6 +366,7 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
             [`& .${circularProgressClasses.circle}`]: {
               strokeLinecap: "round",
             },
+            color: globalThemePallete.palette.primary.light,
           },
         },
       },

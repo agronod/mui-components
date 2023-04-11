@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ButtonPrimary from "../components/Atoms/Buttons/ButtonPrimary";
-import { CircularProgress } from "@mui/material";
+import ButtonPrimary from "./ButtonPrimary";
+import LoaderCircular from "../../Loaders/LoaderCrcular";
+import { MuiArrowBackIcon, MuiArrowForwardIcon } from "../../StoryIcons";
 
 export default {
   title: "Components/Atoms/Buttons/ButtonPrimary",
@@ -19,6 +20,18 @@ export default {
     sx: {
       control: {
         type: "object",
+        expanded: true,
+      },
+    },
+    startIcon: {
+      control: {
+        type: "ReactNode",
+        expanded: true,
+      },
+    },
+    endIcon: {
+      control: {
+        type: "ReactNode",
         expanded: true,
       },
     },
@@ -69,12 +82,30 @@ PrimaryCustomWidth.args = {
 export const PrimaryLoader: ComponentStory<typeof ButtonPrimary> = ({
   children,
   ...args
-}) => (
-  <ButtonPrimary {...args}>
-    <CircularProgress color="error" size={20} />
-  </ButtonPrimary>
-);
+}) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
 PrimaryLoader.args = {
+  children: <LoaderCircular align="center" size={20} />,
   disabled: false,
   fullWidth: false,
+};
+
+export const PrimaryIconLeft: ComponentStory<typeof ButtonPrimary> = ({
+  children,
+  ...args
+}) => <ButtonPrimary {...args}>Button with icon on left</ButtonPrimary>;
+PrimaryIconLeft.args = {
+  disabled: false,
+  fullWidth: false,
+  startIcon: <MuiArrowBackIcon />,
+};
+
+export const PrimaryIconRight: ComponentStory<typeof ButtonPrimary> = ({
+  children,
+  ...args
+}) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
+PrimaryIconRight.args = {
+  children: "Button with icon on right",
+  disabled: false,
+  fullWidth: false,
+  endIcon: <MuiArrowForwardIcon />,
 };

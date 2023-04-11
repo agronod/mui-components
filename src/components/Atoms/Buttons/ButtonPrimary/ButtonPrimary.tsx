@@ -3,15 +3,18 @@ import {
   ButtonProps as MuiButtonProps,
 } from "@mui/material";
 
-type ButtonBaseProps = Pick<MuiButtonProps, "disabled" | "fullWidth" | "sx">;
+type ButtonPrimaryBaseProps = Pick<
+  MuiButtonProps,
+  "disabled" | "fullWidth" | "sx" | "startIcon" | "endIcon"
+>;
 
-interface ButtonPrimaryBaseProps extends ButtonBaseProps {
+interface ButtonPrimaryProps extends ButtonPrimaryBaseProps {
   children: React.ReactNode;
   sx?: any;
   onClick?: () => any | void;
 }
 
-const ButtonPrimary = ({ children, ...rest }: ButtonPrimaryBaseProps) => (
+const ButtonPrimary = ({ children, ...rest }: ButtonPrimaryProps) => (
   <MuiButton variant="contained" {...rest}>
     {children}
   </MuiButton>

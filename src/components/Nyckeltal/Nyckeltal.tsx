@@ -1,7 +1,8 @@
 import { CircularProgress, Typography } from "@mui/material";
 import { getNyckeltalVarde, NyckeltalProps } from "./utils";
-import ButtonPrimary from "../Atoms/Buttons/ButtonPrimary";
+import ButtonPrimary from "../Atoms/Buttons/ButtonPrimary/ButtonPrimary";
 import ThemeProvider from "../Theme/ThemeProvider";
+import ButtonLink from "../Atoms/Buttons/ButtonText/ButtonText";
 
 type Props = {
   item: NyckeltalProps;
@@ -9,9 +10,6 @@ type Props = {
 };
 
 export default function Nyckeltal({ item, boxShadow = true }: Props) {
-  const handleClick = () => {
-    alert("cliiiick");
-  };
   return (
     <li
       style={{
@@ -46,12 +44,6 @@ export default function Nyckeltal({ item, boxShadow = true }: Props) {
       >
         {getNyckeltalVarde(item.varde).toLocaleString("sv-SE")}
       </Typography>
-      <ButtonPrimary onClick={handleClick}>tst</ButtonPrimary>
-      <ThemeProvider projectTheme="AGRONOD">
-        <ButtonPrimary onClick={handleClick} sx={{ minWidth: 50 }}>
-          <CircularProgress color="info" size={20} />
-        </ButtonPrimary>
-      </ThemeProvider>
     </li>
   );
 }

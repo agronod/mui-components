@@ -18,7 +18,7 @@ export const globalTypes = {
     defaultValue: "AGRONOD",
     toolbar: {
       items: ["AGRONOD", "AGROSFAR"],
-      showName: true,
+      title: true,
       dynamicTitle: true,
     },
   },
