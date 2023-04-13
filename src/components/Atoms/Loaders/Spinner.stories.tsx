@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import LoaderCircular from "./LoaderCrcular";
+import Spinner from "./Spinner";
 import ButtonPrimary from "../Buttons/ButtonPrimary/ButtonPrimary";
 
 export default {
-  title: "Components/Atoms/Loaders/LoaderCircular",
-  component: LoaderCircular,
+  title: "Components/Atoms/Loaders/Spinner",
+  component: Spinner,
   argTypes: {
     size: {
       control: {
@@ -23,14 +23,14 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof LoaderCircular>;
+} as ComponentMeta<typeof Spinner>;
 
-export const Button: ComponentStory<typeof LoaderCircular> = ({ ...args }) => (
+export const ButtonSpinner: ComponentStory<typeof Spinner> = ({ ...args }) => (
   <ButtonPrimary>
-    <LoaderCircular {...args} />
+    <Spinner {...args} />
   </ButtonPrimary>
 );
-Button.args = {
+ButtonSpinner.args = {
   size: 20,
   align: "center",
   thickness: 5,

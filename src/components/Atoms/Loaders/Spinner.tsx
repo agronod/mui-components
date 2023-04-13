@@ -4,16 +4,16 @@ import {
   CircularProgressProps as MuiCircularProgressProps,
 } from "@mui/material";
 
-type LoaderCircularBaseProps = Pick<
+type SpinnerBaseProps = Pick<
   MuiCircularProgressProps,
   "size" | "thickness" | "variant"
 >;
 
-interface LoaderCircularProps extends LoaderCircularBaseProps {
+interface SpinnerProps extends SpinnerBaseProps {
   align: string;
 }
 
-const LoaderCircular = ({ ...props }: LoaderCircularProps) => {
+const Spinner = ({ ...props }: SpinnerProps) => {
   return (
     <Box
       sx={{
@@ -31,4 +31,4 @@ const LoaderCircular = ({ ...props }: LoaderCircularProps) => {
   );
 };
 
-export default LoaderCircular;
+export default Spinner;

@@ -14,10 +14,10 @@ interface ButtonLinkProps extends ButtonLinkBaseProps {
   onClick?: () => any | void;
 }
 
-const ButtonText = ({ children, ...rest }: ButtonLinkProps) => (
+const ButtonLink = ({ children, ...rest }: ButtonLinkProps) => (
   <MuiButton variant="text" {...rest}>
     {children}
   </MuiButton>
 );
 
-export default ButtonText;
+export default ButtonLink;

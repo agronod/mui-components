@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ButtonPrimary from "./ButtonPrimary";
-import LoaderCircular from "../../Loaders/LoaderCrcular";
+import LoaderCircular from "../../Loaders/Spinner";
 import { MuiArrowBackIcon, MuiArrowForwardIcon } from "../../StoryIcons";
 
 export default {

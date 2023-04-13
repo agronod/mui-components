@@ -1,8 +1,5 @@
-import { CircularProgress, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { getNyckeltalVarde, NyckeltalProps } from "./utils";
-import ButtonPrimary from "../Atoms/Buttons/ButtonPrimary/ButtonPrimary";
-import ThemeProvider from "../Theme/ThemeProvider";
-import ButtonLink from "../Atoms/Buttons/ButtonText/ButtonText";
 
 type Props = {
   item: NyckeltalProps;
