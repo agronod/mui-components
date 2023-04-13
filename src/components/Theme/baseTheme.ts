@@ -18,12 +18,57 @@ const pxToRem = (fontSize: number) => {
   return `${fontSize / 16}rem`;
 };
 
+const semanticThemePallete = {
+  error: {
+    dark: "#A92E26",
+    medium: "#B73831",
+    main: "#D4483E",
+    border: "#F7CFD3",
+    background: "#FCECEE",
+  },
+  warning: {
+    dark: "#D65A26",
+    medium: "#E0732C",
+    main: "#ED9135",
+    border: "#FBE0B7",
+    background: "#FDF3E2",
+  },
+  success: {
+    dark: "#2F5D28",
+    medium: "#457A3B",
+    main: "#5D9D52",
+    border: "#CEE5CB",
+    background: "#EAF5EA",
+  },
+  info: {
+    dark: "#364858",
+    medium: "#455B6E",
+    main: "#51697E",
+    border: "#C7D1DA",
+    background: "#E8ECF2",
+  },
+};
+
+const grayThemePallete = {
+  text: {
+    primary: "#252321",
+    secondary: "#666461",
+  },
+  icon: {
+    primary: "#464542",
+    secondary: "#7A7875",
+  },
+  disabled: "#A3A19F",
+  outlines: "#C2C0BD",
+  dividers: "#E5E3E0",
+  background: {
+    default: "#F8F6F3",
+    paper: common.white,
+  },
+};
+
 const agronodThemePallete = {
   palette: {
-    background: {
-      default: "#FAFAFA",
-      paper: common.white,
-    },
     primary: {
       main: "#ECCC7A",
       light: "#FBF2DD",
@@ -31,28 +76,18 @@ const agronodThemePallete = {
       dark: "#D7822F",
     },
     secondary: {
-      main: "#756B59",
-      light: "#f8f6f3",
-      medium: "#dad0c7",
-      dark: "#36322A",
+      main: "#51697E",
+      light: "#E8ECF2",
+      medium: "#C7D1DA",
+      dark: "#17222D",
     },
-    error: {
-      main: "#B00020",
-      light: "#EB8FA0", // "#F7E5E9" Ska vi byta ut till denna? Den används nu i bakgrund för Alert.
-    },
-    text: {
-      primary: grey[900],
-      secondary: grey[700],
-    },
+    ...semanticThemePallete,
+    ...grayThemePallete,
   },
 };
 
 const agrosfarThemePallete = {
   palette: {
-    background: {
-      default: "#F8F6F3",
-      paper: common.white,
-    },
     primary: {
       main: "#2C7A4D",
       light: "#D6EFDF",
@@ -65,11 +100,8 @@ const agrosfarThemePallete = {
       medium: "#dad0c7",
       dark: "#36322A",
     },
-    error: {
-      main: "#B00020",
-      light: "#EB8FA0", // "#F7E5E9" Ska vi byta ut till denna? Den används nu i bakgrund för Alert.
-    },
-    text: { primary: grey[900], secondary: grey[700] },
+    ...semanticThemePallete,
+    ...grayThemePallete,
   },
 };
 
