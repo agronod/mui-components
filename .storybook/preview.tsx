@@ -9,6 +9,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  toolbar: {
+    grid: { hidden: true },
+    zoom: { hidden: true },
+    eject: { hidden: true },
+    fullscreen: { hidden: true },
+    "storybook/background": { hidden: true },
+  },
 };
 
 export const globalTypes = {
