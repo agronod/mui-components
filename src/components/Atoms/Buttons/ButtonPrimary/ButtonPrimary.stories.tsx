@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ButtonPrimary from "./ButtonPrimary";
 import LoaderCircular from "../../Loaders/Spinner";
 import { MuiArrowBackIcon, MuiArrowForwardIcon } from "../../StoryIcons";
+import Spinner from "../../Loaders/Spinner";
 
 export default {
   title: "Components/Atoms/Buttons/ButtonPrimary",
@@ -35,6 +36,12 @@ export default {
         expanded: true,
       },
     },
+    loading: {
+      control: {
+        type: "boolean",
+        expanded: true,
+      },
+    },
   },
 } as ComponentMeta<typeof ButtonPrimary>;
 
@@ -44,8 +51,6 @@ export const Primary: ComponentStory<typeof ButtonPrimary> = ({
 }) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
 Primary.args = {
   children: "Button Primary",
-  disabled: false,
-  fullWidth: false,
 };
 
 export const PrimaryDisabled: ComponentStory<typeof ButtonPrimary> = ({
@@ -55,7 +60,6 @@ export const PrimaryDisabled: ComponentStory<typeof ButtonPrimary> = ({
 PrimaryDisabled.args = {
   children: "Button Disabled",
   disabled: true,
-  fullWidth: false,
 };
 
 export const PrimaryFullWidth: ComponentStory<typeof ButtonPrimary> = ({
@@ -64,7 +68,6 @@ export const PrimaryFullWidth: ComponentStory<typeof ButtonPrimary> = ({
 }) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
 PrimaryFullWidth.args = {
   children: "Button Full Width",
-  disabled: false,
   fullWidth: true,
 };
 
@@ -74,28 +77,29 @@ export const PrimaryCustomWidth: ComponentStory<typeof ButtonPrimary> = ({
 }) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
 PrimaryCustomWidth.args = {
   children: "Button Custom Width",
-  disabled: false,
-  fullWidth: false,
   sx: { minWidth: "500px" },
 };
 
 export const PrimaryLoader: ComponentStory<typeof ButtonPrimary> = ({
   children,
+  loading,
   ...args
-}) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
+}) => (
+  <ButtonPrimary loading={loading} {...args}>
+    {children}
+  </ButtonPrimary>
+);
 PrimaryLoader.args = {
-  children: <LoaderCircular align="center" size={20} />,
-  disabled: false,
-  fullWidth: false,
+  children: "Button not loading",
+  loading: true,
 };
 
 export const PrimaryIconLeft: ComponentStory<typeof ButtonPrimary> = ({
   children,
   ...args
-}) => <ButtonPrimary {...args}>Button with icon on left</ButtonPrimary>;
+}) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
 PrimaryIconLeft.args = {
-  disabled: false,
-  fullWidth: false,
+  children: "Button with icon on left",
   startIcon: <MuiArrowBackIcon />,
 };
 
@@ -105,7 +109,5 @@ export const PrimaryIconRight: ComponentStory<typeof ButtonPrimary> = ({
 }) => <ButtonPrimary {...args}>{children}</ButtonPrimary>;
 PrimaryIconRight.args = {
   children: "Button with icon on right",
-  disabled: false,
-  fullWidth: false,
   endIcon: <MuiArrowForwardIcon />,
 };

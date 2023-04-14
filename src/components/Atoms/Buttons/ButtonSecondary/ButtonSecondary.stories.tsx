@@ -35,6 +35,12 @@ export default {
         expanded: true,
       },
     },
+    loading: {
+      control: {
+        type: "boolean",
+        expanded: true,
+      },
+    },
   },
 } as ComponentMeta<typeof ButtonSecondary>;
 
@@ -44,8 +50,6 @@ export const Secondary: ComponentStory<typeof ButtonSecondary> = ({
 }) => <ButtonSecondary {...args}>{children}</ButtonSecondary>;
 Secondary.args = {
   children: "Button Secondary",
-  disabled: false,
-  fullWidth: false,
 };
 
 export const SecondaryDisabled: ComponentStory<typeof ButtonSecondary> = ({
@@ -55,7 +59,6 @@ export const SecondaryDisabled: ComponentStory<typeof ButtonSecondary> = ({
 SecondaryDisabled.args = {
   children: "Button Disabled",
   disabled: true,
-  fullWidth: false,
 };
 
 export const SecondaryFullWidth: ComponentStory<typeof ButtonSecondary> = ({
@@ -64,7 +67,6 @@ export const SecondaryFullWidth: ComponentStory<typeof ButtonSecondary> = ({
 }) => <ButtonSecondary {...args}>{children}</ButtonSecondary>;
 SecondaryFullWidth.args = {
   children: "Button Full Width",
-  disabled: false,
   fullWidth: true,
 };
 
@@ -74,28 +76,29 @@ export const SecondaryCustomWidth: ComponentStory<typeof ButtonSecondary> = ({
 }) => <ButtonSecondary {...args}>{children}</ButtonSecondary>;
 SecondaryCustomWidth.args = {
   children: "Button Custom Width",
-  disabled: false,
-  fullWidth: false,
   sx: { minWidth: "500px" },
 };
 
 export const SecondaryLoader: ComponentStory<typeof ButtonSecondary> = ({
   children,
+  loading,
   ...args
-}) => <ButtonSecondary {...args}>{children}</ButtonSecondary>;
+}) => (
+  <ButtonSecondary loading={loading} {...args}>
+    {children}
+  </ButtonSecondary>
+);
 SecondaryLoader.args = {
-  children: <LoaderCircular align="center" size={20} />,
-  disabled: false,
-  fullWidth: false,
+  children: "Button not loading",
+  loading: true,
 };
 
 export const SecondaryIconLeft: ComponentStory<typeof ButtonSecondary> = ({
   children,
   ...args
-}) => <ButtonSecondary {...args}>Button with icon on left</ButtonSecondary>;
+}) => <ButtonSecondary {...args}>{children}</ButtonSecondary>;
 SecondaryIconLeft.args = {
-  disabled: false,
-  fullWidth: false,
+  children: "Button with icon on left",
   startIcon: <MuiArrowBackIcon />,
 };
 
@@ -105,7 +108,5 @@ export const SecondaryIconRight: ComponentStory<typeof ButtonSecondary> = ({
 }) => <ButtonSecondary {...args}>{children}</ButtonSecondary>;
 SecondaryIconRight.args = {
   children: "Button with icon on right",
-  disabled: false,
-  fullWidth: false,
   endIcon: <MuiArrowForwardIcon />,
 };

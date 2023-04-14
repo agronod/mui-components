@@ -398,7 +398,6 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
             [`& .${circularProgressClasses.circle}`]: {
               strokeLinecap: "round",
             },
-            color: globalThemePallete.palette.primary.light,
           },
         },
       },

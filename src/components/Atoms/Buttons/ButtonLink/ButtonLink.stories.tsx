@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ButtonLInk from "./ButtonLink";
+import ButtonLink from "./ButtonLink";
 import { MuiArrowBackIcon, MuiArrowForwardIcon } from "../../StoryIcons";
 
 export default {
-  title: "Components/Atoms/Buttons/ButtonLInk",
-  component: ButtonLInk,
+  title: "Components/Atoms/Buttons/ButtonLink",
+  component: ButtonLink,
   argTypes: {
     disabled: {
       control: {
@@ -31,33 +31,31 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ButtonLInk>;
+} as ComponentMeta<typeof ButtonLink>;
 
-export const ButtonLInkBack: ComponentStory<typeof ButtonLInk> = ({
+export const ButtonLinkBack: ComponentStory<typeof ButtonLink> = ({
   children,
   ...args
-}) => <ButtonLInk {...args}>{children}</ButtonLInk>;
-ButtonLInkBack.args = {
+}) => <ButtonLink {...args}>{children}</ButtonLink>;
+ButtonLinkBack.args = {
   children: "Go back",
-  disabled: false,
   startIcon: <MuiArrowBackIcon />,
 };
 
-export const ButtonLInkForward: ComponentStory<typeof ButtonLInk> = ({
+export const ButtonLinkForward: ComponentStory<typeof ButtonLink> = ({
   children,
   ...args
-}) => <ButtonLInk {...args}>{children}</ButtonLInk>;
-ButtonLInkForward.args = {
+}) => <ButtonLink {...args}>{children}</ButtonLink>;
+ButtonLinkForward.args = {
   children: "Go forward",
-  disabled: false,
   endIcon: <MuiArrowForwardIcon />,
 };
 
-export const ButtonLInkDisabled: ComponentStory<typeof ButtonLInk> = ({
+export const ButtonLinkDisabled: ComponentStory<typeof ButtonLink> = ({
   children,
   ...args
-}) => <ButtonLInk {...args}>{children}</ButtonLInk>;
-ButtonLInkDisabled.args = {
+}) => <ButtonLink {...args}>{children}</ButtonLink>;
+ButtonLinkDisabled.args = {
   children: "I am disabled",
   disabled: true,
   endIcon: <MuiArrowForwardIcon />,

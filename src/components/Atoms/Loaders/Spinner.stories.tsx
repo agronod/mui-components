@@ -26,7 +26,7 @@ export default {
 } as ComponentMeta<typeof Spinner>;
 
 export const ButtonSpinner: ComponentStory<typeof Spinner> = ({ ...args }) => (
-  <ButtonPrimary>
+  <ButtonPrimary loading={true}>
     <Spinner {...args} />
   </ButtonPrimary>
 );
