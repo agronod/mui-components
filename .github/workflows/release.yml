@@ -1,32 +1,67 @@
 name: Release
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-  pull_request:
+      - feat/*
+      - fix/*
+    paths-ignore:
+      - ".github/**"
+      - "**/*.md"
+  workflow_dispatch:
 
 jobs:
-  release:
+  build:
+    name: Build
     runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.tag_version.outputs.new_version }}
 
     steps:
-      - name: Checkout code
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: "true"
+          token: ${{ secrets.GITHUBTOKEN }}
+
+      - name: Identify new version
+        uses: mathieudutour/github-tag-action@v6.0
+        id: tag_version
+        with:
+          pre_release_branches: feat/*,fix/*
+          github_token: ${{ secrets.GITHUBTOKEN }}
+
+      - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
         with:
-          branches: |
-            [
-              {
-                name: 'main'
-              },              
-              {
-                name: '${{ github.event.pull_request.head.ref }}',
-                prerelease: true
-              }
-            ]
+          node-version: "18.x"
+
+      - run: npm ci
+      - run: npm run build --if-present
+      - name: set version
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          npm version ${{ steps.tag_version.outputs.new_version }}
+
+      - run: npm publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUBTOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Create a GitHub release
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
