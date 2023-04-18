@@ -34,6 +34,11 @@ export default {
         default: "contained",
       },
     },
+    type: {
+      control: {
+        type: "select",
+      },
+    },
     disabled: {
       control: {
         type: "boolean",
@@ -73,8 +78,8 @@ export default {
 
 export const ButtonDefault: ComponentStory<typeof Button> = ({
   children,
-  ...args
-}) => <Button {...args}>{children}</Button>;
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
 ButtonDefault.args = {
   children: "Button Default",
   variant: "contained",
@@ -82,8 +87,8 @@ ButtonDefault.args = {
 
 export const ButtonDefaultOutlined: ComponentStory<typeof Button> = ({
   children,
-  ...args
-}) => <Button {...args}>{children}</Button>;
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
 ButtonDefaultOutlined.args = {
   children: "Button Default Outlined",
   variant: "outlined",
@@ -98,8 +103,8 @@ ButtonDefaultOutlined.parameters = {
 
 export const DefaultDisabled: ComponentStory<typeof Button> = ({
   children,
-  ...args
-}) => <Button {...args}>{children}</Button>;
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
 DefaultDisabled.args = {
   children: "Button Disabled",
   variant: "contained",
@@ -108,8 +113,8 @@ DefaultDisabled.args = {
 
 export const DefaultFullWidth: ComponentStory<typeof Button> = ({
   children,
-  ...args
-}) => <Button {...args}>{children}</Button>;
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
 DefaultFullWidth.args = {
   children: "Button Full Width",
   variant: "contained",
@@ -118,8 +123,8 @@ DefaultFullWidth.args = {
 
 export const DefaultCustomWidth: ComponentStory<typeof Button> = ({
   children,
-  ...args
-}) => <Button {...args}>{children}</Button>;
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
 DefaultCustomWidth.args = {
   children: "Button Custom Width",
   variant: "contained",
@@ -129,9 +134,9 @@ DefaultCustomWidth.args = {
 export const DefaultLoader: ComponentStory<typeof Button> = ({
   children,
   loading,
-  ...args
+  ...rest
 }) => (
-  <Button loading={loading} {...args}>
+  <Button loading={loading} {...rest}>
     {children}
   </Button>
 );
@@ -143,8 +148,8 @@ DefaultLoader.args = {
 
 export const DefaultIconLeft: ComponentStory<typeof Button> = ({
   children,
-  ...args
-}) => <Button {...args}>{children}</Button>;
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
 DefaultIconLeft.args = {
   children: "Button with icon on left",
   variant: "contained",
@@ -153,8 +158,8 @@ DefaultIconLeft.args = {
 
 export const DefaultIconRight: ComponentStory<typeof Button> = ({
   children,
-  ...args
-}) => <Button {...args}>{children}</Button>;
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
 DefaultIconRight.args = {
   children: "Button with icon on right",
   variant: "contained",

@@ -192,7 +192,10 @@ const globalTypography = {
   },
 };
 
-const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
+const setBaseThemeOptions = (
+  globalThemePallete: Theme,
+  projectTheme: ProjectThemes
+): ThemeOptions => {
   return {
     palette: globalThemePallete.palette,
     components: {
@@ -219,8 +222,24 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
           root: {
             fontSize: pxToRem(14),
             fontFamily: "Inter",
-            fontWeight: 500,
-            marginBottom: "8px",
+            "&.Mui-focused": {
+              color: globalThemePallete.palette.text.secondary,
+            },
+            "&.Mui-disabled:hover": {
+              cursor: "default",
+            },
+            "&:hover": {
+              cursor: "pointer",
+            },
+          },
+        },
+      },
+      MuiCheckbox: {
+        styleOverrides: {
+          root: {
+            "&.Mui-checked": {
+              color: globalThemePallete.palette.primary.dark,
+            },
           },
         },
       },
@@ -297,15 +316,18 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
         styleOverrides: {
           root: {
             fontFamily: "inter",
-            color: globalThemePallete.palette.primary.dark,
-            textDecorationColor: globalThemePallete.palette.primary.dark,
+            color: "inherit",
+            textDecorationColor: "inherit",
             textUnderlineOffset: "2px",
             "&:hover": {
-              color: globalThemePallete.palette.primary.main,
-              textDecorationColor: globalThemePallete.palette.primary.main,
-            },
-            ":disabled": {
-              color: globalThemePallete.palette.grey[500],
+              color:
+                projectTheme === "AGRONOD"
+                  ? globalThemePallete.palette.primary.dark
+                  : globalThemePallete.palette.primary.main,
+              textDecorationColor:
+                projectTheme === "AGRONOD"
+                  ? globalThemePallete.palette.primary.dark
+                  : globalThemePallete.palette.primary.main,
             },
           },
         },
@@ -501,7 +523,10 @@ const setBaseThemePallete = (ProjectTheme: ProjectThemes) =>
 
 const selectBaseTheme: SelectBaseThemeProps = (projectTheme, options) => {
   const globalThemePallete = createTheme(setBaseThemePallete(projectTheme));
-  const baseThemeOptions = setBaseThemeOptions(globalThemePallete);
+  const baseThemeOptions = setBaseThemeOptions(
+    globalThemePallete,
+    projectTheme
+  );
   const baseTheme = createTheme(baseThemeOptions);
   if (!options) {
     return baseTheme;

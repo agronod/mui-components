@@ -35,8 +35,8 @@ export default {
 
 export const ButtonLinkBack: ComponentStory<typeof ButtonLink> = ({
   children,
-  ...args
-}) => <ButtonLink {...args}>{children}</ButtonLink>;
+  ...rest
+}) => <ButtonLink {...rest}>{children}</ButtonLink>;
 ButtonLinkBack.args = {
   children: "Go back",
   startIcon: <MuiArrowBackIcon />,
@@ -44,8 +44,8 @@ ButtonLinkBack.args = {
 
 export const ButtonLinkForward: ComponentStory<typeof ButtonLink> = ({
   children,
-  ...args
-}) => <ButtonLink {...args}>{children}</ButtonLink>;
+  ...rest
+}) => <ButtonLink {...rest}>{children}</ButtonLink>;
 ButtonLinkForward.args = {
   children: "Go forward",
   endIcon: <MuiArrowForwardIcon />,
@@ -53,8 +53,8 @@ ButtonLinkForward.args = {
 
 export const ButtonLinkDisabled: ComponentStory<typeof ButtonLink> = ({
   children,
-  ...args
-}) => <ButtonLink {...args}>{children}</ButtonLink>;
+  ...rest
+}) => <ButtonLink {...rest}>{children}</ButtonLink>;
 ButtonLinkDisabled.args = {
   children: "I am disabled",
   disabled: true,

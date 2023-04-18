@@ -3,14 +3,13 @@ import {
   ButtonProps as MuiButtonProps,
 } from "@mui/material";
 import Spinner from "../../Loaders/Spinner";
-import { SquareChip } from "../../Chip";
 
-type ButtonPrimaryBaseProps = Pick<
+type ButtonBaseProps = Pick<
   MuiButtonProps,
-  "disabled" | "fullWidth" | "sx" | "startIcon" | "endIcon" | "variant"
+  "disabled" | "fullWidth" | "sx" | "startIcon" | "endIcon" | "variant" | "type"
 >;
 
-interface ButtonPrimaryProps extends ButtonPrimaryBaseProps {
+interface ButtonProps extends ButtonBaseProps {
   children: React.ReactNode;
   loading?: boolean;
   disabled?: boolean;
@@ -25,7 +24,7 @@ const Button = ({
   startIcon,
   endIcon,
   ...rest
-}: ButtonPrimaryProps) => (
+}: ButtonProps) => (
   <MuiButton
     disabled={loading || disabled ? true : false}
     startIcon={loading ? null : startIcon}

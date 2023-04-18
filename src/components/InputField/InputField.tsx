@@ -26,14 +26,18 @@ interface InputTextProps extends InputTextBaseProps {
 }
 
 const InputText = (props: InputTextProps) => (
-  <FormControl>
-    <FormLabel
-      required={props.required}
-      htmlFor={props.id}
-      error={props.error ? true : false}
-    >
-      {props.inputLabel}
-    </FormLabel>
+  <FormControl fullWidth={props.fullWidth}>
+    {props.inputLabel && (
+      <FormLabel
+        disabled={props.disabled}
+        required={props.required}
+        htmlFor={props.id}
+        error={props.error ? true : false}
+        style={{ fontWeight: 500, marginBottom: "8px" }}
+      >
+        {props.inputLabel}
+      </FormLabel>
+    )}
     <MuiTextField
       InputLabelProps={{
         shrink: false,
