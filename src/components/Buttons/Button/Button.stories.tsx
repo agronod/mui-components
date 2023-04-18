@@ -20,12 +20,18 @@ export default {
     },
   },
   argTypes: {
+    children: {
+      type: { name: "function", required: true },
+    },
     variant: {
+      description:
+        "<p>The variants to use: <code>outlined</code> and <code>contained</code></p>",
+      type: { name: "string", required: true },
+      table: { type: { summary: null } },
       control: {
         type: "radio",
         options: ["contained", "outlined"],
         default: "contained",
-        description: "test",
       },
     },
     disabled: {

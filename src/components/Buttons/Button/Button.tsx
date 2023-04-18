@@ -3,6 +3,7 @@ import {
   ButtonProps as MuiButtonProps,
 } from "@mui/material";
 import Spinner from "../../Loaders/Spinner";
+import { SquareChip } from "../../Chip";
 
 type ButtonPrimaryBaseProps = Pick<
   MuiButtonProps,

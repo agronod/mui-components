@@ -214,6 +214,16 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
           },
         },
       },
+      MuiFormLabel: {
+        styleOverrides: {
+          root: {
+            fontSize: pxToRem(14),
+            fontFamily: "Inter",
+            fontWeight: 500,
+            marginBottom: "8px",
+          },
+        },
+      },
       MuiSvgIcon: {
         styleOverrides: {
           fontSizeLarge: "148px",
@@ -413,10 +423,10 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
         styleOverrides: {
           root: {
             "& .MuiSvgIcon-root:first-of-type": {
-              fontSize: 22,
+              fontSize: pxToRem(22),
             },
             "& .MuiSvgIcon-root:last-of-type": {
-              fontSize: 22,
+              fontSize: pxToRem(22),
               "& path": {
                 fill: globalThemePallete.palette.primary.medium,
               },
@@ -438,7 +448,7 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
             paddingLeft: globalThemePallete.spacing(0.5),
           },
           icon: {
-            fontSize: "20px",
+            fontSize: pxToRem(20),
           },
           filledError: {
             backgroundColor: "#F7E5E9",

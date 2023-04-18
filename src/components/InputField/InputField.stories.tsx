@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import InputField from "./InputField";
 
 export default {
-  title: "Components/FormElements/InputField",
+  title: "Components/InputField",
   component: InputField,
   argTypes: {
     disabled: {
@@ -24,12 +24,6 @@ export default {
       },
     },
     helperText: {
-      control: {
-        type: "text",
-        expanded: true,
-      },
-    },
-    label: {
       control: {
         type: "text",
         expanded: true,
@@ -74,6 +68,12 @@ export default {
         expanded: true,
       },
     },
+    placeholder: {
+      control: {
+        type: "text",
+        expanded: true,
+      },
+    },
     sx: {
       control: {
         type: "object",
@@ -88,15 +88,42 @@ export const DefaultInputText: ComponentStory<typeof InputField> = ({
 }) => <InputField value={args.value} {...args} />;
 DefaultInputText.args = {
   name: "defaultInputText",
+  placeholder: "default input text",
   type: "text",
   id: "defaultInputText",
 };
 
-export const InputFieldWithLabel: ComponentStory<typeof InputField> = ({
-  ...args
-}) => <InputField value={args.value} inputLabel="Personnumer" {...args} />;
-DefaultInputText.args = {
-  name: "defaultInputText",
+export const InputFieldWithLabelAndHelperText: ComponentStory<
+  typeof InputField
+> = ({ ...args }) => <InputField value={args.value} {...args} />;
+InputFieldWithLabelAndHelperText.args = {
+  inputLabel: "Personnumer",
+  helperText: "this is example of helper text",
+  name: "inputTextWithLabel",
   type: "text",
-  id: "defaultInputText",
+  id: "inputTextWithLabel",
+};
+
+export const InputFieldRequired: ComponentStory<typeof InputField> = ({
+  ...args
+}) => <InputField value={args.value} {...args} />;
+InputFieldRequired.args = {
+  required: true,
+  inputLabel: "Personnumer",
+  name: "inputTextWithLabel",
+  type: "text",
+  id: "inputTextWithLabel",
+};
+
+export const InputFieldError: ComponentStory<typeof InputField> = ({
+  ...args
+}) => <InputField value={args.value} {...args} />;
+InputFieldError.args = {
+  required: true,
+  error: true,
+  inputLabel: "Personnumer",
+  helperText: "this is example of helper text error message",
+  name: "inputTextWithLabel",
+  type: "text",
+  id: "inputTextWithLabel",
 };

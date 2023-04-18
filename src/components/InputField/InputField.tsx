@@ -1,7 +1,6 @@
 import {
   FormControl,
   FormLabel,
-  InputLabel,
   TextField as MuiTextField,
   TextFieldProps as MuiTextFieldProps,
 } from "@mui/material";
@@ -18,25 +17,24 @@ type InputTextBaseProps = Pick<
   | "value"
   | "onChange"
   | "id"
+  | "sx"
+  | "placeholder"
 >;
 
 interface InputTextProps extends InputTextBaseProps {
   inputLabel?: string;
-  sx?: any;
 }
 
 const InputText = (props: InputTextProps) => (
   <FormControl>
     <FormLabel
-      required={true}
+      required={props.required}
       htmlFor={props.id}
       error={props.error ? true : false}
-      sx={props.sx}
     >
       {props.inputLabel}
     </FormLabel>
     <MuiTextField
-      placeholder={props.inputLabel}
       InputLabelProps={{
         shrink: false,
         color: "secondary",
