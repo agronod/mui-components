@@ -203,6 +203,14 @@ const setBaseThemeOptions = (globalThemePallete: Theme): ThemeOptions => {
             fontSize: pxToRem(16),
             lineHeight: 1.5,
             fontWeight: 400,
+            borderRadius: "8px",
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            borderRadius: "8px",
           },
         },
       },

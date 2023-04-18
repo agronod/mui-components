@@ -6,7 +6,7 @@ import Spinner from "../../Loaders/Spinner";
 
 type ButtonPrimaryBaseProps = Pick<
   MuiButtonProps,
-  "disabled" | "fullWidth" | "sx" | "startIcon" | "endIcon"
+  "disabled" | "fullWidth" | "sx" | "startIcon" | "endIcon" | "variant"
 >;
 
 interface ButtonPrimaryProps extends ButtonPrimaryBaseProps {
@@ -17,7 +17,7 @@ interface ButtonPrimaryProps extends ButtonPrimaryBaseProps {
   onClick?: () => any | void;
 }
 
-const ButtonPrimary = ({
+const Button = ({
   children,
   loading,
   disabled,
@@ -26,13 +26,12 @@ const ButtonPrimary = ({
   ...rest
 }: ButtonPrimaryProps) => (
   <MuiButton
-    variant="contained"
     disabled={loading || disabled ? true : false}
     startIcon={loading ? null : startIcon}
     endIcon={loading ? null : endIcon}
     {...rest}
   >
-    {loading ? <Spinner align="center" size={20} /> : children}
+    {loading ? <Spinner align="center" color="inherit" size={20} /> : children}
   </MuiButton>
 );
-export default ButtonPrimary;
+export default Button;

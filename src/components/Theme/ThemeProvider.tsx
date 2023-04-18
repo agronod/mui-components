@@ -11,14 +11,14 @@ import { selectBaseTheme, ProjectThemes } from "../Theme/baseTheme";
 
 interface ThemeProviderProps {
   options?: ThemeOptions;
+  projectTheme?: ProjectThemes;
   children: React.ReactNode;
-  projectTheme: ProjectThemes;
 }
 
 const ThemeProvider = ({
   children,
   options,
-  projectTheme,
+  projectTheme = "AGROSFAR",
 }: ThemeProviderProps) => {
   const theme = React.useMemo(() => {
     const selectedTheme = selectBaseTheme(projectTheme, options);

@@ -3,7 +3,7 @@ import ButtonLink from "./ButtonLink";
 import { MuiArrowBackIcon, MuiArrowForwardIcon } from "../../StoryIcons";
 
 export default {
-  title: "Components/Atoms/Buttons/ButtonLink",
+  title: "Components/Buttons/ButtonLink",
   component: ButtonLink,
   argTypes: {
     disabled: {

@@ -4,7 +4,10 @@ import {
   CircularProgressProps as MuiCircularProgressProps,
 } from "@mui/material";
 
-type SpinnerBaseProps = Pick<MuiCircularProgressProps, "size" | "thickness">;
+type SpinnerBaseProps = Pick<
+  MuiCircularProgressProps,
+  "size" | "thickness" | "color"
+>;
 
 interface SpinnerProps extends SpinnerBaseProps {
   align: string;
@@ -20,7 +23,7 @@ const Spinner = ({ ...props }: SpinnerProps) => {
       }}
     >
       <MuiCircularProgress
-        color="inherit"
+        color={props.color}
         size={props.size}
         thickness={props.thickness}
       />
