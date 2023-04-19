@@ -8,7 +8,7 @@ type ButtonLinkBaseProps = Pick<
   "disabled" | "sx" | "startIcon" | "endIcon"
 >;
 
-interface ButtonLinkProps extends ButtonLinkBaseProps {
+export interface ButtonLinkProps extends ButtonLinkBaseProps {
   children: React.ReactNode;
   sx?: any;
   onClick?: () => any | void;

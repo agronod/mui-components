@@ -9,7 +9,7 @@ type ButtonBaseProps = Pick<
   "disabled" | "fullWidth" | "sx" | "startIcon" | "endIcon" | "variant" | "type"
 >;
 
-interface ButtonProps extends ButtonBaseProps {
+export interface ButtonProps extends ButtonBaseProps {
   children: React.ReactNode;
   loading?: boolean;
   disabled?: boolean;

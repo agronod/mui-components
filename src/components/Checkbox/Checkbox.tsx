@@ -10,7 +10,7 @@ type CheckboxBaseProps = Pick<
   "checked" | "disabled" | "color" | "id" | "onChange" | "sx" | "value"
 >;
 
-interface CheckboxProps extends CheckboxBaseProps {
+export interface CheckboxProps extends CheckboxBaseProps {
   label?: string;
 }
 

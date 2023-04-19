@@ -21,7 +21,7 @@ type InputTextBaseProps = Pick<
   | "placeholder"
 >;
 
-interface InputTextProps extends InputTextBaseProps {
+export interface InputTextProps extends InputTextBaseProps {
   inputLabel?: string;
 }
 

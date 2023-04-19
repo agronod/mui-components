@@ -5,7 +5,7 @@ type LinkBaseProps = Pick<
   "children" | "classes" | "sx" | "underline"
 >;
 
-interface LinkProps extends LinkBaseProps {}
+export interface LinkProps extends LinkBaseProps {}
 
 const Link = ({ children, ...rest }: LinkProps) => (
   <MuiLink {...rest} style={{ cursor: "pointer" }}>

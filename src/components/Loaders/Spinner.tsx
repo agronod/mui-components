@@ -9,7 +9,7 @@ type SpinnerBaseProps = Pick<
   "size" | "thickness" | "color"
 >;
 
-interface SpinnerProps extends SpinnerBaseProps {
+export interface SpinnerProps extends SpinnerBaseProps {
   align: string;
 }
 
