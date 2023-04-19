@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Spinner from "./Spinner";
+import Loader from "./Loader";
 import Button from "../Buttons/Button/Button";
 
 export default {
-  title: "Components/Loaders/Spinner",
-  component: Spinner,
+  title: "Components/Loaders/Loader",
+  component: Loader,
   argTypes: {
     size: {
       control: {
@@ -37,32 +37,30 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Spinner>;
+} as ComponentMeta<typeof Loader>;
 
-export const SpinnerDefault: ComponentStory<typeof Spinner> = ({ ...args }) => (
-  <Spinner {...args} />
+export const LoaderDefault: ComponentStory<typeof Loader> = ({ ...args }) => (
+  <Loader {...args} />
 );
 
-SpinnerDefault.args = {
+LoaderDefault.args = {
   color: "primary",
   align: "center",
 };
 
-export const SpinnerInButton: ComponentStory<typeof Spinner> = ({
-  ...args
-}) => (
+export const LoaderInButton: ComponentStory<typeof Loader> = ({ ...args }) => (
   <Button variant="contained" loading={true}>
-    <Spinner {...args} />
+    <Loader {...args} />
   </Button>
 );
-SpinnerInButton.args = {
+LoaderInButton.args = {
   size: 20,
   align: "center",
   thickness: 5,
   color: "inherit",
 };
 
-SpinnerInButton.parameters = {
+LoaderInButton.parameters = {
   docs: {
     description: {
       story:

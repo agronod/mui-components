@@ -2,7 +2,7 @@ import {
   Button as MuiButton,
   ButtonProps as MuiButtonProps,
 } from "@mui/material";
-import Spinner from "../../Loaders/Spinner";
+import Spinner from "../../Loaders/Loader";
 
 type ButtonBaseProps = Pick<
   MuiButtonProps,

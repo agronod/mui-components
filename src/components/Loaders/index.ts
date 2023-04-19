@@ -1,3 +1,3 @@
-import Spinner from "./Spinner";
+import Loader from "./Loader";
 
-export { Spinner };
+export { Loader };
