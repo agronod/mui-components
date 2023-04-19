@@ -5,7 +5,7 @@ import {
   TextFieldProps as MuiTextFieldProps,
 } from "@mui/material";
 
-type InputTextBaseProps = Pick<
+type InputFieldBaseProps = Pick<
   MuiTextFieldProps,
   | "disabled"
   | "error"
@@ -21,11 +21,11 @@ type InputTextBaseProps = Pick<
   | "placeholder"
 >;
 
-export interface InputTextProps extends InputTextBaseProps {
+export interface InputFieldProps extends InputFieldBaseProps {
   inputLabel?: string;
 }
 
-const InputText = (props: InputTextProps) => (
+const InputField = (props: InputFieldProps) => (
   <FormControl fullWidth={props.fullWidth}>
     {props.inputLabel && (
       <FormLabel
@@ -50,4 +50,4 @@ const InputText = (props: InputTextProps) => (
   </FormControl>
 );
 
-export default InputText;
+export default InputField;

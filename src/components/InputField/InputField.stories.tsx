@@ -89,14 +89,14 @@ export default {
   },
 } as ComponentMeta<typeof InputField>;
 
-export const DefaultInputText: ComponentStory<typeof InputField> = ({
+export const DefaultInputField: ComponentStory<typeof InputField> = ({
   ...args
 }) => <InputField value={args.value} {...args} />;
-DefaultInputText.args = {
-  name: "defaultInputText",
+DefaultInputField.args = {
+  name: "defaultInputField",
   placeholder: "default input text",
   type: "text",
-  id: "defaultInputText",
+  id: "defaultInputField",
 };
 
 export const InputFieldWithLabelAndHelperText: ComponentStory<
