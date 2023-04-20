@@ -78,6 +78,7 @@ export const BarChart: React.FC<BarChartProps> = ({
                 tickLine={false}
                 {...xAxisOptions}
               />
+              <Tooltip />
               <YAxis
                 type="category"
                 dataKey="name"
@@ -89,7 +90,7 @@ export const BarChart: React.FC<BarChartProps> = ({
           ) : (
             <>
               <YAxis axisLine={false} tickLine={false} {...yAxisOptions} />
-              {showTooltip && <Tooltip />}
+              <Tooltip />
               <XAxis
                 dataKey="name"
                 axisLine={false}
