@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Loader from "./Loader";
-import Button from "../Buttons/Button/Button";
+import LoaderCircular from "./LoaderCircular";
+import Button from "../../Buttons/Button/Button";
 
 export default {
-  title: "Components/Loaders/Loader",
-  component: Loader,
+  title: "Components/Loaders/LoaderCircular",
+  component: LoaderCircular,
   argTypes: {
     size: {
       control: {
@@ -37,30 +37,32 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Loader>;
+} as ComponentMeta<typeof LoaderCircular>;
 
-export const LoaderDefault: ComponentStory<typeof Loader> = ({ ...args }) => (
-  <Loader {...args} />
-);
+export const LoaderCircularDefault: ComponentStory<typeof LoaderCircular> = ({
+  ...args
+}) => <LoaderCircular {...args} />;
 
-LoaderDefault.args = {
+LoaderCircularDefault.args = {
   color: "primary",
   align: "center",
 };
 
-export const LoaderInButton: ComponentStory<typeof Loader> = ({ ...args }) => (
+export const LoaderCircularInButton: ComponentStory<typeof LoaderCircular> = ({
+  ...args
+}) => (
   <Button variant="contained" loading={true}>
-    <Loader {...args} />
+    <LoaderCircular {...args} />
   </Button>
 );
-LoaderInButton.args = {
+LoaderCircularInButton.args = {
   size: 20,
   align: "center",
   thickness: 5,
   color: "inherit",
 };
 
-LoaderInButton.parameters = {
+LoaderCircularInButton.parameters = {
   docs: {
     description: {
       story:

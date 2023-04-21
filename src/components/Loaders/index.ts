@@ -1,3 +1,4 @@
-import Loader from "./Loader";
+import LoaderCircular from "./LoadingCircular/LoaderCircular";
+import LoaderLinear from "./LoaderLinear/LoaderLinear";
 
-export { Loader };
+export { LoaderCircular, LoaderLinear };

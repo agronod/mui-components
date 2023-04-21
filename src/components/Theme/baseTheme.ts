@@ -1,11 +1,21 @@
 import { createTheme, Theme, ThemeOptions } from "@mui/material/styles";
-import { common, grey } from "@mui/material/colors";
+import { common } from "@mui/material/colors";
 import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
 import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
 import { deepmerge } from "@mui/utils";
+
+declare module "@mui/material/Typography/Typography" {
+  interface TypographyPropsVariantOverrides {
+    body1bold: true;
+    body2bold: true;
+    body3: true;
+    body4: true;
+    component: true;
+  }
+}
 
 type ProjectThemes = "AGRONOD" | "AGROSFAR";
 
@@ -169,9 +179,36 @@ const globalTypography = {
     fontWeight: 400,
     lineHeight: 1.5,
   },
+  body1bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(16),
+    fontWeight: 500,
+    lineHeight: 1.5,
+  },
   body2: {
     fontFamily: "inter",
     fontSize: pxToRem(14),
+    fontWeight: 400,
+    letterSpacing: 0.1,
+    lineHeight: 1.43,
+  },
+  body2bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(14),
+    fontWeight: 500,
+    letterSpacing: 0.1,
+    lineHeight: 1.43,
+  },
+  body3: {
+    fontFamily: "inter",
+    fontSize: pxToRem(12),
+    fontWeight: 400,
+    letterSpacing: 0.1,
+    lineHeight: 1.42,
+  },
+  body4: {
+    fontFamily: "inter",
+    fontSize: pxToRem(10),
     fontWeight: 400,
     letterSpacing: 0.1,
     lineHeight: 1.43,
@@ -185,8 +222,8 @@ const globalTypography = {
   },
   overline: {
     fontFamily: "inter",
-    fontSize: pxToRem(10),
-    fontWeight: 500,
+    fontSize: pxToRem(12),
+    fontWeight: 400,
     letterSpacing: 1,
     lineHeight: 1.6,
   },
