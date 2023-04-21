@@ -3,7 +3,7 @@ import Typography from "./Typography";
 import { TypographyProps } from "./Typography";
 
 export default {
-  title: "Components/Typography",
+  title: "Base/Typography",
   component: Typography,
   parameters: {
     componentSubtitle: "Typography component has all text variants available",

@@ -26,6 +26,7 @@ const Button = ({
   ...rest
 }: ButtonProps) => (
   <MuiButton
+    disableElevation={true}
     disabled={loading || disabled ? true : false}
     startIcon={loading ? null : startIcon}
     endIcon={loading ? null : endIcon}
