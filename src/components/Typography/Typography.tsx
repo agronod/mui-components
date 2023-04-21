@@ -8,11 +8,11 @@ type TypographyBaseProps = Pick<
   "variant" | "color" | "children"
 >;
 
-export interface TypographyProps extends TypographyBaseProps {
-  component?: TypographyProps["variant"];
+export interface LocalTypographyProps extends TypographyBaseProps {
+  component?: MuiTypographyProps["variant"];
 }
 
-const Typography = ({ children, ...props }: MuiTypographyProps) => {
+const Typography = ({ children, ...props }: LocalTypographyProps) => {
   return <MuiTypography {...props}>{children}</MuiTypography>;
 };
 
