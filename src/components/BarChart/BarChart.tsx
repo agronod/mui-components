@@ -89,7 +89,13 @@ export const BarChart: React.FC<BarChartProps> = ({
           ) : (
             <>
               <YAxis axisLine={false} tickLine={false} {...yAxisOptions} />
-              {TooltipContent && <Tooltip content={<TooltipContent />} />}
+              {TooltipContent && (
+                <Tooltip
+                  cursor={{ fill: "transparent" }}
+                  wrapperStyle={{ outline: "none" }}
+                  content={<TooltipContent />}
+                />
+              )}
               <XAxis
                 dataKey="name"
                 axisLine={false}
