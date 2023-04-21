@@ -25,7 +25,7 @@ export type BarChartProps = {
   barCellsOptions?: Partial<CellProps[]>;
   children?: React.ReactNode;
   layout?: "horizontal" | "vertical";
-  renderTooltipContent?: () => React.ReactElement<any>;
+  TooltipContent?: any;
 };
 
 export const BarChart: React.FC<BarChartProps> = ({
@@ -39,13 +39,12 @@ export const BarChart: React.FC<BarChartProps> = ({
   barOptions = {},
   barCellsOptions = [],
   layout = "horizontal",
-  renderTooltipContent,
+  TooltipContent,
 }) => {
   if (!Array.isArray(data) || data.length === 0) {
     console.log(`No data to show for barchart: ${name}`);
     return <></>;
   }
-  const tooltipContent = renderTooltipContent && renderTooltipContent();
 
   return (
     <ResponsiveContainer>
@@ -90,7 +89,7 @@ export const BarChart: React.FC<BarChartProps> = ({
           ) : (
             <>
               <YAxis axisLine={false} tickLine={false} {...yAxisOptions} />
-              {tooltipContent && <Tooltip content={tooltipContent} />}
+              {TooltipContent && <Tooltip content={<TooltipContent />} />}
               <XAxis
                 dataKey="name"
                 axisLine={false}
