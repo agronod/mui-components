@@ -17,6 +17,7 @@ export * from "./Checkbox";
 export * from "./Links";
 export * from "./Loaders";
 export * from "./Card";
+export * from "./Typography";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };

@@ -11,8 +11,8 @@ type CardBaseProps = Pick<MuiCardProps, "variant">;
 
 export interface CardProps extends CardBaseProps {
   children: React.ReactNode;
-  positionLeft: boolean;
-  positionRight: boolean;
+  positionLeft?: boolean;
+  positionRight?: boolean;
   centeredContent?: boolean;
   isCollapsible?: boolean;
   opened?: boolean;
