@@ -19,6 +19,7 @@ type InputFieldBaseProps = Pick<
   | "id"
   | "sx"
   | "placeholder"
+  | "onBlur"
 >;
 
 export interface InputFieldProps extends InputFieldBaseProps {
