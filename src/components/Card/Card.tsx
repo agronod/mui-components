@@ -63,6 +63,10 @@ const Card = ({
     styleObject.bottom = "0";
     styleObject.left = "0";
     styleObject.right = "0";
+    styleObject.marginRight = "0";
+    styleObject.marginLeft = "0";
+    styleObject.height = "auto";
+    styleObject.minHeight = "250px";
   }
 
   if (rest.variant === undefined) {
