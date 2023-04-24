@@ -551,6 +551,13 @@ const setBaseThemeOptions = (
           },
         },
       },
+      MuiPaper: {
+        styleOverrides: {
+          elevation: {
+            boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
+          },
+        },
+      },
     },
   };
 };

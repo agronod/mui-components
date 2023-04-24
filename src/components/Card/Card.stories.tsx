@@ -8,9 +8,9 @@ export default {
     componentSubtitle: "Card is used in multiple places and components",
     docs: {
       description: {
-        component: `We can se it as:
+        component: `<div>We can se it as:
           <ul><li>Aside card for menus and forms</li>
-          <li>Card information blocks</li>
+          <li>Card information blocks</li></ul></div>
           `,
       },
     },
