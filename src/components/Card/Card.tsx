@@ -1,24 +1,19 @@
 import {
   Card as MuiCard,
   CardProps as MuiCardProps,
-  Collapse as MuiCollapse,
   SxProps,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { StyledEngineProvider, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
-type CardBaseProps = Pick<MuiCardProps, "variant">;
+type CardBaseProps = Pick<MuiCardProps, "variant" | "sx">;
 
 export interface CardProps extends CardBaseProps {
   children: React.ReactNode;
   positionLeft?: boolean;
   positionRight?: boolean;
   centeredContent?: boolean;
-  isCollapsible?: boolean;
-  opened?: boolean;
-  collapsedSize?: string | number;
-  orientation?: "horizontal" | "vertical";
-  padding?: string;
+  padding?: string | number;
 }
 
 const Card = ({
@@ -26,10 +21,6 @@ const Card = ({
   positionLeft,
   positionRight,
   centeredContent,
-  isCollapsible,
-  opened,
-  collapsedSize,
-  orientation,
   padding,
   ...rest
 }: CardProps) => {
@@ -73,12 +64,14 @@ const Card = ({
     styleObject.left = "0";
     styleObject.right = "0";
   }
+
+  if (rest.variant === undefined) {
+    styleObject.boxShadow = "unset !important";
+  }
   return (
-    <MuiCollapse in={true}>
-      <MuiCard {...rest} sx={styleObject}>
-        {children}
-      </MuiCard>
-    </MuiCollapse>
+    <MuiCard {...rest} sx={{ ...styleObject, ...rest.sx }}>
+      {children}
+    </MuiCard>
   );
 };
 
