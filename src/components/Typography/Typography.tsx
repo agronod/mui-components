@@ -5,7 +5,7 @@ import {
 
 type TypographyBaseProps = Pick<
   MuiTypographyProps,
-  "variant" | "color" | "children"
+  "variant" | "color" | "children" | "textAlign"
 >;
 
 export interface LocalTypographyProps extends TypographyBaseProps {

@@ -23,6 +23,11 @@ export default {
         type: "text",
       },
     },
+    textAlign: {
+      control: {
+        type: "text",
+      },
+    },
     variant: {
       description:
         "<p>Is used to get styles and look for component that are defined in base theme.</p>",
