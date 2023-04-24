@@ -17,7 +17,7 @@ export interface CheckboxProps extends CheckboxBaseProps {
 const Checkbox = (props: CheckboxProps) => (
   <FormControl
     style={{
-      display: "flex",
+      display: "inline-flex",
       flexDirection: "row",
       alignItems: "center",
     }}
