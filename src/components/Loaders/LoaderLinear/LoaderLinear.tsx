@@ -15,22 +15,21 @@ export interface LoaderLinearProps extends LoaderLinearBaseProps {
 
 const LoaderLinear = ({ isGlobal, ...props }: LoaderLinearProps) => {
   return (
-    <Box
-      component="div"
+    <MuiLinearProgress
+      {...props}
       sx={
         isGlobal
           ? {
               position: "fixed",
               top: "0",
               left: "0",
+              right: "0",
             }
           : {
               position: "relative",
             }
       }
-    >
-      <MuiLinearProgress {...props} />
-    </Box>
+    />
   );
 };
 
