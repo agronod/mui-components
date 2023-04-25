@@ -58,14 +58,9 @@ const Card = ({
     styleObject.borderTopRightRadius = "20px";
     styleObject.borderTopLeftRadius = "20px";
     styleObject.borderBottomLeftRadius = "0";
-    styleObject.marginRight = "0";
-    styleObject.position = "absolute";
-    styleObject.bottom = "0";
-    styleObject.left = "0";
-    styleObject.right = "0";
+    styleObject.width = "100%";
     styleObject.marginRight = "0";
     styleObject.marginLeft = "0";
-    styleObject.height = "auto";
     styleObject.minHeight = "250px";
   }
 
