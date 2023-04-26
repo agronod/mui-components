@@ -4,7 +4,7 @@ import {
   SxProps,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
+import { Theme, useTheme } from "@mui/material/styles";
 
 type CardBaseProps = Pick<MuiCardProps, "variant" | "sx">;
 
@@ -67,8 +67,12 @@ const Card = ({
   if (rest.variant === undefined) {
     styleObject.boxShadow = "unset !important";
   }
+
   return (
-    <MuiCard {...rest} sx={{ ...styleObject, ...rest.sx }}>
+    <MuiCard
+      {...rest}
+      sx={[{ ...styleObject }, rest.sx as (theme: Theme) => any]}
+    >
       {children}
     </MuiCard>
   );
