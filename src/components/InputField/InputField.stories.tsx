@@ -35,12 +35,6 @@ export default {
         expanded: true,
       },
     },
-    helperTextError: {
-      control: {
-        type: "text",
-        expanded: true,
-      },
-    },
     name: {
       control: {
         type: "text",
@@ -59,6 +53,7 @@ export default {
         options: [
           "text",
           "password",
+          "tel",
           "number",
           "email",
           "url",
@@ -134,8 +129,7 @@ InputFieldError.args = {
   required: true,
   error: true,
   inputLabel: "Personnumer",
-  helperText: "helper text not visible",
-  helperTextError: "this is example of error text error message",
+  helperText: "this is error text",
   name: "inputTextWithLabel",
   type: "text",
   id: "inputTextWithLabel",
