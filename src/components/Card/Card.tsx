@@ -49,6 +49,7 @@ const Card = ({
 
   if (centeredContent) {
     styleObject.display = "flex";
+    styleObject.flexDirection = "column";
     styleObject.alignItems = "center";
     styleObject.justifyContent = "center";
   }

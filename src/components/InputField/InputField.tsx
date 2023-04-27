@@ -24,7 +24,7 @@ type InputFieldBaseProps = Pick<
 
 export interface InputFieldProps extends InputFieldBaseProps {
   inputLabel?: string;
-  errorMessage?: string;
+  helperTextError?: string;
 }
 
 const InputField = (props: InputFieldProps) => (
@@ -46,7 +46,7 @@ const InputField = (props: InputFieldProps) => (
         color: "secondary",
       }}
       variant="outlined"
-      helperText={props.error ? props.errorMessage : props.helperText}
+      helperText={props.error ? props.helperTextError : props.helperText}
       {...props}
     ></MuiTextField>
   </FormControl>
