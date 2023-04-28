@@ -28,12 +28,12 @@ export default {
     },
     variant: {
       description:
-        "<p>The variants to use: <code>outlined</code> and <code>contained</code></p>",
+        "<p>The variants to use: <code>outlined</code>, <code>contained</code> and <code>text</code></p>",
       type: { name: "string", required: true },
       table: { type: { summary: null } },
       control: {
         type: "radio",
-        options: ["contained", "outlined"],
+        options: ["contained", "outlined", "text"],
         default: "contained",
       },
     },
@@ -79,24 +79,24 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
-export const ButtonDefault: ComponentStory<typeof Button> = ({
+export const ButtonContained: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
-ButtonDefault.args = {
-  children: "Button Default",
+ButtonContained.args = {
+  children: "Button Contained",
   variant: "contained",
 };
 
-export const ButtonDefaultOutlined: ComponentStory<typeof Button> = ({
+export const ButtonOutlined: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
-ButtonDefaultOutlined.args = {
-  children: "Button Default Outlined",
+ButtonOutlined.args = {
+  children: "Button Outlined",
   variant: "outlined",
 };
-ButtonDefaultOutlined.parameters = {
+ButtonOutlined.parameters = {
   docs: {
     description: {
       story: `<p>Default <code>Button</code> comes with two variants: <code>contained</code> and <code>outlined</code>.</p><p>In our project <code>contained</code> is used for "Primary Buttons" and <code>outlined</code> for "Secondary Buttons". But all other properties they share.</p>`,
@@ -104,37 +104,37 @@ ButtonDefaultOutlined.parameters = {
   },
 };
 
-export const DefaultDisabled: ComponentStory<typeof Button> = ({
+export const ButtonDisabled: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
-DefaultDisabled.args = {
+ButtonDisabled.args = {
   children: "Button Disabled",
   variant: "contained",
   disabled: true,
 };
 
-export const DefaultFullWidth: ComponentStory<typeof Button> = ({
+export const ButtonFullWidth: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
-DefaultFullWidth.args = {
+ButtonFullWidth.args = {
   children: "Button Full Width",
   variant: "contained",
   fullWidth: true,
 };
 
-export const DefaultCustomWidth: ComponentStory<typeof Button> = ({
+export const ButtonCustomWidth: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
-DefaultCustomWidth.args = {
+ButtonCustomWidth.args = {
   children: "Button Custom Width",
   variant: "contained",
   sx: { minWidth: "500px" },
 };
 
-export const DefaultLoader: ComponentStory<typeof Button> = ({
+export const ButtonLoader: ComponentStory<typeof Button> = ({
   children,
   loading,
   ...rest
@@ -143,27 +143,43 @@ export const DefaultLoader: ComponentStory<typeof Button> = ({
     {children}
   </Button>
 );
-DefaultLoader.args = {
+ButtonLoader.args = {
   children: "Button not loading",
   variant: "contained",
   loading: true,
 };
 
-export const DefaultIconLeft: ComponentStory<typeof Button> = ({
+export const ButtonThatLooksLikeLink: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
-DefaultIconLeft.args = {
+ButtonThatLooksLikeLink.args = {
+  children: "Button link",
+  variant: "text",
+};
+ButtonThatLooksLikeLink.parameters = {
+  docs: {
+    description: {
+      story: `<p>This button is <code>variant="text"</code> underline was added as global styling to this button so it reflects it's purpose.</p>`,
+    },
+  },
+};
+
+export const ButtonIconLeft: ComponentStory<typeof Button> = ({
+  children,
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
+ButtonIconLeft.args = {
   children: "Button with icon on left",
   variant: "contained",
   startIcon: <MuiArrowBackIcon />,
 };
 
-export const DefaultIconRight: ComponentStory<typeof Button> = ({
+export const ButtonIconRight: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
-DefaultIconRight.args = {
+ButtonIconRight.args = {
   children: "Button with icon on right",
   variant: "contained",
   endIcon: <MuiArrowForwardIcon />,

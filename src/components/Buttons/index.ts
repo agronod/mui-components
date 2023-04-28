@@ -1,4 +1,5 @@
 import Button from "./Button/Button";
-import ButtonLink from "./ButtonLink/ButtonLink";
+import ButtonNavigate from "./ButtonNavigate/ButtonNavigate";
+("./ButtonNavigate/ButtonNavigate.tsx");
 
-export { Button, ButtonLink };
+export { Button, ButtonNavigate };

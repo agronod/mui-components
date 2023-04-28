@@ -25,7 +25,7 @@ const Card = ({
   ...rest
 }: CardProps) => {
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down("md"));
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
   const styleObject: SxProps = {
     padding: padding,
     minHeight: "100px",

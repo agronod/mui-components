@@ -434,6 +434,7 @@ const setBaseThemeOptions = (
             lineHeight: pxToRem(16),
             padding: "0",
             textTransform: "none",
+            textDecoration: "underline",
             ":hover": {
               backgroundColor: "transparent",
               color: globalThemePallete.palette.text.secondary,
