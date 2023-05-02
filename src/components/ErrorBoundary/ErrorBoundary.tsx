@@ -66,7 +66,6 @@ export default class ErrorBoundary extends React.Component<
             open={this.state.hasError}
             sx={{ height: "auto !important" }}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            onClose={() => this.setState({ hasError: false })}
           >
             <Alert
               severity="error"
