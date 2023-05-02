@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "../src";
+import { ThemeProvider, agronodTheme, agrosfarTheme } from "../src";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -18,13 +18,22 @@ export const parameters = {
   },
 };
 
+const themeOptions = {
+  Agronod: agronodTheme,
+  Agrosfar: agrosfarTheme,
+};
+
+const getThemeOptions = (themeName) => {
+  return themeOptions[themeName];
+};
+
 export const globalTypes = {
   theme: {
     name: "Theme",
     description: "Global theme for components",
-    defaultValue: "AGRONOD",
+    defaultValue: "Agronod",
     toolbar: {
-      items: ["AGRONOD", "AGROSFAR"],
+      items: ["Agronod", "Agrosfar"],
       title: true,
       dynamicTitle: true,
     },
@@ -33,11 +42,9 @@ export const globalTypes = {
 
 export const decorators = [
   (Story, context) => {
+    const themeOptions = getThemeOptions(context.globals.theme);
     return (
-      <ThemeProvider
-        projectTheme={context.globals.theme}
-        options={context.globals.theme}
-      >
+      <ThemeProvider options={themeOptions}>
         <Story {...context} />
       </ThemeProvider>
     );

@@ -1,5 +1,14 @@
 import { getColorScheme } from "./utils";
-import { selectBaseTheme } from "./baseTheme";
+import { baseTheme } from "./baseTheme";
 import ThemeProvider, { useTheme } from "./ThemeProvider";
+import agronodTheme from "./agronodTheme";
+import agrosfarTheme from "./agrosfarTheme";
 
-export { ThemeProvider, useTheme, getColorScheme, selectBaseTheme };
+export {
+  ThemeProvider,
+  useTheme,
+  getColorScheme,
+  baseTheme,
+  agronodTheme,
+  agrosfarTheme,
+};
