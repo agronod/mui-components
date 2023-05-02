@@ -9,6 +9,7 @@ import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
+import createPalette from "@mui/material/styles/createPalette";
 
 declare module "@mui/material/styles" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
@@ -89,12 +90,10 @@ const grayThemePallete = {
   disabled: "#A3A19F",
 };
 
-const globalThemePallete = createTheme({
-  palette: {
-    ...grayThemePallete,
-    ...semanticThemePallete,
-  },
-});
+const globalThemePallete = {
+  ...grayThemePallete,
+  ...semanticThemePallete,
+};
 
 const globalTypography = {
   h1: {
@@ -210,8 +209,9 @@ const globalTypography = {
   },
 };
 
+const defaultMuiTheme = createTheme();
+
 const baseThemeOptions: ThemeOptions = {
-  palette: globalThemePallete.palette,
   components: {
     MuiInputBase: {
       styleOverrides: {
@@ -237,7 +237,7 @@ const baseThemeOptions: ThemeOptions = {
           fontSize: pxToRem(14),
           fontFamily: "Inter",
           "&.Mui-focused": {
-            color: globalThemePallete.palette.text.secondary,
+            color: globalThemePallete.text.secondary,
           },
           "&.Mui-disabled:hover": {
             cursor: "default",
@@ -292,8 +292,8 @@ const baseThemeOptions: ThemeOptions = {
           borderRadius: "24px",
           minHeight: "26px",
           "&.Mui-selected": {
-            backgroundColor: globalThemePallete.palette.common.white,
-            color: globalThemePallete.palette.common.black,
+            backgroundColor: common.white,
+            color: common.black,
           },
           ":last-child": {
             margin: "0px 0px 0px 0px",
@@ -311,7 +311,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: globalThemePallete.palette.common.white,
+          backgroundColor: common.white,
           borderBottom: "1px solid #e5e5e5",
           boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
         },
@@ -377,12 +377,12 @@ const baseThemeOptions: ThemeOptions = {
         text: {
           minWidth: "unset",
           height: "unset",
-          color: globalThemePallete.palette.text.primary,
+          color: globalThemePallete.text.primary,
           padding: "0",
 
           ":hover": {
             backgroundColor: "transparent",
-            color: globalThemePallete.palette.text.secondary,
+            color: globalThemePallete.text.secondary,
           },
         },
       },
@@ -432,14 +432,14 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           borderRadius: "16px",
-          color: globalThemePallete.palette.text.primary,
+          color: globalThemePallete.text.primary,
           ...globalTypography.body2,
           alignItems: "center",
-          padding: globalThemePallete.spacing(3),
+          padding: defaultMuiTheme.spacing(3),
           boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
         },
         message: {
-          paddingLeft: globalThemePallete.spacing(0.5),
+          paddingLeft: defaultMuiTheme.spacing(0.5),
         },
         icon: {
           fontSize: pxToRem(20),
@@ -458,7 +458,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiAlertTitle: {
       styleOverrides: {
         root: {
-          color: globalThemePallete.palette.text.primary,
+          color: globalThemePallete.text.primary,
           ...globalTypography.caption,
         },
       },
@@ -479,7 +479,7 @@ const baseThemeOptions: ThemeOptions = {
           "&.MuiContainer-maxWidthLg": {
             padding: "32px 16px",
             maxWidth: 1040,
-            [globalThemePallete.breakpoints.up("lg")]: {
+            [defaultMuiTheme.breakpoints.up("lg")]: {
               padding: "32px 0",
             },
           },
@@ -504,4 +504,6 @@ export {
   pxToRem,
   globalThemePallete,
   globalTypography,
+  grayThemePallete,
+  semanticThemePallete,
 };
