@@ -29,7 +29,7 @@ const agrosfarTheme = {
       styleOverrides: {
         root: {
           "&.Mui-checked": {
-            color: agrosfarThemePallete.primary.dark,
+            color: themePallete.primary.dark,
           },
         },
       },
@@ -37,14 +37,14 @@ const agrosfarTheme = {
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: globalThemePallete.text.primary,
+          color: themePallete.text.primary,
           ":hover": {
-            backgroundColor: agrosfarThemePallete.primary.light,
+            backgroundColor: themePallete.primary.light,
           },
           "&.Mui-selected": {
-            backgroundColor: agrosfarThemePallete.primary.light,
+            backgroundColor: themePallete.primary.light,
             ":hover": {
-              backgroundColor: agrosfarThemePallete.primary.light,
+              backgroundColor: themePallete.primary.light,
             },
           },
         },
@@ -56,6 +56,46 @@ const agrosfarTheme = {
           "& .MuiSvgIcon-root:last-of-type": {
             "& path": {
               fill: themePallete.primary.medium,
+            },
+          },
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          ":hover": {
+            borderWidth: "2px",
+          },
+          ":active": {
+            backgroundColor: themePallete.primary.pastel,
+          },
+          "&.MuiButton-outlinedSecondary": {
+            color: themePallete.secondary.main,
+            ":hover": {
+              borderColor: themePallete.secondary.dark,
+            },
+            ":active": {
+              backgroundColor: themePallete.secondary.pastel,
+            },
+          },
+        },
+        text: {
+          ":hover": {
+            textDecoration: "underline",
+            color: themePallete.primary.medium,
+            backgroundColor: "transparent",
+          },
+          ":active": {
+            color: themePallete.primary.dark,
+          },
+          "&.MuiButton-textSecondary": {
+            color: themePallete.secondary.main,
+            ":hover": {
+              color: `${themePallete.secondary.medium}`,
+            },
+            ":active": {
+              color: `${themePallete.secondary.dark}`,
             },
           },
         },

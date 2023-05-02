@@ -6,7 +6,14 @@ import Spinner from "../../Loaders/LoadingCircular/LoaderCircular";
 
 type ButtonBaseProps = Pick<
   MuiButtonProps,
-  "disabled" | "fullWidth" | "sx" | "startIcon" | "endIcon" | "variant" | "type"
+  | "disabled"
+  | "fullWidth"
+  | "sx"
+  | "startIcon"
+  | "endIcon"
+  | "variant"
+  | "type"
+  | "color"
 >;
 
 export interface ButtonProps extends ButtonBaseProps {

@@ -49,14 +49,39 @@ const agronodTheme = {
     MuiButton: {
       styleOverrides: {
         outlined: {
-          color: globalThemePallete.text.primary,
-
+          color: themePallete.text.primary,
           ":hover": {
             borderColor: themePallete.primary.dark,
+            borderWidth: "2px",
+          },
+          ":active": {
+            backgroundColor: themePallete.primary.pastel,
+          },
+        },
+        contained: {
+          ".MuiTouchRipple-child": {
+            backgroundColor: "rgba(255, 255, 255, 0.7) !important",
           },
         },
         text: {
-          textDecoration: "underline",
+          color: themePallete.text.primary,
+          ":hover": {
+            textDecoration: "underline",
+            backgroundColor: "transparent",
+            color: "initial",
+          },
+          ":active": {
+            color: `${themePallete.primary.darkHover}`,
+          },
+          "&.MuiButton-textSecondary": {
+            color: themePallete.secondary.main,
+            ":hover": {
+              color: `${themePallete.secondary.medium}`,
+            },
+            ":active": {
+              color: `${themePallete.secondary.dark}`,
+            },
+          },
         },
       },
     },

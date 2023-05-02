@@ -37,6 +37,19 @@ export default {
         default: "contained",
       },
     },
+    color: {
+      control: {
+        type: "select",
+        options: [
+          "primary",
+          "secondary",
+          "success",
+          "error",
+          "info",
+          "warning",
+        ],
+      },
+    },
     type: {
       control: {
         type: "select",
@@ -102,6 +115,15 @@ ButtonOutlined.parameters = {
       story: `<p>Default <code>Button</code> comes with two variants: <code>contained</code> and <code>outlined</code>.</p><p>In our project <code>contained</code> is used for "Primary Buttons" and <code>outlined</code> for "Secondary Buttons". But all other properties they share.</p>`,
     },
   },
+};
+
+export const ButtonText: ComponentStory<typeof Button> = ({
+  children,
+  ...rest
+}) => <Button {...rest}>{children}</Button>;
+ButtonText.args = {
+  children: "Button Text",
+  variant: "text",
 };
 
 export const ButtonDisabled: ComponentStory<typeof Button> = ({

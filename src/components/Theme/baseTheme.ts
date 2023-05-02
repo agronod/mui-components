@@ -11,8 +11,17 @@ import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
 import createPalette from "@mui/material/styles/createPalette";
 
-declare module "@mui/material/styles" {
+declare module "@mui/material/styles/" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
+    pastel?: string;
+    mainHover?: string;
+    mediumHover?: string;
+    darkHover?: string;
+  }
+}
+
+declare module "@mui/material/styles/createPalette" {
+  interface PaletteColor {
     pastel?: string;
     mainHover?: string;
     mediumHover?: string;
@@ -373,16 +382,92 @@ const baseThemeOptions: ThemeOptions = {
           ":hover": {
             backgroundColor: "transparent",
           },
+          "&.MuiButton-outlinedWarning": {
+            color: globalThemePallete.warning.main,
+            ":hover": {
+              color: globalThemePallete.warning.dark,
+              borderColor: globalThemePallete.warning.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePallete.warning.pastel,
+            },
+          },
+          ".MuiTouchRipple-child": {
+            backgroundColor: "transparent !important",
+          },
+          "&.MuiButton-outlinedError": {
+            color: globalThemePallete.error.medium,
+            ":hover": {
+              color: globalThemePallete.error.dark,
+              borderColor: globalThemePallete.error.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePallete.error.pastel,
+            },
+          },
+          "&.MuiButton-outlinedInfo": {
+            color: globalThemePallete.info.main,
+            ":hover": {
+              color: globalThemePallete.info.medium,
+              borderColor: globalThemePallete.info.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePallete.info.pastel,
+            },
+          },
+          "&.MuiButton-outlinedSuccess": {
+            color: globalThemePallete.success.main,
+            ":hover": {
+              color: globalThemePallete.success.medium,
+              borderColor: globalThemePallete.success.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePallete.success.pastel,
+            },
+          },
         },
         text: {
           minWidth: "unset",
           height: "unset",
-          color: globalThemePallete.text.primary,
           padding: "0",
-
-          ":hover": {
-            backgroundColor: "transparent",
-            color: globalThemePallete.text.secondary,
+          "&.MuiButton-textWarning": {
+            color: globalThemePallete.warning.main,
+            ":hover": {
+              color: globalThemePallete.warning.medium,
+            },
+            ":active": {
+              color: globalThemePallete.warning.dark,
+            },
+          },
+          ".MuiTouchRipple-child": {
+            backgroundColor: "transparent !important",
+          },
+          "&.MuiButton-textError": {
+            color: globalThemePallete.error.main,
+            ":hover": {
+              color: globalThemePallete.error.medium,
+            },
+            ":active": {
+              color: globalThemePallete.error.dark,
+            },
+          },
+          "&.MuiButton-textInfo": {
+            color: globalThemePallete.info.main,
+            ":hover": {
+              color: globalThemePallete.info.medium,
+            },
+            ":active": {
+              color: globalThemePallete.info.dark,
+            },
+          },
+          "&.MuiButton-textSuccess": {
+            color: globalThemePallete.success.main,
+            ":hover": {
+              color: globalThemePallete.success.medium,
+            },
+            ":active": {
+              color: globalThemePallete.success.dark,
+            },
           },
         },
       },
