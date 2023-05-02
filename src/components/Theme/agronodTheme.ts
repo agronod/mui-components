@@ -4,16 +4,21 @@ import { globalThemePallete } from "./baseTheme";
 const agronodThemePallete = createTheme({
   palette: {
     primary: {
-      main: "#ECCC7A",
-      light: "#FBF2DD",
-      medium: "#F4E0AD",
-      dark: "#D7822F",
+      pastel: "#FFF5D9",
+      light: "#FDECB5",
+      main: "#F2CB6C",
+      mainHover: "#DDBA65",
+      medium: "#E6B34F",
+      mediumHover: "#D2A54A",
+      dark: "#C3872F",
+      darkHover: "#B37D2E",
     },
     secondary: {
+      pastel: "#E8ECF2",
+      light: "#C7D1DA",
       main: "#51697E",
-      light: "#E8ECF2",
-      medium: "#C7D1DA",
-      dark: "#17222D",
+      medium: "#455B6E",
+      dark: "#364858",
     },
   },
 });
@@ -51,6 +56,17 @@ const agronodThemeOptions = {
         },
         text: {
           textDecoration: "underline",
+        },
+      },
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          "& .MuiSvgIcon-root:last-of-type": {
+            "& path": {
+              fill: globalThemePallete.palette.primary.medium,
+            },
+          },
         },
       },
     },

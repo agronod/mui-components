@@ -1,10 +1,23 @@
-import { createTheme, Theme, ThemeOptions } from "@mui/material/styles";
+import {
+  createTheme,
+  SimplePaletteColorOptions,
+  ThemeOptions,
+} from "@mui/material/styles";
 import { common } from "@mui/material/colors";
 import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
 import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
+
+declare module "@mui/material/styles" {
+  interface PaletteColorOptions extends SimplePaletteColorOptions {
+    pastel?: string;
+    mainHover?: string;
+    mediumHover?: string;
+    darkHover?: string;
+  }
+}
 declare module "@mui/material/Typography/Typography" {
   interface TypographyPropsVariantOverrides {
     body1bold: true;
@@ -21,32 +34,32 @@ const pxToRem = (fontSize: number) => {
 
 const semanticThemePallete = {
   error: {
-    dark: "#A92E26",
-    medium: "#B73831",
+    pastel: "#FCECEE",
+    light: "#F7C7D3",
     main: "#D4483E",
-    border: "#F7CFD3",
-    background: "#FCECEE",
+    medium: "#B73831",
+    dark: "#A92E26",
   },
   warning: {
-    dark: "#D65A26",
-    medium: "#E0732C",
+    pastel: "#FDF0E6",
+    light: "#FBDCB7",
     main: "#ED9135",
-    border: "#FBE0B7",
-    background: "#FDF3E2",
-  },
-  success: {
-    dark: "#2F5D28",
-    medium: "#457A3B",
-    main: "#5D9D52",
-    border: "#CEE5CB",
-    background: "#EAF5EA",
+    medium: "#E0732C",
+    dark: "#D65A26",
   },
   info: {
-    dark: "#364858",
-    medium: "#455B6E",
+    pastel: "#E8ECF2",
+    light: "#C7D1DA",
     main: "#51697E",
-    border: "#C7D1DA",
-    background: "#E8ECF2",
+    medium: "#455B6E",
+    dark: "#364858",
+  },
+  success: {
+    pastel: "#EAF5EA",
+    light: "#CEE5CB",
+    main: "#5D9D52",
+    medium: "#457A3B",
+    dark: "#2F5D28",
   },
 };
 
@@ -54,18 +67,26 @@ const grayThemePallete = {
   text: {
     primary: "#252321",
     secondary: "#666461",
+    disabled: "#A3A19F",
   },
   icon: {
     primary: "#464542",
     secondary: "#7A7875",
   },
-  disabled: "#A3A19F",
-  outlines: "#C2C0BD",
-  dividers: "#E5E3E0",
-  background: {
-    default: "#F8F6F3",
-    paper: common.white,
+  input: {
+    background: common.white,
+    backgroundDisabled: "#FCFAF7",
+    border: "#C2C0BD",
   },
+  background: {
+    page: "#F8F6F3",
+    paper: common.white,
+    card: common.white,
+    overlay: "rgba(37, 35, 33, 0.3)",
+  },
+  divider: "#E5E3E0",
+  border: "#E5E3E0",
+  disabled: "#A3A19F",
 };
 
 const globalThemePallete = createTheme({
@@ -375,20 +396,12 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          color: globalThemePallete.palette.text.primary,
           "*": {
             color: "inherit",
           },
           ":hover": {
-            backgroundColor: globalThemePallete.palette.primary.light,
             "*": {
               color: "inherit",
-            },
-          },
-          "&.Mui-selected": {
-            backgroundColor: globalThemePallete.palette.primary.light,
-            ":hover": {
-              backgroundColor: globalThemePallete.palette.primary.light,
             },
           },
         },
@@ -411,9 +424,6 @@ const baseThemeOptions: ThemeOptions = {
           },
           "& .MuiSvgIcon-root:last-of-type": {
             fontSize: pxToRem(22),
-            "& path": {
-              fill: globalThemePallete.palette.primary.medium,
-            },
           },
         },
       },
