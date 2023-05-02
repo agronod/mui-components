@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from "@mui/material";
-import React, { ErrorInfo, PropsWithChildren, useState } from "react";
+import React, { ErrorInfo, PropsWithChildren } from "react";
 
 const ErrorBoundaryContext = React.createContext({
   triggerError: ({ error, message }: any) => {},
@@ -29,45 +29,55 @@ interface State {
   message: string;
 }
 
-const ErrorBoundary: React.FC<PropsWithChildren> = ({ children }) => {
-  const [state, setState] = useState<State>({
+export default class ErrorBoundary extends React.Component<
+  PropsWithChildren,
+  State
+> {
+  state = {
     hasError: false,
     message: "",
-  });
-
-  const triggerError = ({ error, message }: any) => {
-    setState({ hasError: true, message });
   };
 
-  const resetError = () => {
-    setState({ hasError: false, message: "" });
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: any, errorInfo: ErrorInfo) {
+    // console.error("Uncaught error:", error, errorInfo);
+  }
+
+  triggerError = ({ error, message }: any) => {
+    // console.log("ErrorBoundary triggerError", error, message);
+    this.setState({ hasError: true, message });
   };
 
-  const { hasError, message } = state;
+  resetError = () => this.setState({ hasError: false });
 
-  return (
-    <ErrorBoundaryContext.Provider
-      value={{
-        triggerError,
-        state,
-      }}
-    >
-      <Snackbar
-        open={hasError}
-        sx={{ height: "auto !important" }}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+  render() {
+    return (
+      <ErrorBoundaryContext.Provider
+        value={{
+          triggerError: this.triggerError,
+          state: this.state,
+        }}
       >
-        <Alert
-          severity="error"
-          sx={{ alignSelf: "flex-end" }}
-          onClose={resetError}
-        >
-          {message}
-        </Alert>
-      </Snackbar>
-      {children}
-    </ErrorBoundaryContext.Provider>
-  );
-};
-
-export default ErrorBoundary;
+        {
+          <Snackbar
+            open={this.state.hasError}
+            sx={{ height: "auto !important" }}
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          >
+            <Alert
+              severity="error"
+              sx={{ alignSelf: "flex-end" }}
+              onClose={this.resetError}
+            >
+              {this.state.message}
+            </Alert>
+          </Snackbar>
+        }
+        {this.props.children}
+      </ErrorBoundaryContext.Provider>
+    );
+  }
+}
