@@ -35,7 +35,7 @@ export default function Header({
   agronodLogo,
 }: IProps) {
   return (
-    <AppBar position="fixed" visible={true} elevation={1}>
+    <AppBar sx={{ height: 78 }} position="fixed" visible={true} elevation={1}>
       <Toolbar
         disableGutters={true}
         sx={{
@@ -63,16 +63,6 @@ export default function Header({
         >
           <>
             {menuLinks && menuLinks}
-
-            {!agronodLogo && (
-              <MuiLink
-                href="https://www.agronod.com/sv/om-agrosfar"
-                target="_blank"
-                underline="none"
-              >
-                <Typography variant="body1">Om Agrosfär</Typography>
-              </MuiLink>
-            )}
             {userDropdown && userDropdown}
           </>
         </Stack>
