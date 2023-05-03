@@ -38,12 +38,15 @@ export default function Header({
     <AppBar sx={{ height: 78 }} position="fixed" visible={true} elevation={1}>
       <Toolbar
         disableGutters={true}
-        sx={{
+        sx={(theme) => ({
           display: "flex",
           justifyContent: "space-between",
           px: 5,
           py: 3,
-        }}
+          [theme.breakpoints.down("sm")]: {
+            px: 2,
+          },
+        })}
       >
         <MuiLink
           to="/"
