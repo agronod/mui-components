@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import InputField from "./InputField";
+import { FormControl, FormLabel, TextField } from "@mui/material";
 
 export default {
   title: "Components/InputField",
-  component: InputField,
+  component: TextField,
   argTypes: {
-    inputLabel: {
+    children: {
       control: {
         type: "text",
         expanded: true,
@@ -88,71 +88,136 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof InputField>;
+} as ComponentMeta<typeof TextField>;
 
-export const DefaultInputField: ComponentStory<typeof InputField> = ({
+export const DefaultInputField: ComponentStory<typeof TextField> = ({
   ...args
-}) => <InputField value={args.value} {...args} />;
+}) => (
+  <TextField
+    InputLabelProps={{
+      shrink: false,
+      color: "secondary",
+    }}
+    {...args}
+  />
+);
 DefaultInputField.args = {
+  variant: "outlined",
   name: "defaultInputField",
   placeholder: "default input text",
   type: "text",
   id: "defaultInputField",
+  fullWidth: true,
 };
 
 export const InputFieldWithLabelAndHelperText: ComponentStory<
-  typeof InputField
-> = ({ ...args }) => <InputField value={args.value} {...args} />;
+  typeof TextField
+> = ({ children, ...rest }) => (
+  <FormControl fullWidth={rest.fullWidth}>
+    <FormLabel>{children}</FormLabel>
+    <TextField
+      InputLabelProps={{
+        shrink: false,
+        color: "secondary",
+      }}
+      {...rest}
+    />
+  </FormControl>
+);
 InputFieldWithLabelAndHelperText.args = {
-  inputLabel: "Personnumer",
+  children: "Personnummer",
   helperText: "this is example of helper text",
+  placeholder: "Personnummer",
   name: "inputTextWithLabel",
   type: "text",
   id: "inputTextWithLabel",
+  fullWidth: true,
 };
 
-export const InputFieldRequired: ComponentStory<typeof InputField> = ({
-  ...args
-}) => <InputField value={args.value} {...args} />;
+export const InputFieldRequired: ComponentStory<typeof TextField> = ({
+  children,
+  ...rest
+}) => (
+  <FormControl>
+    <FormLabel required={rest.required}>{children}</FormLabel>
+    <TextField
+      InputLabelProps={{
+        shrink: false,
+        color: "secondary",
+      }}
+      {...rest}
+    />
+  </FormControl>
+);
 InputFieldRequired.args = {
+  children: "Personnummer",
+  placeholder: "Personnummer",
   required: true,
-  inputLabel: "Personnumer",
+  label: "Personnummer",
   name: "inputTextWithLabel",
   type: "text",
   id: "inputTextWithLabel",
 };
 
-export const InputFieldError: ComponentStory<typeof InputField> = ({
-  ...args
-}) => <InputField value={args.value} {...args} />;
+export const InputFieldError: ComponentStory<typeof TextField> = ({
+  children,
+  ...rest
+}) => (
+  <FormControl>
+    <FormLabel error={rest.error}>{children}</FormLabel>
+    <TextField
+      InputLabelProps={{
+        shrink: false,
+        color: "secondary",
+      }}
+      {...rest}
+    />
+  </FormControl>
+);
 InputFieldError.args = {
+  children: "Personnummer",
   required: true,
   error: true,
-  inputLabel: "Personnumer",
+  placeholder: "Personnummer",
   helperText: "this is error text",
   name: "inputTextWithLabel",
   type: "text",
   id: "inputTextWithLabel",
 };
 
-export const InputFieldDisabled: ComponentStory<typeof InputField> = ({
+export const InputFieldDisabled: ComponentStory<typeof TextField> = ({
   ...args
-}) => <InputField value={args.value} {...args} />;
+}) => (
+  <TextField
+    InputLabelProps={{
+      shrink: false,
+      color: "secondary",
+    }}
+    {...args}
+  />
+);
 InputFieldDisabled.args = {
-  required: true,
+  placeholder: "disabled",
   disabled: true,
-  inputLabel: "Personnumer",
   helperText: "this is example of disabled input",
   name: "inputDisabled",
   type: "text",
   id: "inputDisabled",
 };
 
-export const InputFieldPassword: ComponentStory<typeof InputField> = ({
+export const InputFieldPassword: ComponentStory<typeof TextField> = ({
   ...args
-}) => <InputField value={args.value} {...args} />;
+}) => (
+  <TextField
+    InputLabelProps={{
+      shrink: false,
+      color: "secondary",
+    }}
+    {...args}
+  />
+);
 InputFieldPassword.args = {
-  inputLabel: "Password",
+  placeholder: "Password",
   helperText: "this is example of password input",
   name: "inputPassword",
   value: "MyPassword",
@@ -160,11 +225,19 @@ InputFieldPassword.args = {
   id: "inputDisabled",
 };
 
-export const InputFieldDate: ComponentStory<typeof InputField> = ({
+export const InputFieldDate: ComponentStory<typeof TextField> = ({
   ...args
-}) => <InputField value={args.value} {...args} />;
+}) => (
+  <TextField
+    InputLabelProps={{
+      shrink: false,
+      color: "secondary",
+    }}
+    {...args}
+  />
+);
 InputFieldDate.args = {
-  inputLabel: "Date",
+  placeholder: "Date",
   helperText: "this is example of date type of input",
   name: "inputDate",
   type: "date",

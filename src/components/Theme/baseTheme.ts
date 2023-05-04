@@ -354,6 +354,9 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
           height: 48,
@@ -558,6 +561,8 @@ const baseThemeOptions: ThemeOptions = {
           lineHeight: 1.25,
           marginLeft: 0,
           fontFamily: "inter",
+          fontWeight: 500,
+          marginBottom: "8px",
         },
       },
     },

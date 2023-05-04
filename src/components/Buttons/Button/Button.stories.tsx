@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Button from "./Button";
-import { MuiArrowBackIcon, MuiArrowForwardIcon } from "../../StoryIcons";
+import { Button, CircularProgress } from "@mui/material";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
 export default {
   title: "Components/Buttons/Button",
@@ -71,24 +71,6 @@ export default {
         expanded: true,
       },
     },
-    startIcon: {
-      control: {
-        type: "ReactNode",
-        expanded: true,
-      },
-    },
-    endIcon: {
-      control: {
-        type: "ReactNode",
-        expanded: true,
-      },
-    },
-    loading: {
-      control: {
-        type: "boolean",
-        expanded: true,
-      },
-    },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -108,13 +90,6 @@ export const ButtonOutlined: ComponentStory<typeof Button> = ({
 ButtonOutlined.args = {
   children: "Button Outlined",
   variant: "outlined",
-};
-ButtonOutlined.parameters = {
-  docs: {
-    description: {
-      story: `<p>Default <code>Button</code> comes with two variants: <code>contained</code> and <code>outlined</code>.</p><p>In our project <code>contained</code> is used for "Primary Buttons" and <code>outlined</code> for "Secondary Buttons". But all other properties they share.</p>`,
-    },
-  },
 };
 
 export const ButtonText: ComponentStory<typeof Button> = ({
@@ -158,51 +133,38 @@ ButtonCustomWidth.args = {
 
 export const ButtonLoader: ComponentStory<typeof Button> = ({
   children,
-  loading,
   ...rest
 }) => (
-  <Button loading={loading} {...rest}>
-    {children}
+  <Button disabled={true} {...rest}>
+    <CircularProgress color="inherit" size={20} />
   </Button>
 );
 ButtonLoader.args = {
-  children: "Button not loading",
   variant: "contained",
-  loading: true,
-};
-
-export const ButtonThatLooksLikeLink: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => <Button {...rest}>{children}</Button>;
-ButtonThatLooksLikeLink.args = {
-  children: "Button link",
-  variant: "text",
-};
-ButtonThatLooksLikeLink.parameters = {
-  docs: {
-    description: {
-      story: `<p>This button is <code>variant="text"</code> underline was added as global styling to this button so it reflects it's purpose.</p>`,
-    },
-  },
 };
 
 export const ButtonIconLeft: ComponentStory<typeof Button> = ({
   children,
   ...rest
-}) => <Button {...rest}>{children}</Button>;
+}) => (
+  <Button startIcon={<ArrowBack />} {...rest}>
+    {children}
+  </Button>
+);
 ButtonIconLeft.args = {
   children: "Button with icon on left",
   variant: "contained",
-  startIcon: <MuiArrowBackIcon />,
 };
 
 export const ButtonIconRight: ComponentStory<typeof Button> = ({
   children,
   ...rest
-}) => <Button {...rest}>{children}</Button>;
+}) => (
+  <Button endIcon={<ArrowForward />} {...rest}>
+    {children}
+  </Button>
+);
 ButtonIconRight.args = {
   children: "Button with icon on right",
   variant: "contained",
-  endIcon: <MuiArrowForwardIcon />,
 };

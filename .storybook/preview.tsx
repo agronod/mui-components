@@ -16,6 +16,15 @@ export const parameters = {
     fullscreen: { hidden: true },
     "storybook/background": { hidden: true },
   },
+  backgrounds: {
+    default: "agronod",
+    values: [
+      {
+        name: "agronod",
+        value: "#F8F6F3",
+      },
+    ],
+  },
 };
 
 const themeOptions = {

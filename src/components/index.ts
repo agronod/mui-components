@@ -11,13 +11,8 @@ export * from "./Stepper";
 export * from "./TextField";
 export * from "./Theme";
 export * from "./Tooltip";
-export * from "./Buttons";
-export * from "./InputField";
-export * from "./Checkbox";
-export * from "./Links";
 export * from "./Loaders";
-export * from "./Card";
-export * from "./Typography";
+export * from "./AsideCard";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };

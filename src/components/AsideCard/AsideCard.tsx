@@ -6,24 +6,22 @@ import {
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Theme, useTheme } from "@mui/material/styles";
 
-type CardBaseProps = Pick<MuiCardProps, "variant" | "sx">;
+type AsideCardBaseProps = Pick<MuiCardProps, "variant" | "sx">;
 
-export interface CardProps extends CardBaseProps {
+export interface AsideCardProps extends AsideCardBaseProps {
   children: React.ReactNode;
-  positionLeft?: boolean;
-  positionRight?: boolean;
+  position: "left" | "right";
   centeredContent?: boolean;
   padding?: string | number;
 }
 
-const Card = ({
+const AsideCard = ({
   children,
-  positionLeft,
-  positionRight,
+  position,
   centeredContent,
   padding,
   ...rest
-}: CardProps) => {
+}: AsideCardProps) => {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
   const styleObject: SxProps = {
@@ -31,7 +29,7 @@ const Card = ({
     minHeight: "100px",
     borderRadius: "20px",
   };
-  if (positionLeft) {
+  if (position === "left") {
     styleObject.borderBottomRightRadius = "20px";
     styleObject.borderTopRightRadius = "20px";
     styleObject.borderTopLeftRadius = "0";
@@ -39,7 +37,7 @@ const Card = ({
     styleObject.marginRight = "-20px";
   }
 
-  if (positionRight) {
+  if (position === "right") {
     styleObject.borderBottomLeftRadius = "20px";
     styleObject.borderTopLeftRadius = "20px";
     styleObject.borderTopRightRadius = "0";
@@ -54,7 +52,7 @@ const Card = ({
     styleObject.justifyContent = "center";
   }
 
-  if (mobile && (positionLeft || positionRight)) {
+  if (mobile) {
     styleObject.borderBottomRightRadius = "0";
     styleObject.borderTopRightRadius = "20px";
     styleObject.borderTopLeftRadius = "20px";
@@ -79,4 +77,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default AsideCard;

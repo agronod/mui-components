@@ -1,9 +1,9 @@
+import { Checkbox, FormControlLabel } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Checkbox from "./Checkbox";
 
 export default {
   title: "Components/Checkbox",
-  component: Checkbox,
+  component: FormControlLabel,
   argTypes: {
     checked: {
       control: {
@@ -15,67 +15,42 @@ export default {
         type: "boolean",
       },
     },
-    color: {
-      control: {
-        type: "select",
-        options: [
-          "inherit",
-          "primary",
-          "secondary",
-          "error",
-          "info",
-          "success",
-          "warning",
-        ],
-      },
-    },
-    id: {
-      control: {
-        type: "text",
-        expanded: true,
-      },
-    },
     sx: {
       control: {
         type: "object",
         expanded: true,
       },
     },
-    value: {
+    label: {
       control: {
         type: "text",
-        expanded: true,
       },
     },
   },
-} as ComponentMeta<typeof Checkbox>;
+} as ComponentMeta<typeof FormControlLabel>;
 
-export const CheckboxDefault: ComponentStory<typeof Checkbox> = ({
+export const CheckboxDefault: ComponentStory<typeof FormControlLabel> = ({
   ...args
-}) => <Checkbox {...args} />;
+}) => <FormControlLabel {...args} control={<Checkbox />} />;
 
-export const CheckboxChecked: ComponentStory<typeof Checkbox> = ({
+export const CheckboxChecked: ComponentStory<typeof FormControlLabel> = ({
   ...args
-}) => <Checkbox {...args} />;
+}) => <FormControlLabel {...args} control={<Checkbox />} />;
 CheckboxChecked.args = {
   checked: true,
 };
 
-export const CheckboxWithLabel: ComponentStory<typeof Checkbox> = ({
+export const CheckboxWithLabel: ComponentStory<typeof FormControlLabel> = ({
   ...args
-}) => <Checkbox {...args} />;
+}) => <FormControlLabel {...args} control={<Checkbox />} />;
 CheckboxWithLabel.args = {
-  id: "checkboxWithLabel",
-  label: "This is a label",
-  value: "checkboxWithLabel",
+  label: "this is label",
 };
 
-export const CheckboxDisabled: ComponentStory<typeof Checkbox> = ({
+export const CheckboxDisabled: ComponentStory<typeof FormControlLabel> = ({
   ...args
-}) => <Checkbox {...args} />;
+}) => <FormControlLabel {...args} control={<Checkbox />} />;
 CheckboxDisabled.args = {
+  label: "disabled",
   disabled: true,
-  id: "checkboxWithLabel",
-  label: "This is disabled",
-  value: "checkboxWithLabel",
 };

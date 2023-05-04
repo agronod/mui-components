@@ -1,5 +1,5 @@
+import { Typography } from "@mui/material";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Typography from "./Typography";
 
 export default {
   title: "Base/Typography",
@@ -117,24 +117,6 @@ export const Headline2: ComponentStory<typeof Typography> = ({
 Headline2.args = {
   children: "This is h2",
   variant: "h2",
-};
-
-export const Headline2StyledAsH1: ComponentStory<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
-
-Headline2StyledAsH1.args = {
-  children: "This is h2 styled as h1",
-  variant: "h2",
-  component: "h1",
-};
-Headline2StyledAsH1.parameters = {
-  docs: {
-    description: {
-      story: `<p>If we want to have headline styled as h1 but we don't want to have multiple h1 on one page, we can add <code>component</code> property which will render this element as h2 but with h1 styles.</p>`,
-    },
-  },
 };
 
 export const Headline3: ComponentStory<typeof Typography> = ({
