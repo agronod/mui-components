@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import LoaderCircular from "./LoaderCircular";
-import Button from "../../Buttons/Button/Button";
+import { Button } from "@mui/material";
 
 export default {
   title: "Components/Loaders/LoaderCircular",
@@ -51,7 +51,7 @@ LoaderCircularDefault.args = {
 export const LoaderCircularInButton: ComponentStory<typeof LoaderCircular> = ({
   ...args
 }) => (
-  <Button variant="contained" loading={true}>
+  <Button variant="contained">
     <LoaderCircular {...args} />
   </Button>
 );
