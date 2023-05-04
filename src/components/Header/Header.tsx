@@ -43,7 +43,7 @@ export default function Header({
           justifyContent: "space-between",
           px: 5,
           py: 3,
-          [theme.breakpoints.down("sm")]: {
+          [theme.breakpoints.down("md")]: {
             px: 2,
           },
         })}
