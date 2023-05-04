@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Stack, Toolbar, Typography, Link as MuiLink } from "@mui/material";
+import { Stack, Toolbar, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
 import { AgrosfarPilotLogo, AgronodLogo } from "../../assets";
