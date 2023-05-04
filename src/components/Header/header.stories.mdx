@@ -10,12 +10,16 @@ import {
   FormGroup,
   Stack,
   Box,
+  Typography,
+  Link as MuiLink
 } from "@mui/material";
 import { Header } from "./";
 import { BrowserRouter } from "react-router-dom";
+import { AgrosfarPilotLogo } from "../../assets";
 
 <Meta
   title="Components/Header"
+  component={Header}
   parameters={{
     viewMode: "docs",
   }}
@@ -23,6 +27,16 @@ import { BrowserRouter } from "react-router-dom";
 
 <Story name="Header" args={{}}>
   <BrowserRouter>
-    <Header />
+    <Header 
+      customLogo={<AgrosfarPilotLogo />}
+      menuLinks={
+        <Link
+          href="https://www.agronod.com/sv/om-agrosfar"
+          target="_blank"
+          underline="none"
+        >
+          <Typography variant="body1">Om Agrosfär</Typography>
+        </Link>
+      } />
   </BrowserRouter>
 </Story>
