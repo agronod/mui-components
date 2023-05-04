@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.4.3",
+  "version": "1.4.6-fix-a20blfh-908.1",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",

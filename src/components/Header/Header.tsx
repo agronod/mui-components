@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Stack, Toolbar, Typography, Link as MuiLink } from "@mui/material";
+import { Stack, Toolbar, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
 import { AgrosfarPilotLogo, AgronodLogo } from "../../assets";
@@ -35,15 +35,18 @@ export default function Header({
   agronodLogo,
 }: IProps) {
   return (
-    <AppBar position="fixed" visible={true} elevation={1}>
+    <AppBar sx={{ height: 78 }} position="fixed" visible={true} elevation={1}>
       <Toolbar
         disableGutters={true}
-        sx={{
+        sx={(theme) => ({
           display: "flex",
           justifyContent: "space-between",
           px: 5,
           py: 3,
-        }}
+          [theme.breakpoints.down("md")]: {
+            px: 2,
+          },
+        })}
       >
         <MuiLink
           to="/"
@@ -63,16 +66,6 @@ export default function Header({
         >
           <>
             {menuLinks && menuLinks}
-
-            {!agronodLogo && (
-              <MuiLink
-                href="https://www.agronod.com/sv/om-agrosfar"
-                target="_blank"
-                underline="none"
-              >
-                <Typography variant="body1">Om Agrosfär</Typography>
-              </MuiLink>
-            )}
             {userDropdown && userDropdown}
           </>
         </Stack>
