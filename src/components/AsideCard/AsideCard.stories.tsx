@@ -7,6 +7,7 @@ import {
   FormControl,
   FormLabel,
   TextField,
+  Theme,
   Typography,
 } from "@mui/material";
 
@@ -59,7 +60,20 @@ export const AsideCardRight: ComponentStory<typeof AsideCard> = ({
   children,
   ...rest
 }) => (
-  <AsideCard sx={{ width: "50%", float: rest.position }} {...rest}>
+  <AsideCard
+    sx={(theme: Theme) => ({
+      width: "50%",
+      float: rest.position,
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+        float: "none",
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+      },
+    })}
+    {...rest}
+  >
     {children}
   </AsideCard>
 );
