@@ -51,7 +51,7 @@ LoaderCircularDefault.args = {
 export const LoaderCircularInButton: ComponentStory<typeof LoaderCircular> = ({
   ...args
 }) => (
-  <Button variant="contained">
+  <Button variant="contained" disabled={true}>
     <LoaderCircular {...args} />
   </Button>
 );

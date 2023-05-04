@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Button, CircularProgress } from "@mui/material";
+import { Button } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { LoaderCircular } from "../../Loaders";
 
 export default {
   title: "Components/Buttons/Button",
@@ -136,7 +137,7 @@ export const ButtonLoader: ComponentStory<typeof Button> = ({
   ...rest
 }) => (
   <Button disabled={true} {...rest}>
-    <CircularProgress color="inherit" size={20} />
+    <LoaderCircular align="center" color="inherit" size={20} thickness={5} />
   </Button>
 );
 ButtonLoader.args = {
