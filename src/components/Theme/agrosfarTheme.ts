@@ -61,6 +61,15 @@ const agrosfarTheme = {
         },
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          ":hover": {
+            color: themePallete.primary.main,
+          },
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         outlined: {
