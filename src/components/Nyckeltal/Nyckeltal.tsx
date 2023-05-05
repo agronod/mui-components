@@ -1,4 +1,4 @@
-import { Typography, useTheme } from "@mui/material";
+import { Typography } from "@mui/material";
 import { getNyckeltalVarde, NyckeltalProps } from "./utils";
 
 type Props = {
@@ -7,7 +7,6 @@ type Props = {
 };
 
 export default function Nyckeltal({ item, boxShadow = true }: Props) {
-  const theme = useTheme();
   return (
     <li
       style={{
