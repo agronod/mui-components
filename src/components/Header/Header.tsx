@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Stack, Toolbar, Typography, Link as MuiLink } from "@mui/material";
+import { Stack, Toolbar, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
-import { AgrosfarPilotLogo, AgronodLogo } from "../../assets";
+import { AgronodLogo } from "../../assets";
 
 interface AppBarProps extends MuiAppBarProps {
   visible?: boolean;
@@ -26,24 +26,27 @@ interface IProps {
   /*  Child component with links for routing in the applications */
   menuLinks?: React.ReactNode | React.ReactNode[];
   /*  Boolean to show or hide the agronod logo */
-  agronodLogo?: boolean;
+  customLogo?: React.ReactNode | React.ReactNode[];
 }
 
 export default function Header({
   userDropdown,
   menuLinks,
-  agronodLogo,
+  customLogo,
 }: IProps) {
   return (
-    <AppBar position="fixed" visible={true} elevation={1}>
+    <AppBar sx={{ height: 78 }} position="fixed" visible={true} elevation={1}>
       <Toolbar
         disableGutters={true}
-        sx={{
+        sx={(theme) => ({
           display: "flex",
           justifyContent: "space-between",
           px: 5,
           py: 3,
-        }}
+          [theme.breakpoints.down("md")]: {
+            px: 2,
+          },
+        })}
       >
         <MuiLink
           to="/"
@@ -52,7 +55,7 @@ export default function Header({
           maxHeight={30}
           maxWidth={166}
         >
-          {agronodLogo ? <AgronodLogo /> : <AgrosfarPilotLogo />}
+          {customLogo ? customLogo : <AgronodLogo />}
         </MuiLink>
         <Stack
           direction={"row"}
@@ -63,16 +66,6 @@ export default function Header({
         >
           <>
             {menuLinks && menuLinks}
-
-            {!agronodLogo && (
-              <MuiLink
-                href="https://www.agronod.com/sv/om-agrosfar"
-                target="_blank"
-                underline="none"
-              >
-                <Typography variant="body1">Om Agrosfär</Typography>
-              </MuiLink>
-            )}
             {userDropdown && userDropdown}
           </>
         </Stack>
