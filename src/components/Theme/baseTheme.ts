@@ -19,6 +19,28 @@ declare module "@mui/material/styles/" {
     darkHover?: string;
   }
 }
+declare module "@mui/material/styles/" {
+  interface PaletteOptions {
+    icon?: {
+      primary?: string;
+      secondary?: string;
+    };
+    input: {
+      background?: string;
+      backgroundDisabled?: string;
+      border?: string;
+    };
+    border: "#E5E3E0";
+    disabled: "#A3A19F";
+  }
+}
+declare module "@mui/material/styles/" {
+  interface TypeBackground {
+    page?: string;
+    card?: string;
+    overlay?: string;
+  }
+}
 
 declare module "@mui/material/styles/createPalette" {
   interface PaletteColor {
@@ -333,7 +355,6 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          color: "inherit",
           textDecorationColor: "inherit",
           textUnderlineOffset: "2px",
         },
