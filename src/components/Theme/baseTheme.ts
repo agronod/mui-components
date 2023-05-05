@@ -25,13 +25,13 @@ declare module "@mui/material/styles/" {
       primary?: string;
       secondary?: string;
     };
-    input: {
+    input?: {
       background?: string;
       backgroundDisabled?: string;
       border?: string;
     };
-    border: "#E5E3E0";
-    disabled: "#A3A19F";
+    border?: string;
+    disabled?: string;
   }
 }
 declare module "@mui/material/styles/" {
