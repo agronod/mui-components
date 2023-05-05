@@ -1,19 +1,35 @@
 import React from "react";
-import { ThemeProvider } from "../src";
+import { ThemeProvider, agronodTheme, agrosfarTheme } from "../src";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
   },
+  toolbar: {
+    grid: { hidden: true },
+    zoom: { hidden: true },
+    eject: { hidden: true },
+    fullscreen: { hidden: true },
+    "storybook/background": { hidden: true },
+  },
+  backgrounds: {
+    default: "agronod",
+    values: [
+      {
+        name: "agronod",
+        value: "#F8F6F3",
+      },
+    ],
+  },
 };
 
 const themeOptions = {
-  Agronod: undefined,
+  Agronod: agronodTheme,
+  Agrosfar: agrosfarTheme,
 };
 
 const getThemeOptions = (themeName) => {
@@ -25,13 +41,11 @@ export const globalTypes = {
     name: "Theme",
     description: "Global theme for components",
     defaultValue: "Agronod",
-    // toolbar: {
-    //   icon: 'eye',
-    //   // Array of plain string values or MenuItem shape (see below)
-    //   items: ['Agronod'],
-    //   // Property that specifies if the name of the item will be displayed
-    //   showName: true,
-    // },
+    toolbar: {
+      items: ["Agronod", "Agrosfar"],
+      title: true,
+      dynamicTitle: true,
+    },
   },
 };
 
