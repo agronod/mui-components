@@ -27,7 +27,6 @@ const AsideCard = ({
   const styleObject: SxProps = {
     padding: padding,
     minHeight: "100px",
-    borderRadius: "20px",
   };
   if (position === "left") {
     styleObject.borderBottomRightRadius = "20px";

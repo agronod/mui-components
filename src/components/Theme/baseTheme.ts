@@ -282,6 +282,13 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: "20px",
+        },
+      },
+    },
     MuiSvgIcon: {
       styleOverrides: {
         fontSizeLarge: "148px",
@@ -405,14 +412,16 @@ const baseThemeOptions: ThemeOptions = {
           paddingLeft: "24px",
           paddingRight: "24px",
           paddingTop: "12px",
+          borderColor: globalThemePallete.input.border,
 
           ":hover": {
             backgroundColor: "transparent",
+            borderWidth: "2px",
           },
           "&.MuiButton-outlinedWarning": {
-            color: globalThemePallete.warning.main,
+            borderColor: globalThemePallete.warning.main,
+            color: globalThemePallete.text.primary,
             ":hover": {
-              color: globalThemePallete.warning.dark,
               borderColor: globalThemePallete.warning.dark,
             },
             ":active": {
