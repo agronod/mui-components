@@ -282,6 +282,13 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: "20px",
+        },
+      },
+    },
     MuiSvgIcon: {
       styleOverrides: {
         fontSizeLarge: "148px",
