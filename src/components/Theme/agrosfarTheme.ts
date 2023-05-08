@@ -65,15 +65,15 @@ const agrosfarTheme = {
       styleOverrides: {
         outlined: {
           ":hover": {
-            borderWidth: "2px",
+            color: themePallete.primary.medium,
           },
           ":active": {
             backgroundColor: themePallete.primary.pastel,
           },
           "&.MuiButton-outlinedSecondary": {
-            color: themePallete.secondary.main,
             ":hover": {
               borderColor: themePallete.secondary.dark,
+              color: themePallete.secondary.medium,
             },
             ":active": {
               backgroundColor: themePallete.secondary.pastel,
