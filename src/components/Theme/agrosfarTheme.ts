@@ -1,8 +1,8 @@
 import { common } from "@mui/material/colors";
-import { globalThemePallete } from "./baseTheme";
+import { globalThemePalette } from "./baseTheme";
 import createPalette from "@mui/material/styles/createPalette";
 
-const agrosfarThemePallete = {
+const agrosfarThemePalette = {
   primary: {
     pastel: "#E0F0EA",
     light: "#B4D9CA",
@@ -17,19 +17,19 @@ const agrosfarThemePallete = {
     medium: "#564230",
     dark: "#443023",
   },
-  ...globalThemePallete,
+  ...globalThemePalette,
 };
 
-const themePallete = createPalette(agrosfarThemePallete);
+const themePalette = createPalette(agrosfarThemePalette);
 
 const agrosfarTheme = {
-  palette: themePallete,
+  palette: themePalette,
   components: {
     MuiCheckbox: {
       styleOverrides: {
         root: {
           "&.Mui-checked": {
-            color: themePallete.primary.dark,
+            color: themePalette.primary.dark,
           },
         },
       },
@@ -37,14 +37,14 @@ const agrosfarTheme = {
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: themePallete.text.primary,
+          color: themePalette.text.primary,
           ":hover": {
-            backgroundColor: themePallete.primary.light,
+            backgroundColor: themePalette.primary.light,
           },
           "&.Mui-selected": {
-            backgroundColor: themePallete.primary.light,
+            backgroundColor: themePalette.primary.light,
             ":hover": {
-              backgroundColor: themePallete.primary.light,
+              backgroundColor: themePalette.primary.light,
             },
           },
         },
@@ -55,7 +55,7 @@ const agrosfarTheme = {
         root: {
           "& .MuiSvgIcon-root:last-of-type": {
             "& path": {
-              fill: themePallete.primary.medium,
+              fill: themePalette.primary.medium,
             },
           },
         },
@@ -65,37 +65,49 @@ const agrosfarTheme = {
       styleOverrides: {
         outlined: {
           ":hover": {
-            color: themePallete.primary.medium,
+            color: themePalette.primary.medium,
           },
           ":active": {
-            backgroundColor: themePallete.primary.pastel,
+            backgroundColor: themePalette.primary.pastel,
           },
           "&.MuiButton-outlinedSecondary": {
             ":hover": {
-              borderColor: themePallete.secondary.dark,
-              color: themePallete.secondary.medium,
+              borderColor: themePalette.secondary.dark,
+              color: themePalette.secondary.medium,
             },
             ":active": {
-              backgroundColor: themePallete.secondary.pastel,
+              backgroundColor: themePalette.secondary.pastel,
+            },
+          },
+        },
+        contained: {
+          "&.MuiButton-containedPrimary": {
+            ":hover": {
+              backgroundColor: themePalette.primary.medium,
+            },
+          },
+          "&.MuiButton-containedSecondary": {
+            ":hover": {
+              backgroundColor: themePalette.secondary.medium,
             },
           },
         },
         text: {
           ":hover": {
             textDecoration: "underline",
-            color: themePallete.primary.medium,
+            color: themePalette.primary.medium,
             backgroundColor: "transparent",
           },
           ":active": {
-            color: themePallete.primary.dark,
+            color: themePalette.primary.dark,
           },
           "&.MuiButton-textSecondary": {
-            color: themePallete.secondary.main,
+            color: themePalette.secondary.main,
             ":hover": {
-              color: `${themePallete.secondary.medium}`,
+              color: `${themePalette.secondary.medium}`,
             },
             ":active": {
-              color: `${themePallete.secondary.dark}`,
+              color: `${themePalette.secondary.dark}`,
             },
           },
         },

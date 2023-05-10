@@ -1,7 +1,7 @@
-import { globalThemePallete } from "./baseTheme";
+import { globalThemePalette } from "./baseTheme";
 import createPalette from "@mui/material/styles/createPalette";
 
-const agronodThemePallete = createPalette({
+const agronodThemePalette = createPalette({
   primary: {
     pastel: "#FFF5D9",
     light: "#FDECB5",
@@ -19,19 +19,19 @@ const agronodThemePallete = createPalette({
     medium: "#455B6E",
     dark: "#364858",
   },
-  ...globalThemePallete,
+  ...globalThemePalette,
 });
 
-const themePallete = createPalette(agronodThemePallete);
+const themePalette = createPalette(agronodThemePalette);
 
 const agronodTheme = {
-  palette: agronodThemePallete,
+  palette: agronodThemePalette,
   components: {
     MuiCheckbox: {
       styleOverrides: {
         root: {
           "&.Mui-checked": {
-            color: themePallete.primary.dark,
+            color: themePalette.primary.dark,
           },
         },
       },
@@ -40,8 +40,8 @@ const agronodTheme = {
       styleOverrides: {
         root: {
           "&:hover": {
-            color: themePallete.primary.main,
-            textDecorationColor: themePallete.primary.main,
+            color: themePalette.primary.main,
+            textDecorationColor: themePalette.primary.main,
           },
         },
       },
@@ -49,26 +49,31 @@ const agronodTheme = {
     MuiButton: {
       styleOverrides: {
         outlined: {
-          "&.MuiButton-outlinedPrimary": {  
-            color: themePallete.text.primary,
-            borderColor: themePallete.primary.main,
+          "&.MuiButton-outlinedPrimary": {
+            color: themePalette.text.primary,
+            borderColor: themePalette.primary.main,
             ":hover": {
-              borderColor: themePallete.primary.dark,
+              borderColor: themePalette.primary.dark,
             },
             ":active": {
-              backgroundColor: themePallete.primary.pastel,
+              backgroundColor: themePalette.primary.pastel,
             },
           },
           "&.MuiButton-outlinedSecondary": {
             ":active": {
-              backgroundColor: themePallete.secondary.pastel,
+              backgroundColor: themePalette.secondary.pastel,
             },
           },
         },
         contained: {
           "&.MuiButton-containedPrimary": {
             ":hover": {
-              backgroundColor: themePallete.primary.mainHover,
+              backgroundColor: themePalette.primary.mainHover,
+            },
+          },
+          "&.MuiButton-containedSecondary": {
+            ":hover": {
+              backgroundColor: themePalette.secondary.mainHover,
             },
           },
           ".MuiTouchRipple-child": {
@@ -76,22 +81,22 @@ const agronodTheme = {
           },
         },
         text: {
-          color: themePallete.text.primary,
+          color: themePalette.text.primary,
           ":hover": {
             textDecoration: "underline",
             backgroundColor: "transparent",
             color: "initial",
           },
           ":active": {
-            color: `${themePallete.primary.darkHover}`,
+            color: `${themePalette.primary.darkHover}`,
           },
           "&.MuiButton-textSecondary": {
-            color: themePallete.secondary.main,
+            color: themePalette.secondary.main,
             ":hover": {
-              color: `${themePallete.secondary.medium}`,
+              color: `${themePalette.secondary.medium}`,
             },
             ":active": {
-              color: `${themePallete.secondary.dark}`,
+              color: `${themePalette.secondary.dark}`,
             },
           },
         },
@@ -102,7 +107,7 @@ const agronodTheme = {
         root: {
           "& .MuiSvgIcon-root:last-of-type": {
             "& path": {
-              fill: themePallete.primary.medium,
+              fill: themePalette.primary.medium,
             },
           },
         },
