@@ -15,6 +15,7 @@ declare module "@mui/material/styles/" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
     pastel?: string;
     mainHover?: string;
+    medium?: string;
     mediumHover?: string;
     darkHover?: string;
   }
@@ -64,7 +65,7 @@ const pxToRem = (fontSize: number) => {
   return `${fontSize / 16}rem`;
 };
 
-const semanticThemePallete = {
+const semanticThemePalette = {
   error: {
     pastel: "#FCECEE",
     light: "#F7C7D3",
@@ -95,7 +96,7 @@ const semanticThemePallete = {
   },
 };
 
-const grayThemePallete = {
+const grayThemePalette = {
   text: {
     primary: "#252321",
     secondary: "#666461",
@@ -121,9 +122,9 @@ const grayThemePallete = {
   disabled: "#A3A19F",
 };
 
-const globalThemePallete = {
-  ...grayThemePallete,
-  ...semanticThemePallete,
+const globalThemePalette = {
+  ...grayThemePalette,
+  ...semanticThemePalette,
 };
 
 const globalTypography = {
@@ -271,7 +272,7 @@ const baseThemeOptions: ThemeOptions = {
           fontSize: pxToRem(14),
           fontFamily: "Inter",
           "&.Mui-focused": {
-            color: globalThemePallete.text.secondary,
+            color: globalThemePalette.text.secondary,
           },
           "&.Mui-disabled:hover": {
             cursor: "default",
@@ -387,8 +388,6 @@ const baseThemeOptions: ThemeOptions = {
       },
       styleOverrides: {
         root: {
-          height: 48,
-          minWidth: 192,
           fontFamily: "inter",
           boxShadow: "none",
           fontSize: pxToRem(14),
@@ -398,111 +397,132 @@ const baseThemeOptions: ThemeOptions = {
           ":hover": {
             boxShadow: "none",
           },
+          "&.MuiButton-sizeSmall": {
+            height: 32,
+            paddingLeft: "16px",
+            paddingRight: "16px",
+          },
+          "&.MuiButton-sizeMedium": {
+            height: 48,
+            paddingLeft: "24px",
+            paddingRight: "24px",
+          },
         },
         contained: {
           borderRadius: "100vmax",
-          paddingBottom: "12px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          paddingTop: "12px",
+          "&.MuiButton-containedWarning": {
+            ":hover": {
+              backgroundColor: globalThemePalette.warning.medium,
+            },
+          },
+          "&.MuiButton-containedError": {
+            ":hover": {
+              backgroundColor: globalThemePalette.error.medium,
+            },
+          },
+          "&.MuiButton-containedInfo": {
+            ":hover": {
+              backgroundColor: globalThemePalette.info.medium,
+            },
+          },
+          "&.MuiButton-containedSuccess": {
+            ":hover": {
+              backgroundColor: globalThemePalette.success.medium,
+            },
+          },
         },
         outlined: {
           borderRadius: "100vmax",
-          paddingBottom: "12px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          paddingTop: "12px",
-          borderColor: globalThemePallete.input.border,
+          borderColor: globalThemePalette.input.border,
 
           ":hover": {
             backgroundColor: "transparent",
             borderWidth: "2px",
           },
           "&.MuiButton-outlinedWarning": {
-            borderColor: globalThemePallete.warning.main,
-            color: globalThemePallete.text.primary,
+            borderColor: globalThemePalette.warning.main,
+            color: globalThemePalette.text.primary,
             ":hover": {
-              borderColor: globalThemePallete.warning.dark,
+              borderColor: globalThemePalette.warning.dark,
             },
             ":active": {
-              backgroundColor: globalThemePallete.warning.pastel,
+              backgroundColor: globalThemePalette.warning.pastel,
             },
           },
           ".MuiTouchRipple-child": {
             backgroundColor: "transparent !important",
           },
           "&.MuiButton-outlinedError": {
-            color: globalThemePallete.error.medium,
+            color: globalThemePalette.error.medium,
             ":hover": {
-              color: globalThemePallete.error.dark,
-              borderColor: globalThemePallete.error.dark,
+              color: globalThemePalette.error.dark,
+              borderColor: globalThemePalette.error.dark,
             },
             ":active": {
-              backgroundColor: globalThemePallete.error.pastel,
+              backgroundColor: globalThemePalette.error.pastel,
             },
           },
           "&.MuiButton-outlinedInfo": {
-            color: globalThemePallete.info.main,
+            color: globalThemePalette.info.main,
             ":hover": {
-              color: globalThemePallete.info.medium,
-              borderColor: globalThemePallete.info.dark,
+              color: globalThemePalette.info.medium,
+              borderColor: globalThemePalette.info.dark,
             },
             ":active": {
-              backgroundColor: globalThemePallete.info.pastel,
+              backgroundColor: globalThemePalette.info.pastel,
             },
           },
           "&.MuiButton-outlinedSuccess": {
-            color: globalThemePallete.success.main,
+            color: globalThemePalette.success.main,
             ":hover": {
-              color: globalThemePallete.success.medium,
-              borderColor: globalThemePallete.success.dark,
+              color: globalThemePalette.success.medium,
+              borderColor: globalThemePalette.success.dark,
             },
             ":active": {
-              backgroundColor: globalThemePallete.success.pastel,
+              backgroundColor: globalThemePalette.success.pastel,
             },
           },
         },
         text: {
-          minWidth: "unset",
-          height: "unset",
-          padding: "0",
+          height: "auto !important",
+          padding: "0 !important",
           "&.MuiButton-textWarning": {
-            color: globalThemePallete.warning.main,
+            color: globalThemePalette.warning.main,
             ":hover": {
-              color: globalThemePallete.warning.medium,
+              color: globalThemePalette.warning.medium,
             },
             ":active": {
-              color: globalThemePallete.warning.dark,
+              color: globalThemePalette.warning.dark,
             },
           },
           ".MuiTouchRipple-child": {
             backgroundColor: "transparent !important",
           },
           "&.MuiButton-textError": {
-            color: globalThemePallete.error.main,
+            color: globalThemePalette.error.main,
             ":hover": {
-              color: globalThemePallete.error.medium,
+              color: globalThemePalette.error.medium,
             },
             ":active": {
-              color: globalThemePallete.error.dark,
+              color: globalThemePalette.error.dark,
             },
           },
           "&.MuiButton-textInfo": {
-            color: globalThemePallete.info.main,
+            color: globalThemePalette.info.main,
             ":hover": {
-              color: globalThemePallete.info.medium,
+              color: globalThemePalette.info.medium,
             },
             ":active": {
-              color: globalThemePallete.info.dark,
+              color: globalThemePalette.info.dark,
             },
           },
           "&.MuiButton-textSuccess": {
-            color: globalThemePallete.success.main,
+            color: globalThemePalette.success.main,
             ":hover": {
-              color: globalThemePallete.success.medium,
+              color: globalThemePalette.success.medium,
             },
             ":active": {
-              color: globalThemePallete.success.dark,
+              color: globalThemePalette.success.dark,
             },
           },
         },
@@ -553,7 +573,7 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           borderRadius: "16px",
-          color: globalThemePallete.text.primary,
+          color: globalThemePalette.text.primary,
           ...globalTypography.body2,
           alignItems: "center",
           padding: defaultMuiTheme.spacing(3),
@@ -579,7 +599,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiAlertTitle: {
       styleOverrides: {
         root: {
-          color: globalThemePallete.text.primary,
+          color: globalThemePalette.text.primary,
           ...globalTypography.caption,
         },
       },
@@ -625,8 +645,8 @@ export {
   baseTheme,
   baseThemeOptions,
   pxToRem,
-  globalThemePallete,
+  globalThemePalette,
   globalTypography,
-  grayThemePallete,
-  semanticThemePallete,
+  grayThemePalette,
+  semanticThemePalette,
 };
