@@ -484,7 +484,8 @@ const baseThemeOptions: ThemeOptions = {
           },
         },
         text: {
-          padding: "0",
+          height: "auto !important",
+          padding: "0 !important",
           "&.MuiButton-textWarning": {
             color: globalThemePalette.warning.main,
             ":hover": {
