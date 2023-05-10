@@ -398,7 +398,7 @@ const baseThemeOptions: ThemeOptions = {
             boxShadow: "none",
           },
           "&.MuiButton-sizeSmall": {
-            height: 36,
+            height: 32,
             paddingLeft: "16px",
             paddingRight: "16px",
           },

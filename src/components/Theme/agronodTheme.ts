@@ -73,7 +73,7 @@ const agronodTheme = {
           },
           "&.MuiButton-containedSecondary": {
             ":hover": {
-              backgroundColor: themePalette.secondary.mainHover,
+              backgroundColor: themePalette.secondary.medium,
             },
           },
           ".MuiTouchRipple-child": {
