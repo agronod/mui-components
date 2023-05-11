@@ -14,7 +14,6 @@ export default function Nyckeltal({ item, boxShadow = true }: Props) {
         boxShadow: boxShadow ? "0px 2px 10px 0px rgb(0 0 0 / 10%)" : "none",
         border: boxShadow ? "" : "1px solid rgba(0, 0, 0, 0.12)",
         padding: "16px",
-        maxWidth: "248px",
         background: "#fff",
       }}
     >
