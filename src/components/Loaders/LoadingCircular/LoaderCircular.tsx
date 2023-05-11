@@ -10,7 +10,8 @@ type LoaderCircularBaseProps = Pick<
 >;
 
 export interface LoaderCircularProps extends LoaderCircularBaseProps {
-  align: string;
+  align?: string;
+  justify?: string;
 }
 
 const LoaderCircular = ({ ...props }: LoaderCircularProps) => {
@@ -19,7 +20,8 @@ const LoaderCircular = ({ ...props }: LoaderCircularProps) => {
       sx={{
         display: "flex",
         width: "100%",
-        justifyContent: props.align,
+        justifyContent: props.justify || "center",
+        alignItems: props.align || "center",
       }}
     >
       <MuiCircularProgress

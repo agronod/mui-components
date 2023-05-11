@@ -113,11 +113,7 @@ export default function VerticalStepper({
           {title}
         </Typography>
       )}
-      <MuiStepper
-        activeStep={activeStep}
-        orientation="vertical"
-        connector={<StyledStepConnector />}
-      >
+      <MuiStepper activeStep={activeStep} connector={<StyledStepConnector />}>
         {steps.map((step, index) => {
           const activeStepIndex = activeStep || 0;
           const active = index === activeStepIndex;
