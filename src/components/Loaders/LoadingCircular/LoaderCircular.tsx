@@ -2,6 +2,8 @@ import {
   Box,
   CircularProgress as MuiCircularProgress,
   CircularProgressProps as MuiCircularProgressProps,
+  SxProps,
+  Theme,
 } from "@mui/material";
 
 type LoaderCircularBaseProps = Pick<
@@ -10,7 +12,9 @@ type LoaderCircularBaseProps = Pick<
 >;
 
 export interface LoaderCircularProps extends LoaderCircularBaseProps {
-  align: string;
+  align?: string;
+  justify?: string;
+  sx?: SxProps<Theme>;
 }
 
 const LoaderCircular = ({ ...props }: LoaderCircularProps) => {
@@ -19,7 +23,10 @@ const LoaderCircular = ({ ...props }: LoaderCircularProps) => {
       sx={{
         display: "flex",
         width: "100%",
-        justifyContent: props.align,
+        justifyContent: props.justify || "center",
+        alignItems: props.align || "center",
+        height: "100%",
+        ...props.sx,
       }}
     >
       <MuiCircularProgress
