@@ -2,6 +2,8 @@ import {
   Box,
   CircularProgress as MuiCircularProgress,
   CircularProgressProps as MuiCircularProgressProps,
+  SxProps,
+  Theme,
 } from "@mui/material";
 
 type LoaderCircularBaseProps = Pick<
@@ -12,7 +14,7 @@ type LoaderCircularBaseProps = Pick<
 export interface LoaderCircularProps extends LoaderCircularBaseProps {
   align?: string;
   justify?: string;
-  sx?: any;
+  sx?: SxProps<Theme>;
 }
 
 const LoaderCircular = ({ ...props }: LoaderCircularProps) => {
