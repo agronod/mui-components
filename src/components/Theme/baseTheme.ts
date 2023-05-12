@@ -47,6 +47,7 @@ declare module "@mui/material/styles/createPalette" {
   interface PaletteColor {
     pastel?: string;
     mainHover?: string;
+    medium?: string;
     mediumHover?: string;
     darkHover?: string;
   }

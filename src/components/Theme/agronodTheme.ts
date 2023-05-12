@@ -31,7 +31,21 @@ const agronodTheme = {
       styleOverrides: {
         root: {
           "&.Mui-checked": {
-            color: themePalette.primary.dark,
+            color: themePalette.primary.medium,
+            "&:hover": {
+            color: themePalette.primary.mediumHover,
+            }
+          },
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            "&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              borderColor: themePalette.primary.mediumHover,
+            },
           },
         },
       },
