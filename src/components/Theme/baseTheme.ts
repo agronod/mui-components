@@ -577,7 +577,7 @@ const baseThemeOptions: ThemeOptions = {
           ...globalTypography.body2,
           alignItems: "center",
           padding: defaultMuiTheme.spacing(3),
-          boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
+          boxShadow: "none",
         },
         message: {
           paddingLeft: defaultMuiTheme.spacing(0.5),

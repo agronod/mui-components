@@ -19,7 +19,7 @@ export default function NyckeltalGrid({ children }: Props) {
         padding: 0,
         marginTop: 0,
         [theme.breakpoints.down("sm")]: {
-          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+          gridTemplateColumns: "none",
         },
       }}
     >
