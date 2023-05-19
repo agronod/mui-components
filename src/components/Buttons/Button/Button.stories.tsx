@@ -22,9 +22,9 @@ export default {
   },
   argTypes: {
     children: {
-      type: { name: "function", required: true },
       control: {
         type: "text",
+        required: true,
       },
     },
     variant: {

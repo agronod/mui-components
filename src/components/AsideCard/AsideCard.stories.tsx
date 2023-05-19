@@ -18,14 +18,14 @@ export default {
     componentSubtitle: "AsideCard is used in multiple places and components",
     docs: {
       description: {
-        component: `<div>We can se it for menus and forms
+        component: `<p>We can see it used for menus and forms</p>
           `,
       },
     },
   },
   argTypes: {
     children: {
-      type: { name: "function", required: true },
+      type: { name: "symbol", required: true },
     },
     centeredContent: {
       control: {

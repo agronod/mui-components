@@ -8,7 +8,7 @@ export default {
     children: {
       control: {
         type: "text",
-        expanded: true,
+        required: true,
       },
     },
     disabled: {

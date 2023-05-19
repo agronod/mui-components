@@ -21,6 +21,7 @@ export default {
     children: {
       control: {
         type: "text",
+        required: true,
       },
     },
     textAlign: {
