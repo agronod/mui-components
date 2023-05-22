@@ -88,12 +88,11 @@ const ModalCard = (props: ModalCardProps) => {
         <Box
           sx={(theme) => ({
             pt: 8,
-            pb: 4,
+            pb: 5,
             pl: 5,
             pr: 5,
             textAlign: "center",
             [theme.breakpoints.down("sm")]: {
-              pb: 5,
               pl: 2,
               pr: 2,
             },
