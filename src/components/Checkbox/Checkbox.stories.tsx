@@ -18,7 +18,6 @@ export default {
     sx: {
       control: {
         type: "object",
-        expanded: true,
       },
     },
     label: {

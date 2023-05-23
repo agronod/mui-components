@@ -16,6 +16,7 @@ type ModalCardBaseProps = Pick<MuiModalCardProps, "children" | "open" | "sx">;
 
 export interface ModalCardProps extends ModalCardBaseProps {
   title: string;
+  onClose: () => void;
   subtitle?: string;
   cardWidth?: string;
   icon?: React.ReactElement;
@@ -25,17 +26,10 @@ const ModalCard = (props: ModalCardProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isLongTitle = props.title.length > 27;
-  const isOpen =
-    typeof props.open === "string" ? props.open === "true" : props.open;
-  const [isVisible, setIsVisible] = useState(isOpen);
-
-  useEffect(() => {
-    setIsVisible(isOpen);
-  }, [isOpen]);
 
   return (
     <MuiModalCard
-      open={isVisible}
+      open={props.open}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       disableAutoFocus={true}
@@ -49,8 +43,7 @@ const ModalCard = (props: ModalCardProps) => {
       <Card
         sx={(theme) => ({
           left: "50%",
-          width: "100%",
-          minWidth: props.cardWidth,
+          width: props.cardWidth ? props.cardWidth : "100%",
           maxWidth: "688px",
           position: "absolute",
           top: "40%",
@@ -80,7 +73,7 @@ const ModalCard = (props: ModalCardProps) => {
             right: "24px",
             minWidth: "auto",
           }}
-          onClick={() => setIsVisible(false)}
+          onClick={() => props.onClose()}
         >
           <CloseRoundedIcon />
         </Button>

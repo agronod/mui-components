@@ -14,37 +14,31 @@ export default {
     disabled: {
       control: {
         type: "boolean",
-        expanded: true,
       },
     },
     error: {
       control: {
         type: "boolean",
-        expanded: true,
       },
     },
     fullWidth: {
       control: {
         type: "boolean",
-        expanded: true,
       },
     },
     helperText: {
       control: {
         type: "text",
-        expanded: true,
       },
     },
     name: {
       control: {
         type: "text",
-        expanded: true,
       },
     },
     required: {
       control: {
         type: "boolean",
-        expanded: true,
       },
     },
     type: {
@@ -60,31 +54,26 @@ export default {
           "date",
           "datetime-local",
         ],
-        expanded: true,
       },
     },
     value: {
       control: {
         type: "text",
-        expanded: true,
       },
     },
     id: {
       control: {
         type: "text",
-        expanded: true,
       },
     },
     placeholder: {
       control: {
         type: "text",
-        expanded: true,
       },
     },
     sx: {
       control: {
         type: "object",
-        expanded: true,
       },
     },
   },
