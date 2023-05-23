@@ -1,41 +1,132 @@
-import { createTheme, ThemeOptions } from "@mui/material/styles";
-import { common, grey } from "@mui/material/colors";
+import {
+  createTheme,
+  SimplePaletteColorOptions,
+  ThemeOptions,
+} from "@mui/material/styles";
+import { common } from "@mui/material/colors";
 import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
 import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
-import { spacing } from "@mui/system";
+import createPalette from "@mui/material/styles/createPalette";
 
-function pxToRem(fontSize: number) {
-  return `${fontSize / 16}rem`;
+declare module "@mui/material/styles/" {
+  interface PaletteColorOptions extends SimplePaletteColorOptions {
+    pastel?: string;
+    mainHover?: string;
+    medium?: string;
+    mediumHover?: string;
+    darkHover?: string;
+  }
+}
+declare module "@mui/material/styles/" {
+  interface PaletteOptions {
+    icon?: {
+      primary?: string;
+      secondary?: string;
+    };
+    input?: {
+      background?: string;
+      backgroundDisabled?: string;
+      border?: string;
+    };
+    border?: string;
+    disabled?: string;
+  }
+}
+declare module "@mui/material/styles/" {
+  interface TypeBackground {
+    page?: string;
+    card?: string;
+    overlay?: string;
+  }
 }
 
-const globalTheme = createTheme({
-  palette: {
-    background: {
-      default: "#F8F6F3",
-      paper: common.white,
-    },
-    primary: {
-      main: "#2C7A4D",
-      light: "#D6EFDF",
-      medium: "#59b87f",
-      dark: "#123F25",
-    },
-    secondary: {
-      main: "#756B59",
-      light: "#f8f6f3",
-      medium: "#dad0c7",
-      dark: "#36322A",
-    },
-    error: {
-      main: "#B00020",
-      light: "#EB8FA0", // "#F7E5E9" Ska vi byta ut till denna? Den används nu i bakgrund för Alert.
-    },
-    text: { primary: grey[900], secondary: grey[700] },
+declare module "@mui/material/styles/createPalette" {
+  interface PaletteColor {
+    pastel?: string;
+    mainHover?: string;
+    medium?: string;
+    mediumHover?: string;
+    darkHover?: string;
+  }
+}
+declare module "@mui/material/Typography/Typography" {
+  interface TypographyPropsVariantOverrides {
+    body1bold: true;
+    body2bold: true;
+    body3: true;
+    body4: true;
+    component: true;
+  }
+}
+
+const pxToRem = (fontSize: number) => {
+  return `${fontSize / 16}rem`;
+};
+
+const semanticThemePalette = {
+  error: {
+    pastel: "#FCECEE",
+    light: "#F7C7D3",
+    main: "#D4483E",
+    medium: "#B73831",
+    dark: "#A92E26",
   },
-});
+  warning: {
+    pastel: "#FDF0E6",
+    light: "#FBDCB7",
+    main: "#ED9135",
+    medium: "#E0732C",
+    dark: "#D65A26",
+  },
+  info: {
+    pastel: "#E8ECF2",
+    light: "#C7D1DA",
+    main: "#51697E",
+    medium: "#455B6E",
+    dark: "#364858",
+  },
+  success: {
+    pastel: "#EAF5EA",
+    light: "#CEE5CB",
+    main: "#5D9D52",
+    medium: "#457A3B",
+    dark: "#2F5D28",
+  },
+};
+
+const grayThemePalette = {
+  text: {
+    primary: "#252321",
+    secondary: "#666461",
+    disabled: "#A3A19F",
+  },
+  icon: {
+    primary: "#464542",
+    secondary: "#7A7875",
+  },
+  input: {
+    background: common.white,
+    backgroundDisabled: "#FCFAF7",
+    border: "#C2C0BD",
+  },
+  background: {
+    page: "#F8F6F3",
+    paper: common.white,
+    card: common.white,
+    overlay: "rgba(37, 35, 33, 0.3)",
+  },
+  divider: "#E5E3E0",
+  border: "#E5E3E0",
+  disabled: "#A3A19F",
+};
+
+const globalThemePalette = {
+  ...grayThemePalette,
+  ...semanticThemePalette,
+};
 
 const globalTypography = {
   h1: {
@@ -101,9 +192,36 @@ const globalTypography = {
     fontWeight: 400,
     lineHeight: 1.5,
   },
+  body1bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(16),
+    fontWeight: 500,
+    lineHeight: 1.5,
+  },
   body2: {
     fontFamily: "inter",
     fontSize: pxToRem(14),
+    fontWeight: 400,
+    letterSpacing: 0.1,
+    lineHeight: 1.43,
+  },
+  body2bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(14),
+    fontWeight: 500,
+    letterSpacing: 0.1,
+    lineHeight: 1.43,
+  },
+  body3: {
+    fontFamily: "inter",
+    fontSize: pxToRem(12),
+    fontWeight: 400,
+    letterSpacing: 0.1,
+    lineHeight: 1.42,
+  },
+  body4: {
+    fontFamily: "inter",
+    fontSize: pxToRem(10),
     fontWeight: 400,
     letterSpacing: 0.1,
     lineHeight: 1.43,
@@ -117,15 +235,16 @@ const globalTypography = {
   },
   overline: {
     fontFamily: "inter",
-    fontSize: pxToRem(10),
-    fontWeight: 500,
+    fontSize: pxToRem(12),
+    fontWeight: 400,
     letterSpacing: 1,
     lineHeight: 1.6,
   },
 };
 
+const defaultMuiTheme = createTheme();
+
 const baseThemeOptions: ThemeOptions = {
-  palette: globalTheme.palette,
   components: {
     MuiInputBase: {
       styleOverrides: {
@@ -134,6 +253,41 @@ const baseThemeOptions: ThemeOptions = {
           fontSize: pxToRem(16),
           lineHeight: 1.5,
           fontWeight: 400,
+          borderRadius: "8px",
+          "&:active": {
+            borderWidth: "2px",
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px",
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: pxToRem(14),
+          fontFamily: "Inter",
+          "&.Mui-focused": {
+            color: globalThemePalette.text.secondary,
+          },
+          "&.Mui-disabled:hover": {
+            cursor: "default",
+          },
+          "&:hover": {
+            cursor: "pointer",
+          },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: "20px",
         },
       },
     },
@@ -181,8 +335,8 @@ const baseThemeOptions: ThemeOptions = {
           borderRadius: "24px",
           minHeight: "26px",
           "&.Mui-selected": {
-            backgroundColor: globalTheme.palette.common.white,
-            color: globalTheme.palette.common.black,
+            backgroundColor: common.white,
+            color: common.black,
           },
           ":last-child": {
             margin: "0px 0px 0px 0px",
@@ -200,7 +354,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: globalTheme.palette.common.white,
+          backgroundColor: common.white,
           borderBottom: "1px solid #e5e5e5",
           boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
         },
@@ -210,16 +364,8 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          color: globalTheme.palette.primary.dark,
-          textDecorationColor: globalTheme.palette.primary.dark,
+          textDecorationColor: "inherit",
           textUnderlineOffset: "2px",
-          "&:hover": {
-            color: globalTheme.palette.primary.main,
-            textDecorationColor: globalTheme.palette.primary.main,
-          },
-          ":disabled": {
-            color: globalTheme.palette.grey[500],
-          },
         },
       },
     },
@@ -237,59 +383,148 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
-    MuiButtonBase: {
-      styleOverrides: {
-        disabled: {},
-      },
-    },
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
-          height: 48,
-          "&.Mui-disabled": {
-            color: `${globalTheme.palette.grey[500]} !important`,
+          fontFamily: "inter",
+          boxShadow: "none",
+          fontSize: pxToRem(14),
+          fontWeight: 500,
+          lineHeight: pxToRem(16),
+          textTransform: "none",
+          ":hover": {
+            boxShadow: "none",
+          },
+          "&.MuiButton-sizeSmall": {
+            height: 32,
+            paddingLeft: "16px",
+            paddingRight: "16px",
+          },
+          "&.MuiButton-sizeMedium": {
+            height: 48,
+            paddingLeft: "24px",
+            paddingRight: "24px",
           },
         },
         contained: {
           borderRadius: "100vmax",
-          boxShadow: "none",
-          fontFamily: "inter",
-          fontSize: pxToRem(14),
-          fontWeight: 500,
-          lineHeight: 1.14,
-          paddingBottom: "12px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          paddingTop: "12px",
-          textTransform: "none",
-          "&.Mui-disabled": {
-            color: "white!important",
-            backgroundColor: `${globalTheme.palette.grey[500]} !important`,
+          "&.MuiButton-containedWarning": {
+            ":hover": {
+              backgroundColor: globalThemePalette.warning.medium,
+            },
           },
-          ":hover": {
-            backgroundColor: "#215537",
-            boxShadow: "none",
+          "&.MuiButton-containedError": {
+            ":hover": {
+              backgroundColor: globalThemePalette.error.medium,
+            },
+          },
+          "&.MuiButton-containedInfo": {
+            ":hover": {
+              backgroundColor: globalThemePalette.info.medium,
+            },
+          },
+          "&.MuiButton-containedSuccess": {
+            ":hover": {
+              backgroundColor: globalThemePalette.success.medium,
+            },
           },
         },
         outlined: {
           borderRadius: "100vmax",
-          borderColor: globalTheme.palette.grey[400],
-          fontFamily: "inter",
-          fontSize: pxToRem(14),
-          fontWeight: 500,
-          lineHeight: pxToRem(16),
-          paddingBottom: "12px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          paddingTop: "12px",
-          textTransform: "none",
+          borderColor: globalThemePalette.input.border,
+
           ":hover": {
             backgroundColor: "transparent",
-            borderColor: globalTheme.palette.primary.dark,
-            color: globalTheme.palette.primary.dark,
+            borderWidth: "2px",
           },
-          "&.Mui-disabled": {
-            borderColor: `${globalTheme.palette.grey[500]} !important`,
+          "&.MuiButton-outlinedWarning": {
+            borderColor: globalThemePalette.warning.main,
+            color: globalThemePalette.text.primary,
+            ":hover": {
+              borderColor: globalThemePalette.warning.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePalette.warning.pastel,
+            },
+          },
+          ".MuiTouchRipple-child": {
+            backgroundColor: "transparent !important",
+          },
+          "&.MuiButton-outlinedError": {
+            color: globalThemePalette.error.medium,
+            ":hover": {
+              color: globalThemePalette.error.dark,
+              borderColor: globalThemePalette.error.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePalette.error.pastel,
+            },
+          },
+          "&.MuiButton-outlinedInfo": {
+            color: globalThemePalette.info.main,
+            ":hover": {
+              color: globalThemePalette.info.medium,
+              borderColor: globalThemePalette.info.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePalette.info.pastel,
+            },
+          },
+          "&.MuiButton-outlinedSuccess": {
+            color: globalThemePalette.success.main,
+            ":hover": {
+              color: globalThemePalette.success.medium,
+              borderColor: globalThemePalette.success.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePalette.success.pastel,
+            },
+          },
+        },
+        text: {
+          height: "auto !important",
+          padding: "0 !important",
+          "&.MuiButton-textWarning": {
+            color: globalThemePalette.warning.main,
+            ":hover": {
+              color: globalThemePalette.warning.medium,
+            },
+            ":active": {
+              color: globalThemePalette.warning.dark,
+            },
+          },
+          ".MuiTouchRipple-child": {
+            backgroundColor: "transparent !important",
+          },
+          "&.MuiButton-textError": {
+            color: globalThemePalette.error.main,
+            ":hover": {
+              color: globalThemePalette.error.medium,
+            },
+            ":active": {
+              color: globalThemePalette.error.dark,
+            },
+          },
+          "&.MuiButton-textInfo": {
+            color: globalThemePalette.info.main,
+            ":hover": {
+              color: globalThemePalette.info.medium,
+            },
+            ":active": {
+              color: globalThemePalette.info.dark,
+            },
+          },
+          "&.MuiButton-textSuccess": {
+            color: globalThemePalette.success.main,
+            ":hover": {
+              color: globalThemePalette.success.medium,
+            },
+            ":active": {
+              color: globalThemePalette.success.dark,
+            },
           },
         },
       },
@@ -303,20 +538,12 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          color: globalTheme.palette.text.primary,
           "*": {
             color: "inherit",
           },
           ":hover": {
-            backgroundColor: globalTheme.palette.primary.light,
             "*": {
               color: "inherit",
-            },
-          },
-          "&.Mui-selected": {
-            backgroundColor: globalTheme.palette.primary.light,
-            ":hover": {
-              backgroundColor: globalTheme.palette.primary.light,
             },
           },
         },
@@ -335,13 +562,10 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           "& .MuiSvgIcon-root:first-of-type": {
-            fontSize: 22,
+            fontSize: pxToRem(22),
           },
           "& .MuiSvgIcon-root:last-of-type": {
-            fontSize: 22,
-            "& path": {
-              fill: globalTheme.palette.primary.medium,
-            },
+            fontSize: pxToRem(22),
           },
         },
       },
@@ -350,17 +574,17 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           borderRadius: "16px",
-          color: globalTheme.palette.text.primary,
+          color: globalThemePalette.text.primary,
           ...globalTypography.body2,
           alignItems: "center",
-          padding: globalTheme.spacing(3),
+          padding: defaultMuiTheme.spacing(3),
           boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
         },
         message: {
-          paddingLeft: globalTheme.spacing(0.5),
+          paddingLeft: defaultMuiTheme.spacing(0.5),
         },
         icon: {
-          fontSize: "20px",
+          fontSize: pxToRem(20),
         },
         filledError: {
           backgroundColor: "#F7E5E9",
@@ -376,7 +600,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiAlertTitle: {
       styleOverrides: {
         root: {
-          color: globalTheme.palette.text.primary,
+          color: globalThemePalette.text.primary,
           ...globalTypography.caption,
         },
       },
@@ -384,10 +608,12 @@ const baseThemeOptions: ThemeOptions = {
     MuiFormHelperText: {
       styleOverrides: {
         root: {
-          height: 0,
+          height: "15px",
           lineHeight: 1.25,
           marginLeft: 0,
           fontFamily: "inter",
+          fontWeight: 500,
+          marginBottom: "8px",
         },
       },
     },
@@ -397,10 +623,17 @@ const baseThemeOptions: ThemeOptions = {
           "&.MuiContainer-maxWidthLg": {
             padding: "32px 16px",
             maxWidth: 1040,
-            [globalTheme.breakpoints.up("lg")]: {
+            [defaultMuiTheme.breakpoints.up("lg")]: {
               padding: "32px 0",
             },
           },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        elevation: {
+          boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
         },
       },
     },
@@ -409,4 +642,12 @@ const baseThemeOptions: ThemeOptions = {
 
 const baseTheme = createTheme(baseThemeOptions);
 
-export { baseTheme, baseThemeOptions, pxToRem };
+export {
+  baseTheme,
+  baseThemeOptions,
+  pxToRem,
+  globalThemePalette,
+  globalTypography,
+  grayThemePalette,
+  semanticThemePalette,
+};

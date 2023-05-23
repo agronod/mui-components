@@ -5,6 +5,6 @@ export { ReactComponent as AgrosfarPilotLogo } from "./AgrosfarPilotLogo.svg";
 export { ReactComponent as AgronodLogo } from "./agronod.svg";
 export { ReactComponent as WarningIcon } from "./WarningIcon.svg";
 
-import agrosfar from "./agrosfar.png";
 import header_background from "./header_background.png";
-export { agrosfar, header_background };
+export { header_background };
+
