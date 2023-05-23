@@ -34,6 +34,7 @@ export default {
     open: {
       control: {
         type: "boolean",
+
         required: true,
       },
     },
@@ -67,14 +68,19 @@ export const ModalCardDefault: ComponentStory<typeof ModalCard> = ({
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
-    <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
-      {children}
-    </ModalCard>
+    <>
+      <Button variant="contained" onClick={() => setIsOpen(true)}>
+        Open modal
+      </Button>
+      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+        {children}
+      </ModalCard>
+    </>
   );
 };
 ModalCardDefault.args = {
   title: "Modal card example",
-  open: true,
+  open: false,
   subtitle:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   children: (
@@ -94,15 +100,20 @@ export const ModalCardWithIcon: ComponentStory<typeof ModalCard> = ({
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
-    <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
-      {children}
-    </ModalCard>
+    <>
+      <Button variant="contained" onClick={() => setIsOpen(true)}>
+        Open modal
+      </Button>
+      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+        {children}
+      </ModalCard>
+    </>
   );
 };
 ModalCardWithIcon.args = {
   title: "Modal card example title",
   subtitle: "Modal card example subtitle",
-  open: true,
+  open: false,
   children: (
     <Box>
       <p>Modal card example children</p>
@@ -121,15 +132,20 @@ export const ModalCardCustomWidth: ComponentStory<typeof ModalCard> = ({
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
-    <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
-      {children}
-    </ModalCard>
+    <>
+      <Button variant="contained" onClick={() => setIsOpen(true)}>
+        Open modal
+      </Button>
+      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+        {children}
+      </ModalCard>
+    </>
   );
 };
 ModalCardCustomWidth.args = {
   title: "Modal card example title",
   subtitle: "Modal card example subtitle",
-  open: true,
+  open: false,
   children: (
     <Box>
       <p>Modal card example children</p>
@@ -148,15 +164,20 @@ export const ModalCardCustomStyles: ComponentStory<typeof ModalCard> = ({
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
-    <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
-      {children}
-    </ModalCard>
+    <>
+      <Button variant="contained" onClick={() => setIsOpen(true)}>
+        Open modal
+      </Button>
+      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+        {children}
+      </ModalCard>
+    </>
   );
 };
 ModalCardCustomStyles.args = {
   title: "Modal card example title",
   subtitle: "Modal card example subtitle",
-  open: true,
+  open: false,
   children: (
     <Box>
       <p>Modal card example children</p>
