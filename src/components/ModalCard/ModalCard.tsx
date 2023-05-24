@@ -4,13 +4,11 @@ import {
   Card,
   Modal as MuiModalCard,
   ModalProps as MuiModalCardProps,
-  SvgIconTypeMap,
   Typography,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { useEffect, useState } from "react";
 
 type ModalCardBaseProps = Pick<MuiModalCardProps, "children" | "open" | "sx">;
 
