@@ -9,7 +9,6 @@ import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
-import createPalette from "@mui/material/styles/createPalette";
 
 declare module "@mui/material/styles/" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
@@ -615,12 +614,12 @@ const baseThemeOptions: ThemeOptions = {
     MuiAlert: {
       styleOverrides: {
         root: {
+          boxShadow: "none",
           borderRadius: "16px",
           color: globalThemePalette.text.primary,
           ...globalTypography.body2,
           alignItems: "center",
-          padding: defaultMuiTheme.spacing(3),
-          boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
+          padding: defaultMuiTheme.spacing(2, 3),
         },
         message: {
           paddingLeft: defaultMuiTheme.spacing(0.5),
@@ -628,14 +627,18 @@ const baseThemeOptions: ThemeOptions = {
         icon: {
           fontSize: pxToRem(20),
         },
-        filledError: {
-          backgroundColor: "#F7E5E9",
-        },
-        outlinedError: {
-          backgroundColor: "#F7E5E9",
+        standardSuccess: {
+          backgroundColor: globalThemePalette.success.pastel,
         },
         standardError: {
-          backgroundColor: "#F7E5E9",
+          backgroundColor: globalThemePalette.error.pastel,
+        },
+        standardInfo: {
+          backgroundColor: globalThemePalette.info.pastel,
+          border: "1px solid #C7D1DA",
+        },
+        standardWarning: {
+          backgroundColor: globalThemePalette.warning.pastel,
         },
       },
     },
