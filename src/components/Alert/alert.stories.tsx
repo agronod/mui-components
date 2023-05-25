@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Stack, AlertTitle } from "@mui/material";
+import { AlertTitle } from "@mui/material";
 import Alert from "./Alert";
 
 export default {
@@ -34,11 +34,9 @@ export default {
 } as ComponentMeta<typeof Alert>;
 
 export const AlertDefault: ComponentStory<typeof Alert> = ({ ...rest }) => (
-  <Stack spacing={2}>
-    <Alert {...rest}>
-      <AlertTitle>Alert title</AlertTitle>
-      This is an information message!
-    </Alert>
-  </Stack>
+  <Alert {...rest}>
+    <AlertTitle>Alert title</AlertTitle>
+    This is an information message!
+  </Alert>
 );
 AlertDefault.args = {};
