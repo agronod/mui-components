@@ -9,7 +9,6 @@ import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
-import createPalette from "@mui/material/styles/createPalette";
 
 declare module "@mui/material/styles/" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
@@ -615,33 +614,42 @@ const baseThemeOptions: ThemeOptions = {
     MuiAlert: {
       styleOverrides: {
         root: {
+          boxShadow: "none",
           borderRadius: "16px",
           color: globalThemePalette.text.primary,
           ...globalTypography.body2,
           alignItems: "center",
-          padding: defaultMuiTheme.spacing(3),
-          boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
+          padding: defaultMuiTheme.spacing(2),
         },
         message: {
-          paddingLeft: defaultMuiTheme.spacing(0.5),
+          padding: 0,
         },
         icon: {
           fontSize: pxToRem(20),
+          marginRight: defaultMuiTheme.spacing(1.5),
         },
-        filledError: {
-          backgroundColor: "#F7E5E9",
-        },
-        outlinedError: {
-          backgroundColor: "#F7E5E9",
+        standardSuccess: {
+          backgroundColor: globalThemePalette.success.pastel,
+          border: "1px solid #CEE5CB",
         },
         standardError: {
-          backgroundColor: "#F7E5E9",
+          backgroundColor: globalThemePalette.error.pastel,
+          border: "1px solid #F7C7D3",
+        },
+        standardInfo: {
+          backgroundColor: globalThemePalette.info.pastel,
+          border: "1px solid #C7D1DA",
+        },
+        standardWarning: {
+          backgroundColor: globalThemePalette.warning.pastel,
+          border: "1px solid #FBDCB7",
         },
       },
     },
     MuiAlertTitle: {
       styleOverrides: {
         root: {
+          marginBottom: 0,
           color: globalThemePalette.text.primary,
           ...globalTypography.caption,
         },
