@@ -36,10 +36,18 @@ export const AlertDefault: ComponentStory<typeof Alert> = ({
   ...rest
 }) => <Alert {...rest}>{children}</Alert>;
 AlertDefault.args = {
+  children: <>Description</>,
+};
+
+export const AlertWithTitle: ComponentStory<typeof Alert> = ({
+  children,
+  ...rest
+}) => <Alert {...rest}>{children}</Alert>;
+AlertWithTitle.args = {
   children: (
     <>
-      <AlertTitle>Alert title</AlertTitle>
-      This is an information message!
+      <AlertTitle>Title</AlertTitle>
+      Description
     </>
   ),
 };

@@ -619,19 +619,22 @@ const baseThemeOptions: ThemeOptions = {
           color: globalThemePalette.text.primary,
           ...globalTypography.body2,
           alignItems: "center",
-          padding: defaultMuiTheme.spacing(2, 3),
+          padding: defaultMuiTheme.spacing(2),
         },
         message: {
-          paddingLeft: defaultMuiTheme.spacing(0.5),
+          padding: 0,
         },
         icon: {
           fontSize: pxToRem(20),
+          marginRight: defaultMuiTheme.spacing(1.5),
         },
         standardSuccess: {
           backgroundColor: globalThemePalette.success.pastel,
+          border: "1px solid #CEE5CB",
         },
         standardError: {
           backgroundColor: globalThemePalette.error.pastel,
+          border: "1px solid #F7C7D3",
         },
         standardInfo: {
           backgroundColor: globalThemePalette.info.pastel,
@@ -639,12 +642,14 @@ const baseThemeOptions: ThemeOptions = {
         },
         standardWarning: {
           backgroundColor: globalThemePalette.warning.pastel,
+          border: "1px solid #FBDCB7",
         },
       },
     },
     MuiAlertTitle: {
       styleOverrides: {
         root: {
+          marginBottom: 0,
           color: globalThemePalette.text.primary,
           ...globalTypography.caption,
         },
