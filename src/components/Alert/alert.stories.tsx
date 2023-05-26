@@ -17,11 +17,6 @@ export default {
     children: {
       type: { name: "symbol", required: true },
     },
-    variant: {
-      defaultValue: "standard",
-      type: "string",
-      options: ["filled", "outlined", "standard"],
-    },
     severity: {
       control: {
         type: "select",
