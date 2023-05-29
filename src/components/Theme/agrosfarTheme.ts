@@ -75,6 +75,20 @@ const agrosfarTheme = {
         },
       },
     },
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          ":hover": {
+            "& .Mui-checked:not(.Mui-disabled)": {
+              "& + .MuiSwitch-track": {
+                backgroundColor: themePalette.primary.medium,
+              },
+            },
+          },
+        },
+      },
+    },
+
     MuiButton: {
       styleOverrides: {
         outlined: {
