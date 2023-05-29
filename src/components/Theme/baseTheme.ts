@@ -286,33 +286,40 @@ const baseThemeOptions: ThemeOptions = {
     MuiSwitch: {
       styleOverrides: {
         root: {
-          width: 42,
+          width: 44,
           height: 26,
           padding: 0,
           "& .MuiSwitch-switchBase": {
             padding: 0,
-            margin: 2,
+            margin: 1,
             transitionDuration: "300ms",
+            "&:hover": {
+              "& + .MuiSwitch-track": {
+                backgroundColor: globalThemePalette.disabled,
+              },
+            },
             "&.Mui-checked": {
-              transform: "translateX(16px)",
+              transform: "translateX(18px)",
               color: "#fff",
               "& + .MuiSwitch-track": {
                 opacity: 1,
-                border: 0,
-              },
-              "&.Mui-disabled + .MuiSwitch-track": {
-                opacity: 0.5,
               },
             },
-            "&.Mui-focusVisible .MuiSwitch-thumb": {
-              color: "#33cf4d",
-              border: "6px solid #fff",
+            "&.Mui-disabled": {
+              "& + .MuiSwitch-track": {
+                opacity: 1,
+                backgroundColor: globalThemePalette.input.border,
+              },
+              "& .MuiSwitch-thumb": {
+                backgroundColor: globalThemePalette.border,
+              },
             },
           },
           "& .MuiSwitch-thumb": {
             boxSizing: "border-box",
-            width: 22,
-            height: 22,
+            width: 24,
+            height: 24,
+            boxShadow: "none",
           },
           "& .MuiSwitch-track": {
             borderRadius: 26 / 2,
@@ -476,10 +483,12 @@ const baseThemeOptions: ThemeOptions = {
         outlined: {
           borderRadius: "100vmax",
           borderColor: globalThemePalette.input.border,
+          margin: "0px 1px",
 
           ":hover": {
             backgroundColor: "transparent",
             borderWidth: "2px",
+            margin: "0px",
           },
           "&.MuiButton-outlinedWarning": {
             borderColor: globalThemePalette.warning.main,

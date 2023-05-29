@@ -30,7 +30,7 @@ export const Template = (args) => (
       <Typography>Warning</Typography>
     </Grid>
     <Grid item xs={2}>
-      <Typography>Text</Typography>
+      <Typography>Grays</Typography>
     </Grid>
     <Grid item xs={2}>
       <Box
@@ -120,23 +120,42 @@ export const Template = (args) => (
       <Box bgcolor="warning.light" className="colorBox">
         light
       </Box>
-      <Box bgcolor="warning.contrastText" className="colorBox">
+      <Box bgcolor="warning.contrastText" color="white" className="colorBox">
         contrast text
       </Box>
     </Grid>
     <Grid item xs={2}>
       <Box
-        bgcolor="text.primary"
-        color="primary.contrastText"
-        className="colorBox"
-      >
-        primary
+        bgcolor="text.primary"color="primary.contrastText" className="colorBox">
+        primary text
       </Box>
-      <Box bgcolor="text.secondary" className="colorBox">
-        secondary
+      <Box bgcolor="text.secondary" color="white" className="colorBox">
+        secondary text
       </Box>
       <Box bgcolor="text.disabled" className="colorBox">
+        disabled text
+      </Box>
+      <Box
+        bgcolor="icon.primary" color="white" className="colorBox">
+        icon primary
+      </Box>
+      <Box bgcolor="icon.secondary" color="white" className="colorBox">
+        icon secondary
+      </Box>
+      <Box bgcolor="disabled" className="colorBox">
         disabled
+      </Box>
+      <Box bgcolor="divider" className="colorBox">
+        divider/border
+      </Box>
+      <Box bgcolor="input.border" className="colorBox">
+        input border
+      </Box>
+      <Box bgcolor="input.backgroundDisabled" className="colorBox">
+        input bg disabled
+      </Box>
+      <Box bgcolor="background.page" className="colorBox">
+        page background
       </Box>
     </Grid>
   </Grid>

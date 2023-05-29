@@ -102,15 +102,15 @@ const agronodTheme = {
             color: "initial",
           },
           ":active": {
-            color: `${themePalette.primary.darkHover}`,
+            color: themePalette.primary.darkHover,
           },
           "&.MuiButton-textSecondary": {
             color: themePalette.secondary.main,
             ":hover": {
-              color: `${themePalette.secondary.medium}`,
+              color: themePalette.secondary.medium,
             },
             ":active": {
-              color: `${themePalette.secondary.dark}`,
+              color: themePalette.secondary.dark,
             },
           },
         },
@@ -127,7 +127,21 @@ const agronodTheme = {
         },
       },
     },
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          ":hover": {
+            "& .Mui-checked:not(.Mui-disabled)": {
+              "& + .MuiSwitch-track": {
+                backgroundColor: themePalette.primary.mainHover,
+              },
+            },
+          },
+        },
+      },
+    },
   },
 };
+
 
 export default agronodTheme;
