@@ -9,7 +9,6 @@ import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
-import createPalette from "@mui/material/styles/createPalette";
 
 declare module "@mui/material/styles/" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
@@ -284,6 +283,55 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 44,
+          height: 26,
+          padding: 0,
+          "& .MuiSwitch-switchBase": {
+            padding: 0,
+            margin: 1,
+            transitionDuration: "300ms",
+            "&:hover": {
+              "& + .MuiSwitch-track": {
+                backgroundColor: globalThemePalette.disabled,
+              },
+            },
+            "&.Mui-checked": {
+              transform: "translateX(18px)",
+              color: "#fff",
+              "& + .MuiSwitch-track": {
+                opacity: 1,
+              },
+            },
+            "&.Mui-disabled": {
+              "& + .MuiSwitch-track": {
+                opacity: 1,
+                backgroundColor: globalThemePalette.input.border,
+              },
+              "& .MuiSwitch-thumb": {
+                backgroundColor: globalThemePalette.border,
+              },
+            },
+          },
+          "& .MuiSwitch-thumb": {
+            boxSizing: "border-box",
+            width: 24,
+            height: 24,
+            boxShadow: "none",
+          },
+          "& .MuiSwitch-track": {
+            borderRadius: 26 / 2,
+            backgroundColor: globalThemePalette.input.border,
+            opacity: 1,
+          },
+          "&+.MuiFormControlLabel-label": {
+            marginLeft: 8,
+          },
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {
@@ -435,10 +483,12 @@ const baseThemeOptions: ThemeOptions = {
         outlined: {
           borderRadius: "100vmax",
           borderColor: globalThemePalette.input.border,
+          margin: "0px 1px",
 
           ":hover": {
             backgroundColor: "transparent",
             borderWidth: "2px",
+            margin: "0px",
           },
           "&.MuiButton-outlinedWarning": {
             borderColor: globalThemePalette.warning.main,
@@ -573,33 +623,42 @@ const baseThemeOptions: ThemeOptions = {
     MuiAlert: {
       styleOverrides: {
         root: {
+          boxShadow: "none",
           borderRadius: "16px",
           color: globalThemePalette.text.primary,
           ...globalTypography.body2,
           alignItems: "center",
-          padding: defaultMuiTheme.spacing(3),
-          boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
+          padding: defaultMuiTheme.spacing(2),
         },
         message: {
-          paddingLeft: defaultMuiTheme.spacing(0.5),
+          padding: 0,
         },
         icon: {
           fontSize: pxToRem(20),
+          marginRight: defaultMuiTheme.spacing(1.5),
         },
-        filledError: {
-          backgroundColor: "#F7E5E9",
-        },
-        outlinedError: {
-          backgroundColor: "#F7E5E9",
+        standardSuccess: {
+          backgroundColor: globalThemePalette.success.pastel,
+          border: "1px solid #CEE5CB",
         },
         standardError: {
-          backgroundColor: "#F7E5E9",
+          backgroundColor: globalThemePalette.error.pastel,
+          border: "1px solid #F7C7D3",
+        },
+        standardInfo: {
+          backgroundColor: globalThemePalette.info.pastel,
+          border: "1px solid #C7D1DA",
+        },
+        standardWarning: {
+          backgroundColor: globalThemePalette.warning.pastel,
+          border: "1px solid #FBDCB7",
         },
       },
     },
     MuiAlertTitle: {
       styleOverrides: {
         root: {
+          marginBottom: 0,
           color: globalThemePalette.text.primary,
           ...globalTypography.caption,
         },

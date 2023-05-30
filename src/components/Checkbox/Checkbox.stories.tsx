@@ -26,15 +26,15 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof FormControlLabel>;
+} as ComponentMeta<typeof Checkbox>;
 
-export const CheckboxDefault: ComponentStory<typeof FormControlLabel> = ({
+export const CheckboxDefault: ComponentStory<typeof Checkbox> = ({
   ...args
-}) => <FormControlLabel {...args} control={<Checkbox />} />;
+}) => <Checkbox {...args} />;
 
-export const CheckboxChecked: ComponentStory<typeof FormControlLabel> = ({
+export const CheckboxChecked: ComponentStory<typeof Checkbox> = ({
   ...args
-}) => <FormControlLabel {...args} control={<Checkbox />} />;
+}) => <Checkbox {...args} />;
 CheckboxChecked.args = {
   checked: true,
 };
