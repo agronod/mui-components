@@ -25,7 +25,7 @@ export type BarChartProps = {
   barCellsOptions?: Partial<CellProps[]>;
   children?: React.ReactNode;
   layout?: "horizontal" | "vertical";
-  TooltipContent?: any;
+  TooltipContent?: React.FC;
 };
 
 export const BarChart: React.FC<BarChartProps> = ({
