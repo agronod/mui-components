@@ -10,6 +10,7 @@ import {
   BarProps,
   Cell,
   CellProps,
+  Tooltip,
 } from "recharts";
 import ResponsiveContainer from "./ResponsiveContainer";
 
@@ -24,6 +25,7 @@ export type BarChartProps = {
   barCellsOptions?: Partial<CellProps[]>;
   children?: React.ReactNode;
   layout?: "horizontal" | "vertical";
+  TooltipContent?: React.FC;
 };
 
 export const BarChart: React.FC<BarChartProps> = ({
@@ -37,6 +39,7 @@ export const BarChart: React.FC<BarChartProps> = ({
   barOptions = {},
   barCellsOptions = [],
   layout = "horizontal",
+  TooltipContent,
 }) => {
   if (!Array.isArray(data) || data.length === 0) {
     console.log(`No data to show for barchart: ${name}`);
@@ -86,6 +89,13 @@ export const BarChart: React.FC<BarChartProps> = ({
           ) : (
             <>
               <YAxis axisLine={false} tickLine={false} {...yAxisOptions} />
+              {TooltipContent && (
+                <Tooltip
+                  cursor={{ fill: "transparent" }}
+                  wrapperStyle={{ outline: "none" }}
+                  content={<TooltipContent />}
+                />
+              )}
               <XAxis
                 dataKey="name"
                 axisLine={false}

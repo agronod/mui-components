@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.5.10",
+  "version": "1.6.2-feat-barchart-tooltip.0",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
