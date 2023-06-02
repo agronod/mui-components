@@ -44,11 +44,8 @@ const ModalCard = (props: ModalCardProps) => {
           width: props.cardWidth ? props.cardWidth : "100%",
           maxWidth: "688px",
           position: "absolute",
-          top: "40%",
+          top: "50%",
           transform: "translate(-50%, -50%)",
-          [theme.breakpoints.down("lg")]: {
-            top: "50%",
-          },
           [theme.breakpoints.down("sm")]: {
             width: "100%",
             top: "unset",
@@ -58,6 +55,8 @@ const ModalCard = (props: ModalCardProps) => {
             transform: "unset",
             borderBottomLeftRadius: "0",
             borderBottomRightRadius: "0",
+            maxHeight: "95vh",
+            overflow: "auto",
           },
         })}
       >
@@ -82,10 +81,14 @@ const ModalCard = (props: ModalCardProps) => {
             pb: 5,
             pl: 5,
             pr: 5,
+            maxHeight: "95vh",
+            overflow: "auto",
             textAlign: "center",
             [theme.breakpoints.down("sm")]: {
               pl: 2,
               pr: 2,
+              maxHeight: "unset",
+              overflow: "unset",
             },
           })}
         >
