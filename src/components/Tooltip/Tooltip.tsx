@@ -1,9 +1,4 @@
-import {
-  Tooltip as MuiTooltip,
-  Typography,
-  TooltipProps,
-  ClickAwayListener,
-} from "@mui/material";
+import { Tooltip as MuiTooltip, Typography, TooltipProps } from "@mui/material";
 import { isValidElement } from "react";
 
 export const tooltipTypographyStyle = {
@@ -16,49 +11,41 @@ export const tooltipTypographyStyle = {
   color: "#FFFFFF",
 } as const;
 
-interface ExtendedTooltipProps extends TooltipProps {
-  onClose: () => void;
-}
-
-export default function Tooltip(props: ExtendedTooltipProps) {
+export default function Tooltip(props: TooltipProps) {
   return (
-    <>
-      <ClickAwayListener onClickAway={props.onClose}>
-        <MuiTooltip
-          {...props}
-          PopperProps={{
-            sx: {
-              "& .MuiTooltip-tooltip": {
-                backgroundColor: "#212121",
-                borderRadius: "4px",
-                padding: "8px 16px",
-                maxWidth: "500px",
-                marginBottom: "8px !important",
+    <MuiTooltip
+      {...props}
+      PopperProps={{
+        sx: {
+          "& .MuiTooltip-tooltip": {
+            backgroundColor: "#212121",
+            borderRadius: "4px",
+            padding: "8px 16px",
+            maxWidth: "500px",
+            marginBottom: "8px !important",
+          },
+        },
+      }}
+      title={
+        isValidElement(props.title) ? (
+          props.title
+        ) : (
+          <Typography
+            sx={[
+              tooltipTypographyStyle,
+              {
+                display: "flex",
+                alignItems: "center",
               },
-            },
-          }}
-          title={
-            isValidElement(props.title) ? (
-              props.title
-            ) : (
-              <Typography
-                sx={[
-                  tooltipTypographyStyle,
-                  {
-                    display: "flex",
-                    alignItems: "center",
-                  },
-                ]}
-              >
-                {props.title}
-              </Typography>
-            )
-          }
-          placement={props.placement ?? "top-start"}
-        >
-          {props.children}
-        </MuiTooltip>
-      </ClickAwayListener>
-    </>
+            ]}
+          >
+            {props.title}
+          </Typography>
+        )
+      }
+      placement={props.placement ?? "top-start"}
+    >
+      {props.children}
+    </MuiTooltip>
   );
 }
