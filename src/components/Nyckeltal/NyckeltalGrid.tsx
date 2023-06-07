@@ -21,6 +21,9 @@ export default function NyckeltalGrid({ children }: Props) {
         [theme.breakpoints.between("sm", "md")]: {
           gridTemplateColumns: "repeat(3, 1fr)",
         },
+        [theme.breakpoints.down("sm")]: {
+          gridTemplateColumns: "repeat(2, 1fr)",
+        },
       })}
     >
       <>{children}</>
