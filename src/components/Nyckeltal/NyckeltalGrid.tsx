@@ -6,8 +6,6 @@ type Props = {
 };
 
 export default function NyckeltalGrid({ children }: Props) {
-  const theme = useTheme();
-
   return (
     <List
       sx={(theme) => ({
