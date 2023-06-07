@@ -22,7 +22,7 @@ export default function NyckeltalGrid({ children }: Props) {
           gridTemplateColumns: "repeat(auto-fill, 234px)",
         },
         [theme.breakpoints.down("sm")]: {
-          gridTemplateColumns: "repeat(auto-fill, 100%)",
+          gridTemplateColumns: "repeat(auto-fill, 47%)",
         },
       })}
     >
