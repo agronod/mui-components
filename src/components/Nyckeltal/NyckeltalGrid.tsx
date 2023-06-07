@@ -10,7 +10,7 @@ export default function NyckeltalGrid({ children }: Props) {
 
   return (
     <List
-      sx={{
+      sx={(theme) => ({
         display: "grid",
         gap: theme.spacing(2),
         gridTemplateColumns: "repeat(auto-fill, 248px)",
@@ -18,7 +18,13 @@ export default function NyckeltalGrid({ children }: Props) {
         listStyle: "none",
         padding: 0,
         marginTop: 0,
-      }}
+        [theme.breakpoints.down("md")]: {
+          gridTemplateColumns: "repeat(auto-fill, 234px)",
+        },
+        [theme.breakpoints.down("sm")]: {
+          gridTemplateColumns: "repeat(auto-fill, 100%)",
+        },
+      })}
     >
       <>{children}</>
     </List>
