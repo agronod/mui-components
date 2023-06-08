@@ -3,14 +3,12 @@ import React from "react";
 
 type Props = {
   children: React.ReactNode;
-  sx?: React.CSSProperties;
 };
 
-export default function NyckeltalGrid({ children, sx }: Props) {
+export default function NyckeltalGrid({ children }: Props) {
   return (
     <List
       sx={(theme) => ({
-        ...sx,
         display: "grid",
         gap: theme.spacing(2),
         gridTemplateColumns: "repeat(auto-fill, 248px)",
