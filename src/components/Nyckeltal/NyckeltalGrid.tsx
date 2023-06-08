@@ -3,9 +3,10 @@ import React from "react";
 
 type Props = {
   children: React.ReactNode;
+  columns?: number;
 };
 
-export default function NyckeltalGrid({ children }: Props) {
+export default function NyckeltalGrid({ children, columns = 2 }: Props) {
   return (
     <List
       sx={(theme) => ({
@@ -16,11 +17,8 @@ export default function NyckeltalGrid({ children }: Props) {
         listStyle: "none",
         padding: 0,
         marginTop: 0,
-        [theme.breakpoints.between("sm", "lg")]: {
-          gridTemplateColumns: "repeat(auto-fill, 172px)",
-        },
-        [theme.breakpoints.down("sm")]: {
-          gridTemplateColumns: "repeat(2, 1fr)",
+        [theme.breakpoints.down("md")]: {
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
         },
       })}
     >
