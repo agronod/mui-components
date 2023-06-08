@@ -3,6 +3,7 @@ import React from "react";
 
 type Props = {
   children: React.ReactNode;
+  // amount of columns in grid
   columns?: number;
 };
 
