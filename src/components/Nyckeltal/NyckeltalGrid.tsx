@@ -16,7 +16,7 @@ export default function NyckeltalGrid({ children }: Props) {
         listStyle: "none",
         padding: 0,
         marginTop: 0,
-        [theme.breakpoints.between("sm", "md")]: {
+        [theme.breakpoints.between("sm", "lg")]: {
           gridTemplateColumns: "repeat(auto-fill, 172px)",
         },
         [theme.breakpoints.down("sm")]: {
