@@ -14,6 +14,7 @@ export const tooltipTypographyStyle = {
 export default function Tooltip(props: TooltipProps) {
   return (
     <MuiTooltip
+      {...props}
       PopperProps={{
         sx: {
           "& .MuiTooltip-tooltip": {
