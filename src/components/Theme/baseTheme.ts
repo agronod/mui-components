@@ -680,13 +680,14 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           "&.MuiContainer-maxWidthLg": {
-            padding: "40px 0",
+            py: 40,
+            px: 0,
             maxWidth: 1040,
-            [defaultMuiTheme.breakpoints.between("sm", "md")]: {
-              padding: "40px 32px",
+            [defaultMuiTheme.breakpoints.down("md")]: {
+              px: 4,
             },
-            [defaultMuiTheme.breakpoints.down("lg")]: {
-              padding: "16px",
+            [defaultMuiTheme.breakpoints.down("sm")]: {
+              p: 1,
             },
           },
         },
