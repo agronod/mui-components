@@ -483,12 +483,9 @@ const baseThemeOptions: ThemeOptions = {
         outlined: {
           borderRadius: "100vmax",
           borderColor: globalThemePalette.input.border,
-          margin: "0px 1px",
 
           ":hover": {
             backgroundColor: "transparent",
-            borderWidth: "2px",
-            margin: "0px",
           },
           "&.MuiButton-outlinedWarning": {
             borderColor: globalThemePalette.warning.main,
