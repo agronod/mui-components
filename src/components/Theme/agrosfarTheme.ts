@@ -32,7 +32,7 @@ const agrosfarTheme = {
             color: themePalette.primary.medium,
             "&:hover": {
               color: themePalette.primary.dark,
-              }
+            },
           },
         },
       },
@@ -94,6 +94,7 @@ const agrosfarTheme = {
         outlined: {
           ":hover": {
             color: themePalette.primary.medium,
+            boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
           },
           ":active": {
             backgroundColor: themePalette.primary.pastel,

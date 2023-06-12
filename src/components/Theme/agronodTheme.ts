@@ -33,8 +33,8 @@ const agronodTheme = {
           "&.Mui-checked": {
             color: themePalette.primary.medium,
             "&:hover": {
-            color: themePalette.primary.mediumHover,
-            }
+              color: themePalette.primary.mediumHover,
+            },
           },
         },
       },
@@ -63,6 +63,9 @@ const agronodTheme = {
     MuiButton: {
       styleOverrides: {
         outlined: {
+          ":hover": {
+            boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
+          },
           "&.MuiButton-outlinedPrimary": {
             color: themePalette.text.primary,
             borderColor: themePalette.primary.main,
@@ -142,6 +145,5 @@ const agronodTheme = {
     },
   },
 };
-
 
 export default agronodTheme;
