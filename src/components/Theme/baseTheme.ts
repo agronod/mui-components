@@ -679,7 +679,7 @@ const baseThemeOptions: ThemeOptions = {
           "&.MuiContainer-maxWidthLg": {
             padding: "40px 0",
             maxWidth: 1040,
-            [defaultMuiTheme.breakpoints.down("md")]: {
+            [defaultMuiTheme.breakpoints.down("lg")]: {
               padding: "40px 32px",
             },
             [defaultMuiTheme.breakpoints.down("sm")]: {
