@@ -376,6 +376,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiTab: {
       styleOverrides: {
         root: {
+          letterSpacing: 0,
           fontFamily: "inter",
           margin: "0px 10px 0px 0px",
           padding: "12px 26px",
@@ -437,6 +438,7 @@ const baseThemeOptions: ThemeOptions = {
       },
       styleOverrides: {
         root: {
+          letterSpacing: 0,
           fontFamily: "inter",
           boxShadow: "none",
           fontSize: pxToRem(14),
