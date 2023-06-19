@@ -81,7 +81,7 @@ export const BarChart: React.FC<BarChartProps> = ({
               {TooltipContent && (
                 <Tooltip
                   cursor={{ fill: "transparent" }}
-                  wrapperStyle={{ outline: "none" }}
+                  wrapperStyle={{ outline: "none", zIndex: 1000 }}
                   content={<TooltipContent />}
                 />
               )}
