@@ -19,19 +19,19 @@ declare module "@mui/material/styles/" {
     darkHover?: string;
   }
 }
-declare module "@mui/material/styles/" {
-  interface PaletteOptions {
-    icon?: {
-      primary?: string;
-      secondary?: string;
+declare module "@mui/material/styles/createPalette" {
+  interface Palette {
+    icon: {
+      primary: string;
+      secondary: string;
     };
-    input?: {
-      background?: string;
-      backgroundDisabled?: string;
-      border?: string;
+    input: {
+      background: string;
+      backgroundDisabled: string;
+      border: string;
     };
-    border?: string;
-    disabled?: string;
+    border: string;
+    disabled: string;
   }
 }
 declare module "@mui/material/styles/" {
