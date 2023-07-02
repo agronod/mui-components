@@ -1,5 +1,7 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { getNyckeltalVarde, NyckeltalProps } from "./utils";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { Tooltip } from "../Tooltip";
 
 type Props = {
   item: NyckeltalProps;
@@ -17,12 +19,31 @@ export default function Nyckeltal({ item, boxShadow = true }: Props) {
         background: "#fff",
       }}
     >
-      <Typography
-        sx={{ fontFamily: "inter, sans-serif!important" }}
-        variant="caption"
-      >
-        {item.nyckeltal}
-      </Typography>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography
+          sx={{ fontFamily: "inter, sans-serif!important" }}
+          variant="caption"
+        >
+          {item.nyckeltal}
+        </Typography>
+        {item.kommentar && (
+          <Tooltip title={item.kommentar}>
+            <span
+              style={{
+                marginBottom: "-7px",
+              }}
+            >
+              <InfoOutlinedIcon
+                sx={{
+                  color: "text.secondary",
+                  width: "20px",
+                  height: "20px",
+                }}
+              />
+            </span>
+          </Tooltip>
+        )}
+      </Box>
       <Typography
         sx={{ fontFamily: "inter, sans-serif!important" }}
         component="p"

@@ -7,6 +7,7 @@ export * from "./Theme";
 export * from "./Loaders";
 export * from "./AsideCard";
 export * from "./ModalCard";
+export * from "./Tooltip";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };
