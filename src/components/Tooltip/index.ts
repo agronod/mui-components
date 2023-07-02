@@ -1,4 +1,3 @@
-import Tooltip from "./Tooltip";
-import tooltipTypographyStyles from "./Tooltip";
+import Tooltip, { tooltipTypographyStyle } from "./Tooltip";
 
-export { Tooltip, tooltipTypographyStyles };
+export { Tooltip, tooltipTypographyStyle };
