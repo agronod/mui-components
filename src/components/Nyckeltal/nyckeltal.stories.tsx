@@ -14,8 +14,18 @@ export default {
 export const NyckeltalDefault = () => (
   <NyckeltalGrid>
     {[
-      { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 200 },
-      { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 200 },
+      {
+        nyckeltal: "Nyckeltal",
+        enhet: "kg/co2",
+        varde: 200,
+        kommentar: "Tooltip text",
+      },
+      {
+        nyckeltal: "Nyckeltal",
+        enhet: "kg/co2",
+        varde: 200,
+        kommentar: "Tooltip text 2",
+      },
       { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 200 },
       { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 200 },
     ].map((values, index) => (
