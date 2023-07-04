@@ -32,6 +32,13 @@ declare module "@mui/material/styles/createPalette" {
     };
     border: string;
     disabled: string;
+    tertiary: {
+      pastel: string;
+      light: string;
+      main: string;
+      medium: string;
+      dark: string;
+    };
   }
 }
 declare module "@mui/material/styles/" {
@@ -93,6 +100,13 @@ const semanticThemePalette = {
     main: "#5D9D52",
     medium: "#457A3B",
     dark: "#2F5D28",
+  },
+  tertiary: {
+    pastel: "#F4E8E7",
+    light: "#DAC7C8",
+    main: "#7E474B",
+    medium: "#5B353A",
+    dark: "#3A1E25",
   },
 };
 
