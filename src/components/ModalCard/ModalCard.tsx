@@ -55,7 +55,7 @@ const ModalCard = (props: ModalCardProps) => {
             transform: "unset",
             borderBottomLeftRadius: "0",
             borderBottomRightRadius: "0",
-            maxHeight: "95vh",
+            maxHeight: "95dvh",
             overflow: "auto",
           },
         })}
@@ -81,7 +81,7 @@ const ModalCard = (props: ModalCardProps) => {
             pb: 5,
             pl: 5,
             pr: 5,
-            maxHeight: "95vh",
+            maxHeight: "95dvh",
             overflow: "auto",
             textAlign: "center",
             [theme.breakpoints.down("sm")]: {
