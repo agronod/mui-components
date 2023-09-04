@@ -680,7 +680,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiFormHelperText: {
       styleOverrides: {
         root: {
-          height: "15px",
+          minHeigh: "15px",
           lineHeight: 1.25,
           marginLeft: 0,
           fontFamily: "inter",
