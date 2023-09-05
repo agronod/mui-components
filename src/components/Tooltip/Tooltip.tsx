@@ -26,17 +26,7 @@ export default function Tooltip(props: TooltipProps) {
         },
       }}
       title={
-        <Typography
-          sx={[
-            tooltipTypographyStyle,
-            {
-              display: "flex",
-              alignItems: "center",
-            },
-          ]}
-        >
-          {props.title}
-        </Typography>
+        <Typography sx={[tooltipTypographyStyle]}>{props.title}</Typography>
       }
       placement={props.placement ?? "top-start"}
     >
