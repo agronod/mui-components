@@ -141,8 +141,14 @@ export const ButtonLoader: ComponentStory<typeof Button> = ({
   children,
   ...rest
 }) => (
-  <Button disabled={true} {...rest}>
-    <LoaderCircular align="center" color="inherit" size={20} thickness={5} />
+  <Button
+    disabled={true}
+    {...rest}
+    startIcon={
+      <LoaderCircular align="center" color="inherit" size={15} thickness={5} />
+    }
+  >
+    Loading
   </Button>
 );
 ButtonLoader.args = {

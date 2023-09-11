@@ -28,10 +28,10 @@ const agrosfarTheme = {
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          "&.Mui-checked": {
-            color: themePalette.primary.medium,
+          "&.Mui-checked:not(.Mui-disabled)": {
+            color: themePalette.primary.main,
             "&:hover": {
-              color: themePalette.primary.dark,
+              color: themePalette.primary.medium,
             },
           },
         },
