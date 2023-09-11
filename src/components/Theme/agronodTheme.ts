@@ -30,10 +30,16 @@ const agronodTheme = {
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          "&.Mui-checked": {
+          "&.Mui-checked:not(.Mui-disabled)": {
             color: themePalette.primary.medium,
             "&:hover": {
               color: themePalette.primary.mediumHover,
+            },
+          },
+          "& .MuiSvgIcon-root": {
+            fontSize: 24,
+            "@media (max-width: 900px)": {
+              fontSize: 36,
             },
           },
         },
@@ -66,7 +72,7 @@ const agronodTheme = {
           ":hover": {
             boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
           },
-          "&.MuiButton-outlinedPrimary": {
+          "&.MuiButton-outlinedPrimary:not(.Mui-disabled)": {
             color: themePalette.text.primary,
             borderColor: themePalette.primary.main,
             ":hover": {

@@ -16,3 +16,13 @@ export const TooltipDefault = () => (
     <Button variant="contained">Hover</Button>
   </Tooltip>
 );
+export const TooltipWithArrow = () => (
+  <Tooltip title="Some text" arrow={true}>
+    <Button variant="contained">Hover</Button>
+  </Tooltip>
+);
+export const TooltipPlacementRight = () => (
+  <Tooltip title="Some text" arrow={true} placement="right">
+    <Button variant="contained">Hover</Button>
+  </Tooltip>
+);

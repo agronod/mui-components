@@ -1,4 +1,9 @@
-import { Tooltip as MuiTooltip, Typography, TooltipProps } from "@mui/material";
+import {
+  Tooltip as MuiTooltip,
+  Typography,
+  TooltipProps,
+  tooltipClasses,
+} from "@mui/material";
 
 export const tooltipTypographyStyle = {
   fontFamily: "Inter",
@@ -15,7 +20,7 @@ export default function Tooltip(props: TooltipProps) {
     <MuiTooltip
       {...props}
       PopperProps={{
-        sx: {
+        sx: (theme) => ({
           "& .MuiTooltip-tooltip": {
             backgroundColor: "#212121",
             borderRadius: "4px",
@@ -23,7 +28,10 @@ export default function Tooltip(props: TooltipProps) {
             maxWidth: "500px",
             marginBottom: "8px !important",
           },
-        },
+          [`& .${tooltipClasses.arrow}`]: {
+            color: theme.palette.common.black,
+          },
+        }),
       }}
       title={
         <Typography sx={[tooltipTypographyStyle]}>{props.title}</Typography>

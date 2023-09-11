@@ -503,7 +503,7 @@ const baseThemeOptions: ThemeOptions = {
           ":hover": {
             backgroundColor: "transparent",
           },
-          "&.MuiButton-outlinedWarning": {
+          "&.MuiButton-outlinedWarning:not(.Mui-disabled)": {
             borderColor: globalThemePalette.warning.main,
             color: globalThemePalette.text.primary,
             ":hover": {
@@ -516,7 +516,7 @@ const baseThemeOptions: ThemeOptions = {
           ".MuiTouchRipple-child": {
             backgroundColor: "transparent !important",
           },
-          "&.MuiButton-outlinedError": {
+          "&.MuiButton-outlinedError:not(.Mui-disabled)": {
             color: globalThemePalette.error.medium,
             ":hover": {
               color: globalThemePalette.error.dark,
@@ -526,7 +526,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.error.pastel,
             },
           },
-          "&.MuiButton-outlinedInfo": {
+          "&.MuiButton-outlinedInfo:not(.Mui-disabled)": {
             color: globalThemePalette.info.main,
             ":hover": {
               color: globalThemePalette.info.medium,
@@ -536,7 +536,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.info.pastel,
             },
           },
-          "&.MuiButton-outlinedSuccess": {
+          "&.MuiButton-outlinedSuccess:not(.Mui-disabled)": {
             color: globalThemePalette.success.main,
             ":hover": {
               color: globalThemePalette.success.medium,
