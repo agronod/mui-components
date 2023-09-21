@@ -5,16 +5,15 @@ import { Tooltip } from "../Tooltip";
 
 type Props = {
   item: NyckeltalProps;
-  boxShadow?: boolean;
 };
 
-export default function Nyckeltal({ item, boxShadow = true }: Props) {
+export default function Nyckeltal({ item }: Props) {
   return (
     <li
       style={{
-        borderRadius: "20px",
-        boxShadow: boxShadow ? "0px 2px 10px 0px rgb(0 0 0 / 10%)" : "none",
-        border: boxShadow ? "" : "1px solid rgba(0, 0, 0, 0.12)",
+        borderRadius: "16px",
+        boxShadow: "none",
+        border: "1px solid #E5E3E0",
         padding: "16px",
         background: "#fff",
       }}

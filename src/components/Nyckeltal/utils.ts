@@ -31,5 +31,4 @@ export type NyckeltalProps = {
   nyckeltal: string;
   varde: number;
   kommentar?: string;
-  boxShadow?: boolean;
 };
