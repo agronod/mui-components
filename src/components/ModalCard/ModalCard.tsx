@@ -95,7 +95,7 @@ const ModalCard = (props: ModalCardProps) => {
           })}
         >
           {props.icon && <Box sx={{ mb: 3 }}>{props.icon}</Box>}
-          {props.caption && props.caption}
+          {props.caption && <Box sx={{ mb: 1 }}>{props.caption}</Box>}
           <Typography
             id="modal-modal-title"
             variant={
