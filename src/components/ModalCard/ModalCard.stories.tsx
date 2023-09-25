@@ -43,9 +43,22 @@ export default {
         type: "text",
       },
     },
+    alignment: {
+      control: {
+        type: "radio",
+        options: ["left", "center"],
+      },
+    },
     cardWidth: {
       description:
         "This property is used to control the size of the modal window, by default it is set to 100% it can be changed to any value or <code>auto</code>.",
+      control: {
+        type: "text",
+      },
+    },
+    caption: {
+      description:
+        "This property is used to control overline above main heading",
       control: {
         type: "text",
       },
@@ -89,6 +102,40 @@ ModalCardDefault.args = {
       <Button variant="contained">Test button</Button>
     </Box>
   ),
+  caption: "steg 1 av 2",
+};
+export const ModalCardLeftAligned: ComponentStory<typeof ModalCard> = ({
+  children,
+  open,
+  onClose,
+  ...rest
+}) => {
+  const [isOpen, setIsOpen] = useState(open);
+  useMemo(() => setIsOpen(open), [open]);
+  return (
+    <>
+      <Button variant="contained" onClick={() => setIsOpen(true)}>
+        Open modal
+      </Button>
+      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+        {children}
+      </ModalCard>
+    </>
+  );
+};
+ModalCardLeftAligned.args = {
+  title: "Modal card example",
+  open: false,
+  subtitle:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  children: (
+    <Box>
+      <p>this is test paragraph 1</p>
+      <Button variant="contained">Test button</Button>
+    </Box>
+  ),
+  caption: "steg 1 av 2",
+  alignment: "left",
 };
 
 export const ModalCardWithIcon: ComponentStory<typeof ModalCard> = ({
