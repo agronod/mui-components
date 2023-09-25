@@ -18,6 +18,8 @@ export interface ModalCardProps extends ModalCardBaseProps {
   subtitle?: string;
   cardWidth?: string;
   icon?: React.ReactElement;
+  caption?: React.ReactElement;
+  alignment?: "left" | "center";
 }
 
 const ModalCard = (props: ModalCardProps) => {
@@ -83,7 +85,7 @@ const ModalCard = (props: ModalCardProps) => {
             pr: 5,
             maxHeight: "95dvh",
             overflow: "auto",
-            textAlign: "center",
+            textAlign: props.alignment ? props.alignment : "center",
             [theme.breakpoints.down("sm")]: {
               pl: 2,
               pr: 2,
@@ -93,6 +95,7 @@ const ModalCard = (props: ModalCardProps) => {
           })}
         >
           {props.icon && <Box sx={{ mb: 3 }}>{props.icon}</Box>}
+          {props.caption && <Box sx={{ mb: 1 }}>{props.caption}</Box>}
           <Typography
             id="modal-modal-title"
             variant={
