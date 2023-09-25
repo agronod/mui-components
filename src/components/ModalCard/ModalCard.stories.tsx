@@ -3,6 +3,7 @@ import ModalCard from "./ModalCard";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import { useMemo, useState } from "react";
+import { ProgressIndicator } from "../ProgressIndicator";
 
 export default {
   title: "Components/ModalCard",
@@ -58,10 +59,8 @@ export default {
     },
     caption: {
       description:
-        "This property is used to control overline above main heading",
-      control: {
-        type: "text",
-      },
+        "This property is used to control overline above main heading it can be any element",
+      type: { name: "symbol" },
     },
     sx: {
       description: `This property is used to control top parent element so to style children elements trough it you can add classes to sx object. like <code>sx: { color: "red", "& .MuiPaper-root": { backgroundColor: "blue" }}</code>.`,
@@ -102,7 +101,7 @@ ModalCardDefault.args = {
       <Button variant="contained">Test button</Button>
     </Box>
   ),
-  caption: "steg 1 av 2",
+  caption: <ProgressIndicator active={2} total={32} />,
 };
 export const ModalCardLeftAligned: ComponentStory<typeof ModalCard> = ({
   children,
@@ -134,7 +133,7 @@ ModalCardLeftAligned.args = {
       <Button variant="contained">Test button</Button>
     </Box>
   ),
-  caption: "steg 1 av 2",
+  caption: <ProgressIndicator active={2} total={32} />,
   alignment: "left",
 };
 

@@ -18,7 +18,7 @@ export interface ModalCardProps extends ModalCardBaseProps {
   subtitle?: string;
   cardWidth?: string;
   icon?: React.ReactElement;
-  caption?: string;
+  caption?: React.ReactElement;
   alignment?: "left" | "center";
 }
 
@@ -95,9 +95,7 @@ const ModalCard = (props: ModalCardProps) => {
           })}
         >
           {props.icon && <Box sx={{ mb: 3 }}>{props.icon}</Box>}
-          {props.caption && (
-            <Typography variant="overline">{props.caption}</Typography>
-          )}
+          {props.caption && props.caption}
           <Typography
             id="modal-modal-title"
             variant={
