@@ -20,12 +20,12 @@ export interface ModalCardProps extends ModalCardBaseProps {
   icon?: React.ReactElement;
   caption?: React.ReactElement;
   alignment?: "left" | "center";
+  isBigTitle?: boolean;
 }
 
 const ModalCard = (props: ModalCardProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isLongTitle = props.title.length > 27;
 
   return (
     <MuiModalCard
@@ -99,7 +99,13 @@ const ModalCard = (props: ModalCardProps) => {
           <Typography
             id="modal-modal-title"
             variant={
-              isLongTitle ? (isMobile ? "h5" : "h4") : isMobile ? "h4" : "h3"
+              props.isBigTitle
+                ? isMobile
+                  ? "h4"
+                  : "h3"
+                : isMobile
+                ? "h5"
+                : "h4"
             }
             sx={{ pb: 2 }}
           >
