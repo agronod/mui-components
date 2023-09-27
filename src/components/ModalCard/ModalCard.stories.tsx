@@ -35,8 +35,12 @@ export default {
     open: {
       control: {
         type: "boolean",
-
         required: true,
+      },
+    },
+    isBigTitle: {
+      control: {
+        type: "boolean",
       },
     },
     subtitle: {
@@ -102,6 +106,39 @@ ModalCardDefault.args = {
     </Box>
   ),
   caption: <ProgressIndicator active={2} total={32} />,
+};
+export const ModalCardBigTitle: ComponentStory<typeof ModalCard> = ({
+  children,
+  open,
+  onClose,
+  ...rest
+}) => {
+  const [isOpen, setIsOpen] = useState(open);
+  useMemo(() => setIsOpen(open), [open]);
+  return (
+    <>
+      <Button variant="contained" onClick={() => setIsOpen(true)}>
+        Open modal
+      </Button>
+      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+        {children}
+      </ModalCard>
+    </>
+  );
+};
+ModalCardBigTitle.args = {
+  title: "Modal card example",
+  open: false,
+  subtitle:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  children: (
+    <Box>
+      <p>this is test paragraph 1</p>
+      <Button variant="contained">Test button</Button>
+    </Box>
+  ),
+  caption: <ProgressIndicator active={2} total={32} />,
+  isBigTitle: true,
 };
 export const ModalCardLeftAligned: ComponentStory<typeof ModalCard> = ({
   children,

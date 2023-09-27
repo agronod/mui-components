@@ -297,6 +297,15 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          "&.Mui-disabled": {
+            color: globalThemePalette.border,
+          },
+        },
+      },
+    },
     MuiSwitch: {
       styleOverrides: {
         root: {
