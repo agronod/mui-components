@@ -9,12 +9,14 @@ import {
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { useCallback, useEffect } from "react";
 
 type ModalCardBaseProps = Pick<MuiModalCardProps, "children" | "open" | "sx">;
 
 export interface ModalCardProps extends ModalCardBaseProps {
   title: string;
   onClose: () => void;
+  notClosable?: boolean;
   subtitle?: string;
   cardWidth?: string;
   icon?: React.ReactElement;
@@ -26,6 +28,26 @@ export interface ModalCardProps extends ModalCardBaseProps {
 const ModalCard = (props: ModalCardProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const KEY_NAME_ESC = "Escape";
+  const KEY_EVENT_TYPE = "keyup";
+
+  const handleEscKey = useCallback((event: any) => {
+    if (event.key === KEY_NAME_ESC) {
+      props.onClose();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (props.notClosable !== undefined || props.notClosable) {
+      return;
+    }
+    document.addEventListener(KEY_EVENT_TYPE, handleEscKey, false);
+
+    return () => {
+      document.removeEventListener(KEY_EVENT_TYPE, handleEscKey, false);
+    };
+  }, [handleEscKey]);
 
   return (
     <MuiModalCard
@@ -39,6 +61,7 @@ const ModalCard = (props: ModalCardProps) => {
         justifyContent: "center",
         ...props.sx,
       }}
+      onClose={props.notClosable ? undefined : () => props.onClose()}
     >
       <Card
         sx={(theme) => ({
@@ -62,21 +85,22 @@ const ModalCard = (props: ModalCardProps) => {
           },
         })}
       >
-        <Button
-          variant="text"
-          sx={{
-            position: "absolute",
-            width: "30px",
-            height: "30px",
-            top: "24px",
-            right: "24px",
-            minWidth: "auto",
-          }}
-          onClick={() => props.onClose()}
-        >
-          <CloseRoundedIcon />
-        </Button>
-
+        {!props.notClosable && (
+          <Button
+            variant="text"
+            sx={{
+              position: "absolute",
+              width: "30px",
+              height: "30px",
+              top: "24px",
+              right: "24px",
+              minWidth: "auto",
+            }}
+            onClick={() => props.onClose()}
+          >
+            <CloseRoundedIcon />
+          </Button>
+        )}
         <Box
           sx={(theme) => ({
             pt: 8,
