@@ -125,7 +125,7 @@ export const ModalCardNotClosable: ComponentStory<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+      <ModalCard {...rest} open={isOpen}>
         {children}
       </ModalCard>
     </>

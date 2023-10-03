@@ -15,7 +15,7 @@ type ModalCardBaseProps = Pick<MuiModalCardProps, "children" | "open" | "sx">;
 
 export interface ModalCardProps extends ModalCardBaseProps {
   title: string;
-  onClose: () => void;
+  onClose?: () => void;
   notClosable?: boolean;
   subtitle?: string;
   cardWidth?: string;
@@ -34,7 +34,7 @@ const ModalCard = (props: ModalCardProps) => {
 
   const handleEscKey = useCallback((event: any) => {
     if (event.key === KEY_NAME_ESC) {
-      props.onClose();
+      props.onClose && props.onClose();
     }
   }, []);
 
@@ -61,7 +61,9 @@ const ModalCard = (props: ModalCardProps) => {
         justifyContent: "center",
         ...props.sx,
       }}
-      onClose={props.notClosable ? undefined : () => props.onClose()}
+      onClose={
+        props.notClosable ? undefined : () => props.onClose && props.onClose()
+      }
     >
       <Card
         sx={(theme) => ({
@@ -96,7 +98,7 @@ const ModalCard = (props: ModalCardProps) => {
               right: "24px",
               minWidth: "auto",
             }}
-            onClick={() => props.onClose()}
+            onClick={() => props.onClose && props.onClose()}
           >
             <CloseRoundedIcon />
           </Button>
