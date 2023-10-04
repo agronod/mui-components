@@ -2,7 +2,7 @@ import { common } from "@mui/material/colors";
 import { globalThemePalette } from "./baseTheme";
 import createPalette from "@mui/material/styles/createPalette";
 
-const agrosfarThemePalette = {
+export const agrosfarThemePalette = {
   primary: {
     pastel: "#E0F0EA",
     light: "#B4D9CA",
