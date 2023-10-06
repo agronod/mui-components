@@ -1,4 +1,3 @@
-import { agrosfarThemePalette } from "./agrosfarTheme";
 import { globalThemePalette } from "./baseTheme";
 import createPalette from "@mui/material/styles/createPalette";
 
@@ -42,8 +41,8 @@ const agrosfarDarkTheme = {
             backgroundColor: "rgba(255, 255, 255, 0.36)",
           },
           "&.Mui-disabled": {
-            color: "rgba(47, 133, 96, 1)",
-            borderColor: "rgba(47, 133, 96, 1)",
+            color: themePalette.primary.main,
+            borderColor: themePalette.primary.main,
           },
         },
       },
