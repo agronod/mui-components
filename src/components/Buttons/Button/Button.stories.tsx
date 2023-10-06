@@ -11,11 +11,11 @@ export default {
       "Buttons allow users to take actions, and make choices, with a single tap.",
     docs: {
       description: {
-        component: `Buttons communicate actions that users can take. They are typically placed throughout your UI, in places like:
+        component: `<div>Buttons communicate actions that users can take. They are typically placed throughout your UI, in places like:
           <ul><li>Modal windows</li>
           <li>Forms</li>
           <li>Cards</li>
-          <li>Toolbars</li></ul>
+          <li>Toolbars</li></ul></div>
           `,
       },
     },

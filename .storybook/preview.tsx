@@ -5,6 +5,7 @@ import {
   agrosfarTheme,
   agrosfarDarkTheme,
 } from "../src";
+import { Box } from "@mui/material";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -61,7 +62,23 @@ export const decorators = [
     const themeOptions = getThemeOptions(context.globals.theme);
     return (
       <ThemeProvider options={themeOptions}>
-        <Story {...context} />
+        {context.globals.theme === "AgrosfarDark" ? (
+          <Box
+            sx={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              padding: 2,
+              backgroundColor: "#2F8560",
+            }}
+          >
+            <Story {...context} />
+          </Box>
+        ) : (
+          <Story {...context} />
+        )}
       </ThemeProvider>
     );
   },
