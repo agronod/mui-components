@@ -5,16 +5,6 @@ import { LoaderCircular } from "../../Loaders";
 
 export default {
   title: "Components/Buttons/Button",
-  backgrounds: {
-    default: "agronod",
-    values: [
-      {
-        name: "agronod",
-        value: "#F8F6F3",
-      },
-      { name: "agrosfarDark", value: "#2F8560" },
-    ],
-  },
   component: Button,
   parameters: {
     componentSubtitle:
