@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  ThemeProvider,
-  agronodTheme,
-  agrosfarTheme,
-  agrosfarDarkTheme,
-} from "../src";
+import { ThemeProvider, agronodTheme, agrosfarTheme } from "../src";
 import { Box } from "@mui/material";
 
 export const parameters = {
@@ -37,7 +32,6 @@ export const parameters = {
 const themeOptions = {
   Agronod: agronodTheme,
   Agrosfar: agrosfarTheme,
-  AgrosfarDark: agrosfarDarkTheme,
 };
 
 const getThemeOptions = (themeName) => {
@@ -50,7 +44,7 @@ export const globalTypes = {
     description: "Global theme for components",
     defaultValue: "Agronod",
     toolbar: {
-      items: ["Agronod", "Agrosfar", "AgrosfarDark"],
+      items: ["Agronod", "Agrosfar"],
       title: true,
       dynamicTitle: true,
     },
@@ -62,23 +56,7 @@ export const decorators = [
     const themeOptions = getThemeOptions(context.globals.theme);
     return (
       <ThemeProvider options={themeOptions}>
-        {context.globals.theme === "AgrosfarDark" ? (
-          <Box
-            sx={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-              padding: 2,
-              backgroundColor: "#216545",
-            }}
-          >
-            <Story {...context} />
-          </Box>
-        ) : (
-          <Story {...context} />
-        )}
+        <Story {...context} />
       </ThemeProvider>
     );
   },
