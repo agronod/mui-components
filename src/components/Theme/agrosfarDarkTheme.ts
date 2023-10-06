@@ -1,10 +1,22 @@
-import { agrosfarThemePalette } from "./agrosfarTheme";
 import { globalThemePalette } from "./baseTheme";
 import createPalette from "@mui/material/styles/createPalette";
 
 const agrosfarDarkThemePalette = {
+  primary: {
+    pastel: "#E0F0EA",
+    light: "#B4D9CA",
+    main: "#2F8560",
+    medium: "#216545",
+    dark: "#123F25",
+  },
+  secondary: {
+    pastel: "#F1ECE7",
+    light: "#DAD0C7",
+    main: "#68523D",
+    medium: "#564230",
+    dark: "#443023",
+  },
   ...globalThemePalette,
-  ...agrosfarThemePalette,
 };
 
 const themePalette = createPalette(agrosfarDarkThemePalette);
@@ -29,9 +41,8 @@ const agrosfarDarkTheme = {
             backgroundColor: "rgba(255, 255, 255, 0.36)",
           },
           "&.Mui-disabled": {
-            color: themePalette.common.black,
-            borderColor: themePalette.common.black,
-            opacity: 0.35,
+            color: themePalette.primary.main,
+            borderColor: themePalette.primary.main,
           },
         },
       },
