@@ -1,4 +1,4 @@
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import Nyckeltal from "./Nyckeltal";
 import NyckeltalGrid from "./NyckeltalGrid";
 
@@ -9,7 +9,7 @@ export default {
     componentSubtitle:
       "Nyckeltal is a combination of several components including: Card, Typography, NyckeltalGrid & Nyckeltal.",
   },
-} as ComponentMeta<typeof Nyckeltal>;
+} as Meta<typeof Nyckeltal>;
 
 export const NyckeltalDefault = () => (
   <NyckeltalGrid>

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import AsideCard from "./AsideCard";
 // import { InputField } from "../InputField";
 import {
@@ -53,9 +53,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof AsideCard>;
+} as Meta<typeof AsideCard>;
 
-export const AsideCardRight: ComponentStory<typeof AsideCard> = ({
+export const AsideCardRight: StoryFn<typeof AsideCard> = ({
   children,
   ...rest
 }) => (
@@ -108,7 +108,7 @@ AsideCardRight.args = {
   variant: "elevation",
 };
 
-export const AsideCardLeft: ComponentStory<typeof AsideCard> = ({
+export const AsideCardLeft: StoryFn<typeof AsideCard> = ({
   children,
   ...rest
 }) => (

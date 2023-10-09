@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import { Button } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { LoaderCircular } from "../../Loaders";
@@ -78,9 +78,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-export const ButtonContained: ComponentStory<typeof Button> = ({
+export const ButtonContained: StoryFn<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
@@ -89,7 +89,7 @@ ButtonContained.args = {
   variant: "contained",
 };
 
-export const ButtonOutlined: ComponentStory<typeof Button> = ({
+export const ButtonOutlined: StoryFn<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
@@ -98,16 +98,15 @@ ButtonOutlined.args = {
   variant: "outlined",
 };
 
-export const ButtonText: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => <Button {...rest}>{children}</Button>;
+export const ButtonText: StoryFn<typeof Button> = ({ children, ...rest }) => (
+  <Button {...rest}>{children}</Button>
+);
 ButtonText.args = {
   children: "Button Text",
   variant: "text",
 };
 
-export const ButtonDisabled: ComponentStory<typeof Button> = ({
+export const ButtonDisabled: StoryFn<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
@@ -117,7 +116,7 @@ ButtonDisabled.args = {
   disabled: true,
 };
 
-export const ButtonFullWidth: ComponentStory<typeof Button> = ({
+export const ButtonFullWidth: StoryFn<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
@@ -127,7 +126,7 @@ ButtonFullWidth.args = {
   fullWidth: true,
 };
 
-export const ButtonCustomWidth: ComponentStory<typeof Button> = ({
+export const ButtonCustomWidth: StoryFn<typeof Button> = ({
   children,
   ...rest
 }) => <Button {...rest}>{children}</Button>;
@@ -137,10 +136,7 @@ ButtonCustomWidth.args = {
   sx: { minWidth: "500px" },
 };
 
-export const ButtonLoader: ComponentStory<typeof Button> = ({
-  children,
-  ...rest
-}) => (
+export const ButtonLoader: StoryFn<typeof Button> = ({ children, ...rest }) => (
   <Button
     disabled={true}
     {...rest}
@@ -155,7 +151,7 @@ ButtonLoader.args = {
   variant: "contained",
 };
 
-export const ButtonIconLeft: ComponentStory<typeof Button> = ({
+export const ButtonIconLeft: StoryFn<typeof Button> = ({
   children,
   ...rest
 }) => (
@@ -168,7 +164,7 @@ ButtonIconLeft.args = {
   variant: "contained",
 };
 
-export const ButtonIconRight: ComponentStory<typeof Button> = ({
+export const ButtonIconRight: StoryFn<typeof Button> = ({
   children,
   ...rest
 }) => (

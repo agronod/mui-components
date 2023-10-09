@@ -1,9 +1,9 @@
 import { FormControlLabel, Radio } from "@mui/material";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Radio",
-  component: FormControlLabel,
+  component: Radio,
   argTypes: {
     checked: {
       control: {
@@ -51,20 +51,20 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Radio>;
+} as Meta<typeof Radio>;
 
-export const RadioDefault: ComponentStory<typeof Radio> = ({ ...args }) => (
+export const RadioDefault: StoryFn<typeof Radio> = ({ ...args }) => (
   <Radio {...args} />
 );
 
-export const RadioWithLabel: ComponentStory<typeof FormControlLabel> = ({
+export const RadioWithLabel: StoryFn<typeof FormControlLabel> = ({
   ...args
 }) => <FormControlLabel {...args} control={<Radio />} />;
 RadioWithLabel.args = {
   label: "This is a label",
 };
 
-export const RadioDisabled: ComponentStory<typeof FormControlLabel> = ({
+export const RadioDisabled: StoryFn<typeof FormControlLabel> = ({
   ...args
 }) => <FormControlLabel {...args} control={<Radio />} />;
 RadioDisabled.args = {

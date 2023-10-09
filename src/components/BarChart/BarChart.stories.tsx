@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import BarChart from "./BarChart";
 import { Box } from "@mui/material";
 
 export default {
   title: "Components/BarChart",
   argTypes: {},
-} as ComponentMeta<typeof BarChart>;
+} as Meta<typeof BarChart>;
 
 const chartData =
   [
@@ -29,9 +29,7 @@ const chartData =
     },
   ] || [];
 
-export const BarChartDefault: ComponentStory<typeof BarChart> = ({
-  ...args
-}) => (
+export const BarChartDefault: StoryFn<typeof BarChart> = ({ ...args }) => (
   <Box sx={{ height: "400px", width: "600px" }}>
     <BarChart {...args} />
   </Box>

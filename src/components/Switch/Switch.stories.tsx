@@ -1,5 +1,5 @@
 import { FormControlLabel, Switch } from "@mui/material";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Switch",
@@ -56,20 +56,20 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Switch>;
+} as Meta<typeof Switch>;
 
-export const SwitchDefault: ComponentStory<typeof Switch> = ({ ...args }) => (
+export const SwitchDefault: StoryFn<typeof Switch> = ({ ...args }) => (
   <Switch disableRipple {...args} />
 );
 
-export const SwitchWithLabel: ComponentStory<typeof FormControlLabel> = ({
+export const SwitchWithLabel: StoryFn<typeof FormControlLabel> = ({
   ...args
 }) => <FormControlLabel {...args} control={<Switch />} />;
 SwitchWithLabel.args = {
   label: "this is label",
 };
 
-export const SwitchDisabled: ComponentStory<typeof FormControlLabel> = ({
+export const SwitchDisabled: StoryFn<typeof FormControlLabel> = ({
   ...args
 }) => <FormControlLabel {...args} control={<Switch />} />;
 SwitchDisabled.args = {

@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import Header from "./Header";
 import { BrowserRouter } from "react-router-dom";
 import { Box } from "@mui/material";
@@ -8,11 +8,13 @@ export default {
   component: Header,
   parameters: {},
   argTypes: {},
-} as ComponentMeta<typeof Header>;
+} as Meta<typeof Header>;
 
-export const HeaderDefault: ComponentStory<typeof Header> = ({ ...rest }) => (
+export const HeaderDefault: StoryFn<typeof Header> = ({ ...rest }) => (
   <BrowserRouter>
-    <Header {...rest} />
+    <Box sx={{ minHeight: "90px" }}>
+      <Header {...rest} />
+    </Box>
   </BrowserRouter>
 );
 HeaderDefault.args = {};

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import ModalCard from "./ModalCard";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
@@ -78,9 +78,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ModalCard>;
+} as Meta<typeof ModalCard>;
 
-export const ModalCardDefault: ComponentStory<typeof ModalCard> = ({
+export const ModalCardDefault: StoryFn<typeof ModalCard> = ({
   children,
   open,
   onClose,
@@ -112,7 +112,7 @@ ModalCardDefault.args = {
   ),
   caption: <ProgressIndicator active={2} total={32} />,
 };
-export const ModalCardNotClosable: ComponentStory<typeof ModalCard> = ({
+export const ModalCardNotClosable: StoryFn<typeof ModalCard> = ({
   children,
   open,
   onClose,
@@ -145,7 +145,7 @@ ModalCardNotClosable.args = {
   caption: <ProgressIndicator active={2} total={32} />,
   notClosable: true,
 };
-export const ModalCardBigTitle: ComponentStory<typeof ModalCard> = ({
+export const ModalCardBigTitle: StoryFn<typeof ModalCard> = ({
   children,
   open,
   onClose,
@@ -178,7 +178,7 @@ ModalCardBigTitle.args = {
   caption: <ProgressIndicator active={2} total={32} />,
   isBigTitle: true,
 };
-export const ModalCardLeftAligned: ComponentStory<typeof ModalCard> = ({
+export const ModalCardLeftAligned: StoryFn<typeof ModalCard> = ({
   children,
   open,
   onClose,
@@ -212,7 +212,7 @@ ModalCardLeftAligned.args = {
   alignment: "left",
 };
 
-export const ModalCardWithIcon: ComponentStory<typeof ModalCard> = ({
+export const ModalCardWithIcon: StoryFn<typeof ModalCard> = ({
   children,
   open,
   onClose,
@@ -244,7 +244,7 @@ ModalCardWithIcon.args = {
   icon: <ErrorOutlineOutlinedIcon color="error" fontSize="large" />,
 };
 
-export const ModalCardCustomWidth: ComponentStory<typeof ModalCard> = ({
+export const ModalCardCustomWidth: StoryFn<typeof ModalCard> = ({
   children,
   open,
   onClose,
@@ -276,7 +276,7 @@ ModalCardCustomWidth.args = {
   cardWidth: "auto",
 };
 
-export const ModalCardCustomStyles: ComponentStory<typeof ModalCard> = ({
+export const ModalCardCustomStyles: StoryFn<typeof ModalCard> = ({
   children,
   open,
   onClose,
