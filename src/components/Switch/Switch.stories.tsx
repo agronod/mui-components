@@ -3,7 +3,7 @@ import { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Switch",
-  component: FormControlLabel,
+  component: Switch,
   argTypes: {
     checked: {
       control: {

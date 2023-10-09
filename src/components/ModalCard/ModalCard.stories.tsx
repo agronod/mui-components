@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import ModalCard from "./ModalCard";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import { useMemo, useState } from "react";
 import { ProgressIndicator } from "../ProgressIndicator";

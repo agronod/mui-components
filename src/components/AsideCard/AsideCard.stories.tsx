@@ -1,6 +1,5 @@
 import { StoryFn, Meta } from "@storybook/react";
 import AsideCard from "./AsideCard";
-// import { InputField } from "../InputField";
 import {
   Box,
   Button,
