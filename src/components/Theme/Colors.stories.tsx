@@ -1,10 +1,11 @@
-import { Box, Grid, Stack, Typography, useTheme } from "@mui/material";
-import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
+import { Grid, Typography, useTheme } from "@mui/material";
+import { ColorPalette } from "@storybook/blocks";
+import { Meta } from "@storybook/react";
 
 export default {
   title: "Base/ColorPalette",
   component: ColorPalette,
-};
+} as Meta<typeof ColorPalette>;
 
 export const colors = () => {
   const theme = useTheme();
