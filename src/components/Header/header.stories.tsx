@@ -1,13 +1,17 @@
 import { Meta, StoryFn } from "@storybook/react";
-import Header from "./Header";
 import { BrowserRouter } from "react-router-dom";
 import { Box } from "@mui/material";
+import Header from "./Header";
 
 export default {
   title: "Components/Header",
   component: Header,
   parameters: {},
-  argTypes: {},
+  argTypes: {
+    children: {
+      type: { name: "symbol", required: true },
+    },
+  },
 } as Meta<typeof Header>;
 
 export const HeaderDefault: StoryFn<typeof Header> = ({ ...rest }) => (
