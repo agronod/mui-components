@@ -1,13 +1,9 @@
 import { Grid, Typography, useTheme } from "@mui/material";
-import { ColorPalette } from "@storybook/blocks";
-import { Meta, StoryFn } from "@storybook/react";
-
 export default {
   title: "Base/ColorPalette",
-  component: ColorPalette,
-} as Meta<typeof ColorPalette>;
+};
 
-export const ButtonContained: StoryFn<typeof ColorPalette> = () => {
+export const ButtonContained = () => {
   const theme = useTheme();
   return (
     <>
