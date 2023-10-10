@@ -1,4 +1,3 @@
-export * from "./Accordion";
 export * from "./BarChart";
 export * from "./Header";
 export * from "./Alert";

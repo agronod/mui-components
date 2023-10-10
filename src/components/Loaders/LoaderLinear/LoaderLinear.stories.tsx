@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import LoaderLinear from "./LoaderLinear";
 
 export default {
@@ -45,9 +45,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof LoaderLinear>;
+} as Meta<typeof LoaderLinear>;
 
-export const LoaderLinearDefault: ComponentStory<typeof LoaderLinear> = ({
+export const LoaderLinearDefault: StoryFn<typeof LoaderLinear> = ({
   ...args
 }) => <LoaderLinear {...args} />;
 

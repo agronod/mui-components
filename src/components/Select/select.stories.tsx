@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Select",
@@ -21,9 +21,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Select>;
+} as Meta<typeof Select>;
 
-export const SelectDefault: ComponentStory<typeof Select> = ({ ...args }) => (
+export const SelectDefault: StoryFn<typeof Select> = ({ ...args }) => (
   <FormControl>
     <InputLabel>{args.label}</InputLabel>
     <Select value={1} {...args}>

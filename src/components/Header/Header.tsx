@@ -20,7 +20,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-interface IProps {
+export interface HeaderProps {
   /* Dropdown with links, used only in logged in state */
   userDropdown?: React.ReactNode | React.ReactNode[];
   /*  Child component with links for routing in the applications */
@@ -33,7 +33,7 @@ export default function Header({
   userDropdown,
   menuLinks,
   customLogo,
-}: IProps) {
+}: HeaderProps) {
   return (
     <AppBar sx={{ height: 78 }} position="fixed" visible={true} elevation={1}>
       <Toolbar

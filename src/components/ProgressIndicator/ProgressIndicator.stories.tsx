@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import ProgressIndicator from "./ProgressIndicator";
 
 export default {
@@ -30,11 +30,11 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ProgressIndicator>;
+} as Meta<typeof ProgressIndicator>;
 
-export const ProgressIndicatorDefault: ComponentStory<
-  typeof ProgressIndicator
-> = ({ ...rest }) => {
+export const ProgressIndicatorDefault: StoryFn<typeof ProgressIndicator> = ({
+  ...rest
+}) => {
   return (
     <>
       <ProgressIndicator {...rest} />

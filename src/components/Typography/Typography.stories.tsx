@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Base/Typography",
@@ -98,9 +98,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Typography>;
+} as Meta<typeof Typography>;
 
-export const Headline1: ComponentStory<typeof Typography> = ({
+export const Headline1: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -110,7 +110,7 @@ Headline1.args = {
   variant: "h1",
 };
 
-export const Headline2: ComponentStory<typeof Typography> = ({
+export const Headline2: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -120,7 +120,7 @@ Headline2.args = {
   variant: "h2",
 };
 
-export const Headline3: ComponentStory<typeof Typography> = ({
+export const Headline3: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -130,7 +130,7 @@ Headline3.args = {
   variant: "h3",
 };
 
-export const Headline4: ComponentStory<typeof Typography> = ({
+export const Headline4: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -140,7 +140,7 @@ Headline4.args = {
   variant: "h4",
 };
 
-export const Headline5: ComponentStory<typeof Typography> = ({
+export const Headline5: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -150,7 +150,7 @@ Headline5.args = {
   variant: "h5",
 };
 
-export const Headline6: ComponentStory<typeof Typography> = ({
+export const Headline6: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -160,7 +160,7 @@ Headline6.args = {
   variant: "h6",
 };
 
-export const subtitle1: ComponentStory<typeof Typography> = ({
+export const subtitle1: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -170,7 +170,7 @@ subtitle1.args = {
   variant: "subtitle1",
 };
 
-export const subtitle2: ComponentStory<typeof Typography> = ({
+export const subtitle2: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -180,17 +180,16 @@ subtitle2.args = {
   variant: "subtitle2",
 };
 
-export const body1: ComponentStory<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
+export const body1: StoryFn<typeof Typography> = ({ children, ...rest }) => (
+  <Typography {...rest}>{children}</Typography>
+);
 
 body1.args = {
   children: "This is body1",
   variant: "body1",
 };
 
-export const body1bold: ComponentStory<typeof Typography> = ({
+export const body1bold: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -200,17 +199,16 @@ body1bold.args = {
   variant: "body1bold",
 };
 
-export const body2: ComponentStory<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
+export const body2: StoryFn<typeof Typography> = ({ children, ...rest }) => (
+  <Typography {...rest}>{children}</Typography>
+);
 
 body2.args = {
   children: "This is body2",
   variant: "body2",
 };
 
-export const body2bold: ComponentStory<typeof Typography> = ({
+export const body2bold: StoryFn<typeof Typography> = ({
   children,
   ...rest
 }) => <Typography {...rest}>{children}</Typography>;
@@ -220,40 +218,36 @@ body2bold.args = {
   variant: "body2bold",
 };
 
-export const body3: ComponentStory<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
+export const body3: StoryFn<typeof Typography> = ({ children, ...rest }) => (
+  <Typography {...rest}>{children}</Typography>
+);
 
 body3.args = {
   children: "This is body3",
   variant: "body3",
 };
 
-export const body4: ComponentStory<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
+export const body4: StoryFn<typeof Typography> = ({ children, ...rest }) => (
+  <Typography {...rest}>{children}</Typography>
+);
 
 body4.args = {
   children: "This is body4",
   variant: "body4",
 };
 
-export const caption: ComponentStory<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
+export const caption: StoryFn<typeof Typography> = ({ children, ...rest }) => (
+  <Typography {...rest}>{children}</Typography>
+);
 
 caption.args = {
   children: "This is caption",
   variant: "caption",
 };
 
-export const overline: ComponentStory<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
+export const overline: StoryFn<typeof Typography> = ({ children, ...rest }) => (
+  <Typography {...rest}>{children}</Typography>
+);
 
 overline.args = {
   children: "This is overline",

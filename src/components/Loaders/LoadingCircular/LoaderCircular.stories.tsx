@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import LoaderCircular from "./LoaderCircular";
 import { Button } from "@mui/material";
 
@@ -37,9 +37,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof LoaderCircular>;
+} as Meta<typeof LoaderCircular>;
 
-export const LoaderCircularDefault: ComponentStory<typeof LoaderCircular> = ({
+export const LoaderCircularDefault: StoryFn<typeof LoaderCircular> = ({
   ...args
 }) => <LoaderCircular {...args} />;
 
@@ -48,7 +48,7 @@ LoaderCircularDefault.args = {
   align: "center",
 };
 
-export const LoaderCircularInButton: ComponentStory<typeof LoaderCircular> = ({
+export const LoaderCircularInButton: StoryFn<typeof LoaderCircular> = ({
   ...args
 }) => (
   <Button variant="contained" disabled={true}>

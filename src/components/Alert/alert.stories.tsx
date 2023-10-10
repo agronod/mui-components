@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { AlertTitle, Typography } from "@mui/material";
+import { Meta, StoryFn } from "@storybook/react";
+import { AlertTitle } from "@mui/material";
 import Alert from "./Alert";
 
 export default {
@@ -29,17 +29,16 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
-export const AlertDefault: ComponentStory<typeof Alert> = ({
-  children,
-  ...rest
-}) => <Alert {...rest}>{children}</Alert>;
+export const AlertDefault: StoryFn<typeof Alert> = ({ children, ...rest }) => (
+  <Alert {...rest}>{children}</Alert>
+);
 AlertDefault.args = {
   children: <>Description</>,
 };
 
-export const AlertWithTitle: ComponentStory<typeof Alert> = ({
+export const AlertWithTitle: StoryFn<typeof Alert> = ({
   children,
   ...rest
 }) => <Alert {...rest}>{children}</Alert>;

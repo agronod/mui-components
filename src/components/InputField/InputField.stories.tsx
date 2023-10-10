@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import { FormControl, FormLabel, TextField } from "@mui/material";
 
 export default {
@@ -77,11 +77,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof TextField>;
+} as Meta<typeof TextField>;
 
-export const DefaultInputField: ComponentStory<typeof TextField> = ({
-  ...args
-}) => (
+export const DefaultInputField: StoryFn<typeof TextField> = ({ ...args }) => (
   <TextField
     InputLabelProps={{
       shrink: false,
@@ -99,9 +97,10 @@ DefaultInputField.args = {
   fullWidth: true,
 };
 
-export const InputFieldWithLabelAndHelperText: ComponentStory<
-  typeof TextField
-> = ({ children, ...rest }) => (
+export const InputFieldWithLabelAndHelperText: StoryFn<typeof TextField> = ({
+  children,
+  ...rest
+}) => (
   <FormControl fullWidth={rest.fullWidth}>
     <FormLabel>{children}</FormLabel>
     <TextField
@@ -123,7 +122,7 @@ InputFieldWithLabelAndHelperText.args = {
   fullWidth: true,
 };
 
-export const InputFieldRequired: ComponentStory<typeof TextField> = ({
+export const InputFieldRequired: StoryFn<typeof TextField> = ({
   children,
   ...rest
 }) => (
@@ -148,7 +147,7 @@ InputFieldRequired.args = {
   id: "inputTextWithLabel",
 };
 
-export const InputFieldError: ComponentStory<typeof TextField> = ({
+export const InputFieldError: StoryFn<typeof TextField> = ({
   children,
   ...rest
 }) => (
@@ -174,9 +173,7 @@ InputFieldError.args = {
   id: "inputTextWithLabel",
 };
 
-export const InputFieldDisabled: ComponentStory<typeof TextField> = ({
-  ...args
-}) => (
+export const InputFieldDisabled: StoryFn<typeof TextField> = ({ ...args }) => (
   <TextField
     InputLabelProps={{
       shrink: false,
@@ -194,9 +191,7 @@ InputFieldDisabled.args = {
   id: "inputDisabled",
 };
 
-export const InputFieldPassword: ComponentStory<typeof TextField> = ({
-  ...args
-}) => (
+export const InputFieldPassword: StoryFn<typeof TextField> = ({ ...args }) => (
   <TextField
     InputLabelProps={{
       shrink: false,
@@ -214,9 +209,7 @@ InputFieldPassword.args = {
   id: "inputDisabled",
 };
 
-export const InputFieldDate: ComponentStory<typeof TextField> = ({
-  ...args
-}) => (
+export const InputFieldDate: StoryFn<typeof TextField> = ({ ...args }) => (
   <TextField
     InputLabelProps={{
       shrink: false,

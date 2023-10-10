@@ -1,4 +1,4 @@
-import { ComponentMeta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import Tooltip from "./Tooltip";
 import { Button } from "@mui/material";
 
@@ -9,7 +9,7 @@ export default {
     componentSubtitle:
       "Tooltips display informative text when users hover over, focus on, or tap an element.",
   },
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
 export const TooltipDefault = () => (
   <Tooltip title="Some text">

@@ -1,4 +1,3 @@
-import { common } from "@mui/material/colors";
 import { globalThemePalette } from "./baseTheme";
 import createPalette from "@mui/material/styles/createPalette";
 

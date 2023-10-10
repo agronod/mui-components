@@ -1,9 +1,9 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Checkbox",
-  component: FormControlLabel,
+  component: Checkbox,
   argTypes: {
     checked: {
       control: {
@@ -26,27 +26,27 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Checkbox>;
+} as Meta<typeof Checkbox>;
 
-export const CheckboxDefault: ComponentStory<typeof Checkbox> = ({
-  ...args
-}) => <Checkbox {...args} />;
+export const CheckboxDefault: StoryFn<typeof Checkbox> = ({ ...args }) => (
+  <Checkbox {...args} />
+);
 
-export const CheckboxChecked: ComponentStory<typeof Checkbox> = ({
-  ...args
-}) => <Checkbox {...args} />;
+export const CheckboxChecked: StoryFn<typeof Checkbox> = ({ ...args }) => (
+  <Checkbox {...args} />
+);
 CheckboxChecked.args = {
   checked: true,
 };
 
-export const CheckboxWithLabel: ComponentStory<typeof FormControlLabel> = ({
+export const CheckboxWithLabel: StoryFn<typeof FormControlLabel> = ({
   ...args
 }) => <FormControlLabel {...args} control={<Checkbox />} />;
 CheckboxWithLabel.args = {
   label: "this is label",
 };
 
-export const CheckboxDisabled: ComponentStory<typeof FormControlLabel> = ({
+export const CheckboxDisabled: StoryFn<typeof FormControlLabel> = ({
   ...args
 }) => <FormControlLabel {...args} control={<Checkbox />} />;
 CheckboxDisabled.args = {
