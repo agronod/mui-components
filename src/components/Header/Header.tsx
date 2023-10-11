@@ -27,12 +27,15 @@ export interface HeaderProps {
   menuLinks?: React.ReactNode | React.ReactNode[];
   /*  Boolean to show or hide the agronod logo */
   customLogo?: React.ReactNode | React.ReactNode[];
+  /* Dropdown with contact info, used only in logged in state */
+  supportMenu?: React.ReactNode | React.ReactNode[];
 }
 
 export default function Header({
   userDropdown,
   menuLinks,
   customLogo,
+  supportMenu,
 }: HeaderProps) {
   return (
     <AppBar sx={{ height: 78 }} position="fixed" visible={true} elevation={1}>
@@ -65,6 +68,7 @@ export default function Header({
           }}
         >
           <>
+            {supportMenu && supportMenu}
             {menuLinks && menuLinks}
             {userDropdown && userDropdown}
           </>
