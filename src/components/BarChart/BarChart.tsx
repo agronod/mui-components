@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from "recharts";
 import ResponsiveContainer from "./ResponsiveContainer";
+import { useTheme } from "@mui/material";
 
 export type BarChartProps = {
   data: any;
@@ -26,6 +27,7 @@ export type BarChartProps = {
   children?: React.ReactNode;
   layout?: "horizontal" | "vertical";
   TooltipContent?: React.FC;
+  colorScheme?: "primary" | "secondary" | "tertiary";
 };
 
 export const BarChart: React.FC<BarChartProps> = ({
@@ -40,7 +42,9 @@ export const BarChart: React.FC<BarChartProps> = ({
   barCellsOptions = [],
   layout = "horizontal",
   TooltipContent,
+  colorScheme,
 }) => {
+  const theme = useTheme();
   if (!Array.isArray(data) || data.length === 0) {
     console.log(`No data to show for barchart: ${name}`);
     return <></>;
@@ -65,7 +69,15 @@ export const BarChart: React.FC<BarChartProps> = ({
               barCellsOptions.length > 0 &&
               barCellsOptions.map(
                 (child: CellProps | undefined, index: number) => (
-                  <Cell key={index} {...child} />
+                  <Cell
+                    key={index}
+                    {...child}
+                    fill={
+                      colorScheme === undefined
+                        ? child?.fill
+                        : theme.palette[colorScheme].main
+                    }
+                  />
                 )
               )}
           </Bar>
