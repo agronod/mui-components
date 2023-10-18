@@ -56,8 +56,8 @@ export default {
     alignment: {
       control: {
         type: "radio",
-        options: ["left", "center"],
       },
+      options: ["left", "center"],
     },
     cardWidth: {
       description:

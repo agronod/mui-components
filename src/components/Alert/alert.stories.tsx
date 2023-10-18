@@ -20,8 +20,8 @@ export default {
     severity: {
       control: {
         type: "select",
-        options: ["error", "info", "success", "warning"],
       },
+      options: ["error", "info", "success", "warning"],
     },
     sx: {
       control: {

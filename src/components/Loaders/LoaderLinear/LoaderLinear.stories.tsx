@@ -33,16 +33,16 @@ export default {
     color: {
       control: {
         type: "select",
-        options: [
-          "inherit",
-          "primary",
-          "secondary",
-          "error",
-          "info",
-          "success",
-          "warning",
-        ],
       },
+      options: [
+        "inherit",
+        "primary",
+        "secondary",
+        "error",
+        "info",
+        "success",
+        "warning",
+      ],
     },
   },
 } as Meta<typeof LoaderLinear>;

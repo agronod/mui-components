@@ -69,7 +69,7 @@ export const decorators = [
               top: 0,
               bottom: 0,
               padding: 2,
-              backgroundColor: "#2F8560",
+              backgroundColor: "#216545",
             }}
           >
             <Story {...context} />
