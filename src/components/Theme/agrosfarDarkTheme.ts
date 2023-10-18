@@ -33,6 +33,12 @@ const agrosfarDarkTheme = {
             borderColor: themePalette.primary.main,
           },
         },
+        contained: {
+          "&.Mui-disabled": {
+            backgroundColor: themePalette.divider,
+            color: themePalette.text.disabled,
+          },
+        },
       },
     },
   },

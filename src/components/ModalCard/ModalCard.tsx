@@ -97,6 +97,7 @@ const ModalCard = (props: ModalCardProps) => {
               top: "24px",
               right: "24px",
               minWidth: "auto",
+              color: theme.palette.text.primary,
             }}
             onClick={() => props.onClose && props.onClose()}
           >
