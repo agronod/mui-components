@@ -34,6 +34,7 @@ const agrosfarDarkTheme = {
           },
         },
         contained: {
+          backgroundColor: themePalette.primary.medium,
           "&.Mui-disabled": {
             backgroundColor: themePalette.divider,
             color: themePalette.text.disabled,
