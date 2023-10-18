@@ -323,7 +323,7 @@ const baseThemeOptions: ThemeOptions = {
             },
             "&.Mui-checked": {
               transform: "translateX(18px)",
-              color: "#fff",
+              color: defaultMuiTheme.palette.common.white,
               "& + .MuiSwitch-track": {
                 opacity: 1,
               },
@@ -427,7 +427,8 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           backgroundColor: common.white,
-          borderBottom: "1px solid #e5e5e5",
+          borderBottom: "1px solid",
+          borderColor: globalThemePalette.border,
           boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
         },
       },
@@ -661,19 +662,23 @@ const baseThemeOptions: ThemeOptions = {
         },
         standardSuccess: {
           backgroundColor: globalThemePalette.success.pastel,
-          border: "1px solid #CEE5CB",
+          border: "1px solid",
+          borderColor: globalThemePalette.success.light,
         },
         standardError: {
           backgroundColor: globalThemePalette.error.pastel,
-          border: "1px solid #F7C7D3",
+          border: "1px solid",
+          borderColor: globalThemePalette.error.light,
         },
         standardInfo: {
           backgroundColor: globalThemePalette.info.pastel,
-          border: "1px solid #C7D1DA",
+          border: "1px solid",
+          borderColor: globalThemePalette.info.light,
         },
         standardWarning: {
           backgroundColor: globalThemePalette.warning.pastel,
-          border: "1px solid #FBDCB7",
+          border: "1px solid",
+          borderColor: globalThemePalette.warning.light,
         },
       },
     },

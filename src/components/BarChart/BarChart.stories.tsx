@@ -4,7 +4,12 @@ import { Box } from "@mui/material";
 
 export default {
   title: "Components/BarChart",
-  argTypes: {},
+  argTypes: {
+    colorScheme: {
+      control: "radio",
+      options: ["primary", "secondary", "tertiary"],
+    },
+  },
 } as Meta<typeof BarChart>;
 
 const chartData =
@@ -51,6 +56,50 @@ BarChartDefault.args = {
     tickMargin: 20,
     interval: 0,
   },
+  TooltipContent: ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <Box
+          sx={{
+            backgroundColor: "white",
+            padding: "16px",
+            borderRadius: "8px",
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.05)",
+          }}
+        >
+          <Box>{label}</Box>
+          <Box>{payload[0].value}</Box>
+        </Box>
+      );
+    }
+
+    return null;
+  },
+};
+export const BarCharWithColorScheme: StoryFn<typeof BarChart> = ({
+  ...args
+}) => (
+  <Box sx={{ height: "400px", width: "600px" }}>
+    <BarChart {...args} />
+  </Box>
+);
+BarCharWithColorScheme.args = {
+  data: chartData,
+  barOptions: {
+    radius: [20, 20, 0, 0],
+  },
+  barCellsOptions: [...chartData].map(() => ({
+    fill: "#59b87f",
+  })),
+  yAxisOptions: {
+    hide: true,
+  },
+  xAxisOptions: {
+    height: 54,
+    tickMargin: 20,
+    interval: 0,
+  },
+  colorScheme: "primary",
   TooltipContent: ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
