@@ -34,14 +34,14 @@ export default {
     position: {
       control: {
         type: "radio",
-        options: ["left", "right"],
       },
+      options: ["left", "right"],
     },
     variant: {
       control: {
         type: "select",
-        options: ["elevation", "outlined", "none"],
       },
+      options: ["elevation", "outlined", "none"],
     },
     padding: {
       control: { type: "range", min: 0, max: 100 },

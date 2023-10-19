@@ -34,33 +34,31 @@ export default {
       table: { type: { summary: null } },
       control: {
         type: "radio",
-        options: ["contained", "outlined", "text"],
+
         default: "contained",
       },
+      options: ["contained", "outlined", "text"],
     },
     color: {
       control: {
         type: "select",
-        options: [
-          "primary",
-          "secondary",
-          "success",
-          "error",
-          "info",
-          "warning",
-        ],
       },
+      options: [
+        "primary",
+        "secondary",
+        "tertiary",
+        "success",
+        "error",
+        "info",
+        "warning",
+      ],
     },
+
     size: {
       control: {
         type: "select",
-        options: ["small", "medium"],
       },
-    },
-    type: {
-      control: {
-        type: "select",
-      },
+      options: ["small", "medium"],
     },
     disabled: {
       control: {

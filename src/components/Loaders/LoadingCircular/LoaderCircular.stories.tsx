@@ -14,8 +14,8 @@ export default {
     align: {
       control: {
         type: "select",
-        options: ["flex-start", "center", "flex-end"],
       },
+      options: ["flex-start", "center", "flex-end"],
     },
     thickness: {
       control: {
@@ -25,16 +25,16 @@ export default {
     color: {
       control: {
         type: "select",
-        options: [
-          "inherit",
-          "primary",
-          "secondary",
-          "error",
-          "info",
-          "success",
-          "warning",
-        ],
       },
+      options: [
+        "inherit",
+        "primary",
+        "secondary",
+        "error",
+        "info",
+        "success",
+        "warning",
+      ],
     },
   },
 } as Meta<typeof LoaderCircular>;

@@ -44,17 +44,17 @@ export default {
     type: {
       control: {
         type: "select",
-        options: [
-          "text",
-          "password",
-          "tel",
-          "number",
-          "email",
-          "url",
-          "date",
-          "datetime-local",
-        ],
       },
+      options: [
+        "text",
+        "password",
+        "tel",
+        "number",
+        "email",
+        "url",
+        "date",
+        "datetime-local",
+      ],
     },
     value: {
       control: {

@@ -505,6 +505,9 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.success.medium,
             },
           },
+          "&.MuiButton-containedTertiary:not(.Mui-disabled)": {
+            color: common.white,
+          },
         },
         outlined: {
           borderRadius: "100vmax",
