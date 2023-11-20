@@ -23,7 +23,7 @@ export type BarChartProps = {
   xAxisOptions?: Partial<XAxisProps>;
   yAxisOptions?: Partial<YAxisProps>;
   barOptions?: Partial<BarProps>;
-  barCellsOptions?: Partial<CellProps[]>;
+  barCellsOptions?: Array<Partial<CellProps> | Array<Partial<CellProps>>>;
   children?: React.ReactNode;
   layout?: "horizontal" | "vertical";
   TooltipContent?: React.FC;
@@ -50,6 +50,67 @@ export const BarChart: React.FC<BarChartProps> = ({
     return <></>;
   }
 
+  const bars = React.useMemo(() => {
+    const value = data[0]?.[dataKey];
+    if (Array.isArray(value)) {
+      return value.map((_, index) => (
+        <Bar
+          key={index}
+          stackId="a"
+          dataKey={`${dataKey}[${index}]`}
+          isAnimationActive={isAnimationActive}
+          {...(index + 1 === value.length ? (barOptions as any) : {})}
+        >
+          {Array.isArray(barCellsOptions) &&
+            barCellsOptions.length > 0 &&
+            barCellsOptions.map(
+              (
+                child: CellProps | Array<CellProps> | undefined,
+                innerIndex: number
+              ) => (
+                <Cell
+                  key={innerIndex}
+                  {...(Array.isArray(child) ? child[index] : child)}
+                  fill={
+                    colorScheme === undefined
+                      ? (Array.isArray(child) ? child[index] : child)?.fill
+                      : theme.palette[colorScheme].main
+                  }
+                />
+              )
+            )}
+        </Bar>
+      ));
+    }
+
+    return (
+      <Bar
+        dataKey={dataKey}
+        isAnimationActive={isAnimationActive}
+        {...(barOptions as any)}
+      >
+        {Array.isArray(barCellsOptions) &&
+          barCellsOptions.length > 0 &&
+          barCellsOptions.map(
+            (
+              child: CellProps | Array<CellProps> | undefined,
+              index: number
+            ) => (
+              <Cell
+                key={index}
+                {...(Array.isArray(child) ? child[0] : child)}
+                fill={
+                  colorScheme === undefined
+                    ? (Array.isArray(child) ? child[0] : child)?.fill
+                    : theme.palette[colorScheme].main
+                }
+              />
+            )
+          )}
+      </Bar>
+    );
+  }, [data, dataKey]);
+
   return (
     <ResponsiveContainer>
       {data && (
@@ -60,27 +121,8 @@ export const BarChart: React.FC<BarChartProps> = ({
           barCategoryGap={10}
         >
           <CartesianGrid vertical={false} stroke="#e5e5e5" />
-          <Bar
-            dataKey={dataKey}
-            isAnimationActive={isAnimationActive}
-            {...(barOptions as any)}
-          >
-            {Array.isArray(barCellsOptions) &&
-              barCellsOptions.length > 0 &&
-              barCellsOptions.map(
-                (child: CellProps | undefined, index: number) => (
-                  <Cell
-                    key={index}
-                    {...child}
-                    fill={
-                      colorScheme === undefined
-                        ? child?.fill
-                        : theme.palette[colorScheme].main
-                    }
-                  />
-                )
-              )}
-          </Bar>
+
+          {bars}
 
           {layout === "vertical" ? (
             <>
