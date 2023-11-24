@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Stack, Toolbar, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
-import { AgronodLogo } from "../../assets";
+import { AgronodLogo, AgrosfarBetaLogo } from "../../assets";
 
 interface AppBarProps extends MuiAppBarProps {
   visible?: boolean;
@@ -55,7 +55,7 @@ export default function Header({
           maxHeight={30}
           maxWidth={166}
         >
-          {customLogo ? customLogo : <AgronodLogo />}
+          {customLogo ? customLogo : <AgrosfarBetaLogo />}
         </MuiLink>
         <Stack
           direction={"row"}
