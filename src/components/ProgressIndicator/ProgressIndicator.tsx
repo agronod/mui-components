@@ -8,7 +8,7 @@ type ProgressIndicatorProps = {
 const ProgressIndicator = (props: ProgressIndicatorProps) => {
   return (
     <Typography variant="overline" color="text.secondary">
-      step {props.active} av {props.total}
+      steg {props.active} av {props.total}
     </Typography>
   );
 };
