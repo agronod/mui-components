@@ -9,6 +9,7 @@ export * from "./ModalCard";
 export * from "./Tooltip";
 export * from "./ProgressIndicator";
 export * from "./StackedChart";
+export * from "./Support";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };
