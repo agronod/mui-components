@@ -95,11 +95,19 @@ export default function Support(props: SupportProps) {
               props.menuPosition === "bottom"
                 ? 5
                 : props.buttonSize === "large"
-                ? "-50px"
+                ? "-65px"
                 : "-20px",
           },
         }}
       >
+        <MenuItem sx={{ pointerEvents: "none" }}>
+          <Typography
+            variant="overline"
+            sx={(theme) => ({ color: theme.palette.text.secondary })}
+          >
+            Hjälp
+          </Typography>
+        </MenuItem>
         {props.menuItems.map((menuItem) => (
           <MenuItem
             onClick={() => {
