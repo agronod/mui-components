@@ -36,12 +36,6 @@ const agronodTheme = {
               color: themePalette.primary.mediumHover,
             },
           },
-          "& .MuiSvgIcon-root": {
-            fontSize: 24,
-            "@media (max-width: 900px)": {
-              fontSize: 36,
-            },
-          },
         },
       },
     },

@@ -300,8 +300,15 @@ const baseThemeOptions: ThemeOptions = {
     MuiCheckbox: {
       styleOverrides: {
         root: {
+          color: globalThemePalette.input.border,
           "&.Mui-disabled": {
             color: globalThemePalette.border,
+          },
+          "& .MuiSvgIcon-root": {
+            fontSize: pxToRem(32),
+            "@media (max-width: 900px)": {
+              fontSize: pxToRem(42.7),
+            },
           },
         },
       },
