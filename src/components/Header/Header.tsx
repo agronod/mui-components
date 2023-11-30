@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Stack, Toolbar, Link as MuiLink } from "@mui/material";
+import { Stack, Toolbar, Link as MuiLink, Box } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { styled } from "@mui/material/styles";
-import { AgronodLogo, AgrosfarBetaLogo } from "../../assets";
+import { SxProps, styled } from "@mui/material/styles";
+import { AgronodLogo } from "../../assets";
 
 interface AppBarProps extends MuiAppBarProps {
   visible?: boolean;
@@ -10,7 +10,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "visible",
-})<AppBarProps>(({ theme, visible }) => ({
+})<AppBarProps>(({ theme, visible, ...rest }) => ({
   transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -27,15 +27,34 @@ export interface HeaderProps {
   menuLinks?: React.ReactNode | React.ReactNode[];
   /*  Boolean to show or hide the agronod logo */
   customLogo?: React.ReactNode | React.ReactNode[];
+  /*  Boolean to make background transparent and remove elevation */
+  transparent?: boolean;
 }
+
+const StylesDefault: SxProps = {
+  height: 78,
+};
+
+const StylesTransparent: SxProps = {
+  height: 78,
+  boxShadow: "none",
+  backgroundColor: "transparent",
+  border: "none",
+};
 
 export default function Header({
   userDropdown,
   menuLinks,
   customLogo,
+  transparent,
 }: HeaderProps) {
   return (
-    <AppBar sx={{ height: 78 }} position="fixed" visible={true} elevation={1}>
+    <AppBar
+      sx={transparent ? StylesTransparent : StylesDefault}
+      position="fixed"
+      visible={true}
+      elevation={1}
+    >
       <Toolbar
         disableGutters={true}
         sx={(theme) => ({
@@ -55,7 +74,7 @@ export default function Header({
           maxHeight={30}
           maxWidth={166}
         >
-          {customLogo ? customLogo : <AgrosfarBetaLogo />}
+          {customLogo ? customLogo : <AgronodLogo />}
         </MuiLink>
         <Stack
           direction={"row"}

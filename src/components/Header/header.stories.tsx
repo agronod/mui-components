@@ -22,3 +22,14 @@ export const HeaderDefault: StoryFn<typeof Header> = ({ ...rest }) => (
   </BrowserRouter>
 );
 HeaderDefault.args = {};
+
+export const HeaderTransparent: StoryFn<typeof Header> = ({ ...rest }) => (
+  <BrowserRouter>
+    <Box sx={{ minHeight: "90px" }}>
+      <Header {...rest} />
+    </Box>
+  </BrowserRouter>
+);
+HeaderTransparent.args = {
+  transparent: true,
+};
