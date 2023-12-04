@@ -108,12 +108,13 @@ export default function Support(props: SupportProps) {
             Hjälp
           </Typography>
         </MenuItem>
-        {props.menuItems.map((menuItem) => (
+        {props.menuItems.map((menuItem, index) => (
           <MenuItem
             onClick={() => {
               handleClose();
               menuItem.clickCallback();
             }}
+            key={index}
           >
             <Typography variant="body1"> {menuItem.name}</Typography>
           </MenuItem>
