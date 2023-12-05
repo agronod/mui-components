@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.9.8-fix-modal-width.0",
+  "version": "1.9.8",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
