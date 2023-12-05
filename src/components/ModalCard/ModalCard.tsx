@@ -14,7 +14,7 @@ import { useCallback, useEffect } from "react";
 type ModalCardBaseProps = Pick<MuiModalCardProps, "children" | "open" | "sx">;
 
 export interface ModalCardProps extends ModalCardBaseProps {
-  title: string;
+  title?: string;
   onClose?: () => void;
   notClosable?: boolean;
   subtitle?: string;
@@ -23,6 +23,7 @@ export interface ModalCardProps extends ModalCardBaseProps {
   caption?: React.ReactElement;
   alignment?: "left" | "center";
   isBigTitle?: boolean;
+  cardMaxWidth?: string;
 }
 
 const ModalCard = (props: ModalCardProps) => {
@@ -69,7 +70,7 @@ const ModalCard = (props: ModalCardProps) => {
         sx={(theme) => ({
           left: "50%",
           width: props.cardWidth ? props.cardWidth : "100%",
-          maxWidth: "688px",
+          maxWidth: props.cardMaxWidth ? props.cardMaxWidth : "688px",
           position: "absolute",
           top: "50%",
           transform: "translate(-50%, -50%)",
