@@ -431,8 +431,15 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          textDecorationColor: "inherit",
-          textUnderlineOffset: "2px",
+          fontSize: pxToRem(14),
+          lineHeight: "20px",
+          color: globalThemePalette.text.primary,
+          textDecorationColor: globalThemePalette.text.primary,
+          textUnderlineOffset: "4px",
+          "&:hover": {
+            color: globalThemePalette.text.secondary,
+            textDecorationColor: globalThemePalette.text.secondary,
+          },
         },
       },
     },
@@ -453,6 +460,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+        disableRipple: true,
       },
       styleOverrides: {
         root: {
@@ -461,7 +469,7 @@ const baseThemeOptions: ThemeOptions = {
           fontFamily: "inter",
           fontSize: pxToRem(14),
           fontWeight: 500,
-          lineHeight: "20px",
+          lineHeight: "16px",
           textTransform: "none",
           ":hover": {
             boxShadow: "none",
@@ -479,6 +487,12 @@ const baseThemeOptions: ThemeOptions = {
         },
         contained: {
           borderRadius: "100vmax",
+          ":focus-visible": {
+            border: "1px solid",
+            borderColor: common.white,
+            boxShadow: `0px 0px 0px 4.5px ${common.white}`,
+            outline: `2px solid ${globalThemePalette.text.primary}`,
+          },
           "&.MuiButton-containedWarning": {
             ":hover": {
               backgroundColor: globalThemePalette.warning.medium,
@@ -506,9 +520,13 @@ const baseThemeOptions: ThemeOptions = {
         outlined: {
           borderRadius: "100vmax",
           borderColor: globalThemePalette.input.border,
-
+          backgroundColor: "rgba(255,255,255, 50%)",
           ":hover": {
-            backgroundColor: "transparent",
+            backgroundColor: "rgba(255,255,255, 50%)",
+          },
+          ":focus-visible": {
+            boxShadow: `0px 0px 0px 4.5px ${common.white}`,
+            outline: `2px solid ${globalThemePalette.text.primary}`,
           },
           "&.MuiButton-outlinedWarning:not(.Mui-disabled)": {
             borderColor: globalThemePalette.warning.main,
@@ -557,6 +575,19 @@ const baseThemeOptions: ThemeOptions = {
         text: {
           height: "auto !important",
           padding: "0 !important",
+
+          "&.Mui-disabled": {
+            color: `${globalThemePalette.disabled}!important`,
+          },
+          "&.MuiButton-textTertiary": {
+            color: globalThemePalette.text.primary,
+            ":hover": {
+              color: globalThemePalette.text.secondary,
+            },
+            ":focus-visible": {
+              textDecoration: "underline",
+            },
+          },
           "&.MuiButton-textWarning": {
             color: globalThemePalette.warning.main,
             ":hover": {
@@ -604,7 +635,21 @@ const baseThemeOptions: ThemeOptions = {
         ...globalTypography,
       },
     },
+    MuiMenu: {
+      styleOverrides: {
+        root: {
+          "& .MuiMenu-paper": {
+            border: "1px solid",
+            borderColor: globalThemePalette.border,
+            borderRadius: "8px",
+          },
+        },
+      },
+    },
     MuiMenuItem: {
+      defaultProps: {
+        disableRipple: true,
+      },
       styleOverrides: {
         root: {
           fontFamily: "inter",

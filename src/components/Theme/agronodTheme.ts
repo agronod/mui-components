@@ -50,16 +50,7 @@ const agronodTheme = {
         },
       },
     },
-    MuiLink: {
-      styleOverrides: {
-        root: {
-          "&:hover": {
-            color: themePalette.primary.main,
-            textDecorationColor: themePalette.primary.main,
-          },
-        },
-      },
-    },
+
     MuiButton: {
       styleOverrides: {
         outlined: {
@@ -98,11 +89,11 @@ const agronodTheme = {
           },
         },
         text: {
-          color: themePalette.text.primary,
+          color: themePalette.primary.dark,
           ":hover": {
-            textDecoration: "underline",
+            textDecoration: "none",
             backgroundColor: "transparent",
-            color: "initial",
+            color: themePalette.primary.darkHover,
           },
           ":active": {
             color: themePalette.primary.darkHover,
@@ -138,6 +129,22 @@ const agronodTheme = {
               "& + .MuiSwitch-track": {
                 backgroundColor: themePalette.primary.mainHover,
               },
+            },
+          },
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: themePalette.text.primary,
+          ":hover": {
+            backgroundColor: themePalette.primary.pastel,
+          },
+          "&.Mui-selected": {
+            backgroundColor: themePalette.primary.light,
+            ":hover": {
+              backgroundColor: themePalette.primary.light,
             },
           },
         },

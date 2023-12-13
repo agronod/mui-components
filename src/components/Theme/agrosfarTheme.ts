@@ -52,7 +52,10 @@ const agrosfarTheme = {
         root: {
           color: themePalette.text.primary,
           ":hover": {
-            backgroundColor: themePalette.primary.light,
+            backgroundColor: themePalette.primary.pastel,
+          },
+          ":focus-visible": {
+            backgroundColor: themePalette.primary.pastel,
           },
           "&.Mui-selected": {
             backgroundColor: themePalette.primary.light,
@@ -91,8 +94,9 @@ const agrosfarTheme = {
     MuiButton: {
       styleOverrides: {
         outlined: {
+          borderColor: themePalette.primary.main,
           ":hover": {
-            color: themePalette.primary.medium,
+            color: themePalette.primary.dark,
             boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
           },
           ":active": {
@@ -121,14 +125,16 @@ const agrosfarTheme = {
           },
         },
         text: {
+          color: themePalette.primary.main,
           ":hover": {
-            textDecoration: "underline",
             color: themePalette.primary.medium,
+            textDecoration: "none",
             backgroundColor: "transparent",
           },
           ":active": {
             color: themePalette.primary.dark,
           },
+
           "&.MuiButton-textSecondary": {
             color: themePalette.secondary.main,
             ":hover": {

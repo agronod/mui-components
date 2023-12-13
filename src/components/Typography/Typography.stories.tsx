@@ -189,16 +189,6 @@ body1.args = {
   variant: "body1",
 };
 
-export const subtitle2: StoryFn<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
-
-subtitle2.args = {
-  children: "This is subtitle2",
-  variant: "subtitle2",
-};
-
 export const body2: StoryFn<typeof Typography> = ({ children, ...rest }) => (
   <Typography {...rest}>{children}</Typography>
 );
