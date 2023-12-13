@@ -60,8 +60,8 @@ declare module "@mui/material/styles/createPalette" {
 }
 declare module "@mui/material/Typography/Typography" {
   interface TypographyPropsVariantOverrides {
-    body1bold: true;
-    body2bold: true;
+    subtitle3: true;
+    subtitle4: true;
     body3: true;
     body4: true;
     component: true;
@@ -227,18 +227,6 @@ const globalTypography = {
     letterSpacing: 0.1,
     lineHeight: 1.43,
   },
-  button: {
-    fontFamily: "inter",
-    fontSize: pxToRem(14),
-    fontWeight: 500,
-    lineHeight: "20px",
-  },
-  link: {
-    fontFamily: "inter",
-    fontSize: pxToRem(14),
-    fontWeight: 500,
-    lineHeight: "20px",
-  },
   caption: {
     fontFamily: "inter",
     fontSize: pxToRem(12),
@@ -247,7 +235,7 @@ const globalTypography = {
   },
   overline: {
     fontFamily: "inter",
-    fontSize: pxToRem(10),
+    fontSize: pxToRem(12),
     fontWeight: 400,
     letterSpacing: "0.5px",
     lineHeight: "16px",
@@ -469,11 +457,11 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           letterSpacing: 0,
-          fontFamily: "inter",
           boxShadow: "none",
+          fontFamily: "inter",
           fontSize: pxToRem(14),
           fontWeight: 500,
-          lineHeight: pxToRem(16),
+          lineHeight: "20px",
           textTransform: "none",
           ":hover": {
             boxShadow: "none",
