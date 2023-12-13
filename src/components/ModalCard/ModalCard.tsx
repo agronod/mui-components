@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Card,
+  IconButton,
   Modal as MuiModalCard,
   ModalProps as MuiModalCardProps,
   Typography,
@@ -89,8 +90,7 @@ const ModalCard = (props: ModalCardProps) => {
         })}
       >
         {!props.notClosable && (
-          <Button
-            variant="text"
+          <IconButton
             sx={{
               position: "absolute",
               width: "30px",
@@ -103,7 +103,7 @@ const ModalCard = (props: ModalCardProps) => {
             onClick={() => props.onClose && props.onClose()}
           >
             <CloseRoundedIcon />
-          </Button>
+          </IconButton>
         )}
         <Box
           sx={(theme) => ({

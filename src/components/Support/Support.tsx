@@ -1,16 +1,6 @@
-import {
-  Box,
-  Fab,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Fab, Menu, MenuItem, Typography } from "@mui/material";
 import { useState } from "react";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
-import QuestionMarkRoundedIcon from "@mui/icons-material/QuestionMarkRounded";
 
 type MenuItem = {
   name: string;

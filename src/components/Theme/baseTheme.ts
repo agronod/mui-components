@@ -4,8 +4,6 @@ import {
   ThemeOptions,
 } from "@mui/material/styles";
 import { common } from "@mui/material/colors";
-import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
-import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
@@ -65,6 +63,11 @@ declare module "@mui/material/Typography/Typography" {
     body3: true;
     body4: true;
     component: true;
+  }
+}
+declare module "@mui/material/Button/Button" {
+  interface ButtonPropsColorOverrides {
+    tertiary: true;
   }
 }
 
@@ -363,16 +366,6 @@ const baseThemeOptions: ThemeOptions = {
     },
     MuiCssBaseline: {
       styleOverrides: `
-          @font-face {
-              font-family: 'futura';
-              font-weight: 400;
-              src: url(${FuturaBookOTF}) format('opentype');
-          }
-          @font-face {
-              font-family: 'futura';
-              font-weight: 500;
-              src: url(${FuturaMediumOTF}) format('opentype');
-          }
           @font-face {
               font-family: 'inter';
               font-weight: 400;
