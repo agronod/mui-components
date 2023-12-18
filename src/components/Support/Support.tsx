@@ -56,12 +56,9 @@ export default function Support(props: SupportProps) {
           })}
         >
           <QuestionMarkIcon
+            fontSize="medium"
             sx={(theme) => ({
               color: theme.palette.icon.secondary,
-              "&.MuiSvgIcon-root": {
-                width: "24px",
-                height: "24px",
-              },
             })}
           />
           Hjälp
@@ -99,12 +96,9 @@ export default function Support(props: SupportProps) {
           })}
         >
           <QuestionMarkIcon
+            fontSize="small"
             sx={(theme) => ({
               color: theme.palette.icon.secondary,
-              "&.MuiSvgIcon-root": {
-                width: "16px",
-                height: "16px",
-              },
             })}
           />
           Hjälp

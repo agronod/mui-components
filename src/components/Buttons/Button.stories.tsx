@@ -1,11 +1,11 @@
 import { StoryFn, Meta } from "@storybook/react";
 import { Button, IconButton } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import { LoaderCircular } from "../../Loaders";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { LoaderCircular } from "../Loaders";
 
 export default {
-  title: "Components/Buttons/Button",
+  title: "Components/Buttons",
   component: Button,
   parameters: {
     componentSubtitle:

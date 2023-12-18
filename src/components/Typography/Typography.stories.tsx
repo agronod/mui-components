@@ -180,6 +180,16 @@ subtitle2.args = {
   variant: "subtitle2",
 };
 
+export const subtitle3: StoryFn<typeof Typography> = ({
+  children,
+  ...rest
+}) => <Typography {...rest}>{children}</Typography>;
+
+subtitle3.args = {
+  children: "This is subtitle3",
+  variant: "subtitle3",
+};
+
 export const body1: StoryFn<typeof Typography> = ({ children, ...rest }) => (
   <Typography {...rest}>{children}</Typography>
 );
@@ -196,16 +206,6 @@ export const body2: StoryFn<typeof Typography> = ({ children, ...rest }) => (
 body2.args = {
   children: "This is body2",
   variant: "body2",
-};
-
-export const subtitle3: StoryFn<typeof Typography> = ({
-  children,
-  ...rest
-}) => <Typography {...rest}>{children}</Typography>;
-
-subtitle3.args = {
-  children: "This is subtitle3",
-  variant: "subtitle3",
 };
 
 export const body3: StoryFn<typeof Typography> = ({ children, ...rest }) => (

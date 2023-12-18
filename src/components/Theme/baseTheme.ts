@@ -359,11 +359,6 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
-    MuiSvgIcon: {
-      styleOverrides: {
-        fontSizeLarge: "148px",
-      },
-    },
     MuiCssBaseline: {
       styleOverrides: `
           @font-face {
@@ -432,6 +427,20 @@ const baseThemeOptions: ThemeOptions = {
           "&:hover": {
             color: globalThemePalette.text.secondary,
             textDecorationColor: globalThemePalette.text.secondary,
+          },
+          "&:focus-visible": {
+            outlineColor: globalThemePalette.text.secondary,
+          },
+          "&.inverted": {
+            color: globalThemePalette.text.secondary,
+            textDecorationColor: globalThemePalette.text.secondary,
+            "&:hover": {
+              color: globalThemePalette.text.primary,
+              textDecorationColor: globalThemePalette.text.primary,
+            },
+            "&:focus-visible": {
+              outlineColor: globalThemePalette.text.primary,
+            },
           },
         },
       },
@@ -572,13 +581,13 @@ const baseThemeOptions: ThemeOptions = {
           "&.Mui-disabled": {
             color: `${globalThemePalette.disabled}!important`,
           },
+          ":focus-visible": {
+            textDecoration: "underline",
+          },
           "&.MuiButton-textTertiary": {
             color: globalThemePalette.text.primary,
             ":hover": {
               color: globalThemePalette.text.secondary,
-            },
-            ":focus-visible": {
-              textDecoration: "underline",
             },
           },
           "&.MuiButton-textWarning": {

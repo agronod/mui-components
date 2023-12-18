@@ -89,11 +89,11 @@ const agronodTheme = {
           },
         },
         text: {
-          color: themePalette.primary.dark,
+          color: themePalette.text.primary,
           ":hover": {
             textDecoration: "none",
             backgroundColor: "transparent",
-            color: themePalette.primary.darkHover,
+            color: themePalette.text.secondary,
           },
           ":active": {
             color: themePalette.primary.darkHover,
