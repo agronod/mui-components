@@ -1,4 +1,4 @@
-import { SvgIcon, SvgIconProps } from "@mui/material";
+import { Skeleton, SvgIcon, SvgIconProps } from "@mui/material";
 import React, { Suspense } from "react";
 
 export interface IconProps extends SvgIconProps {
@@ -10,7 +10,11 @@ const AgronodIcon = (props: IconProps) => {
     () => import(`../../assets/icons/${props.name}.svg?component`)
   );
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <Skeleton variant="circular" animation="wave" width={24} height={24} />
+      }
+    >
       <SvgIcon
         component={DynamicComponent}
         fontSize={props.fontSize}
