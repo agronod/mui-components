@@ -179,7 +179,7 @@ const agronodTheme = {
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          gap: 1,
+          gap: "8px",
           ":hover": {
             backgroundColor: themePalette.primary.mediumHover,
           },
