@@ -422,24 +422,21 @@ const baseThemeOptions: ThemeOptions = {
           fontSize: pxToRem(14),
           lineHeight: "20px",
           color: globalThemePalette.text.primary,
-          textDecorationColor: globalThemePalette.text.primary,
+          textDecoration: `underline solid ${globalThemePalette.text.primary}`,
           textUnderlineOffset: "4px",
           "&:hover": {
             color: globalThemePalette.text.secondary,
-            textDecorationColor: globalThemePalette.text.secondary,
+            textDecoration: "underline solid #66646199",
           },
           "&:focus-visible": {
             outlineColor: globalThemePalette.text.secondary,
           },
           "&.inverted": {
             color: globalThemePalette.text.secondary,
-            textDecorationColor: globalThemePalette.text.secondary,
+            textDecoration: "underline solid #66646199",
             "&:hover": {
               color: globalThemePalette.text.primary,
-              textDecorationColor: globalThemePalette.text.primary,
-            },
-            "&:focus-visible": {
-              outlineColor: globalThemePalette.text.primary,
+              textDecoration: `underline solid ${globalThemePalette.text.primary}`,
             },
           },
         },
