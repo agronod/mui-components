@@ -173,6 +173,7 @@ const agrosfarTheme = {
     MuiListItemButton: {
       styleOverrides: {
         root: {
+          gap: 1,
           ":hover": {
             backgroundColor: themePalette.primary.mediumHover,
           },
