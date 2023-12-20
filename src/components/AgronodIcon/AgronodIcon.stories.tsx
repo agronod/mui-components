@@ -8,7 +8,7 @@ export default {
   argTypes: {
     name: {
       description:
-        "<p>The names to use: <code>icon-account</code>, <code>icon-avtal</code> and <code>icon-hem</code></p>",
+        "<div><code>icon-account</code></div><div><code>icon-avtal</code></div><div><code>icon-hem</code></div><div><code>icon-kontrollpanel</code></div><div><code>icon-mail</code></div><div><code>icon-marknadkonkurrens</code></div><div><code>icon-orgnummer</code></div><div><code>icon-profile</code></div><div><code>icon-settings</code></div>",
       control: {
         type: "select",
       },
@@ -55,9 +55,7 @@ export default {
 };
 
 export const AgronodIconOne: StoryFn<typeof AgronodIcon> = ({ ...rest }) => (
-  <Stack flexDirection="row" gap={3} flexWrap="wrap">
-    <AgronodIcon {...rest} />
-  </Stack>
+  <AgronodIcon {...rest} />
 );
 AgronodIconOne.args = {
   name: "icon-account",
