@@ -17,6 +17,11 @@ import { useState } from "react";
 export default {
   title: "Components/Select",
   component: Select,
+  parameters: {
+    docs: {
+      source: { language: "tsx" },
+    },
+  },
   argTypes: {
     disabled: {
       control: {
@@ -131,7 +136,7 @@ SelectMultiple.args = {
   label: "choose option",
 };
 
-export const SelectMultipleCheckmark: StoryFn<typeof Select> = ({
+export const SelectMultipleCheckbox: StoryFn<typeof Select> = ({
   label,
   ...rest
 }) => {
@@ -165,7 +170,7 @@ export const SelectMultipleCheckmark: StoryFn<typeof Select> = ({
     </FormControl>
   );
 };
-SelectMultipleCheckmark.args = {
+SelectMultipleCheckbox.args = {
   label: "choose option",
 };
 
