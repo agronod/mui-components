@@ -1,7 +1,7 @@
 import { SvgIcon, SvgIconProps } from "@mui/material";
 import React, { Suspense } from "react";
 
-interface IconProps extends SvgIconProps {
+export interface IconProps extends SvgIconProps {
   name: string;
 }
 
