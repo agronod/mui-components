@@ -47,6 +47,9 @@ const agronodTheme = {
               borderColor: themePalette.primary.mediumHover,
             },
           },
+          "& .MuiChip-root": {
+            backgroundColor: themePalette.primary.light,
+          },
         },
       },
     },
@@ -140,11 +143,33 @@ const agronodTheme = {
           color: themePalette.text.primary,
           ":hover": {
             backgroundColor: themePalette.primary.pastel,
+            "& .MuiSvgIcon-root": {
+              color: globalThemePalette.input.border,
+            },
+          },
+          ":focus-visible": {
+            boxShadow: `0px 0px 0px 2px ${themePalette.primary.medium} inset`,
+            backgroundColor: "inherit",
+            borderRadius: "4px",
+            borderColor: themePalette.primary.medium,
           },
           "&.Mui-selected": {
             backgroundColor: themePalette.primary.light,
+            fontWeight: "500",
+            "& span": { fontWeight: "500" },
             ":hover": {
+              fontWeight: "400",
               backgroundColor: themePalette.primary.light,
+              "& span": { fontWeight: "400" },
+            },
+            ":focus-visible": {
+              boxShadow: `0px 0px 0px 2px ${themePalette.primary.medium} inset`,
+              borderRadius: "4px",
+              borderColor: themePalette.primary.medium,
+              backgroundColor: themePalette.primary.light,
+            },
+            "& .MuiSvgIcon-root": {
+              color: themePalette.primary.mediumHover,
             },
           },
         },

@@ -1,5 +1,18 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  Chip,
+  FormControl,
+  FormLabel,
+  ListItemText,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
+import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import { StoryFn, Meta } from "@storybook/react";
+import { useState } from "react";
 
 export default {
   title: "Components/Select",
@@ -23,16 +36,179 @@ export default {
   },
 } as Meta<typeof Select>;
 
-export const SelectDefault: StoryFn<typeof Select> = ({ ...args }) => (
-  <FormControl>
-    <InputLabel>{args.label}</InputLabel>
-    <Select value={1} {...args}>
-      <MenuItem value={1}>Option 1</MenuItem>
-      <MenuItem value={2}>Option 2</MenuItem>
-      <MenuItem value={3}>Option 3</MenuItem>
-    </Select>
-  </FormControl>
-);
-SelectDefault.args = {
-  label: "This is a label",
+const names = [
+  "Oliver Hansen",
+  "Van Henry",
+  "April Tucker",
+  "Ralph Hubbard",
+  "Omar Alexander",
+  "Carlos Abbott",
+  "Miriam Wagner",
+  "Bradley Wilkerson",
+  "Virginia Andrews",
+  "Kelly Snyder",
+];
+
+export const SelectSingle: StoryFn<typeof Select> = ({ label, ...rest }) => {
+  const [value, setValue] = useState(names[0]);
+  const handleChange = (event: any) => setValue(event.target.value);
+  return (
+    <FormControl sx={{ m: 1, width: 300 }}>
+      {label && <FormLabel>{label}</FormLabel>}
+      <Select
+        value={value}
+        {...rest}
+        onChange={handleChange}
+        IconComponent={ExpandMoreRoundedIcon}
+      >
+        {names.map((name) => (
+          <MenuItem key={name} value={name}>
+            {name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
+SelectSingle.args = {
+  label: "choose option",
+};
+
+export const SelectWithIcon: StoryFn<typeof Select> = ({ label, ...rest }) => {
+  const [value, setValue] = useState(names[0]);
+  const handleChange = (event: any) => setValue(event.target.value);
+  return (
+    <FormControl sx={{ m: 1, width: 300 }}>
+      {label && <FormLabel>{label}</FormLabel>}
+      <Select
+        value={value}
+        {...rest}
+        onChange={handleChange}
+        renderValue={() => value}
+        IconComponent={ExpandMoreRoundedIcon}
+      >
+        {names.map((name) => (
+          <MenuItem key={name} value={name}>
+            <ListItemText primary={name} />
+            {name === value && <CheckRoundedIcon />}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
+SelectWithIcon.args = {
+  label: "choose option",
+};
+
+export const SelectMultiple: StoryFn<typeof Select> = ({ label, ...rest }) => {
+  const [value, setValue] = useState<string[]>([]);
+
+  const handleChange = (event: any) => {
+    const {
+      target: { value },
+    } = event;
+    setValue(typeof value === "string" ? value.split(",") : value);
+  };
+  return (
+    <FormControl sx={{ m: 1, width: 300 }}>
+      {label && <FormLabel>{label}</FormLabel>}
+      <Select
+        value={value}
+        {...rest}
+        onChange={handleChange}
+        multiple
+        IconComponent={ExpandMoreRoundedIcon}
+      >
+        <MenuItem value={1}>Option 1</MenuItem>
+        <MenuItem value={2}>Option 2</MenuItem>
+        <MenuItem value={3}>Option 3</MenuItem>
+      </Select>
+    </FormControl>
+  );
+};
+SelectMultiple.args = {
+  label: "choose option",
+};
+
+export const SelectMultipleCheckmark: StoryFn<typeof Select> = ({
+  label,
+  ...rest
+}) => {
+  const [value, setValue] = useState<string[]>([]);
+
+  const handleChange = (event: SelectChangeEvent<typeof value>) => {
+    const {
+      target: { value },
+    } = event;
+    setValue(typeof value === "string" ? value.split(",") : value);
+  };
+
+  return (
+    <FormControl sx={{ m: 1, width: 300 }}>
+      {label && <FormLabel>{label}</FormLabel>}
+      <Select
+        id="demo-multiple-checkbox"
+        multiple
+        value={value}
+        onChange={handleChange}
+        renderValue={(selected) => selected.join(", ")}
+        IconComponent={ExpandMoreRoundedIcon}
+      >
+        {names.map((name) => (
+          <MenuItem key={name} value={name}>
+            <Checkbox checked={value.indexOf(name) > -1} />
+            <ListItemText primary={name} />
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
+SelectMultipleCheckmark.args = {
+  label: "choose option",
+};
+
+export const SelectMultipleChip: StoryFn<typeof Select> = ({
+  label,
+  ...rest
+}) => {
+  const [value, setValue] = useState<string[]>([]);
+
+  const handleChange = (event: SelectChangeEvent<typeof value>) => {
+    const {
+      target: { value },
+    } = event;
+    setValue(typeof value === "string" ? value.split(",") : value);
+  };
+
+  return (
+    <FormControl sx={{ m: 1, width: 300 }}>
+      {label && <FormLabel>{label}</FormLabel>}
+      <Select
+        id="demo-multiple-checkbox"
+        multiple
+        value={value}
+        onChange={handleChange}
+        IconComponent={ExpandMoreRoundedIcon}
+        renderValue={(selected) => (
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+            {selected.map((value) => (
+              <Chip key={value} label={value} />
+            ))}
+          </Box>
+        )}
+      >
+        {names.map((name) => (
+          <MenuItem key={name} value={name}>
+            <Checkbox checked={value.indexOf(name) > -1} />
+            <ListItemText primary={name} />
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
+SelectMultipleChip.args = {
+  label: "choose option",
 };
