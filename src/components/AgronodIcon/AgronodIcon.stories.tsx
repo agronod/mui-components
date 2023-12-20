@@ -9,7 +9,7 @@ export default {
   argTypes: {
     name: {
       description:
-        "<div><code>icon-account</code></div><div><code>icon-avtal</code></div><div><code>icon-hem</code></div><div><code>icon-kontrollpanel</code></div><div><code>icon-mail</code></div><div><code>icon-marknadkonkurrens</code></div><div><code>icon-orgnummer</code></div><div><code>icon-profile</code></div><div><code>icon-settings</code></div>",
+        "<div><code>epost</code></div><div><code>navAvtal</code></div><div><code>navDatadelningsInstallningar</code></div><div><code>navForetagAnvandare</code></div><div><code>navHem</code></div><div><code>navKontrollpanel</code></div><div><code>orgnummer</code></div><div><code>navMarknadKonkurrens</code></div><div><code>profil</code></div>",
       control: {
         type: "select",
       },
