@@ -1,10 +1,11 @@
-import { Stack } from "@mui/material";
+import { Stack, SvgIconProps } from "@mui/material";
 import AgronodIcon from "./AgronodIcon";
-import { StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Base/Agronod Icons",
   component: AgronodIcon,
+
   argTypes: {
     name: {
       description:
@@ -52,7 +53,7 @@ export default {
       },
     },
   },
-};
+} as Meta<typeof AgronodIcon>;
 
 export const AgronodIconOne: StoryFn<typeof AgronodIcon> = ({ ...rest }) => (
   <AgronodIcon {...rest} />
