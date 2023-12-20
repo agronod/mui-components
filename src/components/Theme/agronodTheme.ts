@@ -143,7 +143,7 @@ const agronodTheme = {
           color: themePalette.text.primary,
           ":hover": {
             backgroundColor: themePalette.primary.pastel,
-            "& .MuiSvgIcon-root": {
+            "& .MuiCheckbox-root": {
               color: globalThemePalette.input.border,
             },
           },
@@ -155,12 +155,13 @@ const agronodTheme = {
           },
           "&.Mui-selected": {
             backgroundColor: themePalette.primary.light,
-            fontWeight: "500",
-            "& span": { fontWeight: "500" },
             ":hover": {
-              fontWeight: "400",
+              color: themePalette.text.secondary,
               backgroundColor: themePalette.primary.light,
-              "& span": { fontWeight: "400" },
+              "& span": { color: themePalette.text.secondary },
+              "& .MuiCheckbox-root": {
+                color: themePalette.primary.medium,
+              },
             },
             ":focus-visible": {
               boxShadow: `0px 0px 0px 2px ${themePalette.primary.medium} inset`,
@@ -169,7 +170,7 @@ const agronodTheme = {
               backgroundColor: themePalette.primary.light,
             },
             "& .MuiSvgIcon-root": {
-              color: themePalette.primary.mediumHover,
+              color: themePalette.primary.medium,
             },
           },
         },
