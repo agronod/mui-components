@@ -13,15 +13,15 @@ export default {
         type: "select",
       },
       options: [
-        "icon-account",
-        "icon-avtal",
-        "icon-hem",
-        "icon-kontrollpanel",
-        "icon-mail",
-        "icon-marknadkonkurrens",
-        "icon-orgnummer",
-        "icon-profile",
-        "icon-settings",
+        "epost",
+        "navAvtal",
+        "navDatadelningsInstallningar",
+        "navForetagAnvandare",
+        "navHem",
+        "navKontrollpanel",
+        "navMarknadKonkurrens",
+        "orgnummer",
+        "profil",
       ],
     },
     color: {
@@ -58,7 +58,7 @@ export const AgronodIconOne: StoryFn<typeof AgronodIcon> = ({ ...rest }) => (
   <AgronodIcon {...rest} />
 );
 AgronodIconOne.args = {
-  name: "icon-account",
+  name: "epost",
   fontSize: "small",
 };
 
@@ -67,15 +67,15 @@ export const AgronodIcons: StoryFn<typeof AgronodIcon> = ({
   ...rest
 }) => (
   <Stack flexDirection="row" gap={3} flexWrap="wrap">
-    <AgronodIcon name="icon-account" {...rest} />
-    <AgronodIcon name="icon-avtal" {...rest} />
-    <AgronodIcon name="icon-hem" {...rest} />
-    <AgronodIcon name="icon-kontrollpanel" {...rest} />
-    <AgronodIcon name="icon-mail" {...rest} />
-    <AgronodIcon name="icon-marknadkonkurrens" {...rest} />
-    <AgronodIcon name="icon-orgnummer" {...rest} />
-    <AgronodIcon name="icon-profile" {...rest} />
-    <AgronodIcon name="icon-settings" {...rest} />
+    <AgronodIcon name="epost" {...rest} />
+    <AgronodIcon name="navAvtal" {...rest} />
+    <AgronodIcon name="navDatadelningsInstallningar" {...rest} />
+    <AgronodIcon name="navForetagAnvandare" {...rest} />
+    <AgronodIcon name="navHem" {...rest} />
+    <AgronodIcon name="navKontrollpanel" {...rest} />
+    <AgronodIcon name="navMarknadKonkurrens" {...rest} />
+    <AgronodIcon name="orgnummer" {...rest} />
+    <AgronodIcon name="profil" {...rest} />
   </Stack>
 );
 AgronodIcons.args = {
