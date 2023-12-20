@@ -767,6 +767,24 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiListItemButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          gap: 1,
+        },
+      },
+    },
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          maxWidth: "auto",
+          color: globalThemePalette.icon.primary,
+        },
+      },
+    },
   },
 };
 

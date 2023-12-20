@@ -176,6 +176,25 @@ const agronodTheme = {
         },
       },
     },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          ":hover": {
+            backgroundColor: themePalette.primary.mediumHover,
+          },
+          "&:focus-visible": {
+            backgroundColor: themePalette.primary.mediumHover,
+          },
+          "&.active": {
+            backgroundColor: themePalette.primary.medium,
+
+            "&:focus-visible": {
+              backgroundColor: themePalette.primary.mediumHover,
+            },
+          },
+        },
+      },
+    },
   },
 };
 
