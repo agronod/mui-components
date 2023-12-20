@@ -1,11 +1,17 @@
 import { Alert as MuiAlert, AlertProps } from "@mui/material";
-import { CheckCircleOutline } from "@mui/icons-material";
+import {
+  CheckCircleOutlineRounded,
+  WarningAmberRounded,
+  ErrorOutlineRounded,
+} from "@mui/icons-material";
 
 const Alert = (props: AlertProps) => {
   return (
     <MuiAlert
       iconMapping={{
-        success: <CheckCircleOutline fontSize="small" />,
+        success: <CheckCircleOutlineRounded fontSize="small" />,
+        warning: <WarningAmberRounded fontSize="small" />,
+        error: <ErrorOutlineRounded fontSize="small" />,
       }}
       variant="standard"
       {...props}
