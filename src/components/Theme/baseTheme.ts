@@ -349,6 +349,12 @@ const baseThemeOptions: ThemeOptions = {
           "&+.MuiFormControlLabel-label": {
             marginLeft: 8,
           },
+          "& .Mui-focusVisible": {
+            "& + .MuiSwitch-track": {
+              border: "1px solid",
+              borderColor: globalThemePalette.text.primary,
+            },
+          },
         },
       },
     },
