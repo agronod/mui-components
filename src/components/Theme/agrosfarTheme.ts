@@ -170,41 +170,6 @@ const agrosfarTheme = {
         },
       },
     },
-    MuiListItemButton: {
-      styleOverrides: {
-        root: {
-          gap: 1,
-          ":hover": {
-            backgroundColor: themePalette.primary.mediumHover,
-          },
-          "&:focus-visible": {
-            backgroundColor: themePalette.primary.mediumHover,
-          },
-          "&.active": {
-            backgroundColor: themePalette.primary.medium,
-
-            "&:focus-visible": {
-              backgroundColor: themePalette.primary.mediumHover,
-            },
-          },
-          "&.secondary": {
-            ":hover": {
-              backgroundColor: themePalette.secondary.mediumHover,
-            },
-            "&:focus-visible": {
-              backgroundColor: themePalette.secondary.mediumHover,
-            },
-            "&.active": {
-              backgroundColor: themePalette.secondary.medium,
-
-              "&:focus-visible": {
-                backgroundColor: themePalette.secondary.mediumHover,
-              },
-            },
-          },
-        },
-      },
-    },
   },
 };
 

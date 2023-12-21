@@ -772,14 +772,6 @@ const baseThemeOptions: ThemeOptions = {
         disableRipple: true,
       },
     },
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: {
-          minWidth: "auto !important",
-          color: globalThemePalette.icon.primary,
-        },
-      },
-    },
   },
 };
 
