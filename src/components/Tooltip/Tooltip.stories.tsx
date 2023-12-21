@@ -51,23 +51,23 @@ export const TooltipDefault = ({ ...args }) => (
 );
 TooltipDefault.args = {
   title: "Some text",
-  arrow: false,
+  arrow: true,
 };
-export const TooltipWithArrow = ({ ...args }) => (
+export const TooltipWithoutArrow = ({ ...args }) => (
   <Tooltip title="Some text" {...args}>
     <Button variant="contained">Hover</Button>
   </Tooltip>
 );
-TooltipDefault.args = {
+TooltipWithoutArrow.args = {
   title: "Some text",
-  arrow: true,
+  arrow: false,
 };
 export const TooltipPlacementRight = ({ ...args }) => (
   <Tooltip title="Some text" {...args}>
     <Button variant="contained">Hover</Button>
   </Tooltip>
 );
-TooltipDefault.args = {
+TooltipPlacementRight.args = {
   title: "Some text",
   arrow: true,
   placement: "right",

@@ -3,7 +3,7 @@ export default {
   title: "Base/ColorPalette",
 };
 
-export const ButtonContained = () => {
+export const ColorPalette = () => {
   const theme = useTheme();
   return (
     <>

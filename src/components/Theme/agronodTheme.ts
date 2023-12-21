@@ -47,19 +47,13 @@ const agronodTheme = {
               borderColor: themePalette.primary.mediumHover,
             },
           },
-        },
-      },
-    },
-    MuiLink: {
-      styleOverrides: {
-        root: {
-          "&:hover": {
-            color: themePalette.primary.main,
-            textDecorationColor: themePalette.primary.main,
+          "& .MuiChip-root": {
+            backgroundColor: themePalette.primary.light,
           },
         },
       },
     },
+
     MuiButton: {
       styleOverrides: {
         outlined: {
@@ -100,9 +94,9 @@ const agronodTheme = {
         text: {
           color: themePalette.text.primary,
           ":hover": {
-            textDecoration: "underline",
+            textDecoration: "none",
             backgroundColor: "transparent",
-            color: "initial",
+            color: themePalette.text.secondary,
           },
           ":active": {
             color: themePalette.primary.darkHover,
@@ -138,6 +132,45 @@ const agronodTheme = {
               "& + .MuiSwitch-track": {
                 backgroundColor: themePalette.primary.mainHover,
               },
+            },
+          },
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: themePalette.text.primary,
+          ":hover": {
+            backgroundColor: themePalette.primary.pastel,
+            "& .MuiCheckbox-root": {
+              color: globalThemePalette.input.border,
+            },
+          },
+          ":focus-visible": {
+            boxShadow: `0px 0px 0px 2px ${themePalette.primary.medium} inset`,
+            backgroundColor: "inherit",
+            borderRadius: "4px",
+            borderColor: themePalette.primary.medium,
+          },
+          "&.Mui-selected": {
+            backgroundColor: themePalette.primary.light,
+            ":hover": {
+              color: themePalette.text.secondary,
+              backgroundColor: themePalette.primary.light,
+              "& span": { color: themePalette.text.secondary },
+              "& .MuiCheckbox-root": {
+                color: themePalette.primary.medium,
+              },
+            },
+            ":focus-visible": {
+              boxShadow: `0px 0px 0px 2px ${themePalette.primary.medium} inset`,
+              borderRadius: "4px",
+              borderColor: themePalette.primary.medium,
+              backgroundColor: themePalette.primary.light,
+            },
+            "& .MuiSvgIcon-root": {
+              color: themePalette.primary.medium,
             },
           },
         },

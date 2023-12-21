@@ -1,14 +1,5 @@
-import {
-  Box,
-  Fab,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Fab, Menu, MenuItem, Typography } from "@mui/material";
 import { useState } from "react";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 
 type MenuItem = {
@@ -32,53 +23,86 @@ export default function Support(props: SupportProps) {
     setAnchorEl(null);
   };
   return (
-    <Box>
+    <Box sx={{ cursor: "pointer" }}>
       {props.buttonSize === "large" ? (
-        <Tooltip
-          title="Hjälp"
-          componentsProps={{
-            tooltip: {
-              sx: {
-                bgcolor: "common.black",
-              },
-            },
-          }}
-        >
-          <Fab
-            id="basic-button"
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            disableRipple={true}
-            onClick={handleClick}
-            sx={(theme) => ({
-              border: "1px solid",
-              borderColor: theme.palette.border,
-              backgroundColor: theme.palette.common.white,
-              boxShadow: "none",
-              "&: active": {
-                boxShadow: "none",
-              },
-              "&: hover": {
-                borderColor: theme.palette.input.border,
-                backgroundColor: theme.palette.common.white,
-              },
-            })}
-          >
-            <QuestionMarkIcon width="24px" height="24px" />
-          </Fab>
-        </Tooltip>
-      ) : (
-        <IconButton
-          id="basic-button"
+        <Fab
+          id="supportButton"
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           disableRipple={true}
           onClick={handleClick}
+          variant="extended"
+          sx={(theme) => ({
+            border: "1px solid",
+            borderColor: theme.palette.border,
+            backgroundColor: theme.palette.common.white,
+            color: theme.palette.text.primary,
+            gap: 1,
+            boxShadow: "none",
+            textTransform: "none",
+            "&:active": {
+              boxShadow: "none",
+            },
+            "&:hover": {
+              borderColor: theme.palette.input.border,
+              backgroundColor: theme.palette.common.white,
+            },
+            "&:focus-visible": {
+              boxShadow: `0px 0px 0px 4.5px ${theme.palette.common.white}`,
+              borderColor: theme.palette.common.white,
+              outline: `2px solid ${theme.palette.text.primary}`,
+            },
+          })}
         >
-          <HelpOutlineOutlinedIcon width="24px" height="24px" />
-        </IconButton>
+          <QuestionMarkIcon
+            fontSize="medium"
+            sx={(theme) => ({
+              color: theme.palette.icon.secondary,
+            })}
+          />
+          Hjälp
+        </Fab>
+      ) : (
+        <Fab
+          id="supportButton"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          disableRipple={true}
+          onClick={handleClick}
+          variant="extended"
+          sx={(theme) => ({
+            height: "32px",
+            border: "1px solid",
+            borderColor: theme.palette.border,
+            backgroundColor: theme.palette.common.white,
+            color: theme.palette.text.primary,
+            gap: 0.5,
+            boxShadow: "none",
+            textTransform: "none",
+            "&:active": {
+              boxShadow: "none",
+            },
+            "&:hover": {
+              borderColor: theme.palette.input.border,
+              backgroundColor: theme.palette.common.white,
+            },
+            "&:focus-visible": {
+              boxShadow: `0px 0px 0px 4.5px ${theme.palette.common.white}`,
+              borderColor: theme.palette.common.white,
+              outline: `2px solid ${theme.palette.text.primary}`,
+            },
+          })}
+        >
+          <QuestionMarkIcon
+            fontSize="small"
+            sx={(theme) => ({
+              color: theme.palette.icon.secondary,
+            })}
+          />
+          Hjälp
+        </Fab>
       )}
       <Menu
         elevation={0}
@@ -87,7 +111,7 @@ export default function Support(props: SupportProps) {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          "aria-labelledby": "supportButton",
         }}
         PaperProps={{
           style: {
@@ -100,14 +124,6 @@ export default function Support(props: SupportProps) {
           },
         }}
       >
-        <MenuItem sx={{ pointerEvents: "none" }}>
-          <Typography
-            variant="overline"
-            sx={(theme) => ({ color: theme.palette.text.secondary })}
-          >
-            Hjälp
-          </Typography>
-        </MenuItem>
         {props.menuItems.map((menuItem, index) => (
           <MenuItem
             onClick={() => {

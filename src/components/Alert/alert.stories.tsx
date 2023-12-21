@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { AlertTitle } from "@mui/material";
+import { AlertTitle, Box, Typography } from "@mui/material";
 import Alert from "./Alert";
 
 export default {
@@ -35,7 +35,7 @@ export const AlertDefault: StoryFn<typeof Alert> = ({ children, ...rest }) => (
   <Alert {...rest}>{children}</Alert>
 );
 AlertDefault.args = {
-  children: <>Description</>,
+  children: "Description",
 };
 
 export const AlertWithTitle: StoryFn<typeof Alert> = ({
@@ -46,7 +46,9 @@ AlertWithTitle.args = {
   children: (
     <>
       <AlertTitle>Title</AlertTitle>
-      Description
+      <Typography variant="body2">
+        This can be just text or wrapped in any Typography variant
+      </Typography>
     </>
   ),
 };

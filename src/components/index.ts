@@ -10,6 +10,7 @@ export * from "./Tooltip";
 export * from "./ProgressIndicator";
 export * from "./StackedChart";
 export * from "./Support";
+export * from "./AgronodIcon";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };

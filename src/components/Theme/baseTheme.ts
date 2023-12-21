@@ -4,8 +4,6 @@ import {
   ThemeOptions,
 } from "@mui/material/styles";
 import { common } from "@mui/material/colors";
-import FuturaMediumOTF from "./fonts/futura/FuturaPTMedium.otf";
-import FuturaBookOTF from "./fonts/futura/FuturaPTBook.otf";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
@@ -60,11 +58,16 @@ declare module "@mui/material/styles/createPalette" {
 }
 declare module "@mui/material/Typography/Typography" {
   interface TypographyPropsVariantOverrides {
-    body1bold: true;
-    body2bold: true;
+    subtitle3: true;
+    subtitle4: true;
     body3: true;
     body4: true;
     component: true;
+  }
+}
+declare module "@mui/material/Button/Button" {
+  interface ButtonPropsColorOverrides {
+    tertiary: true;
   }
 }
 
@@ -143,94 +146,82 @@ const globalThemePalette = {
 
 const globalTypography = {
   h1: {
-    fontFamily: "futura",
-    fontSize: pxToRem(96),
+    fontFamily: "inter",
+    fontSize: pxToRem(80),
     fontWeight: 400,
-    letterSpacing: -1.5,
-    lineHeight: 1,
-    marginLeft: -6,
+    lineHeight: "94px",
   },
   h2: {
-    fontFamily: "futura",
-    fontSize: pxToRem(60),
+    fontFamily: "inter",
+    fontSize: pxToRem(56),
     fontWeight: 400,
-    letterSpacing: -0.5,
-    lineHeight: 1.2,
-    marginLeft: -3,
+    lineHeight: "68px",
   },
   h3: {
-    fontFamily: "futura",
-    fontSize: pxToRem(48),
-    fontWeight: 450,
-    lineHeight: 1.08,
-    marginLeft: -2,
+    fontFamily: "inter",
+    fontSize: pxToRem(44),
+    fontWeight: 500,
+    lineHeight: "53px",
   },
   h4: {
-    fontFamily: "futura",
-    fontSize: pxToRem(34),
-    fontWeight: 450,
-    lineHeight: 1.06,
+    fontFamily: "inter",
+    fontSize: pxToRem(32),
+    fontWeight: 500,
+    lineHeight: "39px",
   },
   h5: {
-    fontFamily: "futura",
-    fontSize: pxToRem(24),
+    fontFamily: "inter",
+    fontSize: pxToRem(22),
     fontWeight: 500,
-    letterSpacing: 0.18,
-    lineHeight: 1.17,
+    lineHeight: "26px",
   },
   h6: {
-    fontFamily: "futura",
-    fontSize: pxToRem(20),
+    fontFamily: "inter",
+    fontSize: pxToRem(18),
     fontWeight: 400,
-    letterSpacing: 0.15,
-    lineHeight: 1.2,
+    lineHeight: "24px",
   },
   subtitle1: {
     fontFamily: "inter",
     fontSize: pxToRem(18),
     fontWeight: 500,
-    letterSpacing: 0.1,
-    lineHeight: 1.56,
+    lineHeight: "24px",
   },
   subtitle2: {
     fontFamily: "inter",
     fontSize: pxToRem(16),
     fontWeight: 500,
-    letterSpacing: 0.1,
-    lineHeight: 1.5,
+    lineHeight: "22px",
+  },
+  subtitle3: {
+    fontFamily: "inter",
+    fontSize: pxToRem(14),
+    fontWeight: 500,
+    lineHeight: "20px",
+  },
+  subtitle4: {
+    fontFamily: "inter",
+    fontSize: pxToRem(10),
+    fontWeight: 500,
+    lineHeight: "14px",
   },
   body1: {
     fontFamily: "inter",
     fontSize: pxToRem(16),
     fontWeight: 400,
-    lineHeight: 1.5,
-  },
-  body1bold: {
-    fontFamily: "inter",
-    fontSize: pxToRem(16),
-    fontWeight: 500,
-    lineHeight: 1.5,
+    lineHeight: "22px",
   },
   body2: {
     fontFamily: "inter",
     fontSize: pxToRem(14),
     fontWeight: 400,
-    letterSpacing: 0.1,
-    lineHeight: 1.43,
-  },
-  body2bold: {
-    fontFamily: "inter",
-    fontSize: pxToRem(14),
-    fontWeight: 500,
-    letterSpacing: 0.1,
-    lineHeight: 1.43,
+    lineHeight: "20px",
   },
   body3: {
     fontFamily: "inter",
     fontSize: pxToRem(12),
     fontWeight: 400,
-    letterSpacing: 0.1,
-    lineHeight: 1.42,
+    lineHeight: "16px",
   },
   body4: {
     fontFamily: "inter",
@@ -243,15 +234,14 @@ const globalTypography = {
     fontFamily: "inter",
     fontSize: pxToRem(12),
     fontWeight: 400,
-    letterSpacing: 0.1,
-    lineHeight: 1.42,
+    lineHeight: "16px",
   },
   overline: {
     fontFamily: "inter",
     fontSize: pxToRem(12),
     fontWeight: 400,
-    letterSpacing: 1,
-    lineHeight: 1.6,
+    letterSpacing: "0.5px",
+    lineHeight: "16px",
   },
 };
 
@@ -369,23 +359,8 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
-    MuiSvgIcon: {
-      styleOverrides: {
-        fontSizeLarge: "148px",
-      },
-    },
     MuiCssBaseline: {
       styleOverrides: `
-          @font-face {
-              font-family: 'futura';
-              font-weight: 400;
-              src: url(${FuturaBookOTF}) format('opentype');
-          }
-          @font-face {
-              font-family: 'futura';
-              font-weight: 500;
-              src: url(${FuturaMediumOTF}) format('opentype');
-          }
           @font-face {
               font-family: 'inter';
               font-weight: 400;
@@ -444,8 +419,26 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          textDecorationColor: "inherit",
-          textUnderlineOffset: "2px",
+          fontSize: pxToRem(14),
+          lineHeight: "20px",
+          color: globalThemePalette.text.primary,
+          textDecoration: `underline solid ${globalThemePalette.text.primary}`,
+          textUnderlineOffset: "4px",
+          "&:hover": {
+            color: globalThemePalette.text.secondary,
+            textDecoration: "underline solid #66646199",
+          },
+          "&:focus-visible": {
+            outlineColor: globalThemePalette.text.secondary,
+          },
+          "&.inverted": {
+            color: globalThemePalette.text.secondary,
+            textDecoration: "underline solid #66646199",
+            "&:hover": {
+              color: globalThemePalette.text.primary,
+              textDecoration: `underline solid ${globalThemePalette.text.primary}`,
+            },
+          },
         },
       },
     },
@@ -466,15 +459,16 @@ const baseThemeOptions: ThemeOptions = {
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+        disableRipple: true,
       },
       styleOverrides: {
         root: {
           letterSpacing: 0,
-          fontFamily: "inter",
           boxShadow: "none",
+          fontFamily: "inter",
           fontSize: pxToRem(14),
           fontWeight: 500,
-          lineHeight: pxToRem(16),
+          lineHeight: "16px",
           textTransform: "none",
           ":hover": {
             boxShadow: "none",
@@ -492,6 +486,12 @@ const baseThemeOptions: ThemeOptions = {
         },
         contained: {
           borderRadius: "100vmax",
+          ":focus-visible": {
+            border: "1px solid",
+            borderColor: common.white,
+            boxShadow: `0px 0px 0px 4.5px ${common.white}`,
+            outline: `2px solid ${globalThemePalette.text.primary}`,
+          },
           "&.MuiButton-containedWarning": {
             ":hover": {
               backgroundColor: globalThemePalette.warning.medium,
@@ -519,9 +519,13 @@ const baseThemeOptions: ThemeOptions = {
         outlined: {
           borderRadius: "100vmax",
           borderColor: globalThemePalette.input.border,
-
+          backgroundColor: "rgba(255,255,255, 50%)",
           ":hover": {
-            backgroundColor: "transparent",
+            backgroundColor: "rgba(255,255,255, 50%)",
+          },
+          ":focus-visible": {
+            boxShadow: `0px 0px 0px 4.5px ${common.white}`,
+            outline: `2px solid ${globalThemePalette.text.primary}`,
           },
           "&.MuiButton-outlinedWarning:not(.Mui-disabled)": {
             borderColor: globalThemePalette.warning.main,
@@ -570,6 +574,19 @@ const baseThemeOptions: ThemeOptions = {
         text: {
           height: "auto !important",
           padding: "0 !important",
+
+          "&.Mui-disabled": {
+            color: `${globalThemePalette.disabled}!important`,
+          },
+          ":focus-visible": {
+            textDecoration: "underline",
+          },
+          "&.MuiButton-textTertiary": {
+            color: globalThemePalette.text.primary,
+            ":hover": {
+              color: globalThemePalette.text.secondary,
+            },
+          },
           "&.MuiButton-textWarning": {
             color: globalThemePalette.warning.main,
             ":hover": {
@@ -617,7 +634,21 @@ const baseThemeOptions: ThemeOptions = {
         ...globalTypography,
       },
     },
+    MuiMenu: {
+      styleOverrides: {
+        root: {
+          "& .MuiMenu-paper": {
+            border: "1px solid",
+            borderColor: globalThemePalette.border,
+            borderRadius: "8px",
+          },
+        },
+      },
+    },
     MuiMenuItem: {
+      defaultProps: {
+        disableRipple: true,
+      },
       styleOverrides: {
         root: {
           fontFamily: "inter",
@@ -734,6 +765,11 @@ const baseThemeOptions: ThemeOptions = {
         elevation: {
           boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.05)",
         },
+      },
+    },
+    MuiListItemButton: {
+      defaultProps: {
+        disableRipple: true,
       },
     },
   },

@@ -10,6 +10,9 @@ import { Box } from "@mui/material";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  storySort: {
+    method: "alphabetical",
+  },
   controls: {
     expanded: true, // Adds the description and default columns
     matchers: {
@@ -34,6 +37,7 @@ export const parameters = {
     ],
   },
 };
+
 const themeOptions = {
   Agronod: agronodTheme,
   Agrosfar: agrosfarTheme,
@@ -43,6 +47,7 @@ const themeOptions = {
 const getThemeOptions = (themeName) => {
   return themeOptions[themeName];
 };
+
 export const globalTypes = {
   theme: {
     name: "Theme",
@@ -55,6 +60,7 @@ export const globalTypes = {
     },
   },
 };
+
 export const decorators = [
   (Story, context) => {
     const themeOptions = getThemeOptions(context.globals.theme);

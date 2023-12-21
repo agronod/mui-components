@@ -1,10 +1,11 @@
 import { StoryFn, Meta } from "@storybook/react";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import { LoaderCircular } from "../../Loaders";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { LoaderCircular } from "../Loaders";
 
 export default {
-  title: "Components/Buttons/Button",
+  title: "Components/Buttons",
   component: Button,
   parameters: {
     componentSubtitle:
@@ -173,4 +174,12 @@ export const ButtonIconRight: StoryFn<typeof Button> = ({
 ButtonIconRight.args = {
   children: "Button with icon on right",
   variant: "contained",
+};
+
+export const IconButtonDefault: StoryFn<typeof IconButton> = ({
+  children,
+  ...rest
+}) => <IconButton {...rest}>{children}</IconButton>;
+IconButtonDefault.args = {
+  children: <CloseRoundedIcon />,
 };

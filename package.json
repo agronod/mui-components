@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.9.8",
+  "version": "1.9.9-feat-PF-607-new-graphical-profile.24",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -27,12 +27,12 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.8",
     "@rollup/plugin-typescript": "^11.0.0",
-    "@storybook/addon-actions": "^7.4.6",
-    "@storybook/addon-essentials": "^7.4.6",
-    "@storybook/addon-interactions": "^7.4.6",
-    "@storybook/addon-links": "^7.4.6",
-    "@storybook/react": "^7.4.6",
-    "@storybook/react-vite": "^7.4.6",
+    "@storybook/addon-actions": "^7.6.4",
+    "@storybook/addon-essentials": "^7.6.4",
+    "@storybook/addon-interactions": "^7.6.4",
+    "@storybook/addon-links": "^7.6.4",
+    "@storybook/react": "^7.6.4",
+    "@storybook/react-vite": "^7.6.4",
     "@storybook/testing-library": "^0.2.2",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
@@ -45,12 +45,11 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "6.3.0",
     "recharts": "^2.4.1",
-    "storybook": "^7.4.6",
+    "storybook": "^7.6.4",
     "storybook-addon-material-ui5": "^1.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
-    "vite-plugin-dts": "^2.1.0",
-    "vite-plugin-svgr": "^2.4.0"
+    "vite-plugin-dts": "^2.1.0"
   },
   "scripts": {
     "build": "tsc && vite build",
@@ -82,5 +81,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "@storybook/addon-storysource": "^7.6.6",
+    "@svgx/vite-plugin-react": "^1.0.1",
+    "vite-plugin-svgr": "^4.2.0"
   }
 }
