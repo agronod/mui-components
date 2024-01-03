@@ -8,6 +8,7 @@ export const agrosfarThemePalette = {
     main: "#2F8560",
     medium: "#216545",
     dark: "#123F25",
+    darkHover: "#052412",
   },
   secondary: {
     pastel: "#F1ECE7",
