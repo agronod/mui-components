@@ -65,12 +65,17 @@ const agronodTheme = {
             borderColor: themePalette.primary.main,
             ":hover": {
               borderColor: themePalette.primary.dark,
+              boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
             },
             ":active": {
               backgroundColor: themePalette.primary.pastel,
             },
           },
-          "&.MuiButton-outlinedSecondary": {
+          "&.MuiButton-outlinedSecondary:not(.Mui-disabled)": {
+            ":hover": {
+              borderColor: themePalette.secondary.dark,
+              boxShadow: `0px 0px 0px 1px ${themePalette.secondary.dark}`,
+            },
             ":active": {
               backgroundColor: themePalette.secondary.pastel,
             },
@@ -81,10 +86,16 @@ const agronodTheme = {
             ":hover": {
               backgroundColor: themePalette.primary.mainHover,
             },
+            ":active": {
+              backgroundColor: themePalette.primary.medium,
+            },
           },
           "&.MuiButton-containedSecondary": {
             ":hover": {
               backgroundColor: themePalette.secondary.medium,
+            },
+            ":active": {
+              backgroundColor: themePalette.secondary.dark,
             },
           },
           ".MuiTouchRipple-child": {
