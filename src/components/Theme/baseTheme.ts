@@ -82,6 +82,7 @@ const semanticThemePalette = {
     main: "#D4483E",
     medium: "#B73831",
     dark: "#A92E26",
+    darkHover: "#812B25", 
   },
   warning: {
     pastel: "#FDF0E6",
@@ -103,6 +104,7 @@ const semanticThemePalette = {
     main: "#5D9D52",
     medium: "#457A3B",
     dark: "#2F5D28",
+    darkHover: "#21411C",
   },
   tertiary: {
     pastel: "#F4E8E7",
@@ -501,34 +503,55 @@ const baseThemeOptions: ThemeOptions = {
         },
         contained: {
           borderRadius: "100vmax",
-          ":focus-visible": {
-            border: "1px solid",
-            borderColor: common.white,
+          border: "1px solid transparent",
+          ":focus-visible": {           
+            border: `1px solid ${common.white}`,
             boxShadow: `0px 0px 0px 4.5px ${common.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
           },
           "&.MuiButton-containedWarning": {
+            color: globalThemePalette.text.primary,
             ":hover": {
               backgroundColor: globalThemePalette.warning.medium,
             },
+            ":active": {
+              backgroundColor: globalThemePalette.warning.dark,
+            },
           },
           "&.MuiButton-containedError": {
+            backgroundColor: globalThemePalette.error.medium,
             ":hover": {
-              backgroundColor: globalThemePalette.error.medium,
+              backgroundColor: globalThemePalette.error.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePalette.error.darkHover,
             },
           },
           "&.MuiButton-containedInfo": {
             ":hover": {
               backgroundColor: globalThemePalette.info.medium,
             },
+            ":active": {
+              backgroundColor: globalThemePalette.info.dark,
+            },
           },
           "&.MuiButton-containedSuccess": {
+            backgroundColor: globalThemePalette.success.medium,
             ":hover": {
-              backgroundColor: globalThemePalette.success.medium,
+              backgroundColor: globalThemePalette.success.dark,
+            },
+            ":active": {
+              backgroundColor: globalThemePalette.success.darkHover,
             },
           },
           "&.MuiButton-containedTertiary:not(.Mui-disabled)": {
             color: common.white,
+            ":hover": {
+              backgroundColor: globalThemePalette.tertiary.medium,
+            },
+            ":active": {
+              backgroundColor: globalThemePalette.tertiary.dark,
+            },
           },
         },
         outlined: {
@@ -546,6 +569,7 @@ const baseThemeOptions: ThemeOptions = {
             borderColor: globalThemePalette.warning.main,
             color: globalThemePalette.text.primary,
             ":hover": {
+              boxShadow: `0px 0px 0px 1px ${globalThemePalette.warning.dark}`,
               borderColor: globalThemePalette.warning.dark,
             },
             ":active": {
@@ -559,6 +583,7 @@ const baseThemeOptions: ThemeOptions = {
             color: globalThemePalette.error.medium,
             ":hover": {
               color: globalThemePalette.error.dark,
+              boxShadow: `0px 0px 0px 1px ${globalThemePalette.error.dark}`,
               borderColor: globalThemePalette.error.dark,
             },
             ":active": {
@@ -569,6 +594,7 @@ const baseThemeOptions: ThemeOptions = {
             color: globalThemePalette.info.main,
             ":hover": {
               color: globalThemePalette.info.medium,
+              boxShadow: `0px 0px 0px 1px ${globalThemePalette.info.dark}`,
               borderColor: globalThemePalette.info.dark,
             },
             ":active": {
@@ -579,6 +605,7 @@ const baseThemeOptions: ThemeOptions = {
             color: globalThemePalette.success.main,
             ":hover": {
               color: globalThemePalette.success.medium,
+              boxShadow: `0px 0px 0px 1px ${globalThemePalette.success.dark}`,
               borderColor: globalThemePalette.success.dark,
             },
             ":active": {

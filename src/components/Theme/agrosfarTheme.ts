@@ -117,7 +117,6 @@ const agrosfarTheme = {
     MuiButton: {
       styleOverrides: {
         outlined: {
-          borderColor: themePalette.primary.main,
           ":hover": {
             color: themePalette.primary.dark,
             boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
@@ -125,10 +124,23 @@ const agrosfarTheme = {
           ":active": {
             backgroundColor: themePalette.primary.pastel,
           },
-          "&.MuiButton-outlinedSecondary": {
+          "&.MuiButton-outlinedPrimary:not(.Mui-disabled)": {
+            color: themePalette.primary.main,
+            ":hover": {
+              borderColor: themePalette.primary.dark,
+              boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
+              color: themePalette.primary.dark,
+            },
+            ":active": {
+              backgroundColor: themePalette.primary.pastel,
+            },
+          },
+          "&.MuiButton-outlinedSecondary:not(.Mui-disabled)": {
+            color: themePalette.secondary.main,
             ":hover": {
               borderColor: themePalette.secondary.dark,
               color: themePalette.secondary.medium,
+              boxShadow: `0px 0px 0px 1px ${themePalette.secondary.dark}`,
             },
             ":active": {
               backgroundColor: themePalette.secondary.pastel,
@@ -140,10 +152,16 @@ const agrosfarTheme = {
             ":hover": {
               backgroundColor: themePalette.primary.medium,
             },
+            ":active": {
+              backgroundColor: themePalette.primary.dark,
+            },
           },
           "&.MuiButton-containedSecondary": {
             ":hover": {
               backgroundColor: themePalette.secondary.medium,
+            },
+            ":active": {
+              backgroundColor: themePalette.secondary.dark,
             },
           },
         },
