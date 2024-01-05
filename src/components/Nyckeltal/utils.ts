@@ -12,7 +12,7 @@ const numberOfDecimals = (value: number, decimals: number | undefined) => {
   }
 };
 
-export function getNyckeltalVarde(value: number, decimals: number | undefined) {
+export function getNyckeltalVarde(value: number, decimals?: number) {
   const numerOfDecimals = numberOfDecimals(value, decimals);
   if (numerOfDecimals === 0) {
     return Math.round(value);
