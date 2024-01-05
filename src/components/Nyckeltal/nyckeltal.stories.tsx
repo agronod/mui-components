@@ -34,7 +34,7 @@ export const NyckeltalDefault = () => (
         antalDecimaler: 2,
         kommentar: "Tooltip text 2",
       },
-      { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 200 },
+      { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 0.243 },
       { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 200 },
     ].map((values, index) => (
       <Nyckeltal item={values} key={index} />
