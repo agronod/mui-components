@@ -229,8 +229,7 @@ const globalTypography = {
     fontFamily: "inter",
     fontSize: pxToRem(10),
     fontWeight: 400,
-    letterSpacing: 0.1,
-    lineHeight: 1.43,
+    lineHeight: "14px",
   },
   caption: {
     fontFamily: "inter",
@@ -241,7 +240,7 @@ const globalTypography = {
   overline: {
     fontFamily: "inter",
     fontSize: pxToRem(12),
-    fontWeight: 400,
+    fontWeight: 500,
     letterSpacing: "0.5px",
     lineHeight: "16px",
   },
@@ -437,6 +436,7 @@ const baseThemeOptions: ThemeOptions = {
         root: {
           fontFamily: "inter",
           fontSize: pxToRem(14),
+          fontWeight: 500,
           lineHeight: "20px",
           color: globalThemePalette.text.primary,
           textDecoration: `underline solid ${globalThemePalette.text.primary}`,
@@ -485,7 +485,7 @@ const baseThemeOptions: ThemeOptions = {
           fontFamily: "inter",
           fontSize: pxToRem(14),
           fontWeight: 500,
-          lineHeight: "16px",
+          lineHeight: "20px",
           textTransform: "none",
           ":hover": {
             boxShadow: "none",
