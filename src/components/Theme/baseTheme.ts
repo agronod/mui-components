@@ -82,7 +82,7 @@ const semanticThemePalette = {
     main: "#D4483E",
     medium: "#B73831",
     dark: "#A92E26",
-    darkHover: "#812B25", 
+    darkHover: "#812B25",
   },
   warning: {
     pastel: "#FDF0E6",
@@ -504,7 +504,7 @@ const baseThemeOptions: ThemeOptions = {
         contained: {
           borderRadius: "100vmax",
           border: "1px solid transparent",
-          ":focus-visible": {           
+          ":focus-visible": {
             border: `1px solid ${common.white}`,
             boxShadow: `0px 0px 0px 4.5px ${common.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
@@ -672,6 +672,14 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          subtitle3: "h6",
+          subtitle4: "h6",
+          body3: "p",
+          body4: "p",
+        },
+      },
       styleOverrides: {
         ...globalTypography,
       },
