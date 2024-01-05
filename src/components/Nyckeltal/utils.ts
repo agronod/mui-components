@@ -1,5 +1,19 @@
-export function getNyckeltalVarde(value: number, decimals = 0) {
-  const numerOfDecimals = value < 1 && decimals === 0 ? 1 : decimals;
+const numberOfDecimals = (value: number, decimals: number | undefined) => {
+  if (decimals !== undefined) {
+    return decimals;
+  }
+
+  if (value > 10) {
+    return 0;
+  } else if (value > 1) {
+    return 1;
+  } else {
+    return 2;
+  }
+};
+
+export function getNyckeltalVarde(value: number, decimals: number | undefined) {
+  const numerOfDecimals = numberOfDecimals(value, decimals);
   if (numerOfDecimals === 0) {
     return Math.round(value);
   }
