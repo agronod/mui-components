@@ -59,7 +59,10 @@ export default function Nyckeltal({ item }: Props) {
         variant="body2"
         fontSize={24}
       >
-        {getNyckeltalVarde(item.varde).toLocaleString("sv-SE")}
+        {getNyckeltalVarde(item.varde, item.antalDecimaler).toLocaleString(
+          "sv-SE",
+          { minimumFractionDigits: item.antalDecimaler }
+        )}
       </Typography>
     </li>
   );

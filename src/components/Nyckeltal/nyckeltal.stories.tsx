@@ -17,13 +17,21 @@ export const NyckeltalDefault = () => (
       {
         nyckeltal: "Nyckeltal",
         enhet: "kg/co2",
-        varde: 200,
+        varde: 200.19,
         kommentar: "Tooltip text",
       },
       {
         nyckeltal: "Nyckeltal",
         enhet: "kg/co2",
-        varde: 200,
+        varde: 200.2,
+        antalDecimaler: 1,
+        kommentar: "Tooltip text 2",
+      },
+      {
+        nyckeltal: "Nyckeltal",
+        enhet: "kg/co2",
+        varde: 200.22,
+        antalDecimaler: 2,
         kommentar: "Tooltip text 2",
       },
       { nyckeltal: "Nyckeltal", enhet: "kg/co2", varde: 200 },
