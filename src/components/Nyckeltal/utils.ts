@@ -1,34 +1,30 @@
-function truncateNumberWithDecimal(
-  number: number,
-  numberOfDecimals: number
-): number {
-  let truncatedNumber = number.toString();
-  truncatedNumber = truncatedNumber.slice(
-    0,
-    truncatedNumber.indexOf(".") + (numberOfDecimals + 1)
-  );
-  return Number(truncatedNumber);
-}
-
-function numberHasDecimal(number: number): boolean {
-  return number % 1 !== 0;
-}
-
-export function getNyckeltalVarde(number: number) {
-  if (numberHasDecimal(number)) {
-    if (number < 1) {
-      return truncateNumberWithDecimal(number, 1);
-    } else {
-      return Math.round(number);
-    }
-  } else {
-    return number;
+const numberOfDecimals = (value: number, decimals: number | undefined) => {
+  if (decimals !== undefined) {
+    return decimals;
   }
+
+  if (value > 10) {
+    return 0;
+  } else if (value > 1) {
+    return 1;
+  } else {
+    return 2;
+  }
+};
+
+export function getNyckeltalVarde(value: number, decimals?: number) {
+  const numerOfDecimals = numberOfDecimals(value, decimals);
+  if (numerOfDecimals === 0) {
+    return Math.round(value);
+  }
+  const factor = Math.pow(10, numerOfDecimals);
+  return Math.round((value + Number.EPSILON) * factor) / factor;
 }
 
 export type NyckeltalProps = {
   enhet: string;
   nyckeltal: string;
   varde: number;
+  antalDecimaler?: number;
   kommentar?: string;
 };
