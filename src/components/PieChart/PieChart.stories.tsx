@@ -9,21 +9,31 @@ export default {
 const data: PieChartData[] = [
   {
     id: "1",
-    name: "Lustgas",
+    name: "Potatis",
     value: 2000,
   },
   {
     id: "2",
-    name: "Metan",
+    name: "Majs",
     value: 3000,
   },
   {
     id: "3",
-    name: "Koldioxid",
+    name: "Vete",
     value: 200,
   },
   {
     id: "4",
+    name: "Raps",
+    value: 100,
+  },
+  {
+    id: "5",
+    name: "Åkerböna",
+    value: 100,
+  },
+  {
+    id: "6",
     name: "Okänt",
     value: 100,
   },
