@@ -9,6 +9,7 @@ export * from "./ModalCard";
 export * from "./Tooltip";
 export * from "./ProgressIndicator";
 export * from "./StackedChart";
+export * from "./PieChart";
 export * from "./Support";
 export * from "./AgronodIcon";
 
