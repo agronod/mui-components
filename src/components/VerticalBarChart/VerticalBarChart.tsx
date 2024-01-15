@@ -1,4 +1,4 @@
-import { useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 const brownscale: Array<string> = [
@@ -30,7 +30,8 @@ export type VerticalBarChartProps = {
   selectedId?: string;
 };
 
-const THICK_WIDTH = 100;
+const TICK_WIDTH = 100;
+const GRID_WIDTH = 54;
 const PADDING = 16;
 
 const Bar = ({
@@ -56,7 +57,7 @@ const Bar = ({
 }) => {
   const theme = useTheme();
   const width = data.value * factor;
-  const yMid = height * 0.5;
+
   return (
     <g>
       {selected && (
@@ -77,28 +78,6 @@ const Bar = ({
         fill={color}
         clipPath={`url(#round-corner${componentId}-${index})`}
       />
-
-      <text textAnchor="start" x={0} y={0} dy={yMid + 4} fill="#000">
-        <tspan
-          fontFamily="inter, sans-serif!important"
-          fontSize={12}
-          x={16}
-          fill="#666461"
-        >
-          {data?.name}
-        </tspan>
-      </text>
-      <text textAnchor="start" x={0} y={0} dy={yMid + 20} fill="#000">
-        <tspan
-          fontFamily="inter, sans-serif!important"
-          fontSize={12}
-          fontWeight={600}
-          x={16}
-          fill="#666461"
-        >
-          {data.value}
-        </tspan>
-      </text>
     </g>
   );
 };
@@ -125,17 +104,44 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
 
   const factor = useMemo(
     () =>
-      (dimensions.width - THICK_WIDTH) /
-      Math.max(...data.map((item) => item.value)),
+      Math.max(
+        0,
+        (dimensions.width - TICK_WIDTH) /
+          Math.max(...data.map((item) => item.value))
+      ),
     [data, dimensions]
   );
   const barHeight = useMemo(() => {
-    const totalPadding = (data.length - 1) * PADDING;
-    return (dimensions.width * 2 - totalPadding) / data.length;
+    const totalPadding = data.length * PADDING + PADDING;
+    return Math.max(0, (dimensions.width * 2 - totalPadding) / data.length);
   }, [data, dimensions]);
 
+  const gridLines = useMemo(() => {
+    if (dimensions.width === 0) {
+      return [];
+    }
+    const width = dimensions.width - TICK_WIDTH;
+    const numberOfGrids =
+      Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 1 ? 1 : 0) + 1;
+
+    return [...Array(numberOfGrids).keys()];
+  }, [dimensions.width]);
+
+  const adjustedGridWidth = useMemo(() => {
+    const width = dimensions.width - TICK_WIDTH;
+    const remainder = width % GRID_WIDTH;
+    if (remainder === 0) {
+      return GRID_WIDTH;
+    }
+
+    return Math.floor(width / Math.ceil(width / GRID_WIDTH));
+  }, [gridLines]);
+
   return (
-    <div ref={containerRef} style={{ height: "100%", width: "100%" }}>
+    <Box
+      ref={containerRef}
+      sx={{ height: "100%", width: "100%", position: "relative" }}
+    >
       <svg
         viewBox={`0 0 ${dimensions.width} ${dimensions.width * 2}`}
         width={dimensions.width}
@@ -143,27 +149,40 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
       >
         <defs>
           {data.map((d, index) => (
-            <clipPath id={`round-corner${componentId}-${index}`}>
+            <clipPath key={index} id={`round-corner${componentId}-${index}`}>
               <rect
                 x={0}
-                y={PADDING / 2}
-                width={d.value * factor + THICK_WIDTH}
+                y={0}
+                width={d.value * factor + TICK_WIDTH}
                 height={barHeight}
                 rx={barHeight / 2}
               />
             </clipPath>
           ))}
         </defs>
+        {gridLines.map((index) => (
+          <line
+            key={index}
+            x1={TICK_WIDTH + index * adjustedGridWidth}
+            y1={0}
+            x2={TICK_WIDTH + index * adjustedGridWidth}
+            y2={dimensions.width * 2}
+            stroke="#E5E5E5"
+            strokeWidth={1}
+          />
+        ))}
         {data.map((item, index) => (
           <g
-            key={item.id}
-            transform={`translate(0, ${index * (barHeight + PADDING)})`}
+            key={index}
+            transform={`translate(0, ${
+              index * (barHeight + PADDING) + PADDING
+            })`}
           >
             <Bar
               data={item}
               height={barHeight}
-              x={THICK_WIDTH}
-              y={PADDING / 2}
+              x={TICK_WIDTH}
+              y={0}
               factor={factor}
               color={
                 selectedId !== undefined && selectedId !== item.id
@@ -177,7 +196,50 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
           </g>
         ))}
       </svg>
-    </div>
+      <Box
+        sx={{
+          position: "absolute",
+          top: PADDING,
+          left: 0,
+          height: "100%",
+          backgroundColor: "transparent",
+          width: TICK_WIDTH,
+        }}
+      >
+        {data.map((item, index) => (
+          <Box
+            key={index}
+            sx={{
+              paddingX: 2,
+              position: "absolute",
+              top: barHeight * index + index * PADDING,
+              left: 0,
+              height: barHeight,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography
+              sx={{
+                width: `${TICK_WIDTH - 16}px`,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "break-spaces",
+              }}
+              variant="caption"
+              component={"p"}
+            >
+              {item.name}
+            </Typography>
+            <Typography fontWeight={600} variant="caption">
+              {item.value}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    </Box>
   );
 };
 
