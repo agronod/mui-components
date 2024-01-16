@@ -11,6 +11,7 @@ export * from "./ProgressIndicator";
 export * from "./StackedChart";
 export * from "./PieChart";
 export * from "./VerticalBarChart";
+export * from "./HorizontalBarChart";
 export * from "./Support";
 export * from "./AgronodIcon";
 
