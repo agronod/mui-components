@@ -28,6 +28,7 @@ export type VerticalBarChartData = {
 export type VerticalBarChartProps = {
   data: Array<VerticalBarChartData>;
   selectedId?: string;
+  aspectRatio?: number;
 };
 
 const TICK_WIDTH = 100;
@@ -82,17 +83,18 @@ const Bar = ({
   );
 };
 
-const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
-  const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
+const VerticalBarChart = ({
+  data,
+  selectedId,
+  aspectRatio = 1,
+}: VerticalBarChartProps) => {
+  const [chartWidth, setChartWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const componentId = useId();
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
-      setDimensions({
-        height: event[0].contentBoxSize[0].blockSize,
-        width: event[0].contentBoxSize[0].inlineSize,
-      });
+      setChartWidth(event[0].contentBoxSize[0].inlineSize);
     });
 
     if (containerRef?.current) resizeObserver.observe(containerRef.current);
@@ -106,29 +108,34 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
     () =>
       Math.max(
         0,
-        (dimensions.width - TICK_WIDTH) /
-          Math.max(...data.map((item) => item.value))
+        (chartWidth - TICK_WIDTH) / Math.max(...data.map((item) => item.value))
       ),
-    [data, dimensions]
+    [data, chartWidth]
   );
+
+  const chartHeight = useMemo(
+    () => chartWidth * aspectRatio,
+    [chartWidth, aspectRatio]
+  );
+
   const barHeight = useMemo(() => {
     const totalPadding = data.length * PADDING + PADDING;
-    return Math.max(0, (dimensions.width * 2 - totalPadding) / data.length);
-  }, [data, dimensions]);
+    return Math.max(0, (chartHeight - totalPadding) / data.length);
+  }, [data, chartHeight]);
 
   const gridLines = useMemo(() => {
-    if (dimensions.width === 0) {
+    if (chartWidth === 0) {
       return [];
     }
-    const width = dimensions.width - TICK_WIDTH;
+    const width = chartWidth - TICK_WIDTH;
     const numberOfGrids =
       Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 1 ? 1 : 0) + 1;
 
     return [...Array(numberOfGrids).keys()];
-  }, [dimensions.width]);
+  }, [chartWidth]);
 
   const adjustedGridWidth = useMemo(() => {
-    const width = dimensions.width - TICK_WIDTH;
+    const width = chartWidth - TICK_WIDTH;
     const remainder = width % GRID_WIDTH;
     if (remainder === 0) {
       return GRID_WIDTH;
@@ -140,12 +147,15 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
   return (
     <Box
       ref={containerRef}
-      sx={{ height: "100%", width: "100%", position: "relative" }}
+      sx={{
+        width: "100%",
+        position: "relative",
+      }}
     >
       <svg
-        viewBox={`0 0 ${dimensions.width} ${dimensions.width * 2}`}
-        width={dimensions.width}
-        height="100%"
+        width="100%"
+        height={chartHeight}
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           {data.map((d, index) => (
@@ -166,7 +176,7 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
             x1={TICK_WIDTH + index * adjustedGridWidth}
             y1={0}
             x2={TICK_WIDTH + index * adjustedGridWidth}
-            y2={dimensions.width * 2}
+            y2={chartHeight}
             stroke="#E5E5E5"
             strokeWidth={1}
           />
@@ -201,7 +211,7 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
           position: "absolute",
           top: PADDING,
           left: 0,
-          height: "100%",
+          height: chartHeight - PADDING * 2,
           backgroundColor: "transparent",
           width: TICK_WIDTH,
         }}

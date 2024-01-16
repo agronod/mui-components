@@ -76,9 +76,9 @@ const data2: VerticalBarChartData[] = [
 export const VerticalBarChartDefault: StoryFn<typeof VerticalBarChart> = ({
   ...args
 }) => (
-  <Box sx={{ backgroundColor: "#FFF", padding: 2, width: "100%" }}>
+  <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
     <Box width={"100%"}>
-      <VerticalBarChart {...args} />
+      <VerticalBarChart aspectRatio={1.5} {...args} />
     </Box>
   </Box>
 );
@@ -92,7 +92,7 @@ export const VerticalBarChartSelected: StoryFn<typeof VerticalBarChart> = ({
 }) => (
   <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
     <Box width={300}>
-      <VerticalBarChart {...args} />
+      <VerticalBarChart aspectRatio={2} {...args} />
     </Box>
   </Box>
 );
