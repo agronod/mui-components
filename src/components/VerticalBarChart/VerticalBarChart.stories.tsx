@@ -76,7 +76,7 @@ const data2: VerticalBarChartData[] = [
 export const VerticalBarChartDefault: StoryFn<typeof VerticalBarChart> = ({
   ...args
 }) => (
-  <Box sx={{ backgroundColor: "#FFF", padding: 2, width: "400px" }}>
+  <Box sx={{ backgroundColor: "#FFF", padding: 2, width: "100%" }}>
     <Box width={"100%"}>
       <VerticalBarChart {...args} />
     </Box>
@@ -91,7 +91,7 @@ export const VerticalBarChartSelected: StoryFn<typeof VerticalBarChart> = ({
   ...args
 }) => (
   <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-    <Box width={225}>
+    <Box width={300}>
       <VerticalBarChart {...args} />
     </Box>
   </Box>
@@ -99,5 +99,5 @@ export const VerticalBarChartSelected: StoryFn<typeof VerticalBarChart> = ({
 
 VerticalBarChartSelected.args = {
   data: data2,
-  selectedId: "2",
+  selectedId: "3",
 };

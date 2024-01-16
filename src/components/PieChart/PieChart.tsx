@@ -5,7 +5,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { Box, Card, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { useCallback, useMemo, useRef, useState } from "react";
 import styled from "@emotion/styled";
 
@@ -115,139 +115,126 @@ const PieChart = ({ headline, unit, data, onItemHover }: PieChartProps) => {
   );
 
   return (
-    <Card
-      sx={(theme) => ({
-        py: 2,
-        px: 2,
-        borderRadius: 4,
-        boxShadow: "none",
-        border: `1px solid ${theme.palette.divider}`,
-      })}
-    >
-      <Typography variant="subtitle2">{headline}</Typography>
-      <Typography variant="caption">{unit}</Typography>
-      <Stack direction="row" gap={4}>
-        <Box height={224} width={224}>
-          <ResponsiveContainer width={"100%"} height={"100%"}>
-            <RePieChart ref={pieChartRef}>
-              <Pie
-                onMouseLeave={() => onHover()}
-                startAngle={-270}
-                endAngle={-630}
-                isAnimationActive={false}
-                paddingAngle={2}
-                dataKey="value"
-                data={dataSorted}
-                innerRadius={65}
-                outerRadius={95}
-                cornerRadius={5}
-              >
-                {dataSorted.map((item, index) => (
-                  <Cell
-                    onMouseOver={() => onHover(index)}
-                    key={item.id}
-                    fill={
-                      index === hoverIndex || hoverIndex === undefined
-                        ? brownscale[index % brownscale.length]
-                        : "#E5E3E0"
-                    }
-                  />
-                ))}
-              </Pie>
-              {hoverIndex !== undefined && (
-                <Tooltip
-                  isAnimationActive={false}
-                  content={
-                    <Stack
-                      px={1}
-                      py={1}
-                      gap={"4px"}
-                      direction="row"
-                      alignItems="center"
-                      sx={{
-                        backgroundColor: theme.palette.text.primary,
-                        borderRadius: "3px",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: "50%",
-                          border: "1px solid #FFFFFF",
-                          background:
-                            brownscale[hoverIndex % brownscale.length],
-                        }}
-                      />
-                      <Typography sx={{ color: "#FFFFFF" }} variant="caption">
-                        {`${dataSorted[hoverIndex].name} ${percentage}%`}
-                      </Typography>
-                    </Stack>
+    <Stack direction="row" gap={4}>
+      <Box height={224} width={224}>
+        <ResponsiveContainer width={"100%"} height={"100%"}>
+          <RePieChart ref={pieChartRef}>
+            <Pie
+              onMouseLeave={() => onHover()}
+              startAngle={-270}
+              endAngle={-630}
+              isAnimationActive={false}
+              paddingAngle={2}
+              dataKey="value"
+              data={dataSorted}
+              innerRadius={65}
+              outerRadius={95}
+              cornerRadius={5}
+            >
+              {dataSorted.map((item, index) => (
+                <Cell
+                  onMouseOver={() => onHover(index)}
+                  key={item.id}
+                  fill={
+                    index === hoverIndex || hoverIndex === undefined
+                      ? brownscale[index % brownscale.length]
+                      : "#E5E3E0"
                   }
                 />
-              )}
-            </RePieChart>
-          </ResponsiveContainer>
-        </Box>
-        <Box mt={2}>
-          <Box paddingX={1} mb={2}>
-            <Typography variant="caption">Totalt</Typography>
-            <Typography variant="h5" sx={{ fontWeight: 600 }}>
-              {total}
-            </Typography>
-          </Box>
-          <StyledTable>
-            <tbody onMouseLeave={() => onHover()}>
-              {dataSorted.map((item, index) => (
-                <StyledTableRow
-                  onMouseOver={() => onHover(index)}
-                  backgroundColor={
-                    index === hoverIndex
-                      ? theme.palette.input.backgroundDisabled
-                      : undefined
-                  }
-                  key={item.id}
-                >
-                  <td style={{ paddingLeft: 8 }}>
+              ))}
+            </Pie>
+            {hoverIndex !== undefined && (
+              <Tooltip
+                isAnimationActive={false}
+                content={
+                  <Stack
+                    px={1}
+                    py={1}
+                    gap={"4px"}
+                    direction="row"
+                    alignItems="center"
+                    sx={{
+                      backgroundColor: theme.palette.text.primary,
+                      borderRadius: "3px",
+                    }}
+                  >
                     <Box
                       sx={{
                         width: 8,
                         height: 8,
                         borderRadius: "50%",
-                        background: brownscale[index % brownscale.length],
+                        border: "1px solid #FFFFFF",
+                        background: brownscale[hoverIndex % brownscale.length],
                       }}
                     />
-                  </td>
-                  <td>
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color:
-                          index === hoverIndex
-                            ? theme.palette.text.primary
-                            : "#616161",
-                      }}
-                    >
-                      {item.name}
+                    <Typography sx={{ color: "#FFFFFF" }} variant="caption">
+                      {`${dataSorted[hoverIndex].name} ${percentage}%`}
                     </Typography>
-                  </td>
-                  <td style={{ paddingRight: 8, textAlign: "right" }}>
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        fontWeight: 600,
-                      }}
-                    >
-                      {item.value}
-                    </Typography>
-                  </td>
-                </StyledTableRow>
-              ))}
-            </tbody>
-          </StyledTable>
+                  </Stack>
+                }
+              />
+            )}
+          </RePieChart>
+        </ResponsiveContainer>
+      </Box>
+      <Box mt={2}>
+        <Box paddingX={1} mb={2}>
+          <Typography variant="caption">Totalt</Typography>
+          <Typography variant="h5" sx={{ fontWeight: 600 }}>
+            {total}
+          </Typography>
         </Box>
-      </Stack>
-    </Card>
+        <StyledTable>
+          <tbody onMouseLeave={() => onHover()}>
+            {dataSorted.map((item, index) => (
+              <StyledTableRow
+                onMouseOver={() => onHover(index)}
+                backgroundColor={
+                  index === hoverIndex
+                    ? theme.palette.input.backgroundDisabled
+                    : undefined
+                }
+                key={item.id}
+              >
+                <td style={{ paddingLeft: 8 }}>
+                  <Box
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      background: brownscale[index % brownscale.length],
+                    }}
+                  />
+                </td>
+                <td>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color:
+                        index === hoverIndex
+                          ? theme.palette.text.primary
+                          : "#616161",
+                    }}
+                  >
+                    {item.name}
+                  </Typography>
+                </td>
+                <td style={{ paddingRight: 8, textAlign: "right" }}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      fontWeight: 600,
+                    }}
+                  >
+                    {item.value}
+                  </Typography>
+                </td>
+              </StyledTableRow>
+            ))}
+          </tbody>
+        </StyledTable>
+      </Box>
+    </Stack>
   );
 };
 

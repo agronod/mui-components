@@ -1,5 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import PieChart, { PieChartData } from "./PieChart";
+import { Box } from "@mui/material";
 
 export default {
   title: "Components/PieChart",
@@ -40,7 +41,9 @@ const data: PieChartData[] = [
 ];
 
 export const PieChartDefault: StoryFn<typeof PieChart> = ({ ...args }) => (
-  <PieChart {...args} />
+  <Box sx={{ backgroundColor: "#FFF" }}>
+    <PieChart {...args} />
+  </Box>
 );
 
 PieChartDefault.args = {
