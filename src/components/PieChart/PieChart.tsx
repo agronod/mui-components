@@ -176,10 +176,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
               <tr
                 style={{
                   padding: 8,
-                  backgroundColor:
-                    index === hoverIndex
-                      ? theme.palette.input.backgroundDisabled
-                      : undefined,
+                  backgroundColor: index === hoverIndex ? "#E5E3E0" : undefined,
                 }}
                 onMouseOver={() => onHover(index)}
                 key={item.id}
