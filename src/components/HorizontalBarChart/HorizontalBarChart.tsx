@@ -40,7 +40,17 @@ const Bar = ({
   componentId: string;
 }) => {
   if (Array.isArray(data.value)) {
-    const dataReversed = data.value.toReversed();
+    const dataReversed = data.value.reverse();
+
+    const color = useMemo(
+      () => (Array.isArray(data.color) ? data.color.reverse() : data.color),
+      [data.color]
+    );
+
+    const getColor = useCallback(
+      (itemIndex: number) => (Array.isArray(color) ? color[itemIndex] : color),
+      [color]
+    );
     return (
       <g clipPath={`url(#round-corner${componentId}-${index})`}>
         {dataReversed.map((_, innerIndex) => {
@@ -56,11 +66,7 @@ const Bar = ({
               y={y - heigth}
               width={width}
               height={heigth}
-              fill={
-                Array.isArray(data.color)
-                  ? data.color.toReversed()[innerIndex]
-                  : data.color
-              }
+              fill={getColor(innerIndex)}
             />
           );
         })}
