@@ -30,6 +30,7 @@ export type PieChartData = {
   id: string;
   name: string;
   value: number;
+  color: string;
 };
 
 export type PieChartProps = {
@@ -122,7 +123,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
                   key={item.id}
                   fill={
                     index === hoverIndex || hoverIndex === undefined
-                      ? brownscale[index % brownscale.length]
+                      ? item.color
                       : "#E5E3E0"
                   }
                 />
@@ -149,7 +150,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
                         height: 8,
                         borderRadius: "50%",
                         border: "1px solid #FFFFFF",
-                        background: brownscale[hoverIndex % brownscale.length],
+                        background: dataSorted[hoverIndex].color,
                       }}
                     />
                     <Typography sx={{ color: "#FFFFFF" }} variant="caption">
@@ -189,7 +190,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
                       width: 8,
                       height: 8,
                       borderRadius: "50%",
-                      background: brownscale[index % brownscale.length],
+                      background: item.color,
                     }}
                   />
                 </td>
