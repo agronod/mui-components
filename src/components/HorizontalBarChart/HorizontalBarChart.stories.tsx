@@ -14,21 +14,25 @@ const data: HorizontalBarChartData[] = [
     id: "1",
     name: "Inköpta varor",
     value: 2000,
+    color: "#AA7605",
   },
   {
     id: "2",
     name: "Lustgas from mark",
     value: 4000,
+    color: "#AA7605",
   },
   {
     id: "3",
     name: "Koldioxid from mark",
     value: 200,
+    color: "#AA7605",
   },
   {
     id: "4",
     name: "Energi",
     value: 100,
+    color: "#AA7605",
   },
 ];
 
@@ -37,7 +41,7 @@ export const HorizontalBarChartDefault: StoryFn<typeof HorizontalBarChart> = ({
 }) => (
   <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
     <Box height={"100%"} width={"100%"}>
-      <HorizontalBarChart aspectRatio={1.5} {...args} />
+      <HorizontalBarChart {...args} />
     </Box>
   </Box>
 );

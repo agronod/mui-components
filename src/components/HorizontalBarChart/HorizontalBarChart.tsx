@@ -1,33 +1,15 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-
-const brownscale: Array<string> = [
-  "#73140C",
-  "#852411",
-  "#923F00",
-  "#A26100",
-  "#AA7605",
-  "#AB8838",
-  "#B4974E",
-  "#BDA666",
-  "#C7B67E",
-  "#D1C498",
-  "#E0D2B5",
-  "#E6E0CA",
-  "#F2EDE1",
-  "#F2EDE1",
-  "#F7F4ED",
-];
 
 export type HorizontalBarChartData = {
   id: string;
   name: string;
   value: number;
+  color: string;
 };
 
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
-  aspectRatio?: number;
 };
 
 const TICK_HEIGHT = 75;
@@ -69,10 +51,7 @@ const Bar = ({
   );
 };
 
-const HorizontalBarChart = ({
-  data,
-  aspectRatio = 1,
-}: HorizontalBarChartProps) => {
+const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -170,7 +149,7 @@ const HorizontalBarChart = ({
               x={index * (barWidth + PADDING) + PADDING}
               y={chartHeight}
               factor={factor}
-              color={"#AA7605"}
+              color={item.color}
               index={index}
               componentId={componentId}
             />

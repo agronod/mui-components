@@ -23,12 +23,12 @@ export type VerticalBarChartData = {
   id: string;
   name: string;
   value: number;
+  color: string;
 };
 
 export type VerticalBarChartProps = {
   data: Array<VerticalBarChartData>;
   selectedId?: string;
-  aspectRatio?: number;
 };
 
 const TICK_WIDTH = 100;
@@ -83,18 +83,16 @@ const Bar = ({
   );
 };
 
-const VerticalBarChart = ({
-  data,
-  selectedId,
-  aspectRatio = 1,
-}: VerticalBarChartProps) => {
+const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
+  const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const componentId = useId();
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
-      setChartWidth(event[0].contentBoxSize[0].inlineSize);
+      setChartHeight(event[0].target.children[0].clientHeight);
+      setChartWidth(event[0].target.children[0].clientWidth);
     });
 
     if (containerRef?.current) resizeObserver.observe(containerRef.current);
@@ -111,11 +109,6 @@ const VerticalBarChart = ({
         (chartWidth - TICK_WIDTH) / Math.max(...data.map((item) => item.value))
       ),
     [data, chartWidth]
-  );
-
-  const chartHeight = useMemo(
-    () => chartWidth * aspectRatio,
-    [chartWidth, aspectRatio]
   );
 
   const barHeight = useMemo(() => {
@@ -149,14 +142,11 @@ const VerticalBarChart = ({
       ref={containerRef}
       sx={{
         width: "100%",
+        height: "100%",
         position: "relative",
       }}
     >
-      <svg
-        width="100%"
-        height={chartHeight}
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <svg width="100%" height={"100%"}>
         <defs>
           {data.map((d, index) => (
             <clipPath key={index} id={`round-corner${componentId}-${index}`}>
@@ -197,7 +187,7 @@ const VerticalBarChart = ({
               color={
                 selectedId !== undefined && selectedId !== item.id
                   ? "#E5E3E0"
-                  : brownscale[index % brownscale.length]
+                  : item.color
               }
               selected={selectedId === item.id}
               index={index}
