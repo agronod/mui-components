@@ -36,6 +36,33 @@ const data: HorizontalBarChartData[] = [
   },
 ];
 
+const stackedData: HorizontalBarChartData[] = [
+  {
+    id: "1",
+    name: "Inköpta varor",
+    value: [1000, 2000],
+    color: ["#AA7605", "#59B87F"],
+  },
+  {
+    id: "2",
+    name: "Lustgas from mark",
+    value: [4000, 400],
+    color: ["#AA7605", "#59B87F"],
+  },
+  {
+    id: "3",
+    name: "Koldioxid from mark",
+    value: [200, 100],
+    color: ["#AA7605", "#59B87F"],
+  },
+  {
+    id: "4",
+    name: "Energi",
+    value: [100, 100],
+    color: ["#AA7605", "#59B87F"],
+  },
+];
+
 export const HorizontalBarChartDefault: StoryFn<typeof HorizontalBarChart> = ({
   ...args
 }) => (
@@ -48,4 +75,18 @@ export const HorizontalBarChartDefault: StoryFn<typeof HorizontalBarChart> = ({
 
 HorizontalBarChartDefault.args = {
   data: data,
+};
+
+export const HorizontalBarChartStacked: StoryFn<typeof HorizontalBarChart> = ({
+  ...args
+}) => (
+  <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
+    <Box height={300}>
+      <HorizontalBarChart {...args} />
+    </Box>
+  </Box>
+);
+
+HorizontalBarChartStacked.args = {
+  data: stackedData,
 };

@@ -1,18 +1,24 @@
 import { Box, Typography } from "@mui/material";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export type HorizontalBarChartData = {
   id: string;
   name: string;
-  value: number;
-  color: string;
+  value: number | Array<number>;
+  color: string | Array<string>;
 };
 
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
 };
 
-const TICK_HEIGHT = 75;
 const GRID_HEIGHT = 54;
 const PADDING = 16;
 
@@ -21,7 +27,6 @@ const Bar = ({
   width,
   x,
   y,
-  color,
   factor,
   index,
   componentId,
@@ -30,11 +35,39 @@ const Bar = ({
   width: number;
   x: number;
   y: number;
-  color: string;
   factor: number;
   index: number;
   componentId: string;
 }) => {
+  if (Array.isArray(data.value)) {
+    const dataReversed = data.value.toReversed();
+    return (
+      <g clipPath={`url(#round-corner${componentId}-${index})`}>
+        {dataReversed.map((_, innerIndex) => {
+          const heigth =
+            dataReversed
+              .slice(innerIndex)
+              .reduce((acc, curr) => acc + curr, 0) * factor;
+
+          return (
+            <rect
+              key={innerIndex}
+              x={x}
+              y={y - heigth}
+              width={width}
+              height={heigth}
+              fill={
+                Array.isArray(data.color)
+                  ? data.color.toReversed()[innerIndex]
+                  : data.color
+              }
+            />
+          );
+        })}
+      </g>
+    );
+  }
+
   const heigth = data.value * factor;
 
   return (
@@ -44,7 +77,7 @@ const Bar = ({
         y={y - heigth}
         width={width}
         height={heigth}
-        fill={color}
+        fill={Array.isArray(data.color) ? data.color[0] : data.color}
         clipPath={`url(#round-corner${componentId}-${index})`}
       />
     </g>
@@ -70,10 +103,17 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
     };
   }, [containerRef?.current]);
 
+  const mapTotalValue = useCallback((item: HorizontalBarChartData) => {
+    if (Array.isArray(item.value)) {
+      return item.value.reduce((acc, curr) => acc + curr, 0);
+    }
+
+    return item.value;
+  }, []);
+
   const factor = useMemo(
-    () =>
-      Math.max(0, chartHeight / Math.max(...data.map((item) => item.value))),
-    [data, chartHeight]
+    () => Math.max(0, chartHeight / Math.max(...data.map(mapTotalValue))),
+    [data, chartHeight, mapTotalValue]
   );
 
   const barWidth = useMemo(() => {
@@ -120,7 +160,7 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
               <clipPath key={index} id={`round-corner${componentId}-${index}`}>
                 <rect
                   x={barWidth * index + PADDING * index + PADDING}
-                  y={chartHeight - d.value * factor}
+                  y={chartHeight - mapTotalValue(d) * factor}
                   height={chartHeight + 20}
                   width={barWidth}
                   rx={20}
@@ -147,7 +187,6 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
               x={index * (barWidth + PADDING) + PADDING}
               y={chartHeight}
               factor={factor}
-              color={item.color}
               index={index}
               componentId={componentId}
             />
@@ -185,7 +224,7 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
               {item.name}
             </Typography>
             <Typography fontWeight={600} variant="body2" fontSize={24}>
-              {item.value}
+              {mapTotalValue(item).toLocaleString("sv-SE")}
             </Typography>
           </Box>
         ))}
