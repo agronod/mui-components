@@ -160,7 +160,7 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
       }}
     >
       <Box ref={containerRef} height={"100%"}>
-        <svg width="100%" height="auto">
+        <svg width="100%" height="100%">
           <defs>
             {data.map((d, index) => (
               <clipPath key={index} id={`round-corner${componentId}-${index}`}>

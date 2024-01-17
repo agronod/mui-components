@@ -7,7 +7,6 @@ import {
 } from "recharts";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { useCallback, useMemo, useRef, useState } from "react";
-import styled from "@emotion/styled";
 
 const brownscale: Array<string> = [
   "#73140C",
@@ -27,18 +26,6 @@ const brownscale: Array<string> = [
   "#F7F4ED",
 ];
 
-const StyledTable = styled.table({
-  width: 208,
-  borderCollapse: "collapse",
-});
-
-const StyledTableRow = styled.tr<{ backgroundColor?: string }>(
-  ({ backgroundColor }) => ({
-    padding: 8,
-    backgroundColor,
-  })
-);
-
 export type PieChartData = {
   id: string;
   name: string;
@@ -46,13 +33,11 @@ export type PieChartData = {
 };
 
 export type PieChartProps = {
-  headline: string;
   data: Array<PieChartData>;
-  unit: string;
   onItemHover?: (id?: string) => void;
 };
 
-const PieChart = ({ headline, unit, data, onItemHover }: PieChartProps) => {
+const PieChart = ({ data, onItemHover }: PieChartProps) => {
   const theme = useTheme();
   const pieChartRef = useRef<any>(null);
   const [hoverIndex, setHoverIndex] = useState<number>();
@@ -184,16 +169,18 @@ const PieChart = ({ headline, unit, data, onItemHover }: PieChartProps) => {
             {total}
           </Typography>
         </Box>
-        <StyledTable>
+        <table style={{ width: 208, borderCollapse: "collapse" }}>
           <tbody onMouseLeave={() => onHover()}>
             {dataSorted.map((item, index) => (
-              <StyledTableRow
+              <tr
+                style={{
+                  padding: 8,
+                  backgroundColor:
+                    index === hoverIndex
+                      ? theme.palette.input.backgroundDisabled
+                      : undefined,
+                }}
                 onMouseOver={() => onHover(index)}
-                backgroundColor={
-                  index === hoverIndex
-                    ? theme.palette.input.backgroundDisabled
-                    : undefined
-                }
                 key={item.id}
               >
                 <td style={{ paddingLeft: 8 }}>
@@ -229,10 +216,10 @@ const PieChart = ({ headline, unit, data, onItemHover }: PieChartProps) => {
                     {item.value}
                   </Typography>
                 </td>
-              </StyledTableRow>
+              </tr>
             ))}
           </tbody>
-        </StyledTable>
+        </table>
       </Box>
     </Stack>
   );
