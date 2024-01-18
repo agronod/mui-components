@@ -66,10 +66,8 @@ const stackedData: HorizontalBarChartData[] = [
 export const HorizontalBarChartDefault: StoryFn<typeof HorizontalBarChart> = ({
   ...args
 }) => (
-  <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-    <Box height={300}>
-      <HorizontalBarChart {...args} />
-    </Box>
+  <Box sx={{ backgroundColor: "#FFF", padding: 2, height: 300 }}>
+    <HorizontalBarChart {...args} />
   </Box>
 );
 
