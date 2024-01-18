@@ -7,6 +7,7 @@ import {
 } from "recharts";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { useCallback, useMemo, useRef, useState } from "react";
+import { round } from "../utils";
 
 const brownscale: Array<string> = [
   "#73140C",
@@ -44,12 +45,15 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
   const [hoverIndex, setHoverIndex] = useState<number>();
 
   const total = useMemo(
-    () => data.reduce((acc, curr) => acc + curr.value, 0),
+    () => round(data.reduce((acc, curr) => acc + curr.value, 0)),
     [data]
   );
 
   const dataSorted = useMemo(
-    () => data.sort((a, b) => b.value - a.value),
+    () =>
+      data
+        .sort((a, b) => b.value - a.value)
+        .map((item) => ({ ...item, value: round(item.value) })),
     [data]
   );
 
@@ -163,14 +167,16 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
           </RePieChart>
         </ResponsiveContainer>
       </Box>
-      <Box mt={2}>
+      <Box width="100%" mt={2}>
         <Box paddingX={1} mb={2}>
           <Typography variant="caption">Totalt</Typography>
           <Typography variant="h5" sx={{ fontWeight: 600 }}>
             {total}
           </Typography>
         </Box>
-        <table style={{ width: 208, borderCollapse: "collapse" }}>
+        <table
+          style={{ width: "100%", maxWidth: 200, borderCollapse: "collapse" }}
+        >
           <tbody onMouseLeave={() => onHover()}>
             {dataSorted.map((item, index) => (
               <tr

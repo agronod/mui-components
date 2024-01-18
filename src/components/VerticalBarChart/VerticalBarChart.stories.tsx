@@ -74,7 +74,7 @@ const data2: VerticalBarChartData[] = [
   {
     id: "5",
     name: "Åkerböna",
-    value: 2,
+    value: 2.15,
     color: "#AA7605",
   },
   {

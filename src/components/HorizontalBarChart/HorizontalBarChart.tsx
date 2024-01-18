@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { round } from "../utils";
 
 export type HorizontalBarChartData = {
   id: string;
@@ -55,9 +56,11 @@ const Bar = ({
       <g clipPath={`url(#round-corner${componentId}-${index})`}>
         {dataReversed.map((_, innerIndex) => {
           const heigth =
-            dataReversed
-              .slice(innerIndex)
-              .reduce((acc, curr) => acc + curr, 0) * factor;
+            round(
+              dataReversed
+                .slice(innerIndex)
+                .reduce((acc, curr) => acc + curr, 0)
+            ) * factor;
 
           return (
             <rect
@@ -74,7 +77,7 @@ const Bar = ({
     );
   }
 
-  const heigth = data.value * factor;
+  const heigth = round(data.value) * factor;
 
   return (
     <g>
@@ -111,10 +114,10 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
 
   const mapTotalValue = useCallback((item: HorizontalBarChartData) => {
     if (Array.isArray(item.value)) {
-      return item.value.reduce((acc, curr) => acc + curr, 0);
+      return round(item.value.reduce((acc, curr) => acc + curr, 0));
     }
 
-    return item.value;
+    return round(item.value);
   }, []);
 
   const factor = useMemo(

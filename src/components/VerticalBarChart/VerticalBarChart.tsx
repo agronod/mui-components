@@ -1,5 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { round } from "../utils";
 
 const brownscale: Array<string> = [
   "#73140C",
@@ -57,7 +58,7 @@ const Bar = ({
   selected?: boolean;
 }) => {
   const theme = useTheme();
-  const width = data.value * factor;
+  const width = round(data.value) * factor;
 
   return (
     <g>
@@ -106,7 +107,8 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
     () =>
       Math.max(
         0,
-        (chartWidth - TICK_WIDTH) / Math.max(...data.map((item) => item.value))
+        (chartWidth - TICK_WIDTH) /
+          Math.max(...data.map((item) => round(item.value)))
       ),
     [data, chartWidth]
   );
@@ -234,7 +236,7 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
               {item.name}
             </Typography>
             <Typography fontWeight={600} variant="caption">
-              {item.value}
+              {round(item.value)}
             </Typography>
           </Box>
         ))}

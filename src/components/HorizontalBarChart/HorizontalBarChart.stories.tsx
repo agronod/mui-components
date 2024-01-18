@@ -40,25 +40,25 @@ const stackedData: HorizontalBarChartData[] = [
   {
     id: "1",
     name: "Inköpta varor",
-    value: [1000, 2000],
+    value: [1.23, 2.27],
     color: ["#AA7605", "#59B87F"],
   },
   {
     id: "2",
     name: "Lustgas from mark",
-    value: [4000, 400],
+    value: [1, 2],
     color: ["#AA7605", "#59B87F"],
   },
   {
     id: "3",
     name: "Koldioxid from mark",
-    value: [200, 100],
+    value: [3.245, 1.456],
     color: ["#AA7605", "#59B87F"],
   },
   {
     id: "4",
     name: "Energi",
-    value: [100, 100],
+    value: [3, 4],
     color: ["#AA7605", "#59B87F"],
   },
 ];
