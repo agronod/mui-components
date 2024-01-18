@@ -1,10 +1,4 @@
-import {
-  PieChart as RePieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
+import { PieChart as RePieChart, Pie, Cell, Tooltip } from "recharts";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
@@ -106,67 +100,63 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
 
   return (
     <Stack direction="row" gap={4}>
-      <Box height={224} width={224}>
-        <ResponsiveContainer width={"100%"} height={"100%"}>
-          <RePieChart ref={pieChartRef}>
-            <Pie
-              onMouseLeave={() => onHover()}
-              startAngle={-270}
-              endAngle={-630}
-              isAnimationActive={false}
-              paddingAngle={2}
-              dataKey="value"
-              data={dataSorted}
-              innerRadius={65}
-              outerRadius={95}
-              cornerRadius={5}
-            >
-              {dataSorted.map((item, index) => (
-                <Cell
-                  onMouseOver={() => onHover(index)}
-                  key={item.id}
-                  fill={
-                    index === hoverIndex || hoverIndex === undefined
-                      ? item.color
-                      : "#E5E3E0"
-                  }
+      <RePieChart width={224} height={224} ref={pieChartRef}>
+        <Pie
+          onMouseLeave={() => onHover()}
+          startAngle={-270}
+          endAngle={-630}
+          isAnimationActive={false}
+          paddingAngle={2}
+          dataKey="value"
+          data={dataSorted}
+          innerRadius={65}
+          outerRadius={95}
+          cornerRadius={5}
+        >
+          {dataSorted.map((item, index) => (
+            <Cell
+              onMouseOver={() => onHover(index)}
+              key={item.id}
+              fill={
+                index === hoverIndex || hoverIndex === undefined
+                  ? item.color
+                  : "#E5E3E0"
+              }
+            />
+          ))}
+        </Pie>
+        {hoverIndex !== undefined && (
+          <Tooltip
+            isAnimationActive={false}
+            content={
+              <Stack
+                px={1}
+                py={1}
+                gap={"4px"}
+                direction="row"
+                alignItems="center"
+                sx={{
+                  backgroundColor: theme.palette.text.primary,
+                  borderRadius: "3px",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    border: "1px solid #FFFFFF",
+                    background: dataSorted[hoverIndex].color,
+                  }}
                 />
-              ))}
-            </Pie>
-            {hoverIndex !== undefined && (
-              <Tooltip
-                isAnimationActive={false}
-                content={
-                  <Stack
-                    px={1}
-                    py={1}
-                    gap={"4px"}
-                    direction="row"
-                    alignItems="center"
-                    sx={{
-                      backgroundColor: theme.palette.text.primary,
-                      borderRadius: "3px",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        width: 8,
-                        height: 8,
-                        borderRadius: "50%",
-                        border: "1px solid #FFFFFF",
-                        background: dataSorted[hoverIndex].color,
-                      }}
-                    />
-                    <Typography sx={{ color: "#FFFFFF" }} variant="caption">
-                      {`${dataSorted[hoverIndex].name} ${percentage}%`}
-                    </Typography>
-                  </Stack>
-                }
-              />
-            )}
-          </RePieChart>
-        </ResponsiveContainer>
-      </Box>
+                <Typography sx={{ color: "#FFFFFF" }} variant="caption">
+                  {`${dataSorted[hoverIndex].name} ${percentage}%`}
+                </Typography>
+              </Stack>
+            }
+          />
+        )}
+      </RePieChart>
       <Box width="100%" mt={2}>
         <Box paddingX={1} mb={2}>
           <Typography variant="caption">Totalt</Typography>

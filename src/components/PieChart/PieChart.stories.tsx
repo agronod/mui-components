@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import PieChart, { PieChartData } from "./PieChart";
-import { Box, Card, Grid } from "@mui/material";
+import { Box, Card, Grid, Typography } from "@mui/material";
 
 export default {
   title: "Components/PieChart",
@@ -50,6 +50,8 @@ export const PieChartDefault: StoryFn<typeof PieChart> = ({ ...args }) => (
   <Grid container spacing={2}>
     <Grid item xs={12} md={6}>
       <Card sx={{ padding: 2 }}>
+        <Typography variant="subtitle2">Klimatavtryck växtodling</Typography>
+        <Typography variant="caption">ton CO2e</Typography>
         <PieChart {...args} />
       </Card>
     </Grid>
