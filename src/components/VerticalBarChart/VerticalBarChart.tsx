@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
 
@@ -57,7 +57,6 @@ const Bar = ({
   componentId: string;
   selected?: boolean;
 }) => {
-  const theme = useTheme();
   const width = round(data.value) * factor;
 
   return (
@@ -66,7 +65,7 @@ const Bar = ({
         <rect
           x={0}
           y={y}
-          width={width}
+          width={TICK_WIDTH}
           height={height}
           fill={"#FCFAF7"}
           clipPath={`url(#round-corner${componentId}-${index})`}
