@@ -212,7 +212,6 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
           <Box
             key={index}
             sx={{
-              paddingX: 2,
               position: "absolute",
               top: barHeight * index + index * PADDING,
               left: 0,
