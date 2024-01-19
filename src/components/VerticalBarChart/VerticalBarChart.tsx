@@ -154,7 +154,7 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
               <rect
                 x={0}
                 y={0}
-                width={d.value * factor + TICK_WIDTH}
+                width={round(d.value) * factor + TICK_WIDTH}
                 height={barHeight}
                 rx={barHeight / 2}
               />
