@@ -68,7 +68,7 @@ const Bar = ({
           y={y}
           width={width}
           height={height}
-          fill={theme.palette.input.backgroundDisabled}
+          fill={"#FCFAF7"}
           clipPath={`url(#round-corner${componentId}-${index})`}
         />
       )}
@@ -212,6 +212,7 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
           <Box
             key={index}
             sx={{
+              paddingX: 2,
               position: "absolute",
               top: barHeight * index + index * PADDING,
               left: 0,
