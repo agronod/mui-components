@@ -15,34 +15,34 @@ export type HorizontalBarChartData = {
   value: number | Array<number>;
   color: string | Array<string>;
 };
+export type SubCategory = {
+  name: string;
+  utslappskategoriId: string;
+  value: number;
+  percentage: number;
+};
 
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
-  tooltipData: Array<any>;
+  tooltipData: Array<SubCategory>;
 };
 
 const GRID_HEIGHT = 54;
 const PADDING = 16;
 
 const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
-  type Category = {
-    name: string;
-    utslappskategoriId: string;
-    value: number;
-    percentage: number;
-  };
   console.log("sub", subkategori, payload, active);
   if (!subkategori) return <></>;
 
   if (active && payload && payload.length) {
     let subcategories = subkategori
-      .filter((category: Category) => {
+      .filter((category: SubCategory) => {
         if (category.value === 0) {
           return;
         }
         return category.utslappskategoriId === payload[0].payload?.name;
       })
-      .sort((a: Category, b: Category) => a.percentage - b.percentage)
+      .sort((a: SubCategory, b: SubCategory) => a.percentage - b.percentage)
       .reverse();
     return (
       <div
@@ -74,7 +74,7 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
           <Typography fontWeight={500} mb={2} variant="overline">
             {label}
           </Typography>
-          {subcategories.map((category: Category) => (
+          {subcategories.map((category: SubCategory) => (
             <Stack
               key={category.name}
               direction="row"
@@ -198,7 +198,7 @@ const Bar = ({
 };
 
 const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
-  console.log(data);
+  console.log(data, tooltipData);
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
   const [tooltipContent, setTooltipContent] = useState("");
