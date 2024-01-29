@@ -31,8 +31,8 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
     value: number;
     percentage: number;
   };
-  console.log("sub");
-  // if (!subkategori) return <></>;
+  console.log("sub", subkategori, payload, active);
+  if (!subkategori) return <></>;
 
   if (active && payload && payload.length) {
     let subcategories = subkategori
