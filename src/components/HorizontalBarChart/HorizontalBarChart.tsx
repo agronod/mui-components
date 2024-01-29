@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography } from "@mui/material";
 import {
   useCallback,
   useEffect,
@@ -18,10 +18,89 @@ export type HorizontalBarChartData = {
 
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
+  tooltipData: Array<any>;
 };
 
 const GRID_HEIGHT = 54;
 const PADDING = 16;
+
+const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
+  type Category = {
+    name: string;
+    utslappskategoriId: string;
+    value: number;
+    percentage: number;
+  };
+  console.log("sub");
+  // if (!subkategori) return <></>;
+
+  if (active && payload && payload.length) {
+    let subcategories = subkategori
+      .filter((category: Category) => {
+        if (category.value === 0) {
+          return;
+        }
+        return category.utslappskategoriId === payload[0].payload?.name;
+      })
+      .sort((a: Category, b: Category) => a.percentage - b.percentage)
+      .reverse();
+    return (
+      <div
+        style={{
+          position: "absolute",
+          padding: "6px 10px",
+          background: "rgba(0, 0, 0, 0.6)",
+          color: "#fff",
+          borderRadius: "4px",
+          ...style,
+        }}
+      >
+        <Card
+          sx={(theme) => ({
+            textAlign: "left",
+            padding: 3,
+            border: "1px solid #e0e0e0",
+            display: "flex",
+            position: "relative",
+            top: -120,
+            maxWidth: 300,
+            flexDirection: "column",
+            [theme.breakpoints.down("sm")]: {
+              left: -110,
+              top: -110,
+            },
+          })}
+        >
+          <Typography fontWeight={500} mb={2} variant="overline">
+            {label}
+          </Typography>
+          {subcategories.map((category: Category) => (
+            <Stack
+              key={category.name}
+              direction="row"
+              alignItems="center"
+              marginBottom={0.5}
+            >
+              <Typography
+                mb={0.5}
+                fontWeight={600}
+                variant="caption"
+                sx={{ minWidth: "30px" }}
+              >
+                {Math.round(category.percentage)}%
+              </Typography>
+
+              <Typography ml={1} mb={0.5} variant="caption">
+                {category.name}
+              </Typography>
+            </Stack>
+          ))}
+        </Card>
+      </div>
+    );
+  }
+  return null;
+};
 
 const Bar = ({
   data,
@@ -31,6 +110,11 @@ const Bar = ({
   factor,
   index,
   componentId,
+  setTooltipContent,
+  setTooltipVisible,
+  setTooltipPosition,
+  onEnter,
+  onLeave,
 }: {
   data: HorizontalBarChartData;
   width: number;
@@ -39,6 +123,11 @@ const Bar = ({
   factor: number;
   index: number;
   componentId: string;
+  setTooltipContent: (content: string) => void;
+  setTooltipVisible: (isVisible: boolean) => void;
+  setTooltipPosition: ({ x, y }: { x: any; y: any }) => void;
+  onEnter: any;
+  onLeave: any;
 }) => {
   if (Array.isArray(data.value)) {
     const dataReversed = data.value.reverse();
@@ -64,6 +153,8 @@ const Bar = ({
 
           return (
             <rect
+              onMouseEnter={onEnter}
+              onMouseLeave={onLeave}
               key={innerIndex}
               x={x}
               y={y - heigth}
@@ -76,12 +167,25 @@ const Bar = ({
       </g>
     );
   }
+  const handleMouseEnter = (
+    event: React.MouseEvent,
+    value: number | number[]
+  ) => {
+    setTooltipContent(`${data.name}: ${value}`);
+    setTooltipVisible(true);
+    setTooltipPosition({ x: event.clientX, y: event.clientY });
+  };
 
+  const handleMouseLeave = () => {
+    setTooltipVisible(false);
+  };
   const heigth = round(data.value) * factor;
 
   return (
     <g>
       <rect
+        onMouseEnter={(event) => handleMouseEnter(event, data.value)}
+        onMouseLeave={handleMouseLeave}
         x={x}
         y={y - heigth}
         width={width}
@@ -93,11 +197,26 @@ const Bar = ({
   );
 };
 
-const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
+const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
+  console.log(data);
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
+  const [tooltipContent, setTooltipContent] = useState("");
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement | null>(null);
   const componentId = useId();
+
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const handleMouseEnter = (index: number) => {
+    setActiveIndex(index);
+    setTooltipVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveIndex(null);
+    setTooltipVisible(false);
+  };
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
@@ -155,6 +274,9 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
 
   return (
     <Box
+      onMouseMove={(event) =>
+        setTooltipPosition({ x: event.clientX, y: event.clientY })
+      }
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -173,6 +295,20 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
           minHeight: 0,
         }}
       >
+        {tooltipVisible && (
+          <Tooltip
+            style={{
+              top: tooltipPosition.y + "px",
+              left: tooltipPosition.x + "px",
+              position: "fixed",
+              transform: "translate(-50%, -20px)",
+              zIndex: 1000,
+              pointerEvents: "none",
+            }}
+          >
+            {tooltipContent}
+          </Tooltip>
+        )}
         <svg width="100%" height={"100%"}>
           <defs>
             {data.map((d, index) => (
@@ -208,11 +344,29 @@ const HorizontalBarChart = ({ data }: HorizontalBarChartProps) => {
               factor={factor}
               index={index}
               componentId={componentId}
+              setTooltipContent={setTooltipContent}
+              setTooltipVisible={setTooltipVisible}
+              setTooltipPosition={setTooltipPosition}
+              onEnter={() => handleMouseEnter(index)}
+              onLeave={handleMouseLeave}
             />
           ))}
         </svg>
       </Box>
-
+      {tooltipVisible && activeIndex !== null && (
+        <Tooltip
+          active={tooltipVisible}
+          payload={[{ payload: data[activeIndex] }]}
+          label={data[activeIndex].name}
+          subkategori={tooltipData}
+          style={{
+            top: tooltipPosition.y,
+            left: tooltipPosition.x,
+            transform: "translate(-50%, -20px)",
+            zIndex: 1000,
+          }}
+        />
+      )}
       <Box
         sx={{
           display: "flex",
