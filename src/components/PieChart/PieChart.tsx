@@ -1,25 +1,7 @@
 import { PieChart as RePieChart, Pie, Cell, Tooltip } from "recharts";
-import { Box, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
-
-const brownscale: Array<string> = [
-  "#73140C",
-  "#852411",
-  "#923F00",
-  "#A26100",
-  "#AA7605",
-  "#AB8838",
-  "#B4974E",
-  "#BDA666",
-  "#C7B67E",
-  "#D1C498",
-  "#E0D2B5",
-  "#E6E0CA",
-  "#F2EDE1",
-  "#F2EDE1",
-  "#F7F4ED",
-];
 
 export type PieChartData = {
   id: string;
@@ -31,11 +13,11 @@ export type PieChartData = {
 export type PieChartProps = {
   data: Array<PieChartData>;
   onItemHover?: (id?: string) => void;
-  width?: number;
 };
 
-const PieChart = ({ data, onItemHover, width = 224 }: PieChartProps) => {
+const PieChart = ({ data, onItemHover }: PieChartProps) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
   const [hoverIndex, setHoverIndex] = useState<number>();
 
@@ -100,8 +82,8 @@ const PieChart = ({ data, onItemHover, width = 224 }: PieChartProps) => {
   );
 
   return (
-    <Stack direction="row" gap={4}>
-      <RePieChart width={width} height={224} ref={pieChartRef}>
+    <Stack direction="row" gap={isMobile ? 2 : 4}>
+      <RePieChart width={isMobile ? 188 : 224} height={224} ref={pieChartRef}>
         <Pie
           onMouseLeave={() => onHover()}
           startAngle={-270}
