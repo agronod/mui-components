@@ -31,7 +31,6 @@ const GRID_HEIGHT = 54;
 const PADDING = 16;
 
 const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
-  console.log("sub", subkategori, payload, active);
   if (!subkategori) return <></>;
 
   if (active && payload && payload.length) {
@@ -48,10 +47,8 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
       <div
         style={{
           position: "absolute",
-          padding: "6px 10px",
-          background: "rgba(0, 0, 0, 0.6)",
-          color: "#fff",
-          borderRadius: "4px",
+          transform: "translate(-20%, -60px)",
+          zIndex: 1000,
           ...style,
         }}
       >
@@ -110,9 +107,6 @@ const Bar = ({
   factor,
   index,
   componentId,
-  setTooltipContent,
-  setTooltipVisible,
-  setTooltipPosition,
   onEnter,
   onLeave,
 }: {
@@ -123,11 +117,10 @@ const Bar = ({
   factor: number;
   index: number;
   componentId: string;
-  setTooltipContent: (content: string) => void;
   setTooltipVisible: (isVisible: boolean) => void;
   setTooltipPosition: ({ x, y }: { x: any; y: any }) => void;
-  onEnter: any;
-  onLeave: any;
+  onEnter: () => void;
+  onLeave: () => void;
 }) => {
   if (Array.isArray(data.value)) {
     const dataReversed = data.value.reverse();
@@ -167,25 +160,13 @@ const Bar = ({
       </g>
     );
   }
-  const handleMouseEnter = (
-    event: React.MouseEvent,
-    value: number | number[]
-  ) => {
-    setTooltipContent(`${data.name}: ${value}`);
-    setTooltipVisible(true);
-    setTooltipPosition({ x: event.clientX, y: event.clientY });
-  };
-
-  const handleMouseLeave = () => {
-    setTooltipVisible(false);
-  };
   const heigth = round(data.value) * factor;
 
   return (
     <g>
       <rect
-        onMouseEnter={(event) => handleMouseEnter(event, data.value)}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
         x={x}
         y={y - heigth}
         width={width}
@@ -198,10 +179,8 @@ const Bar = ({
 };
 
 const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
-  console.log(data, tooltipData);
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
-  const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -295,20 +274,6 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
           minHeight: 0,
         }}
       >
-        {tooltipVisible && (
-          <Tooltip
-            style={{
-              top: tooltipPosition.y + "px",
-              left: tooltipPosition.x + "px",
-              position: "fixed",
-              transform: "translate(-50%, -20px)",
-              zIndex: 1000,
-              pointerEvents: "none",
-            }}
-          >
-            {tooltipContent}
-          </Tooltip>
-        )}
         <svg width="100%" height={"100%"}>
           <defs>
             {data.map((d, index) => (
@@ -344,7 +309,6 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
               factor={factor}
               index={index}
               componentId={componentId}
-              setTooltipContent={setTooltipContent}
               setTooltipVisible={setTooltipVisible}
               setTooltipPosition={setTooltipPosition}
               onEnter={() => handleMouseEnter(index)}
@@ -362,8 +326,6 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
           style={{
             top: tooltipPosition.y,
             left: tooltipPosition.x,
-            transform: "translate(-50%, -20px)",
-            zIndex: 1000,
           }}
         />
       )}
