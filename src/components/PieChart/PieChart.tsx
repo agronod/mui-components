@@ -31,9 +31,10 @@ export type PieChartData = {
 export type PieChartProps = {
   data: Array<PieChartData>;
   onItemHover?: (id?: string) => void;
+  width?: number;
 };
 
-const PieChart = ({ data, onItemHover }: PieChartProps) => {
+const PieChart = ({ data, onItemHover, width = 224 }: PieChartProps) => {
   const theme = useTheme();
   const pieChartRef = useRef<any>(null);
   const [hoverIndex, setHoverIndex] = useState<number>();
@@ -100,7 +101,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
 
   return (
     <Stack direction="row" gap={4}>
-      <RePieChart width={224} height={224} ref={pieChartRef}>
+      <RePieChart width={width} height={224} ref={pieChartRef}>
         <Pie
           onMouseLeave={() => onHover()}
           startAngle={-270}
