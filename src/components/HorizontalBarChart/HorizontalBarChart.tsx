@@ -24,7 +24,7 @@ export type SubCategory = {
 
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
-  tooltipData: Array<SubCategory>;
+  tooltipData?: Array<SubCategory>;
 };
 
 const GRID_HEIGHT = 54;
@@ -224,8 +224,12 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
 
   const handleMouseEnter = useCallback(
     (index: number) => {
-      setActiveIndex(index);
-      setTooltipVisible(true);
+      setTimeout(() => {
+        if (tooltipData) {
+          setActiveIndex(index);
+          setTooltipVisible(true);
+        }
+      }, 200);
     },
     [setActiveIndex, setTooltipVisible]
   );
@@ -233,12 +237,18 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
   const handleMouseLeave = useCallback(() => {
     setActiveIndex(null);
     setTooltipVisible(false);
+    if (tooltipData) {
+      setActiveIndex(null);
+      setTooltipVisible(false);
+    }
   }, [setActiveIndex, setTooltipVisible]);
 
   const handleMouseMove = useCallback(
     (event: any) => {
-      setTooltipPosition({ x: event.clientX, y: event.clientY });
-      setTooltipVisible(true);
+      if (tooltipData) {
+        setTooltipPosition({ x: event.clientX, y: event.clientY });
+        setTooltipVisible(true);
+      }
     },
     [setTooltipPosition, setTooltipVisible]
   );
