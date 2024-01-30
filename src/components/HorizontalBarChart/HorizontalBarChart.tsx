@@ -48,7 +48,7 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
         style={{
           position: "absolute",
           transform: "translate(-20%, -60px)",
-          zIndex: 1000,
+          zIndex: 10000,
           ...style,
         }}
       >
