@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography, debounce } from "@mui/material";
 import {
   useCallback,
   useEffect,
@@ -197,6 +197,18 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
     setTooltipVisible(false);
   };
 
+  const updateMousePosition = useCallback(
+    debounce((x, y) => {
+      setTooltipPosition({ x, y });
+      setTooltipVisible(true);
+    }, 100),
+    []
+  );
+
+  const handleMouseMove = (event: any) => {
+    updateMousePosition(event.clientX, event.clientY);
+  };
+
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
       setChartHeight(event[0].target.children[0].clientHeight);
@@ -253,9 +265,7 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
 
   return (
     <Box
-      onMouseMove={(event) =>
-        setTooltipPosition({ x: event.clientX, y: event.clientY })
-      }
+      onMouseMove={handleMouseMove}
       sx={{
         display: "flex",
         flexDirection: "column",
