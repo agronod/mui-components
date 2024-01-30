@@ -203,7 +203,7 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
   const [tooltipVisible, setTooltipVisible] = useState(false);
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 400, y: 200 });
   const containerRef = useRef<HTMLDivElement | null>(null);
   const componentId = useId();
 
@@ -218,10 +218,13 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
     setTooltipVisible(false);
   };
 
-  const updateMousePosition = useCallback((x: number, y: number) => {
-    setTooltipPosition({ x, y });
-    setTooltipVisible(true);
-  }, []);
+  const updateMousePosition = useCallback(
+    debounce((x, y) => {
+      // setTooltipPosition({ x, y });
+      setTooltipVisible(true);
+    }, 100),
+    []
+  );
 
   const handleMouseMove = (event: any) => {
     updateMousePosition(event.clientX, event.clientY);
