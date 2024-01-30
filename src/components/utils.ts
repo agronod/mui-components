@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 const numberOfDecimals = (value: number, decimals: number | undefined) => {
   if (decimals !== undefined) {
     return decimals;
@@ -20,3 +22,27 @@ export function round(value: number, decimals?: number) {
   const factor = Math.pow(10, numerOfDecimals);
   return Math.round((value + Number.EPSILON) * factor) / factor;
 }
+
+export const useDebounce = (callback: any, delay: any) => {
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  const debouncedCallback = (...args: any) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    // @ts-ignore
+    timeoutRef.current = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+
+  return debouncedCallback;
+};

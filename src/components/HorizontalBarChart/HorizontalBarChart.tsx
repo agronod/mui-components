@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography, debounce } from "@mui/material";
+import { Box, Card, Stack, Typography } from "@mui/material";
 import {
   useCallback,
   useEffect,
@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { round } from "../utils";
+import { round, useDebounce } from "../utils";
 
 export type HorizontalBarChartData = {
   id: string;
@@ -29,75 +29,6 @@ export type HorizontalBarChartProps = {
 
 const GRID_HEIGHT = 54;
 const PADDING = 16;
-
-const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
-  if (!subkategori) return <></>;
-
-  if (active && payload && payload.length) {
-    let subcategories = subkategori
-      .filter((category: SubCategory) => {
-        if (category.value === 0) {
-          return;
-        }
-        return category.utslappskategoriId === payload[0].payload?.name;
-      })
-      .sort((a: SubCategory, b: SubCategory) => a.percentage - b.percentage)
-      .reverse();
-    return (
-      <div
-        style={{
-          position: "absolute",
-          transform: "translate(-20%, -60px)",
-          zIndex: 10000,
-          ...style,
-        }}
-      >
-        <Card
-          sx={(theme) => ({
-            textAlign: "left",
-            padding: 3,
-            border: "1px solid #e0e0e0",
-            display: "flex",
-            position: "relative",
-            top: -120,
-            maxWidth: 300,
-            flexDirection: "column",
-            [theme.breakpoints.down("sm")]: {
-              left: -110,
-              top: -110,
-            },
-          })}
-        >
-          <Typography fontWeight={500} mb={2} variant="overline">
-            {label}
-          </Typography>
-          {subcategories.map((category: SubCategory) => (
-            <Stack
-              key={category.name}
-              direction="row"
-              alignItems="center"
-              marginBottom={0.5}
-            >
-              <Typography
-                mb={0.5}
-                fontWeight={600}
-                variant="caption"
-                sx={{ minWidth: "30px" }}
-              >
-                {Math.round(category.percentage)}%
-              </Typography>
-
-              <Typography ml={1} mb={0.5} variant="caption">
-                {category.name}
-              </Typography>
-            </Stack>
-          ))}
-        </Card>
-      </div>
-    );
-  }
-  return null;
-};
 
 const Bar = ({
   data,
@@ -153,7 +84,7 @@ const Bar = ({
                 height={height}
                 fill={getColor(innerIndex)}
               />
-              {/* Invisible rectangle for hover effect */}
+              {/* Invisible rectangle to be able to hover above the bar */}
               <rect
                 key={`hover-${innerIndex}`}
                 x={x}
@@ -185,7 +116,7 @@ const Bar = ({
         fill={Array.isArray(data.color) ? data.color[0] : data.color}
         clipPath={`url(#round-corner${componentId}-${index})`}
       />
-      {/* Invisible rectangle for hover effect */}
+      {/* Invisible rectangle to be able to hover above the bar */}
       <rect
         x={x}
         y={y - height - hoverHeight}
@@ -199,36 +130,84 @@ const Bar = ({
   );
 };
 
+const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
+  if (!subkategori) return <></>;
+
+  if (active && payload && payload.length) {
+    let subcategories = subkategori
+      .filter((category: SubCategory) => {
+        if (category.value === 0) {
+          return;
+        }
+        return category.utslappskategoriId === payload[0].payload?.name;
+      })
+      .sort((a: SubCategory, b: SubCategory) => a.percentage - b.percentage)
+      .reverse();
+    return (
+      <Box
+        style={{
+          position: "absolute",
+          transform: "translate(-20%, -60px)",
+          zIndex: 10000,
+          ...style,
+        }}
+      >
+        <Card
+          sx={(theme) => ({
+            textAlign: "left",
+            padding: 3,
+            border: "1px solid #e0e0e0",
+            display: "flex",
+            position: "relative",
+            top: -120,
+            maxWidth: 300,
+            flexDirection: "column",
+            [theme.breakpoints.down("sm")]: {
+              left: -110,
+              top: -110,
+            },
+          })}
+        >
+          <Typography fontWeight={500} mb={2} variant="overline">
+            {label}
+          </Typography>
+          {subcategories.map((category: SubCategory) => (
+            <Stack
+              key={category.name}
+              direction="row"
+              alignItems="center"
+              marginBottom={0.5}
+            >
+              <Typography
+                mb={0.5}
+                fontWeight={600}
+                variant="caption"
+                sx={{ minWidth: "30px" }}
+              >
+                {Math.round(category.percentage)}%
+              </Typography>
+
+              <Typography ml={1} mb={0.5} variant="caption">
+                {category.name}
+              </Typography>
+            </Stack>
+          ))}
+        </Card>
+      </Box>
+    );
+  }
+  return null;
+};
+
 const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 400, y: 200 });
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const componentId = useId();
-
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const handleMouseEnter = (index: number) => {
-    setActiveIndex(index);
-    setTooltipVisible(true);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveIndex(null);
-    setTooltipVisible(false);
-  };
-
-  const updateMousePosition = useCallback(
-    debounce((x, y) => {
-      // setTooltipPosition({ x, y });
-      setTooltipVisible(true);
-    }, 100),
-    []
-  );
-
-  const handleMouseMove = (event: any) => {
-    updateMousePosition(event.clientX, event.clientY);
-  };
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
@@ -242,6 +221,40 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
       if (containerRef?.current) resizeObserver.unobserve(containerRef.current);
     };
   }, [containerRef?.current]);
+
+  const handleMouseEnter = useCallback(
+    (index: number) => {
+      setActiveIndex(index);
+      setTooltipVisible(true);
+    },
+    [setActiveIndex, setTooltipVisible]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    setActiveIndex(null);
+    setTooltipVisible(false);
+  }, [setActiveIndex, setTooltipVisible]);
+
+  // const updateMousePosition = useCallback(
+  //   (x: any, y: any) => {
+  //     setTooltipPosition({ x, y });
+  //     setTooltipVisible(true);
+  //   },
+  //   [setTooltipPosition, setTooltipVisible]
+  // );
+
+  const updateMousePosition = useDebounce((x: any, y: any) => {
+    // Perform search operation with the debounced term
+    setTooltipPosition({ x, y });
+    setTooltipVisible(true);
+  }, 100);
+
+  const handleMouseMove = useCallback(
+    (event: any) => {
+      updateMousePosition(event.clientX, event.clientY);
+    },
+    [updateMousePosition]
+  );
 
   const mapTotalValue = useCallback((item: HorizontalBarChartData) => {
     if (Array.isArray(item.value)) {
@@ -340,8 +353,6 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
               factor={factor}
               index={index}
               componentId={componentId}
-              // setTooltipVisible={setTooltipVisible}
-              // setTooltipPosition={setTooltipPosition}
               onEnter={() => handleMouseEnter(index)}
               onLeave={handleMouseLeave}
             />
