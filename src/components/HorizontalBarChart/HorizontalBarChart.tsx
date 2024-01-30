@@ -117,27 +117,26 @@ const Bar = ({
   factor: number;
   index: number;
   componentId: string;
-  setTooltipVisible: (isVisible: boolean) => void;
-  setTooltipPosition: ({ x, y }: { x: any; y: any }) => void;
   onEnter: () => void;
   onLeave: () => void;
 }) => {
+  const hoverHeight = 200;
+
   if (Array.isArray(data.value)) {
     const dataReversed = data.value.reverse();
-
     const color = useMemo(
       () => (Array.isArray(data.color) ? data.color.reverse() : data.color),
       [data.color]
     );
-
     const getColor = useCallback(
       (itemIndex: number) => (Array.isArray(color) ? color[itemIndex] : color),
       [color]
     );
+
     return (
       <g clipPath={`url(#round-corner${componentId}-${index})`}>
         {dataReversed.map((_, innerIndex) => {
-          const heigth =
+          const height =
             round(
               dataReversed
                 .slice(innerIndex)
@@ -145,22 +144,34 @@ const Bar = ({
             ) * factor;
 
           return (
-            <rect
-              onMouseEnter={onEnter}
-              onMouseLeave={onLeave}
-              key={innerIndex}
-              x={x}
-              y={y - heigth}
-              width={width}
-              height={heigth}
-              fill={getColor(innerIndex)}
-            />
+            <>
+              <rect
+                key={innerIndex}
+                x={x}
+                y={y - height}
+                width={width}
+                height={height}
+                fill={getColor(innerIndex)}
+              />
+              {/* Invisible rectangle for hover effect */}
+              <rect
+                key={`hover-${innerIndex}`}
+                x={x}
+                y={y - height - hoverHeight}
+                width={width}
+                height={hoverHeight}
+                fill="transparent"
+                onMouseEnter={onEnter}
+                onMouseLeave={onLeave}
+              />
+            </>
           );
         })}
       </g>
     );
   }
-  const heigth = round(data.value) * factor;
+
+  const height = round(data.value) * factor;
 
   return (
     <g>
@@ -168,11 +179,21 @@ const Bar = ({
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
         x={x}
-        y={y - heigth}
+        y={y - height}
         width={width}
-        height={heigth}
+        height={height}
         fill={Array.isArray(data.color) ? data.color[0] : data.color}
         clipPath={`url(#round-corner${componentId}-${index})`}
+      />
+      {/* Invisible rectangle for hover effect */}
+      <rect
+        x={x}
+        y={y - height - hoverHeight}
+        width={width}
+        height={hoverHeight}
+        fill="transparent"
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
       />
     </g>
   );
@@ -319,8 +340,8 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
               factor={factor}
               index={index}
               componentId={componentId}
-              setTooltipVisible={setTooltipVisible}
-              setTooltipPosition={setTooltipPosition}
+              // setTooltipVisible={setTooltipVisible}
+              // setTooltipPosition={setTooltipPosition}
               onEnter={() => handleMouseEnter(index)}
               onLeave={handleMouseLeave}
             />
