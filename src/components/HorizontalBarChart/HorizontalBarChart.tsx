@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { round, useDebounce } from "../utils";
+import { round } from "../utils";
 
 export type HorizontalBarChartData = {
   id: string;
@@ -235,25 +235,12 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
     setTooltipVisible(false);
   }, [setActiveIndex, setTooltipVisible]);
 
-  // const updateMousePosition = useCallback(
-  //   (x: any, y: any) => {
-  //     setTooltipPosition({ x, y });
-  //     setTooltipVisible(true);
-  //   },
-  //   [setTooltipPosition, setTooltipVisible]
-  // );
-
-  const updateMousePosition = useDebounce((x: any, y: any) => {
-    // Perform search operation with the debounced term
-    setTooltipPosition({ x, y });
-    setTooltipVisible(true);
-  }, 100);
-
   const handleMouseMove = useCallback(
     (event: any) => {
-      updateMousePosition(event.clientX, event.clientY);
+      setTooltipPosition({ x: event.clientX, y: event.clientY });
+      setTooltipVisible(true);
     },
-    [updateMousePosition]
+    [setTooltipPosition, setTooltipVisible]
   );
 
   const mapTotalValue = useCallback((item: HorizontalBarChartData) => {
