@@ -224,6 +224,7 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
 
   const handleMouseEnter = useCallback(
     (index: number) => {
+      if (!tooltipData) return;
       setActiveIndex(index);
       setTooltipVisible(true);
     },
@@ -231,12 +232,14 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
   );
 
   const handleMouseLeave = useCallback(() => {
+    if (!tooltipData) return;
     setActiveIndex(null);
     setTooltipVisible(false);
   }, [setActiveIndex, setTooltipVisible]);
 
   const handleMouseMove = useCallback(
     (event: any) => {
+      if (!tooltipData) return;
       setTooltipPosition({ x: event.clientX + 80, y: event.clientY + 0 });
       setTooltipVisible(true);
     },
@@ -286,7 +289,7 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
 
   return (
     <Box
-      onMouseMove={handleMouseMove}
+      onMouseMove={tooltipData ? handleMouseMove : undefined}
       sx={{
         display: "flex",
         flexDirection: "column",
