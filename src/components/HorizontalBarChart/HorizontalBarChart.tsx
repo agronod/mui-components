@@ -54,7 +54,7 @@ const Bar = ({
   const hoverHeight = 200;
 
   if (Array.isArray(data.value)) {
-    const dataReversed = data.value.reverse();
+    const dataReversed = [...data.value].reverse();
     const color = useMemo(
       () => (Array.isArray(data.color) ? data.color.reverse() : data.color),
       [data.color]

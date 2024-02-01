@@ -140,4 +140,5 @@ export const HorizontalBarChartStacked: StoryFn<typeof HorizontalBarChart> = ({
 
 HorizontalBarChartStacked.args = {
   data: stackedData,
+  tooltipData,
 };
