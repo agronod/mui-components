@@ -1,5 +1,4 @@
 import { StoryFn, Meta } from "@storybook/react";
-import { Box } from "@mui/material";
 import StackedChart, { StackedChartDataProps } from "./StackedChart";
 
 export default {
