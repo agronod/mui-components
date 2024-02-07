@@ -119,7 +119,8 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
                 direction="row"
                 alignItems="center"
                 sx={{
-                  backgroundColor: theme.palette.text.primary,
+                  opacity: 1,
+                  background: theme.palette.text.primary,
                   borderRadius: "3px",
                 }}
               >
