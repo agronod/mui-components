@@ -240,15 +240,10 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
   const handleMouseMove = useCallback(
     (event: any) => {
       if (!tooltipData) return;
-      const chartRect = containerRef.current?.getBoundingClientRect();
-      if (chartRect) {
-        const relativeX = event.clientX - chartRect.left;
-        const relativeY = event.clientY - chartRect.top;
-        setTooltipPosition({ x: relativeX + 100, y: relativeY + 0 });
-      }
+      setTooltipPosition({ x: event.clientX + 80, y: event.clientY + 0 });
       setTooltipVisible(true);
     },
-    [containerRef, setTooltipPosition, setTooltipVisible, tooltipData]
+    [setTooltipPosition, setTooltipVisible]
   );
 
   const mapTotalValue = useCallback((item: HorizontalBarChartData) => {
