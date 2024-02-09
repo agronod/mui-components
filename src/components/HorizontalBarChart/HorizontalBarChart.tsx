@@ -271,9 +271,9 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
 
     let adjustedGridHeight = GRID_HEIGHT;
     let numberOfGrids = Math.ceil(chartHeight / GRID_HEIGHT);
-    numberOfGrids = Math.max(numberOfGrids, 5);
+    numberOfGrids = Math.max(numberOfGrids, 6);
 
-    if (numberOfGrids < 5 || chartHeight % GRID_HEIGHT !== 0) {
+    if (numberOfGrids < 6 || chartHeight % GRID_HEIGHT !== 0) {
       adjustedGridHeight = chartHeight / (numberOfGrids - 1);
     }
 
