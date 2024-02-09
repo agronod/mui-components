@@ -124,7 +124,7 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
     const width = chartWidth - TICK_WIDTH;
     let numberOfGrids = Math.max(
       Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 0 ? 1 : 0),
-      7
+      6
     );
 
     return [...Array(numberOfGrids).keys()];
@@ -134,7 +134,7 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
     const width = chartWidth - TICK_WIDTH;
     const numberOfGrids = Math.max(
       Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 0 ? 1 : 0),
-      7
+      6
     );
 
     return width / (numberOfGrids - 1);
