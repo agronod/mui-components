@@ -95,6 +95,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
           innerRadius={65}
           outerRadius={95}
           cornerRadius={5}
+          cursor={"pointer"}
         >
           {dataSorted.map((item, index) => (
             <Cell
@@ -148,43 +149,64 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
             {total}
           </Typography>
         </Box>
-        <table
-          style={{ width: "100%", maxWidth: 200, borderCollapse: "collapse" }}
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 200,
+            maxHeight: 140,
+            overflow: "auto",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+            "-ms-overflow-style": "none",
+            "scrollbar-width": "none",
+          }}
         >
-          <tbody onMouseLeave={() => onHover()}>
+          <Box sx={{}} onMouseLeave={() => onHover()}>
             {dataSorted.map((item, index) => (
-              <tr
-                style={{
-                  padding: 8,
-                  backgroundColor: index === hoverIndex ? "#E5E3E0" : undefined,
-                }}
-                onMouseOver={() => onHover(index)}
+              <Box
                 key={item.id}
+                onMouseOver={() => onHover(index)}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  px: 1,
+                  pb: 0.5,
+                  borderRadius: "4px",
+                  backgroundColor: index === hoverIndex ? "#FCFAF7" : undefined,
+                  cursor: "pointer",
+                }}
               >
-                <td style={{ paddingLeft: 8 }}>
-                  <Box
-                    sx={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: "50%",
-                      background: item.color,
-                    }}
-                  />
-                </td>
-                <td>
+                <Box
+                  sx={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    backgroundColor: item.color,
+                    mr: 1,
+                  }}
+                />
+                <Box
+                  sx={{
+                    flex: 1,
+                    pr: 1,
+                  }}
+                >
                   <Typography
                     variant="caption"
                     sx={{
-                      color:
-                        index === hoverIndex
-                          ? theme.palette.text.primary
-                          : "#616161",
+                      color: theme.palette.text.primary,
                     }}
                   >
                     {item.name}
                   </Typography>
-                </td>
-                <td style={{ paddingRight: 8, textAlign: "right" }}>
+                </Box>
+                <Box
+                  sx={{
+                    whiteSpace: "nowrap",
+                    textAlign: "right",
+                  }}
+                >
                   <Typography
                     variant="caption"
                     sx={{
@@ -193,11 +215,11 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
                   >
                     {item.value}
                   </Typography>
-                </td>
-              </tr>
+                </Box>
+              </Box>
             ))}
-          </tbody>
-        </table>
+          </Box>
+        </Box>
       </Box>
     </Stack>
   );
