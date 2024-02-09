@@ -24,6 +24,8 @@ export default {
         "orgnummer",
         "profil",
         "notkreatur",
+        "mjolk",
+        "vaxtodling",
       ],
     },
     color: {
@@ -79,6 +81,8 @@ export const AgronodIcons: StoryFn<typeof AgronodIcon> = ({
     <AgronodIcon name="orgnummer" {...rest} />
     <AgronodIcon name="profil" {...rest} />
     <AgronodIcon name="notkreatur" {...rest} />
+    <AgronodIcon name="mjolk" {...rest} />
+    <AgronodIcon name="vaxtodling" {...rest} />
   </Stack>
 );
 AgronodIcons.args = {
