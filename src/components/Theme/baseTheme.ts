@@ -82,7 +82,7 @@ const semanticThemePalette = {
     main: "#D4483E",
     medium: "#B73831",
     dark: "#A92E26",
-    darkHover: "#812B25", 
+    darkHover: "#812B25",
   },
   warning: {
     pastel: "#FDF0E6",
@@ -400,7 +400,7 @@ const baseThemeOptions: ThemeOptions = {
           letterSpacing: 0,
           fontFamily: "inter",
           margin: "0px 10px 0px 0px",
-          padding: "12px 26px",
+          padding: "8px 16px",
           textTransform: "none",
           borderRadius: "24px",
           minHeight: "26px",
@@ -504,7 +504,7 @@ const baseThemeOptions: ThemeOptions = {
         contained: {
           borderRadius: "100vmax",
           border: "1px solid transparent",
-          ":focus-visible": {           
+          ":focus-visible": {
             border: `1px solid ${common.white}`,
             boxShadow: `0px 0px 0px 4.5px ${common.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
