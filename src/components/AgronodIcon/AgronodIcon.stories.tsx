@@ -23,6 +23,7 @@ export default {
         "navMarknadKonkurrens",
         "orgnummer",
         "profil",
+        "notkreatur",
       ],
     },
     color: {
@@ -77,6 +78,7 @@ export const AgronodIcons: StoryFn<typeof AgronodIcon> = ({
     <AgronodIcon name="navMarknadKonkurrens" {...rest} />
     <AgronodIcon name="orgnummer" {...rest} />
     <AgronodIcon name="profil" {...rest} />
+    <AgronodIcon name="notkreatur" {...rest} />
   </Stack>
 );
 AgronodIcons.args = {
