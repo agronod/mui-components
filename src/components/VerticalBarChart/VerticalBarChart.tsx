@@ -122,21 +122,23 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
       return [];
     }
     const width = chartWidth - TICK_WIDTH;
-    const numberOfGrids =
-      Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 1 ? 1 : 0) + 1;
+    let numberOfGrids = Math.max(
+      Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 0 ? 1 : 0),
+      7
+    );
 
     return [...Array(numberOfGrids).keys()];
   }, [chartWidth]);
 
   const adjustedGridWidth = useMemo(() => {
     const width = chartWidth - TICK_WIDTH;
-    const remainder = width % GRID_WIDTH;
-    if (remainder === 0) {
-      return GRID_WIDTH;
-    }
+    const numberOfGrids = Math.max(
+      Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 0 ? 1 : 0),
+      7
+    );
 
-    return Math.floor(width / Math.ceil(width / GRID_WIDTH));
-  }, [gridLines]);
+    return width / (numberOfGrids - 1);
+  }, [chartWidth, gridLines]);
 
   return (
     <Box
