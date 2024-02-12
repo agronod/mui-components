@@ -679,6 +679,14 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          subtitle3: "h6",
+          subtitle4: "h6",
+          body3: "p",
+          body4: "p",
+        },
+      },
       styleOverrides: {
         ...globalTypography,
       },
