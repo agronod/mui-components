@@ -234,6 +234,8 @@ const VerticalBarChart = ({
         {data.map((item, index) => (
           <Box
             key={index}
+            onMouseEnter={() => onHover(index)}
+            onMouseLeave={() => onHover(undefined)}
             sx={{
               paddingX: 2,
               position: "absolute",
