@@ -3,7 +3,7 @@ import Support from "./Support";
 import { Box } from "@mui/material";
 
 export default {
-  title: "Components/SupportButton",
+  title: "Components/Support",
   component: Support,
   parameters: {
     componentSubtitle: "Support button is used in Agronod and Agrosfär",
@@ -37,16 +37,9 @@ export const SupportDefault: StoryFn<typeof Support> = (props) => (
 SupportDefault.args = {
   buttonSize: "large",
   menuPosition: "bottom",
-  menuItems: [
-    {
-      name: "Kontakta oss",
-      clickCallback: () => alert("clicked!"),
-    },
-    {
-      name: "Vänliga frågor",
-      clickCallback: () => alert("questions!"),
-    },
-  ],
+  QALink: "https://www.agronod.com/fragor",
+  supportEmail: "support@agronod.com",
+  supportTelephone: "070 955 3720",
 };
 export const SupoprtBottomPositioned: StoryFn<typeof Support> = (props) => (
   <Box sx={{ position: "absolute", bottom: 0 }}>
@@ -56,14 +49,7 @@ export const SupoprtBottomPositioned: StoryFn<typeof Support> = (props) => (
 SupoprtBottomPositioned.args = {
   buttonSize: "large",
   menuPosition: "top",
-  menuItems: [
-    {
-      name: "Kontakta oss",
-      clickCallback: () => alert("clicked!"),
-    },
-    {
-      name: "Vänliga frågor",
-      clickCallback: () => alert("questions!"),
-    },
-  ],
+  QALink: "https://www.agronod.com/fragor",
+  supportEmail: "support@agronod.com",
+  supportTelephone: "070 955 3720",
 };
