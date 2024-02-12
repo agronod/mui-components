@@ -269,22 +269,18 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
       return [];
     }
 
-    const remainder = chartHeight % GRID_HEIGHT;
     let adjustedGridHeight = GRID_HEIGHT;
-    if (remainder !== 0) {
-      adjustedGridHeight = Math.floor(
-        chartHeight / Math.ceil(chartHeight / GRID_HEIGHT)
-      );
+    let numberOfGrids = Math.ceil(chartHeight / GRID_HEIGHT);
+    numberOfGrids = Math.max(numberOfGrids, 6);
+
+    if (numberOfGrids < 6 || chartHeight % GRID_HEIGHT !== 0) {
+      adjustedGridHeight = chartHeight / (numberOfGrids - 1);
     }
 
-    const numberOfGrids =
-      Math.floor(chartHeight / adjustedGridHeight) +
-      (chartHeight % adjustedGridHeight > 1 ? 1 : 0) +
-      1;
-
-    return [...Array(numberOfGrids).keys()].reduce((acc, _, index) => {
-      return [...acc, chartHeight - index * adjustedGridHeight];
-    }, [] as Array<number>);
+    return Array.from(
+      { length: numberOfGrids },
+      (_, index) => chartHeight - index * adjustedGridHeight
+    );
   }, [chartHeight]);
 
   return (
