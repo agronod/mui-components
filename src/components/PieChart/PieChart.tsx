@@ -13,14 +13,15 @@ export type PieChartData = {
 export type PieChartProps = {
   data: Array<PieChartData>;
   onItemHover?: (id?: string) => void;
+  selectedId?: string;
 };
 
-const PieChart = ({ data, onItemHover }: PieChartProps) => {
+const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
   const [hoverIndex, setHoverIndex] = useState<number>();
-
+  console.log(selectedId);
   const total = useMemo(
     () => round(data.reduce((acc, curr) => acc + curr.value, 0)),
     [data]
@@ -102,7 +103,9 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
               onMouseOver={() => onHover(index)}
               key={item.id}
               fill={
-                index === hoverIndex || hoverIndex === undefined
+                index === hoverIndex ||
+                hoverIndex === undefined ||
+                selectedId == item.id
                   ? item.color
                   : "#E5E3E0"
               }
@@ -173,7 +176,10 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
                   px: 1,
                   pb: 0.5,
                   borderRadius: "4px",
-                  backgroundColor: index === hoverIndex ? "#FCFAF7" : undefined,
+                  backgroundColor:
+                    index === hoverIndex || selectedId == item.id
+                      ? "#FCFAF7"
+                      : undefined,
                   cursor: "pointer",
                 }}
               >
