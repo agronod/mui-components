@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.11.4-fix-chart-fix.0",
+  "version": "1.11.5-fix-chart-fix.0",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
