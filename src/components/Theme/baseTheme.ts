@@ -82,7 +82,7 @@ const semanticThemePalette = {
     main: "#D4483E",
     medium: "#B73831",
     dark: "#A92E26",
-    darkHover: "#812B25", 
+    darkHover: "#812B25",
   },
   warning: {
     pastel: "#FDF0E6",
@@ -258,8 +258,16 @@ const baseThemeOptions: ThemeOptions = {
           lineHeight: 1.5,
           fontWeight: 400,
           borderRadius: "8px",
+
           "&:active": {
             borderWidth: "2px",
+          },
+          "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
+            {
+              display: "none",
+            },
+          "& input[type=number]": {
+            MozAppearance: "textfield",
           },
         },
       },
@@ -504,7 +512,7 @@ const baseThemeOptions: ThemeOptions = {
         contained: {
           borderRadius: "100vmax",
           border: "1px solid transparent",
-          ":focus-visible": {           
+          ":focus-visible": {
             border: `1px solid ${common.white}`,
             boxShadow: `0px 0px 0px 4.5px ${common.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
