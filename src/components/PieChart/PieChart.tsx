@@ -21,7 +21,7 @@ const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
   const [hoverIndex, setHoverIndex] = useState<number>();
-  console.log(selectedId);
+
   const total = useMemo(
     () => round(data.reduce((acc, curr) => acc + curr.value, 0)),
     [data]
@@ -96,18 +96,15 @@ const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
           innerRadius={65}
           outerRadius={95}
           cornerRadius={5}
-          cursor={"pointer"}
         >
           {dataSorted.map((item, index) => (
             <Cell
               onMouseOver={() => onHover(index)}
               key={item.id}
               fill={
-                index === hoverIndex ||
-                hoverIndex === undefined ||
-                selectedId == item.id
-                  ? item.color
-                  : "#E5E3E0"
+                selectedId !== undefined && selectedId !== item.id
+                  ? "#E5E3E0"
+                  : item.color
               }
             />
           ))}
@@ -180,7 +177,7 @@ const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
                     index === hoverIndex || selectedId == item.id
                       ? "#FCFAF7"
                       : undefined,
-                  cursor: "pointer",
+                  cursor: "default",
                 }}
               >
                 <Box

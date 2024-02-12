@@ -9,24 +9,6 @@ import {
 } from "react";
 import { round } from "../utils";
 
-const brownscale: Array<string> = [
-  "#73140C",
-  "#852411",
-  "#923F00",
-  "#A26100",
-  "#AA7605",
-  "#AB8838",
-  "#B4974E",
-  "#BDA666",
-  "#C7B67E",
-  "#D1C498",
-  "#E0D2B5",
-  "#E6E0CA",
-  "#F2EDE1",
-  "#F2EDE1",
-  "#F7F4ED",
-];
-
 export type VerticalBarChartData = {
   id: string;
   name: string;
