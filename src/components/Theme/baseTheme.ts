@@ -261,6 +261,13 @@ const baseThemeOptions: ThemeOptions = {
           "&:active": {
             borderWidth: "2px",
           },
+          "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
+            {
+              display: "none",
+            },
+          "& input[type=number]": {
+            MozAppearance: "textfield",
+          },
         },
       },
     },
@@ -672,6 +679,14 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          subtitle3: "h6",
+          subtitle4: "h6",
+          body3: "p",
+          body4: "p",
+        },
+      },
       styleOverrides: {
         ...globalTypography,
       },
