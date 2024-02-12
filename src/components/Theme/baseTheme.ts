@@ -258,6 +258,7 @@ const baseThemeOptions: ThemeOptions = {
           lineHeight: 1.5,
           fontWeight: 400,
           borderRadius: "8px",
+
           "&:active": {
             borderWidth: "2px",
           },
