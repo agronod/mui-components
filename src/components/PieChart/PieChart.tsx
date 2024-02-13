@@ -41,14 +41,13 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
     [dataSorted, selectedId]
   );
 
-  const displayIndex = hoverIndex !== null ? hoverIndex : selectedIndex;
-
   const percentage = useMemo(() => {
+    const displayIndex = hoverIndex !== null ? hoverIndex : selectedIndex;
     if (displayIndex === -1) {
       return 0;
     }
     return Math.round((dataSorted[displayIndex].value / total) * 100);
-  }, [total, dataSorted, displayIndex]);
+  }, [total, dataSorted]);
 
   const onHover = useCallback(
     (index?: number) => {
