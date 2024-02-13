@@ -1,24 +1,13 @@
 import { Box, Typography } from "@mui/material";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { round } from "../utils";
-
-const brownscale: Array<string> = [
-  "#73140C",
-  "#852411",
-  "#923F00",
-  "#A26100",
-  "#AA7605",
-  "#AB8838",
-  "#B4974E",
-  "#BDA666",
-  "#C7B67E",
-  "#D1C498",
-  "#E0D2B5",
-  "#E6E0CA",
-  "#F2EDE1",
-  "#F2EDE1",
-  "#F7F4ED",
-];
 
 export type VerticalBarChartData = {
   id: string;
@@ -30,6 +19,7 @@ export type VerticalBarChartData = {
 export type VerticalBarChartProps = {
   data: Array<VerticalBarChartData>;
   selectedId?: string;
+  onItemHover?: (id?: string) => void;
 };
 
 const TICK_WIDTH = 100;
@@ -38,6 +28,8 @@ const PADDING = 16;
 
 const Bar = ({
   data,
+  onEnter,
+  onLeave,
   height,
   x,
   y,
@@ -56,6 +48,8 @@ const Bar = ({
   index: number;
   componentId: string;
   selected?: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
 }) => {
   const width = round(data.value) * factor;
 
@@ -77,13 +71,19 @@ const Bar = ({
         width={width}
         height={height}
         fill={color}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
         clipPath={`url(#round-corner${componentId}-${index})`}
       />
     </g>
   );
 };
 
-const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
+const VerticalBarChart = ({
+  data,
+  selectedId,
+  onItemHover,
+}: VerticalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -102,6 +102,22 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
     };
   }, [containerRef?.current]);
 
+  const dataSorted = useMemo(
+    () =>
+      data
+        .sort((a, b) => b.value - a.value)
+        .map((item) => ({ ...item, value: round(item.value) })),
+    [data]
+  );
+
+  const onHover = useCallback(
+    (index?: number) => {
+      if (onItemHover) {
+        onItemHover(index !== undefined ? dataSorted[index].id : undefined);
+      }
+    },
+    [onItemHover, selectedId]
+  );
   const factor = useMemo(
     () =>
       Math.max(
@@ -113,6 +129,10 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
   );
 
   const barHeight = useMemo(() => {
+    // If there's less then 4, use the fixed height
+    if (data.length <= 4) {
+      return 100;
+    }
     const totalPadding = data.length * PADDING + PADDING;
     return Math.max(0, (chartHeight - totalPadding) / data.length);
   }, [data, chartHeight]);
@@ -182,6 +202,8 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
             })`}
           >
             <Bar
+              onEnter={() => onHover(index)}
+              onLeave={() => onHover(undefined)}
               data={item}
               height={barHeight}
               x={TICK_WIDTH}
@@ -212,6 +234,8 @@ const VerticalBarChart = ({ data, selectedId }: VerticalBarChartProps) => {
         {data.map((item, index) => (
           <Box
             key={index}
+            onMouseEnter={() => onHover(index)}
+            onMouseLeave={() => onHover(undefined)}
             sx={{
               paddingX: 2,
               position: "absolute",

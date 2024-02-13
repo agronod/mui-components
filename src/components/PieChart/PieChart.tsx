@@ -13,9 +13,11 @@ export type PieChartData = {
 export type PieChartProps = {
   data: Array<PieChartData>;
   onItemHover?: (id?: string) => void;
+  selectedId?: string;
+  isPdf?: boolean;
 };
 
-const PieChart = ({ data, onItemHover }: PieChartProps) => {
+const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
@@ -82,7 +84,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
   );
 
   return (
-    <Stack direction="row" gap={isMobile ? 2 : 4}>
+    <Stack direction="row">
       <RePieChart width={isMobile ? 188 : 224} height={224} ref={pieChartRef}>
         <Pie
           onMouseLeave={() => onHover()}
@@ -95,16 +97,15 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
           innerRadius={65}
           outerRadius={95}
           cornerRadius={5}
-          cursor={"pointer"}
         >
           {dataSorted.map((item, index) => (
             <Cell
               onMouseOver={() => onHover(index)}
               key={item.id}
               fill={
-                index === hoverIndex || hoverIndex === undefined
-                  ? item.color
-                  : "#E5E3E0"
+                selectedId !== undefined && selectedId !== item.id
+                  ? "#E5E3E0"
+                  : item.color
               }
             />
           ))}
@@ -142,7 +143,7 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
           />
         )}
       </RePieChart>
-      <Box width="100%" mt={2}>
+      <Box width="100%" mt={2} ml={isMobile && !isPdf ? 2 : 4}>
         <Box paddingX={1} mb={2}>
           <Typography variant="caption">Totalt</Typography>
           <Typography variant="h5" sx={{ fontWeight: 600 }}>
@@ -152,14 +153,6 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
         <Box
           sx={{
             width: "100%",
-            maxWidth: 200,
-            maxHeight: 140,
-            overflow: "auto",
-            "&::-webkit-scrollbar": {
-              display: "none",
-            },
-            "-ms-overflow-style": "none",
-            "scrollbar-width": "none",
           }}
         >
           <Box sx={{}} onMouseLeave={() => onHover()}>
@@ -173,8 +166,11 @@ const PieChart = ({ data, onItemHover }: PieChartProps) => {
                   px: 1,
                   pb: 0.5,
                   borderRadius: "4px",
-                  backgroundColor: index === hoverIndex ? "#FCFAF7" : undefined,
-                  cursor: "pointer",
+                  backgroundColor:
+                    index === hoverIndex || selectedId == item.id
+                      ? "#FCFAF7"
+                      : undefined,
+                  cursor: "default",
                 }}
               >
                 <Box
