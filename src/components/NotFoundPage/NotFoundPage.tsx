@@ -38,12 +38,10 @@ export default function NotFoundPage(props: NotFoundPageProps) {
           gap={3}
           sx={(theme) => ({
             alignItems: "flex-start",
-            marginBottom: 10,
-            marginTop: 10,
             width: "100%",
             maxWidth: props.maxWidth ? props.maxWidth : "auto",
-            paddingTop: 8,
-            paddingBottom: 2,
+            paddingTop: 10,
+            paddingBottom: 6,
             paddingX: 9,
             marginX: "auto",
 
@@ -101,16 +99,15 @@ export default function NotFoundPage(props: NotFoundPageProps) {
         </Stack>
         <Box
           sx={(theme) => ({
-            height: "562px",
+            height: "100%",
             width: "100%",
             background: `url(${NotFoundPageBackground}) left bottom repeat-x`,
+            backgroundColor: props.backgroundColor,
             backgroundSize: "contain",
-            filter: `drop-shadow(0px 0px 0 ${props.backgroundColor})`,
 
             [theme.breakpoints.down("md")]: {
-              height: "572px",
               background: `url(${NotFoundPageBackgroundMobile}) left bottom repeat-x`,
-              backgroundSize: "cover",
+              backgroundSize: "contain",
             },
             [theme.breakpoints.down("sm")]: {
               backgroundSize: "contain",
