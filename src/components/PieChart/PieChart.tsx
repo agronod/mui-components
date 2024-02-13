@@ -14,9 +14,10 @@ export type PieChartProps = {
   data: Array<PieChartData>;
   onItemHover?: (id?: string) => void;
   selectedId?: string;
+  isPdf?: boolean;
 };
 
-const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
+const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
@@ -83,7 +84,7 @@ const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
   );
 
   return (
-    <Stack direction="row" gap={isMobile ? 2 : 4}>
+    <Stack direction="row">
       <RePieChart width={isMobile ? 188 : 224} height={224} ref={pieChartRef}>
         <Pie
           onMouseLeave={() => onHover()}
@@ -142,7 +143,7 @@ const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
           />
         )}
       </RePieChart>
-      <Box width="100%" mt={2}>
+      <Box width="100%" mt={2} ml={isMobile && !isPdf ? 2 : 4}>
         <Box paddingX={1} mb={2}>
           <Typography variant="caption">Totalt</Typography>
           <Typography variant="h5" sx={{ fontWeight: 600 }}>
@@ -152,14 +153,6 @@ const PieChart = ({ data, onItemHover, selectedId }: PieChartProps) => {
         <Box
           sx={{
             width: "100%",
-            maxWidth: 200,
-            maxHeight: 140,
-            overflow: "auto",
-            "&::-webkit-scrollbar": {
-              display: "none",
-            },
-            "-ms-overflow-style": "none",
-            "scrollbar-width": "none",
           }}
         >
           <Box sx={{}} onMouseLeave={() => onHover()}>
