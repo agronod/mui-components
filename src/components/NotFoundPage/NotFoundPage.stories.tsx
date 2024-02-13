@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import NotFoundPage from "./NotFoundPage";
+import { useTheme } from "@mui/material";
 
 export default {
   title: "Components/NotFoundPage",
@@ -10,7 +11,7 @@ export default {
     docs: {},
   },
   argTypes: {
-    PageLink: {
+    pageLink: {
       control: {
         type: "text",
       },
@@ -23,17 +24,33 @@ export default {
   },
 } as Meta<typeof NotFoundPage>;
 
-export const NotFoundPageDefault: StoryFn<typeof NotFoundPage> = (props) => (
-  <NotFoundPage {...props} />
-);
-NotFoundPageDefault.args = {
-  backgroundColor: "#FDECB5",
+export const NotFoundPageDefault: StoryFn<typeof NotFoundPage> = ({
+  backgroundColor,
+  ...rest
+}) => {
+  const theme = useTheme();
+  return (
+    <NotFoundPage
+      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
+      {...rest}
+    />
+  );
 };
 
-export const NotFoundPageWithMaxWidth: StoryFn<typeof NotFoundPage> = (
-  props
-) => <NotFoundPage {...props} />;
+NotFoundPageDefault.args = {};
+
+export const NotFoundPageWithMaxWidth: StoryFn<typeof NotFoundPage> = ({
+  backgroundColor,
+  ...rest
+}) => {
+  const theme = useTheme();
+  return (
+    <NotFoundPage
+      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
+      {...rest}
+    />
+  );
+};
 NotFoundPageWithMaxWidth.args = {
   maxWidth: "1088px",
-  backgroundColor: "#FDECB5",
 };
