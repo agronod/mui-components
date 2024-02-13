@@ -125,7 +125,6 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
             />
           ))}
         </Pie>
-        {console.log(selectedId)}
         {hoverIndex !== undefined && hoverIndex !== null && (
           <Tooltip
             isAnimationActive={false}
