@@ -21,7 +21,7 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [hoverIndex, setHoverIndex] = useState<number | null>();
 
   const total = useMemo(
     () => round(data.reduce((acc, curr) => acc + curr.value, 0)),
@@ -36,40 +36,38 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
     [data]
   );
 
-  const selectedIndex = useMemo(
-    () => dataSorted.findIndex((item) => item.id === selectedId),
-    [dataSorted, selectedId]
-  );
-
   const percentage = useMemo(() => {
-    const displayIndex = hoverIndex !== null ? hoverIndex : selectedIndex;
-    if (displayIndex === -1) {
+    if (hoverIndex === undefined) {
       return 0;
     }
-    return Math.round((dataSorted[displayIndex].value / total) * 100);
-  }, [total, dataSorted]);
+    if (hoverIndex !== null) {
+      return Math.round((dataSorted[hoverIndex].value / total) * 100);
+    }
+  }, [total, dataSorted, hoverIndex]);
 
   const onHover = useCallback(
     (index?: number) => {
-      setHoverIndex(index !== undefined ? index : null);
+      const isIndexDefined =
+        index !== undefined && index >= 0 && index < dataSorted.length;
+      setHoverIndex(isIndexDefined ? index : null);
+
       if (onItemHover) {
-        onItemHover(index !== undefined ? dataSorted[index].id : undefined);
+        onItemHover(isIndexDefined ? dataSorted[index].id : undefined);
       }
 
-      // Until recharts supports programmatic setting of tooltip, we need to do this
-      if (index !== undefined || selectedId !== undefined) {
-        let activeIndex = index !== undefined ? index : selectedIndex;
-        if (activeIndex !== -1) {
+      if (pieChartRef.current) {
+        if (isIndexDefined) {
           const activeItem =
-            pieChartRef.current?.state.formattedGraphicalItems?.[0].props.data[
-              activeIndex
+            pieChartRef.current.state.formattedGraphicalItems?.[0].props.data[
+              index
             ];
           const tooltipPosition =
-            pieChartRef.current?.state.formattedGraphicalItems?.[0].props
-              .sectors[activeIndex].tooltipPosition;
+            pieChartRef.current.state.formattedGraphicalItems?.[0].props
+              .sectors[index].tooltipPosition;
+
           pieChartRef.current.setState(
             {
-              activeTooltipIndex: activeIndex,
+              activeTooltipIndex: index,
             },
             () => {
               pieChartRef.current.handleItemMouseEnter({
@@ -81,22 +79,26 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
               });
             }
           );
+        } else {
+          pieChartRef.current.setState({
+            activeTooltipIndex: -1,
+            isTooltipActive: false,
+          });
         }
-      } else {
-        pieChartRef.current.setState({
-          isTooltipActive: false,
-        });
       }
     },
-    [dataSorted, onItemHover, selectedIndex, selectedId]
+    [dataSorted, onItemHover]
   );
-
-  useEffect(() => {
+  useMemo(() => {
     if (selectedId !== undefined) {
+      const selectedIndex = dataSorted.findIndex(
+        (item) => item.id === selectedId
+      );
       onHover(selectedIndex);
+    } else {
+      onHover();
     }
-  }, [selectedId, selectedIndex, onHover]);
-
+  }, [selectedId, dataSorted, onHover]);
   return (
     <Stack direction="row">
       <RePieChart width={isMobile ? 188 : 224} height={224} ref={pieChartRef}>
