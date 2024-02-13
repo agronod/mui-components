@@ -1,6 +1,6 @@
 import { PieChart as RePieChart, Pie, Cell, Tooltip } from "recharts";
 import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
 
 export type PieChartData = {
@@ -21,7 +21,7 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
-  const [hoverIndex, setHoverIndex] = useState<number>();
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   const total = useMemo(
     () => round(data.reduce((acc, curr) => acc + curr.value, 0)),
@@ -36,52 +36,66 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
     [data]
   );
 
+  const selectedIndex = useMemo(
+    () => dataSorted.findIndex((item) => item.id === selectedId),
+    [dataSorted, selectedId]
+  );
+
   const percentage = useMemo(() => {
-    if (hoverIndex === undefined) {
+    const displayIndex = hoverIndex !== null ? hoverIndex : selectedIndex;
+    if (displayIndex === -1) {
       return 0;
     }
-    return Math.round((dataSorted[hoverIndex].value / total) * 100);
-  }, [total, dataSorted, hoverIndex]);
+    return Math.round((dataSorted[displayIndex].value / total) * 100);
+  }, [total, dataSorted]);
 
   const onHover = useCallback(
     (index?: number) => {
-      setHoverIndex(index);
+      setHoverIndex(index !== undefined ? index : null);
       if (onItemHover) {
         onItemHover(index !== undefined ? dataSorted[index].id : undefined);
       }
 
       // Until recharts supports programmatic setting of tooltip, we need to do this
-      if (index !== undefined) {
-        const activeItem =
-          pieChartRef.current?.state.formattedGraphicalItems?.[0].props.data[
-            index
-          ];
-        const tooltipPosition =
-          pieChartRef.current?.state.formattedGraphicalItems?.[0].props.sectors[
-            index
-          ].tooltipPosition;
-        pieChartRef.current.setState(
-          {
-            activeTooltipIndex: index,
-          },
-          () => {
-            pieChartRef.current.handleItemMouseEnter({
-              tooltipPayload: [activeItem],
-              tooltipPosition: {
-                x: tooltipPosition.x,
-                y: tooltipPosition.y,
-              },
-            });
-          }
-        );
+      if (index !== undefined || selectedId !== undefined) {
+        let activeIndex = index !== undefined ? index : selectedIndex;
+        if (activeIndex !== -1) {
+          const activeItem =
+            pieChartRef.current?.state.formattedGraphicalItems?.[0].props.data[
+              activeIndex
+            ];
+          const tooltipPosition =
+            pieChartRef.current?.state.formattedGraphicalItems?.[0].props
+              .sectors[activeIndex].tooltipPosition;
+          pieChartRef.current.setState(
+            {
+              activeTooltipIndex: activeIndex,
+            },
+            () => {
+              pieChartRef.current.handleItemMouseEnter({
+                tooltipPayload: [activeItem],
+                tooltipPosition: {
+                  x: tooltipPosition.x,
+                  y: tooltipPosition.y,
+                },
+              });
+            }
+          );
+        }
       } else {
         pieChartRef.current.setState({
           isTooltipActive: false,
         });
       }
     },
-    [dataSorted, onItemHover]
+    [dataSorted, onItemHover, selectedIndex, selectedId]
   );
+
+  useEffect(() => {
+    if (selectedId !== undefined) {
+      onHover(selectedIndex);
+    }
+  }, [selectedId, selectedIndex, onHover]);
 
   return (
     <Stack direction="row">
@@ -110,7 +124,7 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
             />
           ))}
         </Pie>
-        {hoverIndex !== undefined && (
+        {hoverIndex !== undefined && hoverIndex !== null && (
           <Tooltip
             isAnimationActive={false}
             content={
