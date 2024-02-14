@@ -3,7 +3,7 @@ import VerticalBarChart, { VerticalBarChartData } from "./VerticalBarChart";
 import { Box } from "@mui/material";
 
 export default {
-  title: "Components/VerticalBarChart",
+  title: "Common Components/VerticalBarChart",
   argTypes: {},
 } as Meta<typeof VerticalBarChart>;
 

@@ -2,7 +2,7 @@ import { FormControlLabel, Switch } from "@mui/material";
 import { StoryFn, Meta } from "@storybook/react";
 
 export default {
-  title: "Components/Switch",
+  title: "Common Components/Switch",
   component: Switch,
   argTypes: {
     checked: {

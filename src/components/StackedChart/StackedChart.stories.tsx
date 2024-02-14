@@ -2,7 +2,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import StackedChart, { StackedChartDataProps } from "./StackedChart";
 
 export default {
-  title: "Components/StackedChart",
+  title: "Common Components/StackedChart",
   argTypes: {
     // colorScheme: {
     //   control: "radio",

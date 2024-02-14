@@ -1,6 +1,7 @@
 import { Grid, Typography, useTheme } from "@mui/material";
 export default {
   title: "Base/ColorPalette",
+  parameters: {},
 };
 
 export const ColorPalette = () => {

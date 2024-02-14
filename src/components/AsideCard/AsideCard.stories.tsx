@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 export default {
-  title: "Components/AsideCard",
+  title: "Common Components/AsideCard",
   component: AsideCard,
   parameters: {
     componentSubtitle: "AsideCard is used in multiple places and components",
