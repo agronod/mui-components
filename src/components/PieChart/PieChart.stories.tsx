@@ -3,7 +3,7 @@ import PieChart, { PieChartData } from "./PieChart";
 import { Box, Card, Grid, Typography } from "@mui/material";
 
 export default {
-  title: "Components/PieChart",
+  title: "Common Components/PieChart",
   argTypes: {},
 } as Meta<typeof PieChart>;
 

@@ -15,7 +15,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import { useState } from "react";
 
 export default {
-  title: "Components/Select",
+  title: "Common Components/Select",
   component: Select,
   parameters: {
     docs: {

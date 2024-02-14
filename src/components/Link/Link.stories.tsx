@@ -2,7 +2,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import { Link } from "@mui/material";
 
 export default {
-  title: "Components/Link",
+  title: "Common Components/Link",
   component: Link,
   parameters: {
     componentSubtitle:

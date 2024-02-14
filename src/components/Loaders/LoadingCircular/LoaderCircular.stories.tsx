@@ -3,7 +3,7 @@ import LoaderCircular from "./LoaderCircular";
 import { Button } from "@mui/material";
 
 export default {
-  title: "Components/Loaders/LoaderCircular",
+  title: "Common Components/Loaders/LoaderCircular",
   component: LoaderCircular,
   argTypes: {
     size: {

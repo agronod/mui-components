@@ -15,20 +15,22 @@ export interface NotFoundPageProps {
   pageEmail: string;
   backgroundColor: string;
   maxWidth?: string;
+  calculatedHeight?: string;
 }
 
 export default function NotFoundPage(props: NotFoundPageProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  debugger;
   return (
     <Stack
       sx={{
         margin: "auto",
         width: "100%",
-        height: "100dvh",
+        height: props.calculatedHeight ?? "100dvh",
         overflow: "auto",
         justifyContent: "space-between",
+        backgroundColor: theme.palette.background.page,
       }}
     >
       <Stack

@@ -6,7 +6,7 @@ import HorizontalBarChart, {
 import { Box } from "@mui/material";
 
 export default {
-  title: "Components/HorizontalBarChart",
+  title: "Common Components/HorizontalBarChart",
   argTypes: {},
 } as Meta<typeof HorizontalBarChart>;
 

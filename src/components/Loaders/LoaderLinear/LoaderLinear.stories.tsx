@@ -2,7 +2,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import LoaderLinear from "./LoaderLinear";
 
 export default {
-  title: "Components/Loaders/LoaderLinear",
+  title: "Common Components/Loaders/LoaderLinear",
   component: LoaderLinear,
   parameters: {
     docs: {

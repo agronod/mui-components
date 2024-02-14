@@ -3,7 +3,7 @@ import Support from "./Support";
 import { Box } from "@mui/material";
 
 export default {
-  title: "Components/SupportButton",
+  title: "Common Components/SupportButton",
   component: Support,
   parameters: {
     componentSubtitle: "Support button is used in Agronod and Agrosfär",
