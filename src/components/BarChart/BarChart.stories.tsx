@@ -3,7 +3,7 @@ import BarChart from "./BarChart";
 import { Box } from "@mui/material";
 
 export default {
-  title: "Components/BarChart",
+  title: "Agrosphere/BarChart",
   argTypes: {
     colorScheme: {
       control: "radio",
