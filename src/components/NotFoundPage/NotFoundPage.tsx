@@ -12,6 +12,7 @@ import NotFoundPageBackgroundMobile from "../../assets/NotFoundBackgroundMobile.
 
 export interface NotFoundPageProps {
   pageLink: string;
+  pageEmail: string;
   backgroundColor: string;
   maxWidth?: string;
 }
@@ -21,100 +22,85 @@ export default function NotFoundPage(props: NotFoundPageProps) {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box>
+    <Stack
+      sx={{
+        margin: "auto",
+        width: "100%",
+        height: "100dvh",
+        overflow: "auto",
+        justifyContent: "space-between",
+      }}
+    >
       <Stack
+        gap={3}
         sx={(theme) => ({
-          margin: "auto",
+          alignItems: "flex-start",
           width: "100%",
-          height: "100dvh",
-          overflow: "auto",
+          maxWidth: props.maxWidth ? props.maxWidth : "auto",
+          paddingTop: 10,
+          paddingBottom: 6,
+          paddingX: 9,
+          marginX: "auto",
+
           [theme.breakpoints.down("md")]: {
-            height: "calc(100dvh - 65px)",
+            alignItems: "center",
+            paddingTop: 3,
+            paddingX: 2,
           },
         })}
-        justifyContent="space-between"
       >
-        <Stack
-          gap={3}
+        <Typography
+          variant={isMobile ? "h4" : "h2"}
           sx={(theme) => ({
-            alignItems: "flex-start",
-            width: "100%",
-            maxWidth: props.maxWidth ? props.maxWidth : "auto",
-            paddingTop: 10,
-            paddingBottom: 6,
-            paddingX: 9,
-            marginX: "auto",
-
             [theme.breakpoints.down("md")]: {
-              alignItems: "center",
-              paddingTop: 3,
-              paddingX: 2,
+              textAlign: "center",
             },
           })}
         >
-          {isMobile ? (
-            <Typography
-              variant="h4"
-              sx={(theme) => ({
-                [theme.breakpoints.down("md")]: {
-                  textAlign: "center",
-                },
-              })}
-            >
-              Sidan kunde inte hittas
-            </Typography>
-          ) : (
-            <Typography
-              variant="h2"
-              sx={(theme) => ({
-                [theme.breakpoints.down("md")]: {
-                  textAlign: "center",
-                },
-              })}
-            >
-              Sidan kunde inte hittas
-            </Typography>
-          )}
-          <Box
-            sx={(theme) => ({
-              [theme.breakpoints.down("md")]: {
-                textAlign: "center",
-              },
-            })}
-          >
-            <Typography variant="body1">
-              Kontrollera att din webbadress är korrekt.
-            </Typography>
-            <Typography variant="body1">
-              Kontakta oss på{" "}
-              <Link href="mailto:support@agronod.com" target="_top">
-                support@agronod.com
-              </Link>{" "}
-              om felet kvarstår.
-            </Typography>
-          </Box>
-          <Button href={props.pageLink} variant="contained">
-            Tillbaka till hem
-          </Button>
-        </Stack>
+          Sidan kunde inte hittas
+        </Typography>
+
         <Box
           sx={(theme) => ({
-            height: "100%",
-            width: "100%",
-            background: `url(${NotFoundPageBackground}) left bottom repeat-x`,
-            backgroundColor: props.backgroundColor,
-            backgroundSize: "contain",
-
             [theme.breakpoints.down("md")]: {
-              background: `url(${NotFoundPageBackgroundMobile}) left bottom repeat-x`,
-              backgroundSize: "contain",
-            },
-            [theme.breakpoints.down("sm")]: {
-              backgroundSize: "contain",
+              textAlign: "center",
             },
           })}
-        ></Box>
+        >
+          <Typography variant="body1">
+            Kontrollera att din webbadress är korrekt.
+          </Typography>
+          <Typography variant="body1">
+            Kontakta oss på{" "}
+            <Link href={`mailto:${props.pageEmail}`} target="_top">
+              {props.pageEmail}
+            </Link>{" "}
+            om felet kvarstår.
+          </Typography>
+        </Box>
+        <Button href={props.pageLink} variant="contained">
+          Tillbaka till hem
+        </Button>
       </Stack>
-    </Box>
+      <Box
+        sx={(theme) => ({
+          width: "100%",
+          background: `url(${NotFoundPageBackground}) left bottom repeat-x`,
+          backgroundColor: props.backgroundColor,
+          backgroundSize: "contain",
+          paddingTop: "30.51%",
+
+          [theme.breakpoints.down("md")]: {
+            background: `url(${NotFoundPageBackgroundMobile}) left bottom repeat-x`,
+            backgroundColor: props.backgroundColor,
+            backgroundSize: "contain",
+            paddingTop: "49.51%",
+          },
+          [theme.breakpoints.down("sm")]: {
+            backgroundSize: "contain",
+          },
+        })}
+      ></Box>
+    </Stack>
   );
 }
