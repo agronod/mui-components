@@ -3,7 +3,7 @@ import NotFoundPage from "./NotFoundPage";
 import { useTheme } from "@mui/material";
 
 export default {
-  title: "Common Components/NotFoundPage",
+  title: "Shared components/NotFoundPage",
   component: NotFoundPage,
   parameters: {
     componentSubtitle:

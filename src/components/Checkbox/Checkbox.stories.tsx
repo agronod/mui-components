@@ -2,7 +2,7 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import { StoryFn, Meta } from "@storybook/react";
 
 export default {
-  title: "Common Components/Checkbox",
+  title: "Shared components/Checkbox",
   component: Checkbox,
   argTypes: {
     checked: {

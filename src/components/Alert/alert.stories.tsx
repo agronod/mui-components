@@ -3,7 +3,7 @@ import { AlertTitle, Box, Typography } from "@mui/material";
 import Alert from "./Alert";
 
 export default {
-  title: "Common Components/Alert",
+  title: "Shared components/Alert",
   component: Alert,
   parameters: {
     docs: {

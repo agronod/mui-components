@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 import { ProgressIndicator } from "../ProgressIndicator";
 
 export default {
-  title: "Common Components/ModalCard",
+  title: "Shared components/ModalCard",
   component: ModalCard,
   parameters: {
     componentSubtitle: "Responsive Modal Card",
