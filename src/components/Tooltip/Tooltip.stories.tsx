@@ -3,7 +3,7 @@ import Tooltip from "./Tooltip";
 import { Button } from "@mui/material";
 
 export default {
-  title: "Common Components/Tooltip",
+  title: "Shared components/Tooltip",
   argTypes: {
     arrow: {
       control: {
