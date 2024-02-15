@@ -2,7 +2,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import { FormControl, FormLabel, TextField } from "@mui/material";
 
 export default {
-  title: "Components/InputField",
+  title: "Shared components/InputField",
   component: TextField,
   argTypes: {
     children: {

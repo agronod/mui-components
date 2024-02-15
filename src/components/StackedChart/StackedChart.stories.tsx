@@ -2,13 +2,8 @@ import { StoryFn, Meta } from "@storybook/react";
 import StackedChart, { StackedChartDataProps } from "./StackedChart";
 
 export default {
-  title: "Components/StackedChart",
-  argTypes: {
-    // colorScheme: {
-    //   control: "radio",
-    //   options: ["primary", "secondary", "tertiary"],
-    // },
-  },
+  title: "Agrosfär exclusive/StackedChart",
+  argTypes: {},
 } as Meta<typeof StackedChart>;
 
 const data: StackedChartDataProps[] = [

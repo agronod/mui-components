@@ -2,7 +2,7 @@ import { FormControlLabel, Radio } from "@mui/material";
 import { StoryFn, Meta } from "@storybook/react";
 
 export default {
-  title: "Components/Radio",
+  title: "Shared components/Radio",
   component: Radio,
   argTypes: {
     checked: {
