@@ -8,9 +8,9 @@ import {
   useTheme,
 } from "@mui/material";
 import NotFoundPageBackground from "../../assets/NotFoundPageBackground.png";
-import NotFoundPageBackgroundMobile from "../../assets/NotFoundBackgroundMobile.png";
+import NotFoundBackgroundMobile from "../../assets/NotFoundBackgroundMobile.png";
 
-export interface NotFoundPageProps {
+export interface NotFoundPageContentProps {
   pageLink: string;
   pageEmail: string;
   backgroundColor: string;
@@ -18,7 +18,7 @@ export interface NotFoundPageProps {
   calculatedHeight?: string;
 }
 
-export default function NotFoundPage(props: NotFoundPageProps) {
+export default function NotFoundPageContent(props: NotFoundPageContentProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   debugger;
@@ -93,7 +93,7 @@ export default function NotFoundPage(props: NotFoundPageProps) {
           paddingTop: "30.51%",
 
           [theme.breakpoints.down("md")]: {
-            background: `url(${NotFoundPageBackgroundMobile}) left bottom repeat-x`,
+            background: `url(${NotFoundBackgroundMobile}) left bottom repeat-x`,
             backgroundColor: props.backgroundColor,
             backgroundSize: "contain",
             paddingTop: "49.51%",
