@@ -27,9 +27,6 @@ export const parameters = {
     fullscreen: { hidden: true },
     "storybook/background": { hidden: true },
   },
-  docs: {
-    toc: true, // 👈 Enables the table of contents
-  },
   backgrounds: {
     default: "agronod",
     values: [
