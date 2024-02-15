@@ -1,10 +1,10 @@
 import { Meta, StoryFn } from "@storybook/react";
-import NotFoundPageContent from "./NotFoundPageContent";
+import ErrorPagesContent from "./ErrorPagesContent";
 import { useTheme } from "@mui/material";
 
 export default {
-  title: "Shared components/NotFoundPageContent",
-  component: NotFoundPageContent,
+  title: "Shared components/ErrorPagesContent",
+  component: ErrorPagesContent,
   parameters: {
     componentSubtitle:
       "This is general Not Found Page with dynamic background color",
@@ -52,39 +52,59 @@ export default {
         "This is usefull when we have header menu to send calculated height in so it does not have scroll, otherwise it's default value is <code>100dvh</code> you can use expression like <code>calc(100dvh - 45px)</code> to get dynamic height minus static element.",
     },
   },
-} as Meta<typeof NotFoundPageContent>;
+} as Meta<typeof ErrorPagesContent>;
 
-export const NotFoundPageContentDefault: StoryFn<
-  typeof NotFoundPageContent
-> = ({ backgroundColor, ...rest }) => {
+export const ErrorPagesContentDefault: StoryFn<typeof ErrorPagesContent> = ({
+  backgroundColor,
+  ...rest
+}) => {
   const theme = useTheme();
   return (
-    <NotFoundPageContent
+    <ErrorPagesContent
       backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
       {...rest}
     />
   );
 };
 
-NotFoundPageContentDefault.args = {
+ErrorPagesContentDefault.args = {
   pageEmail: "support@agronod.com",
   pageLink: "https://main--626a5b4b1abebb004a4657a8.chromatic.com/",
   calculatedHeight: "calc(100dvh - 45px)",
+  pageType: 404,
 };
 
-export const NotFoundPageContentWithMaxWidth: StoryFn<
-  typeof NotFoundPageContent
+export const ErrorPagesContentWithMaxWidth: StoryFn<
+  typeof ErrorPagesContent
 > = ({ backgroundColor, ...rest }) => {
   const theme = useTheme();
   return (
-    <NotFoundPageContent
+    <ErrorPagesContent
       backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
       {...rest}
     />
   );
 };
-NotFoundPageContentWithMaxWidth.args = {
-  maxWidth: "1088px",
+ErrorPagesContentWithMaxWidth.args = {
+  maxWidth: "990px",
   pageEmail: "support@agronod.com",
   pageLink: "https://main--626a5b4b1abebb004a4657a8.chromatic.com/",
+  pageType: 404,
+};
+
+export const ErrorPagesContentServerError: StoryFn<
+  typeof ErrorPagesContent
+> = ({ backgroundColor, ...rest }) => {
+  const theme = useTheme();
+  return (
+    <ErrorPagesContent
+      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
+      {...rest}
+    />
+  );
+};
+ErrorPagesContentServerError.args = {
+  pageEmail: "support@agronod.com",
+  pageLink: "https://main--626a5b4b1abebb004a4657a8.chromatic.com/",
+  pageType: 500,
 };

@@ -10,18 +10,19 @@ import {
 import NotFoundPageBackground from "../../assets/NotFoundPageBackground.png";
 import NotFoundBackgroundMobile from "../../assets/NotFoundBackgroundMobile.png";
 
-export interface NotFoundPageContentProps {
-  pageLink: string;
-  pageEmail: string;
+export interface ErrorPagesContentProps {
   backgroundColor: string;
+  pageEmail: string;
+  pageType: 500 | 404;
+  pageLink?: string;
   maxWidth?: string;
   calculatedHeight?: string;
 }
 
-export default function NotFoundPageContent(props: NotFoundPageContentProps) {
+export default function ErrorPagesContent(props: ErrorPagesContentProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  debugger;
+
   return (
     <Stack
       sx={{
@@ -59,7 +60,9 @@ export default function NotFoundPageContent(props: NotFoundPageContentProps) {
             },
           })}
         >
-          Sidan kunde inte hittas
+          {props.pageType === 404
+            ? "Sidan kunde inte hittas"
+            : "Något gick fel"}
         </Typography>
 
         <Box
@@ -69,20 +72,39 @@ export default function NotFoundPageContent(props: NotFoundPageContentProps) {
             },
           })}
         >
-          <Typography variant="body1">
-            Kontrollera att din webbadress är korrekt.
-          </Typography>
-          <Typography variant="body1">
-            Kontakta oss på{" "}
-            <Link href={`mailto:${props.pageEmail}`} target="_top">
-              {props.pageEmail}
-            </Link>{" "}
-            om felet kvarstår.
-          </Typography>
+          {props.pageType === 404 ? (
+            <>
+              {" "}
+              <Typography variant="body1">
+                Kontrollera att din webbadress är korrekt.
+              </Typography>
+              <Typography variant="body1">
+                Kontakta oss på{" "}
+                <Link href={`mailto:${props.pageEmail}`} target="_top">
+                  {props.pageEmail}
+                </Link>{" "}
+                om felet kvarstår.
+              </Typography>
+            </>
+          ) : (
+            <Typography variant="body1">
+              Prova igen senare. Kontakta oss på{" "}
+              <Link href={`mailto:${props.pageEmail}`} target="_top">
+                {props.pageEmail}
+              </Link>{" "}
+              om felet kvarstår.
+            </Typography>
+          )}
         </Box>
-        <Button href={props.pageLink} variant="contained">
-          Tillbaka till hem
-        </Button>
+        {props.pageType === 404 ? (
+          <Button href={props.pageLink} variant="contained">
+            Tillbaka till hem
+          </Button>
+        ) : (
+          <Button variant="contained" href="/">
+            Ladda om
+          </Button>
+        )}
       </Stack>
       <Box
         sx={(theme) => ({
