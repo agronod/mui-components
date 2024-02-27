@@ -800,7 +800,7 @@ const baseThemeOptions: ThemeOptions = {
           marginLeft: 0,
           fontFamily: "inter",
           fontWeight: 400,
-          marginBottom: "8px",
+          marginRight: 0,
         },
       },
     },
