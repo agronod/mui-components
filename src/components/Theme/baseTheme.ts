@@ -793,12 +793,14 @@ const baseThemeOptions: ThemeOptions = {
     MuiFormHelperText: {
       styleOverrides: {
         root: {
+          color: globalThemePalette.text.primary,
           minHeigh: "15px",
-          lineHeight: 1.25,
+          lineHeight: "16px",
+          letterSpacing: "0.4px",
           marginLeft: 0,
           fontFamily: "inter",
-          fontWeight: 500,
-          marginBottom: "8px",
+          fontWeight: 400,
+          marginRight: 0,
         },
       },
     },
