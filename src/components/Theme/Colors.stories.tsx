@@ -1,12 +1,4 @@
-import {
-  Box,
-  Card,
-  Divider,
-  Grid,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Card, Divider, Stack, Typography, useTheme } from "@mui/material";
 export default {
   title: "Base/ColorPalette",
 };
@@ -18,11 +10,22 @@ export const ColorPalette = () => {
       <Typography variant="h3" sx={{ marginBottom: 3 }}>
         Theme Colors
       </Typography>
-      <Divider />
-
+      <Typography variant="h6">Code example:</Typography>
+      <Box
+        sx={{
+          backgroundColor: theme.palette.gray600,
+          padding: 1,
+          color: theme.palette.white,
+          borderRadius: "8px",
+          marginY: 1,
+        }}
+      >
+        <code>theme.palette.primary.darkHover</code>
+      </Box>
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Primary
       </Typography>
+
       <Stack flexDirection="row" gap={2} flexWrap="wrap">
         <Card
           variant="outlined"
@@ -268,7 +271,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Secondary
       </Typography>
@@ -416,7 +418,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Tertiary
       </Typography>
@@ -564,12 +565,21 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
         Semantic Colors
       </Typography>
-      <Divider />
-
+      <Typography variant="h6">Code example:</Typography>
+      <Box
+        sx={{
+          backgroundColor: theme.palette.gray600,
+          padding: 1,
+          color: theme.palette.white,
+          borderRadius: "8px",
+          marginY: 1,
+        }}
+      >
+        <code> theme.palette.success.main</code>
+      </Box>
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Success
       </Typography>
@@ -745,7 +755,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Warning
       </Typography>
@@ -893,7 +902,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Error
       </Typography>
@@ -1069,7 +1077,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Info
       </Typography>
@@ -1213,12 +1220,25 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
         Grays
       </Typography>
-      <Divider />
-
+      <Typography variant="h6">Code example:</Typography>
+      <Box
+        sx={{
+          backgroundColor: theme.palette.gray600,
+          padding: 1,
+          color: theme.palette.white,
+          borderRadius: "8px",
+          marginY: 1,
+        }}
+      >
+        <code> theme.palette.border</code>
+        <br />
+        <code> theme.palette.text.secondary</code>
+        <br />
+        <code> theme.palette.gray800</code>
+      </Box>
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Semantic
       </Typography>
@@ -1245,7 +1265,7 @@ export const ColorPalette = () => {
           <Box
             sx={{ padding: 1.5, background: theme.palette.white, flexGrow: 1 }}
           >
-            <Typography variant="body1">Borders</Typography>
+            <Typography variant="body1">Border</Typography>
             <Typography variant="caption">{theme.palette.border}</Typography>
           </Box>
         </Card>
@@ -1272,7 +1292,7 @@ export const ColorPalette = () => {
           <Box
             sx={{ padding: 1.5, background: theme.palette.white, flexGrow: 1 }}
           >
-            <Typography variant="body1">Dividers</Typography>
+            <Typography variant="body1">Divider</Typography>
             <Typography variant="caption">{theme.palette.divider}</Typography>
           </Box>
         </Card>
@@ -1306,7 +1326,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Text
       </Typography>
@@ -1391,7 +1410,7 @@ export const ColorPalette = () => {
           <Box
             sx={{ padding: 1.5, background: theme.palette.white, flexGrow: 1 }}
           >
-            <Typography variant="body1">Secondary (transparent)</Typography>
+            <Typography variant="body1">Secondary Transparent</Typography>
             <Typography variant="caption">
               {theme.palette.text.secondaryTransparent}
             </Typography>
@@ -1456,7 +1475,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Icon
       </Typography>
@@ -1541,14 +1559,13 @@ export const ColorPalette = () => {
           <Box
             sx={{ padding: 1.5, background: theme.palette.white, flexGrow: 1 }}
           >
-            <Typography variant="body1">Secondary (transparent)</Typography>
+            <Typography variant="body1">Secondary Transparent</Typography>
             <Typography variant="caption">
               {theme.palette.icon.secondaryTransparent}
             </Typography>
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Background
       </Typography>
@@ -1669,7 +1686,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         Input
       </Typography>
@@ -1754,7 +1770,7 @@ export const ColorPalette = () => {
           <Box
             sx={{ padding: 1.5, background: theme.palette.white, flexGrow: 1 }}
           >
-            <Typography variant="body1">Background disabled</Typography>
+            <Typography variant="body1">Background Disabled</Typography>
             <Typography variant="caption">
               {theme.palette.input.backgroundDisabled}
             </Typography>
@@ -1790,7 +1806,6 @@ export const ColorPalette = () => {
           </Box>
         </Card>
       </Stack>
-
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 2 }}>
         General
       </Typography>
