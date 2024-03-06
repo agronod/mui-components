@@ -29,7 +29,7 @@ export default function Tooltip(props: TooltipProps) {
             marginBottom: "8px !important",
           },
           [`& .${tooltipClasses.arrow}`]: {
-            color: theme.palette.common.black,
+            color: theme.palette.black,
           },
         }),
       }}

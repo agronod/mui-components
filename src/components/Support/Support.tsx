@@ -36,7 +36,7 @@ export default function Support(props: SupportProps) {
             sx={(theme) => ({
               border: "1px solid",
               borderColor: theme.palette.border,
-              backgroundColor: theme.palette.common.white,
+              backgroundColor: theme.palette.white,
               color: theme.palette.text.primary,
               gap: 1,
               boxShadow: "none",
@@ -46,11 +46,11 @@ export default function Support(props: SupportProps) {
               },
               "&:hover": {
                 borderColor: theme.palette.input.border,
-                backgroundColor: theme.palette.common.white,
+                backgroundColor: theme.palette.white,
               },
               "&:focus-visible": {
-                boxShadow: `0px 0px 0px 4.5px ${theme.palette.common.white}`,
-                borderColor: theme.palette.common.white,
+                boxShadow: `0px 0px 0px 4.5px ${theme.palette.white}`,
+                borderColor: theme.palette.white,
                 outline: `2px solid ${theme.palette.text.primary}`,
               },
             })}
@@ -76,7 +76,7 @@ export default function Support(props: SupportProps) {
               height: "32px",
               border: "1px solid",
               borderColor: theme.palette.border,
-              backgroundColor: theme.palette.common.white,
+              backgroundColor: theme.palette.white,
               color: theme.palette.text.primary,
               gap: 0.5,
               boxShadow: "none",
@@ -86,11 +86,11 @@ export default function Support(props: SupportProps) {
               },
               "&:hover": {
                 borderColor: theme.palette.input.border,
-                backgroundColor: theme.palette.common.white,
+                backgroundColor: theme.palette.white,
               },
               "&:focus-visible": {
-                boxShadow: `0px 0px 0px 4.5px ${theme.palette.common.white}`,
-                borderColor: theme.palette.common.white,
+                boxShadow: `0px 0px 0px 4.5px ${theme.palette.white}`,
+                borderColor: theme.palette.white,
                 outline: `2px solid ${theme.palette.text.primary}`,
               },
             })}

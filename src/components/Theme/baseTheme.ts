@@ -18,18 +18,47 @@ declare module "@mui/material/styles/" {
   }
 }
 declare module "@mui/material/styles/createPalette" {
+  interface TypeText {
+    secondaryTransparent: string;
+    disabled: string;
+    white: string;
+  }
+  interface TypeBackground {
+    page: string;
+    card: string;
+    overlay: string;
+    tooltip: string;
+  }
   interface Palette {
+    text: TypeText;
     icon: {
       primary: string;
       secondary: string;
+      secondaryTransparent: string;
     };
     input: {
       background: string;
       backgroundDisabled: string;
       border: string;
+      borderDisabled: string;
     };
+    background: TypeBackground;
+    divider: string;
     border: string;
-    disabled: string;
+    buttonDisabled: string;
+    black: string;
+    gray800: string;
+    gray700: string;
+    gray600: string;
+    gray500: string;
+    gray400: string;
+    gray300: string;
+    gray200: string;
+    gray100: string;
+    gray50: string;
+    white: string;
+    white36: string;
+    white50: string;
     tertiary: {
       pastel: string;
       light: string;
@@ -119,26 +148,43 @@ const grayThemePalette = {
   text: {
     primary: "#252321",
     secondary: "#666461",
+    secondaryTransparent: "rgba(37, 35, 33, 0.69)",
     disabled: "#A3A19F",
+    white: common.white,
   },
   icon: {
     primary: "#464542",
     secondary: "#7A7875",
+    secondaryTransparent: "rgba(70, 69, 66, 0.72)",
   },
   input: {
     background: common.white,
     backgroundDisabled: "#FCFAF7",
     border: "#C2C0BD",
+    borderDisabled: "#E5E3E0",
   },
   background: {
     page: "#F8F6F3",
-    paper: common.white,
     card: common.white,
     overlay: "rgba(37, 35, 33, 0.3)",
+    tooltip: "#252321",
   },
   divider: "#E5E3E0",
   border: "#E5E3E0",
-  disabled: "#A3A19F",
+  buttonDisabled: "#E5E3E0",
+  black: "#252321",
+  gray800: "#464542",
+  gray700: "#666461",
+  gray600: "#7A7875",
+  gray500: "#A3A19F",
+  gray400: "#C2C0BD",
+  gray300: "#E5E3E0",
+  gray200: "#F2F0ED",
+  gray100: "#F8F6F3",
+  gray50: "#FCFAF7",
+  white: common.white,
+  white36: "rgba(255, 255, 255, 0.36)",
+  white50: "rgba(255, 255, 255, 0.5)",
 };
 
 const globalThemePalette = {
@@ -333,12 +379,12 @@ const baseThemeOptions: ThemeOptions = {
             transitionDuration: "300ms",
             "&:hover": {
               "& + .MuiSwitch-track": {
-                backgroundColor: globalThemePalette.disabled,
+                backgroundColor: globalThemePalette.gray500,
               },
             },
             "&.Mui-checked": {
               transform: "translateX(18px)",
-              color: defaultMuiTheme.palette.common.white,
+              color: globalThemePalette.white,
               "& + .MuiSwitch-track": {
                 opacity: 1,
               },
@@ -413,8 +459,8 @@ const baseThemeOptions: ThemeOptions = {
           borderRadius: "24px",
           minHeight: "26px",
           "&.Mui-selected": {
-            backgroundColor: common.white,
-            color: common.black,
+            backgroundColor: globalThemePalette.white,
+            color: globalThemePalette.black,
           },
           ":last-child": {
             margin: "0px 0px 0px 0px",
@@ -432,7 +478,7 @@ const baseThemeOptions: ThemeOptions = {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: common.white,
+          backgroundColor: globalThemePalette.white,
           borderBottom: "1px solid",
           borderColor: globalThemePalette.border,
           boxShadow: "0px 2px 10px 0px rgb(0 0 0 / 10%)",
@@ -513,8 +559,8 @@ const baseThemeOptions: ThemeOptions = {
           borderRadius: "100vmax",
           border: "1px solid transparent",
           ":focus-visible": {
-            border: `1px solid ${common.white}`,
-            boxShadow: `0px 0px 0px 4.5px ${common.white}`,
+            border: `1px solid ${globalThemePalette.white}`,
+            boxShadow: `0px 0px 0px 4.5px ${globalThemePalette.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
           },
           "&.MuiButton-containedWarning": {
@@ -553,7 +599,7 @@ const baseThemeOptions: ThemeOptions = {
             },
           },
           "&.MuiButton-containedTertiary:not(.Mui-disabled)": {
-            color: common.white,
+            color: globalThemePalette.white,
             ":hover": {
               backgroundColor: globalThemePalette.tertiary.medium,
             },
@@ -570,7 +616,7 @@ const baseThemeOptions: ThemeOptions = {
             backgroundColor: "rgba(255,255,255, 50%)",
           },
           ":focus-visible": {
-            boxShadow: `0px 0px 0px 4.5px ${common.white}`,
+            boxShadow: `0px 0px 0px 4.5px ${globalThemePalette.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
           },
           "&.MuiButton-outlinedWarning:not(.Mui-disabled)": {
@@ -626,7 +672,7 @@ const baseThemeOptions: ThemeOptions = {
           padding: "0 !important",
 
           "&.Mui-disabled": {
-            color: `${globalThemePalette.disabled}!important`,
+            color: `${globalThemePalette.text.disabled}!important`,
           },
           ":focus-visible": {
             textDecoration: "underline",
