@@ -8,6 +8,7 @@ import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import React from "react";
 
 declare module "@mui/material/styles/" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
@@ -350,6 +351,11 @@ const baseThemeOptions: ThemeOptions = {
     MuiSelect: {
       defaultProps: {
         IconComponent: ExpandMoreIcon,
+      },
+    },
+    MuiAutocomplete: {
+      defaultProps: {
+        popupIcon: React.createElement(ExpandMoreIcon),
       },
     },
     MuiFormLabel: {
