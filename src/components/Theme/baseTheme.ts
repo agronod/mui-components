@@ -7,6 +7,7 @@ import { common } from "@mui/material/colors";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
 import { circularProgressClasses } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 declare module "@mui/material/styles/" {
   interface PaletteColorOptions extends SimplePaletteColorOptions {
@@ -121,11 +122,11 @@ const semanticThemePalette = {
     dark: "#D65A26",
   },
   info: {
-    pastel: "#E8ECF2",
-    light: "#C7D1DA",
-    main: "#51697E",
-    medium: "#455B6E",
-    dark: "#364858",
+    pastel: "#F1ECE7",
+    light: "#DAD0C7",
+    main: "#68523D",
+    medium: "#564230",
+    dark: "#443023",
   },
   success: {
     pastel: "#EAF5EA",
@@ -141,6 +142,13 @@ const semanticThemePalette = {
     main: "#7E474B",
     medium: "#5B353A",
     dark: "#3A1E25",
+  },
+  secondary: {
+    pastel: "#E8ECF2",
+    light: "#C7D1DA",
+    main: "#51697E",
+    medium: "#455B6E",
+    dark: "#364858",
   },
 };
 
@@ -303,11 +311,25 @@ const baseThemeOptions: ThemeOptions = {
           fontSize: pxToRem(16),
           lineHeight: 1.5,
           fontWeight: 400,
-          borderRadius: "8px",
+          borderRadius: "16px",
+          backgroundColor: globalThemePalette.input.background,
+          borderColor: globalThemePalette.input.border,
 
           "&:active": {
             borderWidth: "2px",
           },
+
+          "&.Mui-disabled": {
+            backgroundColor: globalThemePalette.input.backgroundDisabled,
+            borderColor: globalThemePalette.input.borderDisabled,
+            color: globalThemePalette.text.disabled,
+          },
+
+          "& input::placeholder": {
+            color: globalThemePalette.text.disabled,
+          },
+
+          // styling for input number so it does not have arrows
           "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
             {
               display: "none",
@@ -323,6 +345,11 @@ const baseThemeOptions: ThemeOptions = {
         root: {
           borderRadius: "8px",
         },
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        IconComponent: ExpandMoreIcon,
       },
     },
     MuiFormLabel: {
@@ -502,6 +529,7 @@ const baseThemeOptions: ThemeOptions = {
           "&:focus-visible": {
             outlineColor: globalThemePalette.text.secondary,
           },
+          // TODO: when you export this component from storybook move this as property not class
           "&.inverted": {
             color: globalThemePalette.text.secondary,
             textDecoration: "underline solid #66646199",
@@ -756,14 +784,6 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
-          "*": {
-            color: "inherit",
-          },
-          ":hover": {
-            "*": {
-              color: "inherit",
-            },
-          },
         },
       },
     },

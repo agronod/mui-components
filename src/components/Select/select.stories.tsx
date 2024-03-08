@@ -10,7 +10,6 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
-import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import { StoryFn, Meta } from "@storybook/react";
 import { useState } from "react";
 
@@ -60,12 +59,7 @@ export const SelectSingle: StoryFn<typeof Select> = ({ label, ...rest }) => {
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <Select
-        value={value}
-        {...rest}
-        onChange={handleChange}
-        IconComponent={ExpandMoreRoundedIcon}
-      >
+      <Select value={value} {...rest} onChange={handleChange}>
         {names.map((name) => (
           <MenuItem key={name} value={name}>
             {name}
@@ -90,7 +84,6 @@ export const SelectWithIcon: StoryFn<typeof Select> = ({ label, ...rest }) => {
         {...rest}
         onChange={handleChange}
         renderValue={() => value}
-        IconComponent={ExpandMoreRoundedIcon}
       >
         {names.map((name) => (
           <MenuItem key={name} value={name}>
@@ -118,13 +111,7 @@ export const SelectMultiple: StoryFn<typeof Select> = ({ label, ...rest }) => {
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <Select
-        value={value}
-        {...rest}
-        onChange={handleChange}
-        multiple
-        IconComponent={ExpandMoreRoundedIcon}
-      >
+      <Select value={value} {...rest} onChange={handleChange} multiple>
         <MenuItem value={1}>Option 1</MenuItem>
         <MenuItem value={2}>Option 2</MenuItem>
         <MenuItem value={3}>Option 3</MenuItem>
@@ -158,7 +145,6 @@ export const SelectMultipleCheckbox: StoryFn<typeof Select> = ({
         value={value}
         onChange={handleChange}
         renderValue={(selected) => selected.join(", ")}
-        IconComponent={ExpandMoreRoundedIcon}
       >
         {names.map((name) => (
           <MenuItem key={name} value={name}>
@@ -195,7 +181,6 @@ export const SelectMultipleChip: StoryFn<typeof Select> = ({
         multiple
         value={value}
         onChange={handleChange}
-        IconComponent={ExpandMoreRoundedIcon}
         renderValue={(selected) => (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
             {selected.map((value) => (
