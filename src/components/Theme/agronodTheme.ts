@@ -12,13 +12,6 @@ const agronodThemePalette = createPalette({
     dark: "#C3872F",
     darkHover: "#B37D2E",
   },
-  secondary: {
-    pastel: "#E8ECF2",
-    light: "#C7D1DA",
-    main: "#51697E",
-    medium: "#455B6E",
-    dark: "#364858",
-  },
   ...globalThemePalette,
 });
 
@@ -42,8 +35,8 @@ const agronodTheme = {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          "&:hover": {
-            "&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+          "&:not(.Mui-disabled):hover": {
+            "& .MuiOutlinedInput-notchedOutline": {
               borderColor: themePalette.primary.mediumHover,
             },
           },

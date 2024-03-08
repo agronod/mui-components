@@ -10,13 +10,6 @@ export const agrosfarThemePalette = {
     dark: "#123F25",
     darkHover: "#052412",
   },
-  secondary: {
-    pastel: "#F1ECE7",
-    light: "#DAD0C7",
-    main: "#68523D",
-    medium: "#564230",
-    dark: "#443023",
-  },
   ...globalThemePalette,
 };
 
@@ -40,8 +33,8 @@ const agrosfarTheme = {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          "&:hover": {
-            "&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+          "&:not(.Mui-disabled):hover": {
+            "& .MuiOutlinedInput-notchedOutline": {
               borderColor: themePalette.primary.medium,
             },
           },
@@ -58,7 +51,7 @@ const agrosfarTheme = {
           color: themePalette.text.primary,
           ":hover": {
             backgroundColor: themePalette.primary.pastel,
-            "& .MuiSvgIcon-root": {
+            "& .MuiCheckbox-root": {
               color: globalThemePalette.input.border,
             },
           },
