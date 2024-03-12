@@ -29,19 +29,19 @@ const AsideCard = ({
     minHeight: "100px",
   };
   if (position === "left") {
-    styleObject.borderBottomRightRadius = "20px";
-    styleObject.borderTopRightRadius = "20px";
+    styleObject.borderBottomRightRadius = "16px";
+    styleObject.borderTopRightRadius = "16px";
     styleObject.borderTopLeftRadius = "0";
     styleObject.borderBottomLeftRadius = "0";
-    styleObject.marginRight = "-20px";
+    styleObject.marginRight = "-16px";
   }
 
   if (position === "right") {
-    styleObject.borderBottomLeftRadius = "20px";
-    styleObject.borderTopLeftRadius = "20px";
+    styleObject.borderBottomLeftRadius = "16px";
+    styleObject.borderTopLeftRadius = "16px";
     styleObject.borderTopRightRadius = "0";
     styleObject.borderBottomRightRadius = "0";
-    styleObject.marginLeft = "-20px";
+    styleObject.marginLeft = "-16px";
   }
 
   if (centeredContent) {
@@ -53,8 +53,8 @@ const AsideCard = ({
 
   if (mobile) {
     styleObject.borderBottomRightRadius = "0";
-    styleObject.borderTopRightRadius = "20px";
-    styleObject.borderTopLeftRadius = "20px";
+    styleObject.borderTopRightRadius = "16px";
+    styleObject.borderTopLeftRadius = "16px";
     styleObject.borderBottomLeftRadius = "0";
     styleObject.width = "100%";
     styleObject.marginRight = "0";

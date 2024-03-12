@@ -69,6 +69,8 @@ const ModalCard = (props: ModalCardProps) => {
     >
       <Card
         sx={(theme) => ({
+          paddingX: 5,
+          paddingY: 7,
           left: "50%",
           width: props.cardWidth ? props.cardWidth : "100%",
           maxWidth: props.cardMaxWidth ? props.cardMaxWidth : "688px",
@@ -107,10 +109,6 @@ const ModalCard = (props: ModalCardProps) => {
         )}
         <Box
           sx={(theme) => ({
-            pt: 8,
-            pb: 5,
-            pl: 5,
-            pr: 5,
             maxHeight: "95dvh",
             overflow: "auto",
             textAlign: props.alignment ? props.alignment : "center",

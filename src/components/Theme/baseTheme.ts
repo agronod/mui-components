@@ -458,7 +458,8 @@ const baseThemeOptions: ThemeOptions = {
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: "20px",
+          borderRadius: "16px",
+          padding: "24px",
         },
       },
     },

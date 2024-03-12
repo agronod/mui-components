@@ -62,13 +62,9 @@ const agrosfarTheme = {
             borderColor: themePalette.primary.medium,
           },
           "&.Mui-selected": {
-            backgroundColor: themePalette.primary.light,
-            fontWeight: "500",
-            "& span": { fontWeight: "500" },
+            backgroundColor: themePalette.primary.pastel,
             ":hover": {
-              fontWeight: "400",
               backgroundColor: themePalette.primary.light,
-              "& span": { fontWeight: "400" },
             },
             ":focus-visible": {
               boxShadow: `0px 0px 0px 2px ${themePalette.primary.medium} inset`,

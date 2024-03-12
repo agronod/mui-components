@@ -158,14 +158,9 @@ const agronodTheme = {
             borderColor: themePalette.primary.medium,
           },
           "&.Mui-selected": {
-            backgroundColor: themePalette.primary.light,
+            backgroundColor: themePalette.primary.pastel,
             ":hover": {
-              color: themePalette.text.secondary,
               backgroundColor: themePalette.primary.light,
-              "& span": { color: themePalette.text.secondary },
-              "& .MuiCheckbox-root": {
-                color: themePalette.primary.medium,
-              },
             },
             ":focus-visible": {
               boxShadow: `0px 0px 0px 2px ${themePalette.primary.medium} inset`,

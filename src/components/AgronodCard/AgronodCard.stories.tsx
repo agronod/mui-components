@@ -1,0 +1,54 @@
+import { StoryFn, Meta } from "@storybook/react";
+import { Box, Button, Stack, Typography } from "@mui/material";
+import AgronodCard from "./AgronodCard";
+
+export default {
+  title: "Shared components/AgronodCard",
+  component: AgronodCard,
+  parameters: {
+    componentSubtitle: "Base Outlined white Card container",
+    docs: {
+      description: {
+        component: `<p>Used as base container in Agronod and Agrosfär. It is made of MUI Card component <code>variant="outlined"</code> with specific padding that can be overriden with <code>sx</code> property</p>
+          `,
+      },
+    },
+  },
+  argTypes: {
+    children: {
+      description:
+        "This can be any component or group of components, Card itself does not affect child components, except having padding of it's own.",
+      type: { name: "symbol", required: true },
+    },
+    sx: {
+      description: "This property is used to control top parent Card element",
+      control: {
+        type: "object",
+      },
+    },
+  },
+} as Meta<typeof AgronodCard>;
+
+export const AgronodCardDefault: StoryFn<typeof AgronodCard> = ({
+  children,
+  sx,
+  ...rest
+}) => {
+  return <AgronodCard {...rest}>{children}</AgronodCard>;
+};
+AgronodCardDefault.args = {
+  children: (
+    <Stack gap={2}>
+      <Typography variant="h2">Lorem Ipsum</Typography>
+      <Typography variant="body1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </Typography>
+    </Stack>
+  ),
+};

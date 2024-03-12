@@ -15,6 +15,7 @@ export * from "./HorizontalBarChart";
 export * from "./Support";
 export * from "./AgronodIcon";
 export * from "./ErrorPagesContent";
+export * from "./AgronodCard";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };
