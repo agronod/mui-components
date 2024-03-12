@@ -1,9 +1,9 @@
 import { SxProps, Theme, Card as MuiCard } from "@mui/material";
 
-interface AgronodCardProps {
+type AgronodCardProps = {
   children: JSX.Element | JSX.Element[];
   sx?: SxProps<Theme>;
-}
+};
 
 const AgronodCard = (props: AgronodCardProps) => {
   return (
