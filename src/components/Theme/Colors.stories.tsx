@@ -1,4 +1,4 @@
-import { Box, Card, Divider, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Card, Stack, Typography, useTheme } from "@mui/material";
 export default {
   title: "Base/ColorPalette",
 };
@@ -30,6 +30,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -59,6 +60,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -89,6 +91,7 @@ export const ColorPalette = () => {
           <Card
             variant="outlined"
             sx={{
+              padding: 0,
               borderRadius: "20px",
               background: "transparent",
               display: "flex",
@@ -123,6 +126,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -153,6 +157,7 @@ export const ColorPalette = () => {
           <Card
             variant="outlined"
             sx={{
+              padding: 0,
               borderRadius: "20px",
               background: "transparent",
               display: "flex",
@@ -187,6 +192,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -216,6 +222,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -245,6 +252,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -278,6 +286,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -307,6 +316,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -336,6 +346,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -364,6 +375,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -392,6 +404,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -425,6 +438,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -454,6 +468,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -483,6 +498,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -511,6 +527,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -539,6 +556,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -587,6 +605,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -615,6 +634,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -644,6 +664,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -673,6 +694,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -701,6 +723,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -729,6 +752,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -762,6 +786,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -791,6 +816,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -820,6 +846,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -848,6 +875,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -876,6 +904,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -909,6 +938,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -937,6 +967,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -966,6 +997,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -995,6 +1027,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1023,6 +1056,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1051,6 +1085,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1084,6 +1119,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1111,6 +1147,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1140,6 +1177,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1166,6 +1204,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1194,6 +1233,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1246,6 +1286,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1273,6 +1314,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1300,6 +1342,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1333,6 +1376,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1362,6 +1406,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1391,6 +1436,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1420,6 +1466,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1449,6 +1496,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1482,6 +1530,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1511,6 +1560,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1540,6 +1590,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1573,6 +1624,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1602,6 +1654,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1631,6 +1684,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1660,6 +1714,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1693,6 +1748,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1722,6 +1778,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1751,6 +1808,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1780,6 +1838,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1813,6 +1872,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1840,6 +1900,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1867,6 +1928,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1894,6 +1956,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1921,6 +1984,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1948,6 +2012,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -1975,6 +2040,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -2002,6 +2068,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -2029,6 +2096,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -2056,6 +2124,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -2083,6 +2152,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -2110,6 +2180,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
@@ -2137,6 +2208,7 @@ export const ColorPalette = () => {
         <Card
           variant="outlined"
           sx={{
+            padding: 0,
             borderRadius: "20px",
             background: "transparent",
             display: "flex",
