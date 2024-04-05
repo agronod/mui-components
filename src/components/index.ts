@@ -16,6 +16,7 @@ export * from "./Support";
 export * from "./AgronodIcon";
 export * from "./ErrorPagesContent";
 export * from "./AgronodCard";
+export * from "./AgronodChip";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };
