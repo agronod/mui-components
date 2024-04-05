@@ -38,10 +38,6 @@ const agrosfarTheme = {
               borderColor: themePalette.primary.medium,
             },
           },
-
-          "& .MuiChip-root": {
-            backgroundColor: themePalette.primary.light,
-          },
         },
       },
     },

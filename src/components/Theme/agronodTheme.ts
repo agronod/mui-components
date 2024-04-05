@@ -40,9 +40,6 @@ const agronodTheme = {
               borderColor: themePalette.primary.mediumHover,
             },
           },
-          "& .MuiChip-root": {
-            backgroundColor: themePalette.primary.light,
-          },
         },
       },
     },

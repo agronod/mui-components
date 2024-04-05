@@ -382,6 +382,7 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           color: globalThemePalette.input.border,
+
           "&.Mui-disabled": {
             color: globalThemePalette.border,
           },
@@ -393,6 +394,7 @@ const baseThemeOptions: ThemeOptions = {
           },
           "& .MuiSvgIcon-root": {
             fontSize: pxToRem(32),
+
             "@media (max-width: 900px)": {
               fontSize: pxToRem(42.7),
             },
@@ -545,20 +547,6 @@ const baseThemeOptions: ThemeOptions = {
               textDecoration: `underline solid ${globalThemePalette.text.primary}`,
             },
           },
-        },
-      },
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          height: "28px",
-        },
-        label: {
-          fontFamily: "inter",
-          fontSize: pxToRem(12),
-          lineHeight: 1.42,
-          paddingLeft: "8px",
-          paddingRight: "8px",
         },
       },
     },
@@ -791,6 +779,7 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           fontFamily: "inter",
+          whiteSpace: "normal",
         },
       },
     },
