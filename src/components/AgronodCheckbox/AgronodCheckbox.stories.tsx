@@ -24,6 +24,24 @@ export default {
         type: "function",
       },
     },
+    checked: {
+      description: "If true, the component is checked.",
+    },
+    disabled: {
+      description: "If true, the component is disabled.",
+      control: {
+        type: "radio",
+      },
+      options: [true, false],
+    },
+    size: {
+      description:
+        "The size of the component. small is equivalent to small icon size on mobile and dense padding.",
+      control: {
+        type: "select",
+      },
+      options: ["small", "medium"],
+    },
   },
 } as Meta<typeof AgronodCheckbox>;
 
