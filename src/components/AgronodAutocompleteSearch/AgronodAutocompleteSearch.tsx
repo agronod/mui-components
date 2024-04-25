@@ -150,6 +150,7 @@ const AutocompleteSearch = <T,>({
             <StyledMenuList dense {...getListboxProps()}>
               {availableOptions.map((option, index) => (
                 <MenuItem
+                  dense
                   {...getOptionProps({ option, index })}
                   key={index}
                   onClick={() => onOptionChange(option)}

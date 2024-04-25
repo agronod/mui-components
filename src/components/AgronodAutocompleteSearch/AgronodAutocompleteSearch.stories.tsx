@@ -50,7 +50,7 @@ export default {
     },
     value: {
       description:
-        "<div>The value of the autocomplete. The value must have reference equality with the option in order to be selected. You can customize the equality behavior with the <code>isOptionEqualToValue</code> prop.</div>",
+        "<div>The value of the autocomplete. The value must have reference equality with the option in order to be selected.<p>You can customize the equality behavior with the <code>isOptionEqualToValue</code> prop.</p></div>",
       control: {
         type: "array",
       },
@@ -63,7 +63,8 @@ export default {
       },
     },
     isOptionEqualToValue: {
-      description: `<div>Used to determine if the option represents the given value. Uses strict equality by default. Both arguments need to be handled, an option can only match with one value.
+      description: `<div>Used to determine if the option represents the given value. Uses strict equality by default.
+        <p>Both arguments need to be handled, an option can only match with one value.</p>
         <p>Format: <code>isOptionEqualToValue={(option, value) => option?.id === value?.id}</code></p>
         <p><code>option</code> The option to test.</p>
         <p><code>value</code> The value to test against.</p>
@@ -98,8 +99,8 @@ export default {
     },
     isOptionSelected: {
       description: `<div>Function that returns is option selected for each option.
-      <p>Format :<code>isOptionSelected={(option) =>
-        Boolean(
+      <p>Format :<code>isOptionSelected={(option) =></code></p>
+      <p><code>Boolean(
           values.filter((v) => v.selected).find((v) => v?.id === option?.id)
         )
       }</code></p>
