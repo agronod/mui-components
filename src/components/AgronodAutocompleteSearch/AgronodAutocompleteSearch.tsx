@@ -9,26 +9,35 @@ import {
   Collapse,
   Typography,
   MenuList,
+  AutocompleteGroupedOption,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { AgronodChip } from "../AgronodChip";
 import { AgronodCheckbox } from "../AgronodCheckbox";
 
 type AutocompleteProps<T> = {
-  options: any[];
-  value: any[];
+  options: T[];
+  value: T[];
   onOptionChange: (value: T) => void;
   isOptionSelected: (value: T) => boolean;
   isOptionDisabled: (value: T) => boolean;
   nameSelector: (value: T) => string | undefined;
-  isOptionEqualToValue: (option: any, value: T) => boolean;
+  isOptionEqualToValue: (option: T, value: T) => boolean;
   getOptionLabel: (value: T) => string;
   filterOptions?: string[];
   placeholder?: string;
   noOptionsText: string;
-  additionalInfoText?: (value: T) => string;
+  additionalInfoText?: (value: T) => number;
   maxWidth?: string;
+};
+
+interface OptionWithFilterProps {
+  [key: string]: string | number; // Define properties that are used in filterOptions
+}
+
+type ExtendedAutocompleteProps<T> = AutocompleteProps<T> & {
+  options: (T | AutocompleteGroupedOption<T>)[];
 };
 
 const AutocompleteSearch = <T,>({
@@ -45,9 +54,11 @@ const AutocompleteSearch = <T,>({
   noOptionsText,
   additionalInfoText,
   maxWidth,
-}: AutocompleteProps<T>) => {
+}: ExtendedAutocompleteProps<T>) => {
   const [open, setOpen] = useState<boolean | undefined>();
-  const [availableOptions, setAvailableOptions] = useState<any[]>([]);
+  const [availableOptions, setAvailableOptions] = useState<
+    (T | AutocompleteGroupedOption<T>)[]
+  >([]);
 
   const {
     getRootProps,
@@ -68,8 +79,8 @@ const AutocompleteSearch = <T,>({
       ? (options, { inputValue }) => {
           const filteredOptions = options.filter((option) =>
             filterOptions.some((filter) =>
-              option[filter]
-                .toString()
+              (option as OptionWithFilterProps)[filter]
+                ?.toString()
                 .toLowerCase()
                 .includes(inputValue.toLowerCase())
             )
@@ -94,12 +105,12 @@ const AutocompleteSearch = <T,>({
     overflow: "auto",
   }));
 
-  useMemo(() => {
+  useEffect(() => {
     if (focused) {
       setAvailableOptions(groupedOptions);
       setOpen(true);
     } else {
-      // this will prevent closing dropdown emmediately after loosing focus, that was interfering with clicking on other buttons because height was changing
+      // this will prevent closing dropdown immediately after losing focus, that was interfering with clicking on other buttons because height was changing
       setTimeout(() => {
         if (open === undefined) {
           return;
@@ -118,7 +129,7 @@ const AutocompleteSearch = <T,>({
         sx={{ marginBottom: 2 }}
         flexWrap="wrap"
       >
-        {value.map((option: any, index: number) => (
+        {value.map((option: T, index: number) => (
           <AgronodChip
             {...getTagProps({ index })}
             size="medium"
@@ -151,14 +162,14 @@ const AutocompleteSearch = <T,>({
               {availableOptions.map((option, index) => (
                 <MenuItem
                   dense
-                  {...getOptionProps({ option, index })}
+                  {...getOptionProps({ option: option as T, index })}
                   key={index}
-                  onClick={() => onOptionChange(option)}
-                  disabled={isOptionDisabled(option)}
-                  selected={isOptionSelected(option)}
+                  onClick={() => onOptionChange(option as T)}
+                  disabled={isOptionDisabled(option as T)}
+                  selected={isOptionSelected(option as T)}
                 >
                   <AgronodCheckbox
-                    checked={isOptionSelected(option)}
+                    checked={isOptionSelected(option as T)}
                     size="small"
                   />
                   <Stack
@@ -172,11 +183,11 @@ const AutocompleteSearch = <T,>({
                     })}
                   >
                     <Typography variant="body1">
-                      {nameSelector(option)}
+                      {nameSelector(option as T)}
                     </Typography>
                     {additionalInfoText && (
                       <Typography color="text.disabled" variant="body1">
-                        {additionalInfoText(option)}
+                        {additionalInfoText(option as T)}
                       </Typography>
                     )}
                   </Stack>
