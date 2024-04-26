@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography, Skeleton } from "@mui/material";
 import {
   useCallback,
   useEffect,
@@ -25,6 +25,7 @@ export type SubCategory = {
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
   tooltipData?: Array<SubCategory>;
+  hasError?: boolean;
 };
 
 const GRID_HEIGHT = 54;
@@ -199,7 +200,11 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
   return null;
 };
 
-const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
+const HorizontalBarChart = ({
+  data,
+  tooltipData,
+  hasError,
+}: HorizontalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
   const [tooltipVisible, setTooltipVisible] = useState(false);
@@ -329,20 +334,21 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
               strokeWidth={1}
             />
           ))}
-          {data.map((item, index) => (
-            <Bar
-              key={index}
-              data={item}
-              width={barWidth}
-              x={index * (barWidth + PADDING) + PADDING}
-              y={chartHeight}
-              factor={factor}
-              index={index}
-              componentId={componentId}
-              onEnter={() => handleMouseEnter(index)}
-              onLeave={handleMouseLeave}
-            />
-          ))}
+          {!hasError &&
+            data.map((item, index) => (
+              <Bar
+                key={index}
+                data={item}
+                width={barWidth}
+                x={index * (barWidth + PADDING) + PADDING}
+                y={chartHeight}
+                factor={factor}
+                index={index}
+                componentId={componentId}
+                onEnter={() => handleMouseEnter(index)}
+                onLeave={handleMouseLeave}
+              />
+            ))}
         </svg>
       </Box>
       {tooltipVisible && activeIndex !== null && (
@@ -365,35 +371,55 @@ const HorizontalBarChart = ({ data, tooltipData }: HorizontalBarChartProps) => {
           my: 2,
         }}
       >
-        {data.map((item, index) => (
-          <Box
-            key={index}
-            sx={{
-              marginX: 2,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              alignItems: "flex-start",
-            }}
-          >
-            <Typography
-              sx={{
-                width: `${barWidth - 16}px`,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "break-spaces",
-                marginY: 1,
-              }}
-              variant="caption"
-              component={"p"}
-            >
-              {item.name}
-            </Typography>
-            <Typography fontWeight={600} variant="body2" fontSize={24}>
-              {mapTotalValue(item).toLocaleString("sv-SE")}
-            </Typography>
-          </Box>
-        ))}
+        {hasError
+          ? Array.from(new Array(6)).map((_, index) => (
+              <>
+                <Skeleton
+                  variant="text"
+                  width="128px"
+                  sx={{ borderRadius: "8px", mt: -0.5 }}
+                />
+                <Skeleton
+                  variant="text"
+                  width="64px"
+                  sx={{ borderRadius: "8px", mt: -0.5 }}
+                />
+                <Skeleton
+                  variant="text"
+                  width="44px"
+                  sx={{ borderRadius: "8px", mt: 1 }}
+                />
+              </>
+            ))
+          : data.map((item, index) => (
+              <Box
+                key={index}
+                sx={{
+                  marginX: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography
+                  sx={{
+                    width: `${barWidth - 16}px`,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "break-spaces",
+                    marginY: 1,
+                  }}
+                  variant="caption"
+                  component={"p"}
+                >
+                  {item.name}
+                </Typography>
+                <Typography fontWeight={600} variant="body2" fontSize={24}>
+                  {mapTotalValue(item).toLocaleString("sv-SE")}
+                </Typography>
+              </Box>
+            ))}
       </Box>
     </Box>
   );

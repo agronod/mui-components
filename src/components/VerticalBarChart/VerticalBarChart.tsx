@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import {
   useCallback,
   useEffect,
@@ -20,6 +20,7 @@ export type VerticalBarChartProps = {
   data: Array<VerticalBarChartData>;
   selectedId?: string;
   onItemHover?: (id?: string) => void;
+  hasError?: boolean;
 };
 
 const TICK_WIDTH = 100;
@@ -83,6 +84,7 @@ const VerticalBarChart = ({
   data,
   selectedId,
   onItemHover,
+  hasError,
 }: VerticalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
@@ -194,32 +196,33 @@ const VerticalBarChart = ({
             strokeWidth={1}
           />
         ))}
-        {data.map((item, index) => (
-          <g
-            key={index}
-            transform={`translate(0, ${
-              index * (barHeight + PADDING) + PADDING
-            })`}
-          >
-            <Bar
-              onEnter={() => onHover(index)}
-              onLeave={() => onHover(undefined)}
-              data={item}
-              height={barHeight}
-              x={TICK_WIDTH}
-              y={0}
-              factor={factor}
-              color={
-                selectedId !== undefined && selectedId !== item.id
-                  ? "#E5E3E0"
-                  : item.color
-              }
-              selected={selectedId === item.id}
-              index={index}
-              componentId={componentId}
-            />
-          </g>
-        ))}
+        {!hasError &&
+          data.map((item, index) => (
+            <g
+              key={index}
+              transform={`translate(0, ${
+                index * (barHeight + PADDING) + PADDING
+              })`}
+            >
+              <Bar
+                onEnter={() => onHover(index)}
+                onLeave={() => onHover(undefined)}
+                data={item}
+                height={barHeight}
+                x={TICK_WIDTH}
+                y={0}
+                factor={factor}
+                color={
+                  selectedId !== undefined && selectedId !== item.id
+                    ? "#E5E3E0"
+                    : item.color
+                }
+                selected={selectedId === item.id}
+                index={index}
+                componentId={componentId}
+              />
+            </g>
+          ))}
       </svg>
       <Box
         sx={{
@@ -231,40 +234,60 @@ const VerticalBarChart = ({
           width: TICK_WIDTH,
         }}
       >
-        {data.map((item, index) => (
-          <Box
-            key={index}
-            onMouseEnter={() => onHover(index)}
-            onMouseLeave={() => onHover(undefined)}
-            sx={{
-              paddingX: 2,
-              position: "absolute",
-              top: barHeight * index + index * PADDING,
-              left: 0,
-              height: barHeight,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "flex-start",
-            }}
-          >
-            <Typography
-              sx={{
-                width: `${TICK_WIDTH - 16}px`,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "break-spaces",
-              }}
-              variant="caption"
-              component={"p"}
-            >
-              {item.name}
-            </Typography>
-            <Typography fontWeight={600} variant="caption">
-              {round(item.value)}
-            </Typography>
-          </Box>
-        ))}
+        {hasError
+          ? Array.from(new Array(6)).map((_, index) => (
+              <>
+                <Skeleton
+                  variant="text"
+                  width="80px"
+                  sx={{ borderRadius: "8px" }}
+                />
+                <Skeleton
+                  variant="text"
+                  width="40px"
+                  sx={{ borderRadius: "8px" }}
+                />
+                <Skeleton
+                  variant="text"
+                  width="20px"
+                  sx={{ borderRadius: "8px", mb: 3 }}
+                />
+              </>
+            ))
+          : data.map((item, index) => (
+              <Box
+                key={index}
+                onMouseEnter={() => onHover(index)}
+                onMouseLeave={() => onHover(undefined)}
+                sx={{
+                  paddingX: 2,
+                  position: "absolute",
+                  top: barHeight * index + index * PADDING,
+                  left: 0,
+                  height: barHeight,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography
+                  sx={{
+                    width: `${TICK_WIDTH - 16}px`,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "break-spaces",
+                  }}
+                  variant="caption"
+                  component={"p"}
+                >
+                  {item.name}
+                </Typography>
+                <Typography fontWeight={600} variant="caption">
+                  {round(item.value)}
+                </Typography>
+              </Box>
+            ))}
       </Box>
     </Box>
   );
