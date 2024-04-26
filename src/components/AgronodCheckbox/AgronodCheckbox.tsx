@@ -37,10 +37,11 @@ const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
       },
 
       "& .MuiSvgIcon-root": {
-        fontSize: "24px",
+        // since svg has some space in relation to path, this size matches 24px looks
+        fontSize: "32px",
 
         [theme.breakpoints.down("md")]: {
-          fontSize: props.size === "small" ? "24px" : "32px",
+          fontSize: props.size === "small" ? "32px" : "42.67px", // since svg has some space in relation to path, 42.67px size matches 32px looks
         },
       },
     })}
