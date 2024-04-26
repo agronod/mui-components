@@ -11,15 +11,15 @@ type AgronodMuiCheckboxBaseProps = Pick<
 
 export interface AgronodCheckboxProps extends AgronodMuiCheckboxBaseProps {
   label?: string;
-  handleOnChange?: () => void;
-  handleOnClick?: () => void;
+  handleOnChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleOnClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
   <MuiCheckbox
     disabled={props.disabled}
-    onChange={props.handleOnChange}
-    onClick={props.onClick}
+    onChange={(e) => props.handleOnChange && props.handleOnChange(e)}
+    onClick={(e) => props.handleOnClick && props.handleOnClick(e)}
     color={props.color}
     checked={props.checked}
     disableRipple={true}
