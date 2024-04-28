@@ -1,6 +1,5 @@
 import {
   Box,
-  Checkbox,
   Chip,
   FormControl,
   FormLabel,
@@ -12,6 +11,7 @@ import {
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import { StoryFn, Meta } from "@storybook/react";
 import { useState } from "react";
+import { AgronodCheckbox } from "../AgronodCheckbox";
 
 export default {
   title: "Shared components/Select",
@@ -148,7 +148,7 @@ export const SelectMultipleCheckbox: StoryFn<typeof Select> = ({
       >
         {names.map((name) => (
           <MenuItem key={name} value={name}>
-            <Checkbox checked={value.indexOf(name) > -1} />
+            <AgronodCheckbox checked={value.indexOf(name) > -1} />
             <ListItemText primary={name} />
           </MenuItem>
         ))}
@@ -191,7 +191,7 @@ export const SelectMultipleChip: StoryFn<typeof Select> = ({
       >
         {names.map((name) => (
           <MenuItem key={name} value={name}>
-            <Checkbox checked={value.indexOf(name) > -1} />
+            <AgronodCheckbox checked={value.indexOf(name) > -1} />
             <ListItemText primary={name} />
           </MenuItem>
         ))}

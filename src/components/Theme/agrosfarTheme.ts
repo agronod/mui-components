@@ -45,10 +45,17 @@ const agrosfarTheme = {
       styleOverrides: {
         root: {
           color: themePalette.text.primary,
+          "& .MuiCheckbox-root": {
+            paddingLeft: 0,
+          },
           ":hover": {
             backgroundColor: themePalette.primary.pastel,
             "& .MuiCheckbox-root": {
               color: globalThemePalette.input.border,
+              paddingLeft: 0,
+            },
+            "& .MuiCheckbox-root.Mui-checked:not(.Mui-disabled)": {
+              color: themePalette.primary.main,
             },
           },
           ":focus-visible": {
