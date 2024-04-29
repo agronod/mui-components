@@ -373,7 +373,14 @@ const HorizontalBarChart = ({
       >
         {hasError
           ? Array.from(new Array(6)).map((_, index) => (
-              <>
+              <Box
+                sx={{
+                  justifyContent: "space-between",
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                }}
+              >
                 <Skeleton
                   variant="text"
                   width="128px"
@@ -389,7 +396,7 @@ const HorizontalBarChart = ({
                   width="44px"
                   sx={{ borderRadius: "8px", mt: 1 }}
                 />
-              </>
+              </Box>
             ))
           : data.map((item, index) => (
               <Box
