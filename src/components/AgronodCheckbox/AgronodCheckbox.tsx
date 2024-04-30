@@ -23,11 +23,14 @@ const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
     checked={props.checked}
     disableRipple={true}
     sx={(theme) => ({
+      color: theme.palette.input.border,
       padding: props.noPadding === true ? 0 : "9px",
       paddingY: props.size === "small" || props.noPadding === true ? 0 : "9px",
+
       "&.Mui-disabled": {
         color: theme.palette.border,
       },
+
       "&.Mui-focusVisible": {
         "& path": {
           outline: `1px solid ${theme.palette.text.primary} !important`,
