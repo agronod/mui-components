@@ -11,6 +11,7 @@ type AgronodMuiCheckboxBaseProps = Pick<
 
 export interface AgronodCheckboxProps extends AgronodMuiCheckboxBaseProps {
   label?: string;
+  noPadding?: boolean;
 }
 
 const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
@@ -22,8 +23,8 @@ const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
     checked={props.checked}
     disableRipple={true}
     sx={(theme) => ({
-      color: theme.palette.input.border,
-      paddingY: props.size === "small" ? 0 : "9px",
+      padding: props.noPadding === true ? 0 : "9px",
+      paddingY: props.size === "small" || props.noPadding === true ? 0 : "9px",
       "&.Mui-disabled": {
         color: theme.palette.border,
       },
