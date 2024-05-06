@@ -5,7 +5,7 @@ import {
 } from "@mui/material";
 type AgronodChipBaseProps = Pick<
   MuiChipProps,
-  "size" | "color" | "disabled" | "label"
+  "size" | "color" | "disabled" | "label" | "onMouseDown"
 >;
 
 export interface AgroodChipProps extends AgronodChipBaseProps {
@@ -20,6 +20,7 @@ const AgronodChip = (props: AgroodChipProps) => {
       label={<Typography variant="body2">{props.label}</Typography>}
       skipFocusWhenDisabled={true}
       onDelete={props.handleOnDelete ? props.handleOnDelete : undefined}
+      onMouseDown={props.onMouseDown}
       variant="filled"
       sx={(theme) => ({
         maxWidth: "auto",
