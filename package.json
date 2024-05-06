@@ -85,6 +85,7 @@
   "dependencies": {
     "@storybook/addon-storysource": "^7.6.6",
     "@svgx/vite-plugin-react": "^1.0.1",
+    "react-device-detect": "^2.2.3",
     "vite-plugin-svgr": "^4.2.0"
   }
 }

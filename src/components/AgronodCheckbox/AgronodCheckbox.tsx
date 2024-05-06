@@ -3,6 +3,8 @@ import {
   Checkbox as MuiCheckbox,
   FormControlLabel,
 } from "@mui/material";
+import { ReactNode } from "react";
+import { isSafari } from "react-device-detect";
 
 type AgronodMuiCheckboxBaseProps = Pick<
   MuiCheckboxProps,
@@ -10,7 +12,7 @@ type AgronodMuiCheckboxBaseProps = Pick<
 >;
 
 export interface AgronodCheckboxProps extends AgronodMuiCheckboxBaseProps {
-  label?: string;
+  label?: ReactNode;
   noPadding?: boolean;
 }
 
@@ -26,6 +28,9 @@ const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
       color: theme.palette.input.border,
       padding: props.noPadding === true ? 0 : "9px",
       paddingY: props.size === "small" || props.noPadding === true ? 0 : "9px",
+      display: "inline-grid",
+      "&.MuiCheckbox-root": isSafari ? { position: "unset" } : null,
+      "&.MuiCheckbox-root input": isSafari ? { position: "relative" } : null,
 
       "&.Mui-disabled": {
         color: theme.palette.border,
