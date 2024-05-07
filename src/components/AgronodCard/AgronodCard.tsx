@@ -8,7 +8,11 @@ type AgronodCardProps = {
 
 const AgronodCard = (props: AgronodCardProps) => {
   return (
-    <MuiCard sx={[props.sx as (theme: Theme) => any]} variant="outlined">
+    <MuiCard
+      sx={[props.sx as (theme: Theme) => any]}
+      variant="outlined"
+      id={props.id}
+    >
       {props.children && props.children}
     </MuiCard>
   );
