@@ -17,6 +17,8 @@ export interface ErrorPagesContentProps {
   pageLink?: string;
   maxWidth?: string;
   calculatedHeight?: string;
+  customButtonText?: string;
+  marginTop?: string;
 }
 
 export default function ErrorPagesContent(props: ErrorPagesContentProps) {
@@ -32,6 +34,7 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
         overflow: "auto",
         justifyContent: "space-between",
         backgroundColor: theme.palette.background.page,
+        marginTop: props.marginTop ?? props.marginTop,
       }}
     >
       <Stack
@@ -98,11 +101,13 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
         </Box>
         {props.pageType === 404 ? (
           <Button href={props.pageLink} variant="contained">
-            Tillbaka till hem
+            {props.customButtonText
+              ? props.customButtonText
+              : "Tillbaka till hem"}
           </Button>
         ) : (
           <Button variant="contained" href="/">
-            Ladda om
+            {props.customButtonText ? props.customButtonText : "Ladda om"}
           </Button>
         )}
       </Stack>
