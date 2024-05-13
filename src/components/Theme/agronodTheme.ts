@@ -142,10 +142,16 @@ const agronodTheme = {
       styleOverrides: {
         root: {
           color: themePalette.text.primary,
+          "& .MuiCheckbox-root": {
+            paddingLeft: 0,
+          },
           ":hover": {
             backgroundColor: themePalette.primary.pastel,
             "& .MuiCheckbox-root": {
               color: globalThemePalette.input.border,
+            },
+            "& .MuiCheckbox-root.Mui-checked:not(.Mui-disabled)": {
+              color: themePalette.primary.main,
             },
           },
           ":focus-visible": {

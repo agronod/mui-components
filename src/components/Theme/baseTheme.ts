@@ -375,33 +375,6 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
-    MuiCheckbox: {
-      defaultProps: {
-        disableRipple: true,
-      },
-      styleOverrides: {
-        root: {
-          color: globalThemePalette.input.border,
-
-          "&.Mui-disabled": {
-            color: globalThemePalette.border,
-          },
-          "&.Mui-focusVisible": {
-            "& path": {
-              outline: `1px solid ${globalThemePalette.text.primary} !important`,
-              borderRadius: "1px",
-            },
-          },
-          "& .MuiSvgIcon-root": {
-            fontSize: pxToRem(32),
-
-            "@media (max-width: 900px)": {
-              fontSize: pxToRem(42.7),
-            },
-          },
-        },
-      },
-    },
     MuiSwitch: {
       styleOverrides: {
         root: {
