@@ -22,10 +22,10 @@ export interface ModalCardProps extends ModalCardBaseProps {
   cardMaxWidth?: string;
   icon?: React.ReactElement;
   alignment?: "left" | "center";
-  rootPaddingTop?: number;
-  rootPaddingBottom?: number;
-  rootPaddingRight?: number;
-  rootPaddingLeft?: number;
+  rootPaddingTop?: { sm: number; md: number };
+  rootPaddingBottom?: { sm: number; md: number };
+  rootPaddingRight?: { sm: number; md: number };
+  rootPaddingLeft?: { sm: number; md: number };
   fullContentSize?: boolean;
   notClosable?: boolean;
   onClose?: () => void;
@@ -62,13 +62,6 @@ const AgronodModalCard = (props: ModalCardProps) => {
       aria-describedby="modal-modal-description"
       disableAutoFocus={true}
       sx={{
-        "& .MuiPaper-root": {
-          paddingTop: props.rootPaddingTop,
-          paddingBottom: props.rootPaddingBottom,
-          paddingRight: props.rootPaddingRight,
-          paddingLeft: props.rootPaddingLeft,
-          padding: props.fullContentSize ? 0 : undefined,
-        },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -82,6 +75,11 @@ const AgronodModalCard = (props: ModalCardProps) => {
         sx={(theme) => ({
           paddingX: 5,
           paddingY: 7,
+          paddingTop: props.rootPaddingTop?.md,
+          paddingBottom: props.rootPaddingBottom?.md,
+          paddingRight: props.rootPaddingRight?.md,
+          paddingLeft: props.rootPaddingLeft?.md,
+          padding: props.fullContentSize ? 0 : undefined,
           left: "50%",
           width: props.cardWidth ? props.cardWidth : "100%",
           maxWidth: props.cardMaxWidth ? props.cardMaxWidth : "688px",
@@ -89,6 +87,14 @@ const AgronodModalCard = (props: ModalCardProps) => {
           top: "50%",
           transform: "translate(-50%, -50%)",
           [theme.breakpoints.down("sm")]: {
+            paddingX: 2,
+            paddingBottom: props.rootPaddingBottom
+              ? props.rootPaddingBottom?.sm
+              : 4,
+            paddingTop: props.rootPaddingTop?.sm,
+            paddingRight: props.rootPaddingRight?.sm,
+            paddingLeft: props.rootPaddingLeft?.sm,
+            padding: props.fullContentSize ? 0 : undefined,
             width: "100%",
             top: "unset",
             left: "0",
@@ -124,34 +130,71 @@ const AgronodModalCard = (props: ModalCardProps) => {
             overflow: "auto",
             textAlign: props.alignment ? props.alignment : "center",
             [theme.breakpoints.down("sm")]: {
-              pl: 2,
-              pr: 2,
               maxHeight: "unset",
               overflow: "unset",
             },
           })}
         >
-          {props.icon && <Box sx={{ mb: 2 }}>{props.icon}</Box>}
-          {props.caption && <Box sx={{ mb: 1 }}>{props.caption}</Box>}
-          <Typography
-            id="modal-modal-title"
-            variant={
-              props.isBigTitle
-                ? isMobile
-                  ? "h4"
-                  : "h3"
-                : isMobile
-                ? "h5"
-                : "h4"
-            }
-            sx={{ pb: 2 }}
-          >
-            {props.title}
-          </Typography>
-          {props.subtitle && (
-            <Typography variant="body1" color="text.secondary" sx={{ pb: 3 }}>
-              {props.subtitle}
-            </Typography>
+          {(props.icon || props.caption || props.title || props.subtitle) && (
+            <Box
+              sx={{
+                paddingLeft:
+                  props.rootPaddingLeft?.md === 0 || props.fullContentSize
+                    ? 5
+                    : undefined,
+                paddingRight:
+                  props.rootPaddingRight?.md === 0 || props.fullContentSize
+                    ? 5
+                    : undefined,
+                paddingTop:
+                  props.rootPaddingTop?.md === 0 || props.fullContentSize
+                    ? 5
+                    : undefined,
+
+                [theme.breakpoints.down("sm")]: {
+                  paddingLeft:
+                    props.rootPaddingLeft?.sm === 0 || props.fullContentSize
+                      ? 5
+                      : undefined,
+                  paddingRight:
+                    props.rootPaddingRight?.sm === 0 || props.fullContentSize
+                      ? 5
+                      : undefined,
+                  paddingTop:
+                    props.rootPaddingTop?.sm === 0 || props.fullContentSize
+                      ? 5
+                      : undefined,
+                },
+              }}
+            >
+              {props.icon && <Box sx={{ mb: 2 }}>{props.icon}</Box>}
+              {props.caption && <Box sx={{ mb: 1 }}>{props.caption}</Box>}
+              {props.title && (
+                <Typography
+                  variant={
+                    props.isBigTitle
+                      ? isMobile
+                        ? "h4"
+                        : "h3"
+                      : isMobile
+                      ? "h5"
+                      : "h4"
+                  }
+                  sx={{ pb: 2 }}
+                >
+                  {props.title}
+                </Typography>
+              )}
+              {props.subtitle && (
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ pb: 3 }}
+                >
+                  {props.subtitle}
+                </Typography>
+              )}
+            </Box>
           )}
           <Box>{props.children}</Box>
         </Box>
