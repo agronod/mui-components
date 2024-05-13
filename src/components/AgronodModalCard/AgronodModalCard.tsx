@@ -15,18 +15,23 @@ type ModalCardBaseProps = Pick<MuiModalCardProps, "children" | "open" | "sx">;
 
 export interface ModalCardProps extends ModalCardBaseProps {
   title?: string;
-  onClose?: () => void;
-  notClosable?: boolean;
-  subtitle?: string;
-  cardWidth?: string;
-  icon?: React.ReactElement;
-  caption?: React.ReactElement;
-  alignment?: "left" | "center";
   isBigTitle?: boolean;
+  subtitle?: string;
+  caption?: React.ReactElement;
+  cardWidth?: string;
   cardMaxWidth?: string;
+  icon?: React.ReactElement;
+  alignment?: "left" | "center";
+  rootPaddingTop?: number;
+  rootPaddingBottom?: number;
+  rootPaddingRight?: number;
+  rootPaddingLeft?: number;
+  fullContentSize?: boolean;
+  notClosable?: boolean;
+  onClose?: () => void;
 }
 
-const ModalCard = (props: ModalCardProps) => {
+const AgronodModalCard = (props: ModalCardProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -57,6 +62,13 @@ const ModalCard = (props: ModalCardProps) => {
       aria-describedby="modal-modal-description"
       disableAutoFocus={true}
       sx={{
+        "& .MuiPaper-root": {
+          paddingTop: props.rootPaddingTop,
+          paddingBottom: props.rootPaddingBottom,
+          paddingRight: props.rootPaddingRight,
+          paddingLeft: props.rootPaddingLeft,
+          padding: props.fullContentSize ? 0 : undefined,
+        },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -148,4 +160,4 @@ const ModalCard = (props: ModalCardProps) => {
   );
 };
 
-export default ModalCard;
+export default AgronodModalCard;
