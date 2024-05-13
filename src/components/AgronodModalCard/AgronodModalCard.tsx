@@ -154,11 +154,11 @@ const AgronodModalCard = (props: ModalCardProps) => {
                 [theme.breakpoints.down("sm")]: {
                   paddingLeft:
                     props.rootPaddingLeft?.sm === 0 || props.fullContentSize
-                      ? 5
+                      ? 2
                       : undefined,
                   paddingRight:
                     props.rootPaddingRight?.sm === 0 || props.fullContentSize
-                      ? 5
+                      ? 2
                       : undefined,
                   paddingTop:
                     props.rootPaddingTop?.sm === 0 || props.fullContentSize
