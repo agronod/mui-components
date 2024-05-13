@@ -1,5 +1,5 @@
 import { Button, Link, Stack, Typography } from "@mui/material";
-import { ModalCard } from "../../ModalCard";
+import { AgronodModalCard } from "../../AgronodModalCard";
 
 type AgronodKontoProps = {
   isOpen: boolean;
@@ -10,7 +10,7 @@ type AgronodKontoProps = {
 const SupportDialog = (props: AgronodKontoProps) => {
   return (
     <>
-      <ModalCard
+      <AgronodModalCard
         open={props.isOpen}
         title="Kontakta oss"
         onClose={() => {
@@ -59,7 +59,7 @@ const SupportDialog = (props: AgronodKontoProps) => {
             Klar
           </Button>
         </>
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
