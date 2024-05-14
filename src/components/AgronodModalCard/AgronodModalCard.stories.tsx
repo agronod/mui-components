@@ -1,13 +1,13 @@
 import { StoryFn, Meta } from "@storybook/react";
-import ModalCard from "./ModalCard";
+import AgronodModalCard from "./AgronodModalCard";
 import { Box, Button } from "@mui/material";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import { useMemo, useState } from "react";
 import { ProgressIndicator } from "../ProgressIndicator";
 
 export default {
-  title: "Shared components/ModalCard",
-  component: ModalCard,
+  title: "Shared components/AgronodModalCard",
+  component: AgronodModalCard,
   parameters: {
     componentSubtitle: "Responsive Modal Card",
     docs: {
@@ -78,9 +78,9 @@ export default {
       },
     },
   },
-} as Meta<typeof ModalCard>;
+} as Meta<typeof AgronodModalCard>;
 
-export const ModalCardDefault: StoryFn<typeof ModalCard> = ({
+export const AgronodModalCardDefault: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
   onClose,
@@ -93,13 +93,17 @@ export const ModalCardDefault: StoryFn<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+      <AgronodModalCard
+        {...rest}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         {children}
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
-ModalCardDefault.args = {
+AgronodModalCardDefault.args = {
   title: "Modal card example",
   open: false,
   subtitle:
@@ -112,7 +116,7 @@ ModalCardDefault.args = {
   ),
   caption: <ProgressIndicator active={2} total={32} />,
 };
-export const ModalCardNotClosable: StoryFn<typeof ModalCard> = ({
+export const AgronodModalCardNotClosable: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
   onClose,
@@ -125,13 +129,13 @@ export const ModalCardNotClosable: StoryFn<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen}>
+      <AgronodModalCard {...rest} open={isOpen}>
         {children}
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
-ModalCardNotClosable.args = {
+AgronodModalCardNotClosable.args = {
   title: "This modal is not closable",
   open: false,
   subtitle:
@@ -145,7 +149,7 @@ ModalCardNotClosable.args = {
   caption: <ProgressIndicator active={2} total={32} />,
   notClosable: true,
 };
-export const ModalCardBigTitle: StoryFn<typeof ModalCard> = ({
+export const AgronodModalCardBigTitle: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
   onClose,
@@ -158,13 +162,17 @@ export const ModalCardBigTitle: StoryFn<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+      <AgronodModalCard
+        {...rest}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         {children}
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
-ModalCardBigTitle.args = {
+AgronodModalCardBigTitle.args = {
   title: "Modal card example",
   open: false,
   subtitle:
@@ -178,7 +186,7 @@ ModalCardBigTitle.args = {
   caption: <ProgressIndicator active={2} total={32} />,
   isBigTitle: true,
 };
-export const ModalCardLeftAligned: StoryFn<typeof ModalCard> = ({
+export const AgronodModalCardLeftAligned: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
   onClose,
@@ -191,13 +199,17 @@ export const ModalCardLeftAligned: StoryFn<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+      <AgronodModalCard
+        {...rest}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         {children}
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
-ModalCardLeftAligned.args = {
+AgronodModalCardLeftAligned.args = {
   title: "Modal card example",
   open: false,
   subtitle:
@@ -212,7 +224,7 @@ ModalCardLeftAligned.args = {
   alignment: "left",
 };
 
-export const ModalCardWithIcon: StoryFn<typeof ModalCard> = ({
+export const AgronodModalCardWithIcon: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
   onClose,
@@ -225,13 +237,17 @@ export const ModalCardWithIcon: StoryFn<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+      <AgronodModalCard
+        {...rest}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         {children}
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
-ModalCardWithIcon.args = {
+AgronodModalCardWithIcon.args = {
   title: "Modal card example title",
   subtitle: "Modal card example subtitle",
   open: false,
@@ -244,7 +260,7 @@ ModalCardWithIcon.args = {
   icon: <ErrorOutlineOutlinedIcon color="error" fontSize="large" />,
 };
 
-export const ModalCardCustomWidth: StoryFn<typeof ModalCard> = ({
+export const AgronodModalCardCustomWidth: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
   onClose,
@@ -257,13 +273,17 @@ export const ModalCardCustomWidth: StoryFn<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+      <AgronodModalCard
+        {...rest}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         {children}
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
-ModalCardCustomWidth.args = {
+AgronodModalCardCustomWidth.args = {
   title: "Modal card example title",
   subtitle: "Modal card example subtitle",
   open: false,
@@ -276,7 +296,7 @@ ModalCardCustomWidth.args = {
   cardWidth: "auto",
 };
 
-export const ModalCardCustomStyles: StoryFn<typeof ModalCard> = ({
+export const AgronodModalCardCustomStyles: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
   onClose,
@@ -289,13 +309,17 @@ export const ModalCardCustomStyles: StoryFn<typeof ModalCard> = ({
       <Button variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
-      <ModalCard {...rest} open={isOpen} onClose={() => setIsOpen(false)}>
+      <AgronodModalCard
+        {...rest}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         {children}
-      </ModalCard>
+      </AgronodModalCard>
     </>
   );
 };
-ModalCardCustomStyles.args = {
+AgronodModalCardCustomStyles.args = {
   title: "Modal card example title",
   subtitle: "Modal card example subtitle",
   open: false,
