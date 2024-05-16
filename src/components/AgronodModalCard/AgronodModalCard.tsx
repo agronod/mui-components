@@ -104,7 +104,8 @@ const AgronodModalCard = (props: ModalCardProps) => {
             borderBottomLeftRadius: "0",
             borderBottomRightRadius: "0",
             maxHeight: "95dvh",
-            overflow: "auto",
+            overflowY: "auto",
+            overflowX: "hidden",
           },
         })}
       >
