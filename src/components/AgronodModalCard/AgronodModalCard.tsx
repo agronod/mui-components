@@ -132,7 +132,8 @@ const AgronodModalCard = (props: ModalCardProps) => {
             textAlign: props.alignment ? props.alignment : "center",
             [theme.breakpoints.down("sm")]: {
               maxHeight: "unset",
-              overflow: "unset",
+              overflowY: "auto",
+              overflowX: "hidden",
             },
           })}
         >
