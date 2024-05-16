@@ -128,12 +128,12 @@ const AgronodModalCard = (props: ModalCardProps) => {
         <Box
           sx={(theme) => ({
             maxHeight: "95dvh",
-            overflow: "auto",
+            overflowY: "auto",
+            overflowX: "hidden",
             textAlign: props.alignment ? props.alignment : "center",
             [theme.breakpoints.down("sm")]: {
               maxHeight: "unset",
-              overflowY: "auto",
-              overflowX: "hidden",
+              overflow: "unset",
             },
           })}
         >
