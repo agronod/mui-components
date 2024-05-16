@@ -25,7 +25,7 @@ export type SubCategory = {
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
   tooltipData?: Array<SubCategory>;
-  hasError?: boolean;
+  showSkeleton?: boolean;
 };
 
 const GRID_HEIGHT = 54;
@@ -203,7 +203,7 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
 const HorizontalBarChart = ({
   data,
   tooltipData,
-  hasError,
+  showSkeleton,
 }: HorizontalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
@@ -334,7 +334,7 @@ const HorizontalBarChart = ({
               strokeWidth={1}
             />
           ))}
-          {!hasError &&
+          {!showSkeleton &&
             data.map((item, index) => (
               <Bar
                 key={index}
@@ -371,7 +371,7 @@ const HorizontalBarChart = ({
           my: 2,
         }}
       >
-        {hasError
+        {showSkeleton
           ? Array.from(new Array(6)).map((_, index) => (
               <Box
                 sx={{

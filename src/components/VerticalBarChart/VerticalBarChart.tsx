@@ -20,7 +20,7 @@ export type VerticalBarChartProps = {
   data: Array<VerticalBarChartData>;
   selectedId?: string;
   onItemHover?: (id?: string) => void;
-  hasError?: boolean;
+  showSkeleton?: boolean;
 };
 
 const TICK_WIDTH = 100;
@@ -84,7 +84,7 @@ const VerticalBarChart = ({
   data,
   selectedId,
   onItemHover,
-  hasError,
+  showSkeleton,
 }: VerticalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
@@ -196,7 +196,7 @@ const VerticalBarChart = ({
             strokeWidth={1}
           />
         ))}
-        {!hasError &&
+        {!showSkeleton &&
           data.map((item, index) => (
             <g
               key={index}
@@ -234,7 +234,7 @@ const VerticalBarChart = ({
           width: TICK_WIDTH,
         }}
       >
-        {hasError
+        {showSkeleton
           ? Array.from(new Array(6)).map((_, index) => (
               <>
                 <Skeleton
