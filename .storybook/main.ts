@@ -2,37 +2,22 @@ import { mergeConfig, defineConfig } from "vite";
 import svgrPlugin from "vite-plugin-svgr";
 
 module.exports = {
-  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
-
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-docs",
-    "@storybook/addon-storysource",
-    "@chromatic-com/storybook",
-    "@storybook/addon-themes",
-  ],
-
   framework: {
     name: "@storybook/react-vite",
   },
-
-  docs: {},
-
-  async viteFinal(config) {
-    // Merge custom configuration into the default config
-    return mergeConfig(
-      config,
-      defineConfig({
-        plugins: [svgrPlugin()],
-        server: {
-          port: 3000,
-        },
-      })
-    );
-  },
-
+  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: [
+    "@storybook/addon-docs",
+    "@storybook/addon-actions",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "@storybook/addon-links",
+    "@storybook/addon-themes",
+    "@storybook/addon-storysource",
+    "@chromatic-com/storybook",
+  ],
+  core: { disableTelemetry: true },
+  logLevel: "debug",
   typescript: {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
@@ -51,5 +36,17 @@ module.exports = {
           ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName)
           : true,
     },
+  },
+  viteFinal: async (config) => {
+    // Merge custom configuration into the default config
+    return mergeConfig(
+      config,
+      defineConfig({
+        plugins: [svgrPlugin()],
+        server: {
+          port: 3000,
+        },
+      })
+    );
   },
 };
