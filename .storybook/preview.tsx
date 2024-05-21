@@ -5,8 +5,12 @@ import {
   agrosfarTheme,
   agrosfarDarkTheme,
 } from "../src";
-
 import { Box } from "@mui/material";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '@fontsource/material-icons';
 
 export const parameters = {
   storySort: {
