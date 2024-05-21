@@ -814,6 +814,26 @@ const baseThemeOptions: ThemeOptions = {
           border: "1px solid",
           borderColor: globalThemePalette.warning.light,
         },
+        filledSuccess: {
+          backgroundColor: globalThemePalette.success.light,
+          border: "1px solid",
+          borderColor: globalThemePalette.success.light,
+        },
+        filledError: {
+          backgroundColor: globalThemePalette.error.light,
+          border: "1px solid",
+          borderColor: globalThemePalette.error.light,
+        },
+        filledInfo: {
+          backgroundColor: globalThemePalette.info.light,
+          border: "1px solid",
+          borderColor: globalThemePalette.info.light,
+        },
+        filledWarning: {
+          backgroundColor: globalThemePalette.warning.light,
+          border: "1px solid",
+          borderColor: globalThemePalette.warning.light,
+        },
       },
     },
     MuiAlertTitle: {
