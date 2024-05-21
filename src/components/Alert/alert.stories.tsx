@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { AlertTitle, Box, Typography } from "@mui/material";
+import { AlertTitle, Typography } from "@mui/material";
 import Alert from "./Alert";
 
 export default {
@@ -8,8 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `<p>An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.</p>
-          `,
+        component: `<p>An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.</p>`,
       },
     },
   },
@@ -23,6 +22,12 @@ export default {
       },
       options: ["error", "info", "success", "warning"],
     },
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: ["standard", "filled"],
+    },
     sx: {
       control: {
         type: "object",
@@ -31,17 +36,18 @@ export default {
   },
 } as Meta<typeof Alert>;
 
-export const AlertDefault: StoryFn<typeof Alert> = ({ children, ...rest }) => (
+const Template: StoryFn<typeof Alert> = ({ children, ...rest }) => (
   <Alert {...rest}>{children}</Alert>
 );
+
+export const AlertDefault = Template.bind({});
 AlertDefault.args = {
   children: "Description",
+  severity: "info",
+  variant: "standard",
 };
 
-export const AlertWithTitle: StoryFn<typeof Alert> = ({
-  children,
-  ...rest
-}) => <Alert {...rest}>{children}</Alert>;
+export const AlertWithTitle = Template.bind({});
 AlertWithTitle.args = {
   children: (
     <>
@@ -51,4 +57,20 @@ AlertWithTitle.args = {
       </Typography>
     </>
   ),
+  severity: "warning",
+  variant: "standard",
+};
+
+export const FilledErrorAlert = Template.bind({});
+FilledErrorAlert.args = {
+  children: "This is a filled error alert",
+  severity: "error",
+  variant: "filled",
+};
+
+export const FilledWarningAlert = Template.bind({});
+FilledWarningAlert.args = {
+  children: "This is a filled warning alert",
+  severity: "warning",
+  variant: "filled",
 };
