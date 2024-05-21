@@ -10,6 +10,8 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/addon-docs",
     "@storybook/addon-storysource",
+    "@chromatic-com/storybook",
+    "@storybook/addon-themes"
   ],
 
   framework: {
@@ -17,13 +19,7 @@ module.exports = {
     options: {},
   },
 
-  features: {
-    storyStoreV7: true,
-  },
-
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
 
   async viteFinal(config) {
     // Merge custom configuration into the default config
@@ -37,4 +33,8 @@ module.exports = {
       })
     );
   },
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript"
+  }
 };

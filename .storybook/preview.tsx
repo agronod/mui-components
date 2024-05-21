@@ -9,7 +9,6 @@ import {
 import { Box } from "@mui/material";
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
   storySort: {
     method: "alphabetical",
   },
@@ -87,3 +86,4 @@ export const decorators = [
     );
   },
 ];
+export const tags = ["autodocs"];
