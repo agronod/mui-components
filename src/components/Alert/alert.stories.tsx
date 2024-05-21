@@ -60,17 +60,3 @@ AlertWithTitle.args = {
   severity: "warning",
   variant: "standard",
 };
-
-export const FilledErrorAlert = Template.bind({});
-FilledErrorAlert.args = {
-  children: "This is a filled error alert",
-  severity: "error",
-  variant: "filled",
-};
-
-export const FilledWarningAlert = Template.bind({});
-FilledWarningAlert.args = {
-  children: "This is a filled warning alert",
-  severity: "warning",
-  variant: "filled",
-};
