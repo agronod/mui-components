@@ -32,7 +32,7 @@ export default {
       description:
         "<div>Filter array tells us which parameter from object are searchable.</div>",
       control: {
-        type: "array",
+        type: "object",
       },
     },
     maxWidth: {
@@ -45,22 +45,19 @@ export default {
     options: {
       description: "<div>Data array of object that goes in select.</div>",
       control: {
-        type: "array",
+        type: "object",
       },
     },
     value: {
       description:
         "<div>The value of the autocomplete. The value must have reference equality with the option in order to be selected.<p>You can customize the equality behavior with the <code>isOptionEqualToValue</code> prop.</p></div>",
       control: {
-        type: "array",
+        type: "object",
       },
     },
     onOptionChange: {
       description: `<div>Callback fired when the value changes. 
         <p>Format :<code>onOptionChange={(value) => void}</code></p> </div>`,
-      control: {
-        type: "function",
-      },
     },
     isOptionEqualToValue: {
       description: `<div>Used to determine if the option represents the given value. Uses strict equality by default.
@@ -69,33 +66,21 @@ export default {
         <p><code>option</code> The option to test.</p>
         <p><code>value</code> The value to test against.</p>
          </div>`,
-      control: {
-        type: "function",
-      },
     },
     getOptionLabel: {
       description: `<div>Function that returns the option label. 
       <p>Format :<code>getOptionLabel={(option) => option.title}</code></p>
          </div>`,
-      control: {
-        type: "function",
-      },
     },
     nameSelector: {
       description: `<div>Function that returns name for chip component.
       <p>Format :<code>nameSelector={(option) => option?.title}</code></p>
          </div>`,
-      control: {
-        type: "function",
-      },
     },
     isOptionDisabled: {
       description: `<div>Function that returns is option disabled for each option.
       <p>Format :<code>isOptionDisabled={(option) => Boolean(option.isDisabled)}</code></p>
          </div>`,
-      control: {
-        type: "function",
-      },
     },
     isOptionSelected: {
       description: `<div>Function that returns is option selected for each option.
@@ -105,17 +90,11 @@ export default {
         )
       }</code></p>
          </div>`,
-      control: {
-        type: "function",
-      },
     },
     additionalInfoText: {
       description: `<div>Function that returns additional text we want to show.
       <p>Format :<code>additionalInfoText={(option) => option.year}</code></p>
          </div>`,
-      control: {
-        type: "function",
-      },
     },
   },
 } as Meta<typeof AgronodAutocompleteSearch>;

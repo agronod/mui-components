@@ -31,11 +31,8 @@ export default {
     variant: {
       description:
         "<p>The variants to use: <code>outlined</code>, <code>contained</code> and <code>text</code></p>",
-      type: { name: "string", required: true },
-      table: { type: { summary: null } },
       control: {
         type: "radio",
-
         default: "contained",
       },
       options: ["contained", "outlined", "text"],

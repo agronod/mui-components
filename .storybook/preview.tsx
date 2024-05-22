@@ -5,11 +5,42 @@ import {
   agrosfarTheme,
   agrosfarDarkTheme,
 } from "../src";
-
 import { Box } from "@mui/material";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '@fontsource/material-icons';
+
+const themes = {
+  Agronod: agronodTheme,
+  Agrosfar: agrosfarTheme,
+  AgrosfarDark: agrosfarDarkTheme,
+};
+
+const getThemeOptions = (themeName) => {
+  return themes[themeName];
+};
+
+export const globalTypes = {
+  theme: {
+    description: "Global theme for components",
+    defaultValue: "Agronod",
+    toolbar: {
+      title: "Theme",
+      defaultValue: "Agronod",
+      items: [
+        { value: "Agronod", title: "Agronod" },
+        { value: "Agrosfar", title: "Agrosfar" },
+        { value: "AgrosfarDark", title: "AgrosfarDark" },
+      ],
+      icon: 'circlehollow',
+      dynamicTitle: true,
+    },
+  },
+};
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
   storySort: {
     method: "alphabetical",
   },
@@ -38,29 +69,6 @@ export const parameters = {
   },
 };
 
-const themeOptions = {
-  Agronod: agronodTheme,
-  Agrosfar: agrosfarTheme,
-  AgrosfarDark: agrosfarDarkTheme,
-};
-
-const getThemeOptions = (themeName) => {
-  return themeOptions[themeName];
-};
-
-export const globalTypes = {
-  theme: {
-    name: "Theme",
-    description: "Global theme for components",
-    defaultValue: "Agronod",
-    toolbar: {
-      items: ["Agronod", "Agrosfar", "AgrosfarDark"],
-      title: true,
-      dynamicTitle: true,
-    },
-  },
-};
-
 export const decorators = [
   (Story, context) => {
     const themeOptions = getThemeOptions(context.globals.theme);
@@ -69,11 +77,6 @@ export const decorators = [
         {context.globals.theme === "AgrosfarDark" ? (
           <Box
             sx={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
               padding: 2,
               backgroundColor: "#216545",
             }}
@@ -87,3 +90,5 @@ export const decorators = [
     );
   },
 ];
+
+export const tags = ["autodocs"];

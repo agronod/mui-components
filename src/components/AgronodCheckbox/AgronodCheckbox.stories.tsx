@@ -14,15 +14,9 @@ export default {
     },
     handleOnChange: {
       description: "Controling onChange event",
-      control: {
-        type: "function",
-      },
     },
     handleOnClick: {
       description: "Controling onClick event",
-      control: {
-        type: "function",
-      },
     },
     checked: {
       description: "If true, the component is checked.",
