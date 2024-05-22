@@ -56,7 +56,7 @@ export const parameters = {
     zoom: { hidden: true },
     eject: { hidden: true },
     fullscreen: { hidden: true },
-    // "storybook/background": { hidden: true },
+    "storybook/background": { hidden: true },
   },
   backgrounds: {
     default: "agronod",
