@@ -44,13 +44,16 @@ The following packages needs to be installed as dependencies in the consuming ap
 ```json
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "6.3.0",
+    "@mui/icons-material": "^5.15.18",
+    "@mui/lab": "^5.0.0-alpha.123",
+    "@mui/material": "^5.15.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "6.23.1",
     "recharts": "^2.4.1"
 ```
+
+Mui/lab ensures that we are using correct mui theme from agronod package and not default theme.
 
 ## Usage
 
@@ -59,17 +62,24 @@ The following packages needs to be installed as dependencies in the consuming ap
 import ThemeProvider from "@agronod/mui-components";
 
 const Component = () => {
-  <ThemeProvider>
+  <StyledEngineProvider injectFirst>
+  // We have three temes that can be used right now: AgronodTheme, AgrosphereTheme, AgrosphereDarkTheme
+  <ThemeProvider options={yourSelectedTheme}> 
     <App />
   </ThemeProvider>;
+   </StyledEngineProvider>
 };
 ```
 
 ### useTheme
 
-**useTheme** is currently not available in a consuming application as it will use the default theme. A workaround for now is to use methods in *sx* props.
+**useTheme** is available in a consuming application when using Mui/lab as dependency. Theme object can be used two ways on top of components as *useTheme()* or in *sx* props.
 
 ```jsx
+const theme = useTheme();
+const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+backgroundColor={theme.palette.secondary.main}
+#or
 <Button sx={{(theme)=>({ p: theme.spacing(1) })}} />
 #or
 <Button sx={{ p: (theme) => theme.spacing(1) }}} />
@@ -98,3 +108,71 @@ Versions should follow [semver](https://semver.org/)
 - run **npm run build**
 - run **npm version "preferred version"**
 - run **npm publish**
+
+## Write stories
+- Every component should have main component file and story file
+.
+└── Root/
+    └── src/
+        ├── assets
+        └── components/
+            └── ComponentFolder/
+                ├── Component.tsx
+                ├── Component.stories.tsx
+                ├── index.ts
+                ├── MockData.ts (if any)
+                └── components/
+                    └── ChildComponent(if any)
+
+- In story file we should have simmilars structure ex.: 
+```jsx
+import { StoryFn, Meta } from "@storybook/react";
+import Component from "./Component";
+
+export default {
+  title: "Component folder/Component name",
+  component: Component,
+  parameters: {
+    componentSubtitle:
+      "What is component main purpose",
+    docs: {
+      description: {
+        component: `<div><p>Here we can add additional information about component, notes, warnings.</p></div>`,
+      },
+    },
+  },
+  // Arguments which are shown in control section with their description and default values
+  argTypes: {
+    children: {
+      description: "will override automatic description if any exist",
+      control: {
+        type: "look for types of controles in storybook in storybook",
+        required: true,
+      },
+    },
+  },
+} as Meta<typeof Component>;
+
+export const ComponentDefault: StoryFn<typeof Component> = ({ separateProperty, ...rest }) => (
+  <Component separateProperty={...separateProperty} {...rest}/>
+);
+#or
+export const ComponentDefault: StoryFn<typeof Component> = (props) => (
+  <Component {...props}/>
+);
+
+ComponentDefault.args = {
+  arg1: "Lorem Ipsum",
+  arg2: "LoremIpsum",
+};
+
+export const ComponentWithOtherParameters: StoryFn<typeof Component> = ({ separateProperty, ...rest }) => (
+  <Component {...rest}>{separateProperty}</Component>
+);
+
+ComponentWithOtherParameters.args = {
+  arg1: "Lorem Ipsum",
+  arg2: "LoremIpsum",
+  arg3: "LoremIpsum",
+};
+```

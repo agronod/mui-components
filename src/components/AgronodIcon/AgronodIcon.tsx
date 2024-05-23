@@ -1,14 +1,33 @@
 import { Skeleton, SvgIcon, SvgIconProps } from "@mui/material";
 import React, { Suspense } from "react";
 
+/**
+ * Agronod-specific icons
+ * Used for navigation and prominent icons.
+ *
+ * Other icons are from Material UI >> (use “round” variation when possible).
+ *
+ * From design, we should extract 24x24 so it matches with MUI.
+ *
+ * Ensure the `fill` property in the SVG is utilized correctly to allow for dynamic color assignment to the icon shapes,
+ * ensuring the icons appear correctly within the application.
+ */
+
 export interface IconProps extends SvgIconProps {
   name: string;
 }
 
-const AgronodIcon = (props: IconProps) => {
+const AgronodIcon: React.FC<IconProps> = ({
+  name,
+  fontSize = "inherit",
+  color = "inherit",
+  sx,
+  ...props
+}) => {
   const DynamicComponent = React.lazy(
-    () => import(`../../assets/icons/${props.name}.svg?component`)
+    () => import(`../../assets/icons/${name}.svg?component`)
   );
+
   return (
     <Suspense
       fallback={
@@ -17,15 +36,16 @@ const AgronodIcon = (props: IconProps) => {
     >
       <SvgIcon
         component={DynamicComponent}
-        fontSize={props.fontSize}
-        color={props.color}
+        fontSize={fontSize}
+        color={color}
         inheritViewBox={false}
         sx={{
           "& *": {
             fill: "currentcolor",
           },
-          ...props.sx,
+          ...sx,
         }}
+        {...props}
       />
     </Suspense>
   );
