@@ -129,14 +129,18 @@ const AutocompleteSearch = <T,>({
         sx={{ marginBottom: 2 }}
         flexWrap="wrap"
       >
-        {value.map((option: T, index: number) => (
-          <AgronodChip
-            {...getTagProps({ index })}
-            size="medium"
-            label={nameSelector(option)}
-            handleOnDelete={() => onOptionChange(option)}
-          />
-        ))}
+        {value.map((option: T, index: number) => {
+          const { key, ...restProps } = getTagProps({ index });
+          return (
+            <AgronodChip
+              key={key}
+              {...restProps}
+              size="medium"
+              label={nameSelector(option)}
+              handleOnDelete={() => onOptionChange(option)}
+            />
+          );
+        })}
       </Stack>
       <Box>
         <TextField
