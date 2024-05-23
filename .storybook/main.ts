@@ -6,6 +6,7 @@ module.exports = {
     name: "@storybook/react-vite",
   },
   stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
+
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-actions",
@@ -16,7 +17,6 @@ module.exports = {
     "@storybook/addon-storysource",
     "@chromatic-com/storybook",
   ],
-  core: { disableTelemetry: true },
   logLevel: "debug",
   typescript: {
     reactDocgen: "react-docgen-typescript",
@@ -36,6 +36,10 @@ module.exports = {
           ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName)
           : true,
     },
+  },
+  core: {
+    disableTelemetry: true,
+    builder: "@storybook/builder-vite",
   },
   viteFinal: async (config) => {
     // Merge custom configuration into the default config
