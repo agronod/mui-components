@@ -6,7 +6,9 @@ module.exports = {
     name: "@storybook/react-vite",
   },
   stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
-
+  docs: {
+    defaultName: "About",
+  },
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-actions",
