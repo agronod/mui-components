@@ -1,33 +1,64 @@
-import { Stack, SvgIconProps } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import AgronodIcon from "./AgronodIcon";
 import { Meta, StoryFn } from "@storybook/react";
 
-export default {
-  title: "Base/Agronod Icons",
-  component: AgronodIcon,
+const iconArray = [
+  "epost",
+  "navAvtal",
+  "navDatadelningsInstallningar",
+  "navForetagAnvandare",
+  "navHem",
+  "navKontrollpanel",
+  "navMarknadKonkurrens",
+  "orgnummer",
+  "profil",
+  "notkreatur",
+  "mjolk",
+  "vaxtodling",
+  "warningOutlined",
+  "warningContained",
+  "infoOutlined",
+  "infoContained",
+  "successOutlined",
+  "successContained",
+  "errorOutlined",
+  "errorContained",
+];
 
+const componentDescription = `<div>
+<p>Other icons are from <a href="https://mui.com/material-ui/material-icons/" target="_blank">Material UI </a> <b> (use “round” variation when possible)</b>.</p>
+<p>From design, we should extract 24x24 so it matches with MUI.</p>
+<p><b>Good example:</b></p>
+<img src="/src/assets/extractionIconExample.png" />
+<p>Ensure the <code>fill</code> property in the SVG is utilized correctly to allow for dynamic color assignment to the icon shapes, ensuring the icons appear correctly within the application.</p>
+<p>To display an icon in this story, you need to:</p>
+<p>1. Import icon in storybook assets/icons</p>
+<p>2. Add the icon name to the iconArray</p>
+</div>`;
+
+const iconArgDescription = iconArray
+  .map((icon) => `<div><code>${icon}</code></div>`)
+  .join("");
+
+export default {
+  title: "Custom icons/Agronod Icons",
+  component: AgronodIcon,
+  parameters: {
+    componentSubtitle:
+      "Agronod-specific icons are used for navigation and prominent icons",
+    docs: {
+      description: {
+        component: componentDescription,
+      },
+    },
+  },
   argTypes: {
     name: {
-      description:
-        "<div><code>epost</code></div><div><code>navAvtal</code></div><div><code>navDatadelningsInstallningar</code></div><div><code>navForetagAnvandare</code></div><div><code>navHem</code></div><div><code>navKontrollpanel</code></div><div><code>orgnummer</code></div><div><code>navMarknadKonkurrens</code></div><div><code>profil</code></div>",
+      description: iconArgDescription,
       control: {
         type: "select",
       },
-      options: [
-        "epost",
-        "navAvtal",
-        "navDatadelningsInstallningar",
-        "navForetagAnvandare",
-        "navHem",
-        "navKontrollpanel",
-        "navMarknadKonkurrens",
-        "orgnummer",
-        "profil",
-        "notkreatur",
-        "mjolk",
-        "vaxtodling",
-        "warning",
-      ],
+      options: iconArray,
     },
     color: {
       control: {
@@ -59,34 +90,26 @@ export default {
   },
 } as Meta<typeof AgronodIcon>;
 
-export const AgronodIconOne: StoryFn<typeof AgronodIcon> = ({ ...rest }) => (
-  <AgronodIcon {...rest} />
+export const AgronodIconSingle: StoryFn<typeof AgronodIcon> = (props) => (
+  <AgronodIcon {...props} />
 );
-AgronodIconOne.args = {
+AgronodIconSingle.args = {
   name: "epost",
   fontSize: "small",
 };
 
-export const AgronodIcons: StoryFn<typeof AgronodIcon> = ({
+// TODO: nicer gallery icon display: check IconGallery Storybook
+export const AgronodIconsGallery: StoryFn<typeof AgronodIcon> = ({
   name,
   ...rest
 }) => (
   <Stack flexDirection="row" gap={3} flexWrap="wrap">
-    <AgronodIcon name="epost" {...rest} />
-    <AgronodIcon name="navAvtal" {...rest} />
-    <AgronodIcon name="navDatadelningsInstallningar" {...rest} />
-    <AgronodIcon name="navForetagAnvandare" {...rest} />
-    <AgronodIcon name="navHem" {...rest} />
-    <AgronodIcon name="navKontrollpanel" {...rest} />
-    <AgronodIcon name="navMarknadKonkurrens" {...rest} />
-    <AgronodIcon name="orgnummer" {...rest} />
-    <AgronodIcon name="profil" {...rest} />
-    <AgronodIcon name="notkreatur" {...rest} />
-    <AgronodIcon name="mjolk" {...rest} />
-    <AgronodIcon name="vaxtodling" {...rest} />
-    <AgronodIcon name="warning" color="warning" {...rest} />
+    {iconArray.map((icon) => (
+      <AgronodIcon key={icon} name={icon} {...rest} />
+    ))}
   </Stack>
 );
-AgronodIcons.args = {
-  fontSize: "small",
+
+AgronodIconsGallery.args = {
+  fontSize: "large",
 };

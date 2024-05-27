@@ -52,7 +52,7 @@ const preview: Preview = {
       zoom: { hidden: true },
       eject: { hidden: true },
       fullscreen: { hidden: true },
-      "storybook/background": { hidden: true },
+      background: { hidden: true },
     },
     backgrounds: {
       default: "agronod",
