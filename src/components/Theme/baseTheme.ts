@@ -787,17 +787,13 @@ const baseThemeOptions: ThemeOptions = {
           alignItems: "center",
           padding: defaultMuiTheme.spacing(2),
           ...globalTypography.body2,
-
-          "& .MuiAlert-action" : {
-            [defaultMuiTheme.breakpoints.down("sm")]: {
-              flexBasis: "100%",
-              marginLeft: 0,
-              paddingLeft: 0,
-              "& > *" : {
-                width: "100%"
-              }
-            },
-           
+          "& .MuiAlert-message" : {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            flexWrap: "wrap",
+            gap: 8
           }
         },
         message: {

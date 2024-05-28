@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from "@storybook/react";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import AgronodCard from "./AgronodCard";
 
 export default {
@@ -9,21 +9,8 @@ export default {
     componentSubtitle: "Base Outlined white Card container",
     docs: {
       description: {
-        component: `<p>Used as base container in Agronod and Agrosfär. It is made of MUI Card component <code>variant="outlined"</code> with specific padding that can be overriden with <code>sx</code> property</p>
+        component: `<p>Used as base container in Agronod and Agrosfär. It is made of MUI Card component <code>variant="outlined"</code> with specific padding that can be overriden with <code>sx</code> property.</p>
           `,
-      },
-    },
-  },
-  argTypes: {
-    children: {
-      description:
-        "This can be any component or group of components, Card itself does not affect child components, except having padding of it's own.",
-      type: { name: "symbol", required: true },
-    },
-    sx: {
-      description: "This property is used to control top parent Card element",
-      control: {
-        type: "object",
       },
     },
   },

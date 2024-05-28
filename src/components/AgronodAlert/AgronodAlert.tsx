@@ -1,4 +1,4 @@
-import { AlertTitle, Alert as MuiAlert, AlertProps as MuiAlertProps } from "@mui/material";
+import { AlertTitle, Box, Alert as MuiAlert, AlertProps as MuiAlertProps } from "@mui/material";
 import { AgronodIcon } from "../AgronodIcon";
 
 type AgronodAlertBaseProps = Pick<
@@ -11,7 +11,7 @@ export interface AgronodAlertProps extends AgronodAlertBaseProps {
   behindCard?: boolean,
 }
 
-const AgronodAlert = ({variant, title, children, behindCard, sx, ...rest} : AgronodAlertProps) => {
+const AgronodAlert = ({variant, title, children, behindCard, sx, action, ...rest} : AgronodAlertProps) => {
   const standardIconMapping = {
     success: <AgronodIcon name="successOutlined" fontSize="small" color="success"/>,
     warning: <AgronodIcon name="warningOutlined" fontSize="small" color="warning"/>,
@@ -40,8 +40,16 @@ const AgronodAlert = ({variant, title, children, behindCard, sx, ...rest} : Agro
       position: "relative",
       ...sx
     } : sx}>
-      {title  && <AlertTitle>{title}</AlertTitle> }
-      {children}
+      <Box>
+        {title  && <AlertTitle>{title}</AlertTitle> }
+        {children}
+      </Box>
+      {action && <Box sx={(theme) => ({
+        [theme.breakpoints.down("sm")]: {
+          width: "100%",
+          "& > *" : {width: "100%"}
+        }
+      })}>{action}</Box>}
     </MuiAlert>
   );
 };
