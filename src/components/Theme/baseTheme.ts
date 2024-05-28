@@ -781,7 +781,6 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           boxShadow: "none",
-          flexWrap: "wrap",
           borderRadius: "16px",
           border: "1px solid",
           color: globalThemePalette.text.primary,

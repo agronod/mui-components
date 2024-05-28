@@ -19,7 +19,7 @@ export interface IconProps extends SvgIconProps {
 
 const AgronodIcon: React.FC<IconProps> = ({
   name,
-  fontSize = "inherit",
+  fontSize = "medium",
   color = "inherit",
   sx,
   ...props
