@@ -7,9 +7,10 @@ export default {
   title: "Agrosfär exclusive/Agronod Autocomplete Search",
   component: AgronodAutocompleteSearch,
   parameters: {
+  componentSubtitle:  "Autocomplete Search component is used in Agrosfär to search and check multiple parameters.",
     docs: {
       description: {
-        component: `<p>Autocomplete Search component is used in Agrosfär to search and check certain parameters trough modal, it is multiselect. This component can search by multiple parameters.</p>
+        component: `<p>This component is build with <b>custom multiselect UI elements</b> but based on <code>useAutocomplete</code> hook that gives it all functionalities and methods.</p><p>See more in <a href="custom multiselect UI elements" target="_blank"> MUI documentation</a>.</p>
           `,
       },
     },
