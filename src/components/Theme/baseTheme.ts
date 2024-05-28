@@ -781,37 +781,62 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           boxShadow: "none",
+          flexWrap: "wrap",
           borderRadius: "16px",
+          border: "1px solid",
           color: globalThemePalette.text.primary,
-          ...globalTypography.body2,
           alignItems: "center",
           padding: defaultMuiTheme.spacing(2),
+          ...globalTypography.body2,
+
+          "& .MuiAlert-action" : {
+            [defaultMuiTheme.breakpoints.down("sm")]: {
+              flexBasis: "100%",
+              marginLeft: 0,
+              paddingLeft: 0,
+              "& > *" : {
+                width: "100%"
+              }
+            },
+           
+          }
         },
         message: {
           padding: 0,
         },
         icon: {
-          fontSize: pxToRem(20),
           marginRight: defaultMuiTheme.spacing(1.5),
         },
         standardSuccess: {
           backgroundColor: globalThemePalette.success.pastel,
-          border: "1px solid",
           borderColor: globalThemePalette.success.light,
         },
         standardError: {
           backgroundColor: globalThemePalette.error.pastel,
-          border: "1px solid",
           borderColor: globalThemePalette.error.light,
         },
         standardInfo: {
           backgroundColor: globalThemePalette.info.pastel,
-          border: "1px solid",
           borderColor: globalThemePalette.info.light,
         },
         standardWarning: {
           backgroundColor: globalThemePalette.warning.pastel,
-          border: "1px solid",
+          borderColor: globalThemePalette.warning.light,
+        },
+        filledSuccess: {
+          backgroundColor: globalThemePalette.success.light,
+          borderColor: globalThemePalette.success.light,
+        },
+        filledError: {
+          backgroundColor: globalThemePalette.error.light,
+          borderColor: globalThemePalette.error.light,
+        },
+        filledInfo: {
+          backgroundColor: globalThemePalette.info.light,
+          borderColor: globalThemePalette.info.light,
+        },
+        filledWarning: {
+          backgroundColor: globalThemePalette.warning.light,
           borderColor: globalThemePalette.warning.light,
         },
       },

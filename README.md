@@ -129,11 +129,12 @@ Versions should follow [semver](https://semver.org/)
 ### Story file
 
 Each story should have
-1. Subtitle - short about component
-2. Description - component usage, where, how, which project
-3. Changeable arguments
-4. Arguments description for each one 
-5. Docs section code display that you can copy
+1. Title - component place and name
+2. Subtitle - short about component
+3. Description - component usage, where, how, which project
+4. Changeable arguments
+5. Arguments description for each one 
+6. Docs section code display that you can copy
 
 ```jsx
 import { StoryFn, Meta } from "@storybook/react";
