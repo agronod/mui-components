@@ -7,23 +7,23 @@ MuiAlertProps,
 >;
 
 export interface AgronodAlertProps extends AgronodAlertBaseProps {
-  title?: string,
+  title?: React.ReactNode | string,
   behindCard?: boolean,
 }
 
 const AgronodAlert = ({variant, title, children, behindCard, sx, action, ...rest} : AgronodAlertProps) => {
   const standardIconMapping = {
-    success: <AgronodIcon name="successOutlined" fontSize="small" color="success"/>,
-    warning: <AgronodIcon name="warningOutlined" fontSize="small" color="warning"/>,
-    error: <AgronodIcon name="errorOutlined" fontSize="small" color="error"/>,
-    info: <AgronodIcon name="infoOutlined" fontSize="small" color="info"/>,
+    success: <AgronodIcon name="successOutlined" color="success"/>,
+    warning: <AgronodIcon name="warningOutlined" color="warning"/>,
+    error: <AgronodIcon name="errorOutlined" color="error"/>,
+    info: <AgronodIcon name="infoOutlined" color="info"/>,
   };
 
   const filledIconMapping = {
-    success: <AgronodIcon name="successContained" fontSize="small" color="success"/>,
-    warning:<AgronodIcon name="warningContained" fontSize="small" color="warning"/>,
-    error: <AgronodIcon name="errorContained" fontSize="small" color="error"/>,
-    info: <AgronodIcon name="infoContained" fontSize="small" color="info"/>,
+    success: <AgronodIcon name="successContained" color="success"/>,
+    warning:<AgronodIcon name="warningContained" color="warning"/>,
+    error: <AgronodIcon name="errorContained" color="error"/>,
+    info: <AgronodIcon name="infoContained" color="info"/>,
   };
 
   const iconMapping =

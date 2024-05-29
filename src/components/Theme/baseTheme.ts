@@ -793,7 +793,14 @@ const baseThemeOptions: ThemeOptions = {
             alignItems: "center",
             width: "100%",
             flexWrap: "wrap",
-            gap: 8
+            gap: 8,
+          },
+          "& .MuiAlert-icon" : {
+            padding: 0,
+            minWidth: "24px",
+            minHeight: "24px",
+            alignItems: "center",
+            justifyContent: "center",
           }
         },
         message: {

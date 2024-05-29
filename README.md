@@ -63,7 +63,7 @@ import ThemeProvider from "@agronod/mui-components";
 
 const Component = () => {
   <StyledEngineProvider injectFirst>
-    // We have three temes that can be used right now: AgronodTheme, AgrosphereTheme, AgrosphereDarkTheme
+    // We have three themes that can be used right now: AgronodTheme, AgrosphereTheme, AgrosphereDarkTheme
     <ThemeProvider options={yourSelectedTheme}> 
       <App />
     </ThemeProvider>;
@@ -111,6 +111,7 @@ Versions should follow [semver](https://semver.org/)
 
 ## Write stories
 - Every component should have main component file and story file
+- Name of component should be prefixed with Agronod (ex. AgronodCheckbox, AgronodButton etc...) so it differs from MUI versions when importing.
 .
 └── Root/
     └── src/
