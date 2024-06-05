@@ -91,6 +91,10 @@ declare module "@mui/material/Typography/Typography" {
   interface TypographyPropsVariantOverrides {
     subtitle3: true;
     subtitle4: true;
+    body1bold: true;
+    body2bold: true;
+    body3bold: true;
+    body4bold: true;
     body3: true;
     body4: true;
     component: true;
@@ -268,10 +272,22 @@ const globalTypography = {
     fontWeight: 400,
     lineHeight: "22px",
   },
+  body1bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(16),
+    fontWeight: 500,
+    lineHeight: "22px",
+  },
   body2: {
     fontFamily: "inter",
     fontSize: pxToRem(14),
     fontWeight: 400,
+    lineHeight: "20px",
+  },
+  body2bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(14),
+    fontWeight: 500,
     lineHeight: "20px",
   },
   body3: {
@@ -280,10 +296,22 @@ const globalTypography = {
     fontWeight: 400,
     lineHeight: "16px",
   },
+  body3bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(12),
+    fontWeight: 500,
+    lineHeight: "16px",
+  },
   body4: {
     fontFamily: "inter",
     fontSize: pxToRem(10),
     fontWeight: 400,
+    lineHeight: "14px",
+  },
+  body4bold: {
+    fontFamily: "inter",
+    fontSize: pxToRem(10),
+    fontWeight: 500,
     lineHeight: "14px",
   },
   caption: {

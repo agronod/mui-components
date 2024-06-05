@@ -1,6 +1,6 @@
 import { Box, Card, Stack, Typography, useTheme } from "@mui/material";
 export default {
-  title: "Base/ColorPalette",
+  title: "DesignTokens/ColorPalette",
 };
 
 export const ColorPalette = () => {

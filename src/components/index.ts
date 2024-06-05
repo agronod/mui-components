@@ -13,6 +13,7 @@ export * from "./HorizontalBarChart";
 export * from "./Support";
 export * from "./ErrorPagesContent";
 export * from "./AgronodIcon";
+export * from "./AgronodTypography";
 export * from "./AgronodAlert";
 export * from "./AgronodModalCard";
 export * from "./AgronodCard";

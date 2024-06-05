@@ -125,8 +125,6 @@ Versions should follow [semver](https://semver.org/)
                 └── components/
                     └── ChildComponent(if any)
 
-- In story file we should have simmilars structure ex.:
-
 ### Story file
 
 Each story should have
