@@ -41,7 +41,7 @@ const iconArgDescription = iconArray
   .join("");
 
 export default {
-  title: "Custom icons/Agronod Icons",
+  title: "Custom icons/Icons",
   component: AgronodIcon,
   parameters: {
     componentSubtitle:

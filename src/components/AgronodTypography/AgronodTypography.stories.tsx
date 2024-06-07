@@ -4,11 +4,11 @@ import AgronodTypography from "./AgronodTypography";
 const componentDescription = `<div>
 <p>In our <code>baseTheme.tsx</code> we added overrides for different headlines and other fonts.</p>
 <p>All types should match with design in Figma by names and props.</p>
-<p><a target='_blank' href='https://material.io/design/typography/the-type-system.html'>Go to material design for more</a>.
+<p><a target='_blank' href='https://material.io/design/typography/the-type-system.html'>Go to material design</a> for more information about typography component.
 </div>`
 
 export default {
-  title: "DesignTokens/Agronod Typography",
+  title: "Design tokens/Typography",
   component: AgronodTypography,
   parameters: {
     componentSubtitle: "Use typography to present your design and content as clearly and efficiently as possible.",

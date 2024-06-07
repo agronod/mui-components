@@ -4,7 +4,7 @@ import { films } from "./MockData";
 import { useState } from "react";
 
 export default {
-  title: "Agrosfär exclusive/Agronod Autocomplete Search",
+  title: "Agrosfär exclusive/Autocomplete Search",
   component: AgronodAutocompleteSearch,
   parameters: {
   componentSubtitle:  "Autocomplete Search component is used in Agrosfär to search and check multiple parameters.",

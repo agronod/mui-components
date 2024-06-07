@@ -2,7 +2,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import ProgressIndicator from "./ProgressIndicator";
 
 export default {
-  title: "Shared components/ProgressIndicator",
+  title: "Shared components/Progress Indicator",
   component: ProgressIndicator,
   parameters: {
     componentSubtitle: "Textual stepper component",

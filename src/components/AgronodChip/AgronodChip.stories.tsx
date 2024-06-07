@@ -2,7 +2,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import AgronodChip from "./AgronodChip";
 
 export default {
-  title: "Shared components/AgronodChip",
+  title: "Shared components/Chip",
   component: AgronodChip,
   parameters: {
     docs: {

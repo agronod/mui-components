@@ -5,7 +5,7 @@ import { AgronodCard } from "../AgronodCard";
 import { LoaderCircular } from "../Loaders";
 
 export default {
-  title: "Shared components/AgronodAlert",
+  title: "Shared components/Alert",
   component: AgronodAlert,
   parameters: {
     componentSubtitle:

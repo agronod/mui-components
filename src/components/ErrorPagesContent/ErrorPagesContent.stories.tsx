@@ -3,7 +3,7 @@ import ErrorPagesContent from "./ErrorPagesContent";
 import { useTheme } from "@mui/material";
 
 export default {
-  title: "Shared components/ErrorPagesContent",
+  title: "Shared components/Error Pages Content",
   component: ErrorPagesContent,
   parameters: {
     componentSubtitle:
