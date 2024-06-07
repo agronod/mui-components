@@ -5,12 +5,17 @@ module.exports = {
   framework: {
     name: "@storybook/react-vite",
   },
-  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   docs: {
     defaultName: "About",
   },
   addons: [
-    "@storybook/addon-docs",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        transcludeMarkdown: true,
+      },
+    },
     "@storybook/addon-actions",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
@@ -18,6 +23,7 @@ module.exports = {
     "@storybook/addon-themes",
     "@storybook/addon-storysource",
     "@chromatic-com/storybook",
+    "@storybook/blocks",
   ],
   logLevel: "debug",
   typescript: {

@@ -1,27 +1,25 @@
-# Agronod MUI components
+# Agronod Design System
 
-Visit the [Storybook](https://main--626a5b4b1abebb004a4657a8.chromatic.com)
+For the documentation of components we use Storybook together with Chromatic.
+This is mainly to use battle tested standards that already have extensive support and documentation.
+
+Visit our [Storybook](https://main--626a5b4b1abebb004a4657a8.chromatic.com) library.
 
 This library is meant to provide two things:
 
 - Prestyled components that align with Agronods style profile
 - Documentation and visualization for the components
 
-It is built on top of [Material UI](https://mui.com/getting-started/usage/).
+It is built on top of <b>[Material UI](https://mui.com/getting-started/usage/)</b>.
 This way we can make use of an wide range of prebuilt components that we know follow [Material Designs](https://material.io/design) thuroughly tested and documented standards.
 
 ## Component principles
 
 - Think LEGO blocks :)
 - If a component seems to get big, see if it should be broken up into several smaller reusable components
-- If a component seems to be very specific, see if it could take properties to make it resulable for more use cases
+- If a component seems to be very specific, see if it could take properties to make it reusable for more use cases
 
-## Documentation
-
-For the documentation we use Storybook together with Chromatic.
-This is mainly to use battle tested standards that already have extensive support and documentation.
-
-## Running
+## Running project
 
 ```bash
 npm install
@@ -33,9 +31,32 @@ npm run storybook
 npm run storybook@legacy
 ```
 
-## Integrating
+## Integrating as design system in project
 
+- To be able to use this component library you need to install it as npm package with certain dependencies that are required for it to work properly.
+- <b>Since library has limited use, you need to have correct github authorization token and correct setup in <code>.npmrc</code> file to be able to install and use it.</b>
+
+### Updating package
+
+While developing a feature branch we can publish -alpha.n versions (0.1.2-alpha.3) for testing purposes. After the feature is merged into main we publish the resulting version 0.1.2.
+
+Versions should follow [semver](https://semver.org/)
+
+- You need a personal token with read and write access. The token can be created [here](https://github.com/settings/tokens)
+- Set a global variable called "REACT_APP_GITHUB_TOKEN" for your shell of choice.
+- run **"npm login --scope=@agronod --registry=https://npm.pkg.github.com"** and follow instructions
+- make sure your project is clean, tested and updated with the intended functionality
+- Test that all updates are in place and functioning
+- run **npm run build**
+- run **npm version "preferred version"**
+- run **npm publish**
+
+### Installing
 > npm install --save @agronod/mui-components
+
+or specific version
+
+> npm install @agronod/mui-components@a.bc.d
 
 ### Dependencies
 
@@ -53,15 +74,20 @@ The following packages needs to be installed as dependencies in the consuming ap
     "recharts": "^2.4.1"
 ```
 
-Mui/lab ensures that we are using correct mui theme from agronod package and not default theme.
+##### Mui/lab ensures that we are using correct mui theme from agronod package and not default theme.
 
-## Usage
+### Base Wrapper for all components
+
+To get all themes and styles wrap all components preferably in <code>App.tsx</code> file.
+
+#### ThemeProvider
+  > Pass options or overrides to the base theme. This is so that each project can configure the library to their own profile.
 
 ```javascript
 // Wrap as soon as possible in the component tree
 import ThemeProvider from "@agronod/mui-components";
 
-const Component = () => {
+const App = () => {
   <StyledEngineProvider injectFirst>
     // We have three themes that can be used right now: AgronodTheme, AgrosphereTheme, AgrosphereDarkTheme
     <ThemeProvider options={yourSelectedTheme}> 
@@ -71,9 +97,14 @@ const Component = () => {
 };
 ```
 
-### useTheme
+### Theme setup
 
-**useTheme** is available in a consuming application when using Mui/lab as dependency. Theme object can be used two ways on top of components as *useTheme()* or in *sx* props.
+- All base setups for styles, colors, fonts, ThemeProvider... are in <code>Theme</code> folder.
+- ***baseTheme.ts*** contains base styling that will be applied on all components.
+- Alongside baseTheme there are separate theme files ex. *agronodTheme.ts* that applies styles only on selected theme.
+
+### useTheme
+**useTheme** is option available in a consuming application when using Mui/lab as dependency. Theme object can be used two ways on top of components as *useTheme()* or in *sx* props.
 
 ```jsx
 const theme = useTheme();
@@ -85,49 +116,42 @@ backgroundColor={theme.palette.secondary.main}
 <Button sx={{ p: (theme) => theme.spacing(1) }}} />
 ```
 
-## Props
+### How to use components
+ - How to use each component is explained in the ***About*** section on components story where we can find component name and basic parameters.
+ - We import components from <code>import { AgronodComponent } from "@agronod/mui-components";</code>.
+ - ***NOTE:*** In current version we have mix so we import components from MUI to ex: <code>import {Box} from "@mui/material";</code> which will be removed later.
+ - ***NOTE:*** So that we do not confuse custom componets with MUI and where to import them from our custom components are named with Agronod prefix ex: AgronodCheckbox vs Checkbox (MUI).
 
-### ThemeProvider
+## How to write stories
+- Every component should have main component file and story file.
+- Name of component should be prefixed with ***Agronod*** (ex. AgronodCheckbox, AgronodButton etc...) so it differs from MUI versions when importing.<br/>
 
-- **options** optional
-
-  > Pass options or overrides to the base theme.
-  > This is so that each project can configure the library to their own profile.
-
-## Updating package
-
-While developing a feature branch we can publish -alpha.n versions (0.1.2-alpha.3) fore testing purposes. After the feature is merged into main we publish the resulting version 0.1.2.
-
-Versions should follow [semver](https://semver.org/)
-
-- You need a personal token with read and write access. The token can be created [here](https://github.com/settings/tokens)
-- Set a global variable called "REACT_APP_GITHUB_TOKEN" for your shell of choice.
-- run **"npm login --scope=@agronod --registry=https://npm.pkg.github.com"** and follow instructions
-- make sure your project is clean, tested and updated with the intended functionality
-- Test that all updates are in place and functioning
-- run **npm run build**
-- run **npm version "preferred version"**
-- run **npm publish**
-
-## Write stories
-- Every component should have main component file and story file
-- Name of component should be prefixed with Agronod (ex. AgronodCheckbox, AgronodButton etc...) so it differs from MUI versions when importing.
-.
-└── Root/
-    └── src/
-        ├── assets
-        └── components/
-            └── ComponentFolder/
-                ├── Component.tsx
-                ├── Component.stories.tsx
-                ├── index.ts
-                ├── MockData.ts (if any)
-                └── components/
-                    └── ChildComponent(if any)
+```jsx
+Root/
+└── src/
+    ├── assets
+    ├── components/
+    │   └── ComponentFolder/
+    │       ├── Component.tsx
+    │       ├── Component.stories.tsx
+    │       ├── index.ts
+    │       ├── MockData.ts (if any)
+    │       └── components/
+    │           └── ChildComponent (if any)
+    ├── introPages/
+    │   └── Component.mdx
+```
 
 ### Story file
 
-Each story should have
+- There is several different types of story that we use.
+
+1. ***Intro pages stories*** - written in ***.mdx*** format.
+2. ***Design tokens stories*** - that are displaying our design tokens used (ex: colors, borders, shadows, etc...)
+3. ***Component stories*** - actual component that can be imported and used with different parameters.
+
+#### Component story
+Each Component story should have
 1. Title - component place and name
 2. Subtitle - short about component
 3. Description - component usage, where, how, which project
@@ -135,6 +159,8 @@ Each story should have
 5. Arguments description for each one 
 6. Docs section code display that you can copy
 
+
+#### Example of Component story:
 ```jsx
 import { StoryFn, Meta } from "@storybook/react";
 import Component from "./Component";
@@ -168,7 +194,7 @@ export default {
     children: {
       description: "will override automatic description if any exist",
       control: {
-        type: "look for types of controles in storybook in storybook",
+        type: "look for types of controls in storybook in storybook",
         required: true,
       },
     },
@@ -203,7 +229,7 @@ ComponentWithOtherParameters.args = {
 - In component file we import component from MUI, style it accordingly and export together with component prop types so it can be consumed.
 - For component to be consumed we need to export them from *index.ts* in *components* folder.
 
-Base component structure looks like this:
+#### Base component structure looks like this:
 
 ```jsx
 import { Component as MuiComponent, ComponentProps as MuiComponentProps } from '@mui/material';
@@ -220,7 +246,7 @@ const AgronodCommponent = (props: AgronodCommponentProps) => (
 
 export default AgronodCommponent;
 ```
-Support for showing just selected props from MUI looks like this: 
+####Support for showing just selected props from MUI looks like this: 
 
 ```jsx
 import { Component as MuiComponent, ComponentProps as MuiComponentProps } from '@mui/material';
@@ -241,10 +267,4 @@ const AgronodComponent = (props: AgronodComponentProps) => {
 
 export default AgronodComponent;
 ```
-
-### Theme setup
-
-- All base setups for styles, colors, fonts, ThemeProvider... are in Theme folder.
-- *baseTheme.ts* contains base styling that will be applied on all components.
-- Alongside baseTheme there are separate theme files ex. *agronodTheme.ts* that applies styles only on selected theme.
 

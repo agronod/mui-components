@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import Header from "./Header";
 
 export default {
-  title: "Agrosfär exclusive/Header",
+  title: "Agrosfär Exclusive/Header",
   component: Header,
   parameters: {},
   argTypes: {

@@ -3,7 +3,7 @@ import VerticalBarChart, { VerticalBarChartData } from "./VerticalBarChart";
 import { Box } from "@mui/material";
 
 export default {
-  title: "Agrosfär exclusive/Vertical Bar Chart",
+  title: "Agrosfär Exclusive/Vertical Bar Chart",
   argTypes: {},
 } as Meta<typeof VerticalBarChart>;
 

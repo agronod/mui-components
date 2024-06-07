@@ -5,7 +5,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { LoaderCircular } from "../Loaders";
 
 export default {
-  title: "Shared components/Buttons",
+  title: "Shared Components/Buttons",
   component: Button,
   parameters: {
     componentSubtitle:

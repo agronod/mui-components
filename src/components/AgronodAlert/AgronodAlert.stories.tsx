@@ -1,11 +1,11 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { AlertTitle, Box, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import AgronodAlert from "./AgronodAlert";
 import { AgronodCard } from "../AgronodCard";
 import { LoaderCircular } from "../Loaders";
 
 export default {
-  title: "Shared components/Alert",
+  title: "Shared Components/Alert",
   component: AgronodAlert,
   parameters: {
     componentSubtitle:

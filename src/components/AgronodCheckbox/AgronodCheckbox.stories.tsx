@@ -2,7 +2,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import AgronodCheckbox from "./AgronodCheckbox";
 
 export default {
-  title: "Shared components/Checkbox",
+  title: "Shared Components/Checkbox",
   component: AgronodCheckbox,
   argTypes: {
     label: {

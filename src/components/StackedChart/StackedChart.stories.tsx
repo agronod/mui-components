@@ -2,7 +2,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import StackedChart, { StackedChartDataProps } from "./StackedChart";
 
 export default {
-  title: "Agrosfär exclusive/Stacked Chart",
+  title: "Agrosfär Exclusive/Stacked Chart",
   argTypes: {},
 } as Meta<typeof StackedChart>;
 

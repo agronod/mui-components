@@ -3,7 +3,7 @@ import Nyckeltal from "./Nyckeltal";
 import NyckeltalGrid from "./NyckeltalGrid";
 
 export default {
-  title: "Agrosfär exclusive/Nyckeltal",
+  title: "Agrosfär Exclusive/Nyckeltal",
   argTypes: {},
   parameters: {
     componentSubtitle:

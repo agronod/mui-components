@@ -8,7 +8,7 @@ const componentDescription = `<div>
 </div>`
 
 export default {
-  title: "Design tokens/Typography",
+  title: "Shared Components/Typography",
   component: AgronodTypography,
   parameters: {
     componentSubtitle: "Use typography to present your design and content as clearly and efficiently as possible.",

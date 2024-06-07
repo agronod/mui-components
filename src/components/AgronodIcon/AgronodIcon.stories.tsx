@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import AgronodIcon from "./AgronodIcon";
 import { Meta, StoryFn } from "@storybook/react";
 
@@ -41,7 +41,7 @@ const iconArgDescription = iconArray
   .join("");
 
 export default {
-  title: "Custom icons/Icons",
+  title: "Custom Icons/Icons",
   component: AgronodIcon,
   parameters: {
     componentSubtitle:
