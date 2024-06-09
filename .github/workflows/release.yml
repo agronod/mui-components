@@ -42,7 +42,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
-      - name: set version
+      - name: Set version
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -57,6 +57,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUBTOKEN }}
           branch: ${{ github.ref }}
+
+      - name: Save changelog to file
+        run: echo "${{ steps.tag_version.outputs.changelog }}" > CHANGELOG.md
 
       - name: Create a GitHub release
         if: ${{ github.ref == 'refs/heads/main' }}
