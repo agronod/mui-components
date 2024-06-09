@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new_version: ${{ steps.tag_version.outputs.new_version }}
+      changelog: ${{ steps.tag_version.outputs.changelog }}
 
     steps:
       - name: Checkout
