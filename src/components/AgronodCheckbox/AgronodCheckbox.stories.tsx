@@ -4,29 +4,21 @@ import AgronodCheckbox from "./AgronodCheckbox";
 export default {
   title: "Shared Components/Checkbox",
   component: AgronodCheckbox,
+  parameters: {
+    componentSubtitle: "Used in forms and consent options.",
+    docs: {
+      description: {
+        component: `<p>Simple component used as a part of bigger molecules. MUI default sizes are changed to accomodate design.</p>`,
+      },
+    },
+  },
   argTypes: {
     label: {
       description:
-        "Label added when wanting additional information. It is adding FormControlLabel component around checkbox",
+        "Label added when wanting additional information. It is adding <code>FormControlLabel</code> component around checkbox",
       control: {
         type: "text",
       },
-    },
-    handleOnChange: {
-      description: "Controling onChange event",
-    },
-    handleOnClick: {
-      description: "Controling onClick event",
-    },
-    checked: {
-      description: "If true, the component is checked.",
-    },
-    disabled: {
-      description: "If true, the component is disabled.",
-      control: {
-        type: "radio",
-      },
-      options: [true, false],
     },
     size: {
       description:

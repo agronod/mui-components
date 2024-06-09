@@ -12,7 +12,7 @@ export default {
     componentSubtitle: "Responsive Modal Card",
     docs: {
       description: {
-        component: `<p>Modal Card is responsive custom component that you import from @agronod/muicomponents</p>
+        component: `<p>Modal Card is responsive custom component that you import from @agronod/muicomponents.</p>
           `,
       },
     },
