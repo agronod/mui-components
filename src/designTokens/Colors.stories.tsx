@@ -1,7 +1,22 @@
-import { Box, Card, Stack, Typography, useTheme } from "@mui/material";
+import { Stack, Typography, useTheme } from "@mui/material";
 import ColorItem from "./ColorItem";
+
+const description = `
+<p><b>Primary</b> and <b>secondary</b> colors change depending on theme while other colors are common for all themes and are defined in <code>baseTheme.tsx</code>.</p>
+<p>Colors are used as variables in <code>sx</code> property of component.</p>
+<p>They can be also accessed outside <b>sx</b> via <code>const theme = useTheme();</code></p>`
+
 export default {
   title: "Design Tokens/Color Palette",
+  parameters: {
+    componentSubtitle:
+      "Agronod-specific colors used in all projects",
+    docs: {
+      description: {
+        component: description,
+      },
+    },
+  },
 };
 
 export const ColorPalette = () => {
