@@ -15,7 +15,7 @@ export default {
   argTypes: {
     label: {
       description:
-        "Label added when wanting additional information. It is adding <code>FormControlLabel</code> component around checkbox",
+        "Label added when wanting additional information. It is adding <code>FormControlLabel</code> component around checkbox.",
       control: {
         type: "text",
       },
