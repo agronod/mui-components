@@ -50,9 +50,9 @@ jobs:
           npm version ${{ steps.tag_version.outputs.new_version }}
 
       - name: Generate Changelog
-      id: changelog
-      run: |
-        npx conventional-changelog -p react -i CHANGELOG.md -s
+        id: changelog
+        run: |
+          npx conventional-changelog -p react -i CHANGELOG.md -s
 
       - run: npm publish
         env:
