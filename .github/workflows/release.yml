@@ -43,16 +43,16 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - name: Generate Changelog
-        id: changelog
-        run: |
-          npx conventional-changelog -p react -i CHANGELOG.md -s
-
       - name: set version
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           npm version ${{ steps.tag_version.outputs.new_version }}
+
+      - name: Generate Changelog
+      id: changelog
+      run: |
+        npx conventional-changelog -p react -i CHANGELOG.md -s
 
       - run: npm publish
         env:
