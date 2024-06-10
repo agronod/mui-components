@@ -1,3 +1,24 @@
+## <small>1.14.5-feat-PF-711.5 (2024-06-10)</small>
+
+* build fix ([0555544](https://github.com/agronod/mui-components/commit/0555544))
+* fix release yml ([89d1be9](https://github.com/agronod/mui-components/commit/89d1be9))
+
+
+
+## <small>1.14.5-feat-PF-711.4 (2024-06-10)</small>
+
+* 1.14.5-feat-PF-711.3 ([72cb8d0](https://github.com/agronod/mui-components/commit/72cb8d0))
+* Changelog that is generated automatically, audit fix for npm warning. ([0d00e8d](https://github.com/agronod/mui-components/commit/0d00e8d))
+
+
+
+## <small>1.14.5-feat-PF-711.3 (2024-06-10)</small>
+
+* 1.14.5-feat-PF-711.2 ([f92e56e](https://github.com/agronod/mui-components/commit/f92e56e))
+* fix criticall issues in npm packages ([255f7de](https://github.com/agronod/mui-components/commit/255f7de))
+
+
+
 ## <small>1.14.5-feat-PF-711.2 (2024-06-10)</small>
 
 * 1.14.5-feat-PF-711.1 ([8606f61](https://github.com/agronod/mui-components/commit/8606f61))

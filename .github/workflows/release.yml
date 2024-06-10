@@ -52,7 +52,7 @@ jobs:
       - name: Generate Changelog
         id: changelog
         run: |
-          npx conventional-changelog -p react -i CHANGELOG.md -s
+          npx conventional-changelog -p react -i CHANGELOG.md -s -r 0
 
       - run: npm publish
         env:
