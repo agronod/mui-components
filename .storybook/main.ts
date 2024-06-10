@@ -21,7 +21,6 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/addon-links",
     "@storybook/addon-themes",
-    "@storybook/addon-storysource",
     "@chromatic-com/storybook",
     "@storybook/blocks",
   ],
