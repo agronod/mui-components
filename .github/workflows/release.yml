@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new_version: ${{ steps.tag_version.outputs.new_version }}
+      changelog: ${{ steps.changelog.outputs.changelog }}
 
     steps:
       - name: Checkout
@@ -71,4 +72,4 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: |
-            ${{ steps.changelog.outputs.changelog }} # Include the generated changelog
+            ${{ steps.changelog.outputs.changelog }}
