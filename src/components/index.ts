@@ -20,6 +20,7 @@ export * from "./AgronodCard";
 export * from "./AgronodChip";
 export * from "./AgronodCheckbox";
 export * from "./AgronodAutocompleteSearch";
+export * from "./AgronodLink";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };

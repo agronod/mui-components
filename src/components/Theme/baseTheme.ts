@@ -534,15 +534,14 @@ const baseThemeOptions: ThemeOptions = {
           textUnderlineOffset: "4px",
           "&:hover": {
             color: globalThemePalette.text.secondary,
-            textDecoration: "underline solid #66646199",
+            textDecoration: `underline solid ${globalThemePalette.gray600}`,
           },
           "&:focus-visible": {
             outlineColor: globalThemePalette.text.secondary,
           },
-          // TODO: when you export this component from storybook move this as property not class
           "&.inverted": {
             color: globalThemePalette.text.secondary,
-            textDecoration: "underline solid #66646199",
+            textDecoration: `underline solid ${globalThemePalette.gray600}`,
             "&:hover": {
               color: globalThemePalette.text.primary,
               textDecoration: `underline solid ${globalThemePalette.text.primary}`,

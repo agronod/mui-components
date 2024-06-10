@@ -33,6 +33,11 @@ jobs:
           pre_release_branches: feat/*,fix/*
           github_token: ${{ secrets.GITHUBTOKEN }}
 
+      - name: Debug Outputs
+        run: |
+          echo "New Version: ${{ steps.tag_version.outputs.new_version }}"
+          echo "Changelog: ${{ steps.tag_version.outputs.changelog }}"
+
       - name: Check out code
         uses: actions/checkout@v2
 
@@ -43,6 +48,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
+
       - name: Set version
         run: |
           git config --local user.email "action@github.com"
