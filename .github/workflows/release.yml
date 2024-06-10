@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new_version: ${{ steps.tag_version.outputs.new_version }}
-      changelog: ${{ steps.tag_version.outputs.changelog }}
 
     steps:
       - name: Checkout
@@ -33,11 +32,6 @@ jobs:
           pre_release_branches: feat/*,fix/*
           github_token: ${{ secrets.GITHUBTOKEN }}
 
-      - name: Debug Outputs
-        run: |
-          echo "New Version: ${{ steps.tag_version.outputs.new_version }}"
-          echo "Changelog: ${{ steps.tag_version.outputs.changelog }}"
-
       - name: Check out code
         uses: actions/checkout@v2
 
@@ -49,7 +43,12 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - name: Set version
+      - name: Generate Changelog
+        id: changelog
+        run: |
+          npx conventional-changelog -p react -i CHANGELOG.md -s
+
+      - name: set version
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -65,13 +64,11 @@ jobs:
           github_token: ${{ secrets.GITHUBTOKEN }}
           branch: ${{ github.ref }}
 
-      - name: Save changelog to file
-        run: echo "${{ steps.tag_version.outputs.changelog }}" > CHANGELOG.md
-
       - name: Create a GitHub release
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+          body: |
+            ${{ steps.changelog.outputs.changelog }} # Include the generated changelog
