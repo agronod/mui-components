@@ -58,14 +58,13 @@ jobs:
           github_token: ${{ secrets.GITHUBTOKEN }}
           branch: ${{ github.ref }}
 
-      - name: Generate CHANGELOG.md
-        run: npx conventional-changelog -p react -i CHANGELOG.md -s -r 0
-
       - name: Conventional Changelog Action
         uses: TriPSs/conventional-changelog-action@v5
         with:
           github-token: ${{ secrets.GITHUBTOKEN }}
           preset: 'react'
+          release-count: '20'
+          skip-git-pull: 'true'
 
       - name: Create a GitHub release
         if: ${{ github.ref == 'refs/heads/main' }}

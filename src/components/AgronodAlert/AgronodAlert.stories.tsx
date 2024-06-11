@@ -9,7 +9,7 @@ export default {
   component: AgronodAlert,
   parameters: {
     componentSubtitle:
-      "An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task..",
+      "An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.",
     docs: {
       description: {
         component: `<div><p>We are using in our designs system two types of Alert, <code>standard</code> and <code>filled</code>.</p><p>Alerts are used as self standing elements or attached elements, usually to <code>AgronodCard</code> commponent. if they are attached they lose top borders and have smaller paddings.</p></div>`,
