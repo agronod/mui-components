@@ -62,7 +62,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v5
         with:
           github-token: ${{ secrets.GITHUBTOKEN }}
-          preset: 'react'
+          preset: 'conventionalcommits'
           release-count: '20'
           skip-git-pull: 'true'
 
