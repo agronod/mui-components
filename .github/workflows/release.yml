@@ -42,7 +42,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
-      - name: Set version
+      - name: set version
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -57,14 +57,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUBTOKEN }}
           branch: ${{ github.ref }}
-
-      - name: Conventional Changelog Action
-        uses: TriPSs/conventional-changelog-action@v5
-        with:
-          github-token: ${{ secrets.GITHUBTOKEN }}
-          preset: 'conventionalcommits'
-          release-count: '20'
-          skip-git-pull: 'true'
 
       - name: Create a GitHub release
         if: ${{ github.ref == 'refs/heads/main' }}

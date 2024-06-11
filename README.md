@@ -28,6 +28,15 @@ npm install
 npm run storybook
 ```
 
+## Changelog
+
+- Our CHANGELOG.md tracks all the commits that were made and storybook users can see what each version brings.
+- To make sure we have always lates updates we should before merging each branch run changelog update: 
+
+```bash
+npm run changelog
+```
+
 ## Integrating as design system in project
 
 - To be able to use this component library you need to install it as npm package with certain dependencies that are required for it to work properly.
