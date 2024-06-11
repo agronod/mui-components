@@ -65,7 +65,7 @@
     "vite-plugin-dts": "^3.9.1"
   },
   "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p react -i CHANGELOG.md -s -r 0",
     "build": "tsc && vite build",
     "storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && storybook dev -p 6006",
     "storybook@legacy": "storybook dev -p 6006",
