@@ -59,13 +59,12 @@ jobs:
           branch: ${{ github.ref }}
 
       - name: Generate CHANGELOG.md
-        run: npx conventional-changelog -p react -i CHANGELOG.md -s -r 0 --append
+        run: npx conventional-changelog -p react -i CHANGELOG.md -s -r 0
 
-      - name: Commit and push changelog
-        run: |
-          git add CHANGELOG.md
-          git commit -m "chore(release): ${{ steps.tag_version.outputs.new_version }} [skip ci]"
-          git push origin ${{ github.ref }}
+      - name: Conventional Changelog Action
+        uses: TriPSs/conventional-changelog-action@v5
+        with:
+          github-token: ${{ secrets.GITHUBTOKEN }}
 
       - name: Create a GitHub release
         if: ${{ github.ref == 'refs/heads/main' }}
