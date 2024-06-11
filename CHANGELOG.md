@@ -1,3 +1,17 @@
+## <small>1.14.5-feat-PF-711.7 (2024-06-10)</small>
+
+* 1.14.5-feat-PF-711.6 ([4498818](https://github.com/agronod/mui-components/commit/4498818))
+* fix release flow ([8dc9fd3](https://github.com/agronod/mui-components/commit/8dc9fd3))
+
+
+
+## <small>1.14.5-feat-PF-711.6 (2024-06-10)</small>
+
+* 1.14.5-feat-PF-711.5 ([abadf26](https://github.com/agronod/mui-components/commit/abadf26))
+* changelog in git workflow attempt to write to file ([f9c7d92](https://github.com/agronod/mui-components/commit/f9c7d92))
+
+
+
 ## <small>1.14.5-feat-PF-711.5 (2024-06-10)</small>
 
 * build fix ([0555544](https://github.com/agronod/mui-components/commit/0555544))
