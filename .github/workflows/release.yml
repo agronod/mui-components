@@ -59,7 +59,7 @@ jobs:
           branch: ${{ github.ref }}
 
       - name: Generate CHANGELOG.md
-        run: npx conventional-changelog -p react -i CHANGELOG.md -s -r 0
+        run: npx conventional-changelog -p react -i CHANGELOG.md -s -r 0 --append
 
       - name: Commit and push changelog
         run: |
