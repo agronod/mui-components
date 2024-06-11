@@ -24,11 +24,8 @@ This way we can make use of an wide range of prebuilt components that we know fo
 ```bash
 npm install
 
-# Node version > 16
+# Node version > 18
 npm run storybook
-
-# OR node version < 17
-npm run storybook@legacy
 ```
 
 ## Integrating as design system in project

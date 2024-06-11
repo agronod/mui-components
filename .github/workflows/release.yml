@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new_version: ${{ steps.tag_version.outputs.new_version }}
-      changelog: ${{ steps.changelog.outputs.changelog }}
 
     steps:
       - name: Checkout
@@ -43,17 +42,11 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
-
-      - name: set version
+      - name: Set version
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           npm version ${{ steps.tag_version.outputs.new_version }}
-
-      - name: Generate Changelog
-        id: changelog
-        run: |
-          npx conventional-changelog -p react -i CHANGELOG.md -s -r 0
 
       - run: npm publish
         env:
@@ -65,11 +58,19 @@ jobs:
           github_token: ${{ secrets.GITHUBTOKEN }}
           branch: ${{ github.ref }}
 
+      - name: Generate CHANGELOG.md
+        run: npx conventional-changelog -p react -i CHANGELOG.md -s -r 0
+
+      - name: Commit and push changelog
+        run: |
+          git add CHANGELOG.md
+          git commit -m "chore(release): ${{ steps.tag_version.outputs.new_version }} [skip ci]"
+          git push origin ${{ github.ref }}
+
       - name: Create a GitHub release
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: |
-            ${{ steps.changelog.outputs.changelog }}
+          body: ${{ steps.tag_version.outputs.changelog }}
