@@ -1,3 +1,3 @@
-import AsideCard from "./AsideCard";
+import AgronodAsideCard from "./AgronodAsideCard";
 
-export { AsideCard };
+export { AgronodAsideCard };

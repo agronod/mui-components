@@ -33,9 +33,13 @@ npm run storybook
 - Our CHANGELOG.md tracks all the commits that were made and storybook users can see what each version brings.
 - To make sure we have always lates updates we should before merging each branch run changelog update: 
 
+1. Push changes to your feature branch
+2. Pull new version generated to gitHub workflow
+3. Run:
 ```bash
 npm run changelog
 ```
+4. Commit new CHANGELOG.md
 
 ## Integrating as design system in project
 

@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
+import { SxProps, Theme, useTheme } from "@mui/material/styles";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useCallback, useEffect } from "react";
 
@@ -55,18 +55,19 @@ const AgronodModalCard = (props: ModalCardProps) => {
     };
   }, [handleEscKey]);
 
+  const styleObject: SxProps = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
   return (
     <MuiModalCard
       open={props.open}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       disableAutoFocus={true}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        ...props.sx,
-      }}
+      sx={[{ ...styleObject }, props.sx as (theme: Theme) => any]}
       onClose={
         props.notClosable ? undefined : () => props.onClose && props.onClose()
       }

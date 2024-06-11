@@ -1,3 +1,17 @@
+## <small>1.14.5-feat-PF-711.19 (2024-06-11)</small>
+
+* 1.14.5-feat-PF-711.18 ([4731c33](https://github.com/agronod/mui-components/commit/4731c33))
+* fix changelog to look better ([59070a5](https://github.com/agronod/mui-components/commit/59070a5))
+
+
+
+## <small>1.14.5-feat-PF-711.18 (2024-06-11)</small>
+
+* 1.14.5-feat-PF-711.17 ([74c2a8d](https://github.com/agronod/mui-components/commit/74c2a8d))
+* Add manual command for now ([2f1d04b](https://github.com/agronod/mui-components/commit/2f1d04b))
+
+
+
 ## <small>1.14.5-feat-PF-711.17 (2024-06-11)</small>
 
 * 1.14.5-feat-PF-711.16 ([fc0ccb7](https://github.com/agronod/mui-components/commit/fc0ccb7))

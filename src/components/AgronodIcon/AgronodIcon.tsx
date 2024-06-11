@@ -1,4 +1,4 @@
-import { Skeleton, SvgIcon, SvgIconProps } from "@mui/material";
+import { Skeleton, SvgIcon, SvgIconProps, SxProps, Theme } from "@mui/material";
 import React, { Suspense } from "react";
 
 /**
@@ -22,11 +22,17 @@ const AgronodIcon: React.FC<IconProps> = ({
   fontSize = "medium",
   color = "inherit",
   sx,
-  ...props
+  ...rest
 }) => {
   const DynamicComponent = React.lazy(
     () => import(`../../assets/icons/${name}.svg?component`)
   );
+
+  const styleObject: SxProps = {
+    "& *": {
+      fill: "currentcolor",
+    },
+  };
 
   return (
     <Suspense
@@ -39,13 +45,8 @@ const AgronodIcon: React.FC<IconProps> = ({
         fontSize={fontSize}
         color={color}
         inheritViewBox={false}
-        sx={{
-          "& *": {
-            fill: "currentcolor",
-          },
-          ...sx,
-        }}
-        {...props}
+        sx={[{ ...styleObject }, sx as (theme: Theme) => any]}
+        {...rest}
       />
     </Suspense>
   );
