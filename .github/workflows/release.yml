@@ -65,6 +65,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v5
         with:
           github-token: ${{ secrets.GITHUBTOKEN }}
+          preset: 'react'
 
       - name: Create a GitHub release
         if: ${{ github.ref == 'refs/heads/main' }}
