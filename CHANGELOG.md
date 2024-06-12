@@ -1,3 +1,18 @@
+## <small>1.14.5-feat-PF-711.22 (2024-06-12)</small>
+
+* 1.14.5-feat-PF-711.21 ([aff0249](https://github.com/agronod/mui-components/commit/aff0249))
+* last alert update ([cdc564b](https://github.com/agronod/mui-components/commit/cdc564b))
+
+
+
+## <small>1.14.5-feat-PF-711.21 (2024-06-12)</small>
+
+* 1.14.5-feat-PF-711.20 ([5a9016d](https://github.com/agronod/mui-components/commit/5a9016d))
+* changelog updated ([76b2670](https://github.com/agronod/mui-components/commit/76b2670))
+* fix naming for AgronodAsideCard ([81354f0](https://github.com/agronod/mui-components/commit/81354f0))
+
+
+
 ## <small>1.14.5-feat-PF-711.20 (2024-06-11)</small>
 
 * 1.14.5-feat-PF-711.19 ([5ce1261](https://github.com/agronod/mui-components/commit/5ce1261))
