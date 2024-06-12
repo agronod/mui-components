@@ -9,9 +9,10 @@ MuiAlertProps,
 export interface AgronodAlertProps extends AgronodAlertBaseProps {
   title?: React.ReactNode | string,
   behindCard?: boolean,
+  behindCardZIndex?: number,
 }
 
-const AgronodAlert = ({variant, title, children, behindCard, sx, action, ...rest} : AgronodAlertProps) => {
+const AgronodAlert = ({variant, title, children, behindCard,behindCardZIndex, sx, action, ...rest} : AgronodAlertProps) => {
   const standardIconMapping = {
     success: <AgronodIcon name="successOutlined" color="success"/>,
     warning: <AgronodIcon name="warningOutlined" color="warning"/>,
@@ -35,7 +36,7 @@ const AgronodAlert = ({variant, title, children, behindCard, sx, action, ...rest
       paddingBottom: 1,
       borderTopLeftRadius: 0,
       borderTopRightRadius: 0,
-      zIndex: -1,
+      zIndex: behindCardZIndex ? behindCardZIndex : -1,
       position: "relative",
     };
 

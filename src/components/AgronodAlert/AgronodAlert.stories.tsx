@@ -31,6 +31,13 @@ export default {
       control: {
         type: "text",
       },
+    },
+    behindCardZIndex: {
+      description: "Default value is set to <code>-1</code> but if you have already multiple zIndexes this can adjust card behind element correctly.",
+      defaultValue: -1,
+      control: {
+        type: "number",
+      },
     }
   },
 } as Meta<typeof AgronodAlert>;
@@ -73,8 +80,9 @@ AgronodAlertWithoutIcon.args = {
   title:"This is title",
   children: "Alert without icon",
   severity: "success",
+  icon: false,
   variant: "filled",
-  icon: false
+ 
 };
 
 export const AgronodAlertWithCloseButton: StoryFn<typeof AgronodAlert> = ({
