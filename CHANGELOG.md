@@ -1,3 +1,10 @@
+## <small>1.14.5-feat-PF-711.20 (2024-06-11)</small>
+
+* 1.14.5-feat-PF-711.19 ([5ce1261](https://github.com/agronod/mui-components/commit/5ce1261))
+* Aside Card renamed to AgronodAsideCard, fix storybook properties for some components ([121fbd8](https://github.com/agronod/mui-components/commit/121fbd8))
+
+
+
 ## <small>1.14.5-feat-PF-711.19 (2024-06-11)</small>
 
 * 1.14.5-feat-PF-711.18 ([4731c33](https://github.com/agronod/mui-components/commit/4731c33))
