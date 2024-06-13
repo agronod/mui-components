@@ -2,7 +2,7 @@ import { Link as MuiLink, LinkProps as MuiLinkProps, SxProps, Theme, useTheme } 
 
 type AgronodLinkBaseProps = Pick<
 MuiLinkProps,
-"children" | "className" | "href" | "classes" | "color" | "sx" | "variant" | "display" | "displayPrint" | "whiteSpace" | "align" | "paragraph" | "ref" | "component" | "onClick"
+"children" | "className" | "href" | "classes" | "color" | "sx" | "variant" | "display" | "displayPrint" | "whiteSpace" | "align" | "paragraph" | "ref" | "component" | "onClick" | "target"
 >;;
 
 export interface AgronodLinkProps extends AgronodLinkBaseProps {
