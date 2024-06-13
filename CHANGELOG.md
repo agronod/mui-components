@@ -1,3 +1,11 @@
+## <small>1.14.6 (2024-06-13)</small>
+
+* 1.14.5 ([5f9ddbd](https://github.com/agronod/mui-components/commit/5f9ddbd))
+* add on click to a link ([28639a8](https://github.com/agronod/mui-components/commit/28639a8))
+* changelog ([6568215](https://github.com/agronod/mui-components/commit/6568215))
+
+
+
 ## <small>1.14.5 (2024-06-13)</small>
 
 * 1.14.3 ([b9cd2ef](https://github.com/agronod/mui-components/commit/b9cd2ef))
