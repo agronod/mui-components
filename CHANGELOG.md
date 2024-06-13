@@ -1,3 +1,11 @@
+## <small>1.14.7 (2024-06-13)</small>
+
+* 1.14.6 ([141908d](https://github.com/agronod/mui-components/commit/141908d))
+* add target property to a link ([2aba17c](https://github.com/agronod/mui-components/commit/2aba17c))
+* fix changelog ([faeaf7f](https://github.com/agronod/mui-components/commit/faeaf7f))
+
+
+
 ## <small>1.14.6 (2024-06-13)</small>
 
 * 1.14.5 ([5f9ddbd](https://github.com/agronod/mui-components/commit/5f9ddbd))
