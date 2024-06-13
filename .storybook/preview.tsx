@@ -37,8 +37,11 @@ const preview: Preview = {
     },
   },
   parameters: {
-    storySort: {
-      method: "alphabetical",
+    options: {
+      storySort: {
+        method: "alphabetical",
+        order: ['Intro Pages', 'Design Tokens', 'Custom Icons', 'Agrosfär Exclusive', 'Shared Components'],
+      },
     },
     controls: {
       expanded: true,

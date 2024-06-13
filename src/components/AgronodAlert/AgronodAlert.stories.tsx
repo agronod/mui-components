@@ -1,11 +1,11 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { AlertTitle, Box, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import AgronodAlert from "./AgronodAlert";
 import { AgronodCard } from "../AgronodCard";
 import { LoaderCircular } from "../Loaders";
 
 export default {
-  title: "Shared components/AgronodAlert",
+  title: "Shared Components/Alert",
   component: AgronodAlert,
   parameters: {
     componentSubtitle:
@@ -30,6 +30,13 @@ export default {
       defaultValue: undefined,
       control: {
         type: "text",
+      },
+    },
+    behindCardZIndex: {
+      description: "Default value is set to <code>-1</code> but if you have already multiple zIndexes this can adjust card behind element correctly.",
+      defaultValue: -1,
+      control: {
+        type: "number",
       },
     }
   },
@@ -73,8 +80,9 @@ AgronodAlertWithoutIcon.args = {
   title:"This is title",
   children: "Alert without icon",
   severity: "success",
+  icon: false,
   variant: "filled",
-  icon: false
+ 
 };
 
 export const AgronodAlertWithCloseButton: StoryFn<typeof AgronodAlert> = ({

@@ -14,7 +14,7 @@ import { useState } from "react";
 import { AgronodCheckbox } from "../AgronodCheckbox";
 
 export default {
-  title: "Shared components/Select",
+  title: "Shared Components/Select",
   component: Select,
   parameters: {
     docs: {

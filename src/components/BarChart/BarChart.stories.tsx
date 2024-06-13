@@ -3,7 +3,7 @@ import BarChart from "./BarChart";
 import { Box } from "@mui/material";
 
 export default {
-  title: "Agrosfär exclusive/BarChart",
+  title: "Agrosfär Exclusive/BarChart",
   argTypes: {
     colorScheme: {
       control: "radio",

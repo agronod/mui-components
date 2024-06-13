@@ -6,22 +6,22 @@ import {
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Theme, useTheme } from "@mui/material/styles";
 
-type AsideCardBaseProps = Pick<MuiCardProps, "variant" | "sx">;
+type AgronodAsideCardBaseProps = Pick<MuiCardProps, "variant" | "sx">;
 
-export interface AsideCardProps extends AsideCardBaseProps {
+export interface AgronodAsideCardProps extends AgronodAsideCardBaseProps {
   children: React.ReactNode;
   position: "left" | "right";
   centeredContent?: boolean;
   padding?: string | number;
 }
 
-const AsideCard = ({
+const AgronodAsideCard = ({
   children,
   position,
   centeredContent,
   padding,
   ...rest
-}: AsideCardProps) => {
+}: AgronodAsideCardProps) => {
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
   const styleObject: SxProps = {
@@ -76,4 +76,4 @@ const AsideCard = ({
   );
 };
 
-export default AsideCard;
+export default AgronodAsideCard;

@@ -40,7 +40,7 @@ type ExtendedAutocompleteProps<T> = AutocompleteProps<T> & {
   options: (T | AutocompleteGroupedOption<T>)[];
 };
 
-const AutocompleteSearch = <T,>({
+const AgronodAutocompleteSearch = <T,>({
   options,
   value,
   onOptionChange,
@@ -215,4 +215,4 @@ const AutocompleteSearch = <T,>({
   );
 };
 
-export default AutocompleteSearch;
+export default AgronodAutocompleteSearch;

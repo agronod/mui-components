@@ -2,12 +2,13 @@ import { Meta, StoryFn } from "@storybook/react";
 import AgronodChip from "./AgronodChip";
 
 export default {
-  title: "Shared components/AgronodChip",
+  title: "Shared Components/Chip",
   component: AgronodChip,
   parameters: {
+    componentSubtitle: "Chip component is used independently but also as part of other components like Dropdown Selects.",
     docs: {
       description: {
-        component: `<p>Chip component is used independently but also as part of other components like Dropdown Selects</p>
+        component: `<p>Base for this component is MUI Chip but it is specifically design for certain purposes. MUI Chip is used for other components like Step component.</p>
           `,
       },
     },

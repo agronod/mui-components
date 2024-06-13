@@ -6,13 +6,13 @@ import { useMemo, useState } from "react";
 import { ProgressIndicator } from "../ProgressIndicator";
 
 export default {
-  title: "Shared components/AgronodModalCard",
+  title: "Shared Components/Modal Card",
   component: AgronodModalCard,
   parameters: {
     componentSubtitle: "Responsive Modal Card",
     docs: {
       description: {
-        component: `<p>Modal Card is responsive custom component that you import from @agronod/muicomponents</p>
+        component: `<p>Modal Card is responsive custom component that you import from @agronod/muicomponents.</p>
           `,
       },
     },

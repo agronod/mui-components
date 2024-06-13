@@ -3,7 +3,7 @@ import { Stack, Typography } from "@mui/material";
 import AgronodCard from "./AgronodCard";
 
 export default {
-  title: "Shared components/AgronodCard",
+  title: "Shared Components/Card",
   component: AgronodCard,
   parameters: {
     componentSubtitle: "Base Outlined white Card container",

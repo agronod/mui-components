@@ -1,6 +1,8 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import AgronodIcon from "./AgronodIcon";
 import { Meta, StoryFn } from "@storybook/react";
+
+import exampleImage from "../../assets/extractionIconExample.png";
 
 const iconArray = [
   "epost",
@@ -29,7 +31,7 @@ const componentDescription = `<div>
 <p>Other icons are from <a href="https://mui.com/material-ui/material-icons/" target="_blank">Material UI </a> <b> (use “round” variation when possible)</b>.</p>
 <p>From design, we should extract 24x24 so it matches with MUI.</p>
 <p><b>Good example:</b></p>
-<img src="/src/assets/extractionIconExample.png" />
+<img src="${exampleImage}" alt="Icon Example" />
 <p>Ensure the <code>fill</code> property in the SVG is utilized correctly to allow for dynamic color assignment to the icon shapes, ensuring the icons appear correctly within the application.</p>
 <p>To display an icon in this story, you need to:</p>
 <p>1. Import icon in storybook assets/icons</p>
@@ -41,7 +43,7 @@ const iconArgDescription = iconArray
   .join("");
 
 export default {
-  title: "Custom icons/Agronod Icons",
+  title: "Custom Icons/Icons",
   component: AgronodIcon,
   parameters: {
     componentSubtitle:

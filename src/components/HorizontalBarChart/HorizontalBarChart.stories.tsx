@@ -6,7 +6,7 @@ import HorizontalBarChart, {
 import { Box } from "@mui/material";
 
 export default {
-  title: "Agrosfär exclusive/HorizontalBarChart",
+  title: "Agrosfär Exclusive/Horizontal Bar Chart",
   argTypes: {},
 } as Meta<typeof HorizontalBarChart>;
 
