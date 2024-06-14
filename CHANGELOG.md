@@ -1,3 +1,11 @@
+## <small>1.14.9 (2024-06-14)</small>
+
+* 1.14.8 ([dcf0391](https://github.com/agronod/mui-components/commit/dcf0391))
+* add onClickProperty ([0423606](https://github.com/agronod/mui-components/commit/0423606))
+* changelog ([a419ec6](https://github.com/agronod/mui-components/commit/a419ec6))
+
+
+
 ## <small>1.14.8 (2024-06-14)</small>
 
 * 1.14.7 ([8e9ea23](https://github.com/agronod/mui-components/commit/8e9ea23))
