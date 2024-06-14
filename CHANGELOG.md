@@ -1,3 +1,11 @@
+## <small>1.14.10 (2024-06-14)</small>
+
+* 1.14.9 ([972bd16](https://github.com/agronod/mui-components/commit/972bd16))
+* do not restrict props for link and typography ([e4aa820](https://github.com/agronod/mui-components/commit/e4aa820))
+* push changelog ([8eec3d1](https://github.com/agronod/mui-components/commit/8eec3d1))
+
+
+
 ## <small>1.14.9 (2024-06-14)</small>
 
 * 1.14.8 ([dcf0391](https://github.com/agronod/mui-components/commit/dcf0391))
