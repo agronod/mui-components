@@ -1,3 +1,11 @@
+## <small>1.14.8 (2024-06-14)</small>
+
+* 1.14.7 ([8e9ea23](https://github.com/agronod/mui-components/commit/8e9ea23))
+* add color property for AgronodTypography ([8bc56a6](https://github.com/agronod/mui-components/commit/8bc56a6))
+* push changelog ([e054090](https://github.com/agronod/mui-components/commit/e054090))
+
+
+
 ## <small>1.14.7 (2024-06-13)</small>
 
 * 1.14.6 ([141908d](https://github.com/agronod/mui-components/commit/141908d))
