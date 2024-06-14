@@ -1,6 +1,6 @@
 import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
 
-type AgronodTypographyBaseProps = Pick<MuiTypographyProps, "children" | "variant" | "sx" | "align" | "component" | "paragraph" | "variantMapping" | "className" | "style" | "ref" | "color">;
+type AgronodTypographyBaseProps = Pick<MuiTypographyProps, "children" | "variant" | "sx" | "align" | "component" | "paragraph" | "variantMapping" | "className" | "style" | "ref" | "color" | "onClick">;
 
 export interface AgronodTypographyProps extends AgronodTypographyBaseProps {
 }
