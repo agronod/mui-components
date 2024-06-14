@@ -1,20 +1,17 @@
-import { Link as MuiLink, LinkProps as MuiLinkProps, SxProps, Theme, useTheme } from '@mui/material';
-
-type AgronodLinkBaseProps = Pick<
-MuiLinkProps,
-"children" | "className" | "href" | "classes" | "color" | "sx" | "variant" | "display" | "displayPrint" | "whiteSpace" | "align" | "paragraph" | "ref" | "component" | "onClick" | "target"
->;;
+import { Link as MuiLink, LinkProps as MuiLinkProps } from "@mui/material";
+type AgronodLinkBaseProps = MuiLinkProps;
 
 export interface AgronodLinkProps extends AgronodLinkBaseProps {
-  type: "classic" | "inverted"
+  type: "classic" | "inverted";
 }
 
-const AgronodLink = ({type, className, ...rest}: AgronodLinkProps) => {
+const AgronodLink = ({ type, className, ...rest }: AgronodLinkProps) => {
   return (
-  <MuiLink
-  className={type === "inverted" ? `inverted ${className}` : className}
-   {...rest}
-  />
-)};
+    <MuiLink
+      className={type === "inverted" ? `inverted ${className}` : className}
+      {...rest}
+    />
+  );
+};
 
 export default AgronodLink;
