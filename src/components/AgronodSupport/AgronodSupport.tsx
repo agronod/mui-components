@@ -1,17 +1,18 @@
 import { Box, Fab, Menu, MenuItem, Typography } from "@mui/material";
 import { useState } from "react";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
-import SupportDialog from "./components/SupportDialog";
+import AgronodSupportDialog from "./components/AgronodSupportDialog";
 
-export interface SupportProps {
+export interface AgronodSupportProps {
   buttonSize: "small" | "large";
   menuPosition: "top" | "bottom";
   QALink: string;
-  supportEmail: string;
-  supportTelephone: string;
+  supportEmail?: string;
+  supportTelephone?: string;
+  respondTime?: string;
 }
 
-export default function Support(props: SupportProps) {
+export default function AgronodSupport(props: AgronodSupportProps) {
   const [supportModalOpen, setSupportModalOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -119,8 +120,8 @@ export default function Support(props: SupportProps) {
                 props.menuPosition === "bottom"
                   ? 5
                   : props.buttonSize === "large"
-                  ? "-65px"
-                  : "-20px",
+                    ? "-65px"
+                    : "-20px",
             },
           }}
         >
@@ -142,11 +143,12 @@ export default function Support(props: SupportProps) {
           </MenuItem>
         </Menu>
       </Box>
-      <SupportDialog
+      <AgronodSupportDialog
         isOpen={supportModalOpen}
         onClose={() => setSupportModalOpen(false)}
         supportEmail={props.supportEmail}
         supportTelephone={props.supportTelephone}
+        respondTime={props.respondTime}
       />
     </>
   );

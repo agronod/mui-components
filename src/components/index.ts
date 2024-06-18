@@ -9,7 +9,6 @@ export * from "./StackedChart";
 export * from "./PieChart";
 export * from "./VerticalBarChart";
 export * from "./HorizontalBarChart";
-export * from "./Support";
 export * from "./ErrorPagesContent";
 export * from "./AgronodIcon";
 export * from "./AgronodTypography";
@@ -22,6 +21,8 @@ export * from "./AgronodAutocompleteSearch";
 export * from "./AgronodLink";
 export * from "./AgronodLink";
 export * from "./AgronodCard";
+export * from "./AgronodButton";
+export * from "./AgronodSupport";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };

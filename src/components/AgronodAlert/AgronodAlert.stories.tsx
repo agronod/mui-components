@@ -16,29 +16,32 @@ export default {
       },
     },
   },
- 
+
   argTypes: {
     variant: {
-      description: "In our design system we use <code>standard</code> and <code>filled</code> options for variant.",
-     control: {
+      description:
+        "In our design system we use <code>standard</code> and <code>filled</code> options for variant.",
+      control: {
         type: "select",
       },
       options: ["standard", "filled"],
     },
     title: {
-      description: "Title attribute adds AlertTitle to the alert it is undefined by default.",
+      description:
+        "Title attribute adds AlertTitle to the alert it is undefined by default.",
       defaultValue: undefined,
       control: {
         type: "text",
       },
     },
     behindCardZIndex: {
-      description: "Default value is set to <code>-1</code> but if you have already multiple zIndexes this can adjust card behind element correctly.",
+      description:
+        "Default value is set to <code>-1</code> but if you have already multiple zIndexes this can adjust card behind element correctly.",
       defaultValue: -1,
       control: {
         type: "number",
       },
-    }
+    },
   },
 } as Meta<typeof AgronodAlert>;
 
@@ -59,13 +62,11 @@ export const AgronodAlertWithTitle: StoryFn<typeof AgronodAlert> = ({
 }) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithTitle.args = {
-  title:"This is title",
+  title: "This is title",
   children: (
-   
-      <Typography variant="body2">
-       This is text wrapped in typography variant
-      </Typography>
-   
+    <Typography variant="body2">
+      This is text wrapped in typography variant
+    </Typography>
   ),
   severity: "warning",
   variant: "standard",
@@ -77,12 +78,11 @@ export const AgronodAlertWithoutIcon: StoryFn<typeof AgronodAlert> = ({
 }) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithoutIcon.args = {
-  title:"This is title",
+  title: "This is title",
   children: "Alert without icon",
   severity: "success",
   icon: false,
   variant: "filled",
- 
 };
 
 export const AgronodAlertWithCloseButton: StoryFn<typeof AgronodAlert> = ({
@@ -91,11 +91,13 @@ export const AgronodAlertWithCloseButton: StoryFn<typeof AgronodAlert> = ({
 }) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithCloseButton.args = {
-  title:"Closable",
+  title: "Closable",
   children: "Alert supports close button click event",
   severity: "error",
   variant: "filled",
-  onClose: () => { alert("close event triggered")}
+  onClose: () => {
+    alert("close event triggered");
+  },
 };
 
 export const AgronodAlertWithActionProperty: StoryFn<typeof AgronodAlert> = ({
@@ -104,51 +106,68 @@ export const AgronodAlertWithActionProperty: StoryFn<typeof AgronodAlert> = ({
 }) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithActionProperty.args = {
-  title:"Action property",
+  title: "Action property",
   children: "Alert supports close button click event",
   severity: "success",
   variant: "standard",
-  action : 
-    <Button variant="outlined" color="success" size="small" onClick={() => alert("action triggered")}>
+  action: (
+    <Button
+      variant="outlined"
+      color="success"
+      size="small"
+      onClick={() => alert("action triggered")}
+    >
       Trigger action
     </Button>
-  
+  ),
 };
 
 export const AgronodAlertBehindCard: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => 
-<>
-  <AgronodCard sx={(theme) => ({ borderColor: theme.palette.error.light })}><p>this is card</p></AgronodCard>
-  <AgronodAlert {...rest}>{children}</AgronodAlert>
-</>;
+}) => (
+  <>
+    <AgronodCard sx={(theme) => ({ borderColor: theme.palette.error.light })}>
+      <p>this is card</p>
+    </AgronodCard>
+    <AgronodAlert {...rest}>{children}</AgronodAlert>
+  </>
+);
 
 AgronodAlertBehindCard.args = {
   children: "Alert that is attached to a card",
-  
+
   severity: "error",
   variant: "filled",
   behindCard: true,
-  action : 
-  <Button variant="outlined" color="error" size="small" onClick={() => alert("action triggered")}>
-    Trigger action
-  </Button>
+  action: (
+    <Button
+      variant="outlined"
+      color="error"
+      size="small"
+      onClick={() => alert("action triggered")}
+    >
+      Trigger action
+    </Button>
+  ),
 };
 
 export const AgronodAlertCustomIcon: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => 
-<>
-  <AgronodCard sx={(theme) => ({ borderColor: theme.palette.warning.light })}><p>this is card</p></AgronodCard>
-  <AgronodAlert {...rest}>{children}</AgronodAlert>
-</>;
+}) => (
+  <>
+    <AgronodCard sx={(theme) => ({ borderColor: theme.palette.warning.light })}>
+      <p>this is card</p>
+    </AgronodCard>
+    <AgronodAlert {...rest}>{children}</AgronodAlert>
+  </>
+);
 
 AgronodAlertCustomIcon.args = {
   children: "Alert with custom icon element",
   severity: "warning",
   variant: "standard",
   behindCard: true,
-  icon: <LoaderCircular color="warning" size={15}/>,
+  icon: <LoaderCircular color="warning" size={15} />,
 };
