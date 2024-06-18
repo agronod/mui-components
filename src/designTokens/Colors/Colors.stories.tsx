@@ -4,13 +4,12 @@ import ColorItem from "./ColorItem";
 const description = `
 <p><b>Primary</b> and <b>secondary</b> colors change depending on theme while other colors are common for all themes and are defined in <code>baseTheme.tsx</code>.</p>
 <p>Colors are used as variables in <code>sx</code> property of component.</p>
-<p>They can be also accessed outside <b>sx</b> via <code>const theme = useTheme();</code></p>`
+<p>They can be also accessed outside <b>sx</b> via <code>const theme = useTheme();</code></p>`;
 
 export default {
   title: "Design Tokens/Color Palette",
   parameters: {
-    componentSubtitle:
-      "Agronod-specific colors used in all projects",
+    componentSubtitle: "Agronod-specific colors used in all projects",
     docs: {
       description: {
         component: description,
@@ -26,7 +25,7 @@ export const ColorPalette = () => {
       <Typography variant="h3" sx={{ marginBottom: 3 }}>
         Theme Colors
       </Typography>
-  
+
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
         Primary
       </Typography>
@@ -38,7 +37,10 @@ export const ColorPalette = () => {
         <ColorItem name=".darkHover" code={theme.palette.primary.darkHover} />
         <ColorItem name=".dark" code={theme.palette.primary.dark} />
         {theme.palette.primary.mediumHover && (
-          <ColorItem name=".mediumHover" code={theme.palette.primary.mediumHover} />
+          <ColorItem
+            name=".mediumHover"
+            code={theme.palette.primary.mediumHover}
+          />
         )}
         <ColorItem name=".medium" code={theme.palette.primary.medium} />
         {theme.palette.primary.mainHover && (
@@ -80,7 +82,7 @@ export const ColorPalette = () => {
       <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
         Semantic Colors
       </Typography>
-    
+
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
         Success
       </Typography>
@@ -163,7 +165,10 @@ export const ColorPalette = () => {
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".primary" code={theme.palette.text.primary} />
         <ColorItem name=".secondary" code={theme.palette.text.secondary} />
-        <ColorItem name=".secondaryTransparent" code={theme.palette.text.secondaryTransparent} />
+        <ColorItem
+          name=".secondaryTransparent"
+          code={theme.palette.text.secondaryTransparent}
+        />
         <ColorItem name=".disabled" code={theme.palette.text.disabled} />
         <ColorItem name=".white" code={theme.palette.text.white} />
       </Stack>
@@ -177,7 +182,10 @@ export const ColorPalette = () => {
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".primary" code={theme.palette.icon.primary} />
         <ColorItem name=".secondary" code={theme.palette.icon.secondary} />
-        <ColorItem name=".secondaryTransparent" code={theme.palette.icon.secondaryTransparent} />
+        <ColorItem
+          name=".secondaryTransparent"
+          code={theme.palette.icon.secondaryTransparent}
+        />
       </Stack>
 
       <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
@@ -201,8 +209,14 @@ export const ColorPalette = () => {
       </Typography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".border" code={theme.palette.input.border} />
-        <ColorItem name=".borderDisabled" code={theme.palette.input.borderDisabled} />
-        <ColorItem name=".backgroundDisabled" code={theme.palette.input.backgroundDisabled} />
+        <ColorItem
+          name=".borderDisabled"
+          code={theme.palette.input.borderDisabled}
+        />
+        <ColorItem
+          name=".backgroundDisabled"
+          code={theme.palette.input.backgroundDisabled}
+        />
         <ColorItem name=".background" code={theme.palette.input.background} />
       </Stack>
 
