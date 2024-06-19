@@ -755,6 +755,9 @@ const baseThemeOptions: ThemeOptions = {
           subtitle4: "h6",
           body3: "p",
           body4: "p",
+          body1bold: "p",
+          body2bold: "p",
+          body3bold: "p",
         },
       },
       styleOverrides: {
