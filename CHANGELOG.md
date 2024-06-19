@@ -1,8 +1,8 @@
-## <small>1.14.11-fix-PF-838-mapping-typography.0 (2024-06-19)</small>
+## <small>1.14.11 (2024-06-19)</small>
 
 * 1.14.10 ([3605cae](https://github.com/agronod/mui-components/commit/3605cae))
 * fix changelog ([76500f2](https://github.com/agronod/mui-components/commit/76500f2))
-* mapping bold variants of typography to p ([e2f9b7a](https://github.com/agronod/mui-components/commit/e2f9b7a))
+* Mapping bold variants of typography to p (#108) ([c3e5d5a](https://github.com/agronod/mui-components/commit/c3e5d5a)), closes [#108](https://github.com/agronod/mui-components/issues/108)
 
 
 
