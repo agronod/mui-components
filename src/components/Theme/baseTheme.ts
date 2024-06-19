@@ -758,6 +758,7 @@ const baseThemeOptions: ThemeOptions = {
           body1bold: "p",
           body2bold: "p",
           body3bold: "p",
+          body4bold: "p",
         },
       },
       styleOverrides: {
