@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 
 type AgronodMuiSwitchBaseProps = Pick<
   MuiSwitchProps,
-  "checked" | "color" | "disabled" | "onChange" | "onClick"
+  "checked" | "disabled" | "onChange" | "onClick"
 >;
 
 export interface AgronodSwitchProps extends AgronodMuiSwitchBaseProps {
@@ -20,7 +20,6 @@ const StyledMuiSwitch = (props: AgronodSwitchProps) => (
     disabled={props.disabled}
     onChange={props.onChange}
     onClick={props.onClick}
-    color={props.color}
     disableRipple={true}
     checked={props.checked}
   />

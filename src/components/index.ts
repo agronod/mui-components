@@ -22,6 +22,7 @@ export * from "./AgronodAutocompleteSearch";
 export * from "./AgronodLink";
 export * from "./AgronodCard";
 export * from "./AgronodSwitch";
+export * from "./AgronodRadio";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };
