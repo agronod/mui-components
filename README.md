@@ -73,6 +73,10 @@ or specific version
 
 > npm install @agronod/mui-components@a.bc.d
 
+for testing purposes
+
+> npm install @agronod/mui-components@0.1.2-alpha.3
+
 ### Dependencies
 
 The following packages needs to be installed as dependencies in the consuming application:

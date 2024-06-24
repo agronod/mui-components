@@ -338,9 +338,9 @@ const baseThemeOptions: ThemeOptions = {
         root: {
           fontFamily: "inter",
           fontSize: pxToRem(16),
-          lineHeight: 1.5,
+          lineHeight: "24px",
           fontWeight: 400,
-          borderRadius: "16px",
+          letterSpacing: "0.15px",
           backgroundColor: globalThemePalette.input.background,
           borderColor: globalThemePalette.input.border,
 
@@ -352,6 +352,10 @@ const baseThemeOptions: ThemeOptions = {
             backgroundColor: globalThemePalette.input.backgroundDisabled,
             borderColor: globalThemePalette.input.borderDisabled,
             color: globalThemePalette.text.disabled,
+
+            "& .MuiInputAdornment-root svg": {
+              color: globalThemePalette.text.disabled,
+            },
           },
 
           "& input::placeholder": {
