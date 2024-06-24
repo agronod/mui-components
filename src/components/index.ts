@@ -26,6 +26,7 @@ export * from "./AgronodRadioGroup";
 export * from "./AgronodButton";
 export * from "./AgronodButtonIcon";
 export * from "./AgronodSupport";
+export * from "./AgronodInputs/AgronodTextField";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };
