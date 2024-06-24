@@ -1,3 +1,3 @@
-import AgronodRadio from "./AgronodRadio";
+import AgronodRadioGroup from "./AgronodRadioGroup";
 
-export { AgronodRadio };
+export { AgronodRadioGroup };
