@@ -23,6 +23,7 @@ export * from "./AgronodLink";
 export * from "./AgronodCard";
 export * from "./AgronodSwitch";
 export * from "./AgronodRadio";
+export * from "./AgronodRadioGroup";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };
