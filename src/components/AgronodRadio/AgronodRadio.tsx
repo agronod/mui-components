@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 
 type AgronodMuiRadioBaseProps = Pick<
   MuiRadioProps,
-  "checked" | "disabled" | "onChange" | "onClick"
+  "checked" | "disabled" | "onChange" | "onClick" | "value"
 >;
 
 export interface AgronodRadioProps extends AgronodMuiRadioBaseProps {
@@ -22,6 +22,7 @@ const StyledMuiRadio = (props: AgronodRadioProps) => (
     onClick={props.onClick}
     disableRipple={true}
     checked={props.checked}
+    value={props.value}
     sx={(theme) => ({
       "&.Mui-disabled .MuiSvgIcon-root path": {
         fill: theme.palette.border
