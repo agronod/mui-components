@@ -14,7 +14,6 @@ export interface AgronodRadioProps extends AgronodMuiRadioBaseProps {
   label?: ReactNode;
 }
 
-
 const StyledMuiRadio = (props: AgronodRadioProps) => (
   <MuiRadio
     disabled={props.disabled}
@@ -25,15 +24,17 @@ const StyledMuiRadio = (props: AgronodRadioProps) => (
     value={props.value}
     sx={(theme) => ({
       "&.Mui-disabled .MuiSvgIcon-root path": {
-        fill: theme.palette.border
+        fill: theme.palette.border,
       },
 
       "&:hover .MuiSvgIcon-root path": {
-        fill: props.checked ? theme.palette.primary.mainHover : theme.palette.text.secondary
+        fill: props.checked
+          ? theme.palette.primary.mainHover
+          : theme.palette.text.secondary,
       },
 
       "&.Mui-focusVisible": {
-        "& svg:first-child": {
+        "& svg:first-of-type": {
           border: `1px solid ${theme.palette.text.primary}`,
           borderRadius: "25px",
         },

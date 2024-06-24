@@ -38,10 +38,15 @@ export const RadioGroupDefault: StoryFn<typeof AgronodRadioGroup> = ({
 };
 
 RadioGroupDefault.args = {
-  value: "one",
   row: false,
-  children: radioButtons.map((radio) => {
-    return <AgronodRadio value={radio.value} label={radio.label} />;
+  children: radioButtons.map((radio, i) => {
+    return (
+      <AgronodRadio
+        value={radio.value}
+        label={radio.label}
+        key={radio.value + i}
+      />
+    );
   }),
 };
 
@@ -52,10 +57,15 @@ export const RadioGroupWithLabel: StoryFn<typeof AgronodRadioGroup> = ({
 };
 
 RadioGroupWithLabel.args = {
-  value: "one",
   row: false,
   label: "This is a label",
-  children: radioButtons.map((radio) => {
-    return <AgronodRadio value={radio.value} label={radio.label} />;
+  children: radioButtons.map((radio, i) => {
+    return (
+      <AgronodRadio
+        value={radio.value}
+        label={radio.label}
+        key={radio.value + i}
+      />
+    );
   }),
 };
