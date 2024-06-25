@@ -9,7 +9,7 @@ export interface ErrorPagesContentProps {
   backgroundColor: string;
   pageEmail: string;
   pageType: 500 | 404;
-  pageAgronodLink?: string;
+  pageLink?: string;
   maxWidth?: string;
   calculatedHeight?: string;
   customButtonText?: string;
@@ -103,7 +103,7 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
           )}
         </Box>
         {props.pageType === 404 ? (
-          <AgronodButton href={props.pageAgronodLink} variant="contained">
+          <AgronodButton href={props.pageLink} variant="contained">
             {props.customButtonText
               ? props.customButtonText
               : "Tillbaka till hem"}
