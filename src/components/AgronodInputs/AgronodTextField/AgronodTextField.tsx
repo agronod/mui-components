@@ -9,6 +9,7 @@ import {
 import { Tooltip } from "../../Tooltip";
 import { AgronodIcon } from "../../AgronodIcon";
 
+//TODO: test it in projects (especially Agrosfär) and modify if needed
 type AgronodTextFieldBaseProps = Pick<
   MuiTextFieldProps,
   | "sx"
