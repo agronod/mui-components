@@ -54,32 +54,13 @@ const StyledMuiTextField = ({
   helperText,
   hasIcon,
   textAligment,
-  endAndorment,
   ...rest
 }: AgronodTextFieldProps) => {
-  const icon = useMemo(() => {
-    if (status === "error" && hasIcon) {
-      return <AgronodIcon name="errorContained" color="error" />;
-    }
-    if (status === "warning" && hasIcon) {
-      return <AgronodIcon name="warningContained" color="warning" />;
-    }
-    return null;
-  }, [status, hasIcon]);
-
   return (
     <MuiTextField
       InputLabelProps={{
         color: "secondary",
         shrink: false,
-      }}
-      InputProps={{
-        startAdornment: icon !== null && (
-          <InputAdornment position="start">{icon}</InputAdornment>
-        ),
-        endAdornment: endAndorment !== undefined && (
-          <InputAdornment position="start">{endAndorment}</InputAdornment>
-        ),
       }}
       variant="outlined"
       sx={(theme) => ({
@@ -141,60 +122,86 @@ const AgronodTextField = ({
 }: AgronodTextFieldProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
+  const icon = useMemo(() => {
+    if (status === "error" && hasIcon) {
+      return <AgronodIcon name="errorContained" color="error" />;
+    }
+    if (status === "warning" && hasIcon) {
+      return <AgronodIcon name="warningContained" color="warning" />;
+    }
+    return null;
+  }, [status, hasIcon]);
+
   return (
     <Box
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
+      style={{
+        position: "relative",
+        display: "inline-flex",
+        alignItems: "center",
+      }}
     >
+      <InputAdornment
+        sx={{
+          position: "absolute",
+          zIndex: 999,
+          top: "50%",
+          left: "12px",
+        }}
+        position="start"
+      >
+        {icon}
+      </InputAdornment>
       <Tooltip
         open={showTooltip && tooltipText !== undefined}
         placement="top"
         arrow
         title={tooltipText}
       >
-        {label ? (
-          <FormControlLabel
-            labelPlacement="top"
-            sx={{
-              textAlign: "right",
-              margin: 0,
-              width: rest.fullWidth ? "100%" : "auto",
-            }}
-            componentsProps={{
-              typography: {
-                variant: "body2bold",
-                alignSelf: "flex-start",
-                color: status === "error" ? "error.medium" : "text.secondary",
-                marginBottom: "4px",
-              },
-            }}
-            label={label}
-            disabled={rest.disabled}
-            control={
-              <StyledMuiTextField
-                status={status}
-                emptyStyle={emptyStyle}
-                hideHelperText={hideHelperText}
-                helperText={helperText}
-                hasIcon={hasIcon}
-                textAligment={textAligment}
-                endAndorment={endAndorment}
-                {...rest}
-              />
-            }
-          />
-        ) : (
-          <StyledMuiTextField
-            status={status}
-            emptyStyle={emptyStyle}
-            hideHelperText={hideHelperText}
-            helperText={helperText}
-            hasIcon={hasIcon}
-            textAligment={textAligment}
-            endAndorment={endAndorment}
-            {...rest}
-          />
-        )}
+        <>
+          {label ? (
+            <FormControlLabel
+              labelPlacement="top"
+              sx={{
+                textAlign: "right",
+                margin: 0,
+                width: rest.fullWidth ? "100%" : "auto",
+              }}
+              componentsProps={{
+                typography: {
+                  variant: "body2bold",
+                  alignSelf: "flex-start",
+                  color: status === "error" ? "error.medium" : "text.secondary",
+                  marginBottom: "4px",
+                },
+              }}
+              label={label}
+              disabled={rest.disabled}
+              control={
+                <StyledMuiTextField
+                  status={status}
+                  emptyStyle={emptyStyle}
+                  hideHelperText={hideHelperText}
+                  helperText={helperText}
+                  hasIcon={hasIcon}
+                  textAligment={textAligment}
+                  {...rest}
+                />
+              }
+            />
+          ) : (
+            <StyledMuiTextField
+              status={status}
+              emptyStyle={emptyStyle}
+              hideHelperText={hideHelperText}
+              helperText={helperText}
+              hasIcon={hasIcon}
+              textAligment={textAligment}
+              {...rest}
+            />
+          )}
+        </>
       </Tooltip>
     </Box>
   );
