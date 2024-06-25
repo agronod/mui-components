@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
 import Tooltip from "./Tooltip";
-import { Button } from "@mui/material";
+import { AgronodButton } from "../AgronodButton";
 
 export default {
   title: "Shared Components/Tooltip",
@@ -46,7 +46,7 @@ export default {
 
 export const TooltipDefault = ({ ...args }) => (
   <Tooltip title="Some text" {...args}>
-    <Button variant="contained">Hover</Button>
+    <AgronodButton variant="contained">Hover</AgronodButton>
   </Tooltip>
 );
 TooltipDefault.args = {
@@ -55,7 +55,7 @@ TooltipDefault.args = {
 };
 export const TooltipWithoutArrow = ({ ...args }) => (
   <Tooltip title="Some text" {...args}>
-    <Button variant="contained">Hover</Button>
+    <AgronodButton variant="contained">Hover</AgronodButton>
   </Tooltip>
 );
 TooltipWithoutArrow.args = {
@@ -64,7 +64,7 @@ TooltipWithoutArrow.args = {
 };
 export const TooltipPlacementRight = ({ ...args }) => (
   <Tooltip title="Some text" {...args}>
-    <Button variant="contained">Hover</Button>
+    <AgronodButton variant="contained">Hover</AgronodButton>
   </Tooltip>
 );
 TooltipPlacementRight.args = {

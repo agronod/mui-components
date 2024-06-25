@@ -338,9 +338,9 @@ const baseThemeOptions: ThemeOptions = {
         root: {
           fontFamily: "inter",
           fontSize: pxToRem(16),
-          lineHeight: 1.5,
+          lineHeight: "24px",
           fontWeight: 400,
-          borderRadius: "16px",
+          letterSpacing: "0.15px",
           backgroundColor: globalThemePalette.input.background,
           borderColor: globalThemePalette.input.border,
 
@@ -352,6 +352,10 @@ const baseThemeOptions: ThemeOptions = {
             backgroundColor: globalThemePalette.input.backgroundDisabled,
             borderColor: globalThemePalette.input.borderDisabled,
             color: globalThemePalette.text.disabled,
+
+            "& .MuiInputAdornment-root svg": {
+              color: globalThemePalette.text.disabled,
+            },
           },
 
           "& input::placeholder": {
@@ -564,6 +568,7 @@ const baseThemeOptions: ThemeOptions = {
           fontWeight: 500,
           lineHeight: "20px",
           textTransform: "none",
+          borderRadius: "24px !important",
           ":hover": {
             boxShadow: "none",
           },
@@ -579,14 +584,13 @@ const baseThemeOptions: ThemeOptions = {
           },
         },
         contained: {
-          borderRadius: "100vmax",
           border: "1px solid transparent",
           ":focus-visible": {
             border: `1px solid ${globalThemePalette.white}`,
             boxShadow: `0px 0px 0px 4.5px ${globalThemePalette.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
           },
-          "&.MuiButton-containedWarning": {
+          "&.MuiButton-containedWarning:not(.Mui-disabled)": {
             color: globalThemePalette.text.primary,
             ":hover": {
               backgroundColor: globalThemePalette.warning.medium,
@@ -595,7 +599,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.warning.dark,
             },
           },
-          "&.MuiButton-containedError": {
+          "&.MuiButton-containedError:not(.Mui-disabled)": {
             backgroundColor: globalThemePalette.error.medium,
             ":hover": {
               backgroundColor: globalThemePalette.error.dark,
@@ -604,7 +608,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.error.darkHover,
             },
           },
-          "&.MuiButton-containedInfo": {
+          "&.MuiButton-containedInfo:not(.Mui-disabled)": {
             ":hover": {
               backgroundColor: globalThemePalette.info.medium,
             },
@@ -612,7 +616,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.info.dark,
             },
           },
-          "&.MuiButton-containedSuccess": {
+          "&.MuiButton-containedSuccess:not(.Mui-disabled)": {
             backgroundColor: globalThemePalette.success.medium,
             ":hover": {
               backgroundColor: globalThemePalette.success.dark,
@@ -632,7 +636,6 @@ const baseThemeOptions: ThemeOptions = {
           },
         },
         outlined: {
-          borderRadius: "100vmax",
           borderColor: globalThemePalette.input.border,
           backgroundColor: "rgba(255,255,255, 50%)",
           ":hover": {
@@ -818,7 +821,7 @@ const baseThemeOptions: ThemeOptions = {
           alignItems: "center",
           padding: defaultMuiTheme.spacing(2),
           ...globalTypography.body2,
-          "& .MuiAlert-message" : {
+          "& .MuiAlert-message": {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -826,13 +829,13 @@ const baseThemeOptions: ThemeOptions = {
             flexWrap: "wrap",
             gap: 8,
           },
-          "& .MuiAlert-icon" : {
+          "& .MuiAlert-icon": {
             padding: 0,
             minWidth: "24px",
             minHeight: "24px",
             alignItems: "center",
             justifyContent: "center",
-          }
+          },
         },
         message: {
           padding: 0,

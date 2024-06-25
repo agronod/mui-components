@@ -1,17 +1,19 @@
-import { Box, Fab, Menu, MenuItem, Typography } from "@mui/material";
+import { Box, Fab, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
-import SupportDialog from "./components/SupportDialog";
+import AgronodSupportDialog from "./components/AgronodSupportDialog";
+import { AgronodTypography } from "../AgronodTypography";
 
-export interface SupportProps {
+export interface AgronodSupportProps {
   buttonSize: "small" | "large";
   menuPosition: "top" | "bottom";
   QALink: string;
-  supportEmail: string;
-  supportTelephone: string;
+  supportEmail?: string;
+  supportTelephone?: string;
+  respondTime?: string;
 }
 
-export default function Support(props: SupportProps) {
+export default function AgronodSupport(props: AgronodSupportProps) {
   const [supportModalOpen, setSupportModalOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -119,8 +121,8 @@ export default function Support(props: SupportProps) {
                 props.menuPosition === "bottom"
                   ? 5
                   : props.buttonSize === "large"
-                  ? "-65px"
-                  : "-20px",
+                    ? "-65px"
+                    : "-20px",
             },
           }}
         >
@@ -130,7 +132,7 @@ export default function Support(props: SupportProps) {
               setSupportModalOpen(true);
             }}
           >
-            <Typography variant="body1"> Kontakta oss</Typography>
+            <AgronodTypography variant="body1"> Kontakta oss</AgronodTypography>
           </MenuItem>
           <MenuItem
             onClick={() => {
@@ -138,15 +140,18 @@ export default function Support(props: SupportProps) {
               window.open(props.QALink, "_blank");
             }}
           >
-            <Typography variant="body1"> Vanliga frågor</Typography>
+            <AgronodTypography variant="body1">
+              Vanliga frågor
+            </AgronodTypography>
           </MenuItem>
         </Menu>
       </Box>
-      <SupportDialog
+      <AgronodSupportDialog
         isOpen={supportModalOpen}
         onClose={() => setSupportModalOpen(false)}
         supportEmail={props.supportEmail}
         supportTelephone={props.supportTelephone}
+        respondTime={props.respondTime}
       />
     </>
   );

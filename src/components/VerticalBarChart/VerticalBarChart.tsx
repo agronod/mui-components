@@ -1,4 +1,4 @@
-import { Box, Skeleton, Typography } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 import {
   useCallback,
   useEffect,
@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { round } from "../utils";
+import { AgronodTypography } from "../AgronodTypography";
 
 export type VerticalBarChartData = {
   id: string;
@@ -271,7 +272,7 @@ const VerticalBarChart = ({
                   alignItems: "flex-start",
                 }}
               >
-                <Typography
+                <AgronodTypography
                   sx={{
                     width: `${TICK_WIDTH - 16}px`,
                     overflow: "hidden",
@@ -282,10 +283,10 @@ const VerticalBarChart = ({
                   component={"p"}
                 >
                   {item.name}
-                </Typography>
-                <Typography fontWeight={600} variant="caption">
+                </AgronodTypography>
+                <AgronodTypography fontWeight={600} variant="caption">
                   {round(item.value)}
-                </Typography>
+                </AgronodTypography>
               </Box>
             ))}
       </Box>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { getNyckeltalVarde } from "../Nyckeltal/utils";
-import { Box, Card, Typography, useTheme } from "@mui/material";
+import { Box, Card, useTheme } from "@mui/material";
+import { AgronodTypography } from "../AgronodTypography";
 
 const colors = ["#123F25", "#2C7A4D", "#59B87F", "#BDBDBD"];
 
@@ -51,7 +52,7 @@ export const StackedChart: React.FC<StackedChartProps> = ({
         },
       })}
     >
-      <Typography
+      <AgronodTypography
         sx={(theme) => ({
           [theme.breakpoints.down("sm")]: {
             padding: 2,
@@ -60,7 +61,7 @@ export const StackedChart: React.FC<StackedChartProps> = ({
         variant="subtitle2"
       >
         {headline}
-      </Typography>
+      </AgronodTypography>
       <Box
         sx={(theme) => ({
           display: "flex",
@@ -119,12 +120,14 @@ export const StackedChart: React.FC<StackedChartProps> = ({
                   },
                 })}
               >
-                <Typography variant="caption">{item.name}</Typography>
-                <Typography component="p" variant="caption">
+                <AgronodTypography variant="caption">
+                  {item.name}
+                </AgronodTypography>
+                <AgronodTypography component="p" variant="caption">
                   {getNyckeltalVarde(item.value).toLocaleString("sv-SE")}{" "}
                   {item.unit}
-                </Typography>
-                <Typography
+                </AgronodTypography>
+                <AgronodTypography
                   color={colors[index]}
                   marginTop={0.5}
                   fontWeight={600}
@@ -132,7 +135,7 @@ export const StackedChart: React.FC<StackedChartProps> = ({
                   fontSize={24}
                 >
                   {item.percentage}%
-                </Typography>
+                </AgronodTypography>
               </Box>
             )
           );

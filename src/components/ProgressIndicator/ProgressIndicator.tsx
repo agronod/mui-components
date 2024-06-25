@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { AgronodTypography } from "../AgronodTypography";
 
 type ProgressIndicatorProps = {
   active: number;
@@ -7,9 +7,9 @@ type ProgressIndicatorProps = {
 
 const ProgressIndicator = (props: ProgressIndicatorProps) => {
   return (
-    <Typography variant="overline" color="text.secondary">
+    <AgronodTypography variant="overline" color="text.secondary">
       steg {props.active} av {props.total}
-    </Typography>
+    </AgronodTypography>
   );
 };
 

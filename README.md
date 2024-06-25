@@ -12,6 +12,8 @@ This library is meant to provide two things:
 
 It is built on top of <b>[Material UI](https://mui.com/getting-started/usage/)</b>.
 This way we can make use of an wide range of prebuilt components that we know follow [Material Designs](https://material.io/design) thuroughly tested and documented standards.
+Stories are written in CSF format <b>[See more](https://storybook.js.org/docs/api/csf)</b>
+<b>[Storybook API References](https://storybook.js.org/docs/api)</b>
 
 ## Component principles
 
@@ -31,14 +33,16 @@ npm run storybook
 ## Changelog
 
 - Our CHANGELOG.md tracks all the commits that were made and storybook users can see what each version brings.
-- To make sure we have always lates updates we should before merging each branch run changelog update: 
+- To make sure we have always lates updates we should before merging each branch run changelog update:
 
 1. Push changes to your feature branch
 2. Pull new version generated to gitHub workflow
 3. Run:
+
 ```bash
 npm run changelog
 ```
+
 4. Commit new CHANGELOG.md
 
 ## Integrating as design system in project
@@ -62,11 +66,16 @@ Versions should follow [semver](https://semver.org/)
 - run **npm publish**
 
 ### Installing
+
 > npm install --save @agronod/mui-components
 
 or specific version
 
 > npm install @agronod/mui-components@a.bc.d
+
+for testing purposes
+
+> npm install @agronod/mui-components@0.1.2-alpha.3
 
 ### Dependencies
 
@@ -91,7 +100,8 @@ The following packages needs to be installed as dependencies in the consuming ap
 To get all themes and styles wrap all components preferably in <code>App.tsx</code> file.
 
 #### ThemeProvider
-  > Pass options or overrides to the base theme. This is so that each project can configure the library to their own profile.
+
+> Pass options or overrides to the base theme. This is so that each project can configure the library to their own profile.
 
 ```javascript
 // Wrap as soon as possible in the component tree
@@ -99,42 +109,46 @@ import ThemeProvider from "@agronod/mui-components";
 
 const App = () => {
   <StyledEngineProvider injectFirst>
-    // We have three themes that can be used right now: AgronodTheme, AgrosphereTheme, AgrosphereDarkTheme
-    <ThemeProvider options={yourSelectedTheme}> 
+    // We have three themes that can be used right now: AgronodTheme,
+    AgrosphereTheme, AgrosphereDarkTheme
+    <ThemeProvider options={yourSelectedTheme}>
       <App />
     </ThemeProvider>;
-   </StyledEngineProvider>
+  </StyledEngineProvider>;
 };
 ```
 
 ### Theme setup
 
 - All base setups for styles, colors, fonts, ThemeProvider... are in <code>Theme</code> folder.
-- ***baseTheme.ts*** contains base styling that will be applied on all components.
-- Alongside baseTheme there are separate theme files ex. *agronodTheme.ts* that applies styles only on selected theme.
+- **_baseTheme.ts_** contains base styling that will be applied on all components.
+- Alongside baseTheme there are separate theme files ex. _agronodTheme.ts_ that applies styles only on selected theme.
 
 ### useTheme
-**useTheme** is option available in a consuming application when using Mui/lab as dependency. Theme object can be used two ways on top of components as *useTheme()* or in *sx* props.
+
+**useTheme** is option available in a consuming application when using Mui/lab as dependency. Theme object can be used two ways on top of components as _useTheme()_ or in _sx_ props.
 
 ```jsx
 const theme = useTheme();
 const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 backgroundColor={theme.palette.secondary.main}
 #or
-<Button sx={{(theme)=>({ p: theme.spacing(1) })}} />
+<AgronodButton sx={{(theme)=>({ p: theme.spacing(1) })}} />
 #or
-<Button sx={{ p: (theme) => theme.spacing(1) }}} />
+<AgronodButton sx={{ p: (theme) => theme.spacing(1) }}} />
 ```
 
 ### How to use components
- - How to use each component is explained in the ***About*** section on components story where we can find component name and basic parameters.
- - We import components from <code>import { AgronodComponent } from "@agronod/mui-components";</code>.
- - ***NOTE:*** In current version we have mix so we import components from MUI to ex: <code>import {Box} from "@mui/material";</code> which will be removed later.
- - ***NOTE:*** So that we do not confuse custom componets with MUI and where to import them from our custom components are named with Agronod prefix ex: AgronodCheckbox vs Checkbox (MUI).
+
+- How to use each component is explained in the **_About_** section on components story where we can find component name and basic parameters.
+- We import components from <code>import { AgronodComponent } from "@agronod/mui-components";</code>.
+- **_NOTE:_** In current version we have mix so we import components from MUI to ex: <code>import {Box} from "@mui/material";</code> which will be removed later.
+- **_NOTE:_** So that we do not confuse custom componets with MUI and where to import them from our custom components are named with Agronod prefix ex: AgronodCheckbox vs Checkbox (MUI).
 
 ## How to write stories
+
 - Every component should have main component file and story file.
-- Name of component should be prefixed with ***Agronod*** (ex. AgronodCheckbox, AgronodButton etc...) so it differs from MUI versions when importing.<br/>
+- Name of component should be prefixed with **_Agronod_** (ex. AgronodCheckbox, AgronodButton etc...) so it differs from MUI versions when importing.<br/>
 
 ```jsx
 Root/
@@ -156,21 +170,23 @@ Root/
 
 - There is several different types of story that we use.
 
-1. ***Intro pages stories*** - written in ***.mdx*** format.
-2. ***Design tokens stories*** - that are displaying our design tokens used (ex: colors, borders, shadows, etc...)
-3. ***Component stories*** - actual component that can be imported and used with different parameters.
+1. **_Intro pages stories_** - written in **_.mdx_** format.
+2. **_Design tokens stories_** - that are displaying our design tokens used (ex: colors, borders, shadows, etc...)
+3. **_Component stories_** - actual component that can be imported and used with different parameters.
 
 #### Component story
+
 Each Component story should have
+
 1. Title - component place and name
 2. Subtitle - short about component
 3. Description - component usage, where, how, which project
 4. Changeable arguments
-5. Arguments description for each one 
+5. Arguments description for each one
 6. Docs section code display that you can copy
 
-
 #### Example of Component story:
+
 ```jsx
 import { StoryFn, Meta } from "@storybook/react";
 import Component from "./Component";
@@ -236,8 +252,9 @@ ComponentWithOtherParameters.args = {
 ```
 
 ### Component File
+
 - In component file we import component from MUI, style it accordingly and export together with component prop types so it can be consumed.
-- For component to be consumed we need to export them from *index.ts* in *components* folder.
+- For component to be consumed we need to export them from _index.ts_ in _components_ folder.
 
 #### Base component structure looks like this:
 
@@ -256,7 +273,8 @@ const AgronodCommponent = (props: AgronodCommponentProps) => (
 
 export default AgronodCommponent;
 ```
-####Support for showing just selected props from MUI looks like this: 
+
+####Support for showing just selected props from MUI looks like this:
 
 ```jsx
 import { Component as MuiComponent, ComponentProps as MuiComponentProps } from '@mui/material';
@@ -277,4 +295,3 @@ const AgronodComponent = (props: AgronodComponentProps) => {
 
 export default AgronodComponent;
 ```
-

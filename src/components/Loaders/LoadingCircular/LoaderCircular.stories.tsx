@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import LoaderCircular from "./LoaderCircular";
-import { Button } from "@mui/material";
+import { AgronodButton } from "../../AgronodButton";
 
 export default {
   title: "Shared Components/Loaders/LoaderCircular",
@@ -51,9 +51,9 @@ LoaderCircularDefault.args = {
 export const LoaderCircularInButton: StoryFn<typeof LoaderCircular> = ({
   ...args
 }) => (
-  <Button variant="contained" disabled={true}>
+  <AgronodButton variant="contained" disabled={true}>
     <LoaderCircular {...args} />
-  </Button>
+  </AgronodButton>
 );
 LoaderCircularInButton.args = {
   size: 20,

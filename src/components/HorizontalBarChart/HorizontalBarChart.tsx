@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography, Skeleton } from "@mui/material";
+import { Box, Stack, Skeleton } from "@mui/material";
 import {
   useCallback,
   useEffect,
@@ -8,6 +8,8 @@ import {
   useState,
 } from "react";
 import { round } from "../utils";
+import { AgronodTypography } from "../AgronodTypography";
+import { AgronodCard } from "../AgronodCard";
 
 export type HorizontalBarChartData = {
   id: string;
@@ -153,11 +155,10 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
           ...style,
         }}
       >
-        <Card
+        <AgronodCard
           sx={(theme) => ({
             textAlign: "left",
             padding: 3,
-            border: "1px solid #e0e0e0",
             display: "flex",
             position: "relative",
             top: -120,
@@ -169,9 +170,9 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
             },
           })}
         >
-          <Typography fontWeight={500} mb={2} variant="overline">
+          <AgronodTypography fontWeight={500} mb={2} variant="overline">
             {label}
-          </Typography>
+          </AgronodTypography>
           {subcategories.map((category: SubCategory) => (
             <Stack
               key={category.name}
@@ -179,21 +180,21 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
               alignItems="center"
               marginBottom={0.5}
             >
-              <Typography
+              <AgronodTypography
                 mb={0.5}
                 fontWeight={600}
                 variant="caption"
                 sx={{ minWidth: "30px" }}
               >
                 {Math.round(category.percentage)}%
-              </Typography>
+              </AgronodTypography>
 
-              <Typography ml={1} mb={0.5} variant="caption">
+              <AgronodTypography ml={1} mb={0.5} variant="caption">
                 {category.name}
-              </Typography>
+              </AgronodTypography>
             </Stack>
           ))}
-        </Card>
+        </AgronodCard>
       </Box>
     );
   }
@@ -409,7 +410,7 @@ const HorizontalBarChart = ({
                   alignItems: "flex-start",
                 }}
               >
-                <Typography
+                <AgronodTypography
                   sx={{
                     width: `${barWidth - 16}px`,
                     overflow: "hidden",
@@ -421,10 +422,14 @@ const HorizontalBarChart = ({
                   component={"p"}
                 >
                   {item.name}
-                </Typography>
-                <Typography fontWeight={600} variant="body2" fontSize={24}>
+                </AgronodTypography>
+                <AgronodTypography
+                  fontWeight={600}
+                  variant="body2"
+                  fontSize={24}
+                >
                   {mapTotalValue(item).toLocaleString("sv-SE")}
-                </Typography>
+                </AgronodTypography>
               </Box>
             ))}
       </Box>

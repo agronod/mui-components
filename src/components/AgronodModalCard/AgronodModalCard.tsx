@@ -4,12 +4,12 @@ import {
   IconButton,
   Modal as MuiModalCard,
   ModalProps as MuiModalCardProps,
-  Typography,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { SxProps, Theme, useTheme } from "@mui/material/styles";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useCallback, useEffect } from "react";
+import { AgronodTypography } from "../AgronodTypography";
 
 type ModalCardBaseProps = Pick<MuiModalCardProps, "children" | "open" | "sx">;
 
@@ -173,29 +173,29 @@ const AgronodModalCard = (props: ModalCardProps) => {
               {props.icon && <Box sx={{ mb: 2 }}>{props.icon}</Box>}
               {props.caption && <Box sx={{ mb: 1 }}>{props.caption}</Box>}
               {props.title && (
-                <Typography
+                <AgronodTypography
                   variant={
                     props.isBigTitle
                       ? isMobile
                         ? "h4"
                         : "h3"
                       : isMobile
-                      ? "h5"
-                      : "h4"
+                        ? "h5"
+                        : "h4"
                   }
                   sx={{ pb: 2 }}
                 >
                   {props.title}
-                </Typography>
+                </AgronodTypography>
               )}
               {props.subtitle && (
-                <Typography
+                <AgronodTypography
                   variant="body1"
                   color="text.secondary"
                   sx={{ pb: 3 }}
                 >
                   {props.subtitle}
-                </Typography>
+                </AgronodTypography>
               )}
             </Box>
           )}

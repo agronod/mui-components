@@ -106,7 +106,6 @@ const agrosfarTheme = {
         },
       },
     },
-
     MuiButton: {
       styleOverrides: {
         outlined: {

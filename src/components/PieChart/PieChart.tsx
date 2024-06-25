@@ -1,7 +1,8 @@
 import { PieChart as RePieChart, Pie, Cell, Tooltip } from "recharts";
-import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
+import { AgronodTypography } from "../AgronodTypography";
 
 export type PieChartData = {
   id: string;
@@ -151,9 +152,9 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
                     background: dataSorted[hoverIndex].color,
                   }}
                 />
-                <Typography sx={{ color: "#FFFFFF" }} variant="caption">
+                <AgronodTypography sx={{ color: "#FFFFFF" }} variant="caption">
                   {`${dataSorted[hoverIndex].name} ${percentage}%`}
-                </Typography>
+                </AgronodTypography>
               </Stack>
             }
           />
@@ -161,10 +162,10 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
       </RePieChart>
       <Box width="100%" mt={2} ml={isMobile && !isPdf ? 2 : 4}>
         <Box paddingX={1} mb={2}>
-          <Typography variant="caption">Totalt</Typography>
-          <Typography variant="h5" sx={{ fontWeight: 600 }}>
+          <AgronodTypography variant="caption">Totalt</AgronodTypography>
+          <AgronodTypography variant="h5" sx={{ fontWeight: 600 }}>
             {total}
-          </Typography>
+          </AgronodTypography>
         </Box>
         <Box
           sx={{
@@ -204,14 +205,14 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
                     pr: 1,
                   }}
                 >
-                  <Typography
+                  <AgronodTypography
                     variant="caption"
                     sx={{
                       color: theme.palette.text.primary,
                     }}
                   >
                     {item.name}
-                  </Typography>
+                  </AgronodTypography>
                 </Box>
                 <Box
                   sx={{
@@ -219,14 +220,14 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
                     textAlign: "right",
                   }}
                 >
-                  <Typography
+                  <AgronodTypography
                     variant="caption"
                     sx={{
                       fontWeight: 600,
                     }}
                   >
                     {item.value}
-                  </Typography>
+                  </AgronodTypography>
                 </Box>
               </Box>
             ))}

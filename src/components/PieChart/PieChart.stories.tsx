@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from "@storybook/react";
 import PieChart, { PieChartData } from "./PieChart";
-import { Card, Grid, Typography } from "@mui/material";
+import { Card, Grid } from "@mui/material";
+import { AgronodTypography } from "../AgronodTypography";
 
 export default {
   title: "Agrosfär Exclusive/Pie Chart",
@@ -50,8 +51,10 @@ export const PieChartDefault: StoryFn<typeof PieChart> = ({ ...args }) => (
   <Grid container spacing={2}>
     <Grid item xs={12} md={6}>
       <Card sx={{ padding: 2 }}>
-        <Typography variant="subtitle2">Klimatavtryck växtodling</Typography>
-        <Typography variant="caption">ton CO2e</Typography>
+        <AgronodTypography variant="subtitle2">
+          Klimatavtryck växtodling
+        </AgronodTypography>
+        <AgronodTypography variant="caption">ton CO2e</AgronodTypography>
         <PieChart {...args} />
       </Card>
     </Grid>

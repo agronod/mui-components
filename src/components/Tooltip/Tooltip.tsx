@@ -1,9 +1,9 @@
 import {
   Tooltip as MuiTooltip,
-  Typography,
   TooltipProps,
   tooltipClasses,
 } from "@mui/material";
+import { AgronodTypography } from "../AgronodTypography";
 
 export const tooltipTypographyStyle = {
   fontFamily: "Inter",
@@ -35,7 +35,9 @@ export default function Tooltip(props: TooltipProps) {
       }}
       title={
         props.title ? (
-          <Typography sx={[tooltipTypographyStyle]}>{props.title}</Typography>
+          <AgronodTypography sx={[tooltipTypographyStyle]}>
+            {props.title}
+          </AgronodTypography>
         ) : (
           ""
         )

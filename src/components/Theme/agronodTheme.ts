@@ -43,7 +43,6 @@ const agronodTheme = {
         },
       },
     },
-
     MuiButton: {
       styleOverrides: {
         outlined: {

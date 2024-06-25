@@ -1,6 +1,5 @@
 import {
   Box,
-  Chip,
   FormControl,
   FormLabel,
   ListItemText,
@@ -12,6 +11,7 @@ import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import { StoryFn, Meta } from "@storybook/react";
 import { useState } from "react";
 import { AgronodCheckbox } from "../AgronodCheckbox";
+import { AgronodChip } from "../AgronodChip";
 
 export default {
   title: "Shared Components/Select",
@@ -184,7 +184,7 @@ export const SelectMultipleChip: StoryFn<typeof Select> = ({
         renderValue={(selected) => (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
             {selected.map((value) => (
-              <Chip key={value} label={value} />
+              <AgronodChip key={value} label={value} />
             ))}
           </Box>
         )}

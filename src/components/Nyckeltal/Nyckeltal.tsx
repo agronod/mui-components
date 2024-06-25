@@ -1,7 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { getNyckeltalVarde, NyckeltalProps } from "./utils";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Tooltip } from "../Tooltip";
+import { AgronodTypography } from "../AgronodTypography";
 
 type Props = {
   item: NyckeltalProps;
@@ -19,12 +20,12 @@ export default function Nyckeltal({ item }: Props) {
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography
+        <AgronodTypography
           sx={{ fontFamily: "inter, sans-serif!important" }}
           variant="caption"
         >
           {item.nyckeltal}
-        </Typography>
+        </AgronodTypography>
         {item.kommentar && (
           <Tooltip title={item.kommentar}>
             <span
@@ -43,16 +44,16 @@ export default function Nyckeltal({ item }: Props) {
           </Tooltip>
         )}
       </Box>
-      <Typography
+      <AgronodTypography
         sx={{ fontFamily: "inter, sans-serif!important" }}
         component="p"
         variant="caption"
         color="#616161"
       >
         {item.enhet}
-      </Typography>
+      </AgronodTypography>
 
-      <Typography
+      <AgronodTypography
         sx={{ fontFamily: "inter, sans-serif!important" }}
         marginTop={0.5}
         fontWeight={600}
@@ -63,7 +64,7 @@ export default function Nyckeltal({ item }: Props) {
           "sv-SE",
           { minimumFractionDigits: item.antalDecimaler }
         )}
-      </Typography>
+      </AgronodTypography>
     </li>
   );
 }
