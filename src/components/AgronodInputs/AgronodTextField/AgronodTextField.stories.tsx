@@ -13,6 +13,41 @@ export default {
       },
     },
   },
+  argTypes: {
+    textAligment: {
+      description:
+        "This field is used to set value and placeholder of input field text alignment.",
+    },
+    label: {
+      description:
+        "Description of input field above it. It is <code>body2bold</code> typography variant according to desing.",
+    },
+    type: {
+      control: {
+        type: "text",
+      },
+    },
+    value: {
+      control: {
+        type: "text",
+      },
+    },
+    emptyStyle: {
+      description:
+        "This argument reflects how will input look when empty. It can be higlighted with background color or default white.",
+    },
+    helperText: {
+      description:
+        "Text below input field that can be error or just informational",
+    },
+    tooltipText: {
+      description: "Will show on hover over input field.",
+    },
+    hasIcon: {
+      description:
+        "Default is <code>false</code>, if it is <code>true</code icon will show on error and warrning",
+    },
+  },
 } as Meta<typeof AgronodTextField>;
 
 export const AgronodTextFieldDefault: StoryFn<typeof AgronodTextField> = ({
@@ -22,7 +57,7 @@ export const AgronodTextFieldDefault: StoryFn<typeof AgronodTextField> = ({
 };
 AgronodTextFieldDefault.args = {
   placeholder: "Input placeholder",
-  label: "Base input with label",
+  label: "Base input with label and value",
 };
 
 export const AgronodTextFieldWithHelperText: StoryFn<

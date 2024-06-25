@@ -16,7 +16,6 @@ export default {
       },
     },
   },
-
   argTypes: {
     variant: {
       description:

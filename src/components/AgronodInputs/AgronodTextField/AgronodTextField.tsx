@@ -126,6 +126,7 @@ const StyledMuiTextField = ({
 const AgronodTextField = ({
   status = "default",
   emptyStyle = "default",
+  helperText,
   hideHelperText,
   tooltipText,
   hasIcon = false,
@@ -142,7 +143,7 @@ const AgronodTextField = ({
     } else {
       return tooltipText;
     }
-  }, [status, tooltipText, rest.helperText]);
+  }, [status, tooltipText]);
 
   return (
     <Box
@@ -158,17 +159,12 @@ const AgronodTextField = ({
         {label ? (
           <FormControlLabel
             labelPlacement="top"
-            sx={{ textAlign: "left" }}
+            sx={{ textAlign: "right" }}
             componentsProps={{
               typography: {
                 variant: "body2bold",
                 alignSelf: "flex-start",
-                color:
-                  status === "error"
-                    ? "error.medium"
-                    : status === "warning"
-                      ? "warning.medium"
-                      : "text.secondary",
+                color: status === "error" ? "error.medium" : "text.secondary",
                 marginBottom: "4px",
               },
             }}
@@ -179,7 +175,7 @@ const AgronodTextField = ({
                 status={status}
                 emptyStyle={emptyStyle}
                 hideHelperText={hideHelperText}
-                helperText={rest.helperText}
+                helperText={helperText}
                 hasIcon={hasIcon}
                 textAligment={textAligment}
                 endAndorment={endAndorment}
@@ -192,7 +188,7 @@ const AgronodTextField = ({
             status={status}
             emptyStyle={emptyStyle}
             hideHelperText={hideHelperText}
-            helperText={rest.helperText}
+            helperText={helperText}
             hasIcon={hasIcon}
             textAligment={textAligment}
             endAndorment={endAndorment}
