@@ -65,7 +65,7 @@ const StyledMuiTextField = ({
       return <AgronodIcon name="warningContained" color="warning" />;
     }
     return null;
-  }, [status]);
+  }, [status, hasIcon]);
 
   return (
     <MuiTextField
