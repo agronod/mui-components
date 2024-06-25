@@ -1,36 +1,7 @@
-## <small>1.14.13-feat-PF-804-button-support-input-migration.2 (2024-06-25)</small>
+## <small>1.14.13 (2024-06-25)</small>
 
-* small fix ([099224a](https://github.com/agronod/mui-components/commit/099224a))
-
-
-
-## <small>1.14.13-feat-PF-804-button-support-input-migration.4 (2024-06-25)</small>
-
-* fix small thing ([a20e1bb](https://github.com/agronod/mui-components/commit/a20e1bb))
-
-
-
-## <small>1.14.13-feat-PF-804-button-support-input-migration.3 (2024-06-25)</small>
-
-* 1.14.13-feat-PF-804-button-support-input-migration.2 ([48c0530](https://github.com/agronod/mui-components/commit/48c0530))
-* fix storybook components with new ones ([b8dd46c](https://github.com/agronod/mui-components/commit/b8dd46c))
-
-
-
-## <small>1.14.13-feat-PF-804-button-support-input-migration.2 (2024-06-25)</small>
-
-* 1.14.13-feat-PF-804-button-support-input-migration.1 ([d5e7679](https://github.com/agronod/mui-components/commit/d5e7679))
-* remove old input stories ([db9ddfd](https://github.com/agronod/mui-components/commit/db9ddfd))
-
-
-
-## <small>1.14.13-feat-PF-804-button-support-input-migration.1 (2024-06-25)</small>
-
-* <Button migrated to <AgronodButton, <ButtonIcon migrated to <AgronodButtonIcon, <Support migrated to ([c1ec090](https://github.com/agronod/mui-components/commit/c1ec090))
-* 1.14.11-feat-PF-804-button-support-input-migration.0 ([cd5c76c](https://github.com/agronod/mui-components/commit/cd5c76c))
 * 1.14.12 ([30e92d7](https://github.com/agronod/mui-components/commit/30e92d7))
-* add AgronodTextField from Agrosfär ([e9330c6](https://github.com/agronod/mui-components/commit/e9330c6))
-* fix text field args ([ced7274](https://github.com/agronod/mui-components/commit/ced7274))
+* Feat/pf 804 button support input migration (#109) ([9ee0daa](https://github.com/agronod/mui-components/commit/9ee0daa)), closes [#109](https://github.com/agronod/mui-components/issues/109)
 
 
 
