@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from "@storybook/react";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import AgronodCard from "./AgronodCard";
+import { AgronodTypography } from "../AgronodTypography";
 
 export default {
   title: "Shared Components/Card",
@@ -30,8 +31,8 @@ export const AgronodCardDefault: StoryFn<typeof AgronodCard> = ({
 AgronodCardDefault.args = {
   children: (
     <Stack gap={2}>
-      <Typography variant="h2">Lorem Ipsum</Typography>
-      <Typography variant="body1">
+      <AgronodTypography variant="h2">Lorem Ipsum</AgronodTypography>
+      <AgronodTypography variant="body1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -39,7 +40,7 @@ AgronodCardDefault.args = {
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
-      </Typography>
+      </AgronodTypography>
     </Stack>
   ),
 };
@@ -58,8 +59,8 @@ export const AgronodCardModifiedStyles: StoryFn<typeof AgronodCard> = ({
 AgronodCardModifiedStyles.args = {
   children: (
     <Stack gap={2}>
-      <Typography variant="h2">Lorem Ipsum</Typography>
-      <Typography variant="body1">
+      <AgronodTypography variant="h2">Lorem Ipsum</AgronodTypography>
+      <AgronodTypography variant="body1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -67,7 +68,7 @@ AgronodCardModifiedStyles.args = {
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
-      </Typography>
+      </AgronodTypography>
     </Stack>
   ),
   sx: (theme) => ({

@@ -1,9 +1,10 @@
 import { StoryFn, Meta } from "@storybook/react";
 import AgronodModalCard from "./AgronodModalCard";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import { useMemo, useState } from "react";
 import { ProgressIndicator } from "../ProgressIndicator";
+import { AgronodButton } from "../AgronodButton";
 
 export default {
   title: "Shared Components/Modal Card",
@@ -90,9 +91,9 @@ export const AgronodModalCardDefault: StoryFn<typeof AgronodModalCard> = ({
   useMemo(() => setIsOpen(open), [open]);
   return (
     <>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
+      <AgronodButton variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
-      </Button>
+      </AgronodButton>
       <AgronodModalCard
         {...rest}
         open={isOpen}
@@ -111,7 +112,7 @@ AgronodModalCardDefault.args = {
   children: (
     <Box>
       <p>this is test paragraph 1</p>
-      <Button variant="contained">Test button</Button>
+      <AgronodButton variant="contained">Test button</AgronodButton>
     </Box>
   ),
   caption: <ProgressIndicator active={2} total={32} />,
@@ -126,9 +127,9 @@ export const AgronodModalCardNotClosable: StoryFn<typeof AgronodModalCard> = ({
   useMemo(() => setIsOpen(open), [open]);
   return (
     <>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
+      <AgronodButton variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
-      </Button>
+      </AgronodButton>
       <AgronodModalCard {...rest} open={isOpen}>
         {children}
       </AgronodModalCard>
@@ -143,7 +144,7 @@ AgronodModalCardNotClosable.args = {
   children: (
     <Box>
       <p>this is test paragraph 1</p>
-      <Button variant="contained">Test button</Button>
+      <AgronodButton variant="contained">Test button</AgronodButton>
     </Box>
   ),
   caption: <ProgressIndicator active={2} total={32} />,
@@ -159,9 +160,9 @@ export const AgronodModalCardBigTitle: StoryFn<typeof AgronodModalCard> = ({
   useMemo(() => setIsOpen(open), [open]);
   return (
     <>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
+      <AgronodButton variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
-      </Button>
+      </AgronodButton>
       <AgronodModalCard
         {...rest}
         open={isOpen}
@@ -180,7 +181,7 @@ AgronodModalCardBigTitle.args = {
   children: (
     <Box>
       <p>this is test paragraph 1</p>
-      <Button variant="contained">Test button</Button>
+      <AgronodButton variant="contained">Test button</AgronodButton>
     </Box>
   ),
   caption: <ProgressIndicator active={2} total={32} />,
@@ -196,9 +197,9 @@ export const AgronodModalCardLeftAligned: StoryFn<typeof AgronodModalCard> = ({
   useMemo(() => setIsOpen(open), [open]);
   return (
     <>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
+      <AgronodButton variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
-      </Button>
+      </AgronodButton>
       <AgronodModalCard
         {...rest}
         open={isOpen}
@@ -217,7 +218,7 @@ AgronodModalCardLeftAligned.args = {
   children: (
     <Box>
       <p>this is test paragraph 1</p>
-      <Button variant="contained">Test button</Button>
+      <AgronodButton variant="contained">Test button</AgronodButton>
     </Box>
   ),
   caption: <ProgressIndicator active={2} total={32} />,
@@ -234,9 +235,9 @@ export const AgronodModalCardWithIcon: StoryFn<typeof AgronodModalCard> = ({
   useMemo(() => setIsOpen(open), [open]);
   return (
     <>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
+      <AgronodButton variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
-      </Button>
+      </AgronodButton>
       <AgronodModalCard
         {...rest}
         open={isOpen}
@@ -254,7 +255,7 @@ AgronodModalCardWithIcon.args = {
   children: (
     <Box>
       <p>Modal card example children</p>
-      <Button variant="contained">Test button</Button>
+      <AgronodButton variant="contained">Test button</AgronodButton>
     </Box>
   ),
   icon: <ErrorOutlineOutlinedIcon color="error" fontSize="large" />,
@@ -270,9 +271,9 @@ export const AgronodModalCardCustomWidth: StoryFn<typeof AgronodModalCard> = ({
   useMemo(() => setIsOpen(open), [open]);
   return (
     <>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
+      <AgronodButton variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
-      </Button>
+      </AgronodButton>
       <AgronodModalCard
         {...rest}
         open={isOpen}
@@ -290,7 +291,7 @@ AgronodModalCardCustomWidth.args = {
   children: (
     <Box>
       <p>Modal card example children</p>
-      <Button variant="contained">Test button</Button>
+      <AgronodButton variant="contained">Test button</AgronodButton>
     </Box>
   ),
   cardWidth: "auto",
@@ -306,9 +307,9 @@ export const AgronodModalCardCustomStyles: StoryFn<typeof AgronodModalCard> = ({
   useMemo(() => setIsOpen(open), [open]);
   return (
     <>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
+      <AgronodButton variant="contained" onClick={() => setIsOpen(true)}>
         Open modal
-      </Button>
+      </AgronodButton>
       <AgronodModalCard
         {...rest}
         open={isOpen}
@@ -326,7 +327,7 @@ AgronodModalCardCustomStyles.args = {
   children: (
     <Box>
       <p>Modal card example children</p>
-      <Button variant="contained">Test button</Button>
+      <AgronodButton variant="contained">Test button</AgronodButton>
     </Box>
   ),
   cardWidth: "auto",

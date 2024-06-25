@@ -1,7 +1,8 @@
-import { Box, Fab, Menu, MenuItem, Typography } from "@mui/material";
+import { Box, Fab, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import AgronodSupportDialog from "./components/AgronodSupportDialog";
+import { AgronodTypography } from "../AgronodTypography";
 
 export interface AgronodSupportProps {
   buttonSize: "small" | "large";
@@ -131,7 +132,7 @@ export default function AgronodSupport(props: AgronodSupportProps) {
               setSupportModalOpen(true);
             }}
           >
-            <Typography variant="body1"> Kontakta oss</Typography>
+            <AgronodTypography variant="body1"> Kontakta oss</AgronodTypography>
           </MenuItem>
           <MenuItem
             onClick={() => {
@@ -139,7 +140,9 @@ export default function AgronodSupport(props: AgronodSupportProps) {
               window.open(props.QALink, "_blank");
             }}
           >
-            <Typography variant="body1"> Vanliga frågor</Typography>
+            <AgronodTypography variant="body1">
+              Vanliga frågor
+            </AgronodTypography>
           </MenuItem>
         </Menu>
       </Box>

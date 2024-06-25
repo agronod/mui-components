@@ -1,8 +1,9 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { Button, Typography } from "@mui/material";
 import AgronodAlert from "./AgronodAlert";
 import { AgronodCard } from "../AgronodCard";
 import { LoaderCircular } from "../Loaders";
+import { AgronodTypography } from "../AgronodTypography";
+import { AgronodButton } from "../AgronodButton";
 
 export default {
   title: "Shared Components/Alert",
@@ -63,9 +64,9 @@ export const AgronodAlertWithTitle: StoryFn<typeof AgronodAlert> = ({
 AgronodAlertWithTitle.args = {
   title: "This is title",
   children: (
-    <Typography variant="body2">
+    <AgronodTypography variant="body2">
       This is text wrapped in typography variant
-    </Typography>
+    </AgronodTypography>
   ),
   severity: "warning",
   variant: "standard",
@@ -110,14 +111,14 @@ AgronodAlertWithActionProperty.args = {
   severity: "success",
   variant: "standard",
   action: (
-    <Button
+    <AgronodButton
       variant="outlined"
       color="success"
       size="small"
       onClick={() => alert("action triggered")}
     >
       Trigger action
-    </Button>
+    </AgronodButton>
   ),
 };
 
@@ -140,14 +141,14 @@ AgronodAlertBehindCard.args = {
   variant: "filled",
   behindCard: true,
   action: (
-    <Button
+    <AgronodButton
       variant="outlined"
       color="error"
       size="small"
       onClick={() => alert("action triggered")}
     >
       Trigger action
-    </Button>
+    </AgronodButton>
   ),
 };
 

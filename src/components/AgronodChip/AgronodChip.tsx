@@ -1,8 +1,5 @@
-import {
-  ChipProps as MuiChipProps,
-  Chip as MuiChip,
-  Typography,
-} from "@mui/material";
+import { ChipProps as MuiChipProps, Chip as MuiChip } from "@mui/material";
+import { AgronodTypography } from "../AgronodTypography";
 type AgronodChipBaseProps = Pick<
   MuiChipProps,
   "size" | "color" | "disabled" | "label" | "onMouseDown"
@@ -17,7 +14,9 @@ const AgronodChip = (props: AgroodChipProps) => {
     <MuiChip
       size={props.size}
       disabled={props.disabled}
-      label={<Typography variant="body2">{props.label}</Typography>}
+      label={
+        <AgronodTypography variant="body2">{props.label}</AgronodTypography>
+      }
       skipFocusWhenDisabled={true}
       onDelete={props.handleOnDelete ? props.handleOnDelete : undefined}
       onMouseDown={props.onMouseDown}

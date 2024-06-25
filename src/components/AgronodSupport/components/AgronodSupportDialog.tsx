@@ -1,5 +1,8 @@
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { AgronodModalCard } from "../../AgronodModalCard";
+import { AgronodTypography } from "../../AgronodTypography";
+import { AgronodLink } from "../../AgronodLink";
+import { AgronodButton } from "../../AgronodButton";
 
 type SupportDialogProps = {
   isOpen: boolean;
@@ -24,47 +27,47 @@ const SupportDialog = (props: SupportDialogProps) => {
             gap={1}
             sx={(theme) => ({ color: theme.palette.text.secondary })}
           >
-            <Typography variant="body1" color="text.secondary">
+            <AgronodTypography variant="body1" color="text.secondary">
               Behöver du hjälp, har en fråga eller vill lämna feedback? Tveka
               inte att höra av dig.
-            </Typography>
+            </AgronodTypography>
             {props.supportEmail && (
               <Stack flexDirection="row" gap={1} justifyContent="center">
-                <Typography variant="body1">E-post: </Typography>
-                <Link
+                <AgronodTypography variant="body1">E-post: </AgronodTypography>
+                <AgronodLink
                   href="mailto:support@agronod.com"
                   target="_top"
-                  className="inverted"
+                  type="inverted"
                 >
                   {props.supportEmail}
-                </Link>
+                </AgronodLink>
               </Stack>
             )}
             {props.supportTelephone && (
               <Stack flexDirection="row" gap={1} justifyContent="center">
-                <Typography variant="body1">Telefon: </Typography>
-                <Link
+                <AgronodTypography variant="body1">Telefon: </AgronodTypography>
+                <AgronodLink
                   href={`tel:${props.supportTelephone}`}
                   target="_top"
-                  className="inverted"
+                  type="inverted"
                 >
                   {props.supportTelephone}
-                </Link>
+                </AgronodLink>
               </Stack>
             )}
-            <Typography variant="body1">
+            <AgronodTypography variant="body1">
               {props.respondTime
                 ? props.respondTime
                 : "Vi svarar vardagar kl. 09-15"}
-            </Typography>
+            </AgronodTypography>
           </Stack>
-          <Button
+          <AgronodButton
             variant="contained"
             onClick={() => props.onClose()}
             sx={{ marginTop: 3 }}
           >
             Klar
-          </Button>
+          </AgronodButton>
         </>
       </AgronodModalCard>
     </>

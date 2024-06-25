@@ -1,5 +1,6 @@
-import { Stack, Typography, useTheme } from "@mui/material";
+import { Stack, useTheme } from "@mui/material";
 import ColorItem from "./ColorItem";
+import { AgronodTypography } from "../../components";
 
 const description = `
 <p><b>Primary</b> and <b>secondary</b> colors change depending on theme while other colors are common for all themes and are defined in <code>baseTheme.tsx</code>.</p>
@@ -22,16 +23,19 @@ export const ColorPalette = () => {
   const theme = useTheme();
   return (
     <>
-      <Typography variant="h3" sx={{ marginBottom: 3 }}>
+      <AgronodTypography variant="h3" sx={{ marginBottom: 3 }}>
         Theme Colors
-      </Typography>
+      </AgronodTypography>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Primary
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.primary</code>
-      </Typography>
+      </AgronodTypography>
 
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".darkHover" code={theme.palette.primary.darkHover} />
@@ -51,12 +55,15 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.primary.pastel} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Secondary
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.secondary</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".dark" code={theme.palette.secondary.dark} />
         <ColorItem name=".medium" code={theme.palette.secondary.medium} />
@@ -65,12 +72,15 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.secondary.pastel} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Tertiary
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.tertiary</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".dark" code={theme.palette.tertiary.dark} />
         <ColorItem name=".medium" code={theme.palette.tertiary.medium} />
@@ -79,16 +89,19 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.tertiary.pastel} />
       </Stack>
 
-      <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
+      <AgronodTypography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
         Semantic Colors
-      </Typography>
+      </AgronodTypography>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Success
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.success</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".darkHover" code={theme.palette.success.darkHover} />
         <ColorItem name=".dark" code={theme.palette.success.dark} />
@@ -98,12 +111,15 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.success.pastel} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Warning
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.warning</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".dark" code={theme.palette.warning.dark} />
         <ColorItem name=".medium" code={theme.palette.warning.medium} />
@@ -112,12 +128,15 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.warning.pastel} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Error
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.error</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".darkHover" code={theme.palette.error.darkHover} />
         <ColorItem name=".dark" code={theme.palette.error.dark} />
@@ -127,12 +146,15 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.error.pastel} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Info
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.info</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".dark" code={theme.palette.info.dark} />
         <ColorItem name=".medium" code={theme.palette.info.medium} />
@@ -141,27 +163,33 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.info.pastel} />
       </Stack>
 
-      <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
+      <AgronodTypography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
         Grays
-      </Typography>
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      </AgronodTypography>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Semantic
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".border" code={theme.palette.border} />
         <ColorItem name=".divider" code={theme.palette.divider} />
         <ColorItem name=".buttonDisabled" code={theme.palette.buttonDisabled} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Text
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.text</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".primary" code={theme.palette.text.primary} />
         <ColorItem name=".secondary" code={theme.palette.text.secondary} />
@@ -173,12 +201,15 @@ export const ColorPalette = () => {
         <ColorItem name=".white" code={theme.palette.text.white} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Icon
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.icon</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".primary" code={theme.palette.icon.primary} />
         <ColorItem name=".secondary" code={theme.palette.icon.secondary} />
@@ -188,12 +219,15 @@ export const ColorPalette = () => {
         />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Background
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.background</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".tooltip" code={theme.palette.background.tooltip} />
         <ColorItem name=".overlay" code={theme.palette.background.overlay} />
@@ -201,12 +235,15 @@ export const ColorPalette = () => {
         <ColorItem name=".page" code={theme.palette.background.page} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         Input
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette.input</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".border" code={theme.palette.input.border} />
         <ColorItem
@@ -220,12 +257,15 @@ export const ColorPalette = () => {
         <ColorItem name=".background" code={theme.palette.input.background} />
       </Stack>
 
-      <Typography variant="subtitle1" sx={{ marginTop: 3, marginBottom: 0.5 }}>
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
         General
-      </Typography>
-      <Typography variant="subtitle3" sx={{ marginBottom: 3 }}>
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
         Code: <code>theme.palette</code>
-      </Typography>
+      </AgronodTypography>
       <Stack flexDirection="row" gap={1.5} flexWrap="wrap">
         <ColorItem name=".black" code={theme.palette.black} />
         <ColorItem name=".gray800" code={theme.palette.gray800} />

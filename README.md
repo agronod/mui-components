@@ -133,9 +133,9 @@ const theme = useTheme();
 const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 backgroundColor={theme.palette.secondary.main}
 #or
-<Button sx={{(theme)=>({ p: theme.spacing(1) })}} />
+<AgronodButton sx={{(theme)=>({ p: theme.spacing(1) })}} />
 #or
-<Button sx={{ p: (theme) => theme.spacing(1) }}} />
+<AgronodButton sx={{ p: (theme) => theme.spacing(1) }}} />
 ```
 
 ### How to use components

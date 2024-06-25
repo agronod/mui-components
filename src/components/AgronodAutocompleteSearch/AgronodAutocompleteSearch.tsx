@@ -1,13 +1,11 @@
 import {
   MenuItem,
   Stack,
-  TextField,
   InputAdornment,
   Box,
   useAutocomplete,
   styled,
   Collapse,
-  Typography,
   MenuList,
   AutocompleteGroupedOption,
 } from "@mui/material";
@@ -15,6 +13,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { AgronodChip } from "../AgronodChip";
 import { AgronodCheckbox } from "../AgronodCheckbox";
+import { AgronodTypography } from "../AgronodTypography";
+import { AgronodTextField } from "../AgronodInputs/AgronodTextField";
 
 type AutocompleteProps<T> = {
   options: T[];
@@ -143,7 +143,7 @@ const AgronodAutocompleteSearch = <T,>({
         })}
       </Stack>
       <Box>
-        <TextField
+        <AgronodTextField
           placeholder={placeholder}
           fullWidth={true}
           inputProps={{ ...getInputProps() }}
@@ -186,13 +186,13 @@ const AgronodAutocompleteSearch = <T,>({
                       },
                     })}
                   >
-                    <Typography variant="body1">
+                    <AgronodTypography variant="body1">
                       {nameSelector(option as T)}
-                    </Typography>
+                    </AgronodTypography>
                     {additionalInfoText && (
-                      <Typography color="text.disabled" variant="body1">
+                      <AgronodTypography color="text.disabled" variant="body1">
                         {additionalInfoText(option as T)}
-                      </Typography>
+                      </AgronodTypography>
                     )}
                   </Stack>
                 </MenuItem>
@@ -202,9 +202,9 @@ const AgronodAutocompleteSearch = <T,>({
                 open &&
                 noOptionsText !== undefined && (
                   <MenuItem>
-                    <Typography variant="body1" color="text.disabled">
+                    <AgronodTypography variant="body1" color="text.disabled">
                       {noOptionsText}
-                    </Typography>
+                    </AgronodTypography>
                   </MenuItem>
                 )}
             </StyledMenuList>

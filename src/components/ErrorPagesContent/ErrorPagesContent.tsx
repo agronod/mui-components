@@ -1,20 +1,15 @@
-import {
-  Box,
-  Button,
-  Link,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import NotFoundPageBackground from "../../assets/NotFoundPageBackground.png";
 import NotFoundBackgroundMobile from "../../assets/NotFoundBackgroundMobile.png";
+import { AgronodTypography } from "../AgronodTypography";
+import { AgronodLink } from "../AgronodLink";
+import { AgronodButton } from "../AgronodButton";
 
 export interface ErrorPagesContentProps {
   backgroundColor: string;
   pageEmail: string;
   pageType: 500 | 404;
-  pageLink?: string;
+  pageAgronodLink?: string;
   maxWidth?: string;
   calculatedHeight?: string;
   customButtonText?: string;
@@ -55,7 +50,7 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
           },
         })}
       >
-        <Typography
+        <AgronodTypography
           variant={isMobile ? "h4" : "h2"}
           sx={(theme) => ({
             [theme.breakpoints.down("md")]: {
@@ -66,7 +61,7 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
           {props.pageType === 404
             ? "Sidan kunde inte hittas"
             : "Något gick fel"}
-        </Typography>
+        </AgronodTypography>
 
         <Box
           sx={(theme) => ({
@@ -78,37 +73,45 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
           {props.pageType === 404 ? (
             <>
               {" "}
-              <Typography variant="body1">
+              <AgronodTypography variant="body1">
                 Kontrollera att din webbadress är korrekt.
-              </Typography>
-              <Typography variant="body1">
+              </AgronodTypography>
+              <AgronodTypography variant="body1">
                 Kontakta oss på{" "}
-                <Link href={`mailto:${props.pageEmail}`} target="_top">
+                <AgronodLink
+                  type="classic"
+                  href={`mailto:${props.pageEmail}`}
+                  target="_top"
+                >
                   {props.pageEmail}
-                </Link>{" "}
+                </AgronodLink>{" "}
                 om felet kvarstår.
-              </Typography>
+              </AgronodTypography>
             </>
           ) : (
-            <Typography variant="body1">
+            <AgronodTypography variant="body1">
               Prova igen senare. Kontakta oss på{" "}
-              <Link href={`mailto:${props.pageEmail}`} target="_top">
+              <AgronodLink
+                type="classic"
+                href={`mailto:${props.pageEmail}`}
+                target="_top"
+              >
                 {props.pageEmail}
-              </Link>{" "}
+              </AgronodLink>{" "}
               om felet kvarstår.
-            </Typography>
+            </AgronodTypography>
           )}
         </Box>
         {props.pageType === 404 ? (
-          <Button href={props.pageLink} variant="contained">
+          <AgronodButton href={props.pageAgronodLink} variant="contained">
             {props.customButtonText
               ? props.customButtonText
               : "Tillbaka till hem"}
-          </Button>
+          </AgronodButton>
         ) : (
-          <Button variant="contained" href="/">
+          <AgronodButton variant="contained" href="/">
             {props.customButtonText ? props.customButtonText : "Ladda om"}
-          </Button>
+          </AgronodButton>
         )}
       </Stack>
       <Box

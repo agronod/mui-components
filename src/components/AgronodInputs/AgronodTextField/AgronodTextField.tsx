@@ -30,6 +30,8 @@ type AgronodTextFieldBaseProps = Pick<
   | "onFocus"
   | "onBlur"
   | "size"
+  | "inputProps"
+  | "InputProps"
 >;
 
 export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
