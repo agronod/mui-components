@@ -82,6 +82,10 @@ const StyledMuiTextField = ({
       }}
       variant="outlined"
       sx={(theme) => ({
+        "& .MuiOutlinedInput-input": {
+          textAlign: textAligment ? textAligment : "left",
+          width: "220px",
+        },
         "& .MuiOutlinedInput-root:not(.Mui-disabled)": {
           backgroundColor:
             status === "warning"
@@ -104,9 +108,6 @@ const StyledMuiTextField = ({
             borderColor:
               status === "warning" ? theme.palette.warning.main : undefined,
           },
-        },
-        "& .MuiOutlinedInput-input": {
-          textAlign: textAligment ? textAligment : "left",
         },
         "& .MuiOutlinedInput-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
           {
@@ -139,29 +140,25 @@ const AgronodTextField = ({
 }: AgronodTextFieldProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const generateTooltipText = useMemo(() => {
-    if ((status === "error" || status === "warning") && tooltipText) {
-      return tooltipText;
-    } else {
-      return tooltipText;
-    }
-  }, [status, tooltipText]);
-
   return (
     <Box
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
       <Tooltip
-        open={showTooltip && !!generateTooltipText}
+        open={showTooltip && tooltipText !== undefined}
         placement="top"
         arrow
-        title={generateTooltipText ? generateTooltipText : ""}
+        title={tooltipText}
       >
         {label ? (
           <FormControlLabel
             labelPlacement="top"
-            sx={{ textAlign: "right" }}
+            sx={{
+              textAlign: "right",
+              margin: 0,
+              width: rest.fullWidth ? "100%" : "auto",
+            }}
             componentsProps={{
               typography: {
                 variant: "body2bold",
