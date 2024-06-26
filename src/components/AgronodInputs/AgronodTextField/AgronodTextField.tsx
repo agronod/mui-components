@@ -135,7 +135,7 @@ const StyledMuiTextField = ({
           "& .MuiOutlinedInput-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
             {
               backgroundColor:
-                emptyStyle === "highlighted"
+                status === "default" && emptyStyle === "highlighted"
                   ? theme.palette.secondary.pastel
                   : undefined,
             },

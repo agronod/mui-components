@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
-import { AgronodChip } from "../AgronodChip";
-import { AgronodCheckbox } from "../AgronodCheckbox";
-import { AgronodTypography } from "../AgronodTypography";
-import { AgronodTextField } from "../AgronodInputs/AgronodTextField";
+import { AgronodChip } from "../../AgronodChip";
+import { AgronodCheckbox } from "../../AgronodCheckbox";
+import { AgronodTypography } from "../../AgronodTypography";
+import { AgronodTextField } from "../../AgronodInputs/AgronodTextField";
 
 type AutocompleteProps<T> = {
   options: T[];
