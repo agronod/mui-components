@@ -65,6 +65,11 @@ const StyledMuiTextField = ({
     return null;
   }, [status, hasIcon]);
 
+  const helperTextHeightOffset = useMemo(
+    () => (rest.size === "small" ? "10px" : "8px"),
+    [rest.size]
+  );
+
   return (
     <Box
       style={{
@@ -75,7 +80,12 @@ const StyledMuiTextField = ({
         sx={{
           position: "absolute",
           zIndex: 999,
-          top: "50%",
+          top:
+            !hideHelperText &&
+            helperText !== undefined &&
+            helperText.length !== 0
+              ? `calc(50% - ${helperTextHeightOffset})`
+              : "50%",
           left: "12px",
         }}
         position="start"
