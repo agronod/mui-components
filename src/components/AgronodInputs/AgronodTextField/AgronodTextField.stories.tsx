@@ -21,6 +21,7 @@ export default {
     label: {
       description:
         "Description of input field above it. It is <code>body2bold</code> typography variant according to desing.",
+      control: { type: "text" },
     },
     type: {
       control: {

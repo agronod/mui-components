@@ -9,7 +9,6 @@ import {
 import { Tooltip } from "../../Tooltip";
 import { AgronodIcon } from "../../AgronodIcon";
 
-//TODO: test it in projects (especially Agrosfär) and modify if needed
 type AgronodTextFieldBaseProps = Pick<
   MuiTextFieldProps,
   | "sx"
@@ -33,6 +32,7 @@ type AgronodTextFieldBaseProps = Pick<
   | "size"
   | "inputProps"
   | "InputProps"
+  | "label"
 >;
 
 export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
@@ -42,7 +42,6 @@ export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
   hideHelperText?: boolean;
   tooltipText?: string;
   hasIcon?: boolean;
-  label?: string;
   textAligment?: string;
   endAndorment?: string | JSX.Element;
 }
@@ -56,72 +55,6 @@ const StyledMuiTextField = ({
   textAligment,
   ...rest
 }: AgronodTextFieldProps) => {
-  return (
-    <MuiTextField
-      InputLabelProps={{
-        color: "secondary",
-        shrink: false,
-      }}
-      variant="outlined"
-      sx={(theme) => ({
-        "& .MuiOutlinedInput-input": {
-          textAlign: textAligment ? textAligment : "left",
-          width: "220px",
-        },
-        "& .MuiOutlinedInput-root:not(.Mui-disabled)": {
-          backgroundColor:
-            status === "warning"
-              ? theme.palette.warning.pastel
-              : status === "error"
-                ? theme.palette.error.pastel
-                : undefined,
-
-          "& fieldset": {
-            borderColor:
-              status === "warning" ? theme.palette.warning.main : undefined,
-          },
-
-          "&:hover fieldset": {
-            borderColor:
-              status === "warning" ? theme.palette.warning.main : undefined,
-          },
-
-          "&.Mui-focused fieldset": {
-            borderColor:
-              status === "warning" ? theme.palette.warning.main : undefined,
-          },
-        },
-        "& .MuiOutlinedInput-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
-          {
-            backgroundColor:
-              emptyStyle === "highlighted"
-                ? theme.palette.secondary.pastel
-                : undefined,
-          },
-      })}
-      error={status === "error"}
-      helperText={
-        !hideHelperText && helperText !== undefined ? helperText : undefined
-      }
-      {...rest}
-    />
-  );
-};
-
-const AgronodTextField = ({
-  status = "default",
-  emptyStyle = "default",
-  helperText,
-  hideHelperText,
-  tooltipText,
-  hasIcon = false,
-  label,
-  textAligment = "left",
-  endAndorment,
-  ...rest
-}: AgronodTextFieldProps) => {
-  const [showTooltip, setShowTooltip] = useState(false);
-
   const icon = useMemo(() => {
     if (status === "error" && hasIcon) {
       return <AgronodIcon name="errorContained" color="error" />;
@@ -134,12 +67,8 @@ const AgronodTextField = ({
 
   return (
     <Box
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
       style={{
         position: "relative",
-        display: "inline-flex",
-        alignItems: "center",
       }}
     >
       <InputAdornment
@@ -153,6 +82,87 @@ const AgronodTextField = ({
       >
         {icon}
       </InputAdornment>
+      <MuiTextField
+        InputLabelProps={{
+          color: "secondary",
+          shrink: false,
+        }}
+        variant="outlined"
+        sx={(theme) => ({
+          "& .MuiOutlinedInput-input": {
+            textAlign: textAligment ? textAligment : "left",
+            width: "220px",
+          },
+          "& .MuiInputBase-input": {
+            paddingLeft:
+              hasIcon && (status === "error" || status === "warning")
+                ? "46px"
+                : "14px",
+          },
+          "& .MuiOutlinedInput-root:not(.Mui-disabled)": {
+            backgroundColor:
+              status === "warning"
+                ? theme.palette.warning.pastel
+                : status === "error"
+                  ? theme.palette.error.pastel
+                  : undefined,
+
+            "& fieldset": {
+              borderColor:
+                status === "warning" ? theme.palette.warning.main : undefined,
+            },
+
+            "&:hover fieldset": {
+              borderColor:
+                status === "warning" ? theme.palette.warning.main : undefined,
+            },
+
+            "&.Mui-focused fieldset": {
+              borderColor:
+                status === "warning" ? theme.palette.warning.main : undefined,
+            },
+          },
+          "& .MuiOutlinedInput-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
+            {
+              backgroundColor:
+                emptyStyle === "highlighted"
+                  ? theme.palette.secondary.pastel
+                  : undefined,
+            },
+        })}
+        error={status === "error"}
+        helperText={
+          !hideHelperText && helperText !== undefined ? helperText : undefined
+        }
+        {...rest}
+      />
+    </Box>
+  );
+};
+
+const AgronodTextField = ({
+  status = "default",
+  emptyStyle = "default",
+  helperText,
+  hideHelperText,
+  tooltipText,
+  hasIcon = false,
+  textAligment = "left",
+  endAndorment,
+  label,
+  ...rest
+}: AgronodTextFieldProps) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  return (
+    <Box
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+      }}
+    >
       <Tooltip
         open={showTooltip && tooltipText !== undefined}
         placement="top"
