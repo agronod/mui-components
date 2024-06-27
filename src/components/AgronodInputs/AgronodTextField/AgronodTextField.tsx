@@ -44,7 +44,6 @@ export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
   tooltipText?: string;
   hasIcon?: boolean;
   textAligment?: string;
-  endAndorment?: string | JSX.Element;
 }
 
 const StyledMuiTextField = ({
@@ -77,20 +76,22 @@ const StyledMuiTextField = ({
         width: rest.fullWidth ? "100%" : "220px",
       }}
     >
-      <InputAdornment
-        sx={{
-          position: "absolute",
-          zIndex: 999,
-          top:
-            !hideHelperText && helperText !== undefined
-              ? `calc(50% - ${helperTextHeightOffset})`
-              : "50%",
-          left: "12px",
-        }}
-        position="start"
-      >
-        {icon}
-      </InputAdornment>
+      {hasIcon && (
+        <InputAdornment
+          sx={{
+            position: "absolute",
+            zIndex: 999,
+            top:
+              !hideHelperText && helperText !== undefined
+                ? `calc(50% - ${helperTextHeightOffset})`
+                : "50%",
+            left: "12px",
+          }}
+          position="start"
+        >
+          {icon}
+        </InputAdornment>
+      )}
       <MuiTextField
         InputLabelProps={{
           color: "secondary",
@@ -98,15 +99,15 @@ const StyledMuiTextField = ({
         }}
         variant="outlined"
         sx={(theme) => ({
-          "& .MuiOutlinedInput-input": {
-            textAlign: textAligment ? textAligment : "left",
+          "& .MuiInputBase-root": {
             width: rest.fullWidth ? "100%" : "220px",
           },
           "& .MuiInputBase-input": {
             paddingLeft:
               hasIcon && (rest.error || rest.warning) ? "46px" : "14px",
+            textAlign: textAligment ? textAligment : "left",
           },
-          "& .MuiOutlinedInput-root:not(.Mui-disabled)": {
+          "& .MuiInputBase-root:not(.Mui-disabled)": {
             backgroundColor: rest.warning
               ? theme.palette.warning.pastel
               : rest.error
@@ -131,7 +132,7 @@ const StyledMuiTextField = ({
                 : undefined,
             },
           },
-          "& .MuiOutlinedInput-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
+          "& .MuiInputBase-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
             {
               backgroundColor:
                 !rest.error && !rest.warning && emptyStyle === "highlighted"
@@ -155,7 +156,6 @@ const AgronodTextField = ({
   tooltipText,
   hasIcon = false,
   textAligment = "left",
-  endAndorment,
   label,
   ...rest
 }: AgronodTextFieldProps) => {

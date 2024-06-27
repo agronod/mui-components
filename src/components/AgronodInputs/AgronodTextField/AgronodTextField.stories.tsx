@@ -1,5 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import AgronodTextField from "./AgronodTextField";
+import { InputAdornment } from "@mui/material";
 
 export default {
   title: "Shared Components/Inputs/Agronod Text Field",
@@ -73,7 +74,9 @@ AgronodTextFieldWithHelperText.args = {
 export const AgronodTextFieldWithEndAndorment = Template.bind({});
 AgronodTextFieldWithEndAndorment.args = {
   label: "Adornment input",
-  endAndorment: "kg",
+  InputProps: {
+    endAdornment: <InputAdornment position="end">timmar</InputAdornment>,
+  },
 };
 
 export const AgronodTextFieldDisabled = Template.bind({});
