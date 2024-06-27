@@ -20,7 +20,7 @@ export default {
     },
     label: {
       description:
-        "Description of input field above it. It is <code>body2bold</code> typography variant according to desing.",
+        "Description of input field above it. It is <code>body2bold</code> typography variant according to design.",
       control: { type: "text" },
     },
     type: {
@@ -35,78 +35,59 @@ export default {
     },
     emptyStyle: {
       description:
-        "This argument reflects how will input look when empty. It can be higlighted with background color or default white.",
+        "This argument reflects how the input will look when empty. It can be highlighted with background color or default white.",
     },
     helperText: {
       description:
-        "Text below input field that can be error or just informational",
+        "Text below input field that can be an error or just informational.",
+      control: { type: "text" },
     },
     tooltipText: {
       description: "Will show on hover over input field.",
     },
     hasIcon: {
       description:
-        "Default is <code>false</code>, if it is <code>true</code icon will show on error and warrning",
+        "Default is <code>false</code>. If it is <code>true</code>, an icon will show on error and warning.",
     },
   },
 } as Meta<typeof AgronodTextField>;
 
-export const AgronodTextFieldDefault: StoryFn<typeof AgronodTextField> = ({
-  ...args
-}) => {
-  return <AgronodTextField {...args} />;
-};
+const Template: StoryFn<typeof AgronodTextField> = (args) => (
+  <AgronodTextField {...args} />
+);
+
+export const AgronodTextFieldDefault = Template.bind({});
 AgronodTextFieldDefault.args = {
   placeholder: "Input placeholder",
   label: "Base input with label and value",
 };
 
-export const AgronodTextFieldWithHelperText: StoryFn<
-  typeof AgronodTextField
-> = ({ ...args }) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldWithHelperText = Template.bind({});
 AgronodTextFieldWithHelperText.args = {
   helperText: "Helper text",
 };
 
-export const AgronodTextFieldWithEndAndorment: StoryFn<
-  typeof AgronodTextField
-> = ({ ...args }) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldWithEndAndorment = Template.bind({});
 AgronodTextFieldWithEndAndorment.args = {
-  label: "Andorment input",
+  label: "Adornment input",
   endAndorment: "kg",
 };
 
-export const AgronodTextFieldDisabled: StoryFn<typeof AgronodTextField> = ({
-  ...args
-}) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldDisabled = Template.bind({});
 AgronodTextFieldDisabled.args = {
   label: "Input label",
   helperText: "Disabled state",
   disabled: true,
 };
 
-export const AgronodTextFieldError: StoryFn<typeof AgronodTextField> = ({
-  ...args
-}) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldError = Template.bind({});
 AgronodTextFieldError.args = {
   placeholder: "Input placeholder",
   label: "Input error",
   status: "error",
 };
 
-export const AgronodTextFieldErrorWithIcon: StoryFn<
-  typeof AgronodTextField
-> = ({ ...args }) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldErrorWithIcon = Template.bind({});
 AgronodTextFieldErrorWithIcon.args = {
   label: "Input error",
   helperText: "Error with icon",
@@ -114,35 +95,23 @@ AgronodTextFieldErrorWithIcon.args = {
   hasIcon: true,
 };
 
-export const AgronodTextFieldWarning: StoryFn<typeof AgronodTextField> = ({
-  ...args
-}) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldWarning = Template.bind({});
 AgronodTextFieldWarning.args = {
   helperText: "Helper text",
   status: "warning",
 };
 
-export const AgronodTextFieldWarningWithIcon: StoryFn<
-  typeof AgronodTextField
-> = ({ ...args }) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldWarningWithIcon = Template.bind({});
 AgronodTextFieldWarningWithIcon.args = {
   label: "Input warning with icon",
   status: "warning",
   hasIcon: true,
-  placeholder: "Änge",
+  placeholder: "Input warning",
 };
 
-export const AgronodTextFieldHighlightedWhenEmpty: StoryFn<
-  typeof AgronodTextField
-> = ({ ...args }) => {
-  return <AgronodTextField {...args} />;
-};
+export const AgronodTextFieldHighlightedWhenEmpty = Template.bind({});
 AgronodTextFieldHighlightedWhenEmpty.args = {
   label: "Input highlighted",
   emptyStyle: "highlighted",
-  placeholder: "Änge",
+  placeholder: "Input placeholder",
 };

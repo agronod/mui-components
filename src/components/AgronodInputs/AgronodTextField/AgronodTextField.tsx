@@ -33,12 +33,12 @@ type AgronodTextFieldBaseProps = Pick<
   | "inputProps"
   | "InputProps"
   | "label"
+  | "helperText"
 >;
 
 export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
   status?: "warning" | "error" | "default";
   emptyStyle?: "highlighted" | "default";
-  helperText?: string;
   hideHelperText?: boolean;
   tooltipText?: string;
   hasIcon?: boolean;
@@ -81,9 +81,7 @@ const StyledMuiTextField = ({
           position: "absolute",
           zIndex: 999,
           top:
-            !hideHelperText &&
-            helperText !== undefined &&
-            helperText.length !== 0
+            !hideHelperText && helperText !== undefined
               ? `calc(50% - ${helperTextHeightOffset})`
               : "50%",
           left: "12px",
@@ -154,7 +152,7 @@ const AgronodTextField = ({
   status = "default",
   emptyStyle = "default",
   helperText,
-  hideHelperText,
+  hideHelperText = false,
   tooltipText,
   hasIcon = false,
   textAligment = "left",
