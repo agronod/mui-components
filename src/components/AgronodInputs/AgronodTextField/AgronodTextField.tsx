@@ -74,6 +74,7 @@ const StyledMuiTextField = ({
     <Box
       style={{
         position: "relative",
+        width: rest.fullWidth ? "100%" : "220px",
       }}
     >
       <InputAdornment
@@ -99,7 +100,7 @@ const StyledMuiTextField = ({
         sx={(theme) => ({
           "& .MuiOutlinedInput-input": {
             textAlign: textAligment ? textAligment : "left",
-            width: "220px",
+            width: rest.fullWidth ? "100%" : "220px",
           },
           "& .MuiInputBase-input": {
             paddingLeft:
@@ -167,6 +168,7 @@ const AgronodTextField = ({
       style={{
         display: "inline-flex",
         alignItems: "center",
+        width: rest.fullWidth ? "100%" : "220px",
       }}
     >
       <Tooltip
@@ -182,7 +184,7 @@ const AgronodTextField = ({
               sx={{
                 textAlign: "right",
                 margin: 0,
-                width: rest.fullWidth ? "100%" : "auto",
+                width: rest.fullWidth ? "100%" : "220px",
               }}
               componentsProps={{
                 typography: {
