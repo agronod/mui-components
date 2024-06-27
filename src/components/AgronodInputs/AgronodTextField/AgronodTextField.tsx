@@ -5,6 +5,8 @@ import {
   InputAdornment,
   Box,
   FormControlLabel,
+  Theme,
+  SxProps,
 } from "@mui/material";
 import { Tooltip } from "../../Tooltip";
 import { AgronodIcon } from "../../AgronodIcon";
@@ -157,19 +159,22 @@ const AgronodTextField = ({
   hasIcon = false,
   textAligment = "left",
   label,
+  sx,
   ...rest
 }: AgronodTextFieldProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
+
+  const styleObject: SxProps = {
+    display: "inline-flex",
+    alignItems: "center",
+    width: rest.fullWidth ? "100%" : "220px",
+  };
 
   return (
     <Box
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        width: rest.fullWidth ? "100%" : "220px",
-      }}
+      sx={[{ ...styleObject }, sx as (theme: Theme) => any]}
     >
       <Tooltip
         open={showTooltip && tooltipText !== undefined}
