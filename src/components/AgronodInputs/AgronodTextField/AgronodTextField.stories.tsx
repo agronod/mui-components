@@ -49,6 +49,9 @@ export default {
       description:
         "Default is <code>false</code>. If it is <code>true</code>, an icon will show on error and warning.",
     },
+    warning: {
+      control: { type: "boolean" },
+    },
   },
 } as Meta<typeof AgronodTextField>;
 
@@ -84,27 +87,27 @@ export const AgronodTextFieldError = Template.bind({});
 AgronodTextFieldError.args = {
   placeholder: "Input placeholder",
   label: "Input error",
-  status: "error",
+  error: true,
 };
 
 export const AgronodTextFieldErrorWithIcon = Template.bind({});
 AgronodTextFieldErrorWithIcon.args = {
   label: "Input error",
   helperText: "Error with icon",
-  status: "error",
+  error: true,
   hasIcon: true,
 };
 
 export const AgronodTextFieldWarning = Template.bind({});
 AgronodTextFieldWarning.args = {
   helperText: "Helper text",
-  status: "warning",
+  warning: true,
 };
 
 export const AgronodTextFieldWarningWithIcon = Template.bind({});
 AgronodTextFieldWarningWithIcon.args = {
   label: "Input warning with icon",
-  status: "warning",
+  warning: true,
   hasIcon: true,
   placeholder: "Input warning",
 };

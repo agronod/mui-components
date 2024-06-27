@@ -34,10 +34,11 @@ type AgronodTextFieldBaseProps = Pick<
   | "InputProps"
   | "label"
   | "helperText"
+  | "error"
 >;
 
 export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
-  status?: "warning" | "error" | "default";
+  warning?: Boolean;
   emptyStyle?: "highlighted" | "default";
   hideHelperText?: boolean;
   tooltipText?: string;
@@ -47,7 +48,6 @@ export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
 }
 
 const StyledMuiTextField = ({
-  status,
   emptyStyle,
   hideHelperText,
   helperText,
@@ -56,14 +56,14 @@ const StyledMuiTextField = ({
   ...rest
 }: AgronodTextFieldProps) => {
   const icon = useMemo(() => {
-    if (status === "error" && hasIcon) {
+    if (rest.error && hasIcon) {
       return <AgronodIcon name="errorContained" color="error" />;
-    }
-    if (status === "warning" && hasIcon) {
+    } else if (rest.warning && hasIcon) {
       return <AgronodIcon name="warningContained" color="warning" />;
+    } else {
+      return null;
     }
-    return null;
-  }, [status, hasIcon]);
+  }, [rest.error, rest.warning, hasIcon]);
 
   const helperTextHeightOffset = useMemo(
     () => (rest.size === "small" ? "10px" : "8px"),
@@ -103,42 +103,41 @@ const StyledMuiTextField = ({
           },
           "& .MuiInputBase-input": {
             paddingLeft:
-              hasIcon && (status === "error" || status === "warning")
-                ? "46px"
-                : "14px",
+              hasIcon && (rest.error || rest.warning) ? "46px" : "14px",
           },
           "& .MuiOutlinedInput-root:not(.Mui-disabled)": {
-            backgroundColor:
-              status === "warning"
-                ? theme.palette.warning.pastel
-                : status === "error"
-                  ? theme.palette.error.pastel
-                  : undefined,
+            backgroundColor: rest.warning
+              ? theme.palette.warning.pastel
+              : rest.error
+                ? theme.palette.error.pastel
+                : undefined,
 
             "& fieldset": {
-              borderColor:
-                status === "warning" ? theme.palette.warning.main : undefined,
+              borderColor: rest.warning
+                ? theme.palette.warning.main
+                : undefined,
             },
 
             "&:hover fieldset": {
-              borderColor:
-                status === "warning" ? theme.palette.warning.main : undefined,
+              borderColor: rest.warning
+                ? theme.palette.warning.main
+                : undefined,
             },
 
             "&.Mui-focused fieldset": {
-              borderColor:
-                status === "warning" ? theme.palette.warning.main : undefined,
+              borderColor: rest.warning
+                ? theme.palette.warning.main
+                : undefined,
             },
           },
           "& .MuiOutlinedInput-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
             {
               backgroundColor:
-                status === "default" && emptyStyle === "highlighted"
+                !rest.error && !rest.warning && emptyStyle === "highlighted"
                   ? theme.palette.secondary.pastel
                   : undefined,
             },
         })}
-        error={status === "error"}
         helperText={
           !hideHelperText && helperText !== undefined ? helperText : undefined
         }
@@ -149,7 +148,6 @@ const StyledMuiTextField = ({
 };
 
 const AgronodTextField = ({
-  status = "default",
   emptyStyle = "default",
   helperText,
   hideHelperText = false,
@@ -190,7 +188,7 @@ const AgronodTextField = ({
                 typography: {
                   variant: "body2bold",
                   alignSelf: "flex-start",
-                  color: status === "error" ? "error.medium" : "text.secondary",
+                  color: rest.error ? "error.medium" : "text.secondary",
                   marginBottom: "4px",
                 },
               }}
@@ -198,7 +196,6 @@ const AgronodTextField = ({
               disabled={rest.disabled}
               control={
                 <StyledMuiTextField
-                  status={status}
                   emptyStyle={emptyStyle}
                   hideHelperText={hideHelperText}
                   helperText={helperText}
@@ -210,7 +207,6 @@ const AgronodTextField = ({
             />
           ) : (
             <StyledMuiTextField
-              status={status}
               emptyStyle={emptyStyle}
               hideHelperText={hideHelperText}
               helperText={helperText}
