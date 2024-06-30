@@ -1,3 +1,11 @@
+## <small>1.14.14 (2024-06-30)</small>
+
+* 1.14.13 ([32e65c9](https://github.com/agronod/mui-components/commit/32e65c9))
+* fix icon state (#111) ([2815b7f](https://github.com/agronod/mui-components/commit/2815b7f)), closes [#111](https://github.com/agronod/mui-components/issues/111)
+* updated changelog ([9253e18](https://github.com/agronod/mui-components/commit/9253e18))
+
+
+
 ## <small>1.14.13 (2024-06-25)</small>
 
 * 1.14.12 ([30e92d7](https://github.com/agronod/mui-components/commit/30e92d7))
