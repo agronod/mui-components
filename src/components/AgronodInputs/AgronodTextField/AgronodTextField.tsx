@@ -7,6 +7,7 @@ import {
   FormControlLabel,
   Theme,
   SxProps,
+  FormHelperText,
 } from "@mui/material";
 import { Tooltip } from "../../Tooltip";
 import { AgronodIcon } from "../../AgronodIcon";
@@ -73,80 +74,94 @@ const StyledMuiTextField = ({
 
   return (
     <Box
-      style={{
-        position: "relative",
+      sx={{
         width: rest.fullWidth ? "100%" : "220px",
       }}
     >
-      {hasIcon && (
-        <InputAdornment
-          sx={{
-            position: "absolute",
-            zIndex: 999,
-            top:
-              !hideHelperText && helperText !== undefined
-                ? `calc(50% - ${helperTextHeightOffset})`
-                : "50%",
-            left: "12px",
+      <Box sx={{ position: "relative" }}>
+        {hasIcon && (
+          <InputAdornment
+            sx={{
+              position: "absolute",
+              zIndex: 999,
+              top:
+                !hideHelperText && helperText !== undefined
+                  ? `calc(50% - ${helperTextHeightOffset})`
+                  : "50%",
+              left: "12px",
+            }}
+            position="start"
+          >
+            {icon}
+          </InputAdornment>
+        )}
+        <MuiTextField
+          InputLabelProps={{
+            color: "secondary",
+            shrink: false,
           }}
-          position="start"
-        >
-          {icon}
-        </InputAdornment>
-      )}
-      <MuiTextField
-        InputLabelProps={{
-          color: "secondary",
-          shrink: false,
-        }}
-        variant="outlined"
-        sx={(theme) => ({
-          "& .MuiInputBase-root": {
-            width: rest.fullWidth ? "100%" : "220px",
-          },
-          "& .MuiInputBase-input": {
-            paddingLeft:
-              hasIcon && (rest.error || rest.warning) ? "46px" : "14px",
-            textAlign: textAligment ? textAligment : "left",
-          },
-          "& .MuiInputBase-root:not(.Mui-disabled)": {
-            backgroundColor: rest.warning
-              ? theme.palette.warning.pastel
-              : rest.error
+          variant="outlined"
+          sx={(theme) => ({
+            "& .MuiInputBase-root": {
+              width: rest.fullWidth ? "100%" : "220px",
+            },
+            "& .MuiInputBase-input": {
+              paddingLeft:
+                hasIcon && (rest.error || rest.warning) ? "46px" : "14px",
+              textAlign: textAligment ? textAligment : "left",
+            },
+            "& .MuiInputBase-root:not(.Mui-disabled)": {
+              backgroundColor: rest.error
                 ? theme.palette.error.pastel
-                : undefined,
-
-            "& fieldset": {
-              borderColor: rest.warning
-                ? theme.palette.warning.main
-                : undefined,
-            },
-
-            "&:hover fieldset": {
-              borderColor: rest.warning
-                ? theme.palette.warning.main
-                : undefined,
-            },
-
-            "&.Mui-focused fieldset": {
-              borderColor: rest.warning
-                ? theme.palette.warning.main
-                : undefined,
-            },
-          },
-          "& .MuiInputBase-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
-            {
-              backgroundColor:
-                !rest.error && !rest.warning && emptyStyle === "highlighted"
-                  ? theme.palette.secondary.pastel
+                : rest.warning
+                  ? theme.palette.warning.pastel
                   : undefined,
+
+              "& fieldset": {
+                borderColor: rest.error
+                  ? theme.palette.error.main
+                  : rest.warning
+                    ? theme.palette.warning.main
+                    : undefined,
+              },
+
+              "&:hover fieldset": {
+                borderColor: rest.error
+                  ? theme.palette.error.main
+                  : rest.warning
+                    ? theme.palette.warning.main
+                    : undefined,
+              },
+
+              "&.Mui-focused fieldset": {
+                borderColor: rest.error
+                  ? theme.palette.error.main
+                  : rest.warning
+                    ? theme.palette.warning.main
+                    : undefined,
+              },
             },
-        })}
-        helperText={
-          !hideHelperText && helperText !== undefined ? helperText : undefined
-        }
-        {...rest}
-      />
+            "& .MuiInputBase-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
+              {
+                backgroundColor:
+                  !rest.error && !rest.warning && emptyStyle === "highlighted"
+                    ? theme.palette.secondary.pastel
+                    : undefined,
+              },
+          })}
+          {...rest}
+        />
+      </Box>
+      {!hideHelperText && helperText !== undefined && (
+        <FormHelperText
+          error={rest.error}
+          sx={{
+            width: rest.fullWidth ? "100%" : "220px",
+          }}
+        >
+          {helperText}
+        </FormHelperText>
+      )}
     </Box>
   );
 };
