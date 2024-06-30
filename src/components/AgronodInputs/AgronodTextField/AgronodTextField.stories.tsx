@@ -121,3 +121,10 @@ AgronodTextFieldHighlightedWhenEmpty.args = {
   emptyStyle: "highlighted",
   placeholder: "Input placeholder",
 };
+
+export const AgronodTextFieldWithTooltip = Template.bind({});
+AgronodTextFieldWithTooltip.args = {
+  emptyStyle: "highlighted",
+  placeholder: "hover for tooltip",
+  tooltipText: "This is tooltip",
+};

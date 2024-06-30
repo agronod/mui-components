@@ -5,7 +5,6 @@ import {
   Box,
   FormControlLabel,
   FormHelperText,
-  Stack,
   Theme,
   SxProps,
 } from "@mui/material";
@@ -68,25 +67,23 @@ const StyledMuiTextField = ({
     }
   }, [rest.error, rest.warning, hasIcon]);
 
-  const helperTextHeightOffset = useMemo(
-    () => (rest.size === "small" ? "10px" : "8px"),
-    [rest.size]
-  );
-
   return (
     <Box
       sx={{
         width: rest.fullWidth ? "100%" : "220px",
       }}
     >
-      <Box sx={{ position: "relative" }}>
-        {hasIcon && (
+      <Box
+        sx={{ position: "relative", width: rest.fullWidth ? "100%" : "220px" }}
+      >
+        {hasIcon && icon !== null && (
           <InputAdornment
             sx={{
               position: "absolute",
               zIndex: 999,
               top: "50%",
               left: "12px",
+              transform: "translateY(-50%)",
             }}
             position="start"
           >
@@ -94,6 +91,7 @@ const StyledMuiTextField = ({
           </InputAdornment>
         )}
         <MuiTextField
+          autoComplete="off"
           InputLabelProps={{
             color: "secondary",
             shrink: false,
@@ -191,12 +189,16 @@ const AgronodTextField = ({
       sx={[{ ...styleObject }, sx as (theme: Theme) => any]}
     >
       <Tooltip
-        open={showTooltip && tooltipText !== undefined}
         placement="top"
+        open={showTooltip && tooltipText !== undefined}
         arrow
-        title={tooltipText}
+        title={tooltipText || ""}
       >
-        <>
+        <Box
+          sx={{
+            width: rest.fullWidth ? "100%" : "220px",
+          }}
+        >
           {label ? (
             <FormControlLabel
               labelPlacement="top"
@@ -236,7 +238,7 @@ const AgronodTextField = ({
               {...rest}
             />
           )}
-        </>
+        </Box>
       </Tooltip>
     </Box>
   );
