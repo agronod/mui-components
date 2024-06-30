@@ -1,14 +1,15 @@
-import { useMemo, useState } from "react";
 import {
   TextField as MuiTextField,
   TextFieldProps as MuiTextFieldProps,
   InputAdornment,
   Box,
   FormControlLabel,
+  FormHelperText,
+  Stack,
   Theme,
   SxProps,
-  FormHelperText,
 } from "@mui/material";
+import { useMemo, useState } from "react";
 import { Tooltip } from "../../Tooltip";
 import { AgronodIcon } from "../../AgronodIcon";
 
@@ -41,12 +42,12 @@ type AgronodTextFieldBaseProps = Pick<
 >;
 
 export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
-  warning?: Boolean;
+  warning?: boolean;
   emptyStyle?: "highlighted" | "default";
   hideHelperText?: boolean;
   tooltipText?: string;
   hasIcon?: boolean;
-  textAligment?: string;
+  textAlignment?: string;
 }
 
 const StyledMuiTextField = ({
@@ -54,7 +55,7 @@ const StyledMuiTextField = ({
   hideHelperText,
   helperText,
   hasIcon,
-  textAligment,
+  textAlignment,
   ...rest
 }: AgronodTextFieldProps) => {
   const icon = useMemo(() => {
@@ -101,6 +102,7 @@ const StyledMuiTextField = ({
             shrink: false,
           }}
           variant="outlined"
+          placeholder={rest.placeholder} // Ensure placeholder is passed
           sx={(theme) => ({
             "& .MuiInputBase-root": {
               width: rest.fullWidth ? "100%" : "220px",
@@ -108,7 +110,7 @@ const StyledMuiTextField = ({
             "& .MuiInputBase-input": {
               paddingLeft:
                 hasIcon && (rest.error || rest.warning) ? "46px" : "14px",
-              textAlign: textAligment ? textAligment : "left",
+              textAlign: textAlignment ? textAlignment : "left",
             },
             "& .MuiInputBase-root:not(.Mui-disabled)": {
               backgroundColor: rest.error
@@ -172,7 +174,7 @@ const AgronodTextField = ({
   hideHelperText = false,
   tooltipText,
   hasIcon = false,
-  textAligment = "left",
+  textAlignment = "left",
   label,
   sx,
   ...rest
@@ -222,7 +224,7 @@ const AgronodTextField = ({
                   hideHelperText={hideHelperText}
                   helperText={helperText}
                   hasIcon={hasIcon}
-                  textAligment={textAligment}
+                  textAlignment={textAlignment}
                   {...rest}
                 />
               }
@@ -233,7 +235,7 @@ const AgronodTextField = ({
               hideHelperText={hideHelperText}
               helperText={helperText}
               hasIcon={hasIcon}
-              textAligment={textAligment}
+              textAlignment={textAlignment}
               {...rest}
             />
           )}
