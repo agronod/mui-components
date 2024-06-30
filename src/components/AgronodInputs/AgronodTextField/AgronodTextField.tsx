@@ -85,10 +85,7 @@ const StyledMuiTextField = ({
             sx={{
               position: "absolute",
               zIndex: 999,
-              top:
-                !hideHelperText && helperText !== undefined
-                  ? `calc(50% - ${helperTextHeightOffset})`
-                  : "50%",
+              top: "50%",
               left: "12px",
             }}
             position="start"
