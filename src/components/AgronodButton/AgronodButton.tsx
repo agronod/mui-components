@@ -5,7 +5,9 @@ import {
 
 type AgronodButtonBaseProps = MuiButtonProps;
 
-export interface AgronodButtonProps extends AgronodButtonBaseProps {}
+export interface AgronodButtonProps extends AgronodButtonBaseProps {
+  to?: string;
+}
 
 const AgronodButton = ({ children, ...rest }: AgronodButtonProps) => {
   return <MuiButton {...rest}>{children && children}</MuiButton>;
