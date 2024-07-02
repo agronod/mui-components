@@ -193,52 +193,49 @@ const AgronodTextField = ({
         open={showTooltip && tooltipText !== undefined}
         arrow
         title={tooltipText || ""}
+        sx={{
+          width: rest.fullWidth ? "100%" : "220px",
+        }}
       >
-        <Box
-          sx={{
-            width: rest.fullWidth ? "100%" : "220px",
-          }}
-        >
-          {label ? (
-            <FormControlLabel
-              labelPlacement="top"
-              sx={{
-                textAlign: "right",
-                margin: 0,
-                width: rest.fullWidth ? "100%" : "220px",
-              }}
-              componentsProps={{
-                typography: {
-                  variant: "body2bold",
-                  alignSelf: "flex-start",
-                  color: rest.error ? "error.medium" : "text.secondary",
-                  marginBottom: "4px",
-                },
-              }}
-              label={label}
-              disabled={rest.disabled}
-              control={
-                <StyledMuiTextField
-                  emptyStyle={emptyStyle}
-                  hideHelperText={hideHelperText}
-                  helperText={helperText}
-                  hasIcon={hasIcon}
-                  textAlignment={textAlignment}
-                  {...rest}
-                />
-              }
-            />
-          ) : (
-            <StyledMuiTextField
-              emptyStyle={emptyStyle}
-              hideHelperText={hideHelperText}
-              helperText={helperText}
-              hasIcon={hasIcon}
-              textAlignment={textAlignment}
-              {...rest}
-            />
-          )}
-        </Box>
+        {label ? (
+          <FormControlLabel
+            labelPlacement="top"
+            sx={{
+              textAlign: "right",
+              margin: 0,
+              width: rest.fullWidth ? "100%" : "220px",
+            }}
+            componentsProps={{
+              typography: {
+                variant: "body2bold",
+                alignSelf: "flex-start",
+                color: rest.error ? "error.medium" : "text.secondary",
+                marginBottom: "4px",
+              },
+            }}
+            label={label}
+            disabled={rest.disabled}
+            control={
+              <StyledMuiTextField
+                emptyStyle={emptyStyle}
+                hideHelperText={hideHelperText}
+                helperText={helperText}
+                hasIcon={hasIcon}
+                textAlignment={textAlignment}
+                {...rest}
+              />
+            }
+          />
+        ) : (
+          <StyledMuiTextField
+            emptyStyle={emptyStyle}
+            hideHelperText={hideHelperText}
+            helperText={helperText}
+            hasIcon={hasIcon}
+            textAlignment={textAlignment}
+            {...rest}
+          />
+        )}
       </Tooltip>
     </Box>
   );
