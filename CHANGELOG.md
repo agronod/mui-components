@@ -1,3 +1,25 @@
+## <small>1.14.17 (2024-07-02)</small>
+
+* 1.14.16 ([866170b](https://github.com/agronod/mui-components/commit/866170b))
+* fix number field width so it supports 100% with tooltip ([af15cfe](https://github.com/agronod/mui-components/commit/af15cfe))
+
+
+
+## <small>1.14.16 (2024-07-02)</small>
+
+* 1.14.15 ([b7c6abe](https://github.com/agronod/mui-components/commit/b7c6abe))
+* fix tooltip ref ([ddf612f](https://github.com/agronod/mui-components/commit/ddf612f))
+
+
+
+## <small>1.14.15 (2024-07-02)</small>
+
+* 1.14.14 ([0f05b0e](https://github.com/agronod/mui-components/commit/0f05b0e))
+* fix tooltip error with ref ([8f4ff12](https://github.com/agronod/mui-components/commit/8f4ff12))
+* new components update ([d84a589](https://github.com/agronod/mui-components/commit/d84a589))
+
+
+
 ## <small>1.14.14 (2024-06-30)</small>
 
 * 1.14.13 ([32e65c9](https://github.com/agronod/mui-components/commit/32e65c9))
