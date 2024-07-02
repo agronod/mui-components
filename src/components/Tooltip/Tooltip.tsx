@@ -44,7 +44,7 @@ export default function Tooltip(props: TooltipProps) {
       }
       placement={props.placement ?? "top-start"}
     >
-      {props.children}
+      <>{props.children}</>
     </MuiTooltip>
   );
 }
