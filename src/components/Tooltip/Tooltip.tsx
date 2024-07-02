@@ -1,4 +1,5 @@
 import {
+  Box,
   Tooltip as MuiTooltip,
   TooltipProps,
   tooltipClasses,
@@ -44,7 +45,7 @@ export default function Tooltip(props: TooltipProps) {
       }
       placement={props.placement ?? "top-start"}
     >
-      <>{props.children}</>
+      <Box>{props.children}</Box>
     </MuiTooltip>
   );
 }
