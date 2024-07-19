@@ -62,7 +62,7 @@ const PieChart = ({
     if (hoverIndex !== null) {
       return showAsPercentage && total > 0
         ? `${round(dataSorted[hoverIndex].value, 2)}`
-        : `${round((dataSorted[hoverIndex].value / total) * 100, 0)}%`;
+        : `${round((dataSorted[hoverIndex].value / total) * 100)}%`;
     }
   }, [showAsPercentage, total, dataSorted, hoverIndex]);
 
@@ -252,7 +252,7 @@ const PieChart = ({
                     }}
                   >
                     {showAsPercentage && total > 0
-                      ? `${round((item.value / total) * 100, 0)} %`
+                      ? `${round((item.value / total) * 100)} %`
                       : item.value}
                   </AgronodTypography>
                 </Box>
