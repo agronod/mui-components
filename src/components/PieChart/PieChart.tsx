@@ -200,7 +200,7 @@ const PieChart = ({
           <Box sx={{}} onMouseLeave={() => onHover()}>
             {dataSorted.map((item, index) => (
               <Box
-                key={item.id}
+                key={index}
                 onMouseOver={() => onHover(index)}
                 sx={{
                   display: "flex",
