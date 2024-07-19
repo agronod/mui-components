@@ -64,3 +64,66 @@ export const PieChartDefault: StoryFn<typeof PieChart> = ({ ...args }) => (
 PieChartDefault.args = {
   data: data,
 };
+
+export const PieChartDefaultPercentage: StoryFn<typeof PieChart> = ({
+  ...args
+}) => (
+  <Grid container spacing={2}>
+    <Grid item xs={12} md={6}>
+      <Card sx={{ padding: 2 }}>
+        <AgronodTypography variant="subtitle2">
+          Klimatavtryck växtodling
+        </AgronodTypography>
+        <AgronodTypography variant="caption">ton CO2e</AgronodTypography>
+        <PieChart {...args} />
+      </Card>
+    </Grid>
+  </Grid>
+);
+
+PieChartDefaultPercentage.args = {
+  data: data,
+  showAsPercentage: true,
+};
+
+export const PieChartDefaultSortedAsc: StoryFn<typeof PieChart> = ({
+  ...args
+}) => (
+  <Grid container spacing={2}>
+    <Grid item xs={12} md={6}>
+      <Card sx={{ padding: 2 }}>
+        <AgronodTypography variant="subtitle2">
+          Klimatavtryck växtodling
+        </AgronodTypography>
+        <AgronodTypography variant="caption">ton CO2e</AgronodTypography>
+        <PieChart {...args} />
+      </Card>
+    </Grid>
+  </Grid>
+);
+
+PieChartDefaultSortedAsc.args = {
+  data: data,
+  sort: "asc",
+};
+
+export const PieChartDefaultUnsorted: StoryFn<typeof PieChart> = ({
+  ...args
+}) => (
+  <Grid container spacing={2}>
+    <Grid item xs={12} md={6}>
+      <Card sx={{ padding: 2 }}>
+        <AgronodTypography variant="subtitle2">
+          Klimatavtryck växtodling
+        </AgronodTypography>
+        <AgronodTypography variant="caption">ton CO2e</AgronodTypography>
+        <PieChart {...args} />
+      </Card>
+    </Grid>
+  </Grid>
+);
+
+PieChartDefaultUnsorted.args = {
+  data: data,
+  sort: "none",
+};
