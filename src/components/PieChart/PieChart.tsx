@@ -1,4 +1,10 @@
-import { PieChart as RePieChart, Pie, Cell, Tooltip } from "recharts";
+import {
+  PieChart as RePieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
@@ -16,9 +22,18 @@ export type PieChartProps = {
   onItemHover?: (id?: string) => void;
   selectedId?: string;
   isPdf?: boolean;
+  sort?: "asc" | "desc" | "none";
+  showAsPercentage?: boolean;
 };
 
-const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
+const PieChart = ({
+  data,
+  onItemHover,
+  selectedId,
+  isPdf,
+  sort = "desc",
+  showAsPercentage = false,
+}: PieChartProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const pieChartRef = useRef<any>(null);
@@ -29,22 +44,27 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
     [data]
   );
 
-  const dataSorted = useMemo(
-    () =>
-      data
-        .sort((a, b) => b.value - a.value)
-        .map((item) => ({ ...item, value: round(item.value) })),
-    [data]
-  );
+  const dataSorted = useMemo(() => {
+    const sorted =
+      sort === "none"
+        ? data
+        : sort === "asc"
+          ? data.toSorted((a, b) => a.value - b.value)
+          : data.toSorted((a, b) => b.value - a.value);
 
-  const percentage = useMemo(() => {
+    return sorted.map((item) => ({ ...item, value: round(item.value) }));
+  }, [sort, data, total, showAsPercentage]);
+
+  const tooltipValue = useMemo(() => {
     if (hoverIndex === undefined) {
       return 0;
     }
     if (hoverIndex !== null) {
-      return Math.round((dataSorted[hoverIndex].value / total) * 100);
+      return showAsPercentage && total > 0
+        ? `${round(dataSorted[hoverIndex].value, 2)}`
+        : `${round((dataSorted[hoverIndex].value / total) * 100, 0)}%`;
     }
-  }, [total, dataSorted, hoverIndex]);
+  }, [showAsPercentage, total, dataSorted, hoverIndex]);
 
   const onHover = useCallback(
     (index?: number) => {
@@ -102,64 +122,69 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
   }, [selectedId, dataSorted, onHover]);
   return (
     <Stack direction="row">
-      <RePieChart width={isMobile ? 188 : 224} height={224} ref={pieChartRef}>
-        <Pie
-          onMouseLeave={() => onHover()}
-          startAngle={-270}
-          endAngle={-630}
-          isAnimationActive={false}
-          paddingAngle={2}
-          dataKey="value"
-          data={dataSorted}
-          innerRadius={65}
-          outerRadius={95}
-          cornerRadius={5}
-        >
-          {dataSorted.map((item, index) => (
-            <Cell
-              onMouseOver={() => onHover(index)}
-              key={item.id}
-              fill={
-                selectedId !== undefined && selectedId !== item.id
-                  ? "#E5E3E0"
-                  : item.color
+      <ResponsiveContainer aspect={1}>
+        <RePieChart width={isMobile ? 188 : 224} height={224} ref={pieChartRef}>
+          <Pie
+            onMouseLeave={() => onHover()}
+            startAngle={-270}
+            endAngle={-630}
+            isAnimationActive={false}
+            paddingAngle={2}
+            dataKey="value"
+            data={dataSorted}
+            innerRadius={60}
+            outerRadius={95}
+            cornerRadius={5}
+          >
+            {dataSorted.map((item, index) => (
+              <Cell
+                onMouseOver={() => onHover(index)}
+                key={item.id}
+                fill={
+                  selectedId !== undefined && selectedId !== item.id
+                    ? "#E5E3E0"
+                    : item.color
+                }
+              />
+            ))}
+          </Pie>
+          {hoverIndex !== undefined && hoverIndex !== null && (
+            <Tooltip
+              isAnimationActive={false}
+              content={
+                <Stack
+                  px={1}
+                  py={1}
+                  gap={"4px"}
+                  direction="row"
+                  alignItems="center"
+                  sx={{
+                    opacity: 1,
+                    background: theme.palette.text.primary,
+                    borderRadius: "3px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      border: "1px solid #FFFFFF",
+                      background: dataSorted[hoverIndex].color,
+                    }}
+                  />
+                  <AgronodTypography
+                    sx={{ color: "#FFFFFF" }}
+                    variant="caption"
+                  >
+                    {`${dataSorted[hoverIndex].name} ${tooltipValue}`}
+                  </AgronodTypography>
+                </Stack>
               }
             />
-          ))}
-        </Pie>
-        {hoverIndex !== undefined && hoverIndex !== null && (
-          <Tooltip
-            isAnimationActive={false}
-            content={
-              <Stack
-                px={1}
-                py={1}
-                gap={"4px"}
-                direction="row"
-                alignItems="center"
-                sx={{
-                  opacity: 1,
-                  background: theme.palette.text.primary,
-                  borderRadius: "3px",
-                }}
-              >
-                <Box
-                  sx={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    border: "1px solid #FFFFFF",
-                    background: dataSorted[hoverIndex].color,
-                  }}
-                />
-                <AgronodTypography sx={{ color: "#FFFFFF" }} variant="caption">
-                  {`${dataSorted[hoverIndex].name} ${percentage}%`}
-                </AgronodTypography>
-              </Stack>
-            }
-          />
-        )}
-      </RePieChart>
+          )}
+        </RePieChart>
+      </ResponsiveContainer>
       <Box width="100%" mt={2} ml={isMobile && !isPdf ? 2 : 4}>
         <Box paddingX={1} mb={2}>
           <AgronodTypography variant="caption">Totalt</AgronodTypography>
@@ -175,7 +200,7 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
           <Box sx={{}} onMouseLeave={() => onHover()}>
             {dataSorted.map((item, index) => (
               <Box
-                key={item.id}
+                key={index}
                 onMouseOver={() => onHover(index)}
                 sx={{
                   display: "flex",
@@ -226,7 +251,9 @@ const PieChart = ({ data, onItemHover, selectedId, isPdf }: PieChartProps) => {
                       fontWeight: 600,
                     }}
                   >
-                    {item.value}
+                    {showAsPercentage && total > 0
+                      ? `${round((item.value / total) * 100, 0)} %`
+                      : item.value}
                   </AgronodTypography>
                 </Box>
               </Box>
