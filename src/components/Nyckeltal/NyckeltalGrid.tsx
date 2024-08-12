@@ -4,7 +4,7 @@ import React from "react";
 type Props = {
   children: React.ReactNode;
   columns?: number;
-  size: string;
+  size?: string;
 };
 
 export default function NyckeltalGrid({
