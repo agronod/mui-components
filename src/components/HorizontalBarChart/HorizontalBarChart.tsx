@@ -403,7 +403,7 @@ const HorizontalBarChart = ({
               <Box
                 key={index}
                 sx={{
-                  marginX: 2,
+                  ml: 2,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "flex-end",
@@ -414,7 +414,7 @@ const HorizontalBarChart = ({
                   sx={{
                     width: `${barWidth}px`,
                     overflow: "hidden",
-                    textOverflow: "ellipsis",
+                    wordWrap: "break-word",
                     whiteSpace: "break-spaces",
                     marginY: 1,
                   }}
