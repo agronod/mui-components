@@ -413,8 +413,9 @@ const HorizontalBarChart = ({
                 <AgronodTypography
                   sx={{
                     width: `${barWidth - 16}px`,
-                    whiteSpace: "normal",
-                    wordBreak: "break-word",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "break-spaces",
                     marginY: 1,
                   }}
                   variant="caption"
