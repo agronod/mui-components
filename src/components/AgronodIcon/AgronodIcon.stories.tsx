@@ -16,6 +16,7 @@ const iconArray = [
   "profil",
   "notkreatur",
   "mjolk",
+  "gris",
   "vaxtodling",
   "warningOutlined",
   "warningContained",
