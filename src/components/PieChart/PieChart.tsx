@@ -83,13 +83,13 @@ const PieChart = ({
       hoverIndex === undefined ||
       hoverIndex === null ||
       total === 0 ||
-      dataSorted[hoverIndex].tooltipData === undefined
+      dataSorted[hoverIndex]?.tooltipData === undefined
     ) {
       return null;
     }
 
-    return dataSorted[hoverIndex].tooltipData
-      .sort((a, b) => b.value - a.value)
+    return dataSorted[hoverIndex]
+      .tooltipData!.sort((a, b) => b.value - a.value)
       .map((item) => ({
         ...item,
         value: `${round((item.value / total) * 100, decimals).toLocaleString(
