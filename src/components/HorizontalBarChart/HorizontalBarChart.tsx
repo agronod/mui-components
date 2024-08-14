@@ -186,7 +186,7 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
                 variant="caption"
                 sx={{ minWidth: "30px" }}
               >
-                {Math.round(category.percentage)}%
+                {round(category.percentage).toLocaleString("sv-SE")}%
               </AgronodTypography>
 
               <AgronodTypography ml={1} mb={0.5} variant="caption">

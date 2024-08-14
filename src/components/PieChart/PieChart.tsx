@@ -5,16 +5,29 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  Stack,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
 import { AgronodTypography } from "../AgronodTypography";
+
+export type TooltipData = {
+  name: string;
+  value: number;
+};
 
 export type PieChartData = {
   id: string;
   name: string;
   value: number;
   color: string;
+  tooltipData?: TooltipData[];
 };
 
 export type PieChartProps = {
@@ -22,6 +35,7 @@ export type PieChartProps = {
   onItemHover?: (id?: string) => void;
   selectedId?: string;
   isPdf?: boolean;
+  decimals?: number;
   sort?: "asc" | "desc" | "none";
   showAsPercentage?: boolean;
 };
@@ -31,6 +45,7 @@ const PieChart = ({
   onItemHover,
   selectedId,
   isPdf,
+  decimals,
   sort = "desc",
   showAsPercentage = false,
 }: PieChartProps) => {
@@ -56,14 +71,31 @@ const PieChart = ({
   }, [sort, data, total, showAsPercentage]);
 
   const tooltipValue = useMemo(() => {
-    if (hoverIndex === undefined) {
+    if (hoverIndex === undefined || hoverIndex === null || total === 0) {
       return 0;
     }
-    if (hoverIndex !== null) {
-      return showAsPercentage && total > 0
-        ? `${round(dataSorted[hoverIndex].value, 2)}`
-        : `${round((dataSorted[hoverIndex].value / total) * 100, 0)}%`;
+
+    return `${round((dataSorted[hoverIndex].value / total) * 100, decimals).toLocaleString("sv-SE")}%`;
+  }, [total, dataSorted, hoverIndex]);
+
+  const customTooltipValue = useMemo(() => {
+    if (
+      hoverIndex === undefined ||
+      hoverIndex === null ||
+      total === 0 ||
+      dataSorted[hoverIndex].tooltipData === undefined
+    ) {
+      return null;
     }
+
+    return dataSorted[hoverIndex].tooltipData
+      .sort((a, b) => b.value - a.value)
+      .map((item) => ({
+        ...item,
+        value: `${round((item.value / total) * 100, decimals).toLocaleString(
+          "sv-SE"
+        )}%`,
+      }));
   }, [showAsPercentage, total, dataSorted, hoverIndex]);
 
   const onHover = useCallback(
@@ -152,34 +184,72 @@ const PieChart = ({
             <Tooltip
               isAnimationActive={false}
               content={
-                <Stack
-                  px={1}
-                  py={1}
-                  gap={"4px"}
-                  direction="row"
-                  alignItems="center"
-                  sx={{
-                    opacity: 1,
-                    background: theme.palette.text.primary,
-                    borderRadius: "3px",
-                  }}
-                >
-                  <Box
+                customTooltipValue ? (
+                  <Stack
+                    px={2}
+                    py={2}
+                    direction="column"
                     sx={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: "50%",
-                      border: "1px solid #FFFFFF",
-                      background: dataSorted[hoverIndex].color,
+                      opacity: 1,
+                      background: theme.palette.background.card,
+                      border: `1px solid ${theme.palette.divider}`,
+                      borderRadius: "8px",
+                      minWidth: "202px",
                     }}
-                  />
-                  <AgronodTypography
-                    sx={{ color: "#FFFFFF" }}
-                    variant="caption"
                   >
-                    {`${dataSorted[hoverIndex].name} ${tooltipValue}`}
-                  </AgronodTypography>
-                </Stack>
+                    <AgronodTypography variant="overline">
+                      {dataSorted[hoverIndex].name}
+                    </AgronodTypography>
+                    <List>
+                      {customTooltipValue.map((item, index) => (
+                        <ListItem
+                          sx={{ paddingY: 0.5, paddingX: 0 }}
+                          key={index}
+                        >
+                          <ListItem disablePadding>
+                            <AgronodTypography variant="body4">
+                              {item.value}
+                            </AgronodTypography>
+                          </ListItem>
+                          <ListItem disablePadding>
+                            <AgronodTypography variant="body4">
+                              {item.name}
+                            </AgronodTypography>
+                          </ListItem>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Stack>
+                ) : (
+                  <Stack
+                    px={1}
+                    py={1}
+                    gap={"4px"}
+                    direction="row"
+                    alignItems="center"
+                    sx={{
+                      opacity: 1,
+                      background: theme.palette.text.primary,
+                      borderRadius: "3px",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        border: "1px solid #FFFFFF",
+                        background: dataSorted[hoverIndex].color,
+                      }}
+                    />
+                    <AgronodTypography
+                      sx={{ color: "#FFFFFF" }}
+                      variant="caption"
+                    >
+                      {`${dataSorted[hoverIndex].name} ${tooltipValue}`}
+                    </AgronodTypography>
+                  </Stack>
+                )
               }
             />
           )}
@@ -189,7 +259,7 @@ const PieChart = ({
         <Box paddingX={1} mb={2}>
           <AgronodTypography variant="caption">Totalt</AgronodTypography>
           <AgronodTypography variant="h5" sx={{ fontWeight: 600 }}>
-            {total}
+            {round(total, decimals).toLocaleString("sv-SE")}
           </AgronodTypography>
         </Box>
         <Box
@@ -252,8 +322,8 @@ const PieChart = ({
                     }}
                   >
                     {showAsPercentage && total > 0
-                      ? `${round((item.value / total) * 100, 0)} %`
-                      : item.value}
+                      ? `${round((item.value / total) * 100, decimals).toLocaleString("sv-SE")} %`
+                      : round(item.value, decimals).toLocaleString("sv-SE")}
                   </AgronodTypography>
                 </Box>
               </Box>

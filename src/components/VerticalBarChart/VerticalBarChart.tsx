@@ -285,7 +285,7 @@ const VerticalBarChart = ({
                   {item.name}
                 </AgronodTypography>
                 <AgronodTypography fontWeight={600} variant="caption">
-                  {round(item.value)}
+                  {round(item.value).toLocaleString("sv-SE")}
                 </AgronodTypography>
               </Box>
             ))}
