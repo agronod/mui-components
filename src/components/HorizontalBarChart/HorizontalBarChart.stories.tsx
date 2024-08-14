@@ -54,7 +54,7 @@ const tooltipData: SubCategory[] = [
     name: "Direkt lustgasavgång",
     utslappskategoriId: "Energi",
     value: 1.9585399860326453,
-    percentage: 6,
+    percentage: 6.1,
   },
   {
     name: "Indirekt lustgasavgång",
