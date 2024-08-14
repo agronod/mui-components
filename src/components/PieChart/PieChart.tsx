@@ -206,7 +206,7 @@ const PieChart = ({
                           sx={{ paddingY: 0.5, paddingX: 0 }}
                           key={index}
                         >
-                          <ListItem disablePadding>
+                          <ListItem sx={{ width: "33%" }} disablePadding>
                             <AgronodTypography variant="body4">
                               {item.value}
                             </AgronodTypography>
