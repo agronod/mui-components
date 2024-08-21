@@ -49,6 +49,14 @@ CheckboxWithLabel.args = {
   label: "this is label",
 };
 
+export const CheckboxWithLabelAndDescription: StoryFn<
+  typeof AgronodCheckbox
+> = ({ ...args }) => <AgronodCheckbox {...args} />;
+CheckboxWithLabelAndDescription.args = {
+  label: "this is label",
+  description: "with description below",
+};
+
 export const CheckboxDisabled: StoryFn<typeof AgronodCheckbox> = ({
   ...args
 }) => <AgronodCheckbox {...args} />;
