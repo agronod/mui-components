@@ -2,6 +2,8 @@ import {
   CheckboxProps as MuiCheckboxProps,
   Checkbox as MuiCheckbox,
   FormControlLabel,
+  Typography,
+  Box,
 } from "@mui/material";
 import { ReactNode } from "react";
 import { isSafari } from "react-device-detect";
@@ -14,6 +16,7 @@ type AgronodMuiCheckboxBaseProps = Pick<
 export interface AgronodCheckboxProps extends AgronodMuiCheckboxBaseProps {
   label?: ReactNode;
   noPadding?: boolean;
+  description?: string;
 }
 
 const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
@@ -56,14 +59,25 @@ const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
 );
 
 const AgronodCheckbox = (props: AgronodCheckboxProps) => {
-  return props.label ? (
-    <FormControlLabel
-      label={props.label}
-      disabled={props.disabled}
-      control={<StyledMuiCheckbox {...props} />}
-    />
-  ) : (
-    <StyledMuiCheckbox {...props} />
+  return (
+    <div>
+      {props.label ? (
+        <FormControlLabel
+          label={
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              {props.label}
+              {props.description && (
+                <Typography variant="caption">{props.description}</Typography>
+              )}
+            </Box>
+          }
+          disabled={props.disabled}
+          control={<StyledMuiCheckbox {...props} />}
+        />
+      ) : (
+        <StyledMuiCheckbox {...props} />
+      )}
+    </div>
   );
 };
 
