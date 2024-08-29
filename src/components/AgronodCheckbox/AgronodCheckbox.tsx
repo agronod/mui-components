@@ -67,7 +67,7 @@ const AgronodCheckbox = (props: AgronodCheckboxProps) => {
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {props.label}
               {props.description && (
-                <Typography color="secondary.text" variant="caption">
+                <Typography color="text.secondary" variant="caption">
                   {props.description}
                 </Typography>
               )}
