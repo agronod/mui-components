@@ -16,7 +16,7 @@ interface Item {
   namn?: string;
 }
 
-type CustomSelectProps = SelectProps & {
+export type CustomSelectProps = SelectProps & {
   tooltipText?: string;
   helperText?: string;
   hideHelperText?: boolean;

@@ -14,7 +14,7 @@ interface Item {
   namn?: string;
 }
 
-interface SelectChipProps {
+export interface SelectChipProps {
   items: Item[];
   value: string[];
   children?: JSX.Element[] | JSX.Element | undefined;
