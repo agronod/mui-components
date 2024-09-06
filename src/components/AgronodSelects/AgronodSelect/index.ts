@@ -1,3 +1,3 @@
 import AgronodSelect from "./AgronodSelect";
 
-AgronodSelect;
+export { AgronodSelect };
