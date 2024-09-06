@@ -27,6 +27,7 @@ export * from "./AgronodButtonIcon";
 export * from "./AgronodSupport";
 export * from "./AgronodInputs/AgronodTextField";
 export * from "./AgronodSelects/AgronodAutocompleteSearch";
+export * from "./AgronodSelects/AgronodSelect";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };

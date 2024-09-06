@@ -1,44 +1,16 @@
+import { Meta, StoryFn } from "@storybook/react";
+import AgronodSelect from "./AgronodSelect";
+import { useState } from "react";
 import {
-  Box,
   FormControl,
   FormLabel,
-  ListItemText,
   MenuItem,
-  Select,
-  SelectChangeEvent,
+  Box,
+  ListItemText,
 } from "@mui/material";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
-import { StoryFn, Meta } from "@storybook/react";
-import { useState } from "react";
-import { AgronodCheckbox } from "../AgronodCheckbox";
-import { AgronodChip } from "../AgronodChip";
-
-export default {
-  title: "Shared Components/Select",
-  component: Select,
-  parameters: {
-    docs: {
-      source: { language: "tsx" },
-    },
-  },
-  argTypes: {
-    disabled: {
-      control: {
-        type: "boolean",
-      },
-    },
-    label: {
-      control: {
-        type: "text",
-      },
-    },
-    sx: {
-      control: {
-        type: "object",
-      },
-    },
-  },
-} as Meta<typeof Select>;
+import { AgronodCheckbox } from "../../AgronodCheckbox";
+import { AgronodChip } from "../../AgronodChip";
 
 const names = [
   "Oliver Hansen",
@@ -53,33 +25,62 @@ const names = [
   "Kelly Snyder",
 ];
 
-export const SelectSingle: StoryFn<typeof Select> = ({ label, ...rest }) => {
+export default {
+  title: "Shared Components/Select",
+  component: AgronodSelect,
+  parameters: {
+    docs: {
+      source: { language: "tsx" },
+    },
+  },
+  argTypes: {
+    disabled: {
+      control: { type: "boolean" },
+    },
+    label: {
+      control: { type: "text" },
+    },
+    sx: {
+      control: { type: "object" },
+    },
+  },
+} as Meta<typeof AgronodSelect>;
+
+export const SelectSingle: StoryFn<typeof AgronodSelect> = ({
+  label,
+  ...rest
+}) => {
   const [value, setValue] = useState(names[0]);
   const handleChange = (event: any) => setValue(event.target.value);
+
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <Select value={value} {...rest} onChange={handleChange}>
+      <AgronodSelect value={value} {...rest} onChange={handleChange}>
         {names.map((name) => (
           <MenuItem key={name} value={name}>
             {name}
           </MenuItem>
         ))}
-      </Select>
+      </AgronodSelect>
     </FormControl>
   );
 };
 SelectSingle.args = {
-  label: "choose option",
+  label: "Choose option",
 };
 
-export const SelectWithIcon: StoryFn<typeof Select> = ({ label, ...rest }) => {
+export const SelectWithIcon: StoryFn<typeof AgronodSelect> = ({
+  label,
+  ...rest
+}) => {
   const [value, setValue] = useState(names[0]);
   const handleChange = (event: any) => setValue(event.target.value);
+
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <Select
+      <AgronodSelect
         value={value}
         {...rest}
         onChange={handleChange}
@@ -91,15 +92,18 @@ export const SelectWithIcon: StoryFn<typeof Select> = ({ label, ...rest }) => {
             {name === value && <CheckRoundedIcon />}
           </MenuItem>
         ))}
-      </Select>
+      </AgronodSelect>
     </FormControl>
   );
 };
 SelectWithIcon.args = {
-  label: "choose option",
+  label: "Choose option",
 };
 
-export const SelectMultiple: StoryFn<typeof Select> = ({ label, ...rest }) => {
+export const SelectMultiple: StoryFn<typeof AgronodSelect> = ({
+  label,
+  ...rest
+}) => {
   const [value, setValue] = useState<string[]>([]);
 
   const handleChange = (event: any) => {
@@ -108,28 +112,31 @@ export const SelectMultiple: StoryFn<typeof Select> = ({ label, ...rest }) => {
     } = event;
     setValue(typeof value === "string" ? value.split(",") : value);
   };
+
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <Select value={value} {...rest} onChange={handleChange} multiple>
-        <MenuItem value={1}>Option 1</MenuItem>
-        <MenuItem value={2}>Option 2</MenuItem>
-        <MenuItem value={3}>Option 3</MenuItem>
-      </Select>
+      <AgronodSelect value={value} {...rest} onChange={handleChange} multiple>
+        {names.map((name) => (
+          <MenuItem key={name} value={name}>
+            {name}
+          </MenuItem>
+        ))}
+      </AgronodSelect>
     </FormControl>
   );
 };
 SelectMultiple.args = {
-  label: "choose option",
+  label: "Choose options",
 };
 
-export const SelectMultipleCheckbox: StoryFn<typeof Select> = ({
+export const SelectMultipleCheckbox: StoryFn<typeof AgronodSelect> = ({
   label,
   ...rest
 }) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof value>) => {
+  const handleChange = (event: any) => {
     const {
       target: { value },
     } = event;
@@ -139,12 +146,12 @@ export const SelectMultipleCheckbox: StoryFn<typeof Select> = ({
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <Select
-        id="demo-multiple-checkbox"
+      <AgronodSelect
         multiple
         value={value}
+        {...rest}
         onChange={handleChange}
-        renderValue={(selected) => selected.join(", ")}
+        renderValue={(selected) => (selected as string[]).join(", ")}
       >
         {names.map((name) => (
           <MenuItem key={name} value={name}>
@@ -152,21 +159,21 @@ export const SelectMultipleCheckbox: StoryFn<typeof Select> = ({
             <ListItemText primary={name} />
           </MenuItem>
         ))}
-      </Select>
+      </AgronodSelect>
     </FormControl>
   );
 };
 SelectMultipleCheckbox.args = {
-  label: "choose option",
+  label: "Choose options",
 };
 
-export const SelectMultipleChip: StoryFn<typeof Select> = ({
+export const SelectMultipleChip: StoryFn<typeof AgronodSelect> = ({
   label,
   ...rest
 }) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof value>) => {
+  const handleChange = (event: any) => {
     const {
       target: { value },
     } = event;
@@ -176,15 +183,15 @@ export const SelectMultipleChip: StoryFn<typeof Select> = ({
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <Select
-        id="demo-multiple-checkbox"
+      <AgronodSelect
         multiple
         value={value}
+        {...rest}
         onChange={handleChange}
         renderValue={(selected) => (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-            {selected.map((value) => (
-              <AgronodChip key={value} label={value} />
+            {(selected as string[]).map((val) => (
+              <AgronodChip key={val} label={val} />
             ))}
           </Box>
         )}
@@ -195,10 +202,10 @@ export const SelectMultipleChip: StoryFn<typeof Select> = ({
             <ListItemText primary={name} />
           </MenuItem>
         ))}
-      </Select>
+      </AgronodSelect>
     </FormControl>
   );
 };
 SelectMultipleChip.args = {
-  label: "choose option",
+  label: "Choose options",
 };
