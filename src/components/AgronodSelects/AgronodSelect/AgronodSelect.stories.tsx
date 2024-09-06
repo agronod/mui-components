@@ -150,6 +150,7 @@ export const SelectMultipleCheckbox: StoryFn<typeof AgronodSelect> = ({
         multiple
         value={value}
         {...rest}
+        fullWidth
         onChange={handleChange}
         renderValue={(selected) => (selected as string[]).join(", ")}
       >
@@ -182,10 +183,10 @@ export const SelectMultipleChip: StoryFn<typeof AgronodSelect> = ({
 
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
-      {label && <FormLabel>{label}</FormLabel>}
       <AgronodSelect
         multiple
         value={value}
+        fullWidth
         {...rest}
         onChange={handleChange}
         renderValue={(selected) => (

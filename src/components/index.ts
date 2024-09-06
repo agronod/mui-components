@@ -28,6 +28,7 @@ export * from "./AgronodSupport";
 export * from "./AgronodInputs/AgronodTextField";
 export * from "./AgronodSelects/AgronodAutocompleteSearch";
 export * from "./AgronodSelects/AgronodSelect";
+export * from "./AgronodSelects/AgronodSelectChip";
 
 import { NyckeltalProps } from "./Nyckeltal";
 export type { NyckeltalProps };

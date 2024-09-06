@@ -9,6 +9,12 @@ import {
 } from "@mui/material";
 import { useMemo, useState } from "react";
 import { AgronodIcon } from "../../AgronodIcon";
+import { AgronodChip } from "../../AgronodChip";
+
+interface Item {
+  id?: string;
+  namn?: string;
+}
 
 type CustomSelectProps = SelectProps & {
   tooltipText?: string;
@@ -18,10 +24,12 @@ type CustomSelectProps = SelectProps & {
   warning?: boolean;
   emptyStyle?: "highlighted" | "default";
   multiple?: boolean;
+  items?: Item[];
 };
 
 export default function AgronodSelect({
   tooltipText,
+  items,
   helperText,
   hideHelperText,
   hasIcon = false,
@@ -174,7 +182,7 @@ export default function AgronodSelect({
                 <></>
               )
             }
-          ></MuiSelect>
+          />
           {helperText && !hideHelperText && (
             <FormHelperText
               error={error && !warning}
