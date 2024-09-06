@@ -12,7 +12,7 @@ import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
 import { AgronodChip } from "../../AgronodChip";
 
-const names = [
+export const names = [
   "Oliver Hansen",
   "Van Henry",
   "April Tucker",

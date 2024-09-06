@@ -3,13 +3,12 @@ import AgronodSelectChip from "./AgronodSelectChip";
 import { useState } from "react";
 import { Box, ListItemText, MenuItem } from "@mui/material";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
+import { names } from "../AgronodSelect/AgronodSelect.stories";
 
-const items = [
-  { id: "1", namn: "Oliver Hansen" },
-  { id: "2", namn: "Van Henry" },
-  { id: "3", namn: "Ralph Hubbard" },
-  { id: "4", namn: "Omar Alexander" },
-];
+const items = names.map((name, index) => ({
+  id: index.toString(),
+  namn: name,
+}));
 
 export default {
   title: "Shared Components/AgronodSelectChip",

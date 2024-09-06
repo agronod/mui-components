@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import { useMemo, useState } from "react";
 import { AgronodIcon } from "../../AgronodIcon";
-import { AgronodChip } from "../../AgronodChip";
 
 interface Item {
   id?: string;
