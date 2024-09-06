@@ -1,5 +1,3 @@
 import AgronodSelectChip from "./AgronodSelectChip";
 
-{
-  AgronodSelectChip;
-}
+export { AgronodSelectChip };
