@@ -26,6 +26,7 @@ export * from "./AgronodButton";
 export * from "./AgronodButtonIcon";
 export * from "./AgronodSupport";
 export * from "./AgronodInputs/AgronodTextField";
+export * from "./AgronodInputs/AgronodNumberField";
 export * from "./AgronodSelects/AgronodAutocompleteSearch";
 export * from "./AgronodSelects/AgronodSelect";
 export * from "./AgronodSelects/AgronodSelectChip";

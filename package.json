@@ -103,6 +103,7 @@
     "@svgx/vite-plugin-react": "^1.0.1",
     "conventional-changelog-cli": "^5.0.0",
     "react-device-detect": "^2.2.3",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "react-number-format": "^5.4.0"
   }
 }
