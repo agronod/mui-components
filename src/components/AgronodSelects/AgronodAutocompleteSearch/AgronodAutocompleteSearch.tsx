@@ -10,7 +10,7 @@ import {
   AutocompleteGroupedOption,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AgronodChip } from "../../AgronodChip";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
 import { AgronodTypography } from "../../AgronodTypography";
@@ -59,7 +59,7 @@ const AgronodAutocompleteSearch = <T,>({
   const [availableOptions, setAvailableOptions] = useState<
     (T | AutocompleteGroupedOption<T>)[]
   >([]);
-
+  const listRef = useRef<HTMLUListElement>(null); // Reference to the scrollable listbox
   const {
     getRootProps,
     getInputProps,
@@ -121,6 +121,17 @@ const AgronodAutocompleteSearch = <T,>({
     }
   }, [focused]);
 
+  const handleOptionChange = (option: T) => {
+    const scrollPosition = listRef.current?.scrollTop || 0;
+
+    onOptionChange(option);
+    requestAnimationFrame(() => {
+      if (listRef.current) {
+        listRef.current.scrollTop = scrollPosition;
+      }
+    });
+  };
+
   return (
     <Box {...getRootProps()} sx={{ maxWidth: maxWidth }}>
       <Stack
@@ -162,13 +173,13 @@ const AgronodAutocompleteSearch = <T,>({
 
         <Collapse in={open}>
           {open && (
-            <StyledMenuList dense {...getListboxProps()}>
+            <StyledMenuList dense {...getListboxProps()} ref={listRef}>
               {availableOptions.map((option, index) => (
                 <MenuItem
                   dense
                   {...getOptionProps({ option: option as T, index })}
                   key={index}
-                  onClick={() => onOptionChange(option as T)}
+                  onClick={() => handleOptionChange(option as T)}
                   disabled={isOptionDisabled(option as T)}
                   selected={isOptionSelected(option as T)}
                 >
