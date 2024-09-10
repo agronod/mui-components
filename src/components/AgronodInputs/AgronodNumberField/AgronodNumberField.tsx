@@ -21,6 +21,7 @@ export default function AgronodNumberField({
   hideHelperText,
   emptyStyle = "default",
   textAlignment = "right",
+  fullWidth = true,
   ...props
 }: NumberFieldProps) {
   const onNumberChange = useCallback(
@@ -61,6 +62,7 @@ export default function AgronodNumberField({
       decimalScale={3}
       decimalSeparator={","}
       allowNegative={false}
+      fullWidth={fullWidth}
     />
   );
 }
