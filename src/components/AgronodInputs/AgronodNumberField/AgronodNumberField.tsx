@@ -21,6 +21,7 @@ export default function AgronodNumberField({
   hideHelperText,
   emptyStyle = "highlighted",
   textAlignment = "right",
+  placeholder = "Ange",
   fullWidth = true,
   ...props
 }: NumberFieldProps) {
@@ -56,7 +57,7 @@ export default function AgronodNumberField({
         event.target.select();
       }}
       emptyStyle={emptyStyle}
-      placeholder={props.placeholder}
+      placeholder={placeholder}
       textAlignment={textAlignment}
       thousandSeparator=" "
       decimalScale={3}
