@@ -19,7 +19,7 @@ export type NumberFieldProps = Omit<TextFieldProps, "onChange"> & {
 export default function AgronodNumberField({
   onChange,
   hideHelperText,
-  emptyStyle = "default",
+  emptyStyle = "highlighted",
   textAlignment = "right",
   fullWidth = true,
   ...props
