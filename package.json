@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.19.1-fix-default-prop-textfield.0",
+  "version": "1.19.1",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
