@@ -154,7 +154,7 @@ const PieChart = ({
   }, [selectedId, dataSorted, onHover]);
   return (
     <Stack direction="row">
-      <ResponsiveContainer aspect={1}>
+      <ResponsiveContainer aspect={1} minWidth={190}>
         <RePieChart width={isMobile ? 188 : 224} height={224} ref={pieChartRef}>
           <Pie
             onMouseLeave={() => onHover()}
