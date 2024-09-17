@@ -581,10 +581,6 @@ const baseThemeOptions: ThemeOptions = {
           ".MuiTouchRipple-root": {
             display: "none",
           },
-          elevation: 0,
-          ".MuiTouchElevation-root": {
-            display: "none",
-          },
         },
         contained: {
           border: "1px solid transparent",

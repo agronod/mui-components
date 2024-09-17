@@ -10,7 +10,11 @@ export interface AgronodButtonProps extends AgronodButtonBaseProps {
 }
 
 const AgronodButton = ({ children, ...rest }: AgronodButtonProps) => {
-  return <MuiButton {...rest}>{children && children}</MuiButton>;
+  return (
+    <MuiButton disableElevation={true} {...rest}>
+      {children && children}
+    </MuiButton>
+  );
 };
 
 export default AgronodButton;
