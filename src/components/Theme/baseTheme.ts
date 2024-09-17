@@ -808,6 +808,9 @@ const baseThemeOptions: ThemeOptions = {
           "& .MuiSvgIcon-root:last-of-type": {
             fontSize: pxToRem(22),
           },
+          ".MuiTouchRipple-root": {
+            display: "none",
+          },
         },
       },
     },
