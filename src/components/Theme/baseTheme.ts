@@ -555,10 +555,6 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiButton: {
-      defaultProps: {
-        disableElevation: true,
-        disableRipple: true,
-      },
       styleOverrides: {
         root: {
           letterSpacing: 0,
@@ -581,6 +577,9 @@ const baseThemeOptions: ThemeOptions = {
             height: 48,
             paddingLeft: "24px",
             paddingRight: "24px",
+          },
+          ".MuiTouchRipple-root": {
+            display: "none",
           },
         },
         contained: {
@@ -780,13 +779,14 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiMenuItem: {
-      defaultProps: {
-        disableRipple: true,
-      },
+      defaultProps: {},
       styleOverrides: {
         root: {
           fontFamily: "inter",
           whiteSpace: "normal",
+          ".MuiTouchRipple-root": {
+            display: "none",
+          },
         },
       },
     },
@@ -807,6 +807,9 @@ const baseThemeOptions: ThemeOptions = {
           },
           "& .MuiSvgIcon-root:last-of-type": {
             fontSize: pxToRem(22),
+          },
+          ".MuiTouchRipple-root": {
+            display: "none",
           },
         },
       },
@@ -924,8 +927,12 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiListItemButton: {
-      defaultProps: {
-        disableRipple: true,
+      styleOverrides: {
+        root: {
+          ".MuiTouchRipple-root": {
+            display: "none",
+          },
+        },
       },
     },
   },
