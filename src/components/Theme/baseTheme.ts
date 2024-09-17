@@ -555,10 +555,6 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiButton: {
-      defaultProps: {
-        disableElevation: true,
-        disableRipple: true,
-      },
       styleOverrides: {
         root: {
           letterSpacing: 0,
@@ -581,6 +577,13 @@ const baseThemeOptions: ThemeOptions = {
             height: 48,
             paddingLeft: "24px",
             paddingRight: "24px",
+          },
+          ".MuiTouchRipple-root": {
+            display: "none",
+          },
+          elevation: 0,
+          ".MuiTouchElevation-root": {
+            display: "none",
           },
         },
         contained: {
@@ -925,8 +928,12 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiListItemButton: {
-      defaultProps: {
-        disableRipple: true,
+      styleOverrides: {
+        root: {
+          ".MuiTouchRipple-root": {
+            display: "none",
+          },
+        },
       },
     },
   },

@@ -176,7 +176,6 @@ const AgronodAutocompleteSearch = <T,>({
             <StyledMenuList dense {...getListboxProps()} ref={listRef}>
               {availableOptions.map((option, index) => (
                 <MenuItem
-                  disableRipple={true}
                   dense
                   {...getOptionProps({ option: option as T, index })}
                   key={index}
