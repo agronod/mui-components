@@ -59,6 +59,7 @@ export default function AgronodNumberField({
       emptyStyle={emptyStyle}
       placeholder={placeholder}
       textAlignment={textAlignment}
+      hasIcon={true}
       thousandSeparator=" "
       decimalScale={3}
       decimalSeparator={","}
