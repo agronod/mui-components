@@ -780,13 +780,14 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiMenuItem: {
-      defaultProps: {
-        disableRipple: true,
-      },
+      defaultProps: {},
       styleOverrides: {
         root: {
           fontFamily: "inter",
           whiteSpace: "normal",
+          ".MuiTouchRipple-root": {
+            display: "none",
+          },
         },
       },
     },
