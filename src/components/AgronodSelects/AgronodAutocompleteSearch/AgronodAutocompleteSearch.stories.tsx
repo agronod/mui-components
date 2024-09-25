@@ -3,7 +3,7 @@ import AgronodAutocompleteSearch from "./AgronodAutocompleteSearch";
 import { films } from "./MockData";
 import { useState } from "react";
 import { AgronodAlert } from "../../AgronodAlert";
-import { Divider } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 
 export default {
   title: "Agrosfär Exclusive/Autocomplete Search",
@@ -180,22 +180,20 @@ export const AgronodAutocompleteSearchAlertMessage: StoryFn<
         )
       }
       noOptionsAlertMessage={
-        <>
-          <>
-            <Divider
-              sx={{ mb: 1, mt: 1, width: "100%" }}
-              orientation="horizontal"
-            />
-            <AgronodAlert
-              variant="standard"
-              title="Alert"
-              severity="info"
-              sx={{ width: "100%" }}
-            >
-              This is an alert message
-            </AgronodAlert>
-          </>
-        </>
+        <Box sx={{ p: 2 }}>
+          <Divider
+            sx={{ mb: 1, mt: 1, width: "100%" }}
+            orientation="horizontal"
+          />
+          <AgronodAlert
+            variant="standard"
+            title="Alert"
+            severity="info"
+            sx={{ width: "100%" }}
+          >
+            This is an alert message
+          </AgronodAlert>
+        </Box>
       }
       additionalInfoText={(option) => option.year}
     />
