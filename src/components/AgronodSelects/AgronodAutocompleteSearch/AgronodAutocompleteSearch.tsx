@@ -8,13 +8,16 @@ import {
   Collapse,
   MenuList,
   AutocompleteGroupedOption,
+  Divider,
+  Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { AgronodChip } from "../../AgronodChip";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
 import { AgronodTypography } from "../../AgronodTypography";
 import { AgronodTextField } from "../../AgronodInputs/AgronodTextField";
+import { AgronodAlert } from "../../AgronodAlert";
 
 type AutocompleteProps<T> = {
   options: T[];
@@ -30,6 +33,7 @@ type AutocompleteProps<T> = {
   noOptionsText: string;
   additionalInfoText?: (value: T) => number;
   maxWidth?: string;
+  noOptionsAlertMessage?: ReactNode;
 };
 
 interface OptionWithFilterProps {
@@ -54,8 +58,9 @@ const AgronodAutocompleteSearch = <T,>({
   noOptionsText,
   additionalInfoText,
   maxWidth,
+  noOptionsAlertMessage,
 }: ExtendedAutocompleteProps<T>) => {
-  const [open, setOpen] = useState<boolean | undefined>();
+  const [open, setOpen] = useState<boolean | undefined>(true);
   const [availableOptions, setAvailableOptions] = useState<
     (T | AutocompleteGroupedOption<T>)[]
   >([]);
@@ -212,10 +217,23 @@ const AgronodAutocompleteSearch = <T,>({
               {availableOptions.length === 0 &&
                 open &&
                 noOptionsText !== undefined && (
-                  <MenuItem>
-                    <AgronodTypography variant="body1" color="text.disabled">
+                  <MenuItem
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      "&:hover": {
+                        backgroundColor: "transparent",
+                      },
+                    }}
+                  >
+                    <AgronodTypography
+                      sx={{ textAlign: "left", width: "100%" }}
+                      variant="body1"
+                      color="text.disabled"
+                    >
                       {noOptionsText}
                     </AgronodTypography>
+                    {noOptionsAlertMessage}
                   </MenuItem>
                 )}
             </StyledMenuList>
