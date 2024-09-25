@@ -188,18 +188,11 @@ export const AgronodAutocompleteSearchAlertMessage: StoryFn<
             />
             <AgronodAlert
               variant="standard"
-              title="Saknas ditt foder?"
+              title="Alert"
               severity="info"
               sx={{ width: "100%" }}
             >
-              Om du inte hittar något som liknar ditt foder, hör gärna av dig
-              till oss på{" "}
-              <a
-                style={{ color: "inherit" }}
-                href="mailto:support@agronod.com?subject=Foder%20som%20saknas%20-%20grisberäkning%20Agrosfär&body=Tack%20för%20att%20du%20kontaktar%20Agrosfär.%20Beskriv%20vilka%20foder%20du%20saknade%20och%20om%20du%20valt%20några%20substitut,%20eller%20om%20du%20nu%20har%20svårt%20att%20gå%20vidare%20med%20din%20beräkning."
-              >
-                support@agronod.com
-              </a>
+              This is an alert message
             </AgronodAlert>
           </>
         </>
