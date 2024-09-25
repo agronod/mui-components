@@ -221,6 +221,9 @@ const AgronodAutocompleteSearch = <T,>({
                     sx={{
                       display: "flex",
                       flexDirection: "column",
+                      "&:hover": {
+                        backgroundColor: "transparent",
+                      },
                     }}
                   >
                     <AgronodTypography
