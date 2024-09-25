@@ -33,7 +33,7 @@ type AutocompleteProps<T> = {
   noOptionsText: string;
   additionalInfoText?: (value: T) => number;
   maxWidth?: string;
-  noOptionsBanner?: ReactNode;
+  noOptionsAlertMessage?: ReactNode;
 };
 
 interface OptionWithFilterProps {
@@ -58,7 +58,7 @@ const AgronodAutocompleteSearch = <T,>({
   noOptionsText,
   additionalInfoText,
   maxWidth,
-  noOptionsBanner,
+  noOptionsAlertMessage,
 }: ExtendedAutocompleteProps<T>) => {
   const [open, setOpen] = useState<boolean | undefined>(true);
   const [availableOptions, setAvailableOptions] = useState<
@@ -230,7 +230,7 @@ const AgronodAutocompleteSearch = <T,>({
                     >
                       {noOptionsText}
                     </AgronodTypography>
-                    {noOptionsBanner}
+                    {noOptionsAlertMessage}
                   </MenuItem>
                 )}
             </StyledMenuList>
