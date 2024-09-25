@@ -4,6 +4,9 @@ export { AgrosfarPilotLogo };
 import AgrosfarBetaLogo from "./AgrosfarBetaLogo";
 export { AgrosfarBetaLogo };
 
+import AgrosfarLogo from "./AgrosfarLogo";
+export { AgrosfarLogo };
+
 import AgronodLogo from "./AgronodLogo";
 export { AgronodLogo };
 
