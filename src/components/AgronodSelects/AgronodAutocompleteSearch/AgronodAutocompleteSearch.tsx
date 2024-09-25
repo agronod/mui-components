@@ -233,9 +233,9 @@ const AgronodAutocompleteSearch = <T,>({
                     >
                       {noOptionsText}
                     </AgronodTypography>
-                    {noOptionsAlertMessage}
                   </MenuItem>
                 )}
+              {noOptionsAlertMessage}
             </StyledMenuList>
           )}
         </Collapse>
