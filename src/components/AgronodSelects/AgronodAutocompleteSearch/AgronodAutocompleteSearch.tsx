@@ -178,7 +178,12 @@ const AgronodAutocompleteSearch = <T,>({
 
         <Collapse in={open}>
           {open && (
-            <StyledMenuList dense {...getListboxProps()} ref={listRef}>
+            <StyledMenuList
+              dense
+              {...getListboxProps()}
+              ref={listRef}
+              sx={{ borderRadius: 1 }}
+            >
               {availableOptions.map((option, index) => (
                 <MenuItem
                   dense
@@ -233,9 +238,9 @@ const AgronodAutocompleteSearch = <T,>({
                     >
                       {noOptionsText}
                     </AgronodTypography>
-                    {noOptionsAlertMessage}
                   </MenuItem>
                 )}
+              {noOptionsAlertMessage}
             </StyledMenuList>
           )}
         </Collapse>

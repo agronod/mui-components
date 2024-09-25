@@ -2,12 +2,15 @@ import { Meta, StoryFn } from "@storybook/react";
 import AgronodAutocompleteSearch from "./AgronodAutocompleteSearch";
 import { films } from "./MockData";
 import { useState } from "react";
+import { AgronodAlert } from "../../AgronodAlert";
+import { Box, Divider } from "@mui/material";
 
 export default {
   title: "Agrosfär Exclusive/Autocomplete Search",
   component: AgronodAutocompleteSearch,
   parameters: {
-  componentSubtitle:  "Autocomplete Search component is used in Agrosfär to search and check multiple parameters.",
+    componentSubtitle:
+      "Autocomplete Search component is used in Agrosfär to search and check multiple parameters.",
     docs: {
       description: {
         component: `<p>This component is build with <b>custom multiselect UI elements</b> but based on <code>useAutocomplete</code> hook that gives it all functionalities and methods.</p><p>See more in <a href="custom multiselect UI elements" target="_blank"> MUI documentation</a>.</p>
@@ -138,6 +141,66 @@ export const AgronodAutocompleteSearchDefault: StoryFn<
 };
 
 AgronodAutocompleteSearchDefault.args = {
+  placeholder: "Search movies by title or year",
+  noOptionsText: "No Results found",
+  filterOptions: ["title", "year"],
+  maxWidth: "100%",
+};
+
+export const AgronodAutocompleteSearchAlertMessage: StoryFn<
+  typeof AgronodAutocompleteSearch
+> = ({ ...args }) => {
+  const [values, setValues] = useState(films);
+
+  const handleSelect = (value: any) => {
+    const newValues = values.map((v: any) => {
+      if (v.id === value.id) {
+        v.selected = !value.selected;
+      }
+      return v;
+    });
+    setValues(newValues);
+  };
+  return (
+    <AgronodAutocompleteSearch
+      placeholder={args.placeholder}
+      noOptionsText={args.noOptionsText}
+      filterOptions={args.filterOptions}
+      maxWidth={args.maxWidth}
+      options={values}
+      value={values.filter((v) => v.selected)}
+      onOptionChange={handleSelect}
+      isOptionEqualToValue={(option, value) => option?.id === value?.id}
+      getOptionLabel={(option) => option.title}
+      nameSelector={(option) => option?.title}
+      isOptionDisabled={(option) => Boolean(option.isDisabled)}
+      isOptionSelected={(option) =>
+        Boolean(
+          values.filter((v) => v.selected).find((v) => v?.id === option?.id)
+        )
+      }
+      noOptionsAlertMessage={
+        <Box sx={{ p: 2 }}>
+          <Divider
+            sx={{ mb: 1, mt: 1, width: "100%" }}
+            orientation="horizontal"
+          />
+          <AgronodAlert
+            variant="standard"
+            title="Alert"
+            severity="info"
+            sx={{ width: "100%" }}
+          >
+            This is an alert message
+          </AgronodAlert>
+        </Box>
+      }
+      additionalInfoText={(option) => option.year}
+    />
+  );
+};
+
+AgronodAutocompleteSearchAlertMessage.args = {
   placeholder: "Search movies by title or year",
   noOptionsText: "No Results found",
   filterOptions: ["title", "year"],
