@@ -8,8 +8,6 @@ import {
   Collapse,
   MenuList,
   AutocompleteGroupedOption,
-  Divider,
-  Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { ReactNode, useEffect, useRef, useState } from "react";
@@ -17,7 +15,6 @@ import { AgronodChip } from "../../AgronodChip";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
 import { AgronodTypography } from "../../AgronodTypography";
 import { AgronodTextField } from "../../AgronodInputs/AgronodTextField";
-import { AgronodAlert } from "../../AgronodAlert";
 
 type AutocompleteProps<T> = {
   options: T[];
@@ -60,7 +57,7 @@ const AgronodAutocompleteSearch = <T,>({
   maxWidth,
   noOptionsAlertMessage,
 }: ExtendedAutocompleteProps<T>) => {
-  const [open, setOpen] = useState<boolean | undefined>(true);
+  const [open, setOpen] = useState<boolean | undefined>(false);
   const [availableOptions, setAvailableOptions] = useState<
     (T | AutocompleteGroupedOption<T>)[]
   >([]);
@@ -112,7 +109,7 @@ const AgronodAutocompleteSearch = <T,>({
 
   useEffect(() => {
     if (focused) {
-      setAvailableOptions(groupedOptions);
+      setAvailableOptions(options);
       setOpen(true);
     } else {
       // this will prevent closing dropdown immediately after losing focus, that was interfering with clicking on other buttons because height was changing
@@ -121,7 +118,7 @@ const AgronodAutocompleteSearch = <T,>({
           return;
         }
         setOpen(false);
-        setAvailableOptions(groupedOptions);
+        setAvailableOptions(options);
       }, 200);
     }
   }, [focused]);
