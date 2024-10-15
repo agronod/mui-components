@@ -32,7 +32,7 @@ const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
       padding: props.noPadding === true ? 0 : "9px",
       paddingY: props.size === "small" || props.noPadding === true ? 0 : "9px",
       display: "inline-grid",
-      "&.MuiCheckbox-root": isSafari ? { position: "unset" } : null,
+      "&.MuiCheckbox-root input": isSafari ? { pointerEvents: "auto" } : null,
 
       "&.Mui-disabled": {
         color: theme.palette.border,
