@@ -28,7 +28,7 @@ export default function AgronodSupport(props: AgronodSupportProps) {
   };
   return (
     <>
-      <Box sx={{ cursor: "pointer" }}>
+      <Box sx={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
         {props.isMobile ? (
           <>
             <AgronodButton
@@ -37,7 +37,7 @@ export default function AgronodSupport(props: AgronodSupportProps) {
               onClick={handleClick}
               startIcon={
                 <Box>
-                  <HelpOutlineIcon sx={{ fontSize: "24px" }} />
+                  <HelpOutlineIcon sx={{ mt: "4px", fontSize: "24px" }} />
                 </Box>
               }
               sx={{
