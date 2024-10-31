@@ -44,7 +44,6 @@ export default function AgronodSupport(props: AgronodSupportProps) {
                 minWidth: 0,
                 color: (theme) => theme.palette.text.primary,
                 fontSize: 16,
-
                 fontWeight: 400,
                 ":hover": {
                   color: (theme) => theme.palette.text.primary,
