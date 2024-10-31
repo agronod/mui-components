@@ -35,11 +35,16 @@ export default function AgronodSupport(props: AgronodSupportProps) {
               variant="text"
               disableRipple={true}
               onClick={handleClick}
-              startIcon={<HelpOutlineIcon />}
+              startIcon={
+                <Box>
+                  <HelpOutlineIcon sx={{ fontSize: "24px" }} />
+                </Box>
+              }
               sx={{
                 minWidth: 0,
                 color: (theme) => theme.palette.text.primary,
                 fontSize: 16,
+
                 fontWeight: 400,
                 ":hover": {
                   color: (theme) => theme.palette.text.primary,
