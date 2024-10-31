@@ -120,3 +120,16 @@ SupportWithCustomTimeMessage.args = {
   supportTelephone: "070 955 3720",
   respondTime: "We do not respond on weekends!",
 };
+
+export const SupportMobileVersion: StoryFn<typeof AgronodSupport> = (props) => (
+  <Box sx={{ position: "absolute", bottom: 0 }}>
+    <AgronodSupport {...props} />
+  </Box>
+);
+SupportMobileVersion.args = {
+  menuPosition: "top",
+  QALink: "https://www.agronod.com/fragor",
+  supportEmail: undefined,
+  supportTelephone: "070 955 3720",
+  isMobile: true,
+};

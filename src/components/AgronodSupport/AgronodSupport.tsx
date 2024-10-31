@@ -1,8 +1,10 @@
 import { Box, Fab, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import AgronodSupportDialog from "./components/AgronodSupportDialog";
 import { AgronodTypography } from "../AgronodTypography";
+import { AgronodButton } from "../AgronodButton";
 
 export interface AgronodSupportProps {
   buttonSize: "small" | "large";
@@ -11,6 +13,7 @@ export interface AgronodSupportProps {
   supportEmail?: string;
   supportTelephone?: string;
   respondTime?: string;
+  isMobile?: boolean;
 }
 
 export default function AgronodSupport(props: AgronodSupportProps) {
@@ -26,7 +29,27 @@ export default function AgronodSupport(props: AgronodSupportProps) {
   return (
     <>
       <Box sx={{ cursor: "pointer" }}>
-        {props.buttonSize === "large" ? (
+        {props.isMobile ? (
+          <>
+            <AgronodButton
+              variant="text"
+              disableRipple={true}
+              onClick={handleClick}
+              startIcon={<HelpOutlineIcon />}
+              sx={{
+                minWidth: 0,
+                color: (theme) => theme.palette.text.primary,
+                fontSize: 16,
+                fontWeight: 400,
+                ":hover": {
+                  color: (theme) => theme.palette.text.primary,
+                },
+              }}
+            >
+              Hjälp
+            </AgronodButton>
+          </>
+        ) : props.buttonSize === "large" ? (
           <Fab
             id="supportButton"
             aria-controls={open ? "basic-menu" : undefined}
