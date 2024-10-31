@@ -58,6 +58,7 @@ export default function Header({
           {customLogo ? customLogo : <AgrosfarLogo />}
         </MuiLink>
         <Stack
+          width="100%"
           direction={"row"}
           spacing={5}
           sx={{
