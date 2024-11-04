@@ -1,5 +1,6 @@
 import { Box, Stack, Skeleton } from "@mui/material";
 import {
+  memo,
   useCallback,
   useEffect,
   useId,
@@ -133,7 +134,7 @@ const Bar = ({
   );
 };
 
-const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
+const Tooltip = memo(({ style, active, payload, label, subkategori }: any) => {
   if (!subkategori) return <></>;
 
   if (active && payload && payload.length) {
@@ -199,7 +200,7 @@ const Tooltip = ({ style, active, payload, label, subkategori }: any) => {
     );
   }
   return null;
-};
+});
 
 const HorizontalBarChart = ({
   data,
@@ -246,7 +247,12 @@ const HorizontalBarChart = ({
   const handleMouseMove = useCallback(
     (event: any) => {
       if (!tooltipData) return;
-      setTooltipPosition({ x: event.clientX + 80, y: event.clientY + 0 });
+
+      const { clientX, clientY } = event;
+      setTooltipPosition({
+        x: clientX + 80 + window.scrollX,
+        y: clientY + window.scrollY,
+      });
       setTooltipVisible(true);
     },
     [setTooltipPosition, setTooltipVisible]
