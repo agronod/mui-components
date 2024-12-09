@@ -70,6 +70,7 @@ const AgronodAutocompleteSearch = <T,>({
     getOptionProps,
     groupedOptions,
     focused,
+    inputValue,
   } = useAutocomplete({
     id: "autocomplete-search",
     value: value,
@@ -106,6 +107,12 @@ const AgronodAutocompleteSearch = <T,>({
     maxWidth: "100%",
     overflow: "auto",
   }));
+
+  useEffect(() => {
+    if (inputValue === "") {
+      setAvailableOptions(options);
+    }
+  }, [inputValue, options]);
 
   useEffect(() => {
     if (focused) {
