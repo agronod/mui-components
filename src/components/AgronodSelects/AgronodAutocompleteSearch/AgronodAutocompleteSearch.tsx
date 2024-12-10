@@ -16,6 +16,17 @@ import { AgronodCheckbox } from "../../AgronodCheckbox";
 import { AgronodTypography } from "../../AgronodTypography";
 import { AgronodTextField } from "../../AgronodInputs/AgronodTextField";
 
+const StyledMenuList = styled(MenuList)(({ theme }) => ({
+  border: "1px solid",
+  backgroundColor: theme.palette.background.card,
+  borderColor: theme.palette.border,
+  borderRadius: "4px",
+  marginTop: "2px",
+  maxHeight: "280px",
+  maxWidth: "100%",
+  overflow: "auto",
+}));
+
 type AutocompleteProps<T> = {
   options: T[];
   value: T[];
@@ -27,15 +38,11 @@ type AutocompleteProps<T> = {
   getOptionLabel: (value: T) => string;
   filterOptions?: string[];
   placeholder?: string;
-  noOptionsText: string;
+  noOptionsText?: string;
   additionalInfoText?: (value: T) => number;
   maxWidth?: string;
   noOptionsAlertMessage?: ReactNode;
 };
-
-interface OptionWithFilterProps {
-  [key: string]: string | number; // Define properties that are used in filterOptions
-}
 
 type ExtendedAutocompleteProps<T> = AutocompleteProps<T> & {
   options: (T | AutocompleteGroupedOption<T>)[];
@@ -48,27 +55,23 @@ const AgronodAutocompleteSearch = <T,>({
   isOptionSelected,
   isOptionDisabled,
   nameSelector,
-  isOptionEqualToValue,
   getOptionLabel,
-  filterOptions,
   placeholder,
   noOptionsText,
   additionalInfoText,
+  isOptionEqualToValue,
   maxWidth,
   noOptionsAlertMessage,
 }: ExtendedAutocompleteProps<T>) => {
-  const [open, setOpen] = useState<boolean | undefined>(false);
-  const [availableOptions, setAvailableOptions] = useState<
-    (T | AutocompleteGroupedOption<T>)[]
-  >([]);
-  const listRef = useRef<HTMLUListElement>(null); // Reference to the scrollable listbox
+  const [open, setOpen] = useState<boolean>(false);
+  const listRef = useRef<HTMLUListElement>(null);
+
   const {
     getRootProps,
     getInputProps,
     getTagProps,
     getListboxProps,
     getOptionProps,
-    groupedOptions,
     focused,
     inputValue,
   } = useAutocomplete({
@@ -76,59 +79,15 @@ const AgronodAutocompleteSearch = <T,>({
     value: value,
     multiple: true,
     options: options,
-    getOptionLabel: getOptionLabel,
-    isOptionEqualToValue: isOptionEqualToValue,
-    filterOptions: filterOptions
-      ? (options, { inputValue }) => {
-          const filteredOptions = options.filter((option) =>
-            filterOptions.some((filter) =>
-              (option as OptionWithFilterProps)[filter]
-                ?.toString()
-                .toLowerCase()
-                .includes(inputValue.toLowerCase())
-            )
-          );
-
-          return filteredOptions;
-        }
-      : undefined,
-    onInputChange: () => {
-      setAvailableOptions(groupedOptions);
-    },
+    getOptionLabel,
+    isOptionEqualToValue,
   });
 
-  const StyledMenuList = styled(MenuList)(({ theme }) => ({
-    border: "1px solid",
-    backgroundColor: theme.palette.background.card,
-    borderColor: theme.palette.border,
-    borderRadius: "4px",
-    marginTop: "2px",
-    maxHeight: "280px",
-    maxWidth: "100%",
-    overflow: "auto",
-  }));
-
-  useEffect(() => {
-    if (inputValue === "") {
-      setAvailableOptions(options);
-    }
-  }, [inputValue, options]);
-
-  useEffect(() => {
-    if (focused) {
-      setAvailableOptions(options);
-      setOpen(true);
-    } else {
-      // this will prevent closing dropdown immediately after losing focus, that was interfering with clicking on other buttons because height was changing
-      setTimeout(() => {
-        if (open === undefined) {
-          return;
-        }
-        setOpen(false);
-        setAvailableOptions(options);
-      }, 200);
-    }
-  }, [focused]);
+  const filteredOptions = options.filter((option: any) => {
+    const optionLabel = getOptionLabel(option).toLowerCase().normalize("NFC");
+    const normalizedInput = inputValue.toLowerCase().normalize("NFC");
+    return optionLabel.includes(normalizedInput);
+  });
 
   const handleOptionChange = (option: T) => {
     const scrollPosition = listRef.current?.scrollTop || 0;
@@ -140,6 +99,10 @@ const AgronodAutocompleteSearch = <T,>({
       }
     });
   };
+
+  useEffect(() => {
+    setOpen(focused);
+  }, [focused]);
 
   return (
     <Box {...getRootProps()} sx={{ maxWidth: maxWidth }}>
@@ -165,7 +128,7 @@ const AgronodAutocompleteSearch = <T,>({
       <Box>
         <AgronodTextField
           placeholder={placeholder}
-          fullWidth={true}
+          fullWidth
           inputProps={{ ...getInputProps() }}
           InputProps={{
             startAdornment: (
@@ -188,7 +151,7 @@ const AgronodAutocompleteSearch = <T,>({
               ref={listRef}
               sx={{ borderRadius: 1 }}
             >
-              {availableOptions.map((option, index) => (
+              {filteredOptions.map((option, index) => (
                 <MenuItem
                   dense
                   {...getOptionProps({ option: option as T, index })}
@@ -212,7 +175,7 @@ const AgronodAutocompleteSearch = <T,>({
                     })}
                   >
                     <AgronodTypography variant="body1">
-                      {nameSelector(option as T)}
+                      {getOptionLabel(option)}
                     </AgronodTypography>
                     {additionalInfoText && (
                       <AgronodTypography color="text.disabled" variant="body1">
@@ -223,27 +186,25 @@ const AgronodAutocompleteSearch = <T,>({
                 </MenuItem>
               ))}
 
-              {availableOptions.length === 0 &&
-                open &&
-                noOptionsText !== undefined && (
-                  <MenuItem
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                      },
-                    }}
+              {filteredOptions.length === 0 && noOptionsText && (
+                <MenuItem
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                    },
+                  }}
+                >
+                  <AgronodTypography
+                    sx={{ textAlign: "left", width: "100%" }}
+                    variant="body1"
+                    color="text.disabled"
                   >
-                    <AgronodTypography
-                      sx={{ textAlign: "left", width: "100%" }}
-                      variant="body1"
-                      color="text.disabled"
-                    >
-                      {noOptionsText}
-                    </AgronodTypography>
-                  </MenuItem>
-                )}
+                    {noOptionsText}
+                  </AgronodTypography>
+                </MenuItem>
+              )}
               {noOptionsAlertMessage}
             </StyledMenuList>
           )}
