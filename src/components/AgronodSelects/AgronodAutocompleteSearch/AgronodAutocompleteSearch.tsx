@@ -85,17 +85,16 @@ const AgronodAutocompleteSearch = <T,>({
     getOptionLabel: getOptionLabel,
   });
 
-  // Filter options dynamically based on inputValue
   const filteredOptions = options.filter((option) =>
     filterOptions?.some((filter) => {
       const optionValue = String((option as OptionWithFilterProps)[filter])
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, ""); // Normalize and remove diacritics
+        .replace(/[\u0300-\u036f]/g, "");
       const normalizedInput = inputValue
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, ""); // Normalize input
+        .replace(/[\u0300-\u036f]/g, "");
       return optionValue.includes(normalizedInput);
     })
   );

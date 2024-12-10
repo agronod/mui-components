@@ -247,11 +247,4 @@ export const films = [
     year: 1936,
     id: 37,
   },
-  {
-    title: "Modärna Öar",
-    selected: false,
-    isDisabled: false,
-    year: 1936,
-    id: 38,
-  },
 ];
