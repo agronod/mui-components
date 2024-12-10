@@ -124,6 +124,7 @@ const AgronodAutocompleteSearch = <T,>({
 
   useEffect(() => {
     setOpen(focused);
+    setFocusedIndex(-1);
   }, [focused]);
 
   useEffect(() => {
@@ -195,7 +196,9 @@ const AgronodAutocompleteSearch = <T,>({
                   sx={(theme) => ({
                     backgroundColor:
                       focusedIndex === index
-                        ? `${theme.palette.primary.light}!important`
+                        ? isOptionSelected(option as T)
+                          ? `${theme.palette.primary.light}!important`
+                          : `${theme.palette.primary.pastel}!important`
                         : "",
                   })}
                 >
