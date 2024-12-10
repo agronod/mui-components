@@ -25,12 +25,6 @@ const StyledMenuList = styled(MenuList)(({ theme }) => ({
   maxHeight: "280px",
   maxWidth: "100%",
   overflow: "auto",
-  boxSizing: "border-box",
-  backfaceVisibility: "hidden",
-  transform: "translateZ(0)",
-  fontSmoothing: "antialiased",
-  "-webkit-font-smoothing": "antialiased",
-  "-moz-osx-font-smoothing": "grayscale",
 }));
 
 type AutocompleteProps<T> = {
