@@ -127,8 +127,8 @@ export const AgronodAutocompleteSearchDefault: StoryFn<
       value={values.filter((v) => v.selected)}
       onOptionChange={handleSelect}
       isOptionEqualToValue={(option, value) => option?.id === value?.id}
-      getOptionLabel={(option) => option.title}
-      nameSelector={(option) => option?.title}
+      getOptionLabel={(option) => option.namn}
+      nameSelector={(option) => option?.namn}
       isOptionDisabled={(option) => Boolean(option.isDisabled)}
       isOptionSelected={(option) =>
         Boolean(
@@ -171,8 +171,8 @@ export const AgronodAutocompleteSearchAlertMessage: StoryFn<
       value={values.filter((v) => v.selected)}
       onOptionChange={handleSelect}
       isOptionEqualToValue={(option, value) => option?.id === value?.id}
-      getOptionLabel={(option) => option.title}
-      nameSelector={(option) => option?.title}
+      getOptionLabel={(option) => option.namn}
+      nameSelector={(option) => option?.namn}
       isOptionDisabled={(option) => Boolean(option.isDisabled)}
       isOptionSelected={(option) =>
         Boolean(

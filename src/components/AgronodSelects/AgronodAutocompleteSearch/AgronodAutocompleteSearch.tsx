@@ -44,10 +44,6 @@ type AutocompleteProps<T> = {
   noOptionsAlertMessage?: ReactNode;
 };
 
-interface OptionWithFilterProps {
-  [key: string]: string | number; // Define properties that are used in filterOptions
-}
-
 type ExtendedAutocompleteProps<T> = AutocompleteProps<T> & {
   options: (T | AutocompleteGroupedOption<T>)[];
 };
@@ -60,15 +56,16 @@ const AgronodAutocompleteSearch = <T,>({
   isOptionDisabled,
   nameSelector,
   getOptionLabel,
-  filterOptions,
   placeholder,
   noOptionsText,
   additionalInfoText,
+  isOptionEqualToValue,
   maxWidth,
   noOptionsAlertMessage,
 }: ExtendedAutocompleteProps<T>) => {
   const [open, setOpen] = useState<boolean>(false);
-  const listRef = useRef<HTMLUListElement>(null); // Reference to the scrollable listbox
+  const listRef = useRef<HTMLUListElement>(null);
+
   const {
     getRootProps,
     getInputProps,
@@ -82,22 +79,18 @@ const AgronodAutocompleteSearch = <T,>({
     value: value,
     multiple: true,
     options: options,
-    getOptionLabel: getOptionLabel,
+    getOptionLabel,
+    isOptionEqualToValue,
   });
 
-  const filteredOptions = options.filter((option) =>
-    filterOptions?.some((filter) => {
-      const optionValue = String((option as OptionWithFilterProps)[filter])
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-      const normalizedInput = inputValue
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-      return optionValue.includes(normalizedInput);
-    })
-  );
+  const filteredOptions = options.filter((option: any) => {
+    const optionLabel = getOptionLabel(option).toLowerCase();
+    const normalizedInput = inputValue
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    return optionLabel.includes(normalizedInput);
+  });
 
   const handleOptionChange = (option: T) => {
     const scrollPosition = listRef.current?.scrollTop || 0;
@@ -138,7 +131,7 @@ const AgronodAutocompleteSearch = <T,>({
       <Box>
         <AgronodTextField
           placeholder={placeholder}
-          fullWidth={true}
+          fullWidth
           inputProps={{ ...getInputProps() }}
           InputProps={{
             startAdornment: (
@@ -185,7 +178,7 @@ const AgronodAutocompleteSearch = <T,>({
                     })}
                   >
                     <AgronodTypography variant="body1">
-                      {nameSelector(option as T)}
+                      {getOptionLabel(option)}
                     </AgronodTypography>
                     {additionalInfoText && (
                       <AgronodTypography color="text.disabled" variant="body1">
@@ -196,7 +189,7 @@ const AgronodAutocompleteSearch = <T,>({
                 </MenuItem>
               ))}
 
-              {filteredOptions.length === 0 && noOptionsText !== undefined && (
+              {filteredOptions.length === 0 && noOptionsText && (
                 <MenuItem
                   sx={{
                     display: "flex",
