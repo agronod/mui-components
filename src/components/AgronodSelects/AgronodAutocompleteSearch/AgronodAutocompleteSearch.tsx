@@ -38,7 +38,7 @@ type AutocompleteProps<T> = {
   getOptionLabel: (value: T) => string;
   filterOptions?: string[];
   placeholder?: string;
-  noOptionsText: string;
+  noOptionsText?: string;
   additionalInfoText?: (value: T) => number;
   maxWidth?: string;
   noOptionsAlertMessage?: ReactNode;
@@ -82,7 +82,7 @@ const AgronodAutocompleteSearch = <T,>({
     value: value,
     multiple: true,
     options: options,
-    getOptionLabel: (option) => getOptionLabel(option as T),
+    getOptionLabel: getOptionLabel,
   });
 
   // Filter options dynamically based on inputValue
