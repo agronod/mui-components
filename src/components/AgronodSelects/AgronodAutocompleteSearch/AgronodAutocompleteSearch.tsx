@@ -25,6 +25,12 @@ const StyledMenuList = styled(MenuList)(({ theme }) => ({
   maxHeight: "280px",
   maxWidth: "100%",
   overflow: "auto",
+  boxSizing: "border-box",
+  backfaceVisibility: "hidden",
+  transform: "translateZ(0)",
+  fontSmoothing: "antialiased",
+  "-webkit-font-smoothing": "antialiased",
+  "-moz-osx-font-smoothing": "grayscale",
 }));
 
 type AutocompleteProps<T> = {
@@ -84,11 +90,8 @@ const AgronodAutocompleteSearch = <T,>({
   });
 
   const filteredOptions = options.filter((option: any) => {
-    const optionLabel = getOptionLabel(option).toLowerCase();
-    const normalizedInput = inputValue
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
+    const optionLabel = getOptionLabel(option).toLowerCase().normalize("NFC");
+    const normalizedInput = inputValue.toLowerCase().normalize("NFC");
     return optionLabel.includes(normalizedInput);
   });
 
