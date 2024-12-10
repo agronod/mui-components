@@ -64,6 +64,7 @@ const AgronodAutocompleteSearch = <T,>({
   noOptionsAlertMessage,
 }: ExtendedAutocompleteProps<T>) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [focusedIndex, setFocusedIndex] = useState<number>(-1);
   const listRef = useRef<HTMLUListElement>(null);
 
   const {
@@ -90,22 +91,54 @@ const AgronodAutocompleteSearch = <T,>({
   });
 
   const handleOptionChange = (option: T) => {
-    const scrollPosition = listRef.current?.scrollTop || 0;
-
     onOptionChange(option);
-    requestAnimationFrame(() => {
-      if (listRef.current) {
-        listRef.current.scrollTop = scrollPosition;
-      }
-    });
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!open) return;
+
+    switch (event.key) {
+      case "ArrowDown":
+        event.preventDefault();
+        setFocusedIndex((prev) =>
+          Math.min(prev + 1, filteredOptions.length - 1)
+        );
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        setFocusedIndex((prev) => Math.max(prev - 1, 0));
+        break;
+      case "Enter":
+        event.preventDefault();
+        if (focusedIndex >= 0 && focusedIndex < filteredOptions.length) {
+          handleOptionChange(filteredOptions[focusedIndex]);
+        }
+        break;
+      case "Escape":
+        setOpen(false);
+        break;
+      default:
+        break;
+    }
   };
 
   useEffect(() => {
     setOpen(focused);
   }, [focused]);
 
+  useEffect(() => {
+    if (focusedIndex >= 0 && listRef.current) {
+      const focusedItem = listRef.current.children[focusedIndex] as HTMLElement;
+      focusedItem?.scrollIntoView({ block: "nearest" });
+    }
+  }, [focusedIndex]);
+
   return (
-    <Box {...getRootProps()} sx={{ maxWidth: maxWidth }}>
+    <Box
+      {...getRootProps()}
+      sx={{ maxWidth: maxWidth }}
+      onKeyDown={handleKeyDown}
+    >
       <Stack
         flexDirection="row"
         gap={1}
@@ -159,6 +192,12 @@ const AgronodAutocompleteSearch = <T,>({
                   onClick={() => handleOptionChange(option as T)}
                   disabled={isOptionDisabled(option as T)}
                   selected={isOptionSelected(option as T)}
+                  sx={(theme) => ({
+                    backgroundColor:
+                      focusedIndex === index
+                        ? `${theme.palette.primary.light}!important`
+                        : "",
+                  })}
                 >
                   <AgronodCheckbox
                     checked={isOptionSelected(option as T)}
