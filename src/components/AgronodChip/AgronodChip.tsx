@@ -25,12 +25,12 @@ const AgronodChip = (props: AgroodChipProps) => {
         display: "flex",
         alignItems: "center",
         flexWrap: "wrap",
-        maxWidth: "100%", // Ensures it doesn’t overflow
+        maxWidth: "100%",
         minWidth: "auto",
         width: "auto",
         paddingY: props.size === "small" ? 0.5 : 1,
         paddingX: 1,
-        height: "auto", // Allows height to adjust
+        height: "auto",
         borderRadius: "16px",
         gap: 0.5,
         justifyContent: "space-between",
@@ -41,12 +41,12 @@ const AgronodChip = (props: AgroodChipProps) => {
         color: theme.palette.text.primary,
 
         "& .MuiChip-label": {
-          whiteSpace: "normal", // Allows text to wrap
-          wordBreak: "break-word", // Ensures long words break
-          overflowWrap: "break-word", // Extra word-breaking support
-          textAlign: "center", // Centers text
-          display: "block", // Ensures it takes the full available space
-          maxWidth: "100%", // Prevents text from overflowing
+          whiteSpace: "normal",
+          wordBreak: "break-word",
+          overflowWrap: "break-word",
+          textAlign: "left",
+          display: "block",
+          maxWidth: "100%",
         },
 
         "&.Mui-disabled": {
