@@ -22,11 +22,15 @@ const AgronodChip = (props: AgroodChipProps) => {
       onMouseDown={props.onMouseDown}
       variant="filled"
       sx={(theme) => ({
-        maxWidth: "auto",
+        display: "flex",
+        alignItems: "center",
+        flexWrap: "wrap",
+        maxWidth: "100%",
+        minWidth: "auto",
         width: "auto",
         paddingY: props.size === "small" ? 0.5 : 1,
         paddingX: 1,
-        height: props.size === "small" ? "24px" : "32px",
+        height: "auto",
         borderRadius: "16px",
         gap: 0.5,
         justifyContent: "space-between",
@@ -35,6 +39,15 @@ const AgronodChip = (props: AgroodChipProps) => {
             ? theme.palette.primary.pastel
             : theme.palette[props.color].pastel,
         color: theme.palette.text.primary,
+
+        "& .MuiChip-label": {
+          whiteSpace: "normal",
+          wordBreak: "break-word",
+          overflowWrap: "break-word",
+          textAlign: "left",
+          display: "block",
+          maxWidth: "100%",
+        },
 
         "&.Mui-disabled": {
           backgroundColor: theme.palette.buttonDisabled,
