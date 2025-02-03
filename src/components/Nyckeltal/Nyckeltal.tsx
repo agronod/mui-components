@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Grid, GridOwnProps } from "@mui/material";
 import { getNyckeltalVarde, NyckeltalProps } from "./utils";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Tooltip } from "../Tooltip";
@@ -6,11 +6,15 @@ import { AgronodTypography } from "../AgronodTypography";
 
 type Props = {
   item: NyckeltalProps;
-};
+} & Omit<GridOwnProps, "item">;
 
-export default function Nyckeltal({ item }: Props) {
+export default function Nyckeltal({ item, ...rest }: Props) {
   return (
-    <li
+    <Grid
+      item
+      xs={12}
+      sm={5.8}
+      md={2.8}
       style={{
         borderRadius: "16px",
         boxShadow: "none",
@@ -18,6 +22,7 @@ export default function Nyckeltal({ item }: Props) {
         padding: "16px",
         background: "#fff",
       }}
+      {...rest}
     >
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <AgronodTypography
@@ -65,6 +70,6 @@ export default function Nyckeltal({ item }: Props) {
           { minimumFractionDigits: item.antalDecimaler }
         )}
       </AgronodTypography>
-    </li>
+    </Grid>
   );
 }
