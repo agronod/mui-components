@@ -59,13 +59,19 @@ const StyledMuiTextField = ({
 }: AgronodTextFieldProps) => {
   const icon = useMemo(() => {
     if (rest.error && hasIcon) {
+      if (rest.disabled) {
+        return <AgronodIcon name="errorContained" color="disabled" />;
+      }
       return <AgronodIcon name="errorContained" color="error" />;
     } else if (rest.warning && hasIcon) {
+      if (rest.disabled) {
+        return <AgronodIcon name="warningContained" color="disabled" />;
+      }
       return <AgronodIcon name="warningContained" color="warning" />;
     } else {
       return null;
     }
-  }, [rest.error, rest.warning, hasIcon]);
+  }, [rest.error, rest.warning, rest.disabled, hasIcon]);
 
   return (
     <Box
@@ -151,10 +157,12 @@ const StyledMuiTextField = ({
       </Box>
       {!hideHelperText && helperText !== undefined && (
         <FormHelperText
-          error={rest.error}
-          sx={{
+          // error={rest.error} //removed in favour of own color definition below
+          disabled={rest.disabled}
+          sx={(theme) => ({
             width: rest.fullWidth ? "100%" : "220px",
-          }}
+            color: rest.error ? theme.palette.error.medium : (rest.warning ? theme.palette.warning.dark : theme.palette.text.secondary)
+          })}
         >
           {helperText}
         </FormHelperText>
@@ -209,7 +217,7 @@ const AgronodTextField = ({
               typography: {
                 variant: "body2bold",
                 alignSelf: "flex-start",
-                color: rest.error ? "error.medium" : "text.secondary",
+                color: rest.error ? "error.medium" : (rest.warning ? "warning.dark" : 'text.secondary'),
                 marginBottom: "4px",
               },
             }}
