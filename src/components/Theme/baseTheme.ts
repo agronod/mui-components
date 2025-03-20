@@ -124,7 +124,7 @@ const semanticThemePalette = {
     light: "#FBDCB7",
     main: "#ED9135",
     medium: "#E0732C",
-    dark: "#D65A26",
+    dark: "#C84801",
   },
   info: {
     pastel: "#F1ECE7",
