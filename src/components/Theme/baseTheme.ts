@@ -467,6 +467,9 @@ const baseThemeOptions: ThemeOptions = {
         root: {
           borderRadius: "16px",
           padding: "24px",
+          [defaultMuiTheme.breakpoints.down('sm')]: {
+            padding: "16px",
+          },
         },
       },
     },
