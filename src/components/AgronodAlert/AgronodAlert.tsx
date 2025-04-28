@@ -7,8 +7,7 @@ import {
   Theme,
 } from "@mui/material";
 import { AgronodIcon } from "../AgronodIcon";
-import { LoaderCircular } from "../Loaders";
-import { useTheme } from "../Theme";
+import AgronodAlertLoading from "./AgronodAlertLoading";
 
 type AgronodAlertSeverity = MuiAlertProps["severity"] | "loading";
 type AgronodAlertBaseProps = Pick<
@@ -45,8 +44,6 @@ const AgronodAlert = ({
   severity,
   ...rest
 }: AgronodAlertProps) => {
-  const theme = useTheme();
-
   const standardIconMapping = {
     success: <AgronodIcon name="successOutlined" color="success" />,
     warning: <AgronodIcon name="warningOutlined" color="warning" />,
@@ -75,40 +72,23 @@ const AgronodAlert = ({
   };
 
   return severity === "loading" ? (
-    <MuiAlert
-      icon={<LoaderCircular color="secondary" size={18} />}
+    <AgronodAlertLoading
       variant={variant}
+      title={title}
+      children={children}
+      behindCard={behindCard}
+      behindCardZIndex={behindCardZIndex}
+      sx={sx}
+      action={action}
+      severity={severity}
+      styleObject={styleObject}
       {...rest}
-      sx={[
-        behindCard ? { ...styleObject } : {},
-        {
-          backgroundColor: theme.palette.secondary.pastel,
-          borderColor: theme.palette.secondary.light,
-        },
-        ...(Array.isArray(sx) ? sx : [sx || {}]),
-      ]}
-    >
-      <Box>
-        {title && <AlertTitle>{title}</AlertTitle>}
-        {children}
-      </Box>
-      {action && (
-        <Box
-          sx={(theme) => ({
-            [theme.breakpoints.down("sm")]: {
-              width: "100%",
-              "& > *": { width: "100%" },
-            },
-          })}
-        >
-          {action}
-        </Box>
-      )}
-    </MuiAlert>
+    />
   ) : (
     <MuiAlert
       iconMapping={iconMapping}
       variant={variant}
+      severity={severity}
       {...rest}
       sx={[behindCard ? { ...styleObject } : {}, sx as (theme: Theme) => any]}
     >
