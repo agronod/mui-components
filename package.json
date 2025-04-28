@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.21.0-feat-pf-1063-add-agronod-alert-variant.0",
+  "version": "1.21.1-feat-pf-1063-add-agronod-alert-variant.0",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
