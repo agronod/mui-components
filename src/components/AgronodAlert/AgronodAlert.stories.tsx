@@ -199,7 +199,6 @@ AgronodAlertLoadingDefault.args = {
   severity: "loading",
   variant: "standard",
   behindCard: false,
-  icon: <LoaderCircular color="warning" size={15} />,
 };
 
 
@@ -220,7 +219,6 @@ AgronodAlertLoadingBehindCard.args = {
   severity: "loading",
   variant: "standard",
   behindCard: true,
-  icon: <LoaderCircular color="warning" size={15} />,
 };
 
 
