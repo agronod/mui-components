@@ -23,23 +23,5 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [react(), svgrPlugin(
-    {
-      svgrOptions: {
-        plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
-        svgoConfig: {
-          plugins: [
-            {
-              name: "prefixIds",
-              params: {
-                delim: '',
-                prefix: () => `${Math.random()}`
-              }
-            }
-          ],
-        },
-      },
-      include: '**/*.svg?react',
-    }
-  ), dts()],
+  plugins: [react(), svgrPlugin(), dts()],
 });

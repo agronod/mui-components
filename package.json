@@ -62,9 +62,7 @@
     "storybook-addon-material-ui5": "^1.0.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
-    "vite-plugin-dts": "^3.9.1",
-    "@svgr/plugin-svgo": "^8.1.0",
-    "@svgr/plugin-jsx": "^8.1.0"
+    "vite-plugin-dts": "^3.9.1"
   },
   "scripts": {
     "changelog": "conventional-changelog -p react -i CHANGELOG.md -s -r 0",
