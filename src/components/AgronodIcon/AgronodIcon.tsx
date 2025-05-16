@@ -25,7 +25,7 @@ const AgronodIcon: React.FC<IconProps> = ({
   ...rest
 }) => {
   const DynamicComponent = React.lazy(
-    () => import(`../../assets/icons/${name}.svg?component`)
+    () => import(`../../assets/icons/${name}.svg?react`)
   );
 
   const styleObject: SxProps = {

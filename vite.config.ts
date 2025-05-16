@@ -5,7 +5,6 @@ import svgrPlugin from "vite-plugin-svgr";
 import dts from "vite-plugin-dts";
 import { peerDependencies } from "./package.json";
 import typescript from "@rollup/plugin-typescript";
-import svgx from "@svgx/vite-plugin-react";
 
 export default defineConfig({
   build: {
@@ -24,5 +23,5 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [react(), svgrPlugin(), dts(), svgx()],
+  plugins: [react(), svgrPlugin(), dts()],
 });
