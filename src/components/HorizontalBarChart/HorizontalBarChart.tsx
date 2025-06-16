@@ -138,21 +138,23 @@ const Tooltip = memo(
   ({
     style,
     active,
-    payload,
+    tooltipList,
     label,
   }: {
     style: React.CSSProperties;
     active: boolean;
-    payload: Array<TooltipData>;
+    tooltipList: Array<TooltipData>;
     label: string;
   }) => {
-    if (payload.length === 0) return <></>;
+    if (!active || tooltipList.length === 0) return <></>;
 
-    const tooltipList = useMemo(
+    const tooltipListSorted = useMemo(
       () => [
-        ...payload.sort((a: TooltipData, b: TooltipData) => b.value - a.value),
+        ...tooltipList.sort(
+          (a: TooltipData, b: TooltipData) => b.value - a.value
+        ),
       ],
-      [payload]
+      [tooltipList]
     );
 
     return (
@@ -182,7 +184,7 @@ const Tooltip = memo(
           <AgronodTypography fontWeight={500} mb={2} variant="overline">
             {label}
           </AgronodTypography>
-          {tooltipList.map((listItem: TooltipData) => (
+          {tooltipListSorted.map((listItem: TooltipData) => (
             <Stack
               key={listItem.name}
               direction="row"
@@ -374,7 +376,7 @@ const HorizontalBarChart = ({
       {tooltipVisible && activeIndex !== null && (
         <Tooltip
           active={tooltipVisible}
-          payload={data[activeIndex].tooltipData || []}
+          tooltipList={data[activeIndex].tooltipData || []}
           label={data[activeIndex].name}
           style={{
             top: tooltipPosition.y,
