@@ -25,12 +25,6 @@ export type HorizontalBarChartData = {
   color: string | Array<string>;
   tooltipData?: Array<TooltipData>;
 };
-export type SubCategory = {
-  name: string;
-  utslappskategoriId: string;
-  value: number;
-  percentage: number;
-};
 
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;

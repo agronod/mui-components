@@ -1,7 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import HorizontalBarChart, {
   HorizontalBarChartData,
-  SubCategory,
 } from "./HorizontalBarChart";
 import { Box } from "@mui/material";
 
