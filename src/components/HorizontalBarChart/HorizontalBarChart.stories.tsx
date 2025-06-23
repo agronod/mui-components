@@ -1,7 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import HorizontalBarChart, {
   HorizontalBarChartData,
-  SubCategory,
 } from "./HorizontalBarChart";
 import { Box } from "@mui/material";
 
@@ -16,75 +15,67 @@ const data: HorizontalBarChartData[] = [
     name: "Inköpta varor",
     value: 2000,
     color: "#AA7605",
+    tooltipData: [
+      {
+        name: "Metanavgång från fodersmältning",
+        value: 100,
+        suffix: "%",
+      },
+    ],
   },
   {
     id: "2",
     name: "Lustgas from mark",
     value: 4000,
     color: "#AA7605",
+    tooltipData: [
+      {
+        name: "Direkt lustgasavgång",
+        value: 51,
+        suffix: "%",
+      },
+      {
+        name: "Indirekt lustgasavgång",
+        value: 49,
+        suffix: "%",
+      },
+    ],
   },
   {
     id: "3",
     name: "Koldioxid från mark",
     value: 200,
     color: "#AA7605",
+    tooltipData: [
+      {
+        name: "Utsläpp från inköpta djur",
+        value: 100,
+        suffix: "%",
+      },
+    ],
   },
   {
     id: "4",
     name: "Energi",
     value: 100,
     color: "#AA7605",
-  },
-];
-
-const tooltipData: SubCategory[] = [
-  {
-    name: "Metanavgång från fodersmältning",
-    utslappskategoriId: "Inköpta varor",
-    value: 563.5748122210299,
-    percentage: 100,
-  },
-  {
-    name: "Metanutsläpp",
-    utslappskategoriId: "Energi",
-    value: 30.17129821932792,
-    percentage: 93,
-  },
-  {
-    name: "Direkt lustgasavgång",
-    utslappskategoriId: "Energi",
-    value: 1.9585399860326453,
-    percentage: 6.1,
-  },
-  {
-    name: "Indirekt lustgasavgång",
-    utslappskategoriId: "Energi",
-    value: 0.3738838896496834,
-    percentage: 1,
-  },
-  {
-    name: "Produktion av grovfoder",
-    utslappskategoriId: "Lustgas from mark",
-    value: 9.933518956584601,
-    percentage: 2,
-  },
-  {
-    name: "Produktion av kraftfoder",
-    utslappskategoriId: "Lustgas from mark",
-    value: 450.54197429882146,
-    percentage: 98,
-  },
-  {
-    name: "Utsläpp från inköpta djur",
-    utslappskategoriId: "Inköpta djur",
-    value: 2.5462380900904322,
-    percentage: 100,
-  },
-  {
-    name: "Utsläpp från inköpta djur",
-    utslappskategoriId: "Koldioxid från mark",
-    value: 232.232,
-    percentage: 100,
+    tooltipData: [
+      {
+        name: "Metanutsläpp",
+        value: 93,
+        suffix: "%",
+      },
+      {
+        name: "Direkt lustgasavgång",
+        value: 6.1,
+        suffix: "%",
+      },
+      {
+        name: "Indirekt lustgasavgång",
+        value: 1,
+        suffix: "%",
+      },
+    ],
   },
 ];
 
@@ -125,7 +116,6 @@ export const HorizontalBarChartDefault: StoryFn<typeof HorizontalBarChart> = ({
 
 HorizontalBarChartDefault.args = {
   data: data,
-  tooltipData,
 };
 
 export const HorizontalBarChartStacked: StoryFn<typeof HorizontalBarChart> = ({

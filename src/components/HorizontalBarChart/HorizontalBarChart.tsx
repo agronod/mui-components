@@ -12,22 +12,22 @@ import { round } from "../utils";
 import { AgronodTypography } from "../AgronodTypography";
 import { AgronodCard } from "../AgronodCard";
 
+export type TooltipData = {
+  name: string;
+  value: number;
+  suffix?: string;
+};
+
 export type HorizontalBarChartData = {
   id: string;
   name: string;
   value: number | Array<number>;
   color: string | Array<string>;
-};
-export type SubCategory = {
-  name: string;
-  utslappskategoriId: string;
-  value: number;
-  percentage: number;
+  tooltipData?: Array<TooltipData>;
 };
 
 export type HorizontalBarChartProps = {
   data: Array<HorizontalBarChartData>;
-  tooltipData?: Array<SubCategory>;
   showSkeleton?: boolean;
 };
 
@@ -134,19 +134,29 @@ const Bar = ({
   );
 };
 
-const Tooltip = memo(({ style, active, payload, label, subkategori }: any) => {
-  if (!subkategori) return <></>;
+const Tooltip = memo(
+  ({
+    style,
+    active,
+    tooltipList,
+    label,
+  }: {
+    style: React.CSSProperties;
+    active: boolean;
+    tooltipList: Array<TooltipData>;
+    label: string;
+  }) => {
+    if (!active || tooltipList.length === 0) return <></>;
 
-  if (active && payload && payload.length) {
-    let subcategories = subkategori
-      .filter((category: SubCategory) => {
-        if (category.value === 0) {
-          return;
-        }
-        return category.utslappskategoriId === payload[0].payload?.name;
-      })
-      .sort((a: SubCategory, b: SubCategory) => a.percentage - b.percentage)
-      .reverse();
+    const tooltipListSorted = useMemo(
+      () => [
+        ...tooltipList.sort(
+          (a: TooltipData, b: TooltipData) => b.value - a.value
+        ),
+      ],
+      [tooltipList]
+    );
+
     return (
       <Box
         style={{
@@ -174,9 +184,9 @@ const Tooltip = memo(({ style, active, payload, label, subkategori }: any) => {
           <AgronodTypography fontWeight={500} mb={2} variant="overline">
             {label}
           </AgronodTypography>
-          {subcategories.map((category: SubCategory) => (
+          {tooltipListSorted.map((listItem: TooltipData) => (
             <Stack
-              key={category.name}
+              key={listItem.name}
               direction="row"
               alignItems="center"
               marginBottom={0.5}
@@ -187,11 +197,11 @@ const Tooltip = memo(({ style, active, payload, label, subkategori }: any) => {
                 variant="caption"
                 sx={{ minWidth: "30px" }}
               >
-                {round(category.percentage).toLocaleString("sv-SE")}%
+                {`${round(listItem.value).toLocaleString("sv-SE")}${listItem.suffix || ""}`}
               </AgronodTypography>
 
               <AgronodTypography ml={1} mb={0.5} variant="caption">
-                {category.name}
+                {listItem.name}
               </AgronodTypography>
             </Stack>
           ))}
@@ -199,12 +209,10 @@ const Tooltip = memo(({ style, active, payload, label, subkategori }: any) => {
       </Box>
     );
   }
-  return null;
-});
+);
 
 const HorizontalBarChart = ({
   data,
-  tooltipData,
   showSkeleton,
 }: HorizontalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
@@ -215,6 +223,11 @@ const HorizontalBarChart = ({
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const componentId = useId();
+
+  const hasTooltipData = useMemo(
+    () => data.some((item) => Boolean(item.tooltipData?.length)),
+    [data]
+  );
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
@@ -231,22 +244,24 @@ const HorizontalBarChart = ({
 
   const handleMouseEnter = useCallback(
     (index: number) => {
-      if (!tooltipData) return;
+      if (!hasTooltipData) return;
+
       setActiveIndex(index);
       setTooltipVisible(true);
     },
-    [setActiveIndex, setTooltipVisible]
+    [setActiveIndex, setTooltipVisible, hasTooltipData]
   );
 
   const handleMouseLeave = useCallback(() => {
-    if (!tooltipData) return;
+    if (!hasTooltipData) return;
+
     setActiveIndex(null);
     setTooltipVisible(false);
-  }, [setActiveIndex, setTooltipVisible]);
+  }, [setActiveIndex, setTooltipVisible, hasTooltipData]);
 
   const handleMouseMove = useCallback(
     (event: any) => {
-      if (!tooltipData) return;
+      if (!hasTooltipData) return;
 
       const { clientX, clientY } = event;
       setTooltipPosition({
@@ -255,7 +270,7 @@ const HorizontalBarChart = ({
       });
       setTooltipVisible(true);
     },
-    [setTooltipPosition, setTooltipVisible]
+    [setTooltipPosition, setTooltipVisible, hasTooltipData]
   );
 
   const mapTotalValue = useCallback((item: HorizontalBarChartData) => {
@@ -297,7 +312,7 @@ const HorizontalBarChart = ({
 
   return (
     <Box
-      onMouseMove={tooltipData ? handleMouseMove : undefined}
+      onMouseMove={hasTooltipData ? handleMouseMove : undefined}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -361,9 +376,8 @@ const HorizontalBarChart = ({
       {tooltipVisible && activeIndex !== null && (
         <Tooltip
           active={tooltipVisible}
-          payload={[{ payload: data[activeIndex] }]}
+          tooltipList={data[activeIndex].tooltipData || []}
           label={data[activeIndex].name}
-          subkategori={tooltipData}
           style={{
             top: tooltipPosition.y,
             left: tooltipPosition.x,
