@@ -80,6 +80,7 @@ declare module "@mui/material/styles/" {
 
 declare module "@mui/material/styles/createPalette" {
   interface PaletteColor {
+    hint?: string;
     pastel?: string;
     mainHover?: string;
     medium?: string;
