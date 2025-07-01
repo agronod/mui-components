@@ -62,6 +62,7 @@ declare module "@mui/material/styles/createPalette" {
     white36: string;
     white50: string;
     tertiary: {
+      hint?: string;
       pastel: string;
       light: string;
       main: string;

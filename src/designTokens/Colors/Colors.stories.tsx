@@ -53,6 +53,8 @@ export const ColorPalette = () => {
         <ColorItem name=".main" code={theme.palette.primary.main} />
         <ColorItem name=".light" code={theme.palette.primary.light} />
         <ColorItem name=".pastel" code={theme.palette.primary.pastel} />
+        <ColorItem name=".hint" code={theme.palette.primary.hint} />
+
       </Stack>
 
       <AgronodTypography
@@ -70,6 +72,8 @@ export const ColorPalette = () => {
         <ColorItem name=".main" code={theme.palette.secondary.main} />
         <ColorItem name=".light" code={theme.palette.secondary.light} />
         <ColorItem name=".pastel" code={theme.palette.secondary.pastel} />
+        <ColorItem name=".hint" code={theme.palette.secondary.hint} />
+
       </Stack>
 
       <AgronodTypography
@@ -87,6 +91,7 @@ export const ColorPalette = () => {
         <ColorItem name=".main" code={theme.palette.tertiary.main} />
         <ColorItem name=".light" code={theme.palette.tertiary.light} />
         <ColorItem name=".pastel" code={theme.palette.tertiary.pastel} />
+        <ColorItem name=".hint" code={theme.palette.tertiary.hint} />
       </Stack>
 
       <AgronodTypography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
@@ -109,6 +114,7 @@ export const ColorPalette = () => {
         <ColorItem name=".main" code={theme.palette.success.main} />
         <ColorItem name=".light" code={theme.palette.success.light} />
         <ColorItem name=".pastel" code={theme.palette.success.pastel} />
+        <ColorItem name=".hint" code={theme.palette.success.hint} />
       </Stack>
 
       <AgronodTypography
@@ -126,6 +132,7 @@ export const ColorPalette = () => {
         <ColorItem name=".main" code={theme.palette.warning.main} />
         <ColorItem name=".light" code={theme.palette.warning.light} />
         <ColorItem name=".pastel" code={theme.palette.warning.pastel} />
+        <ColorItem name=".hint" code={theme.palette.warning.hint} />
       </Stack>
 
       <AgronodTypography
@@ -144,6 +151,7 @@ export const ColorPalette = () => {
         <ColorItem name=".main" code={theme.palette.error.main} />
         <ColorItem name=".light" code={theme.palette.error.light} />
         <ColorItem name=".pastel" code={theme.palette.error.pastel} />
+        <ColorItem name=".hint" code={theme.palette.error.hint} />
       </Stack>
 
       <AgronodTypography
@@ -161,6 +169,7 @@ export const ColorPalette = () => {
         <ColorItem name=".main" code={theme.palette.info.main} />
         <ColorItem name=".light" code={theme.palette.info.light} />
         <ColorItem name=".pastel" code={theme.palette.info.pastel} />
+        <ColorItem name=".hint" code={theme.palette.info.hint} />
       </Stack>
 
       <AgronodTypography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
