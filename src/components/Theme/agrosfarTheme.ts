@@ -3,6 +3,7 @@ import createPalette from "@mui/material/styles/createPalette";
 
 export const agrosfarThemePalette = {
   primary: {
+    hint: "#F3F9F7",
     pastel: "#E0F0EA",
     light: "#B4D9CA",
     main: "#2F8560",

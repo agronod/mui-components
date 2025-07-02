@@ -62,6 +62,7 @@ declare module "@mui/material/styles/createPalette" {
     white36: string;
     white50: string;
     tertiary: {
+      hint?: string;
       pastel: string;
       light: string;
       main: string;
@@ -80,6 +81,7 @@ declare module "@mui/material/styles/" {
 
 declare module "@mui/material/styles/createPalette" {
   interface PaletteColor {
+    hint?: string;
     pastel?: string;
     mainHover?: string;
     medium?: string;
@@ -112,6 +114,7 @@ const pxToRem = (fontSize: number) => {
 
 const semanticThemePalette = {
   error: {
+    hint: "#FEF7F8",
     pastel: "#FCECEE",
     light: "#F7C7D3",
     main: "#D4483E",
@@ -120,6 +123,7 @@ const semanticThemePalette = {
     darkHover: "#812B25",
   },
   warning: {
+    hint: "#FEF9F5",
     pastel: "#FDF0E6",
     light: "#FBDCB7",
     main: "#ED9135",
@@ -127,6 +131,7 @@ const semanticThemePalette = {
     dark: "#C84801",
   },
   info: {
+    hint: "#F9F7F5",
     pastel: "#F1ECE7",
     light: "#DAD0C7",
     main: "#68523D",
@@ -134,6 +139,7 @@ const semanticThemePalette = {
     dark: "#443023",
   },
   success: {
+    hint: "#F7FBF7",
     pastel: "#EAF5EA",
     light: "#CEE5CB",
     main: "#5D9D52",
@@ -142,6 +148,7 @@ const semanticThemePalette = {
     darkHover: "#21411C",
   },
   tertiary: {
+    hint: "#FBF6F5",
     pastel: "#F4E8E7",
     light: "#DAC7C8",
     main: "#7E474B",
@@ -149,6 +156,7 @@ const semanticThemePalette = {
     dark: "#3A1E25",
   },
   secondary: {
+    hint: "#F6F7FA",
     pastel: "#E8ECF2",
     light: "#C7D1DA",
     main: "#51697E",
