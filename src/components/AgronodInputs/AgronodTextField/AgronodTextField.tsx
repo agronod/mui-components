@@ -55,6 +55,7 @@ const StyledMuiTextField = ({
   helperText,
   hasIcon,
   textAlignment,
+  warning,
   ...rest
 }: AgronodTextFieldProps) => {
   const icon = useMemo(() => {
@@ -63,7 +64,7 @@ const StyledMuiTextField = ({
         return <AgronodIcon name="errorContained" color="disabled" />;
       }
       return <AgronodIcon name="errorContained" color="error" />;
-    } else if (rest.warning && hasIcon) {
+    } else if (warning && hasIcon) {
       if (rest.disabled) {
         return <AgronodIcon name="warningContained" color="disabled" />;
       }
@@ -71,7 +72,7 @@ const StyledMuiTextField = ({
     } else {
       return null;
     }
-  }, [rest.error, rest.warning, rest.disabled, hasIcon]);
+  }, [rest.error, warning, rest.disabled, hasIcon]);
 
   return (
     <Box
@@ -109,21 +110,20 @@ const StyledMuiTextField = ({
               width: rest.fullWidth ? "100%" : "220px",
             },
             "& .MuiInputBase-input": {
-              paddingLeft:
-                hasIcon && (rest.error || rest.warning) ? "46px" : "14px",
+              paddingLeft: hasIcon && (rest.error || warning) ? "46px" : "14px",
               textAlign: textAlignment ? textAlignment : "left",
             },
             "& .MuiInputBase-root:not(.Mui-disabled)": {
               backgroundColor: rest.error
                 ? theme.palette.error.pastel
-                : rest.warning
+                : warning
                   ? theme.palette.warning.pastel
                   : undefined,
 
               "& fieldset": {
                 borderColor: rest.error
                   ? theme.palette.error.main
-                  : rest.warning
+                  : warning
                     ? theme.palette.warning.main
                     : undefined,
               },
@@ -131,7 +131,7 @@ const StyledMuiTextField = ({
               "&:hover fieldset": {
                 borderColor: rest.error
                   ? theme.palette.error.main
-                  : rest.warning
+                  : warning
                     ? theme.palette.warning.main
                     : undefined,
               },
@@ -139,7 +139,7 @@ const StyledMuiTextField = ({
               "&.Mui-focused fieldset": {
                 borderColor: rest.error
                   ? theme.palette.error.main
-                  : rest.warning
+                  : warning
                     ? theme.palette.warning.main
                     : undefined,
               },
@@ -147,7 +147,7 @@ const StyledMuiTextField = ({
             "& .MuiInputBase-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
               {
                 backgroundColor:
-                  !rest.error && !rest.warning && emptyStyle === "highlighted"
+                  !rest.error && !warning && emptyStyle === "highlighted"
                     ? theme.palette.secondary.pastel
                     : undefined,
               },
@@ -161,7 +161,11 @@ const StyledMuiTextField = ({
           disabled={rest.disabled}
           sx={(theme) => ({
             width: rest.fullWidth ? "100%" : "220px",
-            color: rest.error ? theme.palette.error.medium : (rest.warning ? theme.palette.warning.dark : theme.palette.text.secondary)
+            color: rest.error
+              ? theme.palette.error.medium
+              : warning
+                ? theme.palette.warning.dark
+                : theme.palette.text.secondary,
           })}
         >
           {helperText}
@@ -217,7 +221,11 @@ const AgronodTextField = ({
               typography: {
                 variant: "body2bold",
                 alignSelf: "flex-start",
-                color: rest.error ? "error.medium" : (rest.warning ? "warning.dark" : 'text.secondary'),
+                color: rest.error
+                  ? "error.medium"
+                  : rest.warning
+                    ? "warning.dark"
+                    : "text.secondary",
                 marginBottom: "4px",
               },
             }}
