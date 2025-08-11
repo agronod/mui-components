@@ -23,6 +23,7 @@ export default function AgronodNumberField({
   textAlignment = "right",
   placeholder = "Ange",
   fullWidth = true,
+  warning,
   ...props
 }: NumberFieldProps) {
   const onNumberChange = useCallback(
@@ -65,6 +66,7 @@ export default function AgronodNumberField({
       decimalSeparator={","}
       allowNegative={false}
       fullWidth={fullWidth}
+      warning={warning}
     />
   );
 }
