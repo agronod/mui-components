@@ -1,20 +1,56 @@
-import { Skeleton, SvgIcon, SvgIconProps, SxProps, Theme } from "@mui/material";
-import React, { Suspense } from "react";
+import { SvgIcon, SvgIconProps, SxProps, Theme } from "@mui/material";
+import React from "react";
 
-/**
- * Agronod-specific icons
- * Used for navigation and prominent icons.
- *
- * Other icons are from Material UI >> (use “round” variation when possible).
- *
- * From design, we should extract 24x24 so it matches with MUI.
- *
- * Ensure the `fill` property in the SVG is utilized correctly to allow for dynamic color assignment to the icon shapes,
- * ensuring the icons appear correctly within the application.
- */
+import EpostIcon from '../../assets/icons/epost.svg?react';
+import ErrorContainedIcon from '../../assets/icons/errorContained.svg?react';
+import ErrorOutlinedIcon from '../../assets/icons/errorOutlined.svg?react';
+import GrisIcon from '../../assets/icons/gris.svg?react';
+import InfoContainedIcon from '../../assets/icons/infoContained.svg?react';
+import InfoOutlinedIcon from '../../assets/icons/infoOutlined.svg?react';
+import MjolkIcon from '../../assets/icons/mjolk.svg?react';
+import NavAvtalIcon from '../../assets/icons/navAvtal.svg?react';
+import NavDatadelningsInstallningarIcon from '../../assets/icons/navDatadelningsInstallningar.svg?react';
+import NavForetagAnvandareIcon from '../../assets/icons/navForetagAnvandare.svg?react';
+import NavHemIcon from '../../assets/icons/navHem.svg?react';
+import NavKontrollpanelIcon from '../../assets/icons/navKontrollpanel.svg?react';
+import NavMarknadKonkurrensIcon from '../../assets/icons/navMarknadKonkurrens.svg?react';
+import NotkreaturIcon from '../../assets/icons/notkreatur.svg?react';
+import OrgnummerIcon from '../../assets/icons/orgnummer.svg?react';
+import ProfilIcon from '../../assets/icons/profil.svg?react';
+import SuccessContainedIcon from '../../assets/icons/successContained.svg?react';
+import SuccessOutlinedIcon from '../../assets/icons/successOutlined.svg?react';
+import VaxtodlingIcon from '../../assets/icons/vaxtodling.svg?react';
+import WarningContainedIcon from '../../assets/icons/warningContained.svg?react';
+import WarningOutlinedIcon from '../../assets/icons/warningOutlined.svg?react';
+
+const iconMap = {
+  'epost': EpostIcon,
+  'errorContained': ErrorContainedIcon,
+  'errorOutlined': ErrorOutlinedIcon,
+  'gris': GrisIcon,
+  'infoContained': InfoContainedIcon,
+  'infoOutlined': InfoOutlinedIcon,
+  'mjolk': MjolkIcon,
+  'navAvtal': NavAvtalIcon,
+  'navDatadelningsInstallningar': NavDatadelningsInstallningarIcon,
+  'navForetagAnvandare': NavForetagAnvandareIcon,
+  'navHem': NavHemIcon,
+  'navKontrollpanel': NavKontrollpanelIcon,
+  'navMarknadKonkurrens': NavMarknadKonkurrensIcon,
+  'notkreatur': NotkreaturIcon,
+  'orgnummer': OrgnummerIcon,
+  'profil': ProfilIcon,
+  'successContained': SuccessContainedIcon,
+  'successOutlined': SuccessOutlinedIcon,
+  'vaxtodling': VaxtodlingIcon,
+  'warningContained': WarningContainedIcon,
+  'warningOutlined': WarningOutlinedIcon,
+} as const;
+
+export type IconName = keyof typeof iconMap;
 
 export interface IconProps extends SvgIconProps {
-  name: string;
+  name: IconName;
 }
 
 const AgronodIcon: React.FC<IconProps> = ({
@@ -24,9 +60,12 @@ const AgronodIcon: React.FC<IconProps> = ({
   sx,
   ...rest
 }) => {
-  const DynamicComponent = React.lazy(
-    () => import(`../../assets/icons/${name}.svg?react`)
-  );
+  const IconComponent = iconMap[name];
+
+  if (!IconComponent) {
+    console.warn(`Icon "${name}" not found`);
+    return null;
+  }
 
   const styleObject: SxProps = {
     "& *": {
@@ -35,20 +74,14 @@ const AgronodIcon: React.FC<IconProps> = ({
   };
 
   return (
-    <Suspense
-      fallback={
-        <Skeleton variant="circular" animation="wave" width={24} height={24} />
-      }
-    >
-      <SvgIcon
-        component={DynamicComponent}
-        fontSize={fontSize}
-        color={color}
-        inheritViewBox={false}
-        sx={[{ ...styleObject }, sx as (theme: Theme) => any]}
-        {...rest}
-      />
-    </Suspense>
+    <SvgIcon
+      component={IconComponent}
+      fontSize={fontSize}
+      color={color}
+      inheritViewBox={false}
+      sx={[{ ...styleObject }, sx as (theme: Theme) => any]}
+      {...rest}
+    />
   );
 };
 
