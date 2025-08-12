@@ -26,7 +26,7 @@ const iconArray = [
   "successContained",
   "errorOutlined",
   "errorContained",
-];
+] as const;
 
 const componentDescription = `<div>
 <p>Other icons are from <a href="https://mui.com/material-ui/material-icons/" target="_blank">Material UI </a> <b> (use “round” variation when possible)</b>.</p>
