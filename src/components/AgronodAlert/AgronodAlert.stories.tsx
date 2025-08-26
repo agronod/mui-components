@@ -4,6 +4,7 @@ import { AgronodCard } from "../AgronodCard";
 import { LoaderCircular } from "../Loaders";
 import { AgronodTypography } from "../AgronodTypography";
 import { AgronodButton } from "../AgronodButton";
+import { Warning } from "@mui/icons-material";
 
 export default {
   title: "Shared Components/Alert",
@@ -53,6 +54,17 @@ export const AgronodAlertDefault: StoryFn<typeof AgronodAlert> = ({
 AgronodAlertDefault.args = {
   children: "This is just normal description as a string",
   severity: "info",
+  variant: "standard",
+};
+
+export const AgronodAlertError: StoryFn<typeof AgronodAlert> = ({
+  children,
+  ...rest
+}) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+
+AgronodAlertError.args = {
+  children: "This is an alert with severity error",
+  severity: "error",
   variant: "standard",
 };
 
@@ -136,7 +148,6 @@ export const AgronodAlertBehindCard: StoryFn<typeof AgronodAlert> = ({
 
 AgronodAlertBehindCard.args = {
   children: "Alert that is attached to a card",
-
   severity: "error",
   variant: "filled",
   behindCard: true,
@@ -171,3 +182,63 @@ AgronodAlertCustomIcon.args = {
   behindCard: true,
   icon: <LoaderCircular color="warning" size={15} />,
 };
+
+
+export const AgronodAlertLoadingDefault: StoryFn<typeof AgronodAlert> = ({
+  children,
+  ...rest
+}) => (
+  <>
+    <AgronodAlert {...rest}>{children}</AgronodAlert>
+  </>
+);
+
+
+AgronodAlertLoadingDefault.args = {
+  children: "Loading default",
+  severity: "loading",
+  variant: "standard",
+  behindCard: false,
+};
+
+
+export const AgronodAlertLoadingBehindCard: StoryFn<typeof AgronodAlert> = ({
+  children,
+  ...rest
+}) => (
+  <>
+    <AgronodCard sx={(theme) => ({ borderColor: theme.palette.info.light })}>
+      <p>this is card</p>
+    </AgronodCard>
+    <AgronodAlert {...rest}>{children}</AgronodAlert>
+  </>
+);
+
+AgronodAlertLoadingBehindCard.args = {
+  children: "Loading behind card",
+  severity: "loading",
+  variant: "standard",
+  behindCard: true,
+};
+
+
+export const AgronodAlertLoadingCustomIcon: StoryFn<typeof AgronodAlert> = ({
+  children,
+  ...rest
+}) => (
+  <>
+    <AgronodCard sx={(theme) => ({ borderColor: theme.palette.info.light })}>
+      <p>this is card</p>
+    </AgronodCard>
+    <AgronodAlert {...rest}>{children}</AgronodAlert>
+  </>
+);
+
+AgronodAlertLoadingCustomIcon.args = {
+  children: "Loading with custom icon",
+  severity: "loading",
+  variant: "standard",
+  behindCard: true,
+  icon: <Warning color="warning"  />,
+};
+
