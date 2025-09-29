@@ -1,6 +1,5 @@
 import {
   createTheme,
-  SimplePaletteColorOptions,
   ThemeOptions,
 } from "@mui/material/styles";
 import { common } from "@mui/material/colors";
@@ -10,13 +9,11 @@ import { circularProgressClasses } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 
-declare module "@mui/material/styles/" {
-  interface PaletteColorOptions extends SimplePaletteColorOptions {
-    pastel?: string;
-    mainHover?: string;
-    medium?: string;
-    mediumHover?: string;
-    darkHover?: string;
+declare module "@mui/material/styles" {
+  interface TypeBackground {
+    page?: string;
+    card?: string;
+    overlay?: string;
   }
 }
 declare module "@mui/material/styles/createPalette" {
@@ -69,13 +66,6 @@ declare module "@mui/material/styles/createPalette" {
       medium: string;
       dark: string;
     };
-  }
-}
-declare module "@mui/material/styles/" {
-  interface TypeBackground {
-    page?: string;
-    card?: string;
-    overlay?: string;
   }
 }
 
