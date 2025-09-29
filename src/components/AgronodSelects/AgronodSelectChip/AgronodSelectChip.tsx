@@ -1,9 +1,5 @@
-import { Box, SelectProps, SelectChangeEvent, MenuItem } from "@mui/material";
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactFragment,
-  ReactPortal,
+import { Box, SelectProps, SelectChangeEvent } from "@mui/material";
+import React, {
   useState,
 } from "react";
 import { AgronodSelect } from "../AgronodSelect";
@@ -17,7 +13,7 @@ interface Item {
 export interface SelectChipProps {
   items: Item[];
   value: string[];
-  children?: JSX.Element[] | JSX.Element | undefined;
+  children?: React.JSX.Element[] | React.JSX.Element | undefined;
   error?: boolean;
   warning?: boolean;
   helperText?: string;
@@ -42,9 +38,9 @@ export default function AgronodSelectChip({
       | string
       | number
       | boolean
-      | ReactElement<any, string | JSXElementConstructor<any>>
-      | ReactFragment
-      | ReactPortal
+      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+      | React.ReactPortal
+      | React.ReactNode
       | null
       | undefined
   ) => {

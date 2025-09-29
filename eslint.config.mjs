@@ -18,9 +18,8 @@ export default [// Base TypeScript ESLint recommended config
     ...react.configs.recommended.rules,
     ...react.configs['jsx-runtime'].rules,
 
-    // React hooks rules
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    // React hooks rules - using recommended config for ESLint 9 compatibility
+    ...reactHooks.configs.recommended.rules,
 
     // TypeScript specific adjustments
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
