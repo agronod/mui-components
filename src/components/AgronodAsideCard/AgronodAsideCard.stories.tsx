@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import AgronodAsideCard from "./AgronodAsideCard";
 import { Theme } from "@mui/material";
 import { AgronodTypography } from "../AgronodTypography";

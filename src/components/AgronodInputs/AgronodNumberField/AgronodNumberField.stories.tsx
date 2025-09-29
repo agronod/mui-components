@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import AgronodNumberField, { NumberFieldProps } from "./AgronodNumberField";
 import { InputAdornment } from "@mui/material";
 

@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import AgronodRadioGroup from "./AgronodRadioGroup";
 import { FormControl, FormControlLabel } from "@mui/material";
 import AgronodRadio from "../AgronodRadio/AgronodRadio";

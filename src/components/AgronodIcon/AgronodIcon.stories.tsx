@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 import AgronodIcon from "./AgronodIcon";
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 
 import exampleImage from "../../assets/extractionIconExample.png";
 

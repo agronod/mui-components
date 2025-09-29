@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import BarChart from "./BarChart";
 import { Box } from "@mui/material";
 

@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import AgronodAutocompleteSearch from "./AgronodAutocompleteSearch";
 import { films } from "./MockData";
 import { useState } from "react";

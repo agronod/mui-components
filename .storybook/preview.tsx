@@ -11,7 +11,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 const themes = {
   Agronod: agronodTheme,

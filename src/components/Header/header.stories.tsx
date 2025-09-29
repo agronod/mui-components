@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import { BrowserRouter } from "react-router-dom";
 import { Box } from "@mui/material";
 import Header from "./Header";

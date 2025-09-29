@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { LoaderCircular } from "../Loaders";
 import AgronodButton from "./AgronodButton";

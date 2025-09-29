@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import AgronodSelectChip from "./AgronodSelectChip";
 import { useState } from "react";
 import { Box, ListItemText, MenuItem } from "@mui/material";

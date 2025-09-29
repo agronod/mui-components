@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import AgronodAlert from "./AgronodAlert";
 import { AgronodCard } from "../AgronodCard";
 import { LoaderCircular } from "../Loaders";
