@@ -69,7 +69,7 @@ BarChartDefault.args = {
     tickMargin: 20,
     interval: 0,
   },
-  TooltipContent: ({ active, payload, label }: any) => {
+  TooltipContent: ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) => {
     if (active && payload && payload.length) {
       return (
         <Box
@@ -117,7 +117,7 @@ BarChartStacked.args = {
     tickMargin: 20,
     interval: 0,
   },
-  TooltipContent: ({ active, payload, label }: any) => {
+  TooltipContent: ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) => {
     if (active && payload && payload.length) {
       return (
         <Box
@@ -129,7 +129,7 @@ BarChartStacked.args = {
           }}
         >
           <Box>{label}</Box>
-          <Box>{payload.reduce((acc: number, p: any) => acc + p.value, 0)}</Box>
+          <Box>{payload.reduce((acc: number, p: { value: number }) => acc + p.value, 0)}</Box>
         </Box>
       );
     }
@@ -161,7 +161,7 @@ BarCharWithColorScheme.args = {
     interval: 0,
   },
   colorScheme: "primary",
-  TooltipContent: ({ active, payload, label }: any) => {
+  TooltipContent: ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) => {
     if (active && payload && payload.length) {
       return (
         <Box

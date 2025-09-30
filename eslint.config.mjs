@@ -56,5 +56,6 @@ export default [// Base TypeScript ESLint recommended config
     'node_modules/**',
     'storybook-static/**',
     '**/*.d.ts',
+    'vite.config.ts',
   ],
 }, ...storybook.configs["flat/recommended"]];

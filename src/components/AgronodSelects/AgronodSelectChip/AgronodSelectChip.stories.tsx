@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react-vite";
 import AgronodSelectChip from "./AgronodSelectChip";
 import { useState } from "react";
-import { Box, ListItemText, MenuItem } from "@mui/material";
+import { Box, ListItemText, MenuItem, SelectChangeEvent } from "@mui/material";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
 import { names } from "../AgronodSelect/AgronodSelect.stories";
 
@@ -25,8 +25,8 @@ export const MultipleSelection: StoryFn<typeof AgronodSelectChip> = ({
 }) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: any) => {
-    setValue(event.target.value);
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    setValue(event.target.value as string[]);
   };
 
   return (
@@ -56,8 +56,8 @@ export const SingleSelection: StoryFn<typeof AgronodSelectChip> = ({
 }) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: any) => {
-    setValue(event.target.value);
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    setValue(event.target.value as string[]);
   };
 
   return (
