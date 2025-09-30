@@ -1,7 +1,5 @@
 import { Box, SelectProps, SelectChangeEvent } from "@mui/material";
-import React, {
-  useState,
-} from "react";
+import React, { ReactNode, useState } from "react";
 import { AgronodSelect } from "../AgronodSelect";
 import { AgronodChip } from "../../AgronodChip";
 
@@ -32,23 +30,6 @@ export default function AgronodSelectChip({
 }: SelectProps<string[]> & SelectChipProps) {
   const [selectOpen, setSelectOpen] = useState(false);
 
-  const localOnChange = (
-    event: SelectChangeEvent<string[]>,
-    c:
-      | string
-      | number
-      | boolean
-      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-      | React.ReactPortal
-      | React.ReactNode
-      | null
-      | undefined
-  ) => {
-    if (props.onChange) {
-      props.onChange(event, c);
-    }
-  };
-
   return (
     <AgronodSelect
       {...props}
@@ -57,10 +38,14 @@ export default function AgronodSelectChip({
       open={selectOpen}
       onOpen={() => setSelectOpen(true)}
       onClose={() => setSelectOpen(false)}
-      onChange={(e, c) => localOnChange(e as SelectChangeEvent<string[]>, c)}
-      renderValue={(selected: any) => (
+      onChange={(e, c) => {
+        if (props.onChange) {
+          props.onChange(e as SelectChangeEvent<string[]>, c);
+        }
+      }}
+      renderValue={(selected): ReactNode => (
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-          {selected.map((x: string) => (
+          {(selected as Array<string>).map((x: string) => (
             <AgronodChip
               size="small"
               key={x}

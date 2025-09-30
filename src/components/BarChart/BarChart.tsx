@@ -14,11 +14,12 @@ import {
 } from "recharts";
 import ResponsiveContainer from "./ResponsiveContainer";
 import { useTheme } from "@mui/material";
+import { BarRectangleItem } from "recharts/types/cartesian/Bar";
 
 export type BarChartProps = {
-  data: any;
+  data: BarRectangleItem[];
   name?: string;
-  dataKey?: string;
+  dataKey?: keyof BarRectangleItem;
   isAnimationActive?: boolean;
   xAxisOptions?: Partial<XAxisProps>;
   yAxisOptions?: Partial<YAxisProps>;
@@ -45,10 +46,6 @@ export const BarChart: React.FC<BarChartProps> = ({
   colorScheme,
 }) => {
   const theme = useTheme();
-  if (!Array.isArray(data) || data.length === 0) {
-    console.log(`No data to show for barchart: ${name}`);
-    return <></>;
-  }
 
   const bars = React.useMemo(() => {
     const value = data[0]?.[dataKey];
@@ -109,7 +106,20 @@ export const BarChart: React.FC<BarChartProps> = ({
           )}
       </Bar>
     );
-  }, [data, dataKey]);
+  }, [
+    data,
+    dataKey,
+    barCellsOptions,
+    barOptions,
+    colorScheme,
+    isAnimationActive,
+    theme.palette,
+  ]);
+
+  if (!Array.isArray(data) || data.length === 0) {
+    console.log(`No data to show for barchart: ${name}`);
+    return <></>;
+  }
 
   return (
     <ResponsiveContainer>

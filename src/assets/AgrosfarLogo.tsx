@@ -11,8 +11,8 @@ const AgrosfarLogo = () => (
       fill="#2F8560"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M51.6607 16.4914L58.4901 16.4914L58.4901 17.5526L51.6607 17.5526L51.6607 16.4914Z"
       fill="#2F8560"
     />

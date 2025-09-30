@@ -2,5 +2,5 @@
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
-  "colorize.languages": ["javascript", "typescript"]
+  "editor.formatOnSave": true
 }
