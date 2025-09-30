@@ -56,7 +56,7 @@ export const BarChart: React.FC<BarChartProps> = ({
           stackId="a"
           dataKey={`${dataKey}[${index}]`}
           isAnimationActive={isAnimationActive}
-          {...(index + 1 === value.length ? (barOptions as any) : {})}
+          {...(index + 1 === value.length ? (barOptions as Omit<Partial<BarProps>, 'ref'>) : {})}
         >
           {Array.isArray(barCellsOptions) &&
             barCellsOptions.length > 0 &&
@@ -84,7 +84,7 @@ export const BarChart: React.FC<BarChartProps> = ({
       <Bar
         dataKey={dataKey}
         isAnimationActive={isAnimationActive}
-        {...(barOptions as any)}
+        {...(barOptions as Omit<Partial<BarProps>, 'ref'>)}
       >
         {Array.isArray(barCellsOptions) &&
           barCellsOptions.length > 0 &&

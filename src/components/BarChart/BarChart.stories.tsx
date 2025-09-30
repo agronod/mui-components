@@ -35,15 +35,15 @@ const chartData = [
 const chartDataStacked = [
   {
     name: "Page A",
-    value: [2400, 2000],
+    value: [2400, 2000] as [number, number],
   },
   {
     name: "Page B",
-    value: [2500, 2000],
+    value: [2500, 2000] as [number, number],
   },
   {
     name: "Page C",
-    value: [2400, 1000],
+    value: [2400, 1000] as [number, number],
   },
 ];
 
