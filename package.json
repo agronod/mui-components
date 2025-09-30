@@ -60,6 +60,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && storybook dev -p 6006",
+    "sb": "npm run storybook",
     "storybook@legacy": "storybook dev -p 6006",
     "build-storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && storybook build",
     "chromatic": "export SET NODE_OPTIONS=--openssl-legacy-provider && npx chromatic --project-token=ac1916a235d5"

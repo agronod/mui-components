@@ -5,6 +5,14 @@ import { useState } from "react";
 import { AgronodAlert } from "../../AgronodAlert";
 import { Box, Divider } from "@mui/material";
 
+type Film = {
+  title: string;
+  selected: boolean;
+  isDisabled: boolean;
+  year: number;
+  id?: number;
+};
+
 export default {
   title: "Agrosfär Exclusive/Autocomplete Search",
   component: AgronodAutocompleteSearch,
@@ -106,10 +114,10 @@ export default {
 export const AgronodAutocompleteSearchDefault: StoryFn<
   typeof AgronodAutocompleteSearch
 > = ({ ...args }) => {
-  const [values, setValues] = useState(films);
+  const [values, setValues] = useState<Film[]>(films);
 
-  const handleSelect = (value: any) => {
-    const newValues = values.map((v: any) => {
+  const handleSelect = (value: Film) => {
+    const newValues = values.map((v) => {
       if (v.id === value.id) {
         v.selected = !value.selected;
       }
@@ -150,10 +158,10 @@ AgronodAutocompleteSearchDefault.args = {
 export const AgronodAutocompleteSearchAlertMessage: StoryFn<
   typeof AgronodAutocompleteSearch
 > = ({ ...args }) => {
-  const [values, setValues] = useState(films);
+  const [values, setValues] = useState<Film[]>(films);
 
-  const handleSelect = (value: any) => {
-    const newValues = values.map((v: any) => {
+  const handleSelect = (value: Film) => {
+    const newValues = values.map((v) => {
       if (v.id === value.id) {
         v.selected = !value.selected;
       }

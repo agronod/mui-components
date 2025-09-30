@@ -3,7 +3,20 @@ import AgronodSelectChip from "./AgronodSelectChip";
 import { useState } from "react";
 import { Box, ListItemText, MenuItem, SelectChangeEvent } from "@mui/material";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
-import { names } from "../AgronodSelect/AgronodSelect.stories";
+
+const names = [
+  "Oliver Hansen",
+  "Van Henry",
+  "April Tucker",
+  "Ralph Hubbard",
+  "Omar Alexander",
+  "Carlos Abbott",
+  "Miriam Wagner",
+  "Bradley Wilkerson",
+  "Virginia Andrews",
+  "Kelly Snyder",
+];
+
 
 const items = names.map((name, index) => ({
   id: index.toString(),
