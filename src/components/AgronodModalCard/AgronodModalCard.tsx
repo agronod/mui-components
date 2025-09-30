@@ -6,7 +6,7 @@ import {
   ModalProps as MuiModalCardProps,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { SxProps, Theme, useTheme } from "@mui/material/styles";
+import { SxProps, useTheme } from "@mui/material/styles";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useCallback, useEffect } from "react";
 import { AgronodTypography } from "../AgronodTypography";
@@ -38,11 +38,16 @@ const AgronodModalCard = (props: ModalCardProps) => {
   const KEY_NAME_ESC = "Escape";
   const KEY_EVENT_TYPE = "keyup";
 
-  const handleEscKey = useCallback((event: any) => {
-    if (event.key === KEY_NAME_ESC) {
-      props.onClose && props.onClose();
-    }
-  }, []);
+  const handleEscKey = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === KEY_NAME_ESC) {
+        if (props.onClose) {
+          props.onClose();
+        }
+      }
+    },
+    [props]
+  );
 
   useEffect(() => {
     if (props.notClosable !== undefined || props.notClosable) {
@@ -53,7 +58,7 @@ const AgronodModalCard = (props: ModalCardProps) => {
     return () => {
       document.removeEventListener(KEY_EVENT_TYPE, handleEscKey, false);
     };
-  }, [handleEscKey]);
+  }, [handleEscKey, props.notClosable]);
 
   const styleObject: SxProps = {
     display: "flex",
@@ -67,7 +72,7 @@ const AgronodModalCard = (props: ModalCardProps) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       disableAutoFocus={true}
-      sx={[{ ...styleObject }, props.sx as (theme: Theme) => any]}
+      sx={[{ ...styleObject }, ...(Array.isArray(props.sx) ? props.sx : [props.sx])]}
       onClose={
         props.notClosable ? undefined : () => props.onClose && props.onClose()
       }
@@ -180,8 +185,8 @@ const AgronodModalCard = (props: ModalCardProps) => {
                         ? "h4"
                         : "h3"
                       : isMobile
-                        ? "h5"
-                        : "h4"
+                      ? "h5"
+                      : "h4"
                   }
                   sx={{ pb: 2 }}
                 >
