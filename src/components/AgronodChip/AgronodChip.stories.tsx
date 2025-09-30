@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react-vite";
 import AgronodChip from "./AgronodChip";
+import { ChipProps } from "@mui/material";
 
 export default {
   title: "Shared Components/Chip",
@@ -46,9 +47,8 @@ AgronodChipDefault.args = {
 };
 
 export const AgronodChipWithDelete: StoryFn<typeof AgronodChip> = ({
-  handleOnDelete,
   ...rest
-}) => <AgronodChip {...rest} handleOnDelete={() => alert("on Delete")} />;
+}: ChipProps) => <AgronodChip {...rest} handleOnDelete={() => alert("on Delete")} />;
 
 AgronodChipWithDelete.args = {
   label: "Has delete",

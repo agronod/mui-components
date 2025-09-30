@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import AgronodIcon from "./AgronodIcon";
+import AgronodIcon, { IconProps } from "./AgronodIcon";
 import { Meta, StoryFn } from "@storybook/react-vite";
 
 import exampleImage from "../../assets/extractionIconExample.png";
@@ -103,12 +103,11 @@ AgronodIconSingle.args = {
 
 // TODO: nicer gallery icon display: check IconGallery Storybook
 export const AgronodIconsGallery: StoryFn<typeof AgronodIcon> = ({
-  name,
   ...rest
-}) => (
+}: IconProps) => (
   <Stack flexDirection="row" gap={3} flexWrap="wrap">
     {iconArray.map((icon) => (
-      <AgronodIcon key={icon} name={icon} {...rest} />
+      <AgronodIcon {...rest} key={icon} name={icon}  />
     ))}
   </Stack>
 );

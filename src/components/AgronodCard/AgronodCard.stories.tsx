@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react-vite";
 import { Stack } from "@mui/material";
-import AgronodCard from "./AgronodCard";
+import AgronodCard, { AgronodCardProps } from "./AgronodCard";
 import { AgronodTypography } from "../AgronodTypography";
 
 export default {
@@ -21,7 +21,7 @@ export const AgronodCardDefault: StoryFn<typeof AgronodCard> = ({
   children,
   sx,
   ...rest
-}) => {
+}: AgronodCardProps) => {
   return (
     <AgronodCard {...rest} sx={sx}>
       {children}
@@ -49,7 +49,7 @@ export const AgronodCardModifiedStyles: StoryFn<typeof AgronodCard> = ({
   children,
   sx,
   ...rest
-}) => {
+}: AgronodCardProps) => {
   return (
     <AgronodCard {...rest} sx={sx}>
       {children}

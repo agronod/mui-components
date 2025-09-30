@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from "@storybook/react-vite";
-import AgronodLink from "./AgronodLink";
+import AgronodLink, { AgronodLinkProps } from "./AgronodLink";
 
 export default {
   title: "Shared Components/Link",
@@ -25,7 +25,7 @@ export default {
   },
 } as Meta<typeof AgronodLink>;
 
-export const AgronodLinkDefault: StoryFn<typeof AgronodLink> = ({ children, ...rest }) => (
+export const AgronodLinkDefault: StoryFn<typeof AgronodLink> = ({ children, ...rest }: AgronodLinkProps) => (
   <AgronodLink {...rest}>{children}</AgronodLink>
 );
 AgronodLinkDefault.args = {
@@ -34,7 +34,7 @@ AgronodLinkDefault.args = {
   href: "#",
 };
 
-export const AgronodLinkInverted: StoryFn<typeof AgronodLink> = ({ children, ...rest }) => (
+export const AgronodLinkInverted: StoryFn<typeof AgronodLink> = ({ children, ...rest }: AgronodLinkProps) => (
   <AgronodLink {...rest}>{children}</AgronodLink>
 );
 AgronodLinkInverted.args = {

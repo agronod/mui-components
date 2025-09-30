@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from "@storybook/react-vite";
-import AgronodAsideCard from "./AgronodAsideCard";
+import AgronodAsideCard, { AgronodAsideCardProps } from "./AgronodAsideCard";
 import { Theme } from "@mui/material";
 import { AgronodTypography } from "../AgronodTypography";
 import { AgronodAlert } from "../AgronodAlert";
@@ -54,7 +54,7 @@ export default {
 export const AsideCardRight: StoryFn<typeof AgronodAsideCard> = ({
   children,
   ...rest
-}) => (
+}: AgronodAsideCardProps) => (
   <AgronodAsideCard
     sx={(theme: Theme) => ({
       width: "50%",
@@ -92,7 +92,7 @@ AsideCardRight.args = {
 export const AsideCardLeft: StoryFn<typeof AgronodAsideCard> = ({
   children,
   ...rest
-}) => (
+}: AgronodAsideCardProps) => (
   <AgronodAsideCard sx={{ width: "50%", float: rest.position }} {...rest}>
     {children}
   </AgronodAsideCard>
