@@ -5,7 +5,6 @@ import {
   Box,
   FormControlLabel,
   FormHelperText,
-  Theme,
   SxProps,
 } from "@mui/material";
 import { useMemo, useState } from "react";
@@ -198,7 +197,7 @@ const AgronodTextField = ({
     <Box
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      sx={[{ ...styleObject }, sx as (theme: Theme) => any]}
+      sx={[{ ...styleObject }, ...(Array.isArray(sx) ? sx : [sx])]}
     >
       <Tooltip
         placement="top"

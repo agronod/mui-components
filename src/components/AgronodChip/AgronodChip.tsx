@@ -6,7 +6,7 @@ type AgronodChipBaseProps = Pick<
 >;
 
 export interface AgroodChipProps extends AgronodChipBaseProps {
-  handleOnDelete?: (e?: any) => void;
+  handleOnDelete?: () => void;
 }
 
 const AgronodChip = (props: AgroodChipProps) => {

@@ -4,7 +4,7 @@ import {
   SxProps,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Theme, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 type AgronodAsideCardBaseProps = Pick<MuiCardProps, "variant" | "sx">;
 
@@ -69,7 +69,7 @@ const AgronodAsideCard = ({
   return (
     <MuiCard
       {...rest}
-      sx={[{ ...styleObject }, rest.sx as (theme: Theme) => any]}
+      sx={[styleObject, ...(Array.isArray(rest.sx) ? rest.sx : [rest.sx])]}
     >
       {children}
     </MuiCard>

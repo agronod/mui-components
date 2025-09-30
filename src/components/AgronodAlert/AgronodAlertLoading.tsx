@@ -9,16 +9,18 @@ const AgronodAlertLoading = ({
   title,
   children,
   behindCard,
-  behindCardZIndex,
+  behindCardZIndex: _behindCardZIndex,
   sx,
   action,
-  severity,
+  severity: _severity,
   ...rest
 }: AgronodAlertProps & { styleObject: SxProps }) => {
   const theme = useTheme();
   return (
     <MuiAlert
-      icon={rest.icon ? rest.icon : <LoaderCircular color="secondary" size={18} />}
+      icon={
+        rest.icon ? rest.icon : <LoaderCircular color="secondary" size={18} />
+      }
       variant={variant}
       {...rest}
       sx={[
