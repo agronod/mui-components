@@ -3,9 +3,7 @@ import {
   TypographyProps as MuiTypographyProps,
 } from "@mui/material";
 
-type AgronodTypographyBaseProps = MuiTypographyProps;
-
-export interface AgronodTypographyProps extends AgronodTypographyBaseProps {}
+export type AgronodTypographyProps = MuiTypographyProps;
 
 const AgronodTypography = (props: AgronodTypographyProps) => (
   <MuiTypography {...props} />
