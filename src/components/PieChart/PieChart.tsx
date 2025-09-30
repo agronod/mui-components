@@ -51,7 +51,7 @@ const PieChart = ({
 }: PieChartProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const pieChartRef = useRef<any>(null);
+  const pieChartRef = useRef<React.ElementRef<typeof RePieChart>>(null);
   const [hoverIndex, setHoverIndex] = useState<number | null>();
 
   const total = useMemo(
@@ -68,7 +68,7 @@ const PieChart = ({
           : data.toSorted((a, b) => b.value - a.value);
 
     return sorted.map((item) => ({ ...item, value: round(item.value) }));
-  }, [sort, data, total, showAsPercentage]);
+  }, [sort, data]);
 
   const tooltipValue = useMemo(() => {
     if (hoverIndex === undefined || hoverIndex === null || total === 0) {
@@ -76,7 +76,7 @@ const PieChart = ({
     }
 
     return `${round((dataSorted[hoverIndex].value / total) * 100, decimals).toLocaleString("sv-SE")}%`;
-  }, [total, dataSorted, hoverIndex]);
+  }, [total, dataSorted, hoverIndex, decimals]);
 
   const customTooltipValue = useMemo(() => {
     if (
@@ -96,7 +96,7 @@ const PieChart = ({
           "sv-SE"
         )}%`,
       }));
-  }, [showAsPercentage, total, dataSorted, hoverIndex]);
+  }, [total, dataSorted, hoverIndex, decimals]);
 
   const onHover = useCallback(
     (index?: number) => {
@@ -123,7 +123,7 @@ const PieChart = ({
               activeTooltipIndex: index,
             },
             () => {
-              pieChartRef.current.handleItemMouseEnter({
+              pieChartRef.current?.handleItemMouseEnter({
                 tooltipPayload: [activeItem],
                 tooltipPosition: {
                   x: tooltipPosition.x,

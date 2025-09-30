@@ -1,6 +1,6 @@
 import * as React from "react";
 import { getNyckeltalVarde } from "../Nyckeltal/utils";
-import { Box, Card, useTheme } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import { AgronodTypography } from "../AgronodTypography";
 
 const colors = ["#123F25", "#2C7A4D", "#59B87F", "#BDBDBD"];
@@ -23,9 +23,7 @@ export const StackedChart: React.FC<StackedChartProps> = ({
   data,
   headline,
   resultPage,
-  colorScheme,
 }) => {
-  const theme = useTheme();
   // TODO: fix color scheme according to design
   // const colors = {
   //   primary: [],
