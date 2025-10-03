@@ -1,5 +1,4 @@
 import {
-  Box,
   LinearProgress as MuiLinearProgress,
   LinearProgressProps as MuiLinearProgressProps,
 } from "@mui/material";

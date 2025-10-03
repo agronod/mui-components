@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import VerticalBarChart, { VerticalBarChartData } from "./VerticalBarChart";
 import { Box } from "@mui/material";
 

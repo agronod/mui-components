@@ -2,7 +2,7 @@ import * as React from "react";
 import { ResponsiveContainer as RechartsResponsiveContainer } from "recharts";
 
 type ResponsiveContainerProps = {
-  children: JSX.Element;
+  children: React.JSX.Element;
   height?: string | number;
 };
 

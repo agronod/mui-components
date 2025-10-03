@@ -84,7 +84,7 @@ const AgronodAutocompleteSearch = <T,>({
     isOptionEqualToValue,
   });
 
-  const filteredOptions = options.filter((option: any) => {
+  const filteredOptions = options.filter((option) => {
     const optionLabel = getOptionLabel(option).toLowerCase().normalize("NFC");
     const normalizedInput = inputValue.toLowerCase().normalize("NFC");
     return optionLabel.includes(normalizedInput);

@@ -1,5 +1,5 @@
-import { Meta, StoryFn } from "@storybook/react";
-import ErrorPagesContent from "./ErrorPagesContent";
+import { Meta, StoryFn } from "@storybook/react-vite";
+import ErrorPagesContent, { ErrorPagesContentProps } from "./ErrorPagesContent";
 import { useTheme } from "@mui/material";
 
 export default {
@@ -55,14 +55,13 @@ export default {
 } as Meta<typeof ErrorPagesContent>;
 
 export const ErrorPagesContentDefault: StoryFn<typeof ErrorPagesContent> = ({
-  backgroundColor,
   ...rest
-}) => {
+}: ErrorPagesContentProps) => {
   const theme = useTheme();
   return (
     <ErrorPagesContent
-      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
       {...rest}
+      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
     />
   );
 };
@@ -76,12 +75,12 @@ ErrorPagesContentDefault.args = {
 
 export const ErrorPagesContentWithMaxWidth: StoryFn<
   typeof ErrorPagesContent
-> = ({ backgroundColor, ...rest }) => {
+> = ({ ...rest }: ErrorPagesContentProps) => {
   const theme = useTheme();
   return (
     <ErrorPagesContent
-      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
       {...rest}
+      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
     />
   );
 };
@@ -94,12 +93,12 @@ ErrorPagesContentWithMaxWidth.args = {
 
 export const ErrorPagesContentServerError: StoryFn<
   typeof ErrorPagesContent
-> = ({ backgroundColor, ...rest }) => {
+> = ({ ...rest }: ErrorPagesContentProps) => {
   const theme = useTheme();
   return (
     <ErrorPagesContent
-      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
       {...rest}
+      backgroundColor={theme.palette.primary.light ?? "#FFF5D9"}
     />
   );
 };

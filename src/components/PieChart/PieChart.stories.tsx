@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import PieChart, { PieChartData } from "./PieChart";
 import { Card, Grid } from "@mui/material";
 import { AgronodTypography } from "../AgronodTypography";

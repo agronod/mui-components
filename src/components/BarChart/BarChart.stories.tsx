@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import BarChart from "./BarChart";
 import { Box } from "@mui/material";
 
@@ -12,42 +12,40 @@ export default {
   },
 } as Meta<typeof BarChart>;
 
-const chartData =
-  [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      value: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      value: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      value: 2290,
-    },
-  ] || [];
-const chartDataStacked =
-  [
-    {
-      name: "Page A",
-      value: [2400, 2000],
-    },
-    {
-      name: "Page B",
-      value: [2500, 2000],
-    },
-    {
-      name: "Page C",
-      value: [2400, 1000],
-    },
-  ] || [];
+const chartData = [
+  {
+    name: "Page A",
+    uv: 4000,
+    pv: 2400,
+    value: 2400,
+  },
+  {
+    name: "Page B",
+    uv: 3000,
+    pv: 1398,
+    value: 2210,
+  },
+  {
+    name: "Page C",
+    uv: 2000,
+    pv: 9800,
+    value: 2290,
+  },
+];
+const chartDataStacked = [
+  {
+    name: "Page A",
+    value: [2400, 2000] as [number, number],
+  },
+  {
+    name: "Page B",
+    value: [2500, 2000] as [number, number],
+  },
+  {
+    name: "Page C",
+    value: [2400, 1000] as [number, number],
+  },
+];
 
 export const BarChartDefault: StoryFn<typeof BarChart> = ({ ...args }) => (
   <Box sx={{ height: "400px", width: "600px" }}>
@@ -71,7 +69,7 @@ BarChartDefault.args = {
     tickMargin: 20,
     interval: 0,
   },
-  TooltipContent: ({ active, payload, label }: any) => {
+  TooltipContent: ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) => {
     if (active && payload && payload.length) {
       return (
         <Box
@@ -119,7 +117,7 @@ BarChartStacked.args = {
     tickMargin: 20,
     interval: 0,
   },
-  TooltipContent: ({ active, payload, label }: any) => {
+  TooltipContent: ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) => {
     if (active && payload && payload.length) {
       return (
         <Box
@@ -131,7 +129,7 @@ BarChartStacked.args = {
           }}
         >
           <Box>{label}</Box>
-          <Box>{payload.reduce((acc: number, p: any) => acc + p.value, 0)}</Box>
+          <Box>{payload.reduce((acc: number, p: { value: number }) => acc + p.value, 0)}</Box>
         </Box>
       );
     }
@@ -163,7 +161,7 @@ BarCharWithColorScheme.args = {
     interval: 0,
   },
   colorScheme: "primary",
-  TooltipContent: ({ active, payload, label }: any) => {
+  TooltipContent: ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) => {
     if (active && payload && payload.length) {
       return (
         <Box

@@ -1,5 +1,5 @@
-import { Meta, StoryFn } from "@storybook/react";
-import AgronodAlert from "./AgronodAlert";
+import { Meta, StoryFn } from "@storybook/react-vite";
+import AgronodAlert, { AgronodAlertProps } from "./AgronodAlert";
 import { AgronodCard } from "../AgronodCard";
 import { LoaderCircular } from "../Loaders";
 import { AgronodTypography } from "../AgronodTypography";
@@ -49,7 +49,7 @@ export default {
 export const AgronodAlertDefault: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertDefault.args = {
   children: "This is just normal description as a string",
@@ -60,7 +60,7 @@ AgronodAlertDefault.args = {
 export const AgronodAlertError: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertError.args = {
   children: "This is an alert with severity error",
@@ -71,7 +71,7 @@ AgronodAlertError.args = {
 export const AgronodAlertWithTitle: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithTitle.args = {
   title: "This is title",
@@ -87,7 +87,7 @@ AgronodAlertWithTitle.args = {
 export const AgronodAlertWithoutIcon: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithoutIcon.args = {
   title: "This is title",
@@ -100,7 +100,7 @@ AgronodAlertWithoutIcon.args = {
 export const AgronodAlertWithCloseButton: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithCloseButton.args = {
   title: "Closable",
@@ -115,7 +115,7 @@ AgronodAlertWithCloseButton.args = {
 export const AgronodAlertWithActionProperty: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
 AgronodAlertWithActionProperty.args = {
   title: "Action property",
@@ -137,7 +137,7 @@ AgronodAlertWithActionProperty.args = {
 export const AgronodAlertBehindCard: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => (
+}: AgronodAlertProps) => (
   <>
     <AgronodCard sx={(theme) => ({ borderColor: theme.palette.error.light })}>
       <p>this is card</p>
@@ -166,7 +166,7 @@ AgronodAlertBehindCard.args = {
 export const AgronodAlertCustomIcon: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => (
+}: AgronodAlertProps) => (
   <>
     <AgronodCard sx={(theme) => ({ borderColor: theme.palette.warning.light })}>
       <p>this is card</p>
@@ -187,7 +187,7 @@ AgronodAlertCustomIcon.args = {
 export const AgronodAlertLoadingDefault: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => (
+}: AgronodAlertProps) => (
   <>
     <AgronodAlert {...rest}>{children}</AgronodAlert>
   </>
@@ -205,7 +205,7 @@ AgronodAlertLoadingDefault.args = {
 export const AgronodAlertLoadingBehindCard: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => (
+}: AgronodAlertProps) => (
   <>
     <AgronodCard sx={(theme) => ({ borderColor: theme.palette.info.light })}>
       <p>this is card</p>
@@ -225,7 +225,7 @@ AgronodAlertLoadingBehindCard.args = {
 export const AgronodAlertLoadingCustomIcon: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}) => (
+}: AgronodAlertProps) => (
   <>
     <AgronodCard sx={(theme) => ({ borderColor: theme.palette.info.light })}>
       <p>this is card</p>

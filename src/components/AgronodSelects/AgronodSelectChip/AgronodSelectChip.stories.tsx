@@ -1,9 +1,22 @@
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import AgronodSelectChip from "./AgronodSelectChip";
 import { useState } from "react";
-import { Box, ListItemText, MenuItem } from "@mui/material";
+import { Box, ListItemText, MenuItem, SelectChangeEvent } from "@mui/material";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
-import { names } from "../AgronodSelect/AgronodSelect.stories";
+
+const names = [
+  "Oliver Hansen",
+  "Van Henry",
+  "April Tucker",
+  "Ralph Hubbard",
+  "Omar Alexander",
+  "Carlos Abbott",
+  "Miriam Wagner",
+  "Bradley Wilkerson",
+  "Virginia Andrews",
+  "Kelly Snyder",
+];
+
 
 const items = names.map((name, index) => ({
   id: index.toString(),
@@ -25,8 +38,8 @@ export const MultipleSelection: StoryFn<typeof AgronodSelectChip> = ({
 }) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: any) => {
-    setValue(event.target.value);
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    setValue(event.target.value as string[]);
   };
 
   return (
@@ -56,8 +69,8 @@ export const SingleSelection: StoryFn<typeof AgronodSelectChip> = ({
 }) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: any) => {
-    setValue(event.target.value);
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    setValue(event.target.value as string[]);
   };
 
   return (

@@ -1,6 +1,6 @@
 import { Box, Stack, Skeleton } from "@mui/material";
 import {
-  memo,
+  Fragment,
   useCallback,
   useEffect,
   useId,
@@ -57,16 +57,18 @@ const Bar = ({
 }) => {
   const hoverHeight = 200;
 
+  // Always call hooks unconditionally (required by React)
+  const color = useMemo(
+    () => (Array.isArray(data.color) ? data.color.reverse() : data.color),
+    [data.color]
+  );
+  const getColor = useCallback(
+    (itemIndex: number) => (Array.isArray(color) ? color[itemIndex] : color),
+    [color]
+  );
+
   if (Array.isArray(data.value)) {
     const dataReversed = [...data.value].reverse();
-    const color = useMemo(
-      () => (Array.isArray(data.color) ? data.color.reverse() : data.color),
-      [data.color]
-    );
-    const getColor = useCallback(
-      (itemIndex: number) => (Array.isArray(color) ? color[itemIndex] : color),
-      [color]
-    );
 
     return (
       <g clipPath={`url(#round-corner${componentId}-${index})`}>
@@ -79,9 +81,9 @@ const Bar = ({
             ) * factor;
 
           return (
-            <>
+                
+            <Fragment key={innerIndex}>
               <rect
-                key={innerIndex}
                 x={x}
                 y={y - height}
                 width={width}
@@ -99,7 +101,7 @@ const Bar = ({
                 onMouseEnter={onEnter}
                 onMouseLeave={onLeave}
               />
-            </>
+            </Fragment>
           );
         })}
       </g>
@@ -134,7 +136,7 @@ const Bar = ({
   );
 };
 
-const Tooltip = memo(
+const Tooltip = 
   ({
     style,
     active,
@@ -146,8 +148,7 @@ const Tooltip = memo(
     tooltipList: Array<TooltipData>;
     label: string;
   }) => {
-    if (!active || tooltipList.length === 0) return <></>;
-
+    // Always call hooks before any early returns
     const tooltipListSorted = useMemo(
       () => [
         ...tooltipList.sort(
@@ -156,6 +157,8 @@ const Tooltip = memo(
       ],
       [tooltipList]
     );
+
+    if (!active || tooltipList.length === 0) return <></>;
 
     return (
       <Box
@@ -209,7 +212,6 @@ const Tooltip = memo(
       </Box>
     );
   }
-);
 
 const HorizontalBarChart = ({
   data,
@@ -235,12 +237,13 @@ const HorizontalBarChart = ({
       setChartWidth(event[0].target.children[0].clientWidth);
     });
 
-    if (containerRef?.current) resizeObserver.observe(containerRef.current);
+    const currentContainer = containerRef.current;
+    if (currentContainer) resizeObserver.observe(currentContainer);
 
     return () => {
-      if (containerRef?.current) resizeObserver.unobserve(containerRef.current);
+      if (currentContainer) resizeObserver.unobserve(currentContainer);
     };
-  }, [containerRef?.current]);
+  }, []);
 
   const handleMouseEnter = useCallback(
     (index: number) => {
@@ -260,7 +263,7 @@ const HorizontalBarChart = ({
   }, [setActiveIndex, setTooltipVisible, hasTooltipData]);
 
   const handleMouseMove = useCallback(
-    (event: any) => {
+    (event: React.MouseEvent<HTMLDivElement>) => {
       if (!hasTooltipData) return;
 
       const { clientX, clientY } = event;
@@ -395,6 +398,7 @@ const HorizontalBarChart = ({
         {showSkeleton
           ? Array.from(new Array(6)).map((_, index) => (
               <Box
+                key={index}
                 sx={{
                   justifyContent: "space-between",
                   display: "flex",

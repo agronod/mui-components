@@ -28,7 +28,6 @@ export type CustomSelectProps = SelectProps & {
 
 export default function AgronodSelect({
   tooltipText,
-  items,
   helperText,
   hideHelperText,
   hasIcon = false,
@@ -41,11 +40,11 @@ export default function AgronodSelect({
   onChange,
   ...rest
 }: CustomSelectProps) {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   const [open, setOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleOpen = (event: any) => {
+  const handleOpen = (event: React.SyntheticEvent<Element, Event>) => {
     setAnchorEl(event.currentTarget);
     setOpen(true);
   };
@@ -135,31 +134,31 @@ export default function AgronodSelect({
                 backgroundColor: error
                   ? theme.palette.error.pastel
                   : warning
-                    ? theme.palette.warning.pastel
-                    : undefined,
+                  ? theme.palette.warning.pastel
+                  : undefined,
 
                 "& fieldset": {
                   borderColor: error
                     ? theme.palette.error.main
                     : warning
-                      ? theme.palette.warning.main
-                      : undefined,
+                    ? theme.palette.warning.main
+                    : undefined,
                 },
 
                 "&:hover fieldset": {
                   borderColor: error
                     ? theme.palette.error.main
                     : warning
-                      ? theme.palette.warning.main
-                      : undefined,
+                    ? theme.palette.warning.main
+                    : undefined,
                 },
 
                 "&.Mui-focused fieldset": {
                   borderColor: error
                     ? theme.palette.error.main
                     : warning
-                      ? theme.palette.warning.main
-                      : undefined,
+                    ? theme.palette.warning.main
+                    : undefined,
                 },
               },
             })}

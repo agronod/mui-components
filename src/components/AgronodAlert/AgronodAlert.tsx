@@ -4,7 +4,6 @@ import {
   Alert as MuiAlert,
   AlertProps as MuiAlertProps,
   SxProps,
-  Theme,
 } from "@mui/material";
 import { AgronodIcon } from "../AgronodIcon";
 import AgronodAlertLoading from "./AgronodAlertLoading";
@@ -75,7 +74,6 @@ const AgronodAlert = ({
     <AgronodAlertLoading
       variant={variant}
       title={title}
-      children={children}
       behindCard={behindCard}
       behindCardZIndex={behindCardZIndex}
       sx={sx}
@@ -83,14 +81,16 @@ const AgronodAlert = ({
       severity={severity}
       styleObject={styleObject}
       {...rest}
-    />
+    >
+      {children}
+    </AgronodAlertLoading>
   ) : (
     <MuiAlert
       iconMapping={iconMapping}
       variant={variant}
       severity={severity}
       {...rest}
-      sx={[behindCard ? { ...styleObject } : {}, sx as (theme: Theme) => any]}
+      sx={[behindCard ? styleObject : {}, ...(Array.isArray(sx) ? sx : [sx])]}
     >
       <Box>
         {title && <AlertTitle>{title}</AlertTitle>}

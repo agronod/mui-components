@@ -1,5 +1,5 @@
-import { StoryFn, Meta } from "@storybook/react";
-import AgronodTypography from "./AgronodTypography";
+import { StoryFn, Meta } from "@storybook/react-vite";
+import AgronodTypography, { AgronodTypographyProps } from "./AgronodTypography";
 
 const componentDescription = `<div>
 <p>In our <code>baseTheme.tsx</code> we added overrides for different headlines and other fonts.</p>
@@ -27,7 +27,7 @@ export default {
 export const Headline1: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
 Headline1.args = {
   children: "The quick brown fox jumps over the lazy dog.",
@@ -37,7 +37,7 @@ Headline1.args = {
 export const Headline2: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
 Headline2.args = {
   children: "The quick brown fox jumps over the lazy dog.",
@@ -47,7 +47,7 @@ Headline2.args = {
 export const Headline3: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
 Headline3.args = {
   children: "The quick brown fox jumps over the lazy dog.",
@@ -57,7 +57,7 @@ Headline3.args = {
 export const Headline4: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
 Headline4.args = {
   children: "The quick brown fox jumps over the lazy dog.",
@@ -67,7 +67,7 @@ Headline4.args = {
 export const Headline5: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
 Headline5.args = {
   children: "The quick brown fox jumps over the lazy dog.",
@@ -77,149 +77,149 @@ Headline5.args = {
 export const Headline6: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
 Headline6.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "h6",
 };
 
-export const subtitle1: StoryFn<typeof AgronodTypography> = ({
+export const Subtitle1: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-subtitle1.args = {
+Subtitle1.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "subtitle1",
 };
 
-export const subtitle2: StoryFn<typeof AgronodTypography> = ({
+export const Subtitle2: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-subtitle2.args = {
+Subtitle2.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "subtitle2",
 };
 
-export const subtitle3: StoryFn<typeof AgronodTypography> = ({
+export const Subtitle3: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-subtitle3.args = {
+Subtitle3.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "subtitle3",
 };
 
-export const subtitle4: StoryFn<typeof AgronodTypography> = ({
+export const Subtitle4: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-subtitle4.args = {
+Subtitle4.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "subtitle4",
 };
 
-export const body1: StoryFn<typeof AgronodTypography> = ({
+export const Body1: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body1.args = {
+Body1.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body1",
 };
 
-export const body1bold: StoryFn<typeof AgronodTypography> = ({
+export const Body1bold: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body1bold.args = {
+Body1bold.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body1bold",
 };
 
-export const body2: StoryFn<typeof AgronodTypography> = ({
+export const Body2: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body2.args = {
+Body2.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body2",
 };
 
-export const body2bold: StoryFn<typeof AgronodTypography> = ({
+export const Body2bold: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body2bold.args = {
+Body2bold.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body2bold",
 };
 
-export const body3: StoryFn<typeof AgronodTypography> = ({
+export const Body3: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body3.args = {
+Body3.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body3",
 };
 
-export const body3bold: StoryFn<typeof AgronodTypography> = ({
+export const Body3bold: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body3bold.args = {
+Body3bold.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body3bold",
 };
 
-export const body4: StoryFn<typeof AgronodTypography> = ({
+export const Body4: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body4.args = {
+Body4.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body4",
 };
 
-export const body4bold: StoryFn<typeof AgronodTypography> = ({
+export const Body4bold: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-body4bold.args = {
+Body4bold.args = {
   children: "The quick brown fox jumps over the lazy dog.",
   variant: "body4bold",
 };
 
-export const caption: StoryFn<typeof AgronodTypography> = ({
+export const Caption: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-caption.args = {
+Caption.args = {
   children: "This is caption",
   variant: "caption",
 };
 
-export const overline: StoryFn<typeof AgronodTypography> = ({
+export const Overline: StoryFn<typeof AgronodTypography> = ({
   children,
   ...rest
-}) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
+}: AgronodTypographyProps) => <AgronodTypography {...rest}>{children}</AgronodTypography>;
 
-overline.args = {
+Overline.args = {
   children: "This is overline",
   variant: "overline",
 };

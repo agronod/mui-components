@@ -1,11 +1,9 @@
 import {
   IconButton as MuiIconButton,
-  IconButtonProps as IconButtonProps,
+  IconButtonProps,
 } from "@mui/material";
 
-type AgronodButtonIconBaseProps = IconButtonProps;
-
-export interface AgronodButtonIconProps extends AgronodButtonIconBaseProps {}
+export type AgronodButtonIconProps = IconButtonProps;
 
 const AgronodButtonIcon = ({ children, ...rest }: AgronodButtonIconProps) => {
   return <MuiIconButton {...rest}>{children}</MuiIconButton>;

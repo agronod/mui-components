@@ -1,5 +1,5 @@
-import { StoryFn, Meta } from "@storybook/react";
-import AgronodModalCard from "./AgronodModalCard";
+import { StoryFn, Meta } from "@storybook/react-vite";
+import AgronodModalCard, { ModalCardProps } from "./AgronodModalCard";
 import { Box } from "@mui/material";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import { useMemo, useState } from "react";
@@ -84,9 +84,8 @@ export default {
 export const AgronodModalCardDefault: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
-  onClose,
   ...rest
-}) => {
+}:ModalCardProps) => {
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
@@ -120,9 +119,8 @@ AgronodModalCardDefault.args = {
 export const AgronodModalCardNotClosable: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
-  onClose,
   ...rest
-}) => {
+}: ModalCardProps) => {
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
@@ -153,9 +151,8 @@ AgronodModalCardNotClosable.args = {
 export const AgronodModalCardBigTitle: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
-  onClose,
   ...rest
-}) => {
+}: ModalCardProps) => {
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
@@ -190,9 +187,8 @@ AgronodModalCardBigTitle.args = {
 export const AgronodModalCardLeftAligned: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
-  onClose,
   ...rest
-}) => {
+}: ModalCardProps) => {
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
@@ -228,9 +224,8 @@ AgronodModalCardLeftAligned.args = {
 export const AgronodModalCardWithIcon: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
-  onClose,
   ...rest
-}) => {
+}: ModalCardProps) => {
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
@@ -264,9 +259,8 @@ AgronodModalCardWithIcon.args = {
 export const AgronodModalCardCustomWidth: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
-  onClose,
   ...rest
-}) => {
+}: ModalCardProps) => {
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (
@@ -300,9 +294,8 @@ AgronodModalCardCustomWidth.args = {
 export const AgronodModalCardCustomStyles: StoryFn<typeof AgronodModalCard> = ({
   children,
   open,
-  onClose,
   ...rest
-}) => {
+}: ModalCardProps) => {
   const [isOpen, setIsOpen] = useState(open);
   useMemo(() => setIsOpen(open), [open]);
   return (

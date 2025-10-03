@@ -1,9 +1,11 @@
+import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig, defineConfig } from "vite";
 import svgrPlugin from "vite-plugin-svgr";
 
-module.exports = {
+const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
+    options: {},
   },
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   docs: {
@@ -16,13 +18,9 @@ module.exports = {
         transcludeMarkdown: true,
       },
     },
-    "@storybook/addon-actions",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
     "@storybook/addon-links",
     "@storybook/addon-themes",
     "@chromatic-com/storybook",
-    "@storybook/blocks",
   ],
   logLevel: "debug",
   typescript: {
@@ -46,7 +44,6 @@ module.exports = {
   },
   core: {
     disableTelemetry: true,
-    builder: "@storybook/builder-vite",
   },
   viteFinal: async (config) => {
     // Merge custom configuration into the default config
@@ -61,3 +58,5 @@ module.exports = {
     );
   },
 };
+
+export default config;

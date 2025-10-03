@@ -98,12 +98,13 @@ const VerticalBarChart = ({
       setChartWidth(event[0].target.children[0].clientWidth);
     });
 
-    if (containerRef?.current) resizeObserver.observe(containerRef.current);
+    const currentContainer = containerRef.current;
+    if (currentContainer) resizeObserver.observe(currentContainer);
 
     return () => {
-      if (containerRef?.current) resizeObserver.unobserve(containerRef.current);
+      if (currentContainer) resizeObserver.unobserve(currentContainer);
     };
-  }, [containerRef?.current]);
+  }, []);
 
   const dataSorted = useMemo(
     () =>
@@ -119,7 +120,7 @@ const VerticalBarChart = ({
         onItemHover(index !== undefined ? dataSorted[index].id : undefined);
       }
     },
-    [onItemHover, selectedId]
+    [onItemHover, dataSorted]
   );
   const factor = useMemo(
     () =>
@@ -145,7 +146,7 @@ const VerticalBarChart = ({
       return [];
     }
     const width = chartWidth - TICK_WIDTH;
-    let numberOfGrids = Math.max(
+    const numberOfGrids = Math.max(
       Math.floor(width / GRID_WIDTH) + (width % GRID_WIDTH > 0 ? 1 : 0),
       6
     );
@@ -161,7 +162,7 @@ const VerticalBarChart = ({
     );
 
     return width / (numberOfGrids - 1);
-  }, [chartWidth, gridLines]);
+  }, [chartWidth]);
 
   return (
     <Box
@@ -236,7 +237,7 @@ const VerticalBarChart = ({
         }}
       >
         {showSkeleton
-          ? Array.from(new Array(6)).map((_, index) => (
+          ? Array.from(new Array(6)).map(() => (
               <>
                 <Skeleton
                   variant="text"

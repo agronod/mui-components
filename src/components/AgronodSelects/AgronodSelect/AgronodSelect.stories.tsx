@@ -1,5 +1,5 @@
-import { Meta, StoryFn } from "@storybook/react";
-import AgronodSelect from "./AgronodSelect";
+import { Meta, StoryFn } from "@storybook/react-vite";
+import AgronodSelect, { CustomSelectProps } from "./AgronodSelect";
 import { useState } from "react";
 import {
   FormControl,
@@ -7,12 +7,13 @@ import {
   MenuItem,
   Box,
   ListItemText,
+  SelectChangeEvent,
 } from "@mui/material";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import { AgronodCheckbox } from "../../AgronodCheckbox";
 import { AgronodChip } from "../../AgronodChip";
 
-export const names = [
+const names = [
   "Oliver Hansen",
   "Van Henry",
   "April Tucker",
@@ -49,14 +50,14 @@ export default {
 export const SelectSingle: StoryFn<typeof AgronodSelect> = ({
   label,
   ...rest
-}) => {
+}: CustomSelectProps) => {
   const [value, setValue] = useState(names[0]);
-  const handleChange = (event: any) => setValue(event.target.value);
+  const handleChange = (event: SelectChangeEvent<unknown>) => setValue(event.target.value as string);
 
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <AgronodSelect value={value} {...rest} onChange={handleChange}>
+      <AgronodSelect {...rest} value={value}  onChange={handleChange}>
         {names.map((name) => (
           <MenuItem key={name} value={name}>
             {name}
@@ -73,16 +74,16 @@ SelectSingle.args = {
 export const SelectWithIcon: StoryFn<typeof AgronodSelect> = ({
   label,
   ...rest
-}) => {
+}: CustomSelectProps) => {
   const [value, setValue] = useState(names[0]);
-  const handleChange = (event: any) => setValue(event.target.value);
+  const handleChange = (event: SelectChangeEvent<unknown>) => setValue(event.target.value as string);
 
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
       <AgronodSelect
-        value={value}
         {...rest}
+        value={value}
         onChange={handleChange}
         renderValue={() => value}
       >
@@ -103,20 +104,22 @@ SelectWithIcon.args = {
 export const SelectMultiple: StoryFn<typeof AgronodSelect> = ({
   label,
   ...rest
-}) => {
-  const [value, setValue] = useState<string[]>([]);
+}: CustomSelectProps) => {
+  const [value, setValue] = useState<unknown[]>([]);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
     const {
       target: { value },
     } = event;
-    setValue(typeof value === "string" ? value.split(",") : value);
+
+
+    setValue((typeof value === "string" ? value.split(",") : value) as string[]);
   };
 
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
-      <AgronodSelect value={value} {...rest} onChange={handleChange} multiple>
+      <AgronodSelect {...rest} value={value}  onChange={handleChange} multiple>
         {names.map((name) => (
           <MenuItem key={name} value={name}>
             {name}
@@ -133,23 +136,23 @@ SelectMultiple.args = {
 export const SelectMultipleCheckbox: StoryFn<typeof AgronodSelect> = ({
   label,
   ...rest
-}) => {
+}: CustomSelectProps) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
     const {
       target: { value },
     } = event;
-    setValue(typeof value === "string" ? value.split(",") : value);
+    setValue((typeof value === "string" ? value.split(",") : value) as string[]);
   };
 
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       {label && <FormLabel>{label}</FormLabel>}
       <AgronodSelect
+        {...rest}
         multiple
         value={value}
-        {...rest}
         fullWidth
         onChange={handleChange}
         renderValue={(selected) => (selected as string[]).join(", ")}
@@ -169,25 +172,24 @@ SelectMultipleCheckbox.args = {
 };
 
 export const SelectMultipleChip: StoryFn<typeof AgronodSelect> = ({
-  label,
   ...rest
-}) => {
+}: CustomSelectProps) => {
   const [value, setValue] = useState<string[]>([]);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
     const {
       target: { value },
     } = event;
-    setValue(typeof value === "string" ? value.split(",") : value);
+    setValue((typeof value === "string" ? value.split(",") : value) as string[]);
   };
 
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
       <AgronodSelect
+        {...rest}
         multiple
         value={value}
         fullWidth
-        {...rest}
         onChange={handleChange}
         renderValue={(selected) => (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
