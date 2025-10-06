@@ -24,6 +24,7 @@ export type CustomSelectProps = SelectProps & {
   emptyStyle?: "highlighted" | "default";
   multiple?: boolean;
   items?: Item[];
+  placeholder?: string;
 };
 
 export default function AgronodSelect({
@@ -103,65 +104,114 @@ export default function AgronodSelect({
             onOpen={handleOpen}
             value={value}
             onChange={onChange}
-            sx={(theme) => ({
-              "&.MuiInputBase-root": {
-                width: rest.fullWidth ? "100%" : "220px",
-                backgroundColor:
-                  !error &&
-                  !warning &&
-                  emptyStyle === "highlighted" &&
-                  isEmptyValue(value as string | string[])
-                    ? theme.palette.secondary.pastel
-                    : undefined,
-
-                "&::before": {
-                  content: placeholder ? `"${placeholder}"` : undefined,
-                  color: theme.palette.text.disabled,
-                  position: "absolute",
-                  width: "80%",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                  pointerEvents: "none",
-                  left: icon ? "45px" : "14px",
-                  display: isEmptyValue(value as string | string[])
-                    ? "block"
-                    : "none",
-                },
+            sx={[
+              (theme) => ({
+                "&.MuiInputBase-root": {
+                  width: rest.fullWidth ? "100%" : "220px",
+                  backgroundColor:
+                    !error &&
+                    !warning &&
+                    emptyStyle === "highlighted" &&
+                    isEmptyValue(value as string | string[])
+                      ? theme.palette.secondary.pastel
+                      : undefined,
+                  "&::before": {
+                    color: theme.palette.text.disabled,
+                    position: "absolute",
+                    width: "80%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    pointerEvents: "none",
+                    display: isEmptyValue(value as string | string[])
+                      ? "block"
+                      : "none"
+                  },
+                }
+              }),
+              placeholder ? {
+                "&.MuiInputBase-root": {
+                  "&::before": {
+                    content: `"${placeholder}"`
+                  }
+                }
+              } : {
+                "&.MuiInputBase-root": {
+                  "&::before": {
+                    content: null
+                  }
+                }
               },
-
-              "&.MuiInputBase-root:not(.Mui-disabled)": {
-                backgroundColor: error
-                  ? theme.palette.error.pastel
-                  : warning
-                  ? theme.palette.warning.pastel
-                  : undefined,
-
-                "& fieldset": {
-                  borderColor: error
-                    ? theme.palette.error.main
-                    : warning
-                    ? theme.palette.warning.main
-                    : undefined,
-                },
-
-                "&:hover fieldset": {
-                  borderColor: error
-                    ? theme.palette.error.main
-                    : warning
-                    ? theme.palette.warning.main
-                    : undefined,
-                },
-
-                "&.Mui-focused fieldset": {
-                  borderColor: error
-                    ? theme.palette.error.main
-                    : warning
-                    ? theme.palette.warning.main
-                    : undefined,
-                },
+              icon ? {
+                "&.MuiInputBase-root": {
+                  "&::before": {
+                    left: "45px"
+                  }
+                }
+              } : {
+                "&.MuiInputBase-root": {
+                  "&::before": {
+                    left: "14px"
+                  }
+                }
               },
-            })}
+              (theme) => (error ? {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  backgroundColor: theme.palette.error.pastel
+                }
+              } : {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  backgroundColor: warning
+                    ? theme.palette.warning.pastel
+                    : undefined
+                }
+              }),
+              (theme) => (error ? {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  "& fieldset": {
+                    borderColor: theme.palette.error.main
+                  }
+                }
+              } : {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  "& fieldset": {
+                    borderColor: warning
+                      ? theme.palette.warning.main
+                      : undefined
+                  }
+                }
+              }),
+              (theme) => (error ? {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  "&:hover fieldset": {
+                    borderColor: theme.palette.error.main
+                  }
+                }
+              } : {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  "&:hover fieldset": {
+                    borderColor: warning
+                      ? theme.palette.warning.main
+                      : undefined
+                  }
+                }
+              }),
+              (theme) => (error ? {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.palette.error.main
+                  }
+                }
+              } : {
+                "&.MuiInputBase-root:not(.Mui-disabled)": {
+                  "&.Mui-focused fieldset": {
+                    borderColor: warning
+                      ? theme.palette.warning.main
+                      : undefined
+                  }
+                }
+              })
+            ]}
             MenuProps={{
               anchorEl: anchorEl,
               PaperProps: {

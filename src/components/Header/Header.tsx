@@ -10,14 +10,23 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "visible",
-})<AppBarProps>(({ theme, visible }) => ({
+})<AppBarProps>(({
+  theme
+}) => ({
   transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  ...(!visible && {
-    display: "none",
-  }),
+  variants: [{
+    props: (
+      {
+        visible
+      }
+    ) => !visible,
+    style: {
+      display: "none",
+    }
+  }]
 }));
 
 export interface HeaderProps {

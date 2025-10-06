@@ -189,13 +189,13 @@ const PieChart = ({
                     px={2}
                     py={2}
                     direction="column"
-                    sx={{
+                    sx={theme => ({
                       opacity: 1,
                       background: theme.palette.background.card,
                       border: `1px solid ${theme.palette.divider}`,
                       borderRadius: "8px",
-                      minWidth: "202px",
-                    }}
+                      minWidth: "202px"
+                    })}
                   >
                     <AgronodTypography variant="overline">
                       {dataSorted[hoverIndex].name}

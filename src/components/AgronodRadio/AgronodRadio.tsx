@@ -26,13 +26,11 @@ const StyledMuiRadio = (props: AgronodRadioProps) => (
       "&.Mui-disabled .MuiSvgIcon-root path": {
         fill: theme.palette.border,
       },
-
       "&:hover .MuiSvgIcon-root path": {
         fill: props.checked
           ? theme.palette.primary.mainHover
           : theme.palette.text.secondary,
       },
-
       "&.Mui-focusVisible": {
         "& svg:first-of-type": {
           border: `1px solid ${theme.palette.text.primary}`,

@@ -42,7 +42,6 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
           paddingBottom: 6,
           paddingX: 9,
           marginX: "auto",
-
           [theme.breakpoints.down("md")]: {
             alignItems: "center",
             paddingTop: 3,
@@ -121,7 +120,6 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
           backgroundColor: props.backgroundColor,
           backgroundSize: "contain",
           paddingTop: "30.51%",
-
           [theme.breakpoints.down("md")]: {
             background: `url(${NotFoundBackgroundMobile}) left bottom repeat-x`,
             backgroundColor: props.backgroundColor,

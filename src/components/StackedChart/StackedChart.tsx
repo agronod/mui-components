@@ -38,17 +38,20 @@ export const StackedChart: React.FC<StackedChartProps> = ({
 
   return (
     <Card
-      sx={(theme) => ({
+      sx={[(theme) => ({
         py: 2,
         px: 2,
         borderRadius: 4,
         boxShadow: "none",
         border: `1px solid ${theme.palette.divider}`,
-        mt: resultPage ? 0 : 2,
         [theme.breakpoints.down("sm")]: {
           padding: 0,
-        },
-      })}
+        }
+      }), resultPage ? {
+        mt: 0
+      } : {
+        mt: 2
+      }]}
     >
       <AgronodTypography
         sx={(theme) => ({
@@ -72,27 +75,25 @@ export const StackedChart: React.FC<StackedChartProps> = ({
         })}
       >
         {data.map((item: StackedChartDataProps, index: number) => {
-          return (
-            item.value > 0 && (
-              <Box
-                key={index}
-                component="span"
-                sx={{
-                  my: 1,
-                  height: 16,
-                  width: `${item.percentage}%`,
-                  borderRadius: "0 0 0 0",
-                  background: colors[index],
-                  "&:last-child": {
-                    borderRadius: "0 16px 16px 0",
-                  },
-                  "&:first-of-type": {
-                    borderRadius: "16px 0 0 16px",
-                  },
-                }}
-              />
-            )
-          );
+          return (item.value > 0 && (<Box
+            key={index}
+            component="span"
+            sx={{
+              my: 1,
+              height: 16,
+              width: `${"var(--item-percentage)"}%`,
+              borderRadius: "0 0 0 0",
+              background: colors[index],
+              "&:last-child": {
+                borderRadius: "0 16px 16px 0",
+              },
+              "&:first-of-type": {
+                borderRadius: "16px 0 0 16px",
+              },
+            }}
+            style={{
+              "--item-percentage": item.percentage
+            } as React.CSSProperties} />));
         })}
       </Box>
       <Box
