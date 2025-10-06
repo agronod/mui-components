@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Stack, Toolbar, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/material";
 import { AgrosfarLogo } from "../../assets";
 
 interface AppBarProps extends MuiAppBarProps {
@@ -10,14 +10,23 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "visible",
-})<AppBarProps>(({ theme, visible }) => ({
+})<AppBarProps>(({
+  theme
+}) => ({
   transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  ...(!visible && {
-    display: "none",
-  }),
+  variants: [{
+    props: (
+      {
+        visible
+      }
+    ) => !visible,
+    style: {
+      display: "none",
+    }
+  }]
 }));
 
 export interface HeaderProps {

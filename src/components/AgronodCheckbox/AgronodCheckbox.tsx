@@ -27,33 +27,45 @@ const StyledMuiCheckbox = (props: AgronodCheckboxProps) => (
     color={props.color}
     checked={props.checked}
     disableRipple={true}
-    sx={(theme) => ({
-      color: theme.palette.input.border,
-      padding: props.noPadding === true ? 0 : "9px",
-      paddingY: props.size === "small" || props.noPadding === true ? 0 : "9px",
-      display: "inline-grid",
-      "&.MuiCheckbox-root input": isSafari ? { pointerEvents: "auto" } : null,
-
-      "&.Mui-disabled": {
-        color: theme.palette.border,
-      },
-
-      "&.Mui-focusVisible": {
-        "& path": {
-          outline: `1px solid ${theme.palette.text.primary} !important`,
-          borderRadius: "1px",
+    sx={[
+      (theme) => ({
+        color: theme.palette.input.border,
+        paddingY: props.size === "small" || props.noPadding === true ? 0 : "9px",
+        display: "inline-grid",
+        "&.MuiCheckbox-root input": isSafari ? { pointerEvents: "auto" } : null,
+        "&.Mui-disabled": {
+          color: theme.palette.border,
         },
-      },
-
-      "& .MuiSvgIcon-root": {
-        // since svg has some space in relation to path, this size matches 24px looks
-        fontSize: "32px",
-
-        [theme.breakpoints.down("md")]: {
-          fontSize: props.size === "small" ? "32px" : "42.67px", // since svg has some space in relation to path, 42.67px size matches 32px looks
+        "&.Mui-focusVisible": {
+          "& path": {
+            outline: `1px solid ${theme.palette.text.primary} !important`,
+            borderRadius: "1px",
+          },
         },
+        "& .MuiSvgIcon-root": {
+          // since svg has some space in relation to path, this size matches 24px looks
+          fontSize: "32px"
+        }
+      }),
+      props.noPadding === true ? {
+        padding: 0
+      } : {
+        padding: "9px"
       },
-    })}
+      (theme) => (props.size === "small" ? {
+        "& .MuiSvgIcon-root": {
+          [theme.breakpoints.down("md")]: {
+            fontSize: "32px"
+          }
+        }
+      } : {
+        "& .MuiSvgIcon-root": {
+          [theme.breakpoints.down("md")]: {
+            fontSize: "42.67px"
+          }
+        }
+      })
+    ]}
   />
 );
 

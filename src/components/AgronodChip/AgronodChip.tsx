@@ -21,14 +21,13 @@ const AgronodChip = (props: AgroodChipProps) => {
       onDelete={props.handleOnDelete ? props.handleOnDelete : undefined}
       onMouseDown={props.onMouseDown}
       variant="filled"
-      sx={(theme) => ({
+      sx={[(theme) => ({
         display: "flex",
         alignItems: "center",
         flexWrap: "wrap",
         maxWidth: "100%",
         minWidth: "auto",
         width: "auto",
-        paddingY: props.size === "small" ? 0.5 : 1,
         paddingX: 1,
         height: "auto",
         borderRadius: "16px",
@@ -39,7 +38,6 @@ const AgronodChip = (props: AgroodChipProps) => {
             ? theme.palette.primary.pastel
             : theme.palette[props.color].pastel,
         color: theme.palette.text.primary,
-
         "& .MuiChip-label": {
           whiteSpace: "normal",
           wordBreak: "break-word",
@@ -48,7 +46,6 @@ const AgronodChip = (props: AgroodChipProps) => {
           display: "block",
           maxWidth: "100%",
         },
-
         "&.Mui-disabled": {
           backgroundColor: theme.palette.buttonDisabled,
           color: theme.palette.text.disabled,
@@ -71,14 +68,17 @@ const AgronodChip = (props: AgroodChipProps) => {
         },
         "&:focus-visible": {
           backgroundColor: theme.palette.primary.pastel,
-
           "& .MuiChip-deleteIcon": {
             border: `1px solid ${theme.palette.white}`,
             boxShadow: `0px 0px 0px 3.5px ${theme.palette.white}`,
             outline: ` 1.5px solid ${theme.palette.black}`,
           },
-        },
-      })}
+        }
+      }), props.size === "small" ? {
+        paddingY: 0.5
+      } : {
+        paddingY: 1
+      }]}
     />
   );
 };

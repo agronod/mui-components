@@ -104,13 +104,12 @@ const StyledMuiTextField = ({
           }}
           variant="outlined"
           placeholder={rest.placeholder} // Ensure placeholder is passed
-          sx={(theme) => ({
+          sx={[(theme) => ({
             "& .MuiInputBase-root": {
               width: rest.fullWidth ? "100%" : "220px",
             },
             "& .MuiInputBase-input": {
-              paddingLeft: hasIcon && (rest.error || warning) ? "46px" : "14px",
-              textAlign: textAlignment ? textAlignment : "left",
+              paddingLeft: hasIcon && (rest.error || warning) ? "46px" : "14px"
             },
             "& .MuiInputBase-root:not(.Mui-disabled)": {
               backgroundColor: rest.error
@@ -118,7 +117,6 @@ const StyledMuiTextField = ({
                 : warning
                   ? theme.palette.warning.pastel
                   : undefined,
-
               "& fieldset": {
                 borderColor: rest.error
                   ? theme.palette.error.main
@@ -126,7 +124,6 @@ const StyledMuiTextField = ({
                     ? theme.palette.warning.main
                     : undefined,
               },
-
               "&:hover fieldset": {
                 borderColor: rest.error
                   ? theme.palette.error.main
@@ -134,7 +131,6 @@ const StyledMuiTextField = ({
                     ? theme.palette.warning.main
                     : undefined,
               },
-
               "&.Mui-focused fieldset": {
                 borderColor: rest.error
                   ? theme.palette.error.main
@@ -150,7 +146,15 @@ const StyledMuiTextField = ({
                     ? theme.palette.secondary.pastel
                     : undefined,
               },
-          })}
+          }), textAlignment ? {
+            "& .MuiInputBase-input": {
+              textAlign: textAlignment
+            }
+          } : {
+            "& .MuiInputBase-input": {
+              textAlign: "left"
+            }
+          }]}
           {...rest}
         />
       </Box>

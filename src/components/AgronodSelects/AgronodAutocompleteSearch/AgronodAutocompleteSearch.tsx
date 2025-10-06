@@ -193,14 +193,16 @@ const AgronodAutocompleteSearch = <T,>({
                   onClick={() => handleOptionChange(option as T)}
                   disabled={isOptionDisabled(option as T)}
                   selected={isOptionSelected(option as T)}
-                  sx={(theme) => ({
-                    backgroundColor:
-                      focusedIndex === index
-                        ? isOptionSelected(option as T)
+                  sx={[
+                    {},
+                    (theme) => (focusedIndex === index ? {
+                      backgroundColor: isOptionSelected(option as T)
                           ? `${theme.palette.primary.light}!important`
                           : `${theme.palette.primary.pastel}!important`
-                        : "",
-                  })}
+                    } : {
+                      backgroundColor: ""
+                    })
+                  ]}
                 >
                   <AgronodCheckbox
                     checked={isOptionSelected(option as T)}

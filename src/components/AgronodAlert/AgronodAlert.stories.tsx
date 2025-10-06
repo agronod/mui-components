@@ -183,7 +183,6 @@ AgronodAlertCustomIcon.args = {
   icon: <LoaderCircular color="warning" size={15} />,
 };
 
-
 export const AgronodAlertLoadingDefault: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
@@ -193,14 +192,12 @@ export const AgronodAlertLoadingDefault: StoryFn<typeof AgronodAlert> = ({
   </>
 );
 
-
 AgronodAlertLoadingDefault.args = {
   children: "Loading default",
   severity: "loading",
   variant: "standard",
   behindCard: false,
 };
-
 
 export const AgronodAlertLoadingBehindCard: StoryFn<typeof AgronodAlert> = ({
   children,
@@ -221,7 +218,6 @@ AgronodAlertLoadingBehindCard.args = {
   behindCard: true,
 };
 
-
 export const AgronodAlertLoadingCustomIcon: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
@@ -239,6 +235,5 @@ AgronodAlertLoadingCustomIcon.args = {
   severity: "loading",
   variant: "standard",
   behindCard: true,
-  icon: <Warning color="warning"  />,
+  icon: <Warning color="warning" />,
 };
-

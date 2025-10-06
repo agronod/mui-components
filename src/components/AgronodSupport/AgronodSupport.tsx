@@ -40,15 +40,15 @@ export default function AgronodSupport(props: AgronodSupportProps) {
                   <HelpOutlineIcon sx={{ mt: "4px", fontSize: "24px" }} />
                 </Box>
               }
-              sx={{
+              sx={theme => ({
                 minWidth: 0,
-                color: (theme) => theme.palette.text.primary,
+                color: theme.palette.text.primary,
                 fontSize: 16,
                 fontWeight: 400,
                 ":hover": {
-                  color: (theme) => theme.palette.text.primary,
-                },
-              }}
+                  color: theme.palette.text.primary,
+                }
+              })}
             >
               Hjälp
             </AgronodButton>

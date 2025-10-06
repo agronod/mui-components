@@ -1,5 +1,5 @@
 import { globalThemePalette } from "./baseTheme";
-import createPalette from "@mui/material/styles/createPalette";
+import { createTheme } from "@mui/material";
 
 const agronodThemePalette = {
   primary: {
@@ -16,10 +16,12 @@ const agronodThemePalette = {
   ...globalThemePalette,
 };
 
-const themePalette = createPalette(agronodThemePalette);
+// Create a temporary theme to get the processed palette
+const tempTheme = createTheme({ palette: agronodThemePalette });
+const themePalette = tempTheme.palette;
 
 const agronodTheme = {
-  palette: themePalette,
+  palette: agronodThemePalette,
   components: {
     MuiCheckbox: {
       styleOverrides: {

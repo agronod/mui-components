@@ -49,7 +49,11 @@ const data: PieChartData[] = [
 
 export const PieChartDefault: StoryFn<typeof PieChart> = ({ ...args }) => (
   <Grid container spacing={2}>
-    <Grid item xs={12} md={6}>
+    <Grid
+      size={{
+        xs: 12,
+        md: 6
+      }}>
       <Card sx={{ padding: 2 }}>
         <AgronodTypography variant="subtitle2">
           Klimatavtryck växtodling
@@ -70,7 +74,11 @@ export const PieChartDefaultPercentage: StoryFn<typeof PieChart> = ({
   ...args
 }) => (
   <Grid container spacing={2}>
-    <Grid item xs={12} md={6}>
+    <Grid
+      size={{
+        xs: 12,
+        md: 6
+      }}>
       <Card sx={{ padding: 2 }}>
         <AgronodTypography variant="subtitle2">
           Klimatavtryck växtodling
@@ -92,7 +100,11 @@ export const PieChartDefaultSortedAsc: StoryFn<typeof PieChart> = ({
   ...args
 }) => (
   <Grid container spacing={2}>
-    <Grid item xs={12} md={6}>
+    <Grid
+      size={{
+        xs: 12,
+        md: 6
+      }}>
       <Card sx={{ padding: 2 }}>
         <AgronodTypography variant="subtitle2">
           Klimatavtryck växtodling
@@ -113,7 +125,11 @@ export const PieChartDefaultUnsorted: StoryFn<typeof PieChart> = ({
   ...args
 }) => (
   <Grid container spacing={2}>
-    <Grid item xs={12} md={6}>
+    <Grid
+      size={{
+        xs: 12,
+        md: 6
+      }}>
       <Card sx={{ padding: 2 }}>
         <AgronodTypography variant="subtitle2">
           Klimatavtryck växtodling
@@ -171,7 +187,11 @@ export const PieChartCustomTooltipData: StoryFn<typeof PieChart> = ({
   ...args
 }) => (
   <Grid container spacing={2}>
-    <Grid item xs={12} md={6}>
+    <Grid
+      size={{
+        xs: 12,
+        md: 6
+      }}>
       <Card sx={{ padding: 2 }}>
         <AgronodTypography variant="subtitle2">
           Klimatavtryck växtodling

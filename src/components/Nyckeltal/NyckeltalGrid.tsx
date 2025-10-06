@@ -14,20 +14,25 @@ export default function NyckeltalGrid({
 }: Props) {
   return (
     <List
-      sx={(theme) => ({
+      sx={[(theme) => ({
         display: "grid",
         gap: theme.spacing(2),
-        gridTemplateColumns: `repeat(auto-fill, ${
-          size === "sm" ? "235px" : "248px"
-        })`,
         width: "100%",
         listStyle: "none",
         padding: 0,
         marginTop: 0,
         [theme.breakpoints.down("lg")]: {
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        },
-      })}
+        }
+      }), size === "sm" ? {
+        gridTemplateColumns: {
+          gridTemplateColumns: "235px"
+        }
+      } : {
+        gridTemplateColumns: {
+          gridTemplateColumns: "248px"
+        }
+      }]}
     >
       <>{children}</>
     </List>

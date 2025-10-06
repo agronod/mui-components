@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.22.1",
+  "version": "1.23.0-fix-upgrade-material-ui-from-5-to-7.0",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -13,12 +13,15 @@
   "files": [
     "dist"
   ],
+  "overrides": {
+    "react-is": "^18.3.1"
+  },
   "peerDependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.15.18",
-    "@mui/lab": "^5.0.0-alpha.123",
-    "@mui/material": "^5.15.18",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/lab": "^7.0.1-beta.18",
+    "@mui/material": "^7.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "6.23.1",
@@ -28,9 +31,9 @@
     "@chromatic-com/storybook": "^4.1.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^5.15.18",
-    "@mui/lab": "^7.0.0-beta.17",
-    "@mui/material": "^5.15.18",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/lab": "^7.0.1-beta.18",
+    "@mui/material": "^7.3.4",
     "@rollup/plugin-typescript": "^11.0.0",
     "@storybook/addon-docs": "^9.1.8",
     "@storybook/addon-links": "^9.1.8",
@@ -82,6 +85,7 @@
     "@fontsource/roboto": "^5.0.13",
     "conventional-changelog-cli": "^5.0.0",
     "react-device-detect": "^2.2.3",
+    "react-is": "^18.3.1",
     "react-number-format": "^5.4.0",
     "vite-plugin-svgr": "^4.5.0"
   }

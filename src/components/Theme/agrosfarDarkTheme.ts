@@ -1,16 +1,18 @@
 import { agrosfarThemePalette } from "./agrosfarTheme";
 import { globalThemePalette } from "./baseTheme";
-import createPalette from "@mui/material/styles/createPalette";
+import { createTheme } from "@mui/material";
 
 const agrosfarDarkThemePalette = {
   ...globalThemePalette,
   ...agrosfarThemePalette,
 };
 
-const themePalette = createPalette(agrosfarDarkThemePalette);
+// Create a temporary theme to get the processed palette
+const tempTheme = createTheme({ palette: agrosfarDarkThemePalette });
+const themePalette = tempTheme.palette;
 
 const agrosfarDarkTheme = {
-  palette: themePalette,
+  palette: agrosfarDarkThemePalette,
   components: {
     MuiButton: {
       styleOverrides: {
