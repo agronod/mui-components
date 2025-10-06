@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Stack, Toolbar, Link as MuiLink } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/material";
 import { AgrosfarLogo } from "../../assets";
 
 interface AppBarProps extends MuiAppBarProps {

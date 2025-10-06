@@ -6,7 +6,7 @@ import {
   ModalProps as MuiModalCardProps,
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { SxProps, useTheme } from "@mui/material/styles";
+import { SxProps, useTheme } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useCallback, useEffect } from "react";
 import { AgronodTypography } from "../AgronodTypography";
