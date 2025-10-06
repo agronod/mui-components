@@ -1,3 +1,228 @@
+## 1.23.0 (2025-10-06)
+
+* feat: upgrade Material-UI from v5 to v7 (#147) ([a29789b](https://github.com/agronod/mui-components/commit/a29789b)), closes [#147](https://github.com/agronod/mui-components/issues/147)
+* 1.22.1 ([f267b7a](https://github.com/agronod/mui-components/commit/f267b7a))
+
+
+
+## <small>1.22.1 (2025-10-03)</small>
+
+* fix: deps upgrades, eslint and linting fixing issues (#146) ([1470f8d](https://github.com/agronod/mui-components/commit/1470f8d)), closes [#146](https://github.com/agronod/mui-components/issues/146)
+* 1.22.0 ([64f4211](https://github.com/agronod/mui-components/commit/64f4211))
+
+
+
+## 1.22.0 (2025-08-26)
+
+* feat: added loading variant to AgronodAlert component (#140) ([ba735b0](https://github.com/agronod/mui-components/commit/ba735b0)), closes [#140](https://github.com/agronod/mui-components/issues/140)
+* 1.21.3 ([edc6dca](https://github.com/agronod/mui-components/commit/edc6dca))
+
+
+
+## <small>1.21.3 (2025-08-12)</small>
+
+* fix: changed AgronodIcon.tsx  (#145) ([80fcf78](https://github.com/agronod/mui-components/commit/80fcf78)), closes [#145](https://github.com/agronod/mui-components/issues/145)
+* 1.21.2 ([5216ed2](https://github.com/agronod/mui-components/commit/5216ed2))
+
+
+
+## <small>1.21.2 (2025-08-11)</small>
+
+* fix: warning causes error logs on text field and numeric field (AS-2916) (#144) ([7be1af1](https://github.com/agronod/mui-components/commit/7be1af1)), closes [#144](https://github.com/agronod/mui-components/issues/144)
+* 1.21.1 ([28e95fb](https://github.com/agronod/mui-components/commit/28e95fb))
+
+
+
+## <small>1.21.1 (2025-07-02)</small>
+
+* fix: added hint colors to agronod, agrosfar and baseTheme (#143) ([68c8edb](https://github.com/agronod/mui-components/commit/68c8edb)), closes [#143](https://github.com/agronod/mui-components/issues/143)
+* 1.21.0 ([1198d84](https://github.com/agronod/mui-components/commit/1198d84))
+
+
+
+## 1.21.0 (2025-06-23)
+
+* feat: simplify tooltip for horizontal bar chart (#142) ([830bbdc](https://github.com/agronod/mui-components/commit/830bbdc)), closes [#142](https://github.com/agronod/mui-components/issues/142)
+* 1.20.13 ([3eb2d8a](https://github.com/agronod/mui-components/commit/3eb2d8a))
+
+
+
+## <small>1.20.13 (2025-05-20)</small>
+
+* fix: used svgr instead of svgx vite plugin and updated outlined icons (#141) ([a1dc8d8](https://github.com/agronod/mui-components/commit/a1dc8d8)), closes [#141](https://github.com/agronod/mui-components/issues/141)
+* 1.20.12 ([72e9257](https://github.com/agronod/mui-components/commit/72e9257))
+
+
+
+## <small>1.20.12 (2025-04-16)</small>
+
+* 1.20.11 ([d9b8d92](https://github.com/agronod/mui-components/commit/d9b8d92))
+* reduce padding for cards in mobile (#139) ([ccd9277](https://github.com/agronod/mui-components/commit/ccd9277)), closes [#139](https://github.com/agronod/mui-components/issues/139)
+
+
+
+## <small>1.20.11 (2025-03-20)</small>
+
+* 1.20.10 ([8701c81](https://github.com/agronod/mui-components/commit/8701c81))
+* changed colors for warning and text fields (#137) ([0354275](https://github.com/agronod/mui-components/commit/0354275)), closes [#137](https://github.com/agronod/mui-components/issues/137)
+
+
+
+## <small>1.20.10 (2025-01-29)</small>
+
+* fix: add wordbreak to agronodChip (#135) ([d62b5af](https://github.com/agronod/mui-components/commit/d62b5af)), closes [#135](https://github.com/agronod/mui-components/issues/135)
+* 1.20.9 ([27c868a](https://github.com/agronod/mui-components/commit/27c868a))
+
+
+
+## <small>1.20.9 (2024-12-18)</small>
+
+* fix: make autocomplete usable with keyboard (#134) ([c9a8c25](https://github.com/agronod/mui-components/commit/c9a8c25)), closes [#134](https://github.com/agronod/mui-components/issues/134)
+* 1.20.8 ([ee5470c](https://github.com/agronod/mui-components/commit/ee5470c))
+
+
+
+## <small>1.20.8 (2024-12-10)</small>
+
+* fix: improve search functionality in autocomplete (#133) ([03de557](https://github.com/agronod/mui-components/commit/03de557)), closes [#133](https://github.com/agronod/mui-components/issues/133)
+* 1.20.7 ([4c20197](https://github.com/agronod/mui-components/commit/4c20197))
+
+
+
+## <small>1.20.7 (2024-12-09)</small>
+
+* fix: reset availableOptions if value is empty (#132) ([3c29ddf](https://github.com/agronod/mui-components/commit/3c29ddf)), closes [#132](https://github.com/agronod/mui-components/issues/132)
+* 1.20.6 ([531ffdb](https://github.com/agronod/mui-components/commit/531ffdb))
+
+
+
+## <small>1.20.6 (2024-11-04)</small>
+
+* fix: adjust tooltip to scroll (#131) ([24a5513](https://github.com/agronod/mui-components/commit/24a5513)), closes [#131](https://github.com/agronod/mui-components/issues/131)
+* 1.20.5 ([c7ab133](https://github.com/agronod/mui-components/commit/c7ab133))
+
+
+
+## <small>1.20.5 (2024-11-04)</small>
+
+* fix: add a mobile version for support btn (#130) ([aec83bb](https://github.com/agronod/mui-components/commit/aec83bb)), closes [#130](https://github.com/agronod/mui-components/issues/130)
+* 1.20.4 ([e51b0a0](https://github.com/agronod/mui-components/commit/e51b0a0))
+
+
+
+## <small>1.20.4 (2024-10-15)</small>
+
+* fix: add pointerEvents for safari instead of position (#129) ([436504e](https://github.com/agronod/mui-components/commit/436504e)), closes [#129](https://github.com/agronod/mui-components/issues/129)
+* 1.20.3 ([2ec6629](https://github.com/agronod/mui-components/commit/2ec6629))
+
+
+
+## <small>1.20.3 (2024-10-15)</small>
+
+* fix: remove position relative for safari (#128) ([45dbb1a](https://github.com/agronod/mui-components/commit/45dbb1a)), closes [#128](https://github.com/agronod/mui-components/issues/128)
+* 1.20.2 ([9b48d6f](https://github.com/agronod/mui-components/commit/9b48d6f))
+
+
+
+## <small>1.20.2 (2024-10-08)</small>
+
+* fix: issue with open / close logic autocomplete (#126) ([560df9e](https://github.com/agronod/mui-components/commit/560df9e)), closes [#126](https://github.com/agronod/mui-components/issues/126)
+* 1.20.1 ([06fb7eb](https://github.com/agronod/mui-components/commit/06fb7eb))
+
+
+
+## <small>1.20.1 (2024-09-25)</small>
+
+* fix: add story for alertMessage and move it so always visible (#125) ([e522596](https://github.com/agronod/mui-components/commit/e522596)), closes [#125](https://github.com/agronod/mui-components/issues/125)
+* 1.20.0 ([2e398c7](https://github.com/agronod/mui-components/commit/2e398c7))
+
+
+
+## 1.20.0 (2024-09-25)
+
+* feat: add agrosfar logo (#123) ([d508524](https://github.com/agronod/mui-components/commit/d508524)), closes [#123](https://github.com/agronod/mui-components/issues/123)
+* 1.19.4 ([8244c60](https://github.com/agronod/mui-components/commit/8244c60))
+
+
+
+## <small>1.19.4 (2024-09-25)</small>
+
+* fix: add prop for sending jsx to autocompletesearch (#122) ([cc24821](https://github.com/agronod/mui-components/commit/cc24821)), closes [#122](https://github.com/agronod/mui-components/issues/122)
+* 1.19.3 ([004d97f](https://github.com/agronod/mui-components/commit/004d97f))
+
+
+
+## <small>1.19.3 (2024-09-17)</small>
+
+* fix: disableRipple effect & add missing prop to NumberField (#121) ([ae613af](https://github.com/agronod/mui-components/commit/ae613af)), closes [#121](https://github.com/agronod/mui-components/issues/121)
+* 1.19.2 ([d0f646e](https://github.com/agronod/mui-components/commit/d0f646e))
+
+
+
+## <small>1.19.2 (2024-09-13)</small>
+
+* fix: default placeholder prop numberfield (#120) ([4efc23d](https://github.com/agronod/mui-components/commit/4efc23d)), closes [#120](https://github.com/agronod/mui-components/issues/120)
+* 1.19.1 ([0be2341](https://github.com/agronod/mui-components/commit/0be2341))
+
+
+
+## <small>1.19.1 (2024-09-13)</small>
+
+* fix: should default to highlighted (#119) ([a38d884](https://github.com/agronod/mui-components/commit/a38d884)), closes [#119](https://github.com/agronod/mui-components/issues/119)
+* 1.19.0 ([d75dcd8](https://github.com/agronod/mui-components/commit/d75dcd8))
+
+
+
+## 1.19.0 (2024-09-13)
+
+* feat: migrate components from agrosphere (#118) ([1c1e7e3](https://github.com/agronod/mui-components/commit/1c1e7e3)), closes [#118](https://github.com/agronod/mui-components/issues/118)
+* 1.18.1 ([8bc7830](https://github.com/agronod/mui-components/commit/8bc7830))
+
+
+
+## <small>1.18.1 (2024-08-30)</small>
+
+* fix: change color on description prop for checkbox (#117) ([d9c9a24](https://github.com/agronod/mui-components/commit/d9c9a24)), closes [#117](https://github.com/agronod/mui-components/issues/117)
+* 1.18.0 ([2a288b9](https://github.com/agronod/mui-components/commit/2a288b9))
+
+
+
+## 1.18.0 (2024-08-26)
+
+* feat: add description prop to checkbox (#116) ([ff37352](https://github.com/agronod/mui-components/commit/ff37352)), closes [#116](https://github.com/agronod/mui-components/issues/116)
+* 1.17.0 ([ac7409a](https://github.com/agronod/mui-components/commit/ac7409a))
+
+
+
+## 1.17.0 (2024-08-14)
+
+* feat: adjust rounding and pie chart tooltip (#115) ([188e971](https://github.com/agronod/mui-components/commit/188e971)), closes [#115](https://github.com/agronod/mui-components/issues/115)
+* 1.16.0 ([6fe6083](https://github.com/agronod/mui-components/commit/6fe6083))
+
+
+
+## 1.16.0 (2024-08-14)
+
+* feat: add gris icon (#114) ([b0389d1](https://github.com/agronod/mui-components/commit/b0389d1)), closes [#114](https://github.com/agronod/mui-components/issues/114)
+* 1.15.1 ([2b91b88](https://github.com/agronod/mui-components/commit/2b91b88))
+
+
+
+## <small>1.15.1 (2024-08-12)</small>
+
+* fix: add word-break in chart & size for nyckeltalGrid (#113) ([7f58bb9](https://github.com/agronod/mui-components/commit/7f58bb9)), closes [#113](https://github.com/agronod/mui-components/issues/113)
+* 1.15.0 ([c49b9c6](https://github.com/agronod/mui-components/commit/c49b9c6))
+
+
+
+## 1.15.0 (2024-08-05)
+
+* feat: adjust piechart to show percentage and define sorting (#112) ([1484aa3](https://github.com/agronod/mui-components/commit/1484aa3)), closes [#112](https://github.com/agronod/mui-components/issues/112)
+* 1.14.17 ([b6ffaee](https://github.com/agronod/mui-components/commit/b6ffaee))
+* push changelog ([6622a72](https://github.com/agronod/mui-components/commit/6622a72))
+
+
+
 ## <small>1.14.17 (2024-07-02)</small>
 
 * 1.14.16 ([866170b](https://github.com/agronod/mui-components/commit/866170b))
