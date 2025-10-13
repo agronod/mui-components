@@ -13,7 +13,11 @@ export const tooltipTypographyStyle = {
   color: "#FFFFFF",
 } as const;
 
-export default function Tooltip({ title, children, ...rest }: TooltipProps) {
+export default function Tooltip({
+  title,
+  children,
+  ...rest
+}: Omit<TooltipProps, "ref">) {
   const AgronodTooltipTitle = ({ title }: { title: ReactNode }) => {
     return typeof title === "string" ? (
       <AgronodTypography sx={[tooltipTypographyStyle]}>
