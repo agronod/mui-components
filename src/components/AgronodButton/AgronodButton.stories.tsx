@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from "@storybook/react-vite";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { LoaderCircular } from "../Loaders";
-import AgronodButton, { AgronodButtonProps } from "./AgronodButton";
+import AgronodButton from "./AgronodButton";
 
 export default {
   title: "Shared Components/Button",
@@ -22,69 +22,61 @@ export default {
   },
 } as Meta<typeof AgronodButton>;
 
-export const ButtonContained: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => <AgronodButton {...rest}>{children}</AgronodButton>;
+export const ButtonContained: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} />
+);
 ButtonContained.args = {
   children: "Button Contained",
   variant: "contained",
 };
 
-export const ButtonOutlined: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => <AgronodButton {...rest}>{children}</AgronodButton>;
+export const ButtonOutlined: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} />
+);
 ButtonOutlined.args = {
   children: "Button Outlined",
   variant: "outlined",
 };
 
-export const ButtonText: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => <AgronodButton {...rest}>{children}</AgronodButton>;
+export const ButtonText: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} />
+);
 ButtonText.args = {
   children: "Button Text",
   variant: "text",
 };
 
-export const ButtonDisabled: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => <AgronodButton {...rest}>{children}</AgronodButton>;
+export const ButtonDisabled: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} />
+);
 ButtonDisabled.args = {
   children: "Button Disabled",
   variant: "contained",
   disabled: true,
 };
 
-export const ButtonFullWidth: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => <AgronodButton {...rest}>{children}</AgronodButton>;
+export const ButtonFullWidth: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} />
+);
 ButtonFullWidth.args = {
   children: "Button Full Width",
   variant: "contained",
   fullWidth: true,
 };
 
-export const ButtonCustomWidth: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => <AgronodButton {...rest}>{children}</AgronodButton>;
+export const ButtonCustomWidth: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} />
+);
 ButtonCustomWidth.args = {
   children: "Button Custom Width",
   variant: "contained",
   sx: { minWidth: "500px" },
 };
 
-export const ButtonLoader: StoryFn<typeof AgronodButton> = ({
-  ...rest
-}: AgronodButtonProps) => (
+export const ButtonLoader: StoryFn<typeof AgronodButton> = (args) => (
   <AgronodButton
+    {...args}
     disabled={true}
-    {...rest}
     startIcon={
       <LoaderCircular align="center" color="inherit" size={15} thickness={5} />
     }
@@ -96,26 +88,16 @@ ButtonLoader.args = {
   variant: "contained",
 };
 
-export const ButtonIconLeft: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => (
-  <AgronodButton startIcon={<ArrowBack />} {...rest}>
-    {children}
-  </AgronodButton>
+export const ButtonIconLeft: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} startIcon={<ArrowBack />} />
 );
 ButtonIconLeft.args = {
   children: "Button with icon on left",
   variant: "contained",
 };
 
-export const ButtonIconRight: StoryFn<typeof AgronodButton> = ({
-  children,
-  ...rest
-}: AgronodButtonProps) => (
-  <AgronodButton endIcon={<ArrowForward />} {...rest}>
-    {children}
-  </AgronodButton>
+export const ButtonIconRight: StoryFn<typeof AgronodButton> = (args) => (
+  <AgronodButton {...args} endIcon={<ArrowForward />} />
 );
 ButtonIconRight.args = {
   children: "Button with icon on right",

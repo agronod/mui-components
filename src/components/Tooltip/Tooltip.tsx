@@ -1,7 +1,7 @@
 import { Tooltip as MuiTooltip, TooltipProps } from "@mui/material";
 import { mergeSlotProps } from "@mui/material/utils";
 import { AgronodTypography } from "../AgronodTypography";
-import { forwardRef, ReactNode } from "react";
+import { ReactNode } from "react";
 
 export const tooltipTypographyStyle = {
   fontFamily: "Inter",
@@ -13,46 +13,43 @@ export const tooltipTypographyStyle = {
   color: "#FFFFFF",
 } as const;
 
-const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
-  ({ title, children, ...rest }, ref) => {
-    const AgronodTooltipTitle = ({ title }: { title: ReactNode }) => {
-      return typeof title === "string" ? (
-        <AgronodTypography sx={[tooltipTypographyStyle]}>
-          {title}
-        </AgronodTypography>
-      ) : (
-        title
-      );
-    };
-
-    return (
-      <MuiTooltip
-        ref={ref}
-        title={title ? <AgronodTooltipTitle title={title} /> : ""}
-        {...rest}
-        slotProps={{
-          ...rest.slotProps,
-          tooltip: mergeSlotProps(rest.slotProps?.tooltip, {
-            sx: {
-              backgroundColor: "#212121",
-              borderRadius: "4px",
-              padding: "8px 16px",
-              maxWidth: "500px",
-              marginBottom: "8px !important",
-            },
-          }),
-          arrow: mergeSlotProps(rest.slotProps?.arrow, {
-            sx: (theme) => ({
-              color: theme.palette.black,
-            }),
-          }),
-        }}
-      >
-        {children}
-      </MuiTooltip>
+const Tooltip = ({ title, children, ...rest }: TooltipProps) => {
+  const AgronodTooltipTitle = ({ title }: { title: ReactNode }) => {
+    return typeof title === "string" ? (
+      <AgronodTypography sx={[tooltipTypographyStyle]}>
+        {title}
+      </AgronodTypography>
+    ) : (
+      title
     );
-  }
-);
+  };
+
+  return (
+    <MuiTooltip
+      title={title ? <AgronodTooltipTitle title={title} /> : ""}
+      {...rest}
+      slotProps={{
+        ...rest.slotProps,
+        tooltip: mergeSlotProps(rest.slotProps?.tooltip, {
+          sx: {
+            backgroundColor: "#212121",
+            borderRadius: "4px",
+            padding: "8px 16px",
+            maxWidth: "500px",
+            marginBottom: "8px !important",
+          },
+        }),
+        arrow: mergeSlotProps(rest.slotProps?.arrow, {
+          sx: (theme) => ({
+            color: theme.palette.black,
+          }),
+        }),
+      }}
+    >
+      {children}
+    </MuiTooltip>
+  );
+};
 
 Tooltip.displayName = "Tooltip";
 
