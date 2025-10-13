@@ -1,7 +1,4 @@
-import {
-  createTheme,
-  ThemeOptions,
-} from "@mui/material";
+import { createTheme, ThemeOptions } from "@mui/material";
 import { common } from "@mui/material/colors";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
@@ -376,7 +373,7 @@ const baseThemeOptions: ThemeOptions = {
         root: {
           borderRadius: "16px",
           padding: "24px",
-          [defaultMuiTheme.breakpoints.down('sm')]: {
+          [defaultMuiTheme.breakpoints.down("sm")]: {
             padding: "16px",
           },
         },
@@ -844,6 +841,13 @@ const baseThemeOptions: ThemeOptions = {
           ".MuiTouchRipple-root": {
             display: "none",
           },
+        },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: "16px",
         },
       },
     },

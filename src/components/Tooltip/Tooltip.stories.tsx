@@ -1,6 +1,9 @@
 import { Meta } from "@storybook/react-vite";
 import Tooltip from "./Tooltip";
 import { AgronodButton } from "../AgronodButton";
+import { Box } from "@mui/material";
+import { AgronodTypography } from "../AgronodTypography";
+import { AgronodIcon } from "../AgronodIcon";
 
 export default {
   title: "Shared Components/Tooltip",
@@ -71,4 +74,85 @@ TooltipPlacementRight.args = {
   title: "Some text",
   arrow: true,
   placement: "right",
+};
+
+export const TooltipWithReactNodeTitle = ({ ...args }) => (
+  <Tooltip
+    slotProps={{
+      tooltip: {
+        sx: {
+          backgroundColor: "orange",
+          color: "black",
+        },
+      },
+      arrow: {
+        sx: {
+          color: "red",
+        },
+      },
+    }}
+    title={
+      <Box>
+        <AgronodTypography variant="subtitle2">
+          Custom Tooltip Title
+        </AgronodTypography>
+        <AgronodTypography variant="body2">
+          This is a tooltip with a ReactNode as the title. You can include any
+          custom layout, styling, or components here.
+        </AgronodTypography>
+      </Box>
+    }
+    {...args}
+  >
+    <AgronodButton variant="contained">
+      Hover for ReactNode Tooltip
+    </AgronodButton>
+  </Tooltip>
+);
+TooltipWithReactNodeTitle.args = {
+  arrow: true,
+  placement: "top",
+};
+
+export const TooltipWithIcon = ({ ...args }) => (
+  <Tooltip
+    slotProps={{
+      tooltip: {
+        sx: {
+          backgroundColor: "orange",
+          color: "black",
+        },
+      },
+      arrow: {
+        sx: {
+          color: "red",
+        },
+      },
+    }}
+    title={
+      <Box>
+        <AgronodTypography variant="subtitle2">
+          Custom Tooltip Title
+        </AgronodTypography>
+        <AgronodTypography variant="body2">
+          This is a tooltip with a ReactNode as the title. You can include any
+          custom layout, styling, or components here.
+        </AgronodTypography>
+      </Box>
+    }
+    {...args}
+  >
+    {/* The span is needed because the tooltip component needs a node that takes a ref to work properly. */}
+    <span>
+      <AgronodIcon
+        sx={{ display: "flex", alignItems: "center" }}
+        name="infoOutlined"
+        fontSize={"small"}
+      />
+    </span>
+  </Tooltip>
+);
+TooltipWithIcon.args = {
+  arrow: true,
+  placement: "top",
 };
