@@ -14,6 +14,7 @@ export * from "./AgronodIcon";
 export * from "./AgronodTypography";
 export * from "./AgronodAlert";
 export * from "./AgronodAsideCard";
+export * from "./AgronodDialog";
 export * from "./AgronodModalCard";
 export * from "./AgronodChip";
 export * from "./AgronodCheckbox";

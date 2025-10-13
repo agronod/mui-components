@@ -1,10 +1,7 @@
-import {
-  Box,
-  Tooltip as MuiTooltip,
-  TooltipProps,
-  tooltipClasses,
-} from "@mui/material";
+import { Tooltip as MuiTooltip, TooltipProps } from "@mui/material";
+import { mergeSlotProps } from "@mui/material/utils";
 import { AgronodTypography } from "../AgronodTypography";
+import { ReactNode } from "react";
 
 export const tooltipTypographyStyle = {
   fontFamily: "Inter",
@@ -16,36 +13,40 @@ export const tooltipTypographyStyle = {
   color: "#FFFFFF",
 } as const;
 
-export default function Tooltip(props: TooltipProps) {
+export default function Tooltip({ title, children, ...rest }: TooltipProps) {
+  const AgronodTooltipTitle = ({ title }: { title: ReactNode }) => {
+    return typeof title === "string" ? (
+      <AgronodTypography sx={[tooltipTypographyStyle]}>
+        {title}
+      </AgronodTypography>
+    ) : (
+      title
+    );
+  };
+
   return (
     <MuiTooltip
-      {...props}
-      PopperProps={{
-        sx: (theme) => ({
-          "& .MuiTooltip-tooltip": {
+      title={title ? <AgronodTooltipTitle title={title} /> : ""}
+      {...rest}
+      slotProps={{
+        ...rest.slotProps,
+        tooltip: mergeSlotProps(rest.slotProps?.tooltip, {
+          sx: {
             backgroundColor: "#212121",
             borderRadius: "4px",
             padding: "8px 16px",
             maxWidth: "500px",
             marginBottom: "8px !important",
           },
-          [`& .${tooltipClasses.arrow}`]: {
+        }),
+        arrow: mergeSlotProps(rest.slotProps?.arrow, {
+          sx: (theme) => ({
             color: theme.palette.black,
-          },
+          }),
         }),
       }}
-      title={
-        props.title ? (
-          <AgronodTypography sx={[tooltipTypographyStyle]}>
-            {props.title}
-          </AgronodTypography>
-        ) : (
-          ""
-        )
-      }
-      placement={props.placement ?? "top-start"}
     >
-      <Box>{props.children}</Box>
+      {children}
     </MuiTooltip>
   );
 }
