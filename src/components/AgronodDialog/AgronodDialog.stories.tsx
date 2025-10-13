@@ -2,16 +2,7 @@ import { StoryFn, Meta } from "@storybook/react-vite";
 import AgronodDialog, { AgronodDialogProps } from "./AgronodDialog";
 import { useState } from "react";
 import { AgronodButton } from "../AgronodButton";
-import {
-  Box,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  IconButton,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import { Box } from "@mui/material";
 import { AgronodIcon } from "../AgronodIcon";
 import { AgronodTypography } from "../AgronodTypography";
 import { AgronodLink } from "../AgronodLink";
@@ -255,7 +246,21 @@ export const WithoutTitle: StoryFn<typeof AgronodDialog> = (
           </AgronodButton>
         }
       >
-        This dialog has no title. Just content and actions.
+        <Box>
+          <AgronodTypography variant="body1">
+            This dialog has no title. Just content and actions. Sometimes you
+            dont need a title to convey your message effectively. The content
+            can speak for itself, especially when the context is clear from the
+            action that opened the dialog.
+          </AgronodTypography>
+          <br />
+          <AgronodTypography variant="body2">
+            This approach works well for simple confirmations, quick messages,
+            or when you want to minimize the visual hierarchy and keep things
+            streamlined. Just make sure the content is clear and actionable
+            without needing a heading to provide context.
+          </AgronodTypography>
+        </Box>
       </AgronodDialog>
     </>
   );
@@ -293,60 +298,6 @@ export const WithCaption: StoryFn<typeof AgronodDialog> = (
 WithCaption.args = {
   caption: "Step 2 of 4",
   title: "Dialog with Caption",
-};
-
-export const WithButtonsAsChildren: StoryFn<typeof AgronodDialog> = (
-  args: AgronodDialogProps
-) => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <AgronodButton variant="contained" onClick={() => setOpen(true)}>
-        Open dialog with buttons as children
-      </AgronodButton>
-      <AgronodDialog
-        {...args}
-        caption="Steg 1 av 3"
-        open={open}
-        onClose={() => setOpen(false)}
-      >
-        <Box>
-          <p>
-            This dialog has no actions prop. The buttons are part of the
-            children content instead, giving you full control over the layout.
-          </p>
-          {Array.from({ length: 10 }).map((_, index) => (
-            <Box key={index} sx={{ mb: 2 }}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </Box>
-          ))}
-          <Box
-            sx={{ mt: 3, display: "flex", gap: 2, justifyContent: "flex-end" }}
-          >
-            <AgronodButton onClick={() => setOpen(false)}>Cancel</AgronodButton>
-            <AgronodButton variant="contained" onClick={() => setOpen(false)}>
-              Confirm
-            </AgronodButton>
-          </Box>
-        </Box>
-      </AgronodDialog>
-    </>
-  );
-};
-WithButtonsAsChildren.args = {
-  title: "Custom Layout with Scrolling",
 };
 
 export const CustomStyles: StoryFn<typeof AgronodDialog> = (
@@ -391,33 +342,4 @@ CustomStyles.args = {
       },
     },
   },
-};
-
-export const MuiDefaultDialog = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button variant="contained" onClick={() => setOpen(true)}>
-        Open MUI Default Dialog
-      </Button>
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>MUI Default Dialog</DialogTitle>
-        <IconButton aria-label="close" onClick={() => setOpen(false)}>
-          <CloseIcon />
-        </IconButton>
-        <DialogContent>
-          This is Material-UIs default Dialog component without any
-          customization. Compare the padding, spacing, and overall styling with
-          AgronodDialog.
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button variant="contained" onClick={() => setOpen(false)}>
-            Confirm
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
-  );
 };
