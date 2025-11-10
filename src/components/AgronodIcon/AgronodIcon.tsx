@@ -22,6 +22,7 @@ import SuccessOutlinedIcon from "../../assets/icons/successOutlined.svg?react";
 import VaxtodlingIcon from "../../assets/icons/vaxtodling.svg?react";
 import WarningContainedIcon from "../../assets/icons/warningContained.svg?react";
 import WarningOutlinedIcon from "../../assets/icons/warningOutlined.svg?react";
+import LoadingSpinnerStatic from "../../assets/icons/loadingSpinnerStatic.svg?react";
 
 const iconMap = {
   epost: EpostIcon,
@@ -45,6 +46,7 @@ const iconMap = {
   vaxtodling: VaxtodlingIcon,
   warningContained: WarningContainedIcon,
   warningOutlined: WarningOutlinedIcon,
+  loadingSpinnerStatic: LoadingSpinnerStatic,
 } as const;
 
 export type IconName = keyof typeof iconMap;

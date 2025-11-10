@@ -1,7 +1,7 @@
 import { AlertTitle, Box, Alert as MuiAlert, SxProps } from "@mui/material";
-import { LoaderCircular } from "../Loaders";
 import { AgronodAlertProps } from "./AgronodAlert";
 import { useTheme } from "../Theme";
+import { AgronodIcon } from "../AgronodIcon";
 
 const AgronodAlertLoading = ({
   styleObject,
@@ -19,7 +19,11 @@ const AgronodAlertLoading = ({
   return (
     <MuiAlert
       icon={
-        rest.icon ? rest.icon : <LoaderCircular color="secondary" size={18} />
+        rest.icon ? (
+          rest.icon
+        ) : (
+          <AgronodIcon name="loadingSpinnerStatic" color="secondary" />
+        )
       }
       variant={variant}
       {...rest}
