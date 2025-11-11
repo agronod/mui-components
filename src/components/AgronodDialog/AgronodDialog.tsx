@@ -12,12 +12,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { AgronodTypography } from "../AgronodTypography";
 import { ReactNode } from "react";
 
-const StyledDialog = styled(Dialog)(() => ({
-  "& < *": {
-    backgroundColor: "red",
-  },
-}));
-
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   position: "absolute",
   right: 12,
@@ -52,22 +46,26 @@ const AgronodDialog = ({
   ...rest
 }: AgronodDialogProps) => {
   return (
-    <StyledDialog
-      fullScreen={isMobile}
+    <Dialog
+      maxWidth={false}
       disableEscapeKeyDown={false}
       {...rest}
       slotProps={{
         ...rest.slotProps,
         paper: mergeSlotProps(rest.slotProps?.paper, {
           sx: {
-            borderRadius: isMobile ? 0 : 4,
-            width: "500px",
+            borderRadius: isMobile ? "16px 16px 0 0" : 4,
             paddingTop: "48px",
-          },
-        }),
-        root: mergeSlotProps(rest.slotProps?.root, {
-          sx: {
-            border: "1px solid red",
+            ...(isMobile && {
+              position: "fixed",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              maxHeight: "95vh",
+              maxWidth: "none",
+              width: "100%",
+              margin: 0,
+            }),
           },
         }),
       }}
@@ -126,7 +124,7 @@ const AgronodDialog = ({
           </Stack>
         )}
       </DialogContent>
-    </StyledDialog>
+    </Dialog>
   );
 };
 
