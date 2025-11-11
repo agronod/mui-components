@@ -360,7 +360,6 @@ export const Mobile: StoryFn<typeof AgronodDialog> = (
       <AgronodDialog
         {...args}
         open={open}
-        isMobile={true}
         onClose={() => setOpen(false)}
         title="Mobile Dialog"
         actions={
@@ -405,11 +404,11 @@ export const MobileGrowing: StoryFn<typeof AgronodDialog> = (
       <AgronodDialog
         {...args}
         open={open}
-        isMobile={true}
         onClose={() => setOpen(false)}
         title="Terms and Conditions"
         caption="Step 2 of 3"
         alignActions="center"
+        mobileActionsDirection="row"
         icon={
           <AgronodIcon
             sx={{ fontSize: "52px" }}
@@ -471,7 +470,6 @@ export const MobileScrolling: StoryFn<typeof AgronodDialog> = (
       <AgronodDialog
         {...args}
         open={open}
-        isMobile={true}
         onClose={() => setOpen(false)}
         title="Privacy Policy"
         caption="Last updated: 2024"

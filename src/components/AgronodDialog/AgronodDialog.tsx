@@ -1,4 +1,5 @@
 import {
+  Box,
   Dialog,
   DialogContent,
   DialogProps,
@@ -6,11 +7,13 @@ import {
   styled,
   Stack,
   SxProps,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { mergeSlotProps } from "@mui/material/utils";
 import CloseIcon from "@mui/icons-material/Close";
 import { AgronodTypography } from "../AgronodTypography";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   position: "absolute",
@@ -25,10 +28,10 @@ export interface AgronodDialogProps extends DialogProps {
   actions?: React.ReactNode;
   onClose?: () => void;
   closable?: boolean;
-  isMobile?: boolean;
   dialogContentSx?: SxProps;
   alignContent?: "start" | "center" | "end";
   alignActions?: "start" | "center" | "end";
+  mobileActionsDirection?: "row" | "column";
 }
 
 const AgronodDialog = ({
@@ -39,12 +42,15 @@ const AgronodDialog = ({
   children,
   onClose,
   closable = true,
-  isMobile,
   dialogContentSx,
   alignContent,
   alignActions,
+  mobileActionsDirection,
   ...rest
 }: AgronodDialogProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Dialog
       maxWidth={false}
@@ -102,6 +108,7 @@ const AgronodDialog = ({
               ))}
             {title &&
               (typeof title === "string" ? (
+                
                 <AgronodTypography variant={"h4"}>
                   {title || ""}
                 </AgronodTypography>
@@ -114,13 +121,38 @@ const AgronodDialog = ({
         {children}
         {actions && (
           <Stack
-            direction={"row"}
+            direction={isMobile ? mobileActionsDirection || "column" : "row"}
             gap={"8px"}
             sx={{
               alignSelf: alignActions || alignContent || "end",
+              flexWrap: mobileActionsDirection === "row" ? "nowrap" : "wrap",
+              width: isMobile ? "100%" : "auto",
             }}
           >
-            {actions}
+            {(() => {
+              // If actions is a Fragment, unwrap it to get the actual children
+              const actionsList =
+                React.isValidElement(actions) && actions.type === React.Fragment
+                  ? React.Children.toArray(actions.props.children)
+                  : React.Children.toArray(actions);
+
+              return actionsList.map((action, index) => {
+                if (!React.isValidElement(action)) {
+                  return action;
+                }
+                if (isMobile) {
+                  return (
+                    <Box key={action.key || index} sx={{ width: "100%" }}>
+                      {React.cloneElement(action, {
+                        ...action.props,
+                        fullWidth: true,
+                      })}
+                    </Box>
+                  );
+                }
+                return action;
+              });
+            })()}
           </Stack>
         )}
       </DialogContent>
