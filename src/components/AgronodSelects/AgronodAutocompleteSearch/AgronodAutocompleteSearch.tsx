@@ -30,8 +30,8 @@ const StyledMenuList = styled(MenuList)(({ theme }) => ({
 
 const StyledGroupHeader = styled(ListSubheader)(({ theme }) => ({
   backgroundColor: theme.palette.background.page,
-  lineHeight: "32px",
-  padding: "8px 16px",
+  lineHeight: "16px",
+  padding: "8px 8px",
   color: theme.palette.text.secondary,
   position: "sticky",
   top: 0,
@@ -295,14 +295,19 @@ const AgronodAutocompleteSearch = <T,>({
 
                 return (
                   <MenuItem
-                    dense
                     {...getOptionProps({ option, index: originalIndex })}
                     key={`option-${originalIndex}`}
                     onClick={() => handleOptionChange(option)}
                     disabled={isOptionDisabled(option)}
                     selected={isOptionSelected(option)}
                     sx={[
-                      {},
+                      {
+                        // Dense MenuItem styling - MUI's dense prop doesn't work due to fixed height override
+                        // This is a known MUI issue: https://github.com/mui/material-ui/issues/16488
+                        maxHeight: "36px",
+                        paddingTop: "0px",
+                        paddingBottom: "0px",
+                      },
                       (theme) =>
                         focusedIndex === flatIndex
                           ? {
@@ -350,6 +355,9 @@ const AgronodAutocompleteSearch = <T,>({
                   sx={{
                     display: "flex",
                     flexDirection: "column",
+                    maxHeight: "36px",
+                    paddingTop: "0px",
+                    paddingBottom: "0px",
                     "&:hover": {
                       backgroundColor: "transparent",
                     },
