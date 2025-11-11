@@ -26,6 +26,7 @@ const StyledMenuList = styled(MenuList)(({ theme }) => ({
   maxHeight: "280px",
   maxWidth: "100%",
   overflow: "auto",
+  padding: 0, // Remove default padding so group headers stick to the very top
 }));
 
 const StyledGroupHeader = styled(ListSubheader)(({ theme }) => ({
@@ -34,8 +35,8 @@ const StyledGroupHeader = styled(ListSubheader)(({ theme }) => ({
   padding: "8px 8px",
   color: theme.palette.text.secondary,
   position: "sticky",
-  top: 0,
-  zIndex: 1,
+  top: -1, // Align to the very top, accounting for border
+  zIndex: 2, // Higher z-index to ensure it stays above scrolling items
   textTransform: "uppercase",
 }));
 
