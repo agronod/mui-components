@@ -142,7 +142,8 @@ export const TooltipWithIcon = ({ ...args }) => (
     }
     {...args}
   >
-    {/* The span is needed because the tooltip component needs a node that takes a ref to work properly. */}
+    {/* The span is needed because the tooltip component needs a node that takes 
+    a ref to work properly. Probably not needed in react 19 (not certain) */}
     <span>
       <AgronodIcon
         sx={{ display: "flex", alignItems: "center" }}

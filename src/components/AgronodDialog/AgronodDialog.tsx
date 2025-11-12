@@ -1,4 +1,5 @@
 import {
+  Box,
   Dialog,
   DialogContent,
   DialogProps,
@@ -6,17 +7,13 @@ import {
   styled,
   Stack,
   SxProps,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { mergeSlotProps } from "@mui/material/utils";
 import CloseIcon from "@mui/icons-material/Close";
 import { AgronodTypography } from "../AgronodTypography";
-import { ReactNode } from "react";
-
-const StyledDialog = styled(Dialog)(() => ({
-  "& < *": {
-    backgroundColor: "red",
-  },
-}));
+import React, { ReactNode } from "react";
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   position: "absolute",
@@ -31,10 +28,10 @@ export interface AgronodDialogProps extends DialogProps {
   actions?: React.ReactNode;
   onClose?: () => void;
   closable?: boolean;
-  isMobile?: boolean;
   dialogContentSx?: SxProps;
   alignContent?: "start" | "center" | "end";
   alignActions?: "start" | "center" | "end";
+  mobileActionsDirection?: "row" | "column";
 }
 
 const AgronodDialog = ({
@@ -45,29 +42,35 @@ const AgronodDialog = ({
   children,
   onClose,
   closable = true,
-  isMobile,
   dialogContentSx,
   alignContent,
   alignActions,
+  mobileActionsDirection,
   ...rest
 }: AgronodDialogProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
-    <StyledDialog
-      fullScreen={isMobile}
+    <Dialog
       disableEscapeKeyDown={false}
       {...rest}
       slotProps={{
         ...rest.slotProps,
         paper: mergeSlotProps(rest.slotProps?.paper, {
           sx: {
-            borderRadius: isMobile ? 0 : 4,
-            width: "500px",
+            borderRadius: isMobile ? "16px 16px 0 0" : 4,
             paddingTop: "48px",
-          },
-        }),
-        root: mergeSlotProps(rest.slotProps?.root, {
-          sx: {
-            border: "1px solid red",
+            ...(isMobile && {
+              position: "fixed",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              maxHeight: "95vh",
+              maxWidth: "none",
+              width: "100%",
+              margin: 0,
+            }),
           },
         }),
       }}
@@ -104,7 +107,10 @@ const AgronodDialog = ({
               ))}
             {title &&
               (typeof title === "string" ? (
-                <AgronodTypography variant={"h4"}>
+                <AgronodTypography
+                  sx={{ fontSize: isMobile ? "22px" : "32px" }}
+                  variant={"h4"}
+                >
                   {title || ""}
                 </AgronodTypography>
               ) : (
@@ -116,17 +122,42 @@ const AgronodDialog = ({
         {children}
         {actions && (
           <Stack
-            direction={"row"}
+            direction={isMobile ? mobileActionsDirection || "column" : "row"}
             gap={"8px"}
             sx={{
               alignSelf: alignActions || alignContent || "end",
+              flexWrap: mobileActionsDirection === "row" ? "nowrap" : "wrap",
+              width: isMobile ? "100%" : "auto",
             }}
           >
-            {actions}
+            {(() => {
+              // If actions is a Fragment, unwrap it to get the actual children
+              const actionsList =
+                React.isValidElement(actions) && actions.type === React.Fragment
+                  ? React.Children.toArray(actions.props.children)
+                  : React.Children.toArray(actions);
+
+              return actionsList.map((action, index) => {
+                if (!React.isValidElement(action)) {
+                  return action;
+                }
+                if (isMobile) {
+                  return (
+                    <Box key={action.key || index} sx={{ width: "100%" }}>
+                      {React.cloneElement(action, {
+                        ...action.props,
+                        fullWidth: true,
+                      })}
+                    </Box>
+                  );
+                }
+                return action;
+              });
+            })()}
           </Stack>
         )}
       </DialogContent>
-    </StyledDialog>
+    </Dialog>
   );
 };
 

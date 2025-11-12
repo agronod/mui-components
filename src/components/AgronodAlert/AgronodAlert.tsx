@@ -1,14 +1,20 @@
 import {
-  AlertTitle,
   Box,
   Alert as MuiAlert,
   AlertProps as MuiAlertProps,
   SxProps,
 } from "@mui/material";
 import { AgronodIcon } from "../AgronodIcon";
+import { AgronodTypography } from "../AgronodTypography";
 import AgronodAlertLoading from "./AgronodAlertLoading";
 
-type AgronodAlertSeverity = MuiAlertProps["severity"] | "loading";
+type AgronodAlertSeverity =
+  | "success"
+  | "info"
+  | "warning"
+  | "error"
+  | "loading";
+
 type AgronodAlertBaseProps = Pick<
   MuiAlertProps,
   | "variant"
@@ -93,7 +99,9 @@ const AgronodAlert = ({
       sx={[behindCard ? styleObject : {}, ...(Array.isArray(sx) ? sx : [sx])]}
     >
       <Box>
-        {title && <AlertTitle>{title}</AlertTitle>}
+        {title && (
+          <AgronodTypography variant="body2bold">{title}</AgronodTypography>
+        )}
         {children}
       </Box>
       {action && (

@@ -1,10 +1,9 @@
 import { Meta, StoryFn } from "@storybook/react-vite";
 import AgronodAlert, { AgronodAlertProps } from "./AgronodAlert";
 import { AgronodCard } from "../AgronodCard";
-import { LoaderCircular } from "../Loaders";
 import { AgronodTypography } from "../AgronodTypography";
 import { AgronodButton } from "../AgronodButton";
-import { Warning } from "@mui/icons-material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default {
   title: "Shared Components/Alert",
@@ -46,78 +45,109 @@ export default {
   },
 } as Meta<typeof AgronodAlert>;
 
-export const AgronodAlertDefault: StoryFn<typeof AgronodAlert> = ({
+export const Info: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
 }: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
-AgronodAlertDefault.args = {
-  children: "This is just normal description as a string",
+Info.args = {
+  children: "This is an alert with severity info",
   severity: "info",
   variant: "standard",
 };
 
-export const AgronodAlertError: StoryFn<typeof AgronodAlert> = ({
+export const Error: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
 }: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
-AgronodAlertError.args = {
+Error.args = {
   children: "This is an alert with severity error",
   severity: "error",
   variant: "standard",
 };
 
-export const AgronodAlertWithTitle: StoryFn<typeof AgronodAlert> = ({
+export const Success: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
 }: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
-AgronodAlertWithTitle.args = {
+Success.args = {
+  children: "This is an alert with severity success",
+  severity: "success",
+  variant: "standard",
+};
+
+export const Warning: StoryFn<typeof AgronodAlert> = ({
+  children,
+  ...rest
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+
+Warning.args = {
+  children: "This is an alert with severity warning",
+  severity: "warning",
+  variant: "standard",
+};
+
+export const Loading: StoryFn<typeof AgronodAlert> = ({
+  children,
+  ...rest
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+
+Loading.args = {
+  children: "This is an alert with severity loading",
+  severity: "loading",
+  variant: "standard",
+};
+
+export const WithTitle: StoryFn<typeof AgronodAlert> = ({
+  children,
+  ...rest
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
+
+WithTitle.args = {
   title: "This is title",
   children: (
     <AgronodTypography variant="body2">
       This is text wrapped in typography variant
     </AgronodTypography>
   ),
-  severity: "warning",
+  severity: "info",
   variant: "standard",
 };
 
-export const AgronodAlertWithoutIcon: StoryFn<typeof AgronodAlert> = ({
+export const WithoutIcon: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
 }: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
-AgronodAlertWithoutIcon.args = {
+WithoutIcon.args = {
   title: "This is title",
   children: "Alert without icon",
-  severity: "success",
+  severity: "info",
   icon: false,
-  variant: "filled",
 };
 
-export const AgronodAlertWithCloseButton: StoryFn<typeof AgronodAlert> = ({
+export const WithCloseButton: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
 }: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
-AgronodAlertWithCloseButton.args = {
+WithCloseButton.args = {
   title: "Closable",
   children: "Alert supports close button click event",
   severity: "error",
-  variant: "filled",
   onClose: () => {
     alert("close event triggered");
   },
 };
 
-export const AgronodAlertWithActionProperty: StoryFn<typeof AgronodAlert> = ({
+export const WithActionProperty: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
 }: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
-AgronodAlertWithActionProperty.args = {
+WithActionProperty.args = {
   title: "Action property",
   children: "Alert supports close button click event",
   severity: "success",
@@ -134,7 +164,7 @@ AgronodAlertWithActionProperty.args = {
   ),
 };
 
-export const AgronodAlertBehindCard: StoryFn<typeof AgronodAlert> = ({
+export const BehindCard: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
 }: AgronodAlertProps) => (
@@ -146,94 +176,20 @@ export const AgronodAlertBehindCard: StoryFn<typeof AgronodAlert> = ({
   </>
 );
 
-AgronodAlertBehindCard.args = {
+BehindCard.args = {
   children: "Alert that is attached to a card",
-  severity: "error",
-  variant: "filled",
-  behindCard: true,
-  action: (
-    <AgronodButton
-      variant="outlined"
-      color="error"
-      size="small"
-      onClick={() => alert("action triggered")}
-    >
-      Trigger action
-    </AgronodButton>
-  ),
-};
-
-export const AgronodAlertCustomIcon: StoryFn<typeof AgronodAlert> = ({
-  children,
-  ...rest
-}: AgronodAlertProps) => (
-  <>
-    <AgronodCard sx={(theme) => ({ borderColor: theme.palette.warning.light })}>
-      <p>this is card</p>
-    </AgronodCard>
-    <AgronodAlert {...rest}>{children}</AgronodAlert>
-  </>
-);
-
-AgronodAlertCustomIcon.args = {
-  children: "Alert with custom icon element",
-  severity: "warning",
-  variant: "standard",
-  behindCard: true,
-  icon: <LoaderCircular color="warning" size={15} />,
-};
-
-export const AgronodAlertLoadingDefault: StoryFn<typeof AgronodAlert> = ({
-  children,
-  ...rest
-}: AgronodAlertProps) => (
-  <>
-    <AgronodAlert {...rest}>{children}</AgronodAlert>
-  </>
-);
-
-AgronodAlertLoadingDefault.args = {
-  children: "Loading default",
-  severity: "loading",
-  variant: "standard",
-  behindCard: false,
-};
-
-export const AgronodAlertLoadingBehindCard: StoryFn<typeof AgronodAlert> = ({
-  children,
-  ...rest
-}: AgronodAlertProps) => (
-  <>
-    <AgronodCard sx={(theme) => ({ borderColor: theme.palette.info.light })}>
-      <p>this is card</p>
-    </AgronodCard>
-    <AgronodAlert {...rest}>{children}</AgronodAlert>
-  </>
-);
-
-AgronodAlertLoadingBehindCard.args = {
-  children: "Loading behind card",
-  severity: "loading",
-  variant: "standard",
+  severity: "info",
   behindCard: true,
 };
 
-export const AgronodAlertLoadingCustomIcon: StoryFn<typeof AgronodAlert> = ({
+export const CustomIcon: StoryFn<typeof AgronodAlert> = ({
   children,
   ...rest
-}: AgronodAlertProps) => (
-  <>
-    <AgronodCard sx={(theme) => ({ borderColor: theme.palette.info.light })}>
-      <p>this is card</p>
-    </AgronodCard>
-    <AgronodAlert {...rest}>{children}</AgronodAlert>
-  </>
-);
+}: AgronodAlertProps) => <AgronodAlert {...rest}>{children}</AgronodAlert>;
 
-AgronodAlertLoadingCustomIcon.args = {
-  children: "Loading with custom icon",
-  severity: "loading",
+CustomIcon.args = {
+  children: "Alert with custom icon",
+  severity: "info",
   variant: "standard",
-  behindCard: true,
-  icon: <Warning color="warning" />,
+  icon: <ArrowBackIcon />,
 };
