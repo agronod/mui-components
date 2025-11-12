@@ -108,8 +108,10 @@ const AgronodDialog = ({
               ))}
             {title &&
               (typeof title === "string" ? (
-                
-                <AgronodTypography variant={"h4"}>
+                <AgronodTypography
+                  sx={{ fontSize: isMobile ? "22px" : "32px" }}
+                  variant={"h4"}
+                >
                   {title || ""}
                 </AgronodTypography>
               ) : (
