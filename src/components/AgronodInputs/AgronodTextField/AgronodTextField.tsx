@@ -55,6 +55,7 @@ const StyledMuiTextField = ({
   hasIcon,
   textAlignment,
   warning,
+  sx: externalSx,
   ...rest
 }: AgronodTextFieldProps) => {
   const icon = useMemo(() => {
@@ -104,58 +105,54 @@ const StyledMuiTextField = ({
           }}
           variant="outlined"
           placeholder={rest.placeholder} // Ensure placeholder is passed
-          sx={[(theme) => ({
-            "& .MuiInputBase-root": {
-              width: rest.fullWidth ? "100%" : "220px",
-            },
-            "& .MuiInputBase-input": {
-              paddingLeft: hasIcon && (rest.error || warning) ? "46px" : "14px"
-            },
-            "& .MuiInputBase-root:not(.Mui-disabled)": {
-              backgroundColor: rest.error
-                ? theme.palette.error.pastel
-                : warning
-                  ? theme.palette.warning.pastel
-                  : undefined,
-              "& fieldset": {
-                borderColor: rest.error
-                  ? theme.palette.error.main
-                  : warning
-                    ? theme.palette.warning.main
-                    : undefined,
-              },
-              "&:hover fieldset": {
-                borderColor: rest.error
-                  ? theme.palette.error.main
-                  : warning
-                    ? theme.palette.warning.main
-                    : undefined,
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: rest.error
-                  ? theme.palette.error.main
-                  : warning
-                    ? theme.palette.warning.main
-                    : undefined,
-              },
-            },
-            "& .MuiInputBase-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
-              {
-                backgroundColor:
-                  !rest.error && !warning && emptyStyle === "highlighted"
-                    ? theme.palette.secondary.pastel
-                    : undefined,
-              },
-          }), textAlignment ? {
-            "& .MuiInputBase-input": {
-              textAlign: textAlignment
-            }
-          } : {
-            "& .MuiInputBase-input": {
-              textAlign: "left"
-            }
-          }]}
           {...rest}
+          sx={[
+            (theme) => ({
+              "& .MuiInputBase-root": {
+                width: rest.fullWidth ? "100%" : "220px",
+              },
+              "& .MuiInputBase-input": {
+                paddingLeft: hasIcon && (rest.error || warning) ? "46px" : "14px",
+                textAlign: textAlignment || "left",
+              },
+              "& .MuiInputBase-root:not(.Mui-disabled)": {
+                backgroundColor: rest.error
+                  ? theme.palette.error.pastel
+                  : warning
+                    ? theme.palette.warning.pastel
+                    : undefined,
+                "& fieldset": {
+                  borderColor: rest.error
+                    ? theme.palette.error.main
+                    : warning
+                      ? theme.palette.warning.main
+                      : undefined,
+                },
+                "&:hover fieldset": {
+                  borderColor: rest.error
+                    ? theme.palette.error.main
+                    : warning
+                      ? theme.palette.warning.main
+                      : undefined,
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: rest.error
+                    ? theme.palette.error.main
+                    : warning
+                      ? theme.palette.warning.main
+                      : undefined,
+                },
+              },
+              "& .MuiInputBase-root:has(input[value='']):not(:has(.MuiChip-root)):not(.Mui-disabled)":
+                {
+                  backgroundColor:
+                    !rest.error && !warning && emptyStyle === "highlighted"
+                      ? theme.palette.secondary.pastel
+                      : undefined,
+                },
+            }),
+            ...(Array.isArray(externalSx) ? externalSx : externalSx ? [externalSx] : []),
+          ]}
         />
       </Box>
       {!hideHelperText && helperText !== undefined && (

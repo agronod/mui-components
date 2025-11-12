@@ -214,3 +214,54 @@ AgronodAutocompleteSearchAlertMessage.args = {
   filterOptions: ["title", "year"],
   maxWidth: "100%",
 };
+
+export const AgronodAutocompleteSearchGrouped: StoryFn<
+  typeof AgronodAutocompleteSearch
+> = ({ ...args }) => {
+  const [values, setValues] = useState<Film[]>(films);
+
+  const handleSelect = (value: Film) => {
+    const newValues = values.map((v) => {
+      if (v.id === value.id) {
+        v.selected = !value.selected;
+      }
+      return v;
+    });
+    setValues(newValues);
+  };
+
+  const getDecade = (film: Film) => {
+    const decade = Math.floor(film.year / 10) * 10;
+    return `${decade}s`;
+  };
+
+  return (
+    <AgronodAutocompleteSearch
+      placeholder={args.placeholder}
+      noOptionsText={args.noOptionsText}
+      filterOptions={args.filterOptions}
+      maxWidth={args.maxWidth}
+      options={values}
+      value={values.filter((v) => v.selected)}
+      onOptionChange={handleSelect}
+      isOptionEqualToValue={(option, value) => option?.id === value?.id}
+      getOptionLabel={(option) => option.title}
+      getGroupLabel={getDecade}
+      nameSelector={(option) => option?.title}
+      isOptionDisabled={(option) => Boolean(option.isDisabled)}
+      isOptionSelected={(option) =>
+        Boolean(
+          values.filter((v) => v.selected).find((v) => v?.id === option?.id)
+        )
+      }
+      additionalInfoText={(option) => option.year}
+    />
+  );
+};
+
+AgronodAutocompleteSearchGrouped.args = {
+  placeholder: "Search movies by title or year",
+  noOptionsText: "No Results found",
+  filterOptions: ["title", "year"],
+  maxWidth: "100%",
+};
