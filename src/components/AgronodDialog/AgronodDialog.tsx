@@ -53,7 +53,6 @@ const AgronodDialog = ({
 
   return (
     <Dialog
-      maxWidth={false}
       disableEscapeKeyDown={false}
       {...rest}
       slotProps={{

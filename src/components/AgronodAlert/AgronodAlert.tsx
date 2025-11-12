@@ -14,6 +14,7 @@ type AgronodAlertSeverity =
   | "warning"
   | "error"
   | "loading";
+
 type AgronodAlertBaseProps = Pick<
   MuiAlertProps,
   | "variant"

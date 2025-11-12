@@ -11,6 +11,39 @@ export default {
   component: AgronodDialog,
 } as Meta<typeof AgronodDialog>;
 
+const BasicActions = ({ onClose }: { onClose: () => void }) => {
+  return (
+    <>
+      <AgronodButton variant="outlined" onClick={() => onClose()}>
+        Cancel
+      </AgronodButton>
+      <AgronodButton variant="contained" onClick={() => onClose()}>
+        Confirm
+      </AgronodButton>
+    </>
+  );
+};
+
+const BasicContent = () => {
+  return (
+    <Box>
+      <AgronodTypography variant="body2">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </AgronodTypography>
+      <br />
+
+      <AgronodTypography variant="body2">
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </AgronodTypography>
+    </Box>
+  );
+};
+
 export const Default: StoryFn<typeof AgronodDialog> = (
   args: AgronodDialogProps
 ) => {
@@ -26,38 +59,62 @@ export const Default: StoryFn<typeof AgronodDialog> = (
         open={open}
         onClose={() => setOpen(false)}
         title="Dialog Title"
-        actions={
-          <>
-            <AgronodButton variant="outlined" onClick={() => setOpen(false)}>
-              Cancel
-            </AgronodButton>
-            <AgronodButton variant="contained" onClick={() => setOpen(false)}>
-              Confirm
-            </AgronodButton>
-          </>
-        }
+        actions={<BasicActions onClose={() => setOpen(false)} />}
       >
-        <Box>
-          <AgronodTypography variant="body2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </AgronodTypography>
-          <br />
-
-          <AgronodTypography variant="body2">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
-          </AgronodTypography>
-        </Box>
+        <BasicContent />
       </AgronodDialog>
     </>
   );
 };
 Default.args = {};
+
+export const ActionsAlignedStart: StoryFn<typeof AgronodDialog> = (
+  args: AgronodDialogProps
+) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <AgronodButton variant="contained" onClick={() => setOpen(true)}>
+        Open dialog
+      </AgronodButton>
+      <AgronodDialog
+        {...args}
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Dialog Title"
+        alignActions="start"
+        actions={<BasicActions onClose={() => setOpen(false)} />}
+      >
+        <BasicContent />
+      </AgronodDialog>
+    </>
+  );
+};
+
+export const ActionsAlignedCenter: StoryFn<typeof AgronodDialog> = (
+  args: AgronodDialogProps
+) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <AgronodButton variant="contained" onClick={() => setOpen(true)}>
+        Open dialog
+      </AgronodButton>
+      <AgronodDialog
+        {...args}
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Dialog Title"
+        alignActions="center"
+        actions={<BasicActions onClose={() => setOpen(false)} />}
+      >
+        <BasicContent />
+      </AgronodDialog>
+    </>
+  );
+};
 
 export const Success: StoryFn<typeof AgronodDialog> = (
   args: AgronodDialogProps
