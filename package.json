@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.25.1",
+  "version": "1.25.2-fix-undo-sorting-of-autocomplete-groups.0",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
