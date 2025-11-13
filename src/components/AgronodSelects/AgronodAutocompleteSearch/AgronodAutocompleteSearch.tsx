@@ -136,14 +136,12 @@ const AgronodAutocompleteSearch = <T,>({
 
     // Flatten into a list with group headers
     const result: FlattenedItem<T>[] = [];
-    Object.keys(grouped)
-      .sort()
-      .forEach((group) => {
-        result.push({ type: "group", group });
-        grouped[group].forEach(({ option, index }) => {
-          result.push({ type: "option", option, index });
-        });
+    Object.keys(grouped).forEach((group) => {
+      result.push({ type: "group", group });
+      grouped[group].forEach(({ option, index }) => {
+        result.push({ type: "option", option, index });
       });
+    });
 
     return result;
   }, [filteredOptions, getGroupLabel]);
