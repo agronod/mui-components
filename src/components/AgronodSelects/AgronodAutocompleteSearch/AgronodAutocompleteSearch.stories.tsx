@@ -218,7 +218,25 @@ AgronodAutocompleteSearchAlertMessage.args = {
 export const AgronodAutocompleteSearchGrouped: StoryFn<
   typeof AgronodAutocompleteSearch
 > = ({ ...args }) => {
-  const [values, setValues] = useState<Film[]>(films);
+  const getDecade = (film: Film) => {
+    return Math.floor(film.year / 10) * 10;
+  };
+
+  const getDecadeString = (film: Film) => {
+    const decade = Math.floor(film.year / 10) * 10;
+    return `${decade}s`;
+  };
+
+  const [values, setValues] = useState<Film[]>(
+    films.sort((a, b) => {
+      const decadeA = getDecade(a);
+      const decadeB = getDecade(b);
+      if (decadeA !== decadeB) {
+        return decadeA - decadeB;
+      }
+      return a.title.localeCompare(b.title);
+    })
+  );
 
   const handleSelect = (value: Film) => {
     const newValues = values.map((v) => {
@@ -228,11 +246,6 @@ export const AgronodAutocompleteSearchGrouped: StoryFn<
       return v;
     });
     setValues(newValues);
-  };
-
-  const getDecade = (film: Film) => {
-    const decade = Math.floor(film.year / 10) * 10;
-    return `${decade}s`;
   };
 
   return (
@@ -246,7 +259,7 @@ export const AgronodAutocompleteSearchGrouped: StoryFn<
       onOptionChange={handleSelect}
       isOptionEqualToValue={(option, value) => option?.id === value?.id}
       getOptionLabel={(option) => option.title}
-      getGroupLabel={getDecade}
+      getGroupLabel={getDecadeString}
       nameSelector={(option) => option?.title}
       isOptionDisabled={(option) => Boolean(option.isDisabled)}
       isOptionSelected={(option) =>
