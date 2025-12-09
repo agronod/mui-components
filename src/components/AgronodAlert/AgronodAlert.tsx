@@ -30,6 +30,8 @@ type AgronodAlertBaseProps = Pick<
   | "className"
   | "ref"
   | "component"
+  | "slots"
+  | "slotProps"
 > & { severity?: AgronodAlertSeverity };
 
 export interface AgronodAlertProps extends AgronodAlertBaseProps {

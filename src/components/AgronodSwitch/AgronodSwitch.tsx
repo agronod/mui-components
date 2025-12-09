@@ -2,6 +2,8 @@ import {
   SwitchProps as MuiSwitchProps,
   Switch as MuiSwitch,
   FormControlLabel,
+  SxProps,
+  Theme,
 } from "@mui/material";
 import { ReactNode } from "react";
 
@@ -12,6 +14,7 @@ type AgronodMuiSwitchBaseProps = Pick<
 
 export interface AgronodSwitchProps extends AgronodMuiSwitchBaseProps {
   label?: ReactNode;
+  sx?: SxProps<Theme>;
 }
 
 
@@ -22,6 +25,7 @@ const StyledMuiSwitch = (props: AgronodSwitchProps) => (
     onClick={props.onClick}
     disableRipple={true}
     checked={props.checked}
+    sx={props.sx}
   />
 );
 

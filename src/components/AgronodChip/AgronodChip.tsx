@@ -1,12 +1,13 @@
-import { ChipProps as MuiChipProps, Chip as MuiChip } from "@mui/material";
+import { ChipProps as MuiChipProps, Chip as MuiChip, SxProps, Theme } from "@mui/material";
 import { AgronodTypography } from "../AgronodTypography";
 type AgronodChipBaseProps = Pick<
   MuiChipProps,
-  "size" | "color" | "disabled" | "label" | "onMouseDown"
+  "size" | "color" | "disabled" | "label" | "onMouseDown" | "onClick"
 >;
 
 export interface AgroodChipProps extends AgronodChipBaseProps {
   handleOnDelete?: () => void;
+  sx?: SxProps<Theme>;
 }
 
 const AgronodChip = (props: AgroodChipProps) => {
@@ -20,6 +21,7 @@ const AgronodChip = (props: AgroodChipProps) => {
       skipFocusWhenDisabled={true}
       onDelete={props.handleOnDelete ? props.handleOnDelete : undefined}
       onMouseDown={props.onMouseDown}
+      onClick={props.onClick}
       variant="filled"
       sx={[(theme) => ({
         display: "flex",
@@ -78,7 +80,7 @@ const AgronodChip = (props: AgroodChipProps) => {
         paddingY: 0.5
       } : {
         paddingY: 1
-      }]}
+      }, ...(Array.isArray(props.sx) ? props.sx : props.sx ? [props.sx] : [])]}
     />
   );
 };
