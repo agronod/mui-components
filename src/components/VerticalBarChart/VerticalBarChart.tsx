@@ -59,7 +59,7 @@ const Bar = ({
   const width = round(data.value) * factor;
 
   return (
-    <g>
+    <g onMouseDown={onClick}>
       {selected && (
         <rect
           x={0}
@@ -78,7 +78,7 @@ const Bar = ({
         fill={color}
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
-        onClick={onClick}
+        onMouseDown={onClick}
         clipPath={`url(#round-corner${componentId}-${index})`}
       />
     </g>
@@ -276,6 +276,7 @@ const VerticalBarChart = ({
                 key={index}
                 onMouseEnter={() => onHover(index)}
                 onMouseLeave={() => onHover(undefined)}
+                onClick={() => onClick(index)}
                 sx={{
                   paddingX: 2,
                   position: "absolute",
