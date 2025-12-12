@@ -76,9 +76,18 @@ const Bar = ({
         width={width}
         height={height}
         fill={color}
-        onMouseEnter={onEnter}
-        onMouseLeave={onLeave}
-        onMouseDown={onClick}
+        onMouseEnter={(e) => {
+          e.stopPropagation();
+          onEnter();
+        }}
+        onMouseLeave={(e) => {
+          e.stopPropagation();
+          onLeave();
+        }}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          onClick();
+        }}
         clipPath={`url(#round-corner${componentId}-${index})`}
       />
     </g>
@@ -274,9 +283,18 @@ const VerticalBarChart = ({
           : data.map((item, index) => (
               <Box
                 key={index}
-                onMouseEnter={() => onHover(index)}
-                onMouseLeave={() => onHover(undefined)}
-                onClick={() => onClick(index)}
+                onMouseEnter={(e) => {
+                  e.stopPropagation();
+                  onHover(index);
+                }}
+                onMouseLeave={(e) => {
+                  e.stopPropagation();
+                  onHover(undefined);
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClick(index);
+                }}
                 sx={{
                   paddingX: 2,
                   position: "absolute",
