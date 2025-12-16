@@ -150,5 +150,5 @@ export const VerticalBarChartSelected: StoryFn<typeof VerticalBarChart> = ({
 
 VerticalBarChartSelected.args = {
   data: data2,
-  selectedId: "3",
+  selectedIds: ["1", "3"],
 };

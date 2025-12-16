@@ -19,7 +19,7 @@ export type VerticalBarChartData = {
 
 export type VerticalBarChartProps = {
   data: Array<VerticalBarChartData>;
-  selectedId?: string;
+  selectedIds?: string[];
   onItemHover?: (id?: string) => void;
   onItemClick?: (id?: string) => void;
   showSkeleton?: boolean;
@@ -96,7 +96,7 @@ const Bar = ({
 
 const VerticalBarChart = ({
   data,
-  selectedId,
+  selectedIds,
   onItemHover,
   onItemClick,
   showSkeleton,
@@ -239,11 +239,13 @@ const VerticalBarChart = ({
                 y={0}
                 factor={factor}
                 color={
-                  selectedId !== undefined && selectedId !== item.id
+                  selectedIds !== undefined &&
+                  selectedIds.length > 0 &&
+                  !selectedIds.includes(item.id)
                     ? "#E5E3E0"
                     : item.color
                 }
-                selected={selectedId === item.id}
+                selected={selectedIds?.includes(item.id)}
                 index={index}
                 componentId={componentId}
               />
