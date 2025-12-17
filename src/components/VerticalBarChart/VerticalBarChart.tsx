@@ -19,8 +19,9 @@ export type VerticalBarChartData = {
 
 export type VerticalBarChartProps = {
   data: Array<VerticalBarChartData>;
-  selectedId?: string;
+  selectedIds?: string[];
   onItemHover?: (id?: string) => void;
+  onItemClick?: (id?: string) => void;
   showSkeleton?: boolean;
 };
 
@@ -32,6 +33,7 @@ const Bar = ({
   data,
   onEnter,
   onLeave,
+  onClick,
   height,
   x,
   y,
@@ -52,11 +54,12 @@ const Bar = ({
   selected?: boolean;
   onEnter: () => void;
   onLeave: () => void;
+  onClick: () => void;
 }) => {
   const width = round(data.value) * factor;
 
   return (
-    <g>
+    <g onMouseDown={onClick}>
       {selected && (
         <rect
           x={0}
@@ -73,8 +76,18 @@ const Bar = ({
         width={width}
         height={height}
         fill={color}
-        onMouseEnter={onEnter}
-        onMouseLeave={onLeave}
+        onMouseEnter={(e) => {
+          e.stopPropagation();
+          onEnter();
+        }}
+        onMouseLeave={(e) => {
+          e.stopPropagation();
+          onLeave();
+        }}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          onClick();
+        }}
         clipPath={`url(#round-corner${componentId}-${index})`}
       />
     </g>
@@ -83,8 +96,9 @@ const Bar = ({
 
 const VerticalBarChart = ({
   data,
-  selectedId,
+  selectedIds,
   onItemHover,
+  onItemClick,
   showSkeleton,
 }: VerticalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
@@ -118,6 +132,15 @@ const VerticalBarChart = ({
     (index?: number) => {
       if (onItemHover) {
         onItemHover(index !== undefined ? dataSorted[index].id : undefined);
+      }
+    },
+    [onItemHover, dataSorted]
+  );
+
+  const onClick = useCallback(
+    (index?: number) => {
+      if (onItemClick) {
+        onItemClick(index !== undefined ? dataSorted[index].id : undefined);
       }
     },
     [onItemHover, dataSorted]
@@ -209,17 +232,20 @@ const VerticalBarChart = ({
               <Bar
                 onEnter={() => onHover(index)}
                 onLeave={() => onHover(undefined)}
+                onClick={() => onClick(index)}
                 data={item}
                 height={barHeight}
                 x={TICK_WIDTH}
                 y={0}
                 factor={factor}
                 color={
-                  selectedId !== undefined && selectedId !== item.id
+                  selectedIds !== undefined &&
+                  selectedIds.length > 0 &&
+                  !selectedIds.includes(item.id)
                     ? "#E5E3E0"
                     : item.color
                 }
-                selected={selectedId === item.id}
+                selected={selectedIds?.includes(item.id)}
                 index={index}
                 componentId={componentId}
               />
@@ -259,8 +285,18 @@ const VerticalBarChart = ({
           : data.map((item, index) => (
               <Box
                 key={index}
-                onMouseEnter={() => onHover(index)}
-                onMouseLeave={() => onHover(undefined)}
+                onMouseEnter={(e) => {
+                  e.stopPropagation();
+                  onHover(index);
+                }}
+                onMouseLeave={(e) => {
+                  e.stopPropagation();
+                  onHover(undefined);
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClick(index);
+                }}
                 sx={{
                   paddingX: 2,
                   position: "absolute",

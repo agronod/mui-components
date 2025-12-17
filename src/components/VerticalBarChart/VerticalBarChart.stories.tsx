@@ -1,6 +1,8 @@
 import { StoryFn, Meta } from "@storybook/react-vite";
 import VerticalBarChart, { VerticalBarChartData } from "./VerticalBarChart";
 import { Box } from "@mui/material";
+import { useState } from "react";
+import { AgronodTypography } from "../AgronodTypography";
 
 export default {
   title: "Agrosfär Exclusive/Vertical Bar Chart",
@@ -87,13 +89,31 @@ const data2: VerticalBarChartData[] = [
 
 export const VerticalBarChartDefault: StoryFn<typeof VerticalBarChart> = ({
   ...args
-}) => (
-  <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-    <Box width={"100%"} height={600}>
-      <VerticalBarChart {...args} />
+}) => {
+  const [hovered, setHovered] = useState<string | undefined>();
+  const [clicked, setClicked] = useState<string | undefined>();
+  return (
+    <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
+      <Box width={"100%"} height={600}>
+        <VerticalBarChart
+          onItemClick={(item) => setClicked(item)}
+          onItemHover={(item) => setHovered(item)}
+          {...args}
+        />
+        {clicked !== undefined && (
+          <AgronodTypography>{`${
+            args.data.find((x) => x.id === clicked)?.name
+          } clicked`}</AgronodTypography>
+        )}
+        {hovered !== undefined && (
+          <AgronodTypography>{`${
+            args.data.find((x) => x.id === hovered)?.name
+          } hovered`}</AgronodTypography>
+        )}
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 VerticalBarChartDefault.args = {
   data: data,
@@ -101,15 +121,34 @@ VerticalBarChartDefault.args = {
 
 export const VerticalBarChartSelected: StoryFn<typeof VerticalBarChart> = ({
   ...args
-}) => (
-  <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-    <Box width={300} height={600}>
-      <VerticalBarChart {...args} />
+}) => {
+  const [hovered, setHovered] = useState<string | undefined>();
+  const [clicked, setClicked] = useState<string | undefined>();
+
+  return (
+    <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
+      <Box width={300} height={600}>
+        <VerticalBarChart
+          onItemClick={(item) => setClicked(item)}
+          onItemHover={(item) => setHovered(item)}
+          {...args}
+        />
+        {clicked !== undefined && (
+          <AgronodTypography>{`${
+            args.data.find((x) => x.id === clicked)?.name
+          } clicked`}</AgronodTypography>
+        )}
+        {hovered !== undefined && (
+          <AgronodTypography>{`${
+            args.data.find((x) => x.id === hovered)?.name
+          } hovered`}</AgronodTypography>
+        )}
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 VerticalBarChartSelected.args = {
   data: data2,
-  selectedId: "3",
+  selectedIds: ["1", "3"],
 };
