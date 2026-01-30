@@ -149,9 +149,13 @@ const Tooltip = ({
   // Always call hooks before any early returns
   const tooltipListSorted = useMemo(
     () => [
-      ...tooltipList.sort(
-        (a: TooltipData, b: TooltipData) => b.value - a.value,
-      ),
+      ...tooltipList.sort((a: TooltipData, b: TooltipData) => {
+        const diff = b.value - a.value;
+        if (diff === 0) {
+          return a.name.localeCompare(b.name);
+        }
+        return diff;
+      }),
     ],
     [tooltipList],
   );
