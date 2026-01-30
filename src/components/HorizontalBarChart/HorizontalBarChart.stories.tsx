@@ -21,6 +21,11 @@ const data: HorizontalBarChartData[] = [
         value: 100,
         suffix: "%",
       },
+      {
+        name: "Mindre värde",
+        value: 0,
+        suffix: "%",
+      },
     ],
   },
   {
