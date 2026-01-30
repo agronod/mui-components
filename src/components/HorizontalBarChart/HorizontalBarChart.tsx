@@ -60,11 +60,11 @@ const Bar = ({
   // Always call hooks unconditionally (required by React)
   const color = useMemo(
     () => (Array.isArray(data.color) ? data.color.reverse() : data.color),
-    [data.color]
+    [data.color],
   );
   const getColor = useCallback(
     (itemIndex: number) => (Array.isArray(color) ? color[itemIndex] : color),
-    [color]
+    [color],
   );
 
   if (Array.isArray(data.value)) {
@@ -77,11 +77,10 @@ const Bar = ({
             round(
               dataReversed
                 .slice(innerIndex)
-                .reduce((acc, curr) => acc + curr, 0)
+                .reduce((acc, curr) => acc + curr, 0),
             ) * factor;
 
           return (
-                
             <Fragment key={innerIndex}>
               <rect
                 x={x}
@@ -136,58 +135,63 @@ const Bar = ({
   );
 };
 
-const Tooltip = 
-  ({
-    style,
-    active,
-    tooltipList,
-    label,
-  }: {
-    style: React.CSSProperties;
-    active: boolean;
-    tooltipList: Array<TooltipData>;
-    label: string;
-  }) => {
-    // Always call hooks before any early returns
-    const tooltipListSorted = useMemo(
-      () => [
-        ...tooltipList.sort(
-          (a: TooltipData, b: TooltipData) => b.value - a.value
-        ),
-      ],
-      [tooltipList]
-    );
+const Tooltip = ({
+  style,
+  active,
+  tooltipList,
+  label,
+}: {
+  style: React.CSSProperties;
+  active: boolean;
+  tooltipList: Array<TooltipData>;
+  label: string;
+}) => {
+  // Always call hooks before any early returns
+  const tooltipListSorted = useMemo(
+    () => [
+      ...tooltipList.sort((a: TooltipData, b: TooltipData) => {
+        const diff = b.value - a.value;
+        if (diff === 0) {
+          return a.name.localeCompare(b.name);
+        }
+        return diff;
+      }),
+    ],
+    [tooltipList],
+  );
 
-    if (!active || tooltipList.length === 0) return <></>;
+  if (!active || tooltipList.length === 0) return <></>;
 
-    return (
-      <Box
-        style={{
-          position: "absolute",
-          transform: "translate(-20%, -60px)",
-          zIndex: 10000,
-          ...style,
-        }}
+  return (
+    <Box
+      style={{
+        position: "absolute",
+        transform: "translate(-20%, -60px)",
+        zIndex: 10000,
+        ...style,
+      }}
+    >
+      <AgronodCard
+        sx={(theme) => ({
+          textAlign: "left",
+          padding: 3,
+          display: "flex",
+          position: "relative",
+          top: -120,
+          maxWidth: 300,
+          flexDirection: "column",
+          [theme.breakpoints.down("sm")]: {
+            left: -110,
+            top: -110,
+          },
+        })}
       >
-        <AgronodCard
-          sx={(theme) => ({
-            textAlign: "left",
-            padding: 3,
-            display: "flex",
-            position: "relative",
-            top: -120,
-            maxWidth: 300,
-            flexDirection: "column",
-            [theme.breakpoints.down("sm")]: {
-              left: -110,
-              top: -110,
-            },
-          })}
-        >
-          <AgronodTypography fontWeight={500} mb={2} variant="overline">
-            {label}
-          </AgronodTypography>
-          {tooltipListSorted.map((listItem: TooltipData) => (
+        <AgronodTypography fontWeight={500} mb={2} variant="overline">
+          {label}
+        </AgronodTypography>
+        {tooltipListSorted.map((listItem: TooltipData) => {
+          const value = round(listItem.value);
+          return (
             <Stack
               key={listItem.name}
               direction="row"
@@ -200,18 +204,19 @@ const Tooltip =
                 variant="caption"
                 sx={{ minWidth: "30px" }}
               >
-                {`${round(listItem.value).toLocaleString("sv-SE")}${listItem.suffix || ""}`}
+                {`${value !== 0 ? round(listItem.value).toLocaleString("sv-SE") : "<1"}${listItem.suffix || ""}`}
               </AgronodTypography>
 
               <AgronodTypography ml={1} mb={0.5} variant="caption">
                 {listItem.name}
               </AgronodTypography>
             </Stack>
-          ))}
-        </AgronodCard>
-      </Box>
-    );
-  }
+          );
+        })}
+      </AgronodCard>
+    </Box>
+  );
+};
 
 const HorizontalBarChart = ({
   data,
@@ -228,7 +233,7 @@ const HorizontalBarChart = ({
 
   const hasTooltipData = useMemo(
     () => data.some((item) => Boolean(item.tooltipData?.length)),
-    [data]
+    [data],
   );
 
   useEffect(() => {
@@ -252,7 +257,7 @@ const HorizontalBarChart = ({
       setActiveIndex(index);
       setTooltipVisible(true);
     },
-    [setActiveIndex, setTooltipVisible, hasTooltipData]
+    [setActiveIndex, setTooltipVisible, hasTooltipData],
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -273,7 +278,7 @@ const HorizontalBarChart = ({
       });
       setTooltipVisible(true);
     },
-    [setTooltipPosition, setTooltipVisible, hasTooltipData]
+    [setTooltipPosition, setTooltipVisible, hasTooltipData],
   );
 
   const mapTotalValue = useCallback((item: HorizontalBarChartData) => {
@@ -286,7 +291,7 @@ const HorizontalBarChart = ({
 
   const factor = useMemo(
     () => Math.max(0, chartHeight / Math.max(...data.map(mapTotalValue))),
-    [data, chartHeight, mapTotalValue]
+    [data, chartHeight, mapTotalValue],
   );
 
   const barWidth = useMemo(() => {
@@ -309,7 +314,7 @@ const HorizontalBarChart = ({
 
     return Array.from(
       { length: numberOfGrids },
-      (_, index) => chartHeight - index * adjustedGridHeight
+      (_, index) => chartHeight - index * adjustedGridHeight,
     );
   }, [chartHeight]);
 
