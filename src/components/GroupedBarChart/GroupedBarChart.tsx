@@ -95,10 +95,7 @@ const GroupedBarChart = ({
     [chartHeight],
   );
 
-  const baseline = useMemo(
-    () => chartHeight - CHART_PADDING_Y,
-    [chartHeight],
-  );
+  const baseline = useMemo(() => chartHeight - CHART_PADDING_Y, [chartHeight]);
 
   const factor = useMemo(
     () => (yAxisMax > 0 ? drawableHeight / yAxisMax : 0),
@@ -117,22 +114,16 @@ const GroupedBarChart = ({
     return Math.max(0, (groupWidth - totalGaps) / categories.length);
   }, [groupWidth, categories.length]);
 
-  const radius = useMemo(
-    () => Math.min(BAR_RADIUS, barWidth / 2),
-    [barWidth],
-  );
+  const radius = useMemo(() => Math.min(BAR_RADIUS, barWidth / 2), [barWidth]);
 
   const gridLineYPositions = useMemo(
     () => yAxisTicks.map((tick) => baseline - tick * factor),
     [yAxisTicks, baseline, factor],
   );
 
-  const handleBarEnter = useCallback(
-    (groupIndex: number, barIndex: number) => {
-      setActiveBar({ groupIndex, barIndex });
-    },
-    [],
-  );
+  const handleBarEnter = useCallback((groupIndex: number, barIndex: number) => {
+    setActiveBar({ groupIndex, barIndex });
+  }, []);
 
   const handleBarLeave = useCallback(() => {
     setActiveBar(null);
@@ -329,9 +320,7 @@ const GroupedBarChart = ({
             }}
           >
             {groups.map((group) => {
-              const total = round(
-                group.values.reduce((sum, v) => sum + v, 0),
-              );
+              const total = round(group.values.reduce((sum, v) => sum + v, 0));
 
               return (
                 <Box
@@ -439,7 +428,7 @@ const GroupedBarChart = ({
             top: tooltipPosition.y,
             transform: "translateY(-100%)",
             pointerEvents: "none",
-            zIndex: 10,
+            zIndex: 10000,
           }}
         >
           <Box
