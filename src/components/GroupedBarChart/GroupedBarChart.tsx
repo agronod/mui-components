@@ -73,22 +73,34 @@ const GroupedBarChart = ({
     };
   }, []);
 
-  const yAxisMax = useMemo(() => {
-    if (yAxisMaxProp !== undefined) return yAxisMaxProp;
-    const maxValue = Math.max(...groups.flatMap((group) => group.values));
-    if (maxValue === 0) return 1;
-    const magnitude = Math.pow(10, Math.floor(Math.log10(maxValue)));
-    return Math.ceil(maxValue / magnitude) * magnitude;
-  }, [yAxisMaxProp, groups]);
+  const { yAxisTicks, yAxisMax } = useMemo(() => {
+    const dataMax =
+      yAxisMaxProp ?? Math.max(...groups.flatMap((group) => group.values));
+    if (dataMax <= 0) return { yAxisTicks: [0], yAxisMax: 1 };
 
-  const yAxisTicks = useMemo(() => {
+    // Calculate a nice step size based on order of magnitude
+    const roughStep = dataMax / yAxisStepCount;
+    const magnitude = Math.pow(10, Math.floor(Math.log10(roughStep)));
+    const normalized = roughStep / magnitude;
+
+    let niceNormalized: number;
+    if (normalized <= 1) niceNormalized = 1;
+    else if (normalized <= 2) niceNormalized = 2;
+    else if (normalized <= 5) niceNormalized = 5;
+    else niceNormalized = 10;
+
+    const niceStep = niceNormalized * magnitude;
+    const stepsNeeded = Math.ceil(dataMax / niceStep);
+    const finalStepCount = Math.max(yAxisStepCount, stepsNeeded);
+    const niceMax = niceStep * finalStepCount;
+
     const ticks: number[] = [];
-    for (let i = yAxisStepCount; i >= 0; i--) {
-      const value = (yAxisMax / yAxisStepCount) * i;
-      ticks.push(Math.round(value * 1000) / 1000);
+    for (let i = finalStepCount; i >= 0; i--) {
+      ticks.push(Math.round(niceStep * i * 1e10) / 1e10);
     }
-    return ticks;
-  }, [yAxisMax, yAxisStepCount]);
+
+    return { yAxisTicks: ticks, yAxisMax: niceMax };
+  }, [yAxisMaxProp, groups, yAxisStepCount]);
 
   const drawableHeight = useMemo(
     () => Math.max(0, chartHeight - 2 * CHART_PADDING_Y),
