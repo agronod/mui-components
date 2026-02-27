@@ -1,5 +1,5 @@
 import { Box, Divider } from "@mui/material";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { round } from "../utils";
 import { AgronodTypography } from "../AgronodTypography";
 
@@ -15,8 +15,8 @@ export type GroupedBarChartCategory = {
 
 export type GroupedBarChartGroup = {
   id: string;
-  name: string;
-  unit: string;
+  name: ReactNode;
+  unit: ReactNode;
   values: number[];
   tooltipData?: GroupedBarChartTooltipItem[][];
 };
@@ -27,6 +27,11 @@ export type GroupedBarChartProps = {
   yAxisMax?: number;
   yAxisStepCount?: number;
   minGroupWidth?: number;
+};
+
+const formatValue = (value: number): string => {
+  if (value > 0 && value < 0.01) return "<0,01";
+  return round(value).toLocaleString("sv-SE");
 };
 
 const Y_AXIS_WIDTH = 28;
@@ -163,7 +168,7 @@ const GroupedBarChart = ({
     const category = categories[barIndex];
     if (!group || !category) return null;
 
-    const value = round(group.values[barIndex]);
+    const value = formatValue(group.values[barIndex]);
     const items = group.tooltipData?.[barIndex];
 
     return { category: category.name, value, unit: group.unit, items };
@@ -321,7 +326,7 @@ const GroupedBarChart = ({
                 }}
               >
                 {rowGroups.map(({ group }) => {
-                  const total = round(
+                  const total = formatValue(
                     group.values.reduce((sum, v) => sum + v, 0),
                   );
 
@@ -371,7 +376,7 @@ const GroupedBarChart = ({
                           mt: 1,
                         }}
                       >
-                        {total.toLocaleString("sv-SE")}
+                        {total}
                       </AgronodTypography>
                     </Box>
                   );
@@ -469,7 +474,7 @@ const GroupedBarChart = ({
                 color: "#252321",
               }}
             >
-              {tooltipContent.value.toLocaleString("sv-SE")}
+              {tooltipContent.value}
             </AgronodTypography>
             <AgronodTypography
               sx={{

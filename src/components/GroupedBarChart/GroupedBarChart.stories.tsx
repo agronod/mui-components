@@ -169,7 +169,11 @@ const flagGroups: GroupedBarChartGroup[] = [
   {
     id: "7",
     name: "Havre",
-    unit: "kg CO2e/kg produkt",
+    unit: (
+      <span>
+        kg CO<sub>2</sub>e/kg produkt
+      </span>
+    ),
     values: [0.16, 0.12],
   },
   {
