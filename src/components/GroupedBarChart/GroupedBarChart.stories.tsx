@@ -70,21 +70,21 @@ const allGroups: GroupedBarChartGroup[] = [
     id: "1",
     name: "Höstvete",
     unit: "kg CO2e/kg produkt",
-    values: [0.1, 0.3, 0.1, 0.05, 0.19],
+    values: [0.1, 0.17, 0.1, 0.05, 0.19],
     tooltipData: sampleTooltips,
   },
   {
     id: "2",
     name: "Vårvete",
     unit: "kg CO2e/kg produkt",
-    values: [0.08, 0.28, 0.09, 0.04, 0.17],
+    values: [0.08, 0.18, 0.09, 0.04, 0.17],
     tooltipData: sampleTooltips,
   },
   {
     id: "3",
     name: "Höstkorn",
     unit: "kg CO2e/kg produkt",
-    values: [0.09, 0.26, 0.11, 0.05, 0.18],
+    values: [0.09, 0.16, 0.11, 0.05, 0.18],
     tooltipData: sampleTooltips,
   },
   {
@@ -98,28 +98,28 @@ const allGroups: GroupedBarChartGroup[] = [
     id: "5",
     name: "Höstraps",
     unit: "kg CO2e/kg produkt",
-    values: [0.12, 0.3, 0.13, 0.06, 0.2],
+    values: [0.12, 0.18, 0.13, 0.06, 0.2],
     tooltipData: sampleTooltips,
   },
   {
     id: "6",
     name: "Vårraps",
     unit: "kg CO2e/kg produkt",
-    values: [0.11, 0.28, 0.12, 0.05, 0.19],
+    values: [0.11, 0.18, 0.12, 0.05, 0.19],
     tooltipData: sampleTooltips,
   },
   {
     id: "7",
     name: "Havre",
     unit: "kg CO2e/kg produkt",
-    values: [0.06, 0.22, 0.07, 0.03, 0.14],
+    values: [0.06, 0.12, 0.07, 0.03, 0.14],
     tooltipData: sampleTooltips,
   },
   {
     id: "8",
     name: "Råg",
     unit: "kg CO2e/kg produkt",
-    values: [0.08, 0.25, 0.09, 0.04, 0.16],
+    values: [0.08, 0.15, 0.09, 0.04, 0.16],
     tooltipData: sampleTooltips,
   },
 ];
@@ -189,8 +189,6 @@ export const Default: StoryFn<typeof GroupedBarChart> = (args) => (
 Default.args = {
   categories: emissionCategories,
   groups: allGroups,
-  yAxisMax: 0.3,
-  yAxisStepCount: 3,
 };
 
 export const TwoGroups: StoryFn<typeof GroupedBarChart> = (args) => (
@@ -202,8 +200,6 @@ export const TwoGroups: StoryFn<typeof GroupedBarChart> = (args) => (
 TwoGroups.args = {
   categories: emissionCategories,
   groups: [allGroups[0], allGroups[7]],
-  yAxisMax: 0.3,
-  yAxisStepCount: 3,
 };
 
 export const FlagVariant: StoryFn<typeof GroupedBarChart> = (args) => (
@@ -215,6 +211,15 @@ export const FlagVariant: StoryFn<typeof GroupedBarChart> = (args) => (
 FlagVariant.args = {
   categories: flagCategories,
   groups: flagGroups,
-  yAxisMax: 0.3,
-  yAxisStepCount: 3,
+};
+
+export const NarrowWrapped: StoryFn<typeof GroupedBarChart> = (args) => (
+  <Box sx={{ backgroundColor: "#FFF", padding: 2, height: 600, maxWidth: 400 }}>
+    <GroupedBarChart {...args} />
+  </Box>
+);
+
+NarrowWrapped.args = {
+  categories: emissionCategories,
+  groups: allGroups,
 };
