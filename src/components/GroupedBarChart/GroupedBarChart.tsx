@@ -27,6 +27,7 @@ export type GroupedBarChartProps = {
   yAxisMax?: number;
   yAxisStepCount?: number;
   minGroupWidth?: number;
+  responsive?: boolean;
 };
 
 const formatValue = (value: number): string => {
@@ -47,6 +48,7 @@ const GroupedBarChart = ({
   yAxisMax: yAxisMaxProp,
   yAxisStepCount = 3,
   minGroupWidth = 120,
+  responsive = false,
 }: GroupedBarChartProps) => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -106,6 +108,7 @@ const GroupedBarChart = ({
   );
 
   const groupsPerRow = useMemo(() => {
+    if (!responsive) return groups.length || 1;
     if (containerWidth <= 0 || groups.length === 0) return groups.length || 1;
     const availableForGroups = containerWidth - Y_AXIS_WIDTH - 8;
     const perRow = Math.max(
@@ -115,7 +118,7 @@ const GroupedBarChart = ({
       ),
     );
     return Math.min(perRow, groups.length);
-  }, [containerWidth, groups.length, minGroupWidth]);
+  }, [containerWidth, groups.length, minGroupWidth, responsive]);
 
   const rows = useMemo(() => {
     const result: { group: GroupedBarChartGroup; gi: number }[][] = [];
@@ -202,7 +205,7 @@ const GroupedBarChart = ({
           ref={containerRef}
           sx={{
             flex: 1,
-            minWidth: 0,
+            minWidth: responsive ? 0 : undefined,
             display: "flex",
             flexDirection: "column",
             gap: `${ROW_GAP}px`,
@@ -273,7 +276,8 @@ const GroupedBarChart = ({
                       key={group.id}
                       sx={{
                         flex: 1,
-                        minWidth: 0,
+                        minWidth: responsive ? 0 : minGroupWidth,
+                        flexShrink: responsive ? 1 : 0,
                         display: "flex",
                         gap: `${BAR_GAP}px`,
                         position: "relative",

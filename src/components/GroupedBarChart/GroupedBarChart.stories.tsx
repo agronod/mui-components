@@ -226,4 +226,5 @@ export const NarrowWrapped: StoryFn<typeof GroupedBarChart> = (args) => (
 NarrowWrapped.args = {
   categories: emissionCategories,
   groups: allGroups,
+  responsive: true,
 };
