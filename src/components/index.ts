@@ -9,6 +9,7 @@ export * from "./StackedChart";
 export * from "./PieChart";
 export * from "./VerticalBarChart";
 export * from "./HorizontalBarChart";
+export * from "./GroupedBarChart";
 export * from "./ErrorPagesContent";
 export * from "./AgronodIcon";
 export * from "./AgronodTypography";
