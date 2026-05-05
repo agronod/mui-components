@@ -291,7 +291,7 @@ const HorizontalBarChart = ({
 
   const mapToDisplayValue = useCallback((item: HorizontalBarChartData) => {
     const total = mapTotalValue(item);
-    return total < 0.01 ? "<0.01" : total.toLocaleString("sv-SE");
+    return total < 0.01 ? "<0,01" : total.toLocaleString("sv-SE");
   }, []);
 
   const factor = useMemo(
