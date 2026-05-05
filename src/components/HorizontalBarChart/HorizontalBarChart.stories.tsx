@@ -62,7 +62,7 @@ const data: HorizontalBarChartData[] = [
   {
     id: "4",
     name: "Energi",
-    value: 100,
+    value: 0.004,
     color: "#AA7605",
     tooltipData: [
       {
