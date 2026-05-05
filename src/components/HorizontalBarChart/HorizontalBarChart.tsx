@@ -289,6 +289,11 @@ const HorizontalBarChart = ({
     return round(item.value);
   }, []);
 
+  const mapToDisplayValue = useCallback((item: HorizontalBarChartData) => {
+    const total = mapTotalValue(item);
+    return total < 0.01 ? "<0,01" : total.toLocaleString("sv-SE");
+  }, []);
+
   const factor = useMemo(
     () => Math.max(0, chartHeight / Math.max(...data.map(mapTotalValue))),
     [data, chartHeight, mapTotalValue],
@@ -457,7 +462,7 @@ const HorizontalBarChart = ({
                   variant="body2"
                   fontSize={24}
                 >
-                  {mapTotalValue(item).toLocaleString("sv-SE")}
+                  {mapToDisplayValue(item)}
                 </AgronodTypography>
               </Box>
             ))}
