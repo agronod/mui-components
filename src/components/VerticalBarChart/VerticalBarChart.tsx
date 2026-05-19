@@ -23,6 +23,11 @@ export type VerticalBarChartProps = {
   onItemHover?: (id?: string) => void;
   onItemClick?: (id?: string) => void;
   showSkeleton?: boolean;
+  /** Highest value on the x-axis, i.e. what the last grid line represents.
+   * Defaults to the largest value in `data`. */
+  maxValue?: number;
+  /** Maximum height of a bar in pixels. Caps the bar height. */
+  maxBarHeight?: number;
 };
 
 const TICK_WIDTH = 100;
@@ -100,6 +105,8 @@ const VerticalBarChart = ({
   onItemHover,
   onItemClick,
   showSkeleton,
+  maxValue,
+  maxBarHeight,
 }: VerticalBarChartProps) => {
   const [chartHeight, setChartHeight] = useState(0);
   const [chartWidth, setChartWidth] = useState(0);
@@ -150,19 +157,22 @@ const VerticalBarChart = ({
       Math.max(
         0,
         (chartWidth - TICK_WIDTH) /
-          Math.max(...data.map((item) => round(item.value)))
+          (maxValue ?? Math.max(...data.map((item) => round(item.value))))
       ),
-    [data, chartWidth]
+    [data, chartWidth, maxValue]
   );
 
   const barHeight = useMemo(() => {
     // If there's less then 4, use the fixed height
     if (data.length <= 4) {
-      return 100;
+      return maxBarHeight ?? 100;
     }
     const totalPadding = data.length * PADDING + PADDING;
-    return Math.max(0, (chartHeight - totalPadding) / data.length);
-  }, [data, chartHeight]);
+    const computed = Math.max(0, (chartHeight - totalPadding) / data.length);
+    return maxBarHeight !== undefined
+      ? Math.min(computed, maxBarHeight)
+      : computed;
+  }, [data, chartHeight, maxBarHeight]);
 
   const gridLines = useMemo(() => {
     if (chartWidth === 0) {
