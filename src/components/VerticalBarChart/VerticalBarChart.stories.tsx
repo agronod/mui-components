@@ -152,3 +152,21 @@ VerticalBarChartSelected.args = {
   data: data2,
   selectedIds: ["1", "3"],
 };
+
+export const VerticalBarChartMaxValueAndBarHeight: StoryFn<
+  typeof VerticalBarChart
+> = ({ ...args }) => {
+  return (
+    <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
+      <Box width={"100%"} height={600}>
+        <VerticalBarChart {...args} />
+      </Box>
+    </Box>
+  );
+};
+
+VerticalBarChartMaxValueAndBarHeight.args = {
+  data: data,
+  maxValue: 10000,
+  maxBarHeight: 40,
+};
