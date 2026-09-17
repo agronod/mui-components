@@ -195,9 +195,10 @@ const AgronodModalCard = (props: ModalCardProps) => {
               {props.subtitle && (
                 <AgronodTypography
                   variant="body1"
-                  color="text.secondary"
-                  sx={{ pb: 3 }}
-                >
+                  sx={{
+                    color: "text.secondary",
+                    pb: 3
+                  }}>
                   {props.subtitle}
                 </AgronodTypography>
               )}

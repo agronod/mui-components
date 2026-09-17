@@ -33,8 +33,9 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
       }}
     >
       <Stack
-        gap={3}
-        sx={(theme) => ({
+        sx={[{
+          gap: 3
+        }, (theme) => ({
           alignItems: "flex-start",
           width: "100%",
           maxWidth: props.maxWidth ? props.maxWidth : "auto",
@@ -47,8 +48,7 @@ export default function ErrorPagesContent(props: ErrorPagesContentProps) {
             paddingTop: 3,
             paddingX: 2,
           },
-        })}
-      >
+        })]}>
         <AgronodTypography
           variant={isMobile ? "h4" : "h2"}
           sx={(theme) => ({

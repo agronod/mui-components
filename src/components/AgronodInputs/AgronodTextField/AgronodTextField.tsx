@@ -5,6 +5,8 @@ import {
   Box,
   FormControlLabel,
   FormHelperText,
+  InputBaseComponentProps,
+  OutlinedInputProps,
   SxProps,
 } from "@mui/material";
 import { useMemo, useState } from "react";
@@ -32,12 +34,24 @@ type AgronodTextFieldBaseProps = Pick<
   | "onFocus"
   | "onBlur"
   | "size"
-  | "inputProps"
-  | "InputProps"
   | "label"
   | "helperText"
   | "error"
->;
+  | "slotProps"
+> & {
+  /**
+   * Props for the input slot (adornments, `onKeyDown`, etc.). Equivalent to
+   * `slotProps.input` and kept so 1.x call sites keep working on MUI 9, which
+   * removed `InputProps` from `TextField`. Takes precedence over
+   * `slotProps.input` when both are given.
+   */
+  InputProps?: Partial<OutlinedInputProps>;
+  /**
+   * Attributes for the native `<input>` element. Equivalent to
+   * `slotProps.htmlInput`; kept for the same reason as `InputProps`.
+   */
+  inputProps?: InputBaseComponentProps;
+};
 
 export interface AgronodTextFieldProps extends AgronodTextFieldBaseProps {
   warning?: boolean;
@@ -56,6 +70,9 @@ const StyledMuiTextField = ({
   textAlignment,
   warning,
   sx: externalSx,
+  InputProps,
+  inputProps,
+  slotProps,
   ...rest
 }: AgronodTextFieldProps) => {
   const icon = useMemo(() => {
@@ -99,12 +116,9 @@ const StyledMuiTextField = ({
         )}
         <MuiTextField
           autoComplete="off"
-          InputLabelProps={{
-            color: "secondary",
-            shrink: false,
-          }}
           variant="outlined"
-          placeholder={rest.placeholder} // Ensure placeholder is passed
+          // Ensure placeholder is passed
+          placeholder={rest.placeholder}
           {...rest}
           sx={[
             (theme) => ({
@@ -153,6 +167,15 @@ const StyledMuiTextField = ({
             }),
             ...(Array.isArray(externalSx) ? externalSx : externalSx ? [externalSx] : []),
           ]}
+          slotProps={{
+            ...slotProps,
+            inputLabel: {
+              color: "secondary",
+              shrink: false,
+            },
+            input: InputProps ?? slotProps?.input,
+            htmlInput: inputProps ?? slotProps?.htmlInput,
+          }}
         />
       </Box>
       {!hideHelperText && helperText !== undefined && (
@@ -217,18 +240,6 @@ const AgronodTextField = ({
               margin: 0,
               width: rest.fullWidth ? "100%" : "220px",
             }}
-            componentsProps={{
-              typography: {
-                variant: "body2bold",
-                alignSelf: "flex-start",
-                color: rest.error
-                  ? "error.medium"
-                  : rest.warning
-                    ? "warning.dark"
-                    : "text.secondary",
-                marginBottom: "4px",
-              },
-            }}
             label={label}
             disabled={rest.disabled}
             control={
@@ -241,6 +252,20 @@ const AgronodTextField = ({
                 {...rest}
               />
             }
+            slotProps={{
+              typography: {
+                variant: "body2bold",
+                sx: {
+                  alignSelf: "flex-start",
+                  marginBottom: "4px",
+                  color: rest.error
+                    ? "error.medium"
+                    : rest.warning
+                      ? "warning.dark"
+                      : "text.secondary",
+                },
+              },
+            }}
           />
         ) : (
           <StyledMuiTextField

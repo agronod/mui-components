@@ -45,21 +45,23 @@ export default function Nyckeltal({ item }: Props) {
         )}
       </Box>
       <AgronodTypography
-        sx={{ fontFamily: "inter, sans-serif!important" }}
         component="p"
         variant="caption"
-        color="#616161"
-      >
+        sx={{
+          color: "#616161",
+          fontFamily: "inter, sans-serif!important"
+        }}>
         {item.enhet}
       </AgronodTypography>
 
       <AgronodTypography
-        sx={{ fontFamily: "inter, sans-serif!important" }}
-        marginTop={0.5}
-        fontWeight={600}
         variant="body2"
-        fontSize={24}
-      >
+        sx={{
+          marginTop: 0.5,
+          fontWeight: 600,
+          fontSize: 24,
+          fontFamily: "inter, sans-serif!important"
+        }}>
         {getNyckeltalVarde(item.varde, item.antalDecimaler).toLocaleString(
           "sv-SE",
           { minimumFractionDigits: item.antalDecimaler }

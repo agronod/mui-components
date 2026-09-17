@@ -26,7 +26,7 @@ Stories are written in CSF format <b>[See more](https://storybook.js.org/docs/ap
 ```bash
 npm install
 
-# Node version > 18
+# Node version >= 22.12 (see engines in package.json)
 npm run storybook
 ```
 
@@ -79,23 +79,21 @@ for testing purposes
 
 ### Dependencies
 
-The following packages needs to be installed as dependencies in the consuming application:
+The library does not bundle its peer dependencies. The consuming application must install them (npm 7+ does this automatically); the authoritative list is `peerDependencies` in `package.json`:
 
 ```json
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.15.18",
-    "@mui/lab": "^5.0.0-alpha.123",
-    "@mui/material": "^5.15.18",
+    "@mui/icons-material": "^9.4.0",
+    "@mui/material": "^9.4.0",
+    "@mui/utils": "^9.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "6.23.1",
+    "react-router-dom": "^6.30.6",
     "recharts": "^2.4.1"
 ```
 
-
-
-##### Mui/lab ensures that we are using correct mui theme from agronod package and not default theme.
+Fonts are not shipped by this package. The themes reference Roboto and Material Icons, so the consuming application loads them itself, for example via `@fontsource/roboto` and `@fontsource/material-icons` as Storybook does in `.storybook/preview.tsx`.
 
 ### Base Wrapper for all components
 
@@ -128,7 +126,7 @@ const App = () => {
 
 ### useTheme
 
-**useTheme** is option available in a consuming application when using Mui/lab as dependency. Theme object can be used two ways on top of components as _useTheme()_ or in _sx_ props.
+**useTheme** is exported by this library and available in a consuming application. Theme object can be used two ways on top of components as _useTheme()_ or in _sx_ props.
 
 ```jsx
 const theme = useTheme();

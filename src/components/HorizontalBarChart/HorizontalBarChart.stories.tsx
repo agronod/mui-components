@@ -127,7 +127,9 @@ export const HorizontalBarChartStacked: StoryFn<typeof HorizontalBarChart> = ({
   ...args
 }) => (
   <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-    <Box height={300}>
+    <Box sx={{
+      height: 300
+    }}>
       <HorizontalBarChart {...args} />
     </Box>
   </Box>

@@ -105,7 +105,12 @@ AgronodIconSingle.args = {
 export const AgronodIconsGallery: StoryFn<typeof AgronodIcon> = ({
   ...rest
 }: IconProps) => (
-  <Stack flexDirection="row" gap={3} flexWrap="wrap">
+  <Stack
+    sx={{
+      flexDirection: "row",
+      gap: 3,
+      flexWrap: "wrap"
+    }}>
     {iconArray.map((icon) => (
       <AgronodIcon {...rest} key={icon} name={icon}  />
     ))}

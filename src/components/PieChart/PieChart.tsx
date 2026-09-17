@@ -186,17 +186,17 @@ const PieChart = ({
               content={
                 customTooltipValue ? (
                   <Stack
-                    px={2}
-                    py={2}
                     direction="column"
-                    sx={theme => ({
+                    sx={[{
+                      px: 2,
+                      py: 2
+                    }, theme => ({
                       opacity: 1,
                       background: theme.palette.background.card,
                       border: `1px solid ${theme.palette.divider}`,
                       borderRadius: "8px",
                       minWidth: "202px"
-                    })}
-                  >
+                    })]}>
                     <AgronodTypography variant="overline">
                       {dataSorted[hoverIndex].name}
                     </AgronodTypography>
@@ -222,17 +222,16 @@ const PieChart = ({
                   </Stack>
                 ) : (
                   <Stack
-                    px={1}
-                    py={1}
-                    gap={"4px"}
                     direction="row"
-                    alignItems="center"
                     sx={{
+                      px: 1,
+                      py: 1,
+                      gap: "4px",
+                      alignItems: "center",
                       opacity: 1,
                       background: theme.palette.text.primary,
-                      borderRadius: "3px",
-                    }}
-                  >
+                      borderRadius: "3px"
+                    }}>
                     <Box
                       sx={{
                         width: 8,
@@ -255,8 +254,17 @@ const PieChart = ({
           )}
         </RePieChart>
       </ResponsiveContainer>
-      <Box width="100%" mt={2} ml={isMobile && !isPdf ? 2 : 4}>
-        <Box paddingX={1} mb={2}>
+      <Box
+        sx={{
+          width: "100%",
+          mt: 2,
+          ml: isMobile && !isPdf ? 2 : 4
+        }}>
+        <Box
+          sx={{
+            paddingX: 1,
+            mb: 2
+          }}>
           <AgronodTypography variant="caption">Totalt</AgronodTypography>
           <AgronodTypography variant="h5" sx={{ fontWeight: 600 }}>
             {round(total, decimals).toLocaleString("sv-SE")}

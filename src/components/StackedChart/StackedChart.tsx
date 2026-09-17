@@ -106,38 +106,35 @@ export const StackedChart: React.FC<StackedChartProps> = ({
         })}
       >
         {data.map((item: StackedChartDataProps, index: number) => {
-          return (
-            item.value > 0 && (
-              <Box
-                key={index}
-                sx={(theme) => ({
-                  pr: 3,
-                  [theme.breakpoints.down("sm")]: {
-                    p: 2,
-                    borderTop: "1px solid",
-                    borderColor: theme.palette.border,
-                  },
-                })}
-              >
-                <AgronodTypography variant="caption">
-                  {item.name}
-                </AgronodTypography>
-                <AgronodTypography component="p" variant="caption">
-                  {getNyckeltalVarde(item.value).toLocaleString("sv-SE")}{" "}
-                  {item.unit}
-                </AgronodTypography>
-                <AgronodTypography
-                  color={colors[index]}
-                  marginTop={0.5}
-                  fontWeight={600}
-                  variant="body2"
-                  fontSize={24}
-                >
-                  {item.percentage}%
-                </AgronodTypography>
-              </Box>
-            )
-          );
+          return (item.value > 0 && (<Box
+            key={index}
+            sx={(theme) => ({
+              pr: 3,
+              [theme.breakpoints.down("sm")]: {
+                p: 2,
+                borderTop: "1px solid",
+                borderColor: theme.palette.border,
+              },
+            })}
+          >
+            <AgronodTypography variant="caption">
+              {item.name}
+            </AgronodTypography>
+            <AgronodTypography component="p" variant="caption">
+              {getNyckeltalVarde(item.value).toLocaleString("sv-SE")}{" "}
+              {item.unit}
+            </AgronodTypography>
+            <AgronodTypography
+              variant="body2"
+              sx={{
+                color: colors[index],
+                marginTop: 0.5,
+                fontWeight: 600,
+                fontSize: 24
+              }}>
+              {item.percentage}%
+            </AgronodTypography>
+          </Box>));
         })}
       </Box>
     </Card>

@@ -94,7 +94,11 @@ export const VerticalBarChartDefault: StoryFn<typeof VerticalBarChart> = ({
   const [clicked, setClicked] = useState<string | undefined>();
   return (
     <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-      <Box width={"100%"} height={600}>
+      <Box
+        sx={{
+          width: "100%",
+          height: 600
+        }}>
         <VerticalBarChart
           onItemClick={(item) => setClicked(item)}
           onItemHover={(item) => setHovered(item)}
@@ -127,7 +131,11 @@ export const VerticalBarChartSelected: StoryFn<typeof VerticalBarChart> = ({
 
   return (
     <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-      <Box width={300} height={600}>
+      <Box
+        sx={{
+          width: 300,
+          height: 600
+        }}>
         <VerticalBarChart
           onItemClick={(item) => setClicked(item)}
           onItemHover={(item) => setHovered(item)}
@@ -158,7 +166,11 @@ export const VerticalBarChartMaxValueAndBarHeight: StoryFn<
 > = ({ ...args }) => {
   return (
     <Box sx={{ backgroundColor: "#FFF", padding: 2 }}>
-      <Box width={"100%"} height={600}>
+      <Box
+        sx={{
+          width: "100%",
+          height: 600
+        }}>
         <VerticalBarChart {...args} />
       </Box>
     </Box>

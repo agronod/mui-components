@@ -53,7 +53,6 @@ const AgronodDialog = ({
 
   return (
     <Dialog
-      disableEscapeKeyDown={false}
       {...rest}
       slotProps={{
         ...rest.slotProps,
@@ -123,13 +122,12 @@ const AgronodDialog = ({
         {actions && (
           <Stack
             direction={isMobile ? mobileActionsDirection || "column" : "row"}
-            gap={"8px"}
             sx={{
+              gap: "8px",
               alignSelf: alignActions || alignContent || "end",
               flexWrap: mobileActionsDirection === "row" ? "nowrap" : "wrap",
-              width: isMobile ? "100%" : "auto",
-            }}
-          >
+              width: isMobile ? "100%" : "auto"
+            }}>
             {(() => {
               // If actions is a Fragment, unwrap it to get the actual children
               const actionsList =

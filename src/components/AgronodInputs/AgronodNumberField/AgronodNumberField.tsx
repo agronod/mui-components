@@ -2,8 +2,10 @@ import { useCallback } from "react";
 import { TextFieldProps } from "@mui/material";
 import { NumericFormat } from "react-number-format";
 import { AgronodTextField } from "../AgronodTextField";
+import type { AgronodTextFieldProps } from "../AgronodTextField/AgronodTextField";
 
-export type NumberFieldProps = Omit<TextFieldProps, "onChange"> & {
+export type NumberFieldProps = Omit<TextFieldProps, "onChange"> &
+  Pick<AgronodTextFieldProps, "InputProps" | "inputProps"> & {
   warning?: boolean;
   tooltipText?: string;
   hideHelperText?: boolean;
