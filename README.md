@@ -3,7 +3,7 @@
 For the documentation of components we use Storybook together with Chromatic.
 This is mainly to use battle tested standards that already have extensive support and documentation.
 
-Visit our [Storybook](https://main--626a5b4b1abebb004a4657a8.chromatic.com) library.
+Visit our [Storybook](https://6aabc6467df1efe1225f2eed-dccivzguti.chromatic.com/) library.
 
 This library is meant to provide two things:
 
