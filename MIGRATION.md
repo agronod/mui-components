@@ -45,6 +45,8 @@ npm install @agronod/mui-components@2 \
   @mui/material@^9 @mui/icons-material@^9 @mui/utils@^9
 ```
 
+To test the pre-release before it is merged, install it by exact version or by dist-tag instead of `@2`: `npm install @agronod/mui-components@next` (pre-releases are published under `next`, never `latest`).
+
 If the app declares `@mui/lab`, `@mui/x-*` or `@mui/system`, upgrade them to their MUI 9 compatible majors in the same command (`@mui/system@^9`; check the MUI X release notes for the matching `@mui/x-*` major). Then:
 
 ```bash

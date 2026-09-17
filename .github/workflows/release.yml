@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: "true"
           token: ${{ secrets.GITHUBTOKEN }}
@@ -33,7 +33,11 @@ jobs:
           github_token: ${{ secrets.GITHUBTOKEN }}
 
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          # Full history and tags: the changelog is rebuilt from tags, and a
+          # shallow clone makes it regenerate as if no release ever existed.
+          fetch-depth: 0
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
@@ -52,11 +56,23 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           npm version ${{ steps.tag_version.outputs.new_version }} --no-git-tag-version
+          if [ "$(git tag | wc -l)" -eq 0 ]; then
+            echo "No git tags in the checkout; refusing to regenerate CHANGELOG.md (it would be wiped)."
+            exit 1
+          fi
           npm run changelog -- -u
           git add package.json package-lock.json CHANGELOG.md
           git commit -m "${{ steps.tag_version.outputs.new_version }}"
 
-      - run: npm publish
+      - name: Publish
+        # npm 11 refuses to publish a prerelease without an explicit dist-tag.
+        # Prereleases from feat/* and fix/* go to `next` so `npm install
+        # @agronod/mui-components` keeps resolving to the latest stable.
+        run: |
+          VERSION="${{ steps.tag_version.outputs.new_version }}"
+          if [[ "$VERSION" == *-* ]]; then TAG=next; else TAG=latest; fi
+          echo "Publishing $VERSION with dist-tag $TAG"
+          npm publish --tag "$TAG"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
 
