@@ -42,11 +42,19 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
-      - name: set version
+      - name: Set version and regenerate changelog
+        # `--no-git-tag-version` only bumps package.json and package-lock.json.
+        # The changelog is then generated with `-u` so the commits since the
+        # previous tag land under the version being released (read from
+        # package.json), and everything is committed together as the version
+        # commit. The remote tag itself is created by the tag action above.
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          npm version ${{ steps.tag_version.outputs.new_version }}
+          npm version ${{ steps.tag_version.outputs.new_version }} --no-git-tag-version
+          npm run changelog -- -u
+          git add package.json package-lock.json CHANGELOG.md
+          git commit -m "${{ steps.tag_version.outputs.new_version }}"
 
       - run: npm publish
         env:
