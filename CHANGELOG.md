@@ -1,3 +1,74 @@
+## 1.28.0 (2026-05-21)
+
+* feat: add maxValue and maxBarHeight props to VerticalBarChart (#162) ([f5fddc0](https://github.com/agronod/mui-components/commit/f5fddc0)), closes [#162](https://github.com/agronod/mui-components/issues/162)
+* 1.27.1 ([ffd71d6](https://github.com/agronod/mui-components/commit/ffd71d6))
+
+
+
+## <small>1.27.1 (2026-05-05)</small>
+
+* fix: show less than for small values (#161) ([6a9ce3b](https://github.com/agronod/mui-components/commit/6a9ce3b)), closes [#161](https://github.com/agronod/mui-components/issues/161)
+* 1.27.0 ([d1deefa](https://github.com/agronod/mui-components/commit/d1deefa))
+
+
+
+## 1.27.0 (2026-03-04)
+
+* feat: add grouped bar chart (AS-3248) (#160) ([48c8ef4](https://github.com/agronod/mui-components/commit/48c8ef4)), closes [#160](https://github.com/agronod/mui-components/issues/160)
+* 1.26.1 ([017f7ae](https://github.com/agronod/mui-components/commit/017f7ae))
+
+
+
+## <small>1.26.1 (2026-01-30)</small>
+
+* fix: show int 0 as <1 in tooltip (#159) ([dbbcb1e](https://github.com/agronod/mui-components/commit/dbbcb1e)), closes [#159](https://github.com/agronod/mui-components/issues/159)
+* 1.26.0 ([5ec2594](https://github.com/agronod/mui-components/commit/5ec2594))
+
+
+
+## 1.26.0 (2025-12-17)
+
+* feat: enable click vertical bar chart (#153) ([e83dadc](https://github.com/agronod/mui-components/commit/e83dadc)), closes [#153](https://github.com/agronod/mui-components/issues/153)
+* 1.25.3 ([12713e5](https://github.com/agronod/mui-components/commit/12713e5))
+
+
+
+## <small>1.25.3 (2025-12-09)</small>
+
+* 1.25.2 ([472e64e](https://github.com/agronod/mui-components/commit/472e64e))
+* Fix TypeScript types and expose additional MUI props (#152) ([0998039](https://github.com/agronod/mui-components/commit/0998039)), closes [#152](https://github.com/agronod/mui-components/issues/152)
+
+
+
+## <small>1.25.2 (2025-11-13)</small>
+
+* fix: use sorting order of provided data autocomplete (#151) ([f4d9503](https://github.com/agronod/mui-components/commit/f4d9503)), closes [#151](https://github.com/agronod/mui-components/issues/151)
+* 1.25.1 ([3e898f0](https://github.com/agronod/mui-components/commit/3e898f0))
+
+
+
+## <small>1.25.1 (2025-11-12)</small>
+
+* fix: Alert and Dialog fixes (#150) ([a6e8989](https://github.com/agronod/mui-components/commit/a6e8989)), closes [#150](https://github.com/agronod/mui-components/issues/150)
+* 1.25.0 ([63a94a1](https://github.com/agronod/mui-components/commit/63a94a1))
+
+
+
+## 1.25.0 (2025-11-12)
+
+* feat: enable grouping in autocomplete (AS-3097) (#149) ([e3e1f94](https://github.com/agronod/mui-components/commit/e3e1f94)), closes [#149](https://github.com/agronod/mui-components/issues/149)
+* 1.24.0 ([8ee644a](https://github.com/agronod/mui-components/commit/8ee644a))
+
+
+
+## 1.24.0 (2025-10-13)
+
+* feat: added AgronodDialog and fixed bug in AgronodTooltip (#148) ([3e41f0f](https://github.com/agronod/mui-components/commit/3e41f0f)), closes [#148](https://github.com/agronod/mui-components/issues/148)
+* fix: generated changelog ([c272df8](https://github.com/agronod/mui-components/commit/c272df8))
+* 1.23.0 ([7885107](https://github.com/agronod/mui-components/commit/7885107))
+
+
+
 ## 1.23.0 (2025-10-06)
 
 * feat: upgrade Material-UI from v5 to v7 (#147) ([a29789b](https://github.com/agronod/mui-components/commit/a29789b)), closes [#147](https://github.com/agronod/mui-components/issues/147)

@@ -67,7 +67,7 @@
     "sb": "npm run storybook",
     "storybook@legacy": "storybook dev -p 6006",
     "build-storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && storybook build",
-    "chromatic": "export SET NODE_OPTIONS=--openssl-legacy-provider && npx chromatic --project-token=ac1916a235d5"
+    "chromatic": "export SET NODE_OPTIONS=--openssl-legacy-provider && npx chromatic --project-token=chpt_b2099dd426b9331"
   },
   "browserslist": {
     "production": [
