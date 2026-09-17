@@ -747,26 +747,25 @@ const baseThemeOptions: ThemeOptions = {
             flexWrap: "wrap",
             gap: 8,
           },
-          // Icon and action are top-aligned and vertically centered on the
-          // first 20px text line; the 24px/30px children overflow symmetrically.
-          "& .MuiAlert-icon": {
-            padding: 0,
-            minWidth: "24px",
-            height: "20px",
-            alignItems: "center",
-            justifyContent: "center",
-          },
-          "& .MuiAlert-action": {
-            padding: "0 0 0 16px",
-            height: "20px",
-            alignItems: "center",
-          },
         },
         message: {
           padding: 0,
         },
+        // Icon and action are top-aligned and vertically centered on the first
+        // text line: both boxes are one body2 line tall, so the 24px icon and
+        // the 30px close button overflow it symmetrically.
         icon: {
+          padding: 0,
           marginRight: defaultMuiTheme.spacing(1.5),
+          minWidth: "24px",
+          height: globalTypography.body2.lineHeight,
+          alignItems: "center",
+          justifyContent: "center",
+        },
+        action: {
+          padding: `0 0 0 ${defaultMuiTheme.spacing(2)}`,
+          height: globalTypography.body2.lineHeight,
+          alignItems: "center",
         },
         standardSuccess: {
           backgroundColor: globalThemePalette.success.pastel,

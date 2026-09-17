@@ -13,17 +13,15 @@ const AgronodAlertLoading = ({
   sx,
   action,
   severity: _severity,
+  icon,
   ...rest
 }: AgronodAlertProps & { styleObject: SxProps }) => {
   const theme = useTheme();
   return (
     <MuiAlert
+      // `??` so that `icon={false}` still hides the icon, matching MuiAlert.
       icon={
-        rest.icon ? (
-          rest.icon
-        ) : (
-          <AgronodIcon name="loadingSpinnerStatic" color="secondary" />
-        )
+        icon ?? <AgronodIcon name="loadingSpinnerStatic" color="secondary" />
       }
       variant={variant}
       {...rest}
@@ -37,7 +35,7 @@ const AgronodAlertLoading = ({
       ]}
     >
       <Box>
-        {title && <AlertTitle>{title}</AlertTitle>}
+        {title && <AlertTitle variant="body2bold">{title}</AlertTitle>}
         {children}
       </Box>
       {action && (

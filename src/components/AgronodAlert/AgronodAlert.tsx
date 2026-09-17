@@ -9,11 +9,7 @@ import { AgronodIcon } from "../AgronodIcon";
 import AgronodAlertLoading from "./AgronodAlertLoading";
 
 type AgronodAlertSeverity =
-  | "success"
-  | "info"
-  | "warning"
-  | "error"
-  | "loading";
+  "success" | "info" | "warning" | "error" | "loading";
 
 type AgronodAlertBaseProps = Pick<
   MuiAlertProps,
@@ -40,6 +36,14 @@ export interface AgronodAlertProps extends AgronodAlertBaseProps {
   behindCardZIndex?: number;
 }
 
+// Design system default: filled icons for every variant (PF-1155).
+const iconMapping: MuiAlertProps["iconMapping"] = {
+  success: <AgronodIcon name="successContained" color="success" />,
+  warning: <AgronodIcon name="warningContained" color="warning" />,
+  error: <AgronodIcon name="errorContained" color="error" />,
+  info: <AgronodIcon name="infoContained" color="info" />,
+};
+
 const AgronodAlert = ({
   variant,
   title,
@@ -51,14 +55,6 @@ const AgronodAlert = ({
   severity,
   ...rest
 }: AgronodAlertProps) => {
-  // Design system default: filled icons for every variant (PF-1155)
-  const iconMapping = {
-    success: <AgronodIcon name="successContained" color="success" />,
-    warning: <AgronodIcon name="warningContained" color="warning" />,
-    error: <AgronodIcon name="errorContained" color="error" />,
-    info: <AgronodIcon name="infoContained" color="info" />,
-  };
-
   const styleObject: SxProps = {
     paddingTop: 3,
     marginTop: -2,
@@ -92,7 +88,7 @@ const AgronodAlert = ({
       sx={[behindCard ? styleObject : {}, ...(Array.isArray(sx) ? sx : [sx])]}
     >
       <Box>
-        {title && <AlertTitle>{title}</AlertTitle>}
+        {title && <AlertTitle variant="body2bold">{title}</AlertTitle>}
         {children}
       </Box>
       {action && (
