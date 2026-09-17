@@ -1,11 +1,11 @@
 import {
+  AlertTitle,
   Box,
   Alert as MuiAlert,
   AlertProps as MuiAlertProps,
   SxProps,
 } from "@mui/material";
 import { AgronodIcon } from "../AgronodIcon";
-import { AgronodTypography } from "../AgronodTypography";
 import AgronodAlertLoading from "./AgronodAlertLoading";
 
 type AgronodAlertSeverity =
@@ -51,22 +51,13 @@ const AgronodAlert = ({
   severity,
   ...rest
 }: AgronodAlertProps) => {
-  const standardIconMapping = {
-    success: <AgronodIcon name="successOutlined" color="success" />,
-    warning: <AgronodIcon name="warningOutlined" color="warning" />,
-    error: <AgronodIcon name="errorOutlined" color="error" />,
-    info: <AgronodIcon name="infoOutlined" color="info" />,
-  };
-
-  const filledIconMapping = {
+  // Design system default: filled icons for every variant (PF-1155)
+  const iconMapping = {
     success: <AgronodIcon name="successContained" color="success" />,
     warning: <AgronodIcon name="warningContained" color="warning" />,
     error: <AgronodIcon name="errorContained" color="error" />,
     info: <AgronodIcon name="infoContained" color="info" />,
   };
-
-  const iconMapping =
-    variant === "filled" ? filledIconMapping : standardIconMapping;
 
   const styleObject: SxProps = {
     paddingTop: 3,
@@ -101,9 +92,7 @@ const AgronodAlert = ({
       sx={[behindCard ? styleObject : {}, ...(Array.isArray(sx) ? sx : [sx])]}
     >
       <Box>
-        {title && (
-          <AgronodTypography variant="body2bold">{title}</AgronodTypography>
-        )}
+        {title && <AlertTitle>{title}</AlertTitle>}
         {children}
       </Box>
       {action && (

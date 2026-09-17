@@ -2,6 +2,7 @@ import { createTheme, ThemeOptions } from "@mui/material";
 import { common } from "@mui/material/colors";
 import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
 import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
+import InterSemiBoldTTF from "./fonts/inter/static/Inter-SemiBold.ttf";
 import { circularProgressClasses } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
@@ -181,7 +182,7 @@ const globalTypography = {
   body1bold: {
     fontFamily: "inter",
     fontSize: pxToRem(16),
-    fontWeight: 500,
+    fontWeight: 600,
     lineHeight: "22px",
   },
   body2: {
@@ -193,7 +194,7 @@ const globalTypography = {
   body2bold: {
     fontFamily: "inter",
     fontSize: pxToRem(14),
-    fontWeight: 500,
+    fontWeight: 600,
     lineHeight: "20px",
   },
   body3: {
@@ -205,7 +206,7 @@ const globalTypography = {
   body3bold: {
     fontFamily: "inter",
     fontSize: pxToRem(12),
-    fontWeight: 500,
+    fontWeight: 600,
     lineHeight: "16px",
   },
   body4: {
@@ -217,7 +218,7 @@ const globalTypography = {
   body4bold: {
     fontFamily: "inter",
     fontSize: pxToRem(10),
-    fontWeight: 500,
+    fontWeight: 600,
     lineHeight: "14px",
   },
   caption: {
@@ -390,6 +391,11 @@ const baseThemeOptions: ThemeOptions = {
               font-family: 'inter';
               font-weight: 500;
               src: url(${InterMediumTTF}) format('opentype');
+          }
+          @font-face {
+              font-family: 'inter';
+              font-weight: 600;
+              src: url(${InterSemiBoldTTF}) format('opentype');
           }
           @global: {
               html: {
@@ -730,7 +736,7 @@ const baseThemeOptions: ThemeOptions = {
           borderRadius: "16px",
           border: "1px solid",
           color: globalThemePalette.text.primary,
-          alignItems: "center",
+          alignItems: "flex-start",
           padding: defaultMuiTheme.spacing(2),
           ...globalTypography.body2,
           "& .MuiAlert-message": {
@@ -741,12 +747,19 @@ const baseThemeOptions: ThemeOptions = {
             flexWrap: "wrap",
             gap: 8,
           },
+          // Icon and action are top-aligned and vertically centered on the
+          // first 20px text line; the 24px/30px children overflow symmetrically.
           "& .MuiAlert-icon": {
             padding: 0,
             minWidth: "24px",
-            minHeight: "24px",
+            height: "20px",
             alignItems: "center",
             justifyContent: "center",
+          },
+          "& .MuiAlert-action": {
+            padding: "0 0 0 16px",
+            height: "20px",
+            alignItems: "center",
           },
         },
         message: {
@@ -793,8 +806,10 @@ const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           marginBottom: 0,
+          marginTop: 0,
           color: globalThemePalette.text.primary,
-          ...globalTypography.caption,
+          ...globalTypography.body2bold,
+          letterSpacing: "0.4px",
         },
       },
     },
