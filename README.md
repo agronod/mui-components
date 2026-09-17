@@ -36,7 +36,7 @@ npm run storybook
 
 Because the file is rebuilt from tags on each run, releases that were missed earlier are backfilled automatically.
 
-To preview locally what the next release section will contain (the heading reads `Unreleased` here; the workflow bumps `package.json` first, so in the committed file it carries the released version):
+To preview locally what the next release section will contain (the heading reads `Unreleased` here because the tag does not exist yet; in the workflow the tag is created first, so the committed file carries the released version):
 
 ```bash
 npx conventional-changelog -p react -r 1 -u
