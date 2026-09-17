@@ -13,7 +13,7 @@ export default {
       "An alert displays a short, important message in a way that attracts the user's attention without interrupting the user's task.",
     docs: {
       description: {
-        component: `<div><p>We are using in our designs system two types of Alert, <code>standard</code> and <code>filled</code>.</p><p>Alerts are used as self standing elements or attached elements, usually to <code>AgronodCard</code> commponent. if they are attached they lose top borders and have smaller paddings.</p></div>`,
+        component: `<div><p>We are using in our designs system two types of Alert, <code>standard</code> and <code>filled</code>.</p><p>Alerts are used as self standing elements or attached elements, usually to <code>AgronodCard</code> commponent. if they are attached they lose top borders and have smaller paddings.</p><p>All alerts use a filled icon by default regardless of variant. Pass <code>icon</code> to override it or <code>icon={false}</code> to hide it.</p></div>`,
       },
     },
   },
@@ -28,7 +28,7 @@ export default {
     },
     title: {
       description:
-        "Title attribute adds AlertTitle to the alert it is undefined by default.",
+        "Title attribute adds AlertTitle to the alert. It is undefined by default and renders as bold body2 with 0.4px letter spacing.",
       defaultValue: undefined,
       control: {
         type: "text",
