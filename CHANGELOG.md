@@ -1,19 +1,7 @@
-## Unreleased (2026-09-17)
+## 2.0.0 (2026-09-18)
 
-
-
-
-## 2.0.0-feat-mui-9.1 (2026-09-17)
-
-* ci: fix prerelease publish and shallow-clone changelog regeneration ([c093fdf](https://github.com/agronod/mui-components/commit/c093fdf))
-
-
-
-## 2.0.0-feat-mui-9.0 (2026-09-17)
-
-* ci: generate CHANGELOG.md in the release workflow ([a339398](https://github.com/agronod/mui-components/commit/a339398))
 * 1.29.1 ([db80070](https://github.com/agronod/mui-components/commit/db80070))
-* feat!: upgrade to Material UI 9, Storybook 10 and security dependencies ([cefdf2b](https://github.com/agronod/mui-components/commit/cefdf2b))
+* feat!: upgrade to Material UI 9, Storybook 10 and security dependencies (#165) ([450e64f](https://github.com/agronod/mui-components/commit/450e64f)), closes [#165](https://github.com/agronod/mui-components/issues/165)
 
 
 ### BREAKING CHANGE
@@ -22,6 +10,62 @@
 @mui/icons-material and @mui/utils to ^9 and react-router-dom to
 ^6.30.6, and run the MUI 9 codemods on their own code. React 18 stays
 supported. See MIGRATION.md for the step-by-step procedure.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+* ci: generate CHANGELOG.md in the release workflow
+
+The changelog was a manual README step ("push, pull the version, run
+npm run changelog, commit") and went stale twice because the release
+workflow pushed the version commit without it.
+
+- release.yml: bump with `npm version --no-git-tag-version`, run
+  `npm run changelog -- -u` so the commits since the previous tag land
+  under the new version, and commit package.json, package-lock.json and
+  CHANGELOG.md together as the version commit. The remote tag is still
+  created by the tag action; the GitHub release step is unchanged.
+- `-r 0` rebuilds the whole file from tags on every run, so releases
+  missed earlier (currently 1.29.0 and 1.29.1) are backfilled on the
+  next publish without manual action.
+- README: replace the manual procedure with the new behaviour and a
+  local preview command.
+- steering release context updated to match.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+* ci: fix prerelease publish and shallow-clone changelog regeneration
+
+First run of the release workflow on Node 24 (run 35220830076) failed
+and exposed two problems:
+
+- npm 11 refuses `npm publish` of a prerelease without an explicit
+  dist-tag. Publish now uses `--tag next` for versions containing a
+  hyphen and `--tag latest` otherwise. Side effect worth having: feat/*
+  pre-releases no longer become `latest`, so a plain
+  `npm install @agronod/mui-components` keeps resolving to the stable
+  release.
+- `actions/checkout` clones shallowly with no tags, so the `-r 0`
+  changelog regeneration saw no releases and rewrote CHANGELOG.md down
+  to 5 lines (1187 deletions in the version commit; not pushed because
+  publish failed first). The build checkout now uses `fetch-depth: 0`,
+  and the changelog step exits before regenerating if the checkout has
+  no tags. Both checkout steps moved to actions/checkout@v4.
+
+MIGRATION.md and the steering release context document the `next`
+dist-tag and the fetch-depth requirement.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+* 2.0.0-feat-mui-9.1
+
+* ci: drop empty unreleased header from generated changelog
+
+The first successful automated run (2.0.0-feat-mui-9.1) wrote an empty
+"## Unreleased" section above the release section. With a full-history
+checkout the tag action's tag is already at HEAD when the changelog is
+generated, so `-r 0` alone writes the new version's section and `-u`
+only adds the empty header. Remove the flag; README and steering notes
+updated to match.
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 
