@@ -92,7 +92,7 @@ const AgronodAutocompleteSearch = <T,>({
   const {
     getRootProps,
     getInputProps,
-    getTagProps,
+    getItemProps,
     getListboxProps,
     getOptionProps,
     focused,
@@ -236,13 +236,14 @@ const AgronodAutocompleteSearch = <T,>({
       onKeyDown={handleKeyDown}
     >
       <Stack
-        flexDirection="row"
-        gap={1}
-        sx={{ marginBottom: 2 }}
-        flexWrap="wrap"
-      >
+        sx={{
+          flexDirection: "row",
+          gap: 1,
+          flexWrap: "wrap",
+          marginBottom: 2
+        }}>
         {value.map((option: T, index: number) => {
-          const { key, ...restProps } = getTagProps({ index });
+          const { key, ...restProps } = getItemProps({ index });
           return (
             <AgronodChip
               key={key}
@@ -324,22 +325,24 @@ const AgronodAutocompleteSearch = <T,>({
                       size="small"
                     />
                     <Stack
-                      flexDirection="row"
-                      width="100%"
-                      gap={2}
-                      sx={(theme) => ({
+                      sx={[{
+                        flexDirection: "row",
+                        width: "100%",
+                        gap: 2
+                      }, (theme) => ({
                         [theme.breakpoints.down("sm")]: {
                           justifyContent: "space-between",
                         },
-                      })}
-                    >
+                      })]}>
                       <AgronodTypography variant="body1">
                         {getOptionLabel(option)}
                       </AgronodTypography>
                       {additionalInfoText && (
                         <AgronodTypography
-                          color="text.disabled"
                           variant="body1"
+                          sx={{
+                            color: "text.disabled"
+                          }}
                         >
                           {additionalInfoText(option)}
                         </AgronodTypography>
@@ -363,10 +366,12 @@ const AgronodAutocompleteSearch = <T,>({
                   }}
                 >
                   <AgronodTypography
-                    sx={{ textAlign: "left", width: "100%" }}
                     variant="body1"
-                    color="text.disabled"
-                  >
+                    sx={{
+                      color: "text.disabled",
+                      textAlign: "left",
+                      width: "100%"
+                    }}>
                     {noOptionsText}
                   </AgronodTypography>
                 </MenuItem>

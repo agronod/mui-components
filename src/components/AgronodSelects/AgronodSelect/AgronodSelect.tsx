@@ -91,9 +91,10 @@ export default function AgronodSelect({
         }}
       >
         <Stack
-          alignItems="flex-end"
-          sx={{ width: rest.fullWidth ? "100%" : "220px" }}
-        >
+          sx={{
+            alignItems: "flex-end",
+            width: rest.fullWidth ? "100%" : "220px"
+          }}>
           <MuiSelect
             {...rest}
             multiple={multiple}
@@ -214,12 +215,14 @@ export default function AgronodSelect({
             ]}
             MenuProps={{
               anchorEl: anchorEl,
-              PaperProps: {
-                style: {
-                  width: anchorEl ? anchorEl.clientWidth + 14 : "auto",
-                  maxHeight: "70vh",
-                  maxWidth: "none",
-                  marginLeft: "-8px",
+              slotProps: {
+                paper: {
+                  style: {
+                    width: anchorEl ? anchorEl.clientWidth + 14 : "auto",
+                    maxHeight: "70vh",
+                    maxWidth: "none",
+                    marginLeft: "-8px",
+                  },
                 },
               },
             }}

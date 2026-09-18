@@ -186,7 +186,12 @@ const Tooltip = ({
           },
         })}
       >
-        <AgronodTypography fontWeight={500} mb={2} variant="overline">
+        <AgronodTypography
+          variant="overline"
+          sx={{
+            fontWeight: 500,
+            mb: 2
+          }}>
           {label}
         </AgronodTypography>
         {tooltipListSorted.map((listItem: TooltipData) => {
@@ -195,19 +200,26 @@ const Tooltip = ({
             <Stack
               key={listItem.name}
               direction="row"
-              alignItems="center"
-              marginBottom={0.5}
-            >
+              sx={{
+                alignItems: "center",
+                marginBottom: 0.5
+              }}>
               <AgronodTypography
-                mb={0.5}
-                fontWeight={600}
                 variant="caption"
-                sx={{ minWidth: "30px" }}
-              >
+                sx={{
+                  mb: 0.5,
+                  fontWeight: 600,
+                  minWidth: "30px"
+                }}>
                 {`${value !== 0 ? round(listItem.value).toLocaleString("sv-SE") : "<1"}${listItem.suffix || ""}`}
               </AgronodTypography>
 
-              <AgronodTypography ml={1} mb={0.5} variant="caption">
+              <AgronodTypography
+                variant="caption"
+                sx={{
+                  ml: 1,
+                  mb: 0.5
+                }}>
                 {listItem.name}
               </AgronodTypography>
             </Stack>
@@ -458,10 +470,11 @@ const HorizontalBarChart = ({
                   {item.name}
                 </AgronodTypography>
                 <AgronodTypography
-                  fontWeight={600}
                   variant="body2"
-                  fontSize={24}
-                >
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: 24
+                  }}>
                   {mapToDisplayValue(item)}
                 </AgronodTypography>
               </Box>

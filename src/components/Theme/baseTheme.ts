@@ -7,6 +7,8 @@ import { circularProgressClasses } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 
+const alertSeverities = ["success", "error", "info", "warning"] as const;
+
 const pxToRem = (fontSize: number) => {
   return `${fontSize / 16}rem`;
 };
@@ -504,7 +506,7 @@ const baseThemeOptions: ThemeOptions = {
             boxShadow: `0px 0px 0px 4.5px ${globalThemePalette.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
           },
-          "&.MuiButton-containedWarning:not(.Mui-disabled)": {
+          "&.MuiButton-contained.MuiButton-colorWarning:not(.Mui-disabled)": {
             color: globalThemePalette.text.primary,
             ":hover": {
               backgroundColor: globalThemePalette.warning.medium,
@@ -513,7 +515,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.warning.dark,
             },
           },
-          "&.MuiButton-containedError:not(.Mui-disabled)": {
+          "&.MuiButton-contained.MuiButton-colorError:not(.Mui-disabled)": {
             backgroundColor: globalThemePalette.error.medium,
             ":hover": {
               backgroundColor: globalThemePalette.error.dark,
@@ -522,7 +524,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.error.darkHover,
             },
           },
-          "&.MuiButton-containedInfo:not(.Mui-disabled)": {
+          "&.MuiButton-contained.MuiButton-colorInfo:not(.Mui-disabled)": {
             ":hover": {
               backgroundColor: globalThemePalette.info.medium,
             },
@@ -530,7 +532,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.info.dark,
             },
           },
-          "&.MuiButton-containedSuccess:not(.Mui-disabled)": {
+          "&.MuiButton-contained.MuiButton-colorSuccess:not(.Mui-disabled)": {
             backgroundColor: globalThemePalette.success.medium,
             ":hover": {
               backgroundColor: globalThemePalette.success.dark,
@@ -539,7 +541,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.success.darkHover,
             },
           },
-          "&.MuiButton-containedTertiary:not(.Mui-disabled)": {
+          "&.MuiButton-contained.MuiButton-colorTertiary:not(.Mui-disabled)": {
             color: globalThemePalette.white,
             ":hover": {
               backgroundColor: globalThemePalette.tertiary.medium,
@@ -559,7 +561,7 @@ const baseThemeOptions: ThemeOptions = {
             boxShadow: `0px 0px 0px 4.5px ${globalThemePalette.white}`,
             outline: `2px solid ${globalThemePalette.text.primary}`,
           },
-          "&.MuiButton-outlinedWarning:not(.Mui-disabled)": {
+          "&.MuiButton-outlined.MuiButton-colorWarning:not(.Mui-disabled)": {
             borderColor: globalThemePalette.warning.main,
             color: globalThemePalette.text.primary,
             ":hover": {
@@ -573,7 +575,7 @@ const baseThemeOptions: ThemeOptions = {
           ".MuiTouchRipple-child": {
             backgroundColor: "transparent !important",
           },
-          "&.MuiButton-outlinedError:not(.Mui-disabled)": {
+          "&.MuiButton-outlined.MuiButton-colorError:not(.Mui-disabled)": {
             color: globalThemePalette.error.medium,
             ":hover": {
               color: globalThemePalette.error.dark,
@@ -584,7 +586,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.error.pastel,
             },
           },
-          "&.MuiButton-outlinedInfo:not(.Mui-disabled)": {
+          "&.MuiButton-outlined.MuiButton-colorInfo:not(.Mui-disabled)": {
             color: globalThemePalette.info.main,
             ":hover": {
               color: globalThemePalette.info.medium,
@@ -595,7 +597,7 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.info.pastel,
             },
           },
-          "&.MuiButton-outlinedSuccess:not(.Mui-disabled)": {
+          "&.MuiButton-outlined.MuiButton-colorSuccess:not(.Mui-disabled)": {
             color: globalThemePalette.success.main,
             ":hover": {
               color: globalThemePalette.success.medium,
@@ -617,13 +619,13 @@ const baseThemeOptions: ThemeOptions = {
           ":focus-visible": {
             textDecoration: "underline",
           },
-          "&.MuiButton-textTertiary": {
+          "&.MuiButton-text.MuiButton-colorTertiary": {
             color: globalThemePalette.text.primary,
             ":hover": {
               color: globalThemePalette.text.secondary,
             },
           },
-          "&.MuiButton-textWarning": {
+          "&.MuiButton-text.MuiButton-colorWarning": {
             color: globalThemePalette.warning.main,
             ":hover": {
               color: globalThemePalette.warning.medium,
@@ -635,7 +637,7 @@ const baseThemeOptions: ThemeOptions = {
           ".MuiTouchRipple-child": {
             backgroundColor: "transparent !important",
           },
-          "&.MuiButton-textError": {
+          "&.MuiButton-text.MuiButton-colorError": {
             color: globalThemePalette.error.main,
             ":hover": {
               color: globalThemePalette.error.medium,
@@ -644,7 +646,7 @@ const baseThemeOptions: ThemeOptions = {
               color: globalThemePalette.error.dark,
             },
           },
-          "&.MuiButton-textInfo": {
+          "&.MuiButton-text.MuiButton-colorInfo": {
             color: globalThemePalette.info.main,
             ":hover": {
               color: globalThemePalette.info.medium,
@@ -653,7 +655,7 @@ const baseThemeOptions: ThemeOptions = {
               color: globalThemePalette.info.dark,
             },
           },
-          "&.MuiButton-textSuccess": {
+          "&.MuiButton-text.MuiButton-colorSuccess": {
             color: globalThemePalette.success.main,
             ":hover": {
               color: globalThemePalette.success.medium,
@@ -767,39 +769,29 @@ const baseThemeOptions: ThemeOptions = {
           height: globalTypography.body2.lineHeight,
           alignItems: "center",
         },
-        standardSuccess: {
-          backgroundColor: globalThemePalette.success.pastel,
-          borderColor: globalThemePalette.success.light,
-        },
-        standardError: {
-          backgroundColor: globalThemePalette.error.pastel,
-          borderColor: globalThemePalette.error.light,
-        },
-        standardInfo: {
-          backgroundColor: globalThemePalette.info.pastel,
-          borderColor: globalThemePalette.info.light,
-        },
-        standardWarning: {
-          backgroundColor: globalThemePalette.warning.pastel,
-          borderColor: globalThemePalette.warning.light,
-        },
-        filledSuccess: {
-          backgroundColor: globalThemePalette.success.light,
-          borderColor: globalThemePalette.success.light,
-        },
-        filledError: {
-          backgroundColor: globalThemePalette.error.light,
-          borderColor: globalThemePalette.error.light,
-        },
-        filledInfo: {
-          backgroundColor: globalThemePalette.info.light,
-          borderColor: globalThemePalette.info.light,
-        },
-        filledWarning: {
-          backgroundColor: globalThemePalette.warning.light,
-          borderColor: globalThemePalette.warning.light,
-        },
       },
+      // MUI 9 removed the combined classes (standardSuccess, filledError, …);
+      // variants match on the same variant + colour and replace them 1:1.
+      variants: alertSeverities.flatMap((severity) => [
+        {
+          props: (ownerState: { variant?: string; severity?: string; color?: string }) =>
+            ownerState.variant === "standard" &&
+            (ownerState.color ?? ownerState.severity) === severity,
+          style: {
+            backgroundColor: globalThemePalette[severity].pastel,
+            borderColor: globalThemePalette[severity].light,
+          },
+        },
+        {
+          props: (ownerState: { variant?: string; severity?: string; color?: string }) =>
+            ownerState.variant === "filled" &&
+            (ownerState.color ?? ownerState.severity) === severity,
+          style: {
+            backgroundColor: globalThemePalette[severity].light,
+            borderColor: globalThemePalette[severity].light,
+          },
+        },
+      ]),
     },
     MuiAlertTitle: {
       styleOverrides: {

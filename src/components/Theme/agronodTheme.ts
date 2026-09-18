@@ -52,7 +52,7 @@ const agronodTheme = {
           ":hover": {
             boxShadow: `0px 0px 0px 1px ${themePalette.primary.dark}`,
           },
-          "&.MuiButton-outlinedPrimary:not(.Mui-disabled)": {
+          "&.MuiButton-outlined.MuiButton-colorPrimary:not(.Mui-disabled)": {
             color: themePalette.text.primary,
             borderColor: themePalette.primary.main,
             ":hover": {
@@ -63,7 +63,7 @@ const agronodTheme = {
               backgroundColor: themePalette.primary.pastel,
             },
           },
-          "&.MuiButton-outlinedSecondary:not(.Mui-disabled)": {
+          "&.MuiButton-outlined.MuiButton-colorSecondary:not(.Mui-disabled)": {
             ":hover": {
               borderColor: themePalette.secondary.dark,
               boxShadow: `0px 0px 0px 1px ${themePalette.secondary.dark}`,
@@ -74,7 +74,7 @@ const agronodTheme = {
           },
         },
         contained: {
-          "&.MuiButton-containedPrimary": {
+          "&.MuiButton-contained.MuiButton-colorPrimary": {
             ":hover": {
               backgroundColor: themePalette.primary.mainHover,
             },
@@ -82,7 +82,7 @@ const agronodTheme = {
               backgroundColor: themePalette.primary.medium,
             },
           },
-          "&.MuiButton-containedSecondary": {
+          "&.MuiButton-contained.MuiButton-colorSecondary": {
             ":hover": {
               backgroundColor: themePalette.secondary.medium,
             },
@@ -104,7 +104,7 @@ const agronodTheme = {
           ":active": {
             color: themePalette.primary.darkHover,
           },
-          "&.MuiButton-textSecondary": {
+          "&.MuiButton-text.MuiButton-colorSecondary": {
             color: themePalette.secondary.main,
             ":hover": {
               color: themePalette.secondary.medium,

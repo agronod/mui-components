@@ -36,6 +36,7 @@ const preview: Preview = {
       },
     },
   },
+
   parameters: {
     options: {
       storySort: {
@@ -58,16 +59,17 @@ const preview: Preview = {
       background: { hidden: true },
     },
     backgrounds: {
-      default: "agronod",
-      values: [
-        {
+      options: {
+        agronod: {
           name: "agronod",
           value: "#F8F6F3",
-        },
-      ],
+        }
+      }
     },
   },
+
   tags: ["autodocs"],
+
   decorators: [
     (Story, context) => {
       const themeName = context.globals.theme || 'Agronod';
@@ -90,6 +92,12 @@ const preview: Preview = {
       );
     },
   ],
+
+  initialGlobals: {
+    backgrounds: {
+      value: "agronod"
+    }
+  }
 };
 
 export default preview;

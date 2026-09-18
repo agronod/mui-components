@@ -7,8 +7,9 @@ type ProgressIndicatorProps = {
 
 const ProgressIndicator = (props: ProgressIndicatorProps) => {
   return (
-    <AgronodTypography variant="overline" color="text.secondary">
-      steg {props.active} av {props.total}
+    <AgronodTypography variant="overline" sx={{
+      color: "text.secondary"
+    }}>steg {props.active}av {props.total}
     </AgronodTypography>
   );
 };

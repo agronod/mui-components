@@ -1,3 +1,46 @@
+## Unreleased (2026-09-17)
+
+
+
+
+## 2.0.0-feat-mui-9.1 (2026-09-17)
+
+* ci: fix prerelease publish and shallow-clone changelog regeneration ([c093fdf](https://github.com/agronod/mui-components/commit/c093fdf))
+
+
+
+## 2.0.0-feat-mui-9.0 (2026-09-17)
+
+* ci: generate CHANGELOG.md in the release workflow ([a339398](https://github.com/agronod/mui-components/commit/a339398))
+* 1.29.1 ([db80070](https://github.com/agronod/mui-components/commit/db80070))
+* feat!: upgrade to Material UI 9, Storybook 10 and security dependencies ([cefdf2b](https://github.com/agronod/mui-components/commit/cefdf2b))
+
+
+### BREAKING CHANGE
+
+* consuming apps must upgrade @mui/material,
+@mui/icons-material and @mui/utils to ^9 and react-router-dom to
+^6.30.6, and run the MUI 9 codemods on their own code. React 18 stays
+supported. See MIGRATION.md for the step-by-step procedure.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+
+## <small>1.29.1 (2026-09-17)</small>
+
+* chore: regenerate changelog and update Chromatic project token (#164) ([e88cf37](https://github.com/agronod/mui-components/commit/e88cf37)), closes [#164](https://github.com/agronod/mui-components/issues/164)
+* 1.29.0 ([f9de65c](https://github.com/agronod/mui-components/commit/f9de65c))
+
+
+
+## 1.29.0 (2026-09-17)
+
+* feat: update alert styles and semi bold body font (#163) ([4c7bdb5](https://github.com/agronod/mui-components/commit/4c7bdb5)), closes [#163](https://github.com/agronod/mui-components/issues/163)
+* 1.28.0 ([9a11977](https://github.com/agronod/mui-components/commit/9a11977))
+* Update README.md ([09b6582](https://github.com/agronod/mui-components/commit/09b6582))
+
+
+
 ## 1.28.0 (2026-05-21)
 
 * feat: add maxValue and maxBarHeight props to VerticalBarChart (#162) ([f5fddc0](https://github.com/agronod/mui-components/commit/f5fddc0)), closes [#162](https://github.com/agronod/mui-components/issues/162)

@@ -60,20 +60,20 @@ export default function Header({
         <MuiLink
           to="/"
           component={Link}
-          display="inline-flex"
-          maxHeight={30}
-          maxWidth={166}
-        >
+          sx={{
+            display: "inline-flex",
+            maxHeight: 30,
+            maxWidth: 166
+          }}>
           {customLogo ? customLogo : <AgrosfarLogo />}
         </MuiLink>
         <Stack
-          width="100%"
           direction={"row"}
           spacing={5}
           sx={{
-            alignItems: "center",
-          }}
-        >
+            width: "100%",
+            alignItems: "center"
+          }}>
           <>
             {menuLinks && menuLinks}
             {userDropdown && userDropdown}

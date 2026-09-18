@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgrPlugin from "vite-plugin-svgr";
 import dts from "vite-plugin-dts";
-import { peerDependencies } from "./package.json";
+import { peerDependencies, dependencies } from "./package.json";
 import typescript from "@rollup/plugin-typescript";
 
 export default defineConfig({
@@ -15,7 +15,15 @@ export default defineConfig({
       formats: ["es", "umd"],
     },
     rollupOptions: {
-      external: Object.keys(peerDependencies),
+      // Everything a consumer installs (peers and runtime dependencies) stays
+      // external so the app uses its own single copy. The regex covers deep
+      // imports such as @mui/icons-material/Close, which the exact package
+      // names above would not match and would otherwise be bundled.
+      external: [
+        ...Object.keys(peerDependencies),
+        ...Object.keys(dependencies),
+        /^@mui\//,
+      ],
       plugins: [
         typescript({
           tsconfig: "./tsconfig-build.json",

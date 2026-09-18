@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "1.29.1",
+  "version": "2.0.0-feat-mui-9.1",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -12,51 +12,56 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "MIGRATION.md"
   ],
-  "overrides": {
-    "react-is": "^18.3.1"
+  "engines": {
+    "node": ">=22.12"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^7.3.4",
-    "@mui/lab": "^7.0.1-beta.18",
-    "@mui/material": "^7.3.4",
+    "@mui/icons-material": "^9.4.0",
+    "@mui/material": "^9.4.0",
+    "@mui/utils": "^9.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "6.23.1",
+    "react-router-dom": "^6.30.6",
     "recharts": "^2.4.1"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^4.1.1",
+    "@chromatic-com/storybook": "^5.3.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.3.4",
-    "@mui/lab": "^7.0.1-beta.18",
-    "@mui/material": "^7.3.4",
+    "@fontsource/material-icons": "^5.0.18",
+    "@fontsource/roboto": "^5.0.13",
+    "@mui/icons-material": "^9.4.0",
+    "@mui/material": "^9.4.0",
+    "@mui/utils": "^9.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
-    "@storybook/addon-docs": "^9.1.8",
-    "@storybook/addon-links": "^9.1.8",
-    "@storybook/addon-themes": "^9.1.8",
-    "@storybook/react-vite": "^9.1.8",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-links": "^10.6.0",
+    "@storybook/addon-themes": "^10.6.0",
+    "@storybook/react-vite": "^10.6.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^5.0.4",
     "ajv": "^8.17.1",
+    "conventional-changelog-cli": "^5.0.0",
     "eslint": "^9.36.0",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-storybook": "9.1.8",
+    "eslint-plugin-storybook": "^10.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "6.23.1",
+    "react-router-dom": "^6.30.6",
     "recharts": "^2.12.7",
-    "storybook": "^9.1.8",
+    "storybook": "^10.6.0",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.44.1",
     "vite": "^7.1.7",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-svgr": "^4.5.0"
   },
   "scripts": {
     "changelog": "conventional-changelog -p react -i CHANGELOG.md -s -r 0",
@@ -82,12 +87,7 @@
     ]
   },
   "dependencies": {
-    "@fontsource/material-icons": "^5.0.18",
-    "@fontsource/roboto": "^5.0.13",
-    "conventional-changelog-cli": "^5.0.0",
     "react-device-detect": "^2.2.3",
-    "react-is": "^18.3.1",
-    "react-number-format": "^5.4.0",
-    "vite-plugin-svgr": "^4.5.0"
+    "react-number-format": "^5.4.0"
   }
 }

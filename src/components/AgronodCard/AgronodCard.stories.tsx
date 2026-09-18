@@ -30,7 +30,9 @@ export const AgronodCardDefault: StoryFn<typeof AgronodCard> = ({
 };
 AgronodCardDefault.args = {
   children: (
-    <Stack gap={2}>
+    <Stack sx={{
+      gap: 2
+    }}>
       <AgronodTypography variant="h2">Lorem Ipsum</AgronodTypography>
       <AgronodTypography variant="body1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -58,7 +60,9 @@ export const AgronodCardModifiedStyles: StoryFn<typeof AgronodCard> = ({
 };
 AgronodCardModifiedStyles.args = {
   children: (
-    <Stack gap={2}>
+    <Stack sx={{
+      gap: 2
+    }}>
       <AgronodTypography variant="h2">Lorem Ipsum</AgronodTypography>
       <AgronodTypography variant="body1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

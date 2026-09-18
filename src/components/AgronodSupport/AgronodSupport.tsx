@@ -1,7 +1,7 @@
 import { Box, Fab, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutlined";
 import AgronodSupportDialog from "./components/AgronodSupportDialog";
 import { AgronodTypography } from "../AgronodTypography";
 import { AgronodButton } from "../AgronodButton";
@@ -139,17 +139,19 @@ export default function AgronodSupport(props: AgronodSupportProps) {
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "supportButton",
-          }}
-          PaperProps={{
-            style: {
-              marginTop:
-                props.menuPosition === "bottom"
-                  ? 5
-                  : props.buttonSize === "large"
-                    ? "-65px"
-                    : "-20px",
+          slotProps={{
+            list: {
+              "aria-labelledby": "supportButton",
+            },
+            paper: {
+              style: {
+                marginTop:
+                  props.menuPosition === "bottom"
+                    ? 5
+                    : props.buttonSize === "large"
+                      ? "-65px"
+                      : "-20px",
+              },
             },
           }}
         >

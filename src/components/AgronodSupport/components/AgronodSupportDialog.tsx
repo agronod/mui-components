@@ -24,15 +24,22 @@ const SupportDialog = (props: SupportDialogProps) => {
       >
         <>
           <Stack
-            gap={1}
-            sx={(theme) => ({ color: theme.palette.text.secondary })}
-          >
-            <AgronodTypography variant="body1" color="text.secondary">
+            sx={[{
+              gap: 1
+            }, (theme) => ({ color: theme.palette.text.secondary })]}>
+            <AgronodTypography variant="body1" sx={{
+              color: "text.secondary"
+            }}>
               Behöver du hjälp, har en fråga eller vill lämna feedback? Tveka
               inte att höra av dig.
             </AgronodTypography>
             {props.supportEmail && (
-              <Stack flexDirection="row" gap={1} justifyContent="center">
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: 1,
+                  justifyContent: "center"
+                }}>
                 <AgronodTypography variant="body1">E-post: </AgronodTypography>
                 <AgronodLink
                   href="mailto:support@agronod.com"
@@ -44,7 +51,12 @@ const SupportDialog = (props: SupportDialogProps) => {
               </Stack>
             )}
             {props.supportTelephone && (
-              <Stack flexDirection="row" gap={1} justifyContent="center">
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: 1,
+                  justifyContent: "center"
+                }}>
                 <AgronodTypography variant="body1">Telefon: </AgronodTypography>
                 <AgronodLink
                   href={`tel:${props.supportTelephone}`}
