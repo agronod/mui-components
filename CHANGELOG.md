@@ -1,6 +1,6 @@
-## <small>2.0.1-fix-AG-280-placeholder-contrast.0 (2026-09-21)</small>
+## <small>2.0.1 (2026-09-21)</small>
 
-* fix: raise form-field placeholder contrast to WCAG 2.2 AA (AG-280) ([5436ae8](https://github.com/agronod/mui-components/commit/5436ae8)), closes [#A3A19](https://github.com/agronod/mui-components/issues/A3A19)
+* fix: raise form-field placeholder contrast to WCAG 2.2 AA (AG-280) (#167) ([2132d41](https://github.com/agronod/mui-components/commit/2132d41)), closes [#167](https://github.com/agronod/mui-components/issues/167) [#A3A19](https://github.com/agronod/mui-components/issues/A3A19)
 * 2.0.0 ([0e6be20](https://github.com/agronod/mui-components/commit/0e6be20))
 
 
