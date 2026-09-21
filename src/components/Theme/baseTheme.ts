@@ -267,10 +267,6 @@ const baseThemeOptions: ThemeOptions = {
             },
           },
 
-          "& input::placeholder": {
-            color: globalThemePalette.text.disabled,
-          },
-
           // styling for input number so it does not have arrows
           "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
             {
@@ -278,6 +274,27 @@ const baseThemeOptions: ThemeOptions = {
             },
           "& input[type=number]": {
             MozAppearance: "textfield",
+          },
+        },
+        input: {
+          // MUI renders placeholders at 42% opacity, so even a dark colour ends
+          // up far below the WCAG 2.2 AA 4.5:1 requirement (AG-280). Full
+          // opacity with text.secondary measures about 5.9:1 on white and
+          // 5.7:1 on the disabled background. Applies to textarea too.
+          "&::placeholder": {
+            color: globalThemePalette.text.secondary,
+            opacity: 1,
+          },
+          // MUI dims the placeholder again when it reappears on focus behind
+          // a non-shrunk floating label; keep it fully opaque there as well.
+          "label[data-shrink=false] + .MuiInputBase-formControl &:focus::placeholder":
+            {
+              opacity: 1,
+            },
+          // Disabled fields are exempt from 1.4.3; keep the placeholder on the
+          // same token as the disabled value text so the field reads as disabled.
+          "&.Mui-disabled::placeholder": {
+            color: globalThemePalette.text.disabled,
           },
         },
       },

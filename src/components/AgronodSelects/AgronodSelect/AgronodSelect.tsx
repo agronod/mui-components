@@ -117,7 +117,7 @@ export default function AgronodSelect({
                       ? theme.palette.secondary.pastel
                       : undefined,
                   "&::before": {
-                    color: theme.palette.text.disabled,
+                    color: theme.palette.text.secondary,
                     position: "absolute",
                     width: "80%",
                     overflow: "hidden",
@@ -127,6 +127,9 @@ export default function AgronodSelect({
                     display: isEmptyValue(value as string | string[])
                       ? "block"
                       : "none"
+                  },
+                  "&.Mui-disabled::before": {
+                    color: theme.palette.text.disabled,
                   },
                 }
               }),

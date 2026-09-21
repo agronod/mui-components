@@ -341,7 +341,7 @@ const AgronodAutocompleteSearch = <T,>({
                         <AgronodTypography
                           variant="body1"
                           sx={{
-                            color: "text.disabled"
+                            color: "text.secondary"
                           }}
                         >
                           {additionalInfoText(option)}
@@ -368,7 +368,7 @@ const AgronodAutocompleteSearch = <T,>({
                   <AgronodTypography
                     variant="body1"
                     sx={{
-                      color: "text.disabled",
+                      color: "text.secondary",
                       textAlign: "left",
                       width: "100%"
                     }}>
