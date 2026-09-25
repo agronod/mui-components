@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "3.0.0-feat-remove-tertiary-admin-theme-dataviz-palette.0",
+  "version": "3.1.0-feat-remove-tertiary-admin-theme-dataviz-palette.0",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",

@@ -1,3 +1,10 @@
+## 3.1.0-feat-remove-tertiary-admin-theme-dataviz-palette.0 (2026-09-25)
+
+* feat: update coral data-viz ramp to the revised Figma steps ([872d658](https://github.com/agronod/mui-components/commit/872d658))
+* 3.0.0-feat-remove-tertiary-admin-theme-dataviz-palette.0 ([26ac5e3](https://github.com/agronod/mui-components/commit/26ac5e3))
+
+
+
 ## 3.0.0-feat-remove-tertiary-admin-theme-dataviz-palette.0 (2026-09-25)
 
 * 2.0.1 ([0847041](https://github.com/agronod/mui-components/commit/0847041))
