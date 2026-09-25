@@ -1,3 +1,23 @@
+## 3.0.0-feat-remove-tertiary-admin-theme-dataviz-palette.0 (2026-09-25)
+
+* 2.0.1 ([0847041](https://github.com/agronod/mui-components/commit/0847041))
+* feat!: remove tertiary colour, add Admin theme and data-visualization palette ([03b7dc0](https://github.com/agronod/mui-components/commit/03b7dc0))
+
+
+### BREAKING CHANGE
+
+* `theme.palette.tertiary` and `Button color="tertiary"` are
+removed. The burgundy scale is now the primary colour of the new `adminTheme`,
+and charts use the new `theme.palette.dataViz` palette (gold, green, blue,
+brown, coral, purple with steps 700–100, plus `other`). `BarChart` and
+`StackedChart` take `colorScheme="coral"` instead of `"tertiary"`.
+
+Agronod and Admin share component overrides through `createBrandTheme`.
+Per-repo migration mapping lives in docs/migrations/remove-tertiary.md.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+
 ## <small>2.0.1 (2026-09-21)</small>
 
 * fix: raise form-field placeholder contrast to WCAG 2.2 AA (AG-280) (#167) ([2132d41](https://github.com/agronod/mui-components/commit/2132d41)), closes [#167](https://github.com/agronod/mui-components/issues/167) [#A3A19](https://github.com/agronod/mui-components/issues/A3A19)
