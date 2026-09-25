@@ -1,4 +1,5 @@
-// MUI v7 type augmentations
+// MUI type augmentations
+import type { DataVizPalette } from "./dataVizPalette";
 
 declare module "@mui/material/styles" {
   interface TypeText {
@@ -44,14 +45,7 @@ declare module "@mui/material/styles" {
     white: string;
     white36: string;
     white50: string;
-    tertiary: {
-      hint?: string;
-      pastel: string;
-      light: string;
-      main: string;
-      medium: string;
-      dark: string;
-    };
+    dataViz: DataVizPalette;
   }
 
   interface PaletteOptions {
@@ -84,14 +78,7 @@ declare module "@mui/material/styles" {
     white?: string;
     white36?: string;
     white50?: string;
-    tertiary?: {
-      hint?: string;
-      pastel?: string;
-      light?: string;
-      main?: string;
-      medium?: string;
-      dark?: string;
-    };
+    dataViz?: DataVizPalette;
   }
 
   interface PaletteColor {
@@ -124,12 +111,6 @@ declare module "@mui/material/Typography" {
     body3: true;
     body4: true;
     component: true;
-  }
-}
-
-declare module "@mui/material/Button" {
-  interface ButtonPropsColorOverrides {
-    tertiary: true;
   }
 }
 

@@ -71,7 +71,6 @@ export default {
         "none",
         "primary",
         "secondary",
-        "tertiary",
         "success",
         "error",
         "info",

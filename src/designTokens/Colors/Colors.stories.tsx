@@ -1,9 +1,14 @@
+import React from "react";
 import { Stack, useTheme } from "@mui/material";
 import ColorItem from "./ColorItem";
 import { AgronodTypography } from "../../components";
+import {
+  dataVizRampNames,
+  dataVizSteps,
+} from "../../components/Theme/dataVizPalette";
 
 const description = `
-<p><b>Primary</b> and <b>secondary</b> colors change depending on theme while other colors are common for all themes and are defined in <code>baseTheme.tsx</code>.</p>
+<p><b>Primary</b> colors change depending on theme (Agronod, Admin, Agrosfär) while other colors, including the data-visualization palette, are common for all themes and are defined in <code>baseTheme.ts</code>.</p>
 <p>Colors are used as variables in <code>sx</code> property of component.</p>
 <p>They can be also accessed outside <b>sx</b> via <code>const theme = useTheme();</code></p>`;
 
@@ -43,7 +48,9 @@ export const ColorPalette = () => {
           gap: 1.5,
           flexWrap: "wrap"
         }}>
-        <ColorItem name=".darkHover" code={theme.palette.primary.darkHover} />
+        {theme.palette.primary.darkHover && (
+          <ColorItem name=".darkHover" code={theme.palette.primary.darkHover} />
+        )}
         <ColorItem name=".dark" code={theme.palette.primary.dark} />
         {theme.palette.primary.mediumHover && (
           <ColorItem
@@ -84,29 +91,6 @@ export const ColorPalette = () => {
         <ColorItem name=".pastel" code={theme.palette.secondary.pastel} />
         <ColorItem name=".hint" code={theme.palette.secondary.hint} />
 
-      </Stack>
-
-      <AgronodTypography
-        variant="subtitle1"
-        sx={{ marginTop: 3, marginBottom: 0.5 }}
-      >
-        Tertiary
-      </AgronodTypography>
-      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
-        Code: <code>theme.palette.tertiary</code>
-      </AgronodTypography>
-      <Stack
-        sx={{
-          flexDirection: "row",
-          gap: 1.5,
-          flexWrap: "wrap"
-        }}>
-        <ColorItem name=".dark" code={theme.palette.tertiary.dark} />
-        <ColorItem name=".medium" code={theme.palette.tertiary.medium} />
-        <ColorItem name=".main" code={theme.palette.tertiary.main} />
-        <ColorItem name=".light" code={theme.palette.tertiary.light} />
-        <ColorItem name=".pastel" code={theme.palette.tertiary.pastel} />
-        <ColorItem name=".hint" code={theme.palette.tertiary.hint} />
       </Stack>
 
       <AgronodTypography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
@@ -205,6 +189,60 @@ export const ColorPalette = () => {
         <ColorItem name=".light" code={theme.palette.info.light} />
         <ColorItem name=".pastel" code={theme.palette.info.pastel} />
         <ColorItem name=".hint" code={theme.palette.info.hint} />
+      </Stack>
+
+      <AgronodTypography variant="h3" sx={{ marginBottom: 1, marginTop: 6 }}>
+        Data Visualization
+      </AgronodTypography>
+      <AgronodTypography variant="body2" sx={{ marginBottom: 3 }}>
+        Chart-only colours, shared by all themes. Steps follow Figma: 700 is
+        darkest, 100 lightest, 600 is the series colour. For nominal series
+        assign in the order gold, blue, brown, coral, green, purple and never
+        cycle; past four series fold the tail into <code>other</code>.
+      </AgronodTypography>
+      {dataVizRampNames.map((name) => (
+        <React.Fragment key={name}>
+          <AgronodTypography
+            variant="subtitle1"
+            sx={{ marginTop: 3, marginBottom: 0.5, textTransform: "capitalize" }}
+          >
+            {name}
+          </AgronodTypography>
+          <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
+            Code: <code>theme.palette.dataViz.{name}</code>
+          </AgronodTypography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: 1.5,
+              flexWrap: "wrap"
+            }}>
+            {dataVizSteps.map((step) => (
+              <ColorItem
+                key={step}
+                name={`[${step}]`}
+                code={theme.palette.dataViz[name][step]}
+              />
+            ))}
+          </Stack>
+        </React.Fragment>
+      ))}
+      <AgronodTypography
+        variant="subtitle1"
+        sx={{ marginTop: 3, marginBottom: 0.5 }}
+      >
+        Other
+      </AgronodTypography>
+      <AgronodTypography variant="subtitle3" sx={{ marginBottom: 3 }}>
+        Code: <code>theme.palette.dataViz.other</code>
+      </AgronodTypography>
+      <Stack
+        sx={{
+          flexDirection: "row",
+          gap: 1.5,
+          flexWrap: "wrap"
+        }}>
+        <ColorItem name=".other" code={theme.palette.dataViz.other} />
       </Stack>
 
       <AgronodTypography variant="h3" sx={{ marginBottom: 3, marginTop: 6 }}>
