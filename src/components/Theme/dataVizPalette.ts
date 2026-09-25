@@ -38,7 +38,7 @@ export const dataVizPalette: DataVizPalette = {
   green: ramp(["#1A5C3F", "#2F8560", "#4FA17F", "#76BC9F", "#98CDB7", "#CCE6DB", "#E8F5EE"]),
   blue: ramp(["#314A59", "#51697E", "#728A9B", "#93AAB7", "#B4C8D2", "#D3E1E8", "#ECF2F5"]),
   brown: ramp(["#4C3B29", "#68523D", "#8A7259", "#AB9578", "#C8B59B", "#DFD3C2", "#F2ECE5"]),
-  coral: ramp(["#CD625B", "#EF837C", "#F39D97", "#F6B5B1", "#F9CECA", "#FBE2E0", "#FDF2F1"]),
+  coral: ramp(["#CF655F", "#D97B74", "#E2918A", "#EAA7A0", "#F0BDB7", "#F6D3CE", "#FBE8E6"]),
   purple: ramp(["#56425C", "#775681", "#937599", "#AE95B2", "#C8B6CC", "#DDD4E0", "#F0ECF2"]),
   other: "#A3A19F",
 };
