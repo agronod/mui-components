@@ -28,7 +28,7 @@ export type BarChartProps = {
   children?: React.ReactNode;
   layout?: "horizontal" | "vertical";
   TooltipContent?: React.FC;
-  colorScheme?: "primary" | "secondary" | "tertiary";
+  colorScheme?: "primary" | "secondary" | "coral";
 };
 
 export const BarChart: React.FC<BarChartProps> = ({
@@ -46,6 +46,12 @@ export const BarChart: React.FC<BarChartProps> = ({
   colorScheme,
 }) => {
   const theme = useTheme();
+  const schemeColor =
+    colorScheme === undefined
+      ? undefined
+      : colorScheme === "coral"
+        ? theme.palette.dataViz.coral[600]
+        : theme.palette[colorScheme].main;
 
   const bars = React.useMemo(() => {
     const value = data[0]?.[dataKey];
@@ -69,9 +75,8 @@ export const BarChart: React.FC<BarChartProps> = ({
                   key={innerIndex}
                   {...(Array.isArray(child) ? child[index] : child)}
                   fill={
-                    colorScheme === undefined
-                      ? (Array.isArray(child) ? child[index] : child)?.fill
-                      : theme.palette[colorScheme].main
+                    schemeColor ??
+                    (Array.isArray(child) ? child[index] : child)?.fill
                   }
                 />
               )
@@ -97,9 +102,7 @@ export const BarChart: React.FC<BarChartProps> = ({
                 key={index}
                 {...(Array.isArray(child) ? child[0] : child)}
                 fill={
-                  colorScheme === undefined
-                    ? (Array.isArray(child) ? child[0] : child)?.fill
-                    : theme.palette[colorScheme].main
+                  schemeColor ?? (Array.isArray(child) ? child[0] : child)?.fill
                 }
               />
             )
@@ -111,9 +114,8 @@ export const BarChart: React.FC<BarChartProps> = ({
     dataKey,
     barCellsOptions,
     barOptions,
-    colorScheme,
+    schemeColor,
     isAnimationActive,
-    theme.palette,
   ]);
 
   if (!Array.isArray(data) || data.length === 0) {

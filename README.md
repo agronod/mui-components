@@ -106,14 +106,18 @@ import ThemeProvider from "@agronod/mui-components";
 
 const App = () => {
   <StyledEngineProvider injectFirst>
-    // We have three themes that can be used right now: AgronodTheme,
-    AgrosphereTheme, AgrosphereDarkTheme
+    // Available themes: agronodTheme, adminTheme, agrosfarTheme,
+    // agrosfarDarkTheme
     <ThemeProvider options={yourSelectedTheme}>
       <App />
     </ThemeProvider>;
   </StyledEngineProvider>;
 };
 ```
+
+### Migrations
+
+Breaking colour changes are documented per version in `docs/migrations/`. Start with [docs/migrations/remove-tertiary.md](docs/migrations/remove-tertiary.md) when upgrading past 2.x.
 
 ### Theme setup
 

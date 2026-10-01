@@ -7,7 +7,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: "radio",
-      options: ["primary", "secondary", "tertiary"],
+      options: ["primary", "secondary", "coral"],
     },
   },
 } as Meta<typeof BarChart>;

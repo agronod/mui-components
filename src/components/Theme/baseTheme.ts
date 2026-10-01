@@ -6,6 +6,7 @@ import InterSemiBoldTTF from "./fonts/inter/static/Inter-SemiBold.ttf";
 import { circularProgressClasses } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
+import { dataVizPalette } from "./dataVizPalette";
 
 const alertSeverities = ["success", "error", "info", "warning"] as const;
 
@@ -47,14 +48,6 @@ const semanticThemePalette = {
     medium: "#457A3B",
     dark: "#2F5D28",
     darkHover: "#21411C",
-  },
-  tertiary: {
-    hint: "#FBF6F5",
-    pastel: "#F4E8E7",
-    light: "#DAC7C8",
-    main: "#7E474B",
-    medium: "#5B353A",
-    dark: "#3A1E25",
   },
   secondary: {
     hint: "#F6F7FA",
@@ -112,6 +105,7 @@ const grayThemePalette = {
 const globalThemePalette = {
   ...grayThemePalette,
   ...semanticThemePalette,
+  dataViz: dataVizPalette,
 };
 
 const globalTypography = {
@@ -558,15 +552,6 @@ const baseThemeOptions: ThemeOptions = {
               backgroundColor: globalThemePalette.success.darkHover,
             },
           },
-          "&.MuiButton-contained.MuiButton-colorTertiary:not(.Mui-disabled)": {
-            color: globalThemePalette.white,
-            ":hover": {
-              backgroundColor: globalThemePalette.tertiary.medium,
-            },
-            ":active": {
-              backgroundColor: globalThemePalette.tertiary.dark,
-            },
-          },
         },
         outlined: {
           borderColor: globalThemePalette.input.border,
@@ -635,12 +620,6 @@ const baseThemeOptions: ThemeOptions = {
           },
           ":focus-visible": {
             textDecoration: "underline",
-          },
-          "&.MuiButton-text.MuiButton-colorTertiary": {
-            color: globalThemePalette.text.primary,
-            ":hover": {
-              color: globalThemePalette.text.secondary,
-            },
           },
           "&.MuiButton-text.MuiButton-colorWarning": {
             color: globalThemePalette.warning.main,

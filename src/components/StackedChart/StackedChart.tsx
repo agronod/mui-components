@@ -16,7 +16,7 @@ type StackedChartProps = {
   data: StackedChartDataProps[];
   headline: string;
   resultPage?: boolean;
-  colorScheme?: "primary" | "secondary" | "tertiary";
+  colorScheme?: "primary" | "secondary" | "coral";
 };
 
 export const StackedChart: React.FC<StackedChartProps> = ({
@@ -28,7 +28,7 @@ export const StackedChart: React.FC<StackedChartProps> = ({
   // const colors = {
   //   primary: [],
   //   secondary: [],
-  //   tertiary: [],
+  //   coral: [],
   // };
 
   if (!Array.isArray(data) || data.length === 0) {

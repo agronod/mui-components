@@ -2,6 +2,7 @@ import React from "react";
 import {
   ThemeProvider,
   agronodTheme,
+  adminTheme,
   agrosfarTheme,
   agrosfarDarkTheme,
 } from "../src";
@@ -15,6 +16,7 @@ import type { Preview } from '@storybook/react-vite';
 
 const themes = {
   Agronod: agronodTheme,
+  Admin: adminTheme,
   Agrosfar: agrosfarTheme,
   AgrosfarDark: agrosfarDarkTheme,
 };
@@ -28,6 +30,7 @@ const preview: Preview = {
         defaultValue: "Agronod",
         items: [
           { value: "Agronod", title: "Agronod" },
+          { value: "Admin", title: "Admin" },
           { value: "Agrosfar", title: "Agrosfar" },
           { value: "AgrosfarDark", title: "AgrosfarDark" },
         ],

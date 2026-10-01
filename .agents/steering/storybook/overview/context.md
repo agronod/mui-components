@@ -6,7 +6,7 @@ Keywords: storybook, stories, chromatic, addon-docs, addon-themes, react-vite, p
 Storybook 10 with the `@storybook/react-vite` framework. Config lives in `.storybook/`:
 
 - `main.ts`: stories glob `../src/**/*.mdx` and `../src/**/*.stories.@(js|jsx|ts|tsx)`; addons `addon-docs` (with `transcludeMarkdown`), `addon-links`, `addon-themes`, `@chromatic-com/storybook`; `react-docgen-typescript` with a `propFilter` that hides third-party props except `@mui/*`, so MUI props show as controls; `viteFinal` adds `vite-plugin-svgr` so `?react` SVG imports work in stories; telemetry disabled.
-- `preview.tsx`: wraps every story in the library's `ThemeProvider`, driven by a `theme` toolbar global (`Agronod`, `Agrosfar`, `AgrosfarDark`); loads Roboto and Material Icons via `@fontsource/*`; `tags: ["autodocs"]` so every component gets an About page (`docs.defaultName: "About"`); `storySort.order` fixes the sidebar order: Intro Pages, Design Tokens, Custom Icons, Agrosfär Exclusive, Shared Components.
+- `preview.tsx`: wraps every story in the library's `ThemeProvider`, driven by a `theme` toolbar global (`Agronod`, `Admin`, `Agrosfar`, `AgrosfarDark`); loads Roboto and Material Icons via `@fontsource/*`; `tags: ["autodocs"]` so every component gets an About page (`docs.defaultName: "About"`); `storySort.order` fixes the sidebar order: Intro Pages, Design Tokens, Custom Icons, Agrosfär Exclusive, Shared Components.
 - `preview-head.html` for extra head tags.
 
 ## Story conventions

@@ -27,7 +27,6 @@ export default {
       options: [
         "primary",
         "secondary",
-        "tertiary",
         "success",
         "error",
         "info",
