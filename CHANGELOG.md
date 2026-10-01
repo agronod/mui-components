@@ -1,14 +1,7 @@
-## 3.1.0-feat-remove-tertiary-admin-theme-dataviz-palette.0 (2026-09-25)
-
-* feat: update coral data-viz ramp to the revised Figma steps ([872d658](https://github.com/agronod/mui-components/commit/872d658))
-* 3.0.0-feat-remove-tertiary-admin-theme-dataviz-palette.0 ([26ac5e3](https://github.com/agronod/mui-components/commit/26ac5e3))
-
-
-
-## 3.0.0-feat-remove-tertiary-admin-theme-dataviz-palette.0 (2026-09-25)
+## 3.0.0 (2026-10-01)
 
 * 2.0.1 ([0847041](https://github.com/agronod/mui-components/commit/0847041))
-* feat!: remove tertiary colour, add Admin theme and data-visualization palette ([03b7dc0](https://github.com/agronod/mui-components/commit/03b7dc0))
+* feat!: remove tertiary colour, add Admin theme and data-visualization palette (DES-10) (#168) ([b0c732e](https://github.com/agronod/mui-components/commit/b0c732e)), closes [#168](https://github.com/agronod/mui-components/issues/168)
 
 
 ### BREAKING CHANGE
@@ -23,6 +16,14 @@ Agronod and Admin share component overrides through `createBrandTheme`.
 Per-repo migration mapping lives in docs/migrations/remove-tertiary.md.
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+* 3.0.0-feat-remove-tertiary-admin-theme-dataviz-palette.0
+
+* feat: update coral data-viz ramp to the revised Figma steps
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+* 3.1.0-feat-remove-tertiary-admin-theme-dataviz-palette.0
 
 
 ## <small>2.0.1 (2026-09-21)</small>
