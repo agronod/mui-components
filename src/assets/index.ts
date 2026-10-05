@@ -10,5 +10,8 @@ export { AgrosfarLogo };
 import AgronodLogo from "./AgronodLogo";
 export { AgronodLogo };
 
+import AgronodLogoDeprecated from "./AgronodLogoDeprecated";
+export { AgronodLogoDeprecated };
+
 import header_background from "./header_background.png";
 export { header_background };

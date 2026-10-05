@@ -12,6 +12,27 @@ Conventions used below:
 
 ---
 
+## Unreleased — AgronodLogo asset corrected
+
+Exact version is set by the release workflow when this branch merges.
+
+### What changes for the application
+
+| Change | Action required |
+|---|---|
+| `AgronodLogo` now renders the current Agronod wordmark (dot in the first "o") instead of the outdated design (dot in the second "o") | None to compile — same export name, no props. Any screen rendering `<AgronodLogo />` picks up the corrected mark automatically. |
+| Old artwork preserved under a new export, `AgronodLogoDeprecated` | Only needed if a screen must keep rendering the previous mark exactly; import `AgronodLogoDeprecated` there instead of `AgronodLogo`. |
+
+### Step 1 — Find usage and confirm
+
+```bash
+grep -rn "AgronodLogo" <app>/src
+```
+
+Verify: review each hit. No action needed unless the app has a reason to keep the old mark, in which case switch that import to `AgronodLogoDeprecated`.
+
+---
+
 ## 2.0.0 — Material UI 9
 
 Release date and exact version are set by the release workflow when the `feat/mui-9` branch merges. Until then this section describes the pre-release published from that branch.
