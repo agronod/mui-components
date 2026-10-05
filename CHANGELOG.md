@@ -1,6 +1,6 @@
-## <small>3.0.1-fix-agronod-logo-asset.0 (2026-10-05)</small>
+## <small>3.0.1 (2026-10-05)</small>
 
-* fix: correct AgronodLogo asset to current wordmark ([07baac0](https://github.com/agronod/mui-components/commit/07baac0))
+* fix: correct AgronodLogo asset to current wordmark (#169) ([d0024fb](https://github.com/agronod/mui-components/commit/d0024fb)), closes [#169](https://github.com/agronod/mui-components/issues/169)
 * 3.0.0 ([568bc0b](https://github.com/agronod/mui-components/commit/568bc0b))
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "3.0.1-fix-agronod-logo-asset.0",
+  "version": "3.0.1",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
