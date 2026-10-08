@@ -1,3 +1,4 @@
+import { deepmerge } from "@mui/utils";
 import createBrandTheme, { BrandPrimaryScale } from "./brandTheme";
 
 /**
@@ -14,6 +15,35 @@ export const adminPrimary: BrandPrimaryScale = {
   dark: "#3A1E25",
 };
 
-const adminTheme = createBrandTheme(adminPrimary);
+// Admin checkbox uses `main` for the checked state and `medium` for hover,
+// overriding createBrandTheme's default (`medium` checked / `dark` hover).
+// Same swap for the text/link-style button, which otherwise inherits the
+// gray `text.primary`/`text.secondary` colors from createBrandTheme.
+const adminTheme = deepmerge(createBrandTheme(adminPrimary), {
+  components: {
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          "&.Mui-checked:not(.Mui-disabled)": {
+            color: adminPrimary.main,
+            "&:hover": {
+              color: adminPrimary.medium,
+            },
+          },
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        text: {
+          color: adminPrimary.main,
+          ":hover": {
+            color: adminPrimary.medium,
+          },
+        },
+      },
+    },
+  },
+});
 
 export default adminTheme;

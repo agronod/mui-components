@@ -1,3 +1,10 @@
+## <small>3.0.2-fix-admin-theme-checkbox-colors.0 (2026-10-08)</small>
+
+* fix: use primary.main/medium for admin theme checkbox and text button (DES-11) ([98b0100](https://github.com/agronod/mui-components/commit/98b0100))
+* 3.0.1 ([a53b688](https://github.com/agronod/mui-components/commit/a53b688))
+
+
+
 ## <small>3.0.1 (2026-10-05)</small>
 
 * fix: correct AgronodLogo asset to current wordmark (#169) ([d0024fb](https://github.com/agronod/mui-components/commit/d0024fb)), closes [#169](https://github.com/agronod/mui-components/issues/169)
