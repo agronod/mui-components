@@ -1,6 +1,6 @@
 {
   "name": "@agronod/mui-components",
-  "version": "3.0.2-fix-admin-theme-checkbox-colors.0",
+  "version": "3.0.2",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
