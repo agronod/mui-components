@@ -1,6 +1,6 @@
-## <small>3.0.4-fix-dialog-mobile-width-override.0 (2026-10-08)</small>
+## <small>3.0.3 (2026-10-15)</small>
 
-* fix: keep AgronodDialog bottom sheet full width when callers set a paper width (DES-12) ([c3cb4c5](https://github.com/agronod/mui-components/commit/c3cb4c5))
+* fix: keep AgronodDialog bottom sheet full width when callers set a paper width (DES-12) (#171) ([ad1f3bf](https://github.com/agronod/mui-components/commit/ad1f3bf)), closes [#171](https://github.com/agronod/mui-components/issues/171)
 * 3.0.2 ([a5f04e8](https://github.com/agronod/mui-components/commit/a5f04e8))
 
 
