@@ -1,3 +1,10 @@
+## <small>3.0.4-fix-dialog-mobile-width-override.0 (2026-10-08)</small>
+
+* fix: keep AgronodDialog bottom sheet full width when callers set a paper width (DES-12) ([c3cb4c5](https://github.com/agronod/mui-components/commit/c3cb4c5))
+* 3.0.2 ([a5f04e8](https://github.com/agronod/mui-components/commit/a5f04e8))
+
+
+
 ## <small>3.0.2 (2026-10-08)</small>
 
 * fix: admin theme checkbox and text button use primary main/medium (DES-11) (#170) ([c6c70bc](https://github.com/agronod/mui-components/commit/c6c70bc)), closes [#170](https://github.com/agronod/mui-components/issues/170)

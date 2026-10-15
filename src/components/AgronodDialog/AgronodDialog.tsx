@@ -7,13 +7,54 @@ import {
   styled,
   Stack,
   SxProps,
+  Theme,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import { mergeSlotProps } from "@mui/material/utils";
 import CloseIcon from "@mui/icons-material/Close";
 import { AgronodTypography } from "../AgronodTypography";
 import React, { ReactNode } from "react";
+
+type PaperSlotProps = NonNullable<
+  NonNullable<DialogProps["slotProps"]>["paper"]
+>;
+type PaperSlotPropsObject = Exclude<
+  PaperSlotProps,
+  (...args: never) => unknown
+>;
+
+// Paper defaults a caller may override through `slotProps.paper.sx`.
+const paperDefaultsSx: SxProps<Theme> = (theme) => ({
+  borderRadius: 4,
+  paddingTop: "48px",
+  [theme.breakpoints.down("sm")]: {
+    borderRadius: "16px 16px 0 0",
+    maxHeight: "95vh",
+  },
+});
+
+// With MUI's own `fullScreen` the paper keeps MUI's square corners and
+// full-viewport size; only the space for the close button is added.
+const fullScreenPaperDefaultsSx: SxProps<Theme> = { paddingTop: "48px" };
+
+// Bottom-sheet geometry below the "sm" breakpoint. Appended after the caller's
+// `slotProps.paper.sx` so a desktop width such as `width: "700px"` cannot push
+// the sheet off-screen on a phone. Only placement and width are forced here;
+// radius and height stay overridable through `paperDefaultsSx`.
+const mobileSheetSx: SxProps<Theme> = (theme) => ({
+  [theme.breakpoints.down("sm")]: {
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    margin: 0,
+    width: "100%",
+    maxWidth: "none",
+  },
+});
+
+const toSxArray = (sx: SxProps<Theme> | undefined) =>
+  sx === undefined ? [] : Array.isArray(sx) ? sx : [sx];
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   position: "absolute",
@@ -51,27 +92,33 @@ const AgronodDialog = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // Paper styles are layered as: overridable defaults, then the caller's
+  // `slotProps.paper.sx`, then the forced bottom-sheet geometry. With MUI's
+  // own `fullScreen` the bottom sheet is skipped entirely. The caller's slot
+  // props may be an object or a function of the owner state, so the result is
+  // a function that resolves them first and always carries the defaults, even
+  // when the caller passes `sx: undefined`.
+  const { fullScreen } = rest;
+  const callerPaper = rest.slotProps?.paper;
+  const paperSlotProps: PaperSlotProps = (ownerState) => {
+    const caller: PaperSlotPropsObject | undefined =
+      typeof callerPaper === "function" ? callerPaper(ownerState) : callerPaper;
+    return {
+      ...caller,
+      sx: [
+        fullScreen ? fullScreenPaperDefaultsSx : paperDefaultsSx,
+        ...toSxArray(caller?.sx),
+        !fullScreen && mobileSheetSx,
+      ],
+    };
+  };
+
   return (
     <Dialog
       {...rest}
       slotProps={{
         ...rest.slotProps,
-        paper: mergeSlotProps(rest.slotProps?.paper, {
-          sx: {
-            borderRadius: isMobile ? "16px 16px 0 0" : 4,
-            paddingTop: "48px",
-            ...(isMobile && {
-              position: "fixed",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              maxHeight: "95vh",
-              maxWidth: "none",
-              width: "100%",
-              margin: 0,
-            }),
-          },
-        }),
+        paper: paperSlotProps,
       }}
     >
       <DialogContent

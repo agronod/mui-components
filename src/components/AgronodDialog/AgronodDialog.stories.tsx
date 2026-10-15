@@ -448,6 +448,60 @@ export const Mobile: StoryFn<typeof AgronodDialog> = (
 };
 Mobile.args = {};
 
+export const MobileWithDesktopWidth: StoryFn<typeof AgronodDialog> = (
+  args: AgronodDialogProps
+) => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <>
+      <AgronodButton variant="contained" onClick={() => setOpen(true)}>
+        Open dialog with a fixed desktop width
+      </AgronodButton>
+      <AgronodDialog
+        {...args}
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Vilket företag är ditt konto knutet till?"
+        slotProps={{
+          paper: {
+            sx: {
+              width: "700px",
+              maxWidth: "700px",
+            },
+          },
+        }}
+        actions={
+          <>
+            <AgronodButton variant="outlined" onClick={() => setOpen(false)}>
+              Avbryt
+            </AgronodButton>
+            <AgronodButton variant="contained" onClick={() => setOpen(false)}>
+              Godkänn
+            </AgronodButton>
+          </>
+        }
+      >
+        <AgronodTypography variant="body2">
+          Consumers often set a fixed width for desktop via
+          slotProps.paper.sx. Below the &quot;sm&quot; breakpoint the bottom
+          sheet must still span the full viewport width instead of overflowing
+          to the right. Switch to a desktop viewport to see the 700px paper.
+        </AgronodTypography>
+      </AgronodDialog>
+    </>
+  );
+};
+MobileWithDesktopWidth.args = {};
+// Opens in a phone viewport so the bottom sheet, not the trigger button, is
+// what the story and its Chromatic snapshot show.
+MobileWithDesktopWidth.globals = {
+  viewport: { value: "mobile2", isRotated: false },
+};
+MobileWithDesktopWidth.parameters = {
+  chromatic: { modes: { mobile: { viewport: "mobile2" } } },
+};
+
 export const MobileGrowing: StoryFn<typeof AgronodDialog> = (
   args: AgronodDialogProps
 ) => {
