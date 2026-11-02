@@ -1,3 +1,9 @@
+## <small>1.28.1 (2026-11-02)</small>
+
+* fix: ship images as files and the Inter fonts as embedded woff2 instead of base64 PNG and TTF, cutting index.es.js from 2.6 MB to 0.70 MB (GN-04)
+
+
+
 ## 1.23.0 (2025-10-06)
 
 * feat: upgrade Material-UI from v5 to v7 (#147) ([a29789b](https://github.com/agronod/mui-components/commit/a29789b)), closes [#147](https://github.com/agronod/mui-components/issues/147)

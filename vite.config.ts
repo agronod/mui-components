@@ -7,6 +7,11 @@ import { peerDependencies } from "./package.json";
 import typescript from "@rollup/plugin-typescript";
 
 export default defineConfig({
+  // Images are imported with ?no-inline so the library build emits them as
+  // files instead of base64 in the bundle. A relative base makes the bundle
+  // reference them relative to itself, so the consuming app's bundler resolves
+  // and copies them.
+  base: "./",
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
