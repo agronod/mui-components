@@ -10,5 +10,5 @@ export { AgrosfarLogo };
 import AgronodLogo from "./AgronodLogo";
 export { AgronodLogo };
 
-import header_background from "./header_background.png";
+import header_background from "./header_background.png?no-inline";
 export { header_background };
