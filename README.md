@@ -90,7 +90,21 @@ The library does not bundle its peer dependencies. The consuming application mus
     "recharts": "^2.4.1"
 ```
 
-Fonts are not shipped by this package. The themes reference Roboto and Material Icons, so the consuming application loads them itself, for example via `@fontsource/roboto` and `@fontsource/material-icons` as Storybook does in `.storybook/preview.tsx`.
+The Inter fonts the typography variants use are embedded in the bundle as woff2, so pages copied into standalone HTML, such as PDF exports, keep them. The themes also reference Roboto and Material Icons, which the consuming application loads itself, for example via `@fontsource/roboto` and `@fontsource/material-icons` as Storybook does in `.storybook/preview.tsx`.
+
+### Vite apps
+
+The bundle loads its images from files next to itself. Vite's dev server would otherwise pre-bundle the package into `node_modules/.vite/deps`, where those files do not exist. Add the package's Vite plugin to `vite.config.ts`:
+
+```ts
+import { agronodMuiComponents } from "@agronod/mui-components/vite";
+
+export default defineConfig({
+  plugins: [agronodMuiComponents() /* , react(), ... */],
+});
+```
+
+The plugin excludes the package from pre-bundling and pre-bundles the packages it imports instead. Excluding it by hand with `optimizeDeps.exclude` alone leaves those imports unbundled, and the app fails to load. Without the plugin, the library logs a warning in the browser console during development. Production builds and Vitest need no setup.
 
 ### Base Wrapper for all components
 
