@@ -13,5 +13,5 @@ export { AgronodLogo };
 import AgronodLogoDeprecated from "./AgronodLogoDeprecated";
 export { AgronodLogoDeprecated };
 
-import header_background from "./header_background.png";
+import header_background from "./header_background.png?no-inline";
 export { header_background };

@@ -1,8 +1,11 @@
 import { createTheme, ThemeOptions } from "@mui/material";
 import { common } from "@mui/material/colors";
-import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
-import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
-import InterSemiBoldTTF from "./fonts/inter/static/Inter-SemiBold.ttf";
+// Embedded as woff2 on purpose: pages copied into standalone HTML, such as
+// PDF exports, need the font inside the styles. The .woff2 files are the
+// .ttf files beside them, converted with `fonttools ttLib.woff2 compress`.
+import InterRegularWOFF2 from "./fonts/inter/static/Inter-Regular.woff2";
+import InterMediumWOFF2 from "./fonts/inter/static/Inter-Medium.woff2";
+import InterSemiBoldWOFF2 from "./fonts/inter/static/Inter-SemiBold.woff2";
 import { circularProgressClasses } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
@@ -398,17 +401,17 @@ const baseThemeOptions: ThemeOptions = {
           @font-face {
               font-family: 'inter';
               font-weight: 400;
-              src: url(${InterRegularTTF}) format('opentype');
+              src: url(${InterRegularWOFF2}) format('woff2');
           }
           @font-face {
               font-family: 'inter';
               font-weight: 500;
-              src: url(${InterMediumTTF}) format('opentype');
+              src: url(${InterMediumWOFF2}) format('woff2');
           }
           @font-face {
               font-family: 'inter';
               font-weight: 600;
-              src: url(${InterSemiBoldTTF}) format('opentype');
+              src: url(${InterSemiBoldWOFF2}) format('woff2');
           }
           @global: {
               html: {

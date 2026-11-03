@@ -1,6 +1,6 @@
 import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
-import NotFoundPageBackground from "../../assets/NotFoundPageBackground.png";
-import NotFoundBackgroundMobile from "../../assets/NotFoundBackgroundMobile.png";
+import NotFoundPageBackground from "../../assets/NotFoundPageBackground.png?no-inline";
+import NotFoundBackgroundMobile from "../../assets/NotFoundBackgroundMobile.png?no-inline";
 import { AgronodTypography } from "../AgronodTypography";
 import { AgronodLink } from "../AgronodLink";
 import { AgronodButton } from "../AgronodButton";

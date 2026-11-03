@@ -40,7 +40,7 @@ export default [// Base TypeScript ESLint recommended config
       ecmaFeatures: {
         jsx: true,
       },
-      project: './tsconfig.json',
+      project: ['./tsconfig.json', './tsconfig-vite-plugin.json'],
     },
   },
 }, // Storybook files override (preserve existing rule)
