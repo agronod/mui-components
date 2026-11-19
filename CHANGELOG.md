@@ -1,3 +1,23 @@
+## 4.0.0-feat-gn-05.0 (2026-11-19)
+
+* 3.0.3 ([3334efd](https://github.com/agronod/mui-components/commit/3334efd))
+* fix!: harden the Vite pre-bundle warning and build plugin, add 4.0.0 migration guide (GN-05) ([4210f66](https://github.com/agronod/mui-components/commit/4210f66)), closes [#173](https://github.com/agronod/mui-components/issues/173)
+* perf: pass the baseline font CSS as a function, and drop the invalid @global block ([e88edf3](https://github.com/agronod/mui-components/commit/e88edf3))
+* feat: ship images as files, Inter as embedded woff2, and a Vite plugin (GN-05) ([6a941ff](https://github.com/agronod/mui-components/commit/6a941ff)), closes [#172](https://github.com/agronod/mui-components/issues/172)
+
+
+### BREAKING CHANGE
+
+* Vite apps must add agronodMuiComponents() from
+@agronod/mui-components/vite to their plugins, or the dev server cannot
+find the error page images. header_background is a URL to a file next to
+the bundle instead of a data URI. baseTheme's MuiCssBaseline.styleOverrides
+is a function instead of a string. The bundle uses import.meta.url, so it
+cannot be loaded through a CommonJS transform such as Jest with babel-jest.
+
+Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>
+
+
 ## <small>3.0.3 (2026-10-15)</small>
 
 * fix: keep AgronodDialog bottom sheet full width when callers set a paper width (DES-12) (#171) ([ad1f3bf](https://github.com/agronod/mui-components/commit/ad1f3bf)), closes [#171](https://github.com/agronod/mui-components/issues/171)
