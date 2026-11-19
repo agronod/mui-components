@@ -397,7 +397,10 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiCssBaseline: {
-      styleOverrides: `
+      // A function, not a string: outside production, MUI's createTheme walks
+      // every key of each styleOverrides value, and a string has one key per
+      // character. With the fonts embedded that cost ~0.2 s per created theme.
+      styleOverrides: () => `
           @font-face {
               font-family: 'inter';
               font-weight: 400;
@@ -412,11 +415,6 @@ const baseThemeOptions: ThemeOptions = {
               font-family: 'inter';
               font-weight: 600;
               src: url(${InterSemiBoldWOFF2}) format('woff2');
-          }
-          @global: {
-              html: {
-                  WebkitFontSmoothing: "auto",
-              }
           }
       `,
     },
