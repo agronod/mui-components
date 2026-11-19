@@ -12,6 +12,77 @@ Conventions used below:
 
 ---
 
+## 4.0.0 — images as files, Vite plugin, embedded woff2 fonts
+
+The bundle shrinks from 2.84 MB to 0.65 MB because the three PNG images are no longer base64 inside `dist/index.es.js`. They are files next to the bundle, and the bundle refers to them relative to itself. Vite's dev server needs one line of configuration to serve them.
+
+### What changes for the application
+
+| Change | Action required |
+|---|---|
+| Error page backgrounds and `header_background` are files in `dist/`, referenced with `new URL(file, import.meta.url)` | **Vite apps: add the plugin (Step 2).** Without it the dev server shows `ErrorPagesContent` with no background image and logs a console warning naming the fix. Production builds and Vitest need nothing. |
+| New export `@agronod/mui-components/vite` with `agronodMuiComponents()` | Add it to `vite.config.ts` (Step 2). Remove any hand-written `optimizeDeps.exclude` entry for this package (Step 3). |
+| `header_background` is a URL to a file, no longer a `data:` URI | None for pages shown in the browser. HTML copied out of the page and rendered elsewhere, such as a PDF export, loses the image unless the renderer can reach the app (Step 4). |
+| `baseTheme.components.MuiCssBaseline.styleOverrides` is a function returning the CSS, no longer a string | None unless the app reads that value itself (Step 4). `CssBaseline` emits the same three `@font-face` rules. |
+| Inter is embedded as woff2, no longer TTF | None. PDF export through `pdf-service` (Puppeteer/Chromium) keeps the fonts: verified with all three weights embedded in the PDF. A renderer without woff2 support, such as wkhtmltopdf, would fall back to another font. |
+| The bundle uses `import.meta.url` | None for Vite, Vitest and other ESM toolchains. A toolchain that converts the bundle to CommonJS, such as Jest with babel-jest, fails to parse it. On a server (SSR) the image URLs become `file://` paths. No Agronod app uses either. |
+
+### Step 1 — Preconditions
+
+```bash
+cd <app>
+grep -E '"vite":' package.json                 # the plugin applies to Vite apps only
+grep -E '"(jest|babel-jest|ts-jest)":' package.json   # must print nothing
+```
+
+Stop if the second command prints a line: the bundle cannot be loaded through a CommonJS transform. Move the tests to Vitest first.
+
+### Step 2 — Add the Vite plugin
+
+In `<app>/vite.config.ts`:
+
+```ts
+import { agronodMuiComponents } from "@agronod/mui-components/vite";
+
+export default defineConfig({
+  plugins: [agronodMuiComponents(), react() /* , ... */],
+});
+```
+
+The plugin keeps the dev server from pre-bundling this package, so the images resolve next to the bundle, and pre-bundles the packages the bundle imports instead. A custom `cacheDir` needs no extra setup.
+
+### Step 3 — Remove a hand-written exclude
+
+```bash
+grep -n "optimizeDeps" <app>/vite.config.ts
+```
+
+If `optimizeDeps.exclude` lists `@agronod/mui-components`, delete that entry; the plugin sets it. Excluding the package without the plugin leaves its CommonJS dependencies unbundled and the page stays blank.
+
+### Step 4 — Find code that depended on the old values
+
+```bash
+grep -rn "header_background" <app>/src
+grep -rn "MuiCssBaseline" <app>/src
+```
+
+- `header_background`: fine where it is used as an image or background URL on a page. Where the surrounding HTML is sent to a PDF renderer, embed the image in the app instead.
+- `MuiCssBaseline.styleOverrides` read from a library theme: call it (`styleOverrides()`) instead of using it as a string.
+
+At the time of writing neither grep matches in any Agronod app.
+
+### Step 5 — Verify
+
+```bash
+npm run build      # exits 0
+npm test           # if the app has tests
+npm run dev
+```
+
+Open a page that renders `ErrorPagesContent` (any unknown route in most apps). Verify: the background image is visible, and the browser console has no warning starting with `@agronod/mui-components: Vite pre-bundled this package`. If the warning appears, the plugin is missing from `plugins` or the dev server was not restarted.
+
+---
+
 ## Unreleased — AgronodLogo asset corrected
 
 Exact version is set by the release workflow when this branch merges.

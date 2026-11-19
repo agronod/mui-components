@@ -237,6 +237,26 @@ const globalTypography = {
 
 const defaultMuiTheme = createTheme();
 
+// Built once: CssBaseline calls the styleOverrides function on every render,
+// and the string is about 420 kB with the fonts embedded.
+const interFontFaceCss = `
+  @font-face {
+      font-family: 'inter';
+      font-weight: 400;
+      src: url(${InterRegularWOFF2}) format('woff2');
+  }
+  @font-face {
+      font-family: 'inter';
+      font-weight: 500;
+      src: url(${InterMediumWOFF2}) format('woff2');
+  }
+  @font-face {
+      font-family: 'inter';
+      font-weight: 600;
+      src: url(${InterSemiBoldWOFF2}) format('woff2');
+  }
+`;
+
 const baseThemeOptions: ThemeOptions = {
   components: {
     MuiInputBase: {
@@ -400,23 +420,7 @@ const baseThemeOptions: ThemeOptions = {
       // A function, not a string: outside production, MUI's createTheme walks
       // every key of each styleOverrides value, and a string has one key per
       // character. With the fonts embedded that cost ~0.2 s per created theme.
-      styleOverrides: () => `
-          @font-face {
-              font-family: 'inter';
-              font-weight: 400;
-              src: url(${InterRegularWOFF2}) format('woff2');
-          }
-          @font-face {
-              font-family: 'inter';
-              font-weight: 500;
-              src: url(${InterMediumWOFF2}) format('woff2');
-          }
-          @font-face {
-              font-family: 'inter';
-              font-weight: 600;
-              src: url(${InterSemiBoldWOFF2}) format('woff2');
-          }
-      `,
+      styleOverrides: () => interFontFaceCss,
     },
     MuiTab: {
       styleOverrides: {

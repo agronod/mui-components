@@ -9,13 +9,17 @@ import type { Plugin } from "vite";
 
 // Lists the bundle's external imports for the agronodMuiComponents Vite plugin
 // (vite-plugin/index.ts), which pre-bundles them in apps that exclude this package.
+// Storybook loads this config too, so it only runs for the library's ES bundle.
 const optimizeDepsList = (): Plugin => ({
   name: "optimize-deps-list",
   generateBundle(options, bundle) {
-    if (options.format !== "es") return;
+    if (options.format !== "es" || !("index.es.js" in bundle)) return;
     const imports = new Set<string>();
     for (const output of Object.values(bundle)) {
-      if (output.type === "chunk") output.imports.forEach((id) => imports.add(id));
+      if (output.type !== "chunk") continue;
+      // Dynamic imports too: an excluded package's lazy import of a CommonJS
+      // dependency would otherwise reach the browser unbundled.
+      [...output.imports, ...output.dynamicImports].forEach((id) => imports.add(id));
     }
     this.emitFile({
       type: "asset",
