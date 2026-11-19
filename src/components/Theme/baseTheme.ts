@@ -1,8 +1,11 @@
 import { createTheme, ThemeOptions } from "@mui/material";
 import { common } from "@mui/material/colors";
-import InterRegularTTF from "./fonts/inter/static/Inter-Regular.ttf";
-import InterMediumTTF from "./fonts/inter/static/Inter-Medium.ttf";
-import InterSemiBoldTTF from "./fonts/inter/static/Inter-SemiBold.ttf";
+// Embedded as woff2 on purpose: pages copied into standalone HTML, such as
+// PDF exports, need the font inside the styles. The .woff2 files are the
+// .ttf files beside them, converted with `fonttools ttLib.woff2 compress`.
+import InterRegularWOFF2 from "./fonts/inter/static/Inter-Regular.woff2";
+import InterMediumWOFF2 from "./fonts/inter/static/Inter-Medium.woff2";
+import InterSemiBoldWOFF2 from "./fonts/inter/static/Inter-SemiBold.woff2";
 import { circularProgressClasses } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
@@ -234,6 +237,26 @@ const globalTypography = {
 
 const defaultMuiTheme = createTheme();
 
+// Built once: CssBaseline calls the styleOverrides function on every render,
+// and the string is about 420 kB with the fonts embedded.
+const interFontFaceCss = `
+  @font-face {
+      font-family: 'inter';
+      font-weight: 400;
+      src: url(${InterRegularWOFF2}) format('woff2');
+  }
+  @font-face {
+      font-family: 'inter';
+      font-weight: 500;
+      src: url(${InterMediumWOFF2}) format('woff2');
+  }
+  @font-face {
+      font-family: 'inter';
+      font-weight: 600;
+      src: url(${InterSemiBoldWOFF2}) format('woff2');
+  }
+`;
+
 const baseThemeOptions: ThemeOptions = {
   components: {
     MuiInputBase: {
@@ -394,28 +417,10 @@ const baseThemeOptions: ThemeOptions = {
       },
     },
     MuiCssBaseline: {
-      styleOverrides: `
-          @font-face {
-              font-family: 'inter';
-              font-weight: 400;
-              src: url(${InterRegularTTF}) format('opentype');
-          }
-          @font-face {
-              font-family: 'inter';
-              font-weight: 500;
-              src: url(${InterMediumTTF}) format('opentype');
-          }
-          @font-face {
-              font-family: 'inter';
-              font-weight: 600;
-              src: url(${InterSemiBoldTTF}) format('opentype');
-          }
-          @global: {
-              html: {
-                  WebkitFontSmoothing: "auto",
-              }
-          }
-      `,
+      // A function, not a string: outside production, MUI's createTheme walks
+      // every key of each styleOverrides value, and a string has one key per
+      // character. With the fonts embedded that cost ~0.2 s per created theme.
+      styleOverrides: () => interFontFaceCss,
     },
     MuiTab: {
       styleOverrides: {
