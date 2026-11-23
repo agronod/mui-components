@@ -9,6 +9,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js"
+    },
+    "./vite": {
+      "types": "./dist/vite-plugin/index.d.ts",
+      "default": "./dist/vite-plugin/index.js"
     }
   },
   "files": [
@@ -43,6 +47,7 @@
     "@storybook/addon-links": "^10.6.0",
     "@storybook/addon-themes": "^10.6.0",
     "@storybook/react-vite": "^10.6.0",
+    "@types/node": "^22.20.5",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^5.0.4",
@@ -65,9 +70,9 @@
   },
   "scripts": {
     "changelog": "conventional-changelog -p react -i CHANGELOG.md -s -r 0",
-    "build": "tsc && vite build",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
+    "build": "tsc && vite build && tsc -p tsconfig-vite-plugin.json",
+    "lint": "eslint src vite-plugin",
+    "lint:fix": "eslint src vite-plugin --fix",
     "storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && storybook dev -p 6006",
     "sb": "npm run storybook",
     "storybook@legacy": "storybook dev -p 6006",
